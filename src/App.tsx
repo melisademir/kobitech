@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import ResetPassword from "./pages/ResetPassword";
 import ApplicationConfirmation from "./pages/ApplicationConfirmation";
 import Dashboard from "./pages/Dashboard";
+import CustomerAnalysis from "./pages/CustomerAnalysis";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/application-confirmation" element={<ApplicationConfirmation />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/customer-analysis" element={<CustomerAnalysis />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
