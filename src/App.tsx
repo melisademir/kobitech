@@ -4,9 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
-import Signup from "./pages/Signup";
 import ResetPassword from "./pages/ResetPassword";
-import ApplicationConfirmation from "./pages/ApplicationConfirmation";
 import Dashboard from "./pages/Dashboard";
 import CustomerAnalysis from "./pages/CustomerAnalysis";
 import Products from "./pages/Products";
@@ -29,9 +27,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Navigate to="/login" replace />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
           <Route path="/reset-password" element={<ResetPassword />} />
-          <Route path="/application-confirmation" element={<ApplicationConfirmation />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/customer-analysis" element={<CustomerAnalysis />} />
           <Route path="/products" element={<Products />} />

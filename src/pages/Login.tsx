@@ -44,23 +44,12 @@ const Login = () => {
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="space-y-6">
           <h2 className="text-4xl font-bold text-primary-foreground leading-tight">
-            Daha fazla sat,<br />daha fazla kazan
+            Param Satış<br />Platformu
           </h2>
           <img src={loginHero} alt="Sales Dashboard" className="rounded-2xl shadow-premium-hover max-w-sm opacity-90" />
         </motion.div>
 
-        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="flex gap-12">
-          {[
-            { num: "500+", label: "Aktif Bayi" },
-            { num: "10,000+", label: "Müşteri" },
-            { num: "₺15M+", label: "Aylık Satış" },
-          ].map((s) => (
-            <div key={s.label}>
-              <div className="text-2xl font-bold text-primary-foreground">{s.num}</div>
-              <div className="text-primary-foreground/60 text-sm">{s.label}</div>
-            </div>
-          ))}
-        </motion.div>
+        <div />
       </div>
 
       {/* Right - Form */}
@@ -139,17 +128,10 @@ const Login = () => {
             </Button>
           </form>
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center"><div className="w-full border-t" /></div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-card px-2 text-muted-foreground">veya</span>
-            </div>
-          </div>
-
           <div className="text-center">
-            <p className="text-muted-foreground text-sm">Henüz bayi değil misiniz?</p>
-            <Link to="/signup" className="text-primary font-bold text-sm hover:underline inline-flex items-center gap-1 mt-1">
-              Bayilik Başvurusu Yapın →
+            <p className="text-muted-foreground text-sm">Şifrenizi mi unuttunuz?</p>
+            <Link to="/reset-password" className="text-primary font-bold text-sm hover:underline inline-flex items-center gap-1 mt-1">
+              Şifre Sıfırla →
             </Link>
           </div>
         </motion.div>
