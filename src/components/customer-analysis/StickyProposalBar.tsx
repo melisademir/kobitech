@@ -11,9 +11,14 @@ interface Props {
   onClose: () => void;
 }
 
-const StickyProposalBar = ({ products, onClear, visible, onClose }: Props) => (
+const StickyProposalBar = ({ products: proposalProducts, onClear, visible, onClose }: Props) => {
+  const saveAndNavigate = () => {
+    localStorage.setItem("proposal_products", JSON.stringify(proposalProducts.map(p => p.id)));
+  };
+
+  return (
   <AnimatePresence>
-    {visible && products.length > 0 && (
+    {visible && proposalProducts.length > 0 && (
       <motion.div
         initial={{ y: 100 }}
         animate={{ y: 0 }}
@@ -24,16 +29,16 @@ const StickyProposalBar = ({ products, onClear, visible, onClose }: Props) => (
           <div className="flex items-center gap-3 flex-1 min-w-0">
             <FileText className="h-7 w-7 text-primary-foreground shrink-0" />
             <div className="min-w-0">
-              <p className="text-primary-foreground font-bold text-sm">{products.length} ürün teklife eklendi</p>
+              <p className="text-primary-foreground font-bold text-sm">{proposalProducts.length} ürün teklife eklendi</p>
               <p className="text-primary-foreground/70 text-xs truncate">
-                {products.slice(0, 2).map(p => p.name).join(", ")}
-                {products.length > 2 && ` +${products.length - 2}`}
+                {proposalProducts.slice(0, 2).map(p => p.name).join(", ")}
+                {proposalProducts.length > 2 && ` +${proposalProducts.length - 2}`}
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-3">
-            <Button asChild className="bg-card text-primary hover:bg-card/90 font-bold shadow-premium h-11 px-6">
+            <Button asChild className="bg-card text-primary hover:bg-card/90 font-bold shadow-premium h-11 px-6" onClick={saveAndNavigate}>
               <Link to="/proposal-builder">
                 Teklif Oluştur <ArrowRight className="h-4 w-4 ml-1" />
               </Link>
@@ -49,6 +54,7 @@ const StickyProposalBar = ({ products, onClear, visible, onClose }: Props) => (
       </motion.div>
     )}
   </AnimatePresence>
-);
+  );
+};
 
 export default StickyProposalBar;

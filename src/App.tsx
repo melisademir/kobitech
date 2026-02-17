@@ -10,6 +10,7 @@ import ApplicationConfirmation from "./pages/ApplicationConfirmation";
 import Dashboard from "./pages/Dashboard";
 import CustomerAnalysis from "./pages/CustomerAnalysis";
 import Products from "./pages/Products";
+import ProposalBuilder from "./pages/ProposalBuilder";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/customer-analysis" element={<CustomerAnalysis />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/proposal-builder" element={<ProposalBuilder />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
