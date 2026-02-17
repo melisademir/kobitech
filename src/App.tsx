@@ -9,6 +9,7 @@ import ResetPassword from "./pages/ResetPassword";
 import ApplicationConfirmation from "./pages/ApplicationConfirmation";
 import Dashboard from "./pages/Dashboard";
 import CustomerAnalysis from "./pages/CustomerAnalysis";
+import Products from "./pages/Products";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/application-confirmation" element={<ApplicationConfirmation />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/customer-analysis" element={<CustomerAnalysis />} />
+          <Route path="/products" element={<Products />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
