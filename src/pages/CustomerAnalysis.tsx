@@ -27,6 +27,10 @@ const CustomerAnalysis = () => {
 
   const handleSubmit = (p: CustomerProfile) => {
     setLoading(true);
+    localStorage.setItem("proposal_customer", JSON.stringify({
+      companyName: p.companyName, sector: p.sector, employeeSize: p.employeeSize,
+      city: p.city, contactPerson: p.contactName, email: p.contactEmail, phone: p.contactPhone,
+    }));
     setTimeout(() => {
       setProfile(p);
       setHasResults(true);
