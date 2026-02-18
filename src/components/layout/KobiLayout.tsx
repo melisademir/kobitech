@@ -8,7 +8,7 @@ import { useCart } from "@/contexts/CartContext";
 const navItems = [
   { icon: Map, label: "Harita", path: "/kobi/harita" },
   { icon: Package, label: "Çözümler", path: "/kobi/urunler" },
-  { icon: ShoppingCart, label: "Sepetim", path: "/kobi/sepet" },
+  { icon: ShoppingCart, label: "Sepetim", path: "/kobi/urunler", isCart: true },
   { icon: FileText, label: "Tekliflerim", path: "/kobi/tekliflerim" },
   { icon: MessageCircle, label: "Görüşmeler", path: "/kobi/gorusmeler" },
   { icon: User, label: "Profilim", path: "/kobi/profile" },
