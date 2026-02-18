@@ -101,7 +101,7 @@ const Landing = () => {
         <div className="max-w-7xl mx-auto px-6 text-center relative">
           <motion.div initial="hidden" animate="visible" variants={fadeUp}>
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-semibold mb-6">
-              Türkiye'nin KOBİ Dijitalleşme Platformu
+              Türkiye'nin Dijitalleşme Platformu
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold text-foreground leading-tight mb-6">
               İşletmenizin tüm dijital<br />ihtiyaçları <span className="text-gradient-primary">tek platformda!</span>
