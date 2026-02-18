@@ -70,11 +70,15 @@ const ProductCatalogCard = ({ product, onDetailClick, onSectorExamplesClick }: P
       </div>
 
       {/* Price */}
-      <div className="flex justify-center mb-5">
+      <div className="flex flex-col items-center gap-1 mb-5">
         <span className="gradient-primary text-primary-foreground text-sm font-bold px-5 py-2 rounded-full">
           {product.priceLabel || `${product.priceMonthly.toLocaleString("tr-TR")} ₺/ay`}
-          {product.priceYearly ? ` • ${product.priceYearly.toLocaleString("tr-TR")} ₺/yıl` : ""}
         </span>
+        {product.priceYearly && (
+          <span className="text-xs text-muted-foreground font-medium">
+            Yıllık: {product.priceYearly.toLocaleString("tr-TR")} ₺/yıl
+          </span>
+        )}
       </div>
 
       {/* Actions */}
