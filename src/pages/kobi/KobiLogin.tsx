@@ -19,7 +19,7 @@ const KobiLogin = () => {
     setError("");
     if (!email || !password) { setError("E-posta ve şifre gereklidir"); return; }
     setLoading(true);
-    setTimeout(() => { setLoading(false); navigate("/kobi/dashboard"); }, 800);
+    setTimeout(() => { setLoading(false); navigate("/kobi/urunler"); }, 800);
   };
 
   return (
