@@ -109,27 +109,6 @@ const Landing = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
               Dijitalleşin, verimli çalışın, dünyaya açılın. Yerelden küresele, yanınızdayız.
             </p>
-            <div className="max-w-4xl mx-auto mt-10 rounded-2xl p-6 md:p-8 bg-gradient-to-r from-[hsl(270,30%,20%)] to-[hsl(250,40%,25%)] shadow-premium">
-              <div className="flex flex-col md:flex-row md:items-center gap-6">
-                <div className="flex-shrink-0 text-left">
-                  <h3 className="text-lg font-bold text-white mb-1">Bilgilerinizi Bırakın Sizi Arayalım</h3>
-                  <p className="text-sm text-white/60">KVKK hakkındaki <a href="#" className="text-primary underline">aydınlatma metnine</a> buradan ulaşabilirsiniz.</p>
-                </div>
-                <div className="flex flex-col sm:flex-row gap-3 flex-1">
-                  <Input
-                    placeholder="Adınız Soyadınız"
-                    className="h-12 rounded-full bg-white border-0 text-foreground placeholder:text-muted-foreground px-5 flex-1"
-                  />
-                  <Input
-                    placeholder="Telefon Numaranız"
-                    className="h-12 rounded-full bg-white border-0 text-foreground placeholder:text-muted-foreground px-5 flex-1"
-                  />
-                  <Button variant="hero" size="lg" className="h-12 px-8 rounded-full whitespace-nowrap">
-                    Gönder <ArrowRight className="h-4 w-4 ml-1" />
-                  </Button>
-                </div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -171,6 +150,30 @@ const Landing = () => {
               </motion.div>
             ))}
           </div>
+          {/* Contact Form */}
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mt-14">
+            <div className="max-w-5xl mx-auto rounded-2xl p-6 md:p-8 bg-gradient-to-r from-[hsl(270,30%,20%)] to-[hsl(250,40%,25%)] shadow-premium">
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex-shrink-0 text-left">
+                  <h3 className="text-lg font-bold text-white mb-1">Bilgilerinizi Bırakın Sizi Arayalım</h3>
+                  <p className="text-sm text-white/60">KVKK hakkındaki <a href="#" className="text-primary underline">aydınlatma metnine</a> buradan ulaşabilirsiniz.</p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3 flex-1">
+                  <Input
+                    placeholder="Adınız Soyadınız"
+                    className="h-12 rounded-full bg-white border-0 text-foreground placeholder:text-muted-foreground px-5 flex-1"
+                  />
+                  <Input
+                    placeholder="Telefon Numaranız"
+                    className="h-12 rounded-full bg-white border-0 text-foreground placeholder:text-muted-foreground px-5 flex-1"
+                  />
+                  <Button variant="hero" size="lg" className="h-12 px-8 rounded-full whitespace-nowrap">
+                    Gönder <ArrowRight className="h-4 w-4 ml-1" />
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
