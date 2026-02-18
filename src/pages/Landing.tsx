@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
-  ChevronDown, Search, ArrowRight, CreditCard, ShoppingCart, Calculator,
+  ChevronDown, ArrowRight, CreditCard, ShoppingCart, Calculator,
   Truck, Building2, Users, LayoutDashboard, Brain, Globe, Shield, Zap,
   BarChart3, Star, Quote
 } from "lucide-react";
@@ -109,17 +109,26 @@ const Landing = () => {
             <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10">
               Dijitalleşin, verimli çalışın, dünyaya açılın. Yerelden küresele, yanınızdayız.
             </p>
-            <div className="flex max-w-lg mx-auto gap-2">
-              <div className="relative flex-1">
-                <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                <Input
-                  placeholder="Dijital dönüşüm çözümlerini keşfedin..."
-                  className="pl-12 h-14 rounded-xl border-2 border-border focus:border-primary text-base"
-                />
+            <div className="max-w-4xl mx-auto mt-10 rounded-2xl p-6 md:p-8 bg-gradient-to-r from-[hsl(270,30%,20%)] to-[hsl(250,40%,25%)] shadow-premium">
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="flex-shrink-0 text-left">
+                  <h3 className="text-lg font-bold text-white mb-1">Bilgilerinizi Bırakın Sizi Arayalım</h3>
+                  <p className="text-sm text-white/60">KVKK hakkındaki <a href="#" className="text-primary underline">aydınlatma metnine</a> buradan ulaşabilirsiniz.</p>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-3 flex-1">
+                  <Input
+                    placeholder="Adınız Soyadınız"
+                    className="h-12 rounded-full bg-white border-0 text-foreground placeholder:text-muted-foreground px-5 flex-1"
+                  />
+                  <Input
+                    placeholder="Telefon Numaranız"
+                    className="h-12 rounded-full bg-white border-0 text-foreground placeholder:text-muted-foreground px-5 flex-1"
+                  />
+                  <Button variant="hero" size="lg" className="h-12 px-8 rounded-full whitespace-nowrap">
+                    Gönder <ArrowRight className="h-4 w-4 ml-1" />
+                  </Button>
+                </div>
               </div>
-              <Button asChild variant="hero" size="lg" className="h-14 px-8 rounded-xl">
-                <Link to="/kobi/urunler">Keşfet</Link>
-              </Button>
             </div>
           </motion.div>
         </div>
