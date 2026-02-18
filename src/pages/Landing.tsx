@@ -133,22 +133,53 @@ const Landing = () => {
             <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-3">Globalleşirken Yalnız Değilsin</h2>
             <p className="text-muted-foreground max-w-xl mx-auto">İşletmenizin her ihtiyacı için doğru çözüm ortağı ekosistemimizde</p>
           </motion.div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {solutions.map((s, i) => (
-              <motion.div key={s.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} variants={fadeUp}
-                className="bg-card rounded-2xl p-7 border border-border shadow-card hover:shadow-card-hover transition-all hover:-translate-y-1 group">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <s.icon className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-lg font-bold text-foreground mb-2">{s.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4">{s.desc}</p>
-                <div className="flex flex-wrap gap-2">
-                  {s.tags.map(tag => (
-                    <span key={tag} className="px-2.5 py-1 rounded-full bg-primary/5 text-primary text-xs font-medium">{tag}</span>
-                  ))}
-                </div>
-              </motion.div>
-            ))}
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-0 max-w-6xl mx-auto">
+            {solutions.map((s, i) => {
+              const row = Math.floor(i / 3);
+              const col = i % 3;
+              const hasTabRight = col < 2;
+              const hasTabBottom = row < 1;
+              const hasBlankLeft = col > 0;
+              const hasBlankTop = row > 0;
+
+              return (
+                <motion.div key={s.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} variants={fadeUp}
+                  className="relative overflow-visible group"
+                  style={{ zIndex: 6 - i, padding: '2px' }}
+                >
+                  <div className="relative bg-card p-7 border border-border shadow-card hover:shadow-card-hover transition-all hover:z-20 h-full"
+                    style={{
+                      borderRadius: `${col === 0 && row === 0 ? '16px' : '4px'} ${col === 2 && row === 0 ? '16px' : '4px'} ${col === 2 && row === 1 ? '16px' : '4px'} ${col === 0 && row === 1 ? '16px' : '4px'}`,
+                    }}
+                  >
+                    {/* Puzzle tabs & blanks */}
+                    {hasTabRight && (
+                      <div className="hidden lg:block absolute right-[-14px] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-card border-2 border-border z-10 shadow-sm" />
+                    )}
+                    {hasTabBottom && (
+                      <div className="hidden lg:block absolute bottom-[-14px] left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-card border-2 border-border z-10 shadow-sm" />
+                    )}
+                    {hasBlankLeft && (
+                      <div className="hidden lg:block absolute left-[-14px] top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-background border-2 border-border z-20" />
+                    )}
+                    {hasBlankTop && (
+                      <div className="hidden lg:block absolute top-[-14px] left-1/2 -translate-x-1/2 w-7 h-7 rounded-full bg-background border-2 border-border z-20" />
+                    )}
+
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
+                      <s.icon className="h-6 w-6 text-primary" />
+                    </div>
+                    <h3 className="text-lg font-bold text-foreground mb-2">{s.title}</h3>
+                    <p className="text-muted-foreground text-sm mb-4">{s.desc}</p>
+                    <div className="flex flex-wrap gap-2">
+                      {s.tags.map(tag => (
+                        <span key={tag} className="px-2.5 py-1 rounded-full bg-primary/5 text-primary text-xs font-medium">{tag}</span>
+                      ))}
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
           {/* Contact Form */}
           <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="mt-14">
