@@ -57,7 +57,7 @@ const HowItWorksSection = () => (
           whileInView="visible"
           viewport={{ once: true }}
           variants={lineVariants}
-          className="absolute left-6 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px origin-top"
+          className="absolute left-[1.375rem] md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px origin-top"
         />
 
         <motion.div
