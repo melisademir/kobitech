@@ -159,3 +159,8 @@
     box-shadow: 0 0 0 3px hsl(268, 72%, 38% / 0.12);
   }
 }
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 12px 2px hsl(268, 72%, 38% / 0.3); }
+  50% { box-shadow: 0 0 24px 6px hsl(268, 72%, 38% / 0.5); }
+}
