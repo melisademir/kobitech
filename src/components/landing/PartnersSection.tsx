@@ -74,15 +74,15 @@ const PartnersSection = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-10">
 
-          <motion.span
-            initial={{ opacity: 0, scale: 0.85 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.4, delay: 0.1 }}
-            className="inline-block px-5 py-1.5 rounded-full bg-secondary text-secondary-foreground text-xs font-semibold mb-5 tracking-wide">
+          
 
-            Ekosistem
-          </motion.span>
+
+
+
+
+
+
+
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Maliyetlerini Düşür
 Ticaretini Büyüt
 Dünyaya Açıl
