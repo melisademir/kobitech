@@ -155,7 +155,7 @@ Dünyaya Açıl
                     </motion.span>
                   )}
                 </motion.div>
-                <Link to="/kobi/signup">
+                <Link to="/kobi/signup" className="inline-block mt-2">
                   <motion.button
                     whileHover={{ scale: 1.04 }}
                     whileTap={{ scale: 0.97 }}
