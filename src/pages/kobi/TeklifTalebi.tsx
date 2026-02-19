@@ -9,16 +9,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 const TeklifTalebi = () => {
   const { items, clearCart } = useCart();
   const navigate = useNavigate();
-  const [phone, setPhone] = useState("");
-  const [timeline, setTimeline] = useState("");
-  const [budget, setBudget] = useState("");
   const [notes, setNotes] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const requestId = `TT-${Date.now().toString().slice(-5)}`;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!phone) return;
+    setSubmitted(true);
     setSubmitted(true);
     clearCart();
   };
@@ -62,33 +59,12 @@ const TeklifTalebi = () => {
 
         <form onSubmit={handleSubmit} className="space-y-5">
           <Card>
-            <CardHeader><CardTitle>İletişim Bilgileri</CardTitle></CardHeader>
-            <CardContent className="space-y-4">
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Telefon *</label>
-                <Input value={phone} onChange={e => setPhone(e.target.value)} placeholder="05XX XXX XX XX" className="h-12" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Ne zaman başlamak istersiniz?</label>
-                <select value={timeline} onChange={e => setTimeline(e.target.value)} className="w-full h-12 rounded-md border-2 border-input bg-background px-3 text-sm focus:border-primary focus:outline-none">
-                  <option value="">Seçin</option>
-                  <option value="hemen">Hemen</option>
-                  <option value="1ay">1 ay içinde</option>
-                  <option value="3ay">3 ay içinde</option>
-                  <option value="6ay">6 ay içinde</option>
-                </select>
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Bütçeniz (Opsiyonel)</label>
-                <Input value={budget} onChange={e => setBudget(e.target.value)} placeholder="Aylık bütçeniz" className="h-12" />
-              </div>
-              <div className="space-y-2">
-                <label className="text-sm font-medium text-foreground">Notlar</label>
-                <textarea value={notes} onChange={e => setNotes(e.target.value)} placeholder="Ek bilgi veya sorularınız..." className="w-full min-h-[100px] rounded-md border-2 border-input bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none" />
-              </div>
+            <CardHeader><CardTitle>Notlar</CardTitle></CardHeader>
+            <CardContent>
+              <textarea value={notes} onChange={e => setNotes(e.target.value)} placeholder="Ek bilgi veya sorularınız..." className="w-full min-h-[100px] rounded-md border-2 border-input bg-background px-3 py-2 text-sm focus:border-primary focus:outline-none resize-none" />
             </CardContent>
           </Card>
-          <Button type="submit" variant="hero" size="lg" className="w-full" disabled={!phone || items.length === 0}>
+          <Button type="submit" variant="hero" size="lg" className="w-full" disabled={items.length === 0}>
             Teklif Talebi Gönder
           </Button>
         </form>
