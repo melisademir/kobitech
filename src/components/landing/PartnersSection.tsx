@@ -59,11 +59,6 @@ const categories = [
   },
 ];
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
-};
-
 const PartnersSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const cat = categories[activeIndex];
@@ -72,24 +67,44 @@ const PartnersSection = () => {
     <section id="solutions" className="py-20 bg-card">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-10">
-          <span className="inline-block px-5 py-1.5 rounded-full bg-secondary text-secondary-foreground text-xs font-semibold mb-5 tracking-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-10"
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.85 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: 0.1 }}
+            className="inline-block px-5 py-1.5 rounded-full bg-secondary text-secondary-foreground text-xs font-semibold mb-5 tracking-wide"
+          >
             Ekosistem
-          </span>
+          </motion.span>
           <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">
             Globalleşirken Yalnız Değilsin
           </h2>
         </motion.div>
 
         {/* Category Tags */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex flex-wrap justify-center gap-3 mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="flex flex-wrap justify-center gap-3 mb-14"
+        >
           {categories.map((c, i) => (
-            <button
+            <motion.button
               key={c.label}
               onClick={() => setActiveIndex(i)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.97 }}
               className={`px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 ${
                 activeIndex === i
-                  ? "text-primary-foreground shadow-md scale-105"
+                  ? "text-primary-foreground shadow-md"
                   : "text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground bg-transparent"
               }`}
               style={
@@ -99,7 +114,7 @@ const PartnersSection = () => {
               }
             >
               {c.label}
-            </button>
+            </motion.button>
           ))}
         </motion.div>
 
@@ -108,10 +123,10 @@ const PartnersSection = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -16 }}
-              transition={{ duration: 0.3 }}
+              initial={{ opacity: 0, y: 20, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.98 }}
+              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col md:flex-row items-center gap-10"
             >
               {/* Left: Info */}
@@ -120,27 +135,42 @@ const PartnersSection = () => {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {cat.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {cat.tags.map((tag) => (
-                    <span
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.15 }}
+                  className="flex flex-wrap gap-2"
+                >
+                  {cat.tags.map((tag, idx) => (
+                    <motion.span
                       key={tag}
+                      initial={{ opacity: 0, scale: 0.8 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.1 + idx * 0.06 }}
                       className="inline-block px-3 py-1 rounded-full text-xs font-medium border"
                       style={{ color: cat.color, borderColor: cat.color, backgroundColor: `${cat.color}`.replace(')', ', 0.1)').replace('hsl(', 'hsla(') }}
                     >
                       {tag}
-                    </span>
+                    </motion.span>
                   ))}
-                </div>
-                <button
+                </motion.div>
+                <motion.button
+                  whileHover={{ scale: 1.04 }}
+                  whileTap={{ scale: 0.97 }}
                   className="inline-flex items-center px-7 py-3 rounded-full text-sm font-semibold text-primary-foreground transition-colors"
                   style={{ backgroundColor: cat.color }}
                 >
                   Çözümleri Keşfet
-                </button>
+                </motion.button>
               </div>
 
               {/* Right: Screenshot */}
-              <div className="flex-1 max-w-md">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.4, delay: 0.15 }}
+                className="flex-1 max-w-md"
+              >
                 <div className="rounded-2xl overflow-hidden border border-border shadow-card">
                   <img
                     src={heroDashboard}
@@ -148,7 +178,7 @@ const PartnersSection = () => {
                     className="w-full h-auto"
                   />
                 </div>
-              </div>
+              </motion.div>
             </motion.div>
           </AnimatePresence>
         </div>
