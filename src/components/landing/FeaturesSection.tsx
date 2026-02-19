@@ -47,7 +47,7 @@ const FeaturesSection = () =>
         transition={{ duration: 0.4, delay: 0.1 }}
         className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4 tracking-wide uppercase">
 
-          Neden Dijital Esnaf?
+          Neden Kobi Dijital?
         </motion.span>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-3">
           50+ Çözüm Tek Platformda
