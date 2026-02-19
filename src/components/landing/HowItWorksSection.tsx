@@ -74,14 +74,14 @@ const HowItWorksSection = () => (
               className={`relative flex items-start gap-6 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} md:text-${i % 2 === 0 ? 'right' : 'left'}`}
             >
               {/* Content */}
-              <div className={`flex-1 pl-16 md:pl-0 ${i % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
+              <div className={`flex-1 pl-[4.5rem] md:pl-0 ${i % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
                 <h3 className="text-lg font-bold text-foreground mb-1">{s.title}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
               </div>
 
               {/* Number circle */}
               <motion.div
-                className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full gradient-primary text-primary-foreground font-extrabold text-lg flex items-center justify-center shadow-premium z-10"
+                className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full gradient-primary text-primary-foreground font-extrabold text-lg flex items-center justify-center shrink-0 shadow-premium z-10"
                 whileHover={{ scale: 1.15 }}
                 whileInView={{
                   boxShadow: [
