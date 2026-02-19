@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import loginHero from "@/assets/login-hero.png";
+import { useOnboarding } from "@/contexts/OnboardingContext";
 
 const KobiSignup = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/kobi/welcome";
+  const { data: onboardingData } = useOnboarding();
+
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(onboardingData.email || "");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -20,7 +25,7 @@ const KobiSignup = () => {
     if (!email || !password) { setError("Tüm alanlar gereklidir"); return; }
     if (password.length < 6) { setError("Şifre en az 6 karakter olmalıdır"); return; }
     setLoading(true);
-    setTimeout(() => { setLoading(false); navigate("/kobi/welcome"); }, 800);
+    setTimeout(() => { setLoading(false); navigate(redirect); }, 800);
   };
 
   return (
@@ -66,7 +71,7 @@ const KobiSignup = () => {
             {error && <div className="flex items-center gap-2 text-destructive text-sm bg-destructive/10 p-3 rounded-lg"><span>✗</span> {error}</div>}
             <Button type="submit" size="lg" className="w-full" disabled={loading}>{loading ? "Kayıt yapılıyor..." : "Kayıt Ol"}</Button>
           </form>
-          <p className="text-center text-muted-foreground text-sm">Zaten hesabınız var mı? <Link to="/kobi/login" className="text-primary font-bold hover:underline">Giriş Yap</Link></p>
+          <p className="text-center text-muted-foreground text-sm">Zaten hesabınız var mı? <Link to={`/kobi/login${redirect !== "/kobi/welcome" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`} className="text-primary font-bold hover:underline">Giriş Yap</Link></p>
         </motion.div>
       </div>
     </div>

@@ -1,15 +1,20 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import loginHero from "@/assets/login-hero.png";
+import { useOnboarding } from "@/contexts/OnboardingContext";
 
 const KobiLogin = () => {
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const redirect = searchParams.get("redirect") || "/kobi/urunler";
+  const { data: onboardingData } = useOnboarding();
+
   const [showPassword, setShowPassword] = useState(false);
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState(onboardingData.email || "");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -19,7 +24,7 @@ const KobiLogin = () => {
     setError("");
     if (!email || !password) { setError("E-posta ve şifre gereklidir"); return; }
     setLoading(true);
-    setTimeout(() => { setLoading(false); navigate("/kobi/urunler"); }, 800);
+    setTimeout(() => { setLoading(false); navigate(redirect); }, 800);
   };
 
   return (
@@ -72,7 +77,7 @@ const KobiLogin = () => {
           </form>
           <div className="text-center space-y-2">
             <Link to="/kobi/reset-password" className="text-primary font-medium text-sm hover:underline">Şifremi Unuttum</Link>
-            <p className="text-muted-foreground text-sm">Hesabınız yok mu? <Link to="/kobi/signup" className="text-primary font-bold hover:underline">Ücretsiz Kayıt</Link></p>
+            <p className="text-muted-foreground text-sm">Hesabınız yok mu? <Link to={`/kobi/signup${redirect !== "/kobi/urunler" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`} className="text-primary font-bold hover:underline">Ücretsiz Kayıt</Link></p>
             <p className="text-muted-foreground text-sm">Bayi misiniz? <Link to="/login" className="text-accent font-bold hover:underline">Buradan giriş →</Link></p>
           </div>
         </motion.div>

@@ -1,11 +1,13 @@
 import { useState } from "react";
 import KobiLayout from "@/components/layout/KobiLayout";
 import { catalogProducts, type CatalogProduct } from "@/data/catalog-products";
-import { Star, ShoppingCart, Info, X } from "lucide-react";
+import { Star, ShoppingCart, Info, X, LogIn, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
+import { useOnboarding } from "@/contexts/OnboardingContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 const goalTabs = [
   { id: "all", label: "Tümü" },
@@ -40,12 +42,38 @@ const getStars = (score: number) => score >= 90 ? 5 : score >= 75 ? 4 : score >=
 const KobiProducts = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [cartOpen, setCartOpen] = useState(false);
+  const [authPromptOpen, setAuthPromptOpen] = useState(false);
   const { items, addItem, removeItem, isInCart, count } = useCart();
+  const { data: onboardingData } = useOnboarding();
   const navigate = useNavigate();
 
   const filtered = activeTab === "all"
     ? catalogProducts
     : catalogProducts.filter(p => (tabCategoryMap[activeTab] || []).includes(p.category));
+
+  const handleTeklifTalebi = () => {
+    setCartOpen(false);
+    setAuthPromptOpen(true);
+  };
+
+  const handleLoginSignup = () => {
+    setAuthPromptOpen(false);
+    // Navigate to signup with redirect back to teklif-talebi
+    navigate("/kobi/signup?redirect=/kobi/teklif-talebi");
+  };
+
+  const handleSendToEmail = () => {
+    setAuthPromptOpen(false);
+    const email = onboardingData.email;
+    if (email) {
+      toast.success(`Teklif detayları ${email} adresine gönderilecek`, {
+        description: "En kısa sürede size dönüş yapacağız.",
+      });
+    } else {
+      // If no email in context, go to teklif-talebi form
+      navigate("/kobi/teklif-talebi");
+    }
+  };
 
   return (
     <KobiLayout>
@@ -150,7 +178,7 @@ const KobiProducts = () => {
                   <div className="bg-accent/10 text-accent p-3 rounded-lg text-sm text-center font-medium">
                     💡 Fiyatlar size özel teklif ile belirlenecek
                   </div>
-                  <Button variant="hero" className="w-full" onClick={() => { setCartOpen(false); navigate("/kobi/teklif-talebi"); }}>
+                  <Button variant="hero" className="w-full" onClick={handleTeklifTalebi}>
                     Teklif Talebi Oluştur
                   </Button>
                   <Button variant="outline" className="w-full" onClick={() => setCartOpen(false)}>
@@ -158,6 +186,62 @@ const KobiProducts = () => {
                   </Button>
                 </div>
               )}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+
+      {/* Auth Prompt Dialog */}
+      <AnimatePresence>
+        {authPromptOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 0.5 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-secondary z-[60]"
+              onClick={() => setAuthPromptOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="fixed inset-0 z-[60] flex items-center justify-center p-4"
+            >
+              <div className="bg-card rounded-2xl shadow-premium border border-border max-w-md w-full p-8 space-y-6">
+                <div className="text-center space-y-3">
+                  <div className="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center mx-auto">
+                    <LogIn className="h-8 w-8 text-primary" />
+                  </div>
+                  <h2 className="text-xl font-bold text-foreground">Giriş Yapmanız Gerekiyor</h2>
+                  <p className="text-muted-foreground text-sm leading-relaxed">
+                    Teklif yanıtı geldiğinde takip edebilmek için giriş yapmalısınız.
+                  </p>
+                </div>
+
+                {onboardingData.email && (
+                  <div className="bg-muted/50 rounded-xl p-3 text-center">
+                    <p className="text-xs text-muted-foreground">Kayıtlı e-posta</p>
+                    <p className="text-sm font-medium text-foreground">{onboardingData.email}</p>
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  <Button variant="hero" className="w-full" size="lg" onClick={handleLoginSignup}>
+                    <LogIn className="h-4 w-4 mr-2" /> Kayıt Ol / Giriş Yap
+                  </Button>
+                  <Button variant="outline" className="w-full" size="lg" onClick={handleSendToEmail}>
+                    <Mail className="h-4 w-4 mr-2" /> Teklifi Mailime Gönder
+                  </Button>
+                </div>
+
+                <button
+                  onClick={() => setAuthPromptOpen(false)}
+                  className="w-full text-center text-sm text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  Vazgeç
+                </button>
+              </div>
             </motion.div>
           </>
         )}

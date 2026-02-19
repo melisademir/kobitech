@@ -2,6 +2,8 @@ import { createContext, useContext, useState, type ReactNode } from "react";
 
 interface OnboardingData {
   businessName: string;
+  email: string;
+  phone: string;
   city: string;
   sector: string;
   goals: string[];
@@ -17,6 +19,8 @@ const OnboardingContext = createContext<OnboardingContextType | null>(null);
 export const OnboardingProvider = ({ children }: { children: ReactNode }) => {
   const [data, setDataState] = useState<OnboardingData>({
     businessName: "",
+    email: "",
+    phone: "",
     city: "",
     sector: "",
     goals: [],
