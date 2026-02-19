@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Bot, Target, BarChart3, Store, ShoppingCart, BadgeDollarSign, MessageCircle, ClipboardList, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const containerVariants = {
@@ -19,15 +19,15 @@ const cardVariants = {
 };
 
 const features = [
-  { icon: "🤖", title: "Yapay Zeka ile Hızlı Başlangıç", desc: "AI asistanımız işletmenizi analiz eder, size özel dijital dönüşüm planı hazırlar. Form doldurmaya gerek yok, sadece derdini anlat.", labels: ["AI Analiz", "Otomatik Plan", "Sektör Eşleştirme"] },
-  { icon: "🎯", title: "Hedef Odaklı Aksiyon Planları", desc: "İhracat, e-ticaret, maliyet düşürme — hangi hedefiniz varsa size özel yapılacaklar listesi ve yol haritası oluşturuyoruz.", labels: ["İhracat", "E-Ticaret", "Maliyet Azaltma"] },
-  { icon: "📊", title: "Dijital Olgunluk Ölçümü", desc: "Global Readiness Level ile işletmenizin dijital seviyesini ölçün, sektör ortalamasıyla karşılaştırın, eksiklerinizi görün.", labels: ["Readiness Level", "Sektör Karşılaştırma", "İlerleme Takibi"] },
-  { icon: "🛍️", title: "50+ Çözüm Tek Platformda", desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.", labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"] },
-  { icon: "🛒", title: "Sepet ile Hızlı Planlama", desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.", labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"] },
-  { icon: "💰", title: "Size Özel Teklif Sistemi", desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.", labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"] },
-  { icon: "💬", title: "Anlık Görüşme & Destek", desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın, pazarlık yapın.", labels: ["Canlı Chat", "Bayi Görüşme", "Pazarlık"] },
-  { icon: "📋", title: "Kolay Proje Takibi", desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.", labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"] },
-  { icon: "📄", title: "Dijital Döküman Merkezi", desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.", labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"] },
+  { icon: Bot, title: "Yapay Zeka ile Hızlı Başlangıç", desc: "AI asistanımız işletmenizi analiz eder, size özel dijital dönüşüm planı hazırlar. Form doldurmaya gerek yok, sadece derdini anlat.", labels: ["AI Analiz", "Otomatik Plan", "Sektör Eşleştirme"] },
+  { icon: Target, title: "Hedef Odaklı Aksiyon Planları", desc: "İhracat, e-ticaret, maliyet düşürme — hangi hedefiniz varsa size özel yapılacaklar listesi ve yol haritası oluşturuyoruz.", labels: ["İhracat", "E-Ticaret", "Maliyet Azaltma"] },
+  { icon: BarChart3, title: "Dijital Olgunluk Ölçümü", desc: "Global Readiness Level ile işletmenizin dijital seviyesini ölçün, sektör ortalamasıyla karşılaştırın, eksiklerinizi görün.", labels: ["Readiness Level", "Sektör Karşılaştırma", "İlerleme Takibi"] },
+  { icon: Store, title: "50+ Çözüm Tek Platformda", desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.", labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"] },
+  { icon: ShoppingCart, title: "Sepet ile Hızlı Planlama", desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.", labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"] },
+  { icon: BadgeDollarSign, title: "Size Özel Teklif Sistemi", desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.", labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"] },
+  { icon: MessageCircle, title: "Anlık Görüşme & Destek", desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın, pazarlık yapın.", labels: ["Canlı Chat", "Bayi Görüşme", "Pazarlık"] },
+  { icon: ClipboardList, title: "Kolay Proje Takibi", desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.", labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"] },
+  { icon: FileText, title: "Dijital Döküman Merkezi", desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.", labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"] },
 ];
 
 const FeaturesSection = () => (
@@ -72,11 +72,11 @@ const FeaturesSection = () => (
             className="bg-card rounded-2xl p-7 border border-border shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
           >
             <motion.div
-              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-2xl"
+              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5"
               whileHover={{ scale: 1.1, rotate: 8 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              {f.icon}
+              <f.icon className="w-6 h-6 text-primary" />
             </motion.div>
             <h3 className="text-base font-bold text-foreground mb-2">{f.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed flex-1">{f.desc}</p>

@@ -77,8 +77,9 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 60, scale: 0.95 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
-          className="rounded-2xl overflow-hidden relative"
+          className="rounded-2xl overflow-hidden relative shadow-[0_20px_60px_-15px_hsl(268,72%,38%/0.25),0_8px_24px_-8px_hsl(260,20%,10%/0.12)] border border-border/50"
         >
+          <div className="absolute inset-0 bg-gradient-to-t from-primary/5 to-transparent pointer-events-none z-10" />
           <img src={heroIllustration} alt="KOBİ Dijital Platform" className="w-full h-auto object-cover" />
         </motion.div>
       </div>
