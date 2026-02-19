@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import KobiLayout from "@/components/layout/KobiLayout";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -27,6 +28,7 @@ const statusConfig = {
 
 const KobiTekliflerim = () => {
   const [activeTab, setActiveTab] = useState("all");
+  const navigate = useNavigate();
   const filtered = activeTab === "all" ? mockQuotes : mockQuotes.filter(q => q.status === activeTab);
 
   return (
@@ -61,7 +63,7 @@ const KobiTekliflerim = () => {
                       {q.price && <p className="text-lg font-bold text-primary">{q.price}</p>}
                     </div>
                     <div className="flex gap-2 shrink-0">
-                      <Button variant="outline" size="sm">Detay</Button>
+                      <Button variant="outline" size="sm" onClick={() => navigate(`/kobi/tekliflerim/${q.id}`)}>Detay</Button>
                       {q.status === "received" && (
                         <>
                           <Button variant="outline" size="sm">Soru Sor</Button>
