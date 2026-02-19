@@ -34,6 +34,7 @@ import Step2 from "./pages/kobi/Step2";
 import Step3 from "./pages/kobi/Step3";
 import KobiDashboard from "./pages/kobi/KobiDashboard";
 import Harita from "./pages/kobi/Harita";
+import Planlarim from "./pages/kobi/Planlarim";
 import KobiProducts from "./pages/kobi/KobiProducts";
 import TeklifTalebi from "./pages/kobi/TeklifTalebi";
 import KobiTekliflerim from "./pages/kobi/KobiTekliflerim";
@@ -85,6 +86,7 @@ const App = () => (
             {/* KOBİ main */}
             <Route path="/kobi/dashboard" element={<KobiDashboard />} />
             <Route path="/kobi/harita" element={<Harita />} />
+            <Route path="/kobi/planlarim" element={<Planlarim />} />
             <Route path="/kobi/urunler" element={<KobiProducts />} />
             <Route path="/kobi/teklif-talebi" element={<TeklifTalebi />} />
             <Route path="/kobi/tekliflerim" element={<KobiTekliflerim />} />

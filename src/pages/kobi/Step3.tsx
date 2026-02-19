@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
+import { useOnboarding } from "@/contexts/OnboardingContext";
 
 const goals = [
   { name: "İhracat yapmak", icon: "🌍" },
@@ -18,9 +19,17 @@ const goals = [
 
 const Step3 = () => {
   const navigate = useNavigate();
-  const [selected, setSelected] = useState<string[]>([]);
+  const { data: onboardingData, setData } = useOnboarding();
+  const [selected, setSelected] = useState<string[]>(onboardingData.goals || []);
 
   const toggle = (g: string) => setSelected(prev => prev.includes(g) ? prev.filter(x => x !== g) : [...prev, g]);
+
+  const handleNext = () => {
+    if (selected.length) {
+      setData({ goals: selected });
+      navigate("/kobi/dashboard");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-8">
@@ -45,7 +54,7 @@ const Step3 = () => {
           <Button asChild variant="outline" className="flex-1">
             <Link to="/kobi/step-2"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
           </Button>
-          <Button onClick={() => { if (selected.length) navigate("/kobi/dashboard"); }} disabled={!selected.length} variant="hero" className="flex-1">Planımı Oluştur 🚀</Button>
+          <Button onClick={handleNext} disabled={!selected.length} variant="hero" className="flex-1">Planımı Oluştur 🚀</Button>
         </div>
       </motion.div>
     </div>
