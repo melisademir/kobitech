@@ -55,7 +55,7 @@ const Step1 = () => {
         </div>
         <div className="flex gap-4">
           <Button asChild variant="outline" className="flex-1">
-            <Link to="/kobi/welcome"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
+            <Link to="/kobi/login"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
           </Button>
           <Button onClick={handleNext} disabled={!name || !email || !phone || !city} variant="hero" className="flex-1">İleri</Button>
         </div>

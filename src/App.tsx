@@ -28,7 +28,7 @@ import Landing from "./pages/Landing";
 import KobiLogin from "./pages/kobi/KobiLogin";
 import KobiSignup from "./pages/kobi/KobiSignup";
 import KobiResetPassword from "./pages/kobi/KobiResetPassword";
-import Welcome from "./pages/kobi/Welcome";
+
 import Step1 from "./pages/kobi/Step1";
 import Step2 from "./pages/kobi/Step2";
 import Step3 from "./pages/kobi/Step3";
@@ -77,7 +77,7 @@ const App = () => (
             <Route path="/kobi/reset-password" element={<KobiResetPassword />} />
 
             {/* KOBİ onboarding */}
-            <Route path="/kobi/welcome" element={<Welcome />} />
+            
             <Route path="/kobi/step-1" element={<Step1 />} />
             <Route path="/kobi/step-2" element={<Step2 />} />
             <Route path="/kobi/step-3" element={<Step3 />} />
