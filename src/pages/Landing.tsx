@@ -19,8 +19,8 @@ const Landing = () => (
       </div>
     </div>
     <StatsSection />
-    <FeaturesSection />
     <PartnersSection />
+    <FeaturesSection />
     <HowItWorksSection />
     <CtaSection />
     <FooterSection />
