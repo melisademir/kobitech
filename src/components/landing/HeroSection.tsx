@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import heroIllustration from "@/assets/hero-illustration.png";
+import heroBg from "@/assets/hero-bg.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -12,12 +13,7 @@ const HeroSection = () =>
 <>
     <section className="relative overflow-hidden pt-16 pb-8 lg:pt-24 lg:pb-12">
       {/* Gradient background */}
-      <div
-        className="absolute inset-0 -z-10 pointer-events-none"
-        style={{
-          background: "linear-gradient(180deg, hsl(270 60% 96%) 0%, hsl(180 60% 94%) 40%, hsl(310 60% 95%) 70%, hsl(0 0% 100%) 100%)",
-        }}
-      />
+      <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover -z-10 pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 text-center relative">
         <motion.div initial="hidden" animate="visible" variants={fadeUp}>
           <span className="inline-block px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold mb-8 tracking-wide">
