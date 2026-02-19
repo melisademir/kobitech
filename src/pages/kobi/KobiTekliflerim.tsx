@@ -64,6 +64,7 @@ const KobiTekliflerim = () => {
                       <Button variant="outline" size="sm">Detay</Button>
                       {q.status === "received" && (
                         <>
+                          <Button variant="outline" size="sm">Soru Sor</Button>
                           <Button variant="hero" size="sm">Onayla</Button>
                           <Button variant="destructive" size="sm">Reddet</Button>
                         </>
