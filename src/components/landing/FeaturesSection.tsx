@@ -9,15 +9,15 @@ const fadeUp = {
 };
 
 const features = [
-  { icon: "🤖", title: "Yapay Zeka ile Hızlı Başlangıç", desc: "AI asistanımız işletmenizi analiz eder, size özel dijital dönüşüm planı hazırlar. Form doldurmaya gerek yok, sadece derdini anlat." },
-  { icon: "🎯", title: "Hedef Odaklı Aksiyon Planları", desc: "İhracat, e-ticaret, maliyet düşürme — hangi hedefiniz varsa size özel yapılacaklar listesi ve yol haritası oluşturuyoruz." },
-  { icon: "📊", title: "Dijital Olgunluk Ölçümü", desc: "Global Readiness Level ile işletmenizin dijital seviyesini ölçün, sektör ortalamasıyla karşılaştırın, eksiklerinizi görün." },
-  { icon: "🛍️", title: "50+ Çözüm Tek Platformda", desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın." },
-  { icon: "🛒", title: "Sepet ile Hızlı Planlama", desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin." },
-  { icon: "💰", title: "Size Özel Teklif Sistemi", desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur." },
-  { icon: "💬", title: "Anlık Görüşme & Destek", desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın, pazarlık yapın." },
-  { icon: "📋", title: "Kolay Proje Takibi", desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun." },
-  { icon: "📄", title: "Dijital Döküman Merkezi", desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın." },
+  { icon: "🤖", title: "Yapay Zeka ile Hızlı Başlangıç", desc: "AI asistanımız işletmenizi analiz eder, size özel dijital dönüşüm planı hazırlar. Form doldurmaya gerek yok, sadece derdini anlat.", labels: ["AI Analiz", "Otomatik Plan", "Sektör Eşleştirme"] },
+  { icon: "🎯", title: "Hedef Odaklı Aksiyon Planları", desc: "İhracat, e-ticaret, maliyet düşürme — hangi hedefiniz varsa size özel yapılacaklar listesi ve yol haritası oluşturuyoruz.", labels: ["İhracat", "E-Ticaret", "Maliyet Azaltma"] },
+  { icon: "📊", title: "Dijital Olgunluk Ölçümü", desc: "Global Readiness Level ile işletmenizin dijital seviyesini ölçün, sektör ortalamasıyla karşılaştırın, eksiklerinizi görün.", labels: ["Readiness Level", "Sektör Karşılaştırma", "İlerleme Takibi"] },
+  { icon: "🛍️", title: "50+ Çözüm Tek Platformda", desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.", labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"] },
+  { icon: "🛒", title: "Sepet ile Hızlı Planlama", desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.", labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"] },
+  { icon: "💰", title: "Size Özel Teklif Sistemi", desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.", labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"] },
+  { icon: "💬", title: "Anlık Görüşme & Destek", desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın, pazarlık yapın.", labels: ["Canlı Chat", "Bayi Görüşme", "Pazarlık"] },
+  { icon: "📋", title: "Kolay Proje Takibi", desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.", labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"] },
+  { icon: "📄", title: "Dijital Döküman Merkezi", desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.", labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"] },
 ];
 
 const FeaturesSection = () => (
@@ -42,6 +42,11 @@ const FeaturesSection = () => (
             </div>
             <h3 className="text-base font-bold text-foreground mb-2">{f.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed flex-1">{f.desc}</p>
+            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border">
+              {f.labels.map((label) => (
+                <span key={label} className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">{label}</span>
+              ))}
+            </div>
           </motion.div>
         ))}
       </div>
