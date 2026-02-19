@@ -89,9 +89,6 @@ const Landing = () => {
                 </div>
               )}
             </div>
-            <Button asChild variant="hero" size="sm">
-              <Link to="/kobi/signup">Ücretsiz Başla</Link>
-            </Button>
           </div>
         </div>
       </nav>
