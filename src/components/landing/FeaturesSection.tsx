@@ -22,7 +22,7 @@ const features = [
 { icon: Store, title: "50+ Çözüm Tek Platformda", desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.", labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"] },
 { icon: ShoppingCart, title: "Sepet ile Hızlı Planlama", desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.", labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"] },
 { icon: BadgeDollarSign, title: "Size Özel Teklif Sistemi", desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.", labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"] },
-{ icon: MessageCircle, title: "Anlık Görüşme & Destek", desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın, pazarlık yapın.", labels: ["Canlı Chat", "Bayi Görüşme", "Pazarlık"] },
+{ icon: MessageCircle, title: "Anlık Görüşme & Destek", desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın.", labels: ["Canlı Chat", "Bayi Görüşme"] },
 { icon: ClipboardList, title: "Kolay Proje Takibi", desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.", labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"] },
 { icon: FileText, title: "Dijital Döküman Merkezi", desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.", labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"] }];
 
