@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import heroDashboard from "@/assets/hero-dashboard.png";
@@ -11,16 +10,14 @@ const fadeUp = {
 
 const HeroSection = () =>
 <>
-    <section className="relative overflow-hidden pt-20 pb-8 lg:pt-28 lg:pb-12">
+    <section className="relative overflow-hidden pt-16 pb-8 lg:pt-24 lg:pb-12">
       <div className="max-w-7xl mx-auto px-6 text-center relative">
         <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-          <span className="inline-block px-4 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-semibold mb-6 tracking-wide uppercase">Türkiye'nin Dijitalleşme Platformu
-
-
-
-        </span>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-[1.1] mb-5">
-            İşletmenizin tüm dijital<br />ihtiyaçları <span className="text-gradient-primary">tek platformda!</span>
+          <span className="inline-block px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold mb-8 tracking-wide">
+            Türkiye'nin Dijitalleşme Platformu
+          </span>
+          <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-primary leading-[1.15] mb-5">
+            İşletmenizin tüm dijital<br />ihtiyaçları tek platformda!
           </h1>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
             Dijitalleşin, verimli çalışın, dünyaya açılın. Yerelden küresele, yanınızdayız.
@@ -28,14 +25,19 @@ const HeroSection = () =>
         </motion.div>
 
         {/* Inline Contact Form */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="max-w-3xl mx-auto mb-12">
-          <div className="flex flex-col sm:flex-row items-center gap-3 bg-card rounded-2xl p-2.5 shadow-premium border border-border">
-            <span className="text-sm text-muted-foreground font-medium px-3 whitespace-nowrap hidden sm:block">Sizi Arayalım</span>
-            <Input placeholder="Adınız Soyadınız" className="h-11 rounded-xl border-0 bg-muted/50 flex-1" />
-            <Input placeholder="Telefon Numaranız" className="h-11 rounded-xl border-0 bg-muted/50 flex-1" />
-            <Button variant="accent" className="h-11 px-6 rounded-xl whitespace-nowrap">
-              Gönder <ArrowRight className="h-4 w-4 ml-1" />
-            </Button>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="max-w-4xl mx-auto mb-14">
+          <div className="flex flex-col sm:flex-row items-stretch gap-0 bg-accent rounded-2xl p-2 shadow-premium">
+            <div className="flex flex-col justify-center px-5 py-2 sm:min-w-[160px]">
+              <span className="text-base font-bold text-accent-foreground whitespace-nowrap">Sizi Arayalım</span>
+              <a href="#" className="text-xs text-accent-foreground/80 underline whitespace-nowrap">KVKK Aydınlatma Metni</a>
+            </div>
+            <div className="flex flex-col sm:flex-row flex-1 gap-2 p-1">
+              <Input placeholder="Adınız Soyadınız" className="h-12 rounded-xl border-0 bg-background text-foreground flex-1" />
+              <Input placeholder="Telefon numaranız" className="h-12 rounded-xl border-0 bg-background text-foreground flex-1" />
+              <Button variant="default" className="h-12 px-8 rounded-xl whitespace-nowrap font-bold text-sm">
+                Gönder
+              </Button>
+            </div>
           </div>
         </motion.div>
       </div>
@@ -51,6 +53,5 @@ const HeroSection = () =>
       </div>
     </section>
   </>;
-
 
 export default HeroSection;
