@@ -5,13 +5,22 @@ import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { turkishCities } from "@/data/sectors";
+import { useOnboarding } from "@/contexts/OnboardingContext";
 
 const Step1 = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [phone, setPhone] = useState("");
-  const [city, setCity] = useState("");
+  const { data, setData } = useOnboarding();
+  const [name, setName] = useState(data.businessName || "");
+  const [email, setEmail] = useState(data.email || "");
+  const [phone, setPhone] = useState(data.phone || "");
+  const [city, setCity] = useState(data.city || "");
+
+  const handleNext = () => {
+    if (name && email && phone && city) {
+      setData({ businessName: name, email, phone, city });
+      navigate("/kobi/step-2");
+    }
+  };
 
   return (
     <div className="min-h-screen bg-background flex items-center justify-center p-8">
@@ -48,7 +57,7 @@ const Step1 = () => {
           <Button asChild variant="outline" className="flex-1">
             <Link to="/kobi/welcome"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
           </Button>
-          <Button onClick={() => { if (name && email && phone && city) navigate("/kobi/step-2"); }} disabled={!name || !email || !phone || !city} variant="hero" className="flex-1">İleri</Button>
+          <Button onClick={handleNext} disabled={!name || !email || !phone || !city} variant="hero" className="flex-1">İleri</Button>
         </div>
       </motion.div>
     </div>

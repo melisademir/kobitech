@@ -4,6 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { CartProvider } from "@/contexts/CartContext";
+import { OnboardingProvider } from "@/contexts/OnboardingContext";
 
 // Existing Bayi pages
 import Login from "./pages/Login";
@@ -45,6 +46,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <OnboardingProvider>
       <CartProvider>
         <Toaster />
         <Sonner />
@@ -94,6 +96,7 @@ const App = () => (
           </Routes>
         </BrowserRouter>
       </CartProvider>
+      </OnboardingProvider>
     </TooltipProvider>
   </QueryClientProvider>
 );
