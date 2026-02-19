@@ -37,9 +37,23 @@ const KobiSignup = () => {
             <span className="text-2xl font-extrabold text-primary-foreground tracking-tight">KOBİ DİJİTAL</span>
           </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="space-y-6">
-          <h2 className="text-4xl font-bold text-primary-foreground leading-tight">Dijital Dönüşüme<br />Bugün Başlayın</h2>
-          <img src={loginHero} alt="Dashboard" className="rounded-2xl shadow-premium-hover max-w-sm opacity-90" />
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="space-y-8">
+          <h2 className="text-3xl font-bold text-primary-foreground leading-tight">3 Adımda Dijitalleşin</h2>
+          <div className="space-y-6">
+            {[
+              { num: "1", title: "Ücretsiz Kayıt Olun", desc: "Sadece e-posta ve şifre ile 2 dakikada kayıt olun." },
+              { num: "2", title: "İşletmenizi Tanımlayın", desc: "Sektörünüzü ve ihtiyaçlarınızı belirleyin." },
+              { num: "3", title: "Dijitalleşmeye Başlayın", desc: "Yol haritanızı takip edin, büyümeye başlayın." },
+            ].map((s, i) => (
+              <motion.div key={s.num} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 + i * 0.15 }} className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center text-primary-foreground font-extrabold text-lg shrink-0">{s.num}</div>
+                <div>
+                  <h3 className="text-base font-bold text-primary-foreground">{s.title}</h3>
+                  <p className="text-sm text-primary-foreground/70 leading-relaxed">{s.desc}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </motion.div>
         <div />
       </div>
