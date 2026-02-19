@@ -1,5 +1,8 @@
 import { motion } from "framer-motion";
-import { Building2, MapPin, Handshake, Users } from "lucide-react";
+import statsFolders from "@/assets/stats-folders.svg";
+import statsChart from "@/assets/stats-chart.svg";
+import statsGem from "@/assets/stats-gem.svg";
+import statsPartner from "@/assets/stats-partner.svg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -7,10 +10,10 @@ const fadeUp = {
 };
 
 const stats = [
-  { icon: Building2, value: "10.000+", label: "Aktif KOBİ" },
-  { icon: MapPin, value: "48+", label: "Farklı Sektör" },
-  { icon: Handshake, value: "50+", label: "Çözüm Ortağı" },
-  { icon: Users, value: "30+", label: "Çözüm Ürünü" },
+  { icon: statsFolders, value: "10.000+", label: "Aktif Kobi" },
+  { icon: statsChart, value: "48+", label: "Farklı Sektör" },
+  { icon: statsGem, value: "50+", label: "Dijital Dönüşüm Aracı" },
+  { icon: statsPartner, value: "30+", label: "Çözüm Ortağı" },
 ];
 
 const StatsSection = () => (
@@ -19,9 +22,7 @@ const StatsSection = () => (
       {stats.map((s, i) => (
         <motion.div key={s.label} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} variants={fadeUp}
           className="flex flex-col items-center gap-2">
-          <div className="w-12 h-12 rounded-xl bg-accent/10 flex items-center justify-center mb-1">
-            <s.icon className="h-6 w-6 text-accent" />
-          </div>
+          <img src={s.icon} alt={s.label} className="w-12 h-12 mb-1" />
           <p className="text-2xl md:text-3xl font-extrabold text-foreground">{s.value}</p>
           <p className="text-sm text-muted-foreground font-medium">{s.label}</p>
         </motion.div>
