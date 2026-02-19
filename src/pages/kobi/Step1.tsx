@@ -9,6 +9,8 @@ import { turkishCities } from "@/data/sectors";
 const Step1 = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
   const [city, setCity] = useState("");
 
   return (
@@ -27,6 +29,14 @@ const Step1 = () => {
             <Input value={name} onChange={e => setName(e.target.value)} placeholder="İşletmenizin adı" className="h-12 border-2 focus:border-primary" />
           </div>
           <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground">E-posta *</label>
+            <Input value={email} onChange={e => setEmail(e.target.value)} placeholder="ornek@firma.com" type="email" className="h-12 border-2 focus:border-primary" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-medium text-foreground">Telefon *</label>
+            <Input value={phone} onChange={e => setPhone(e.target.value)} placeholder="05XX XXX XX XX" type="tel" className="h-12 border-2 focus:border-primary" />
+          </div>
+          <div className="space-y-2">
             <label className="text-sm font-medium text-foreground">Şehir *</label>
             <select value={city} onChange={e => setCity(e.target.value)} className="w-full h-12 rounded-md border-2 border-input bg-background px-3 text-sm focus:border-primary focus:outline-none">
               <option value="">Şehir seçin</option>
@@ -38,7 +48,7 @@ const Step1 = () => {
           <Button asChild variant="outline" className="flex-1">
             <Link to="/kobi/welcome"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
           </Button>
-          <Button onClick={() => { if (name && city) navigate("/kobi/step-2"); }} disabled={!name || !city} variant="hero" className="flex-1">İleri</Button>
+          <Button onClick={() => { if (name && email && phone && city) navigate("/kobi/step-2"); }} disabled={!name || !email || !phone || !city} variant="hero" className="flex-1">İleri</Button>
         </div>
       </motion.div>
     </div>
