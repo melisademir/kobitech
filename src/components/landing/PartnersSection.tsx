@@ -7,46 +7,55 @@ const categories = [
     label: "Teşviklerden Yararlan",
     color: "hsl(160, 84%, 39%)",
     description: "Devlet teşvikleri, hibe programları ve vergi avantajlarından yararlanarak maliyetlerinizi düşürün. Size uygun destekleri keşfedin ve başvuru süreçlerinizi kolaylaştırın.",
+    tags: ["Hibe Programları", "Vergi Avantajları", "Başvuru Desteği"],
   },
   {
     label: "E-Ticarete Açıl",
     color: "hsl(268, 70%, 35%)",
     description: "Online satış kanallarınızı oluşturun, e-ticaret altyapınızı kurun ve dijital pazarlama stratejileriyle müşteri kitlenizi genişletin.",
+    tags: ["E-Ticaret Altyapısı", "Çoklu Kanal Satış", "Mağaza Çözümleri"],
   },
   {
     label: "Ödeme Al",
     color: "hsl(0, 84%, 60%)",
     description: "Fiziksel ve online ödeme çözümleriyle tahsilat süreçlerinizi hızlandırın. POS, sanal POS ve mobil ödeme seçenekleriyle her kanaldan ödeme alın.",
+    tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
   },
   {
     label: "Paranı Yönet",
     color: "hsl(33, 100%, 57%)",
     description: "Nakit akışınızı optimize edin, muhasebe süreçlerinizi otomatikleştirin ve finansal raporlarınızla işletmenizin mali sağlığını takip edin.",
+    tags: ["Muhasebe Çözümleri", "ERP Yazılımı", "Fatura Yönetimi"],
   },
   {
     label: "Üretimini Optimize Et",
     color: "hsl(200, 70%, 50%)",
     description: "Üretim süreçlerinizi dijitalleştirin, verimlilik analizi yapın ve operasyonel maliyetlerinizi minimize edin.",
+    tags: ["Üretim Takibi", "Verimlilik Analizi", "Otomasyon"],
   },
   {
     label: "Stoğunu Kontrol Et",
     color: "hsl(200, 70%, 50%)",
     description: "Stok ve depo yönetiminizi dijitalleştirin. Min-max takibi, FIFO/LIFO ve tedarik zinciri optimizasyonu ile fire oranlarınızı düşürün.",
+    tags: ["Kargo & Lojistik", "Depo Yönetimi", "Sipariş Takibi"],
   },
   {
     label: "Global Aç",
     color: "hsl(217, 91%, 60%)",
     description: "Yurt dışı pazarlara açılın. İhracat süreçleri, uluslararası ödeme altyapısı ve lojistik çözümleriyle globalleşme yolculuğunuza başlayın.",
+    tags: ["Kurumsal Çözümler", "Global Şirket Kurulumu", "Bulut Altyapısı"],
   },
   {
     label: "Ekibini Güçlendir",
     color: "hsl(280, 60%, 50%)",
     description: "İK yönetimi, işe alım, eğitim programları ve performans takip sistemleriyle ekibinizi büyütün ve güçlendirin.",
+    tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"],
   },
   {
     label: "İşlerini Yönet",
     color: "hsl(33, 100%, 57%)",
     description: "ERP, fatura otomasyonu ve raporlama araçlarıyla tüm iş süreçlerinizi tek platformdan yönetin.",
+    tags: ["ERP Çözümleri", "Fatura Otomasyonu", "Raporlama"],
   },
 ];
 
@@ -111,6 +120,17 @@ const PartnersSection = () => {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {cat.description}
                 </p>
+                <div className="flex flex-wrap gap-2">
+                  {cat.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-block px-3 py-1 rounded-full text-xs font-medium border"
+                      style={{ color: cat.color, borderColor: cat.color, backgroundColor: `${cat.color}`.replace(')', ', 0.1)').replace('hsl(', 'hsla(') }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
                 <button
                   className="inline-flex items-center px-7 py-3 rounded-full text-sm font-semibold text-primary-foreground transition-colors"
                   style={{ backgroundColor: cat.color }}
