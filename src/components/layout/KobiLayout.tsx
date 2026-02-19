@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
 import { useOnboarding } from "@/contexts/OnboardingContext";
+import AiAssistantWidget from "@/components/kobi/AiAssistantWidget";
 const navItems = [
   { icon: Map, label: "Harita", path: "/kobi/harita" },
   { icon: ClipboardList, label: "Planlarım", path: "/kobi/planlarim" },
@@ -115,6 +116,7 @@ const KobiLayout = ({ children }: Props) => {
           </motion.div>
         </main>
       </div>
+      <AiAssistantWidget />
     </div>
   );
 };
