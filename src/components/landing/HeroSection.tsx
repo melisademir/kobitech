@@ -16,11 +16,11 @@ const HeroSection = () => (
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="inline-block px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold mb-8 tracking-wide"
+            className="inline-block px-5 py-2 rounded-full bg-white/20 text-white text-xs font-semibold mb-8 tracking-wide backdrop-blur-sm"
           >
             Türkiye'nin Dijitalleşme Platformu
           </motion.span>
-          <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-primary leading-[1.15] mb-5">
+          <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-white leading-[1.15] mb-5">
             <motion.span
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -42,7 +42,7 @@ const HeroSection = () => (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
+            className="text-base md:text-lg text-white/80 max-w-2xl mx-auto mb-10"
           >
             Dijitalleşin, verimli çalışın, dünyaya açılın. Yerelden küresele, yanınızdayız.
           </motion.p>
