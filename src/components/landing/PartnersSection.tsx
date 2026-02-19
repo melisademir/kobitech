@@ -52,12 +52,7 @@ const categories = [
   description: "İK yönetimi, işe alım, eğitim programları ve performans takip sistemleriyle ekibinizi büyütün ve güçlendirin.",
   tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"]
 },
-{
-  label: "İşlerini Yönet",
-  color: "hsl(33, 100%, 57%)",
-  description: "ERP, fatura otomasyonu ve raporlama araçlarıyla tüm iş süreçlerinizi tek platformdan yönetin.",
-  tags: ["ERP Çözümleri", "Fatura Otomasyonu", "Raporlama"]
-}];
+];
 
 
 const PartnersSection = () => {
