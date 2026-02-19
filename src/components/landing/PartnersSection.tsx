@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import heroDashboard from "@/assets/hero-dashboard.png";
 
@@ -154,14 +155,15 @@ Dünyaya Açıl
                     </motion.span>
                   )}
                 </motion.div>
-                <motion.button
-                  whileHover={{ scale: 1.04 }}
-                  whileTap={{ scale: 0.97 }}
-                  className="inline-flex items-center px-7 py-3 rounded-full text-sm font-semibold text-primary-foreground transition-colors"
-                  style={{ backgroundColor: cat.color }}>
-
-                  Çözümleri Keşfet
-                </motion.button>
+                <Link to="/kobi/signup">
+                  <motion.button
+                    whileHover={{ scale: 1.04 }}
+                    whileTap={{ scale: 0.97 }}
+                    className="inline-flex items-center px-7 py-3 rounded-full text-sm font-semibold text-primary-foreground transition-colors"
+                    style={{ backgroundColor: cat.color }}>
+                    Çözümleri Keşfet
+                  </motion.button>
+                </Link>
               </div>
 
               {/* Right: Screenshot */}
