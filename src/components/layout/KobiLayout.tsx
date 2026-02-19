@@ -8,7 +8,6 @@ import { useOnboarding } from "@/contexts/OnboardingContext";
 const navItems = [
   { icon: Map, label: "Harita", path: "/kobi/harita" },
   { icon: Package, label: "Çözümler", path: "/kobi/urunler" },
-  { icon: ShoppingCart, label: "Sepetim", path: "/kobi/urunler", isCart: true },
   { icon: FileText, label: "Tekliflerim", path: "/kobi/tekliflerim" },
   { icon: MessageCircle, label: "Görüşmeler", path: "/kobi/gorusmeler" },
   { icon: User, label: "Profilim", path: "/kobi/profile" },
@@ -71,12 +70,11 @@ const KobiLayout = ({ children }: Props) => {
         <aside className="hidden lg:block w-[260px] bg-card border-r border-border shrink-0">
           <nav className="p-4 space-y-1 sticky top-[70px]">
             {navItems.map(item => {
-              const active = location.pathname === item.path || (item.path === "/kobi/urunler" && location.pathname === "/kobi/sepet");
+              const active = location.pathname === item.path;
               return (
-                <Link key={item.path} to={item.path} className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${active ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-background hover:text-foreground"}`}>
+                <Link key={item.label} to={item.path} className={`flex items-center gap-3 px-4 py-3 rounded-lg text-sm font-medium transition-all ${active ? "bg-primary/10 text-primary" : "text-muted-foreground hover:bg-background hover:text-foreground"}`}>
                   <item.icon className="h-5 w-5" />
                   <span>{item.label}</span>
-                  {item.label === "Sepetim" && count > 0 && <Badge className="ml-auto h-5 w-5 p-0 flex items-center justify-center text-[10px]">{count}</Badge>}
                 </Link>
               );
             })}
