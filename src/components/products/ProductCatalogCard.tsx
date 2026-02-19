@@ -19,6 +19,7 @@ const ProductCatalogCard = ({ product, onDetailClick, onSectorExamplesClick }: P
     odeme: "💳", finansman: "💰", muhasebe: "📊", "erp-isletme": "🏢",
     erp: "🏭", eticaret: "🌐", sigorta: "🛡️",
   };
+  const brand = "brand" in product ? (product as any).brand : "";
 
   return (
     <div className="bg-card rounded-2xl shadow-card hover:shadow-premium-hover border-t-4 border-t-primary p-7 transition-all duration-300 hover:scale-[1.02] flex flex-col">
@@ -29,8 +30,9 @@ const ProductCatalogCard = ({ product, onDetailClick, onSectorExamplesClick }: P
         </div>
       </div>
 
-      {/* Name & Category */}
+      {/* Name & Brand & Category */}
       <h3 className="text-xl font-bold text-foreground text-center">{product.name}</h3>
+      {brand && <p className="text-xs text-muted-foreground text-center mt-1">{brand}</p>}
       <div className="flex justify-center mt-2">
         <span className="bg-primary text-primary-foreground text-[10px] font-bold uppercase px-3 py-1 rounded-full">
           {product.categoryLabel}
