@@ -1,9 +1,15 @@
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 
 const LandingNav = () => {
   return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md bg-transparent">
+    <motion.nav
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="sticky top-0 z-50 backdrop-blur-md bg-transparent"
+    >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="flex items-center">
           <span className="text-2xl font-extrabold text-primary tracking-tight">
@@ -12,22 +18,35 @@ const LandingNav = () => {
         </Link>
 
         <div className="hidden md:flex items-center gap-8">
-          <a href="#" className="text-sm font-medium text-primary hover:text-accent transition-colors">Anasayfa</a>
-          <a href="#solutions" className="text-sm font-medium text-primary hover:text-accent transition-colors">Çözümler</a>
-          <a href="#how" className="text-sm font-medium text-primary hover:text-accent transition-colors">Nasıl Çalışır?</a>
-          <a href="#contact" className="text-sm font-medium text-primary hover:text-accent transition-colors">İletişim</a>
+          {["Anasayfa", "Çözümler", "Nasıl Çalışır?", "İletişim"].map((item, i) => (
+            <motion.a
+              key={item}
+              href={["#", "#solutions", "#how", "#contact"][i]}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.1 + i * 0.05 }}
+              className="text-sm font-medium text-primary hover:text-accent transition-colors relative after:content-[''] after:absolute after:bottom-[-4px] after:left-0 after:w-0 after:h-[2px] after:bg-accent after:transition-all after:duration-300 hover:after:w-full"
+            >
+              {item}
+            </motion.a>
+          ))}
         </div>
 
-        <div className="flex items-center gap-4">
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.4, delay: 0.3 }}
+          className="flex items-center gap-4"
+        >
           <Link to="/kobi/signup" className="text-sm font-semibold text-primary hover:text-accent transition-colors hidden sm:block">
             Kayıt Ol
           </Link>
           <Button asChild variant="accent" size="sm" className="rounded-full px-6">
             <Link to="/kobi/login">Giriş Yap</Link>
           </Button>
-        </div>
+        </motion.div>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 

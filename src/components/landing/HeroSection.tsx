@@ -3,29 +3,58 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import heroIllustration from "@/assets/hero-illustration.png";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } }
-};
-
-const HeroSection = () =>
-<>
+const HeroSection = () => (
+  <>
     <section className="relative overflow-hidden pt-16 pb-8 lg:pt-24 lg:pb-12">
       <div className="max-w-7xl mx-auto px-6 text-center relative">
-        <motion.div initial="hidden" animate="visible" variants={fadeUp}>
-          <span className="inline-block px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold mb-8 tracking-wide">
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <motion.span
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+            className="inline-block px-5 py-2 rounded-full bg-primary text-primary-foreground text-xs font-semibold mb-8 tracking-wide"
+          >
             Türkiye'nin Dijitalleşme Platformu
-          </span>
+          </motion.span>
           <h1 className="text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold text-primary leading-[1.15] mb-5">
-            İşletmenizin tüm dijital<br />ihtiyaçları tek platformda!
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+              className="block"
+            >
+              İşletmenizin tüm dijital
+            </motion.span>
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.45, ease: [0.22, 1, 0.36, 1] }}
+              className="block"
+            >
+              ihtiyaçları tek platformda!
+            </motion.span>
           </h1>
-          <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10">
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mb-10"
+          >
             Dijitalleşin, verimli çalışın, dünyaya açılın. Yerelden küresele, yanınızdayız.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Inline Contact Form */}
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="max-w-[1121px] mx-auto mb-14">
+        <motion.div
+          initial={{ opacity: 0, y: 30, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.6, delay: 0.7, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-[1121px] mx-auto mb-14"
+        >
           <div className="flex flex-col sm:flex-row items-center gap-4 rounded-3xl px-8 py-6 shadow-premium" style={{ background: 'linear-gradient(90deg, rgba(2, 187, 180, 0.80) 0%, rgba(2, 187, 180, 0.80) 100%)' }}>
             <div className="flex flex-col items-start shrink-0">
               <span className="text-lg font-bold text-accent-foreground">Sizi Arayalım</span>
@@ -44,11 +73,17 @@ const HeroSection = () =>
     {/* Hero Illustration */}
     <section className="relative pb-16 px-6">
       <div className="max-w-6xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="rounded-2xl overflow-hidden relative">
+        <motion.div
+          initial={{ opacity: 0, y: 60, scale: 0.95 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 0.9, delay: 0.9, ease: [0.22, 1, 0.36, 1] }}
+          className="rounded-2xl overflow-hidden relative"
+        >
           <img src={heroIllustration} alt="KOBİ Dijital Platform" className="w-full h-auto object-cover" />
         </motion.div>
       </div>
     </section>
-  </>;
+  </>
+);
 
 export default HeroSection;

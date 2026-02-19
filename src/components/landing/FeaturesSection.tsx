@@ -3,9 +3,19 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number = 0) => ({ opacity: 1, y: 0, transition: { duration: 0.4, delay: i * 0.08 } }),
+const containerVariants = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.07 } },
+};
+
+const cardVariants = {
+  hidden: { opacity: 0, y: 30, scale: 0.96 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: { duration: 0.5, ease: "easeOut" as const },
+  },
 };
 
 const features = [
@@ -23,8 +33,22 @@ const features = [
 const FeaturesSection = () => (
   <section id="features" className="py-20 bg-background">
     <div className="max-w-7xl mx-auto px-6">
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mb-14">
-        <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4 tracking-wide uppercase">Neden Dijital Esnaf?</span>
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="text-center mb-14"
+      >
+        <motion.span
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4 tracking-wide uppercase"
+        >
+          Neden Dijital Esnaf?
+        </motion.span>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-3">
           Bankacılık ve Dijital Çözümler,<br />İşletmeniz İçin Tek Platformda
         </h2>
@@ -33,13 +57,27 @@ const FeaturesSection = () => (
         </p>
       </motion.div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-        {features.map((f, i) => (
-          <motion.div key={f.title} initial="hidden" whileInView="visible" viewport={{ once: true }} custom={i} variants={fadeUp}
-            className="bg-card rounded-2xl p-7 border border-border shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-300 flex flex-col">
-            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-2xl">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+        variants={containerVariants}
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+      >
+        {features.map((f) => (
+          <motion.div
+            key={f.title}
+            variants={cardVariants}
+            whileHover={{ y: -6, transition: { duration: 0.25 } }}
+            className="bg-card rounded-2xl p-7 border border-border shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col"
+          >
+            <motion.div
+              className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-2xl"
+              whileHover={{ scale: 1.1, rotate: 8 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
               {f.icon}
-            </div>
+            </motion.div>
             <h3 className="text-base font-bold text-foreground mb-2">{f.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed flex-1">{f.desc}</p>
             <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border">
@@ -49,9 +87,15 @@ const FeaturesSection = () => (
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
 
-      <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-14">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-center mt-14"
+      >
         <h3 className="text-xl md:text-2xl font-extrabold text-foreground mb-2">Dijital Dönüşümünüz<br />Burada Başlıyor</h3>
         <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.</p>
         <Button asChild variant="hero" size="lg">
