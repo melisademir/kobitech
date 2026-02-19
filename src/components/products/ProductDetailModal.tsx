@@ -36,7 +36,12 @@ const ProductDetailModal = ({ product, onClose }: Props) => {
         {/* Header */}
         <div className="gradient-primary px-7 py-6 flex items-center justify-between shrink-0">
           <div>
-            <h2 className="text-2xl font-bold text-primary-foreground">{product.name}</h2>
+            <div className="flex items-center gap-3">
+              <h2 className="text-2xl font-bold text-primary-foreground">{product.name}</h2>
+              {"brand" in product && (product as any).brand && (
+                <span className="text-primary-foreground/60 text-sm font-medium">by {(product as any).brand}</span>
+              )}
+            </div>
             <span className="text-primary-foreground/80 text-sm border border-primary-foreground/30 rounded-full px-3 py-0.5 inline-block mt-1">
               {product.categoryLabel}
             </span>
@@ -83,6 +88,21 @@ const ProductDetailModal = ({ product, onClose }: Props) => {
                   ))}
                 </div>
               </div>
+
+              {/* Sub Services */}
+              {"subServices" in product && (product as any).subServices?.length > 0 && (
+                <div>
+                  <h3 className="text-primary font-bold text-lg mb-4">Alt Ürünler & Hizmetler</h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {(product as any).subServices.map((s: { name: string; description: string }) => (
+                      <div key={s.name} className="bg-primary/5 rounded-lg p-4 border border-primary/10">
+                        <p className="font-bold text-foreground text-sm">{s.name}</p>
+                        <p className="text-muted-foreground text-xs mt-1">{s.description}</p>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
           )}
 
