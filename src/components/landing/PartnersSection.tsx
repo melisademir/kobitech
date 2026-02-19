@@ -95,7 +95,7 @@ Dünyaya Açıl
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.15 }}
-        className="flex flex-wrap justify-center gap-3 mb-14">
+        className="flex flex-wrap justify-center gap-3 mb-14 items-center">
 
           {categories.map((c, i) =>
           <motion.button

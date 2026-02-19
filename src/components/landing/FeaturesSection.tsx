@@ -79,8 +79,8 @@ const FeaturesSection = () =>
               <f.icon className="w-6 h-6 text-primary" />
             </motion.div>
             <h3 className="text-base font-bold text-foreground mb-2">{f.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed flex-1">{f.desc}</p>
-            <div className="flex flex-wrap gap-2 mt-4 pt-4 border-t border-border">
+            <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
+            <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border">
               {f.labels.map((label) =>
           <span key={label} className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">{label}</span>
           )}
