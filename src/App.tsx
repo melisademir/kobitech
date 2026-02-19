@@ -38,6 +38,7 @@ import Planlarim from "./pages/kobi/Planlarim";
 import KobiProducts from "./pages/kobi/KobiProducts";
 import TeklifTalebi from "./pages/kobi/TeklifTalebi";
 import KobiTekliflerim from "./pages/kobi/KobiTekliflerim";
+import KobiTeklifDetay from "./pages/kobi/KobiTeklifDetay";
 import KobiGorusmeler from "./pages/kobi/KobiGorusmeler";
 import KobiProfile from "./pages/kobi/KobiProfile";
 import KobiBildirimler from "./pages/kobi/KobiBildirimler";
@@ -90,6 +91,7 @@ const App = () => (
             <Route path="/kobi/urunler" element={<KobiProducts />} />
             <Route path="/kobi/teklif-talebi" element={<TeklifTalebi />} />
             <Route path="/kobi/tekliflerim" element={<KobiTekliflerim />} />
+            <Route path="/kobi/tekliflerim/:id" element={<KobiTeklifDetay />} />
             <Route path="/kobi/gorusmeler" element={<KobiGorusmeler />} />
             <Route path="/kobi/profile" element={<KobiProfile />} />
             <Route path="/kobi/notifications" element={<KobiBildirimler />} />
