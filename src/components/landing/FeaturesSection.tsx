@@ -50,7 +50,7 @@ const FeaturesSection = () => (
           Neden Dijital Esnaf?
         </motion.span>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-3">
-          Bankacılık ve Dijital Çözümler,<br />İşletmeniz İçin Tek Platformda
+          50+ Çözüm Tek Platformda
         </h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
           KOBİ'nizi Türkiye'den globale taşıyacak ölçeklenebilir dijital altyapı.
