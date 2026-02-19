@@ -4,11 +4,15 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Copy, FileText, Download } from "lucide-react";
+import { useOnboarding } from "@/contexts/OnboardingContext";
 
 const tabs = ["Genel Bakış", "Şirket Bilgileri", "Görünürlük Ayarları", "Sözleşmeler & Dökümanlar"];
 
 const KobiProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
+  const { data: onboardingData } = useOnboarding();
+  const businessName = onboardingData.businessName || "Demo İşletme";
+  const initials = businessName.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
   const userId = "KOBİ-2024-048291";
 
   return (
@@ -30,10 +34,10 @@ const KobiProfile = () => {
               <CardHeader><CardTitle>İşletme Bilgileri</CardTitle></CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center text-primary-foreground text-2xl font-bold">Dİ</div>
+                  <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center text-primary-foreground text-2xl font-bold">{initials}</div>
                   <div>
-                    <p className="font-bold text-foreground text-lg">Demo İşletme</p>
-                    <p className="text-sm text-muted-foreground">Perakende • İstanbul</p>
+                    <p className="font-bold text-foreground text-lg">{businessName}</p>
+                    <p className="text-sm text-muted-foreground">{onboardingData.sector || "Perakende"} • {onboardingData.city || "İstanbul"}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-2 bg-background p-3 rounded-lg border border-border">
@@ -69,10 +73,10 @@ const KobiProfile = () => {
             <CardHeader><CardTitle>Şirket Bilgileri</CardTitle></CardHeader>
             <CardContent className="space-y-4 max-w-lg">
               {[
-                { label: "İşletme Adı", value: "Demo İşletme" },
-                { label: "Sektör", value: "Perakende" },
-                { label: "Şehir", value: "İstanbul" },
-                { label: "Telefon", value: "" },
+                { label: "İşletme Adı", value: businessName },
+                { label: "Sektör", value: onboardingData.sector || "" },
+                { label: "Şehir", value: onboardingData.city || "" },
+                { label: "Telefon", value: onboardingData.phone || "" },
                 { label: "Web Sitesi", value: "" },
               ].map(f => (
                 <div key={f.label} className="space-y-1">
