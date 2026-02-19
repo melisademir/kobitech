@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import heroDashboard from "@/assets/hero-dashboard.png";
+import heroIllustration from "@/assets/hero-illustration.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 30 },
@@ -41,12 +41,11 @@ const HeroSection = () =>
       </div>
     </section>
 
-    {/* Dashboard Visual */}
+    {/* Hero Illustration */}
     <section className="relative pb-16 px-6">
-      <div className="max-w-5xl mx-auto">
-        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="rounded-2xl overflow-hidden shadow-premium border border-border/50 relative">
-          <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent z-10 pointer-events-none" />
-          <img src={heroDashboard} alt="KOBİ Dijital Platform Paneli" className="w-full h-auto object-cover" />
+      <div className="max-w-6xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.4 }} className="rounded-2xl overflow-hidden relative">
+          <img src={heroIllustration} alt="KOBİ Dijital Platform" className="w-full h-auto object-cover" />
         </motion.div>
       </div>
     </section>
