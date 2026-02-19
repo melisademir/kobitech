@@ -26,18 +26,16 @@ const HeroSection = () =>
 
         {/* Inline Contact Form */}
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, delay: 0.2 }} className="max-w-[1121px] mx-auto mb-14">
-          <div className="flex flex-col gap-4 rounded-3xl p-6 sm:p-8 shadow-premium" style={{ background: 'linear-gradient(90deg, rgba(2, 187, 180, 0.80) 0%, rgba(2, 187, 180, 0.80) 100%)' }}>
-            <div className="flex flex-col items-start">
+          <div className="flex flex-col sm:flex-row items-center gap-4 rounded-3xl px-8 py-6 shadow-premium" style={{ background: 'linear-gradient(90deg, rgba(2, 187, 180, 0.80) 0%, rgba(2, 187, 180, 0.80) 100%)' }}>
+            <div className="flex flex-col items-start shrink-0">
               <span className="text-lg font-bold text-accent-foreground">Sizi Arayalım</span>
               <a href="#" className="text-xs text-accent-foreground/80 underline">KVKK Aydınlatma Metni</a>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Input placeholder="Adınız Soyadınız" className="h-12 rounded-xl border-0 bg-background text-foreground flex-1" />
-              <Input placeholder="Telefon numaranız" className="h-12 rounded-xl border-0 bg-background text-foreground flex-1" />
-              <Button variant="default" className="h-12 px-8 rounded-xl whitespace-nowrap font-bold text-sm shrink-0">
-                Gönder
-              </Button>
-            </div>
+            <Input placeholder="Adınız Soyadınız" className="h-12 rounded-xl border-0 bg-background text-foreground flex-1" />
+            <Input placeholder="Telefon numaranız" className="h-12 rounded-xl border-0 bg-background text-foreground flex-1" />
+            <Button variant="default" className="h-12 px-8 rounded-xl whitespace-nowrap font-bold text-sm shrink-0">
+              Gönder
+            </Button>
           </div>
         </motion.div>
       </div>
