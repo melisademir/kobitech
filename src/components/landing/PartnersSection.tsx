@@ -1,48 +1,52 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 import heroDashboard from "@/assets/hero-dashboard.png";
 
-const brands = [
+const categories = [
   {
-    name: "Param",
-    color: "#FF6B00",
-    bgColor: "rgba(255, 107, 0, 0.12)",
-    icon: "₱",
-    description:
-      "Dijital ödeme altyapısıyla işletmenizi geleceğe taşıyın. Param'ın yenilikçi POS, ödeme ve finans çözümleriyle tahsilat süreçlerinizi kolaylaştırın, nakit akışınızı optimize edin.",
+    label: "Teşviklerden Yararlan",
+    color: "hsl(160, 84%, 39%)",
+    description: "Devlet teşvikleri, hibe programları ve vergi avantajlarından yararlanarak maliyetlerinizi düşürün. Size uygun destekleri keşfedin ve başvuru süreçlerinizi kolaylaştırın.",
   },
   {
-    name: "Finrota",
-    color: "#E8344E",
-    bgColor: "rgba(232, 52, 78, 0.12)",
-    icon: "≋",
-    description:
-      "Karmaşık finansal süreçlerinizi basit, güvenli ve akıllı dijital platformlara taşıyın. Finrota'nın yenilikçi online tahsilat ve açık bankacılık çözümleriyle operasyonel verimliliğinizi katlayın, zamandan ve maliyetten tasarruf edin.",
+    label: "E-Ticarete Açıl",
+    color: "hsl(268, 70%, 35%)",
+    description: "Online satış kanallarınızı oluşturun, e-ticaret altyapınızı kurun ve dijital pazarlama stratejileriyle müşteri kitlenizi genişletin.",
   },
   {
-    name: "Univera",
-    color: "#2DB84B",
-    bgColor: "rgba(45, 184, 75, 0.12)",
-    icon: "✕",
-    description:
-      "İş süreçlerinizi uçtan uca dijitalleştirin. Univera'nın ERP ve iş yönetimi çözümleriyle stok, satış ve müşteri yönetimini tek platformda birleştirin.",
+    label: "Ödeme Al",
+    color: "hsl(0, 84%, 60%)",
+    description: "Fiziksel ve online ödeme çözümleriyle tahsilat süreçlerinizi hızlandırın. POS, sanal POS ve mobil ödeme seçenekleriyle her kanaldan ödeme alın.",
   },
   {
-    name: "Kredim",
-    color: "#E5B800",
-    bgColor: "rgba(229, 184, 0, 0.12)",
-    icon: "⚡",
-    description:
-      "KOBİ'lerin finansmana erişimini kolaylaştıran dijital kredi platformu. Kredim ile hızlı başvuru, uygun faiz ve esnek ödeme seçenekleriyle işletmenizi büyütün.",
+    label: "Paranı Yönet",
+    color: "hsl(33, 100%, 57%)",
+    description: "Nakit akışınızı optimize edin, muhasebe süreçlerinizi otomatikleştirin ve finansal raporlarınızla işletmenizin mali sağlığını takip edin.",
   },
   {
-    name: "Koru Sigorta",
-    color: "#0A7B7B",
-    bgColor: "rgba(10, 123, 123, 0.12)",
-    icon: "✎",
-    description:
-      "İşletmenizi risklere karşı koruyun. Koru Sigorta'nın dijital sigorta çözümleriyle kolay teklif alın, poliçelerinizi tek ekranda yönetin ve güvencede olun.",
+    label: "Üretimini Optimize Et",
+    color: "hsl(200, 70%, 50%)",
+    description: "Üretim süreçlerinizi dijitalleştirin, verimlilik analizi yapın ve operasyonel maliyetlerinizi minimize edin.",
+  },
+  {
+    label: "Stoğunu Kontrol Et",
+    color: "hsl(200, 70%, 50%)",
+    description: "Stok ve depo yönetiminizi dijitalleştirin. Min-max takibi, FIFO/LIFO ve tedarik zinciri optimizasyonu ile fire oranlarınızı düşürün.",
+  },
+  {
+    label: "Global Aç",
+    color: "hsl(217, 91%, 60%)",
+    description: "Yurt dışı pazarlara açılın. İhracat süreçleri, uluslararası ödeme altyapısı ve lojistik çözümleriyle globalleşme yolculuğunuza başlayın.",
+  },
+  {
+    label: "Ekibini Güçlendir",
+    color: "hsl(280, 60%, 50%)",
+    description: "İK yönetimi, işe alım, eğitim programları ve performans takip sistemleriyle ekibinizi büyütün ve güçlendirin.",
+  },
+  {
+    label: "İşlerini Yönet",
+    color: "hsl(33, 100%, 57%)",
+    description: "ERP, fatura otomasyonu ve raporlama araçlarıyla tüm iş süreçlerinizi tek platformdan yönetin.",
   },
 ];
 
@@ -53,10 +57,7 @@ const fadeUp = {
 
 const PartnersSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-  const brand = brands[activeIndex];
-
-  const prev = () => setActiveIndex((i) => (i === 0 ? brands.length - 1 : i - 1));
-  const next = () => setActiveIndex((i) => (i === brands.length - 1 ? 0 : i + 1));
+  const cat = categories[activeIndex];
 
   return (
     <section id="solutions" className="py-20 bg-card">
@@ -71,23 +72,24 @@ const PartnersSection = () => {
           </h2>
         </motion.div>
 
-        {/* Brand Icons Row */}
-        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex flex-wrap justify-center gap-4 mb-14">
-          {brands.map((b, i) => (
+        {/* Category Tags */}
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="flex flex-wrap justify-center gap-3 mb-14">
+          {categories.map((c, i) => (
             <button
-              key={b.name}
+              key={c.label}
               onClick={() => setActiveIndex(i)}
-              className={`w-12 h-12 rounded-full flex items-center justify-center text-lg font-bold transition-all duration-300 border-2 ${
-                activeIndex === i ? "scale-110 shadow-lg" : "opacity-60 hover:opacity-100"
+              className={`px-5 py-2 rounded-full text-sm font-medium border transition-all duration-300 ${
+                activeIndex === i
+                  ? "text-primary-foreground shadow-md scale-105"
+                  : "text-muted-foreground border-border hover:border-foreground/30 hover:text-foreground bg-transparent"
               }`}
-              style={{
-                backgroundColor: activeIndex === i ? b.bgColor : "transparent",
-                borderColor: activeIndex === i ? b.color : "hsl(var(--border))",
-                color: b.color,
-              }}
-              aria-label={b.name}
+              style={
+                activeIndex === i
+                  ? { backgroundColor: c.color, borderColor: c.color }
+                  : undefined
+              }
             >
-              {b.icon}
+              {c.label}
             </button>
           ))}
         </motion.div>
@@ -105,20 +107,15 @@ const PartnersSection = () => {
             >
               {/* Left: Info */}
               <div className="flex-1 space-y-5">
-                <div>
-                  <h3 className="text-2xl font-bold text-foreground">{brand.name}</h3>
-                  <p className="text-xs text-muted-foreground font-medium mt-0.5">
-                    a <span className="font-bold tracking-wide">PARAM</span> company
-                  </p>
-                </div>
+                <h3 className="text-2xl font-bold text-foreground">{cat.label}</h3>
                 <p className="text-sm text-muted-foreground leading-relaxed">
-                  {brand.description}
+                  {cat.description}
                 </p>
                 <button
                   className="inline-flex items-center px-7 py-3 rounded-full text-sm font-semibold text-primary-foreground transition-colors"
-                  style={{ backgroundColor: "hsl(var(--primary))" }}
+                  style={{ backgroundColor: cat.color }}
                 >
-                  Hemen Başla
+                  Çözümleri Keşfet
                 </button>
               </div>
 
@@ -127,34 +124,13 @@ const PartnersSection = () => {
                 <div className="rounded-2xl overflow-hidden border border-border shadow-card">
                   <img
                     src={heroDashboard}
-                    alt={`${brand.name} ekran görüntüsü`}
+                    alt={`${cat.label} ekran görüntüsü`}
                     className="w-full h-auto"
                   />
                 </div>
               </div>
             </motion.div>
           </AnimatePresence>
-
-          {/* Pagination */}
-          <div className="flex items-center justify-center gap-4 mt-12">
-            <button
-              onClick={prev}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
-              aria-label="Önceki"
-            >
-              <ChevronLeft className="h-5 w-5" />
-            </button>
-            <span className="text-sm font-medium text-muted-foreground min-w-[40px] text-center">
-              {activeIndex + 1} / {brands.length}
-            </span>
-            <button
-              onClick={next}
-              className="w-10 h-10 rounded-full border border-border flex items-center justify-center text-muted-foreground hover:text-foreground hover:border-foreground transition-colors"
-              aria-label="Sonraki"
-            >
-              <ChevronRight className="h-5 w-5" />
-            </button>
-          </div>
         </div>
       </div>
     </section>
