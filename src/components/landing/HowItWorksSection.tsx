@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
 const steps = [
-  { num: "1", title: "Ücretsiz Kayıt Olun", desc: "Sadece ad-soyad ve telefon numaranızla 2 dakikada kayıt olun." },
+  { num: "1", title: "Ücretsiz Kayıt Olun", desc: "Sadece ad-soyad ve telefon numaranızla hemen kayıt olun." },
   { num: "2", title: "İşletmenizi Tanımlayın", desc: "Sektörünüzü ve ihtiyaçlarınızı belirleyin, size özel çözümler sunalım." },
   { num: "3", title: "Dijitalleşmeye Başlayın", desc: "Yol haritanızı takip edin, partnerlerimizle büyümeye başlayın." },
 ];
