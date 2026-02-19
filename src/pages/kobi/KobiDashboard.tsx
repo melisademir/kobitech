@@ -3,9 +3,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { FileText, ShoppingCart, MessageCircle, Map } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useOnboarding } from "@/contexts/OnboardingContext";
 
 const KobiDashboard = () => {
-  const businessName = "Demo İşletme";
+  const { data } = useOnboarding();
+  const businessName = data.businessName || "İşletme";
 
   return (
     <KobiLayout>
