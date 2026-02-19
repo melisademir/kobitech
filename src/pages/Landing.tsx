@@ -6,11 +6,18 @@ import PartnersSection from "@/components/landing/PartnersSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import CtaSection from "@/components/landing/CtaSection";
 import FooterSection from "@/components/landing/FooterSection";
+import heroBg from "@/assets/hero-bg.png";
 
 const Landing = () => (
   <div className="min-h-screen bg-background">
-    <LandingNav />
-    <HeroSection />
+    {/* Unified bg wrapper for nav + hero */}
+    <div className="relative">
+      <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+      <div className="relative z-10">
+        <LandingNav />
+        <HeroSection />
+      </div>
+    </div>
     <StatsSection />
     <FeaturesSection />
     <PartnersSection />
