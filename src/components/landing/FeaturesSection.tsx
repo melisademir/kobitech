@@ -49,7 +49,7 @@ const FeaturesSection = () => (
       <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeUp} className="text-center mt-14">
         <p className="text-muted-foreground mb-6">Dijital dönüşüm yolculuğunuza bugün başlayın</p>
         <Button asChild variant="hero" size="lg">
-          <Link to="/kobi/signup">Ücretsiz Deneyin <ArrowRight className="h-5 w-5 ml-1" /></Link>
+          <Link to="/kobi/signup">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
         </Button>
       </motion.div>
     </div>
