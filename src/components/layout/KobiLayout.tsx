@@ -4,7 +4,7 @@ import { Map, Package, ShoppingCart, FileText, MessageCircle, User, Search, Bell
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
-
+import { useOnboarding } from "@/contexts/OnboardingContext";
 const navItems = [
   { icon: Map, label: "Harita", path: "/kobi/harita" },
   { icon: Package, label: "Çözümler", path: "/kobi/urunler" },
@@ -21,7 +21,9 @@ const KobiLayout = ({ children }: Props) => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const { count } = useCart();
-  const businessName = "Demo İşletme";
+  const { data: onboardingData } = useOnboarding();
+  const businessName = onboardingData.businessName || "İşletme";
+  const initials = businessName.split(" ").map(w => w[0]).join("").slice(0, 2).toUpperCase();
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
@@ -48,7 +50,7 @@ const KobiLayout = ({ children }: Props) => {
           </Link>
           <div className="relative">
             <button onClick={() => setProfileOpen(!profileOpen)} className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center text-primary-foreground font-bold text-sm">Dİ</div>
+              <div className="w-10 h-10 rounded-full gradient-primary flex items-center justify-center text-primary-foreground font-bold text-sm">{initials}</div>
               <span className="hidden sm:inline text-sm font-semibold text-foreground">{businessName}</span>
               <ChevronDown className="h-4 w-4 text-muted-foreground" />
             </button>
