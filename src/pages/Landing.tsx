@@ -23,8 +23,8 @@ const Landing = () => (
     <PartnersSection />
     <FeaturesSection />
     <HowItWorksSection />
-    <TestimonialsSection />
     <CtaSection />
+    <TestimonialsSection />
     <FooterSection />
   </div>
 );
