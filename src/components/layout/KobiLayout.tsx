@@ -1,12 +1,13 @@
 import { useState, type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Map, Package, ShoppingCart, FileText, MessageCircle, User, Search, Bell, Menu, X, LogOut, ChevronDown } from "lucide-react";
+import { Map, Package, ShoppingCart, FileText, MessageCircle, User, Search, Bell, Menu, X, LogOut, ChevronDown, ClipboardList } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
 import { useOnboarding } from "@/contexts/OnboardingContext";
 const navItems = [
   { icon: Map, label: "Harita", path: "/kobi/harita" },
+  { icon: ClipboardList, label: "Planlarım", path: "/kobi/planlarim" },
   { icon: Package, label: "Çözümler", path: "/kobi/urunler" },
   { icon: FileText, label: "Tekliflerim", path: "/kobi/tekliflerim" },
   { icon: MessageCircle, label: "Görüşmeler", path: "/kobi/gorusmeler" },
