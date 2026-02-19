@@ -29,19 +29,20 @@ const itemVariants = {
 };
 
 const StatsSection = () => (
-  <section className="py-14 border-y border-border bg-card">
+  <section className="py-14 border-y border-border bg-gradient-to-r from-primary/[0.03] via-card to-accent/[0.03]">
     <motion.div
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-50px" }}
       variants={containerVariants}
-      className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8 text-center"
+      className="max-w-5xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-6 text-center"
     >
       {stats.map((s) => (
         <motion.div
           key={s.label}
           variants={itemVariants}
-          className="flex flex-col items-center gap-2 group"
+          whileHover={{ y: -4, transition: { duration: 0.2 } }}
+          className="flex flex-col items-center gap-2 group glass-card rounded-2xl py-6 px-4"
         >
           <motion.img
             src={s.icon}

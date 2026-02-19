@@ -171,7 +171,7 @@ const PartnersSection = () => {
                 transition={{ duration: 0.4, delay: 0.15 }}
                 className="flex-1 max-w-md"
               >
-                <div className="rounded-2xl overflow-hidden border border-border shadow-card">
+                <div className="rounded-2xl overflow-hidden border border-border shadow-[0_16px_48px_-12px_hsl(268,72%,38%/0.18)] bg-card">
                   <img
                     src={heroDashboard}
                     alt={`${cat.label} ekran görüntüsü`}
