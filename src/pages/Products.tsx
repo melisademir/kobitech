@@ -15,7 +15,7 @@ import SectorExamplesModal from "@/components/products/SectorExamplesModal";
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
   { icon: Target, label: "Müşteri Analizi", path: "/customer-analysis" },
-  { icon: Package, label: "Param Ürünleri", path: "/products", badge: "22" },
+  { icon: Package, label: "Param Ürünleri", path: "/products", badge: String(catalogProducts.length) },
   { icon: FileText, label: "Tekliflerim", path: "/proposals", badgeCount: 3 },
   { icon: TrendingUp, label: "Performansım", path: "/performance" },
   { icon: Settings, label: "Ayarlar", path: "/settings" },
@@ -148,10 +148,10 @@ const Products = () => {
             <div className="max-w-7xl mx-auto">
               <div className="flex items-start justify-between flex-wrap gap-4">
                 <div>
-                  <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Param Ürün Kataloğu</h1>
-                  <p className="text-muted-foreground mt-1">22 Param ailesi ürününü keşfedin, sektörel uyumları inceleyin</p>
+                  <h1 className="text-2xl lg:text-3xl font-bold text-foreground">Ürün Kataloğu</h1>
+                  <p className="text-muted-foreground mt-1">{catalogProducts.length} ürünü keşfedin, sektörel uyumları inceleyin</p>
                 </div>
-                <span className="bg-primary text-primary-foreground text-sm font-bold px-4 py-2 rounded-full">22 Ürün</span>
+                <span className="bg-primary text-primary-foreground text-sm font-bold px-4 py-2 rounded-full">{catalogProducts.length} Ürün</span>
               </div>
             </div>
           </div>
