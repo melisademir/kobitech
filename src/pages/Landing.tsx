@@ -313,7 +313,7 @@ const Landing = () => {
             <p className="text-muted-foreground max-w-xl mx-auto mb-10">3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild variant="hero" size="lg">
-                <Link to="/kobi/welcome">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
+                <Link to="/kobi/step-1">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <a href="#how">Nasıl Çalışır?</a>
