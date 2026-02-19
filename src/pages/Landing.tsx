@@ -22,8 +22,8 @@ const Landing = () => (
     <StatsSection />
     <PartnersSection />
     <FeaturesSection />
-    <TestimonialsSection />
     <HowItWorksSection />
+    <TestimonialsSection />
     <CtaSection />
     <FooterSection />
   </div>
