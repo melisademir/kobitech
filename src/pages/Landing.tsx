@@ -6,6 +6,7 @@ import PartnersSection from "@/components/landing/PartnersSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import CtaSection from "@/components/landing/CtaSection";
 import FooterSection from "@/components/landing/FooterSection";
+import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import heroBg from "@/assets/hero-bg.png";
 
 const Landing = () => (
@@ -21,6 +22,7 @@ const Landing = () => (
     <StatsSection />
     <PartnersSection />
     <FeaturesSection />
+    <TestimonialsSection />
     <HowItWorksSection />
     <CtaSection />
     <FooterSection />
