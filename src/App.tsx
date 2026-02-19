@@ -47,7 +47,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <OnboardingProvider>
-      <CartProvider>
+        <CartProvider>
         <Toaster />
         <Sonner />
         <BrowserRouter>
@@ -95,7 +95,7 @@ const App = () => (
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
-      </CartProvider>
+        </CartProvider>
       </OnboardingProvider>
     </TooltipProvider>
   </QueryClientProvider>
