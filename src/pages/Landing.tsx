@@ -10,10 +10,14 @@ import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import heroBg from "@/assets/hero-bg.png";
 
 const Landing = () => (
-  <div className="min-h-screen bg-background">
-    {/* Unified bg wrapper for nav + hero */}
-    <div className="relative">
-      <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+  <div className="min-h-screen bg-background overflow-x-hidden">
+    {/* Hero area with mesh gradient + bg image */}
+    <div className="relative gradient-mesh">
+      <img
+        src={heroBg}
+        alt=""
+        className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-30 mix-blend-luminosity"
+      />
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
@@ -28,5 +32,6 @@ const Landing = () => (
     <FooterSection />
   </div>
 );
+
 
 export default Landing;
