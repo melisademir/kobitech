@@ -217,7 +217,7 @@ const HowItWorksSection = () => (
         >
           Dijitalde Büyümeye Başlayın
         </h2>
-        <p className="mt-4 max-w-sm mx-auto" style={{ fontSize: "17px", color: "rgba(196,181,253,0.7)", lineHeight: "1.7" }}>
+        <p className="mt-4 max-w-sm mx-auto" style={{ fontSize: "19px", color: "rgba(196,181,253,0.7)", lineHeight: "1.7" }}>
           Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.
         </p>
       </motion.div>

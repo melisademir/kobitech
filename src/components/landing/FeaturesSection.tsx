@@ -187,7 +187,7 @@ const FeaturesSection = () => (
           Tüm Çözümlere Tek Platformdan Ulaşın
         </h2>
 
-        <p style={{ fontSize: "20px", color: "#4B5563", lineHeight: 1.6, maxWidth: "600px", margin: "0 auto" }}>
+        <p style={{ fontSize: "19px", color: "#4B5563", lineHeight: 1.7, maxWidth: "600px", margin: "0 auto" }}>
           KOBİ'lerin dijital dönüşümünü kolaylaştıran, tek çatı altında eksiksiz bir ekosistem.
         </p>
       </motion.div>
