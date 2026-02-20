@@ -6,6 +6,15 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { turkishCities } from "@/data/sectors";
 import { useOnboarding } from "@/contexts/OnboardingContext";
+import stepHedef from "@/assets/step-hedef-3d.png";
+import stepTeklif from "@/assets/step-teklif-3d.png";
+import stepBuyume from "@/assets/step-buyume-3d.png";
+
+const steps = [
+  { image: stepHedef, label: "Hedef Belirleme", title: "Büyüme Hedefinizi Belirleyin", desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz?", accent: "#A78BFA", accentDark: "#7C3AED" },
+  { image: stepTeklif, label: "Teklif Al", title: "Çözümleri Karşılaştırın ve Teklif Alın", desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.", accent: "#818CF8", accentDark: "#6366F1" },
+  { image: stepBuyume, label: "Büyümeye Başla", title: "Dijitalde Büyümenizi Başlatın", desc: "Size özel çözümleri seçin ve büyümeye başlayın.", accent: "#C084FC", accentDark: "#A855F7" },
+];
 
 const Step1 = () => {
   const navigate = useNavigate();
@@ -23,43 +32,86 @@ const Step1 = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-8">
-      <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="w-full max-w-lg space-y-8">
-        <div className="flex items-center justify-center gap-2">
-          <div className="h-2 w-8 rounded-full bg-primary" />
-          <div className="h-2 w-8 rounded-full bg-border" />
-          <div className="h-2 w-8 rounded-full bg-border" />
-        </div>
-        <p className="text-center text-sm text-muted-foreground">Adım 1/3</p>
-        <h1 className="text-2xl font-bold text-foreground text-center">İşletme Bilgileri</h1>
-        <div className="space-y-5">
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-foreground">İşletme Adı *</label>
-            <Input value={name} onChange={e => setName(e.target.value)} placeholder="İşletmenizin adı" className="h-12 border-2 focus:border-primary" />
+    <div className="flex min-h-screen">
+      {/* Left panel — steps visual */}
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-between p-12" style={{ background: "linear-gradient(160deg, #0F0720 0%, #1A0A3C 50%, #0D1240 100%)" }}>
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(124,58,237,0.22) 0%, transparent 70%)" }} />
+
+        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+          <div className="flex items-center gap-3">
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xl" style={{ background: "rgba(124,58,237,0.25)", border: "1px solid rgba(167,139,250,0.3)" }}>🏢</div>
+            <span className="text-xl font-extrabold tracking-tight" style={{ color: "#E9D5FF" }}>KOBİ DİJİTAL</span>
           </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-foreground">E-posta *</label>
-            <Input value={email} onChange={e => setEmail(e.target.value)} placeholder="ornek@firma.com" type="email" className="h-12 border-2 focus:border-primary" />
+        </motion.div>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="space-y-6">
+          <div className="text-center mb-4">
+            <h2 className="text-2xl font-bold leading-snug" style={{ color: "#F3E8FF", letterSpacing: "-0.02em" }}>Dijitalde Büyümeye Başlayın</h2>
+            <p className="mt-2 text-sm" style={{ color: "rgba(196,181,253,0.65)" }}>Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.</p>
           </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-foreground">Telefon *</label>
-            <Input value={phone} onChange={e => setPhone(e.target.value)} placeholder="05XX XXX XX XX" type="tel" className="h-12 border-2 focus:border-primary" />
+
+          <div className="grid grid-cols-3 gap-4">
+            {steps.map((s, i) => (
+              <motion.div key={s.label} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.15 }} className="flex flex-col items-center text-center gap-3">
+                <div className="relative w-24 h-24">
+                  <motion.div className="absolute inset-0 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${s.accent}30 0%, transparent 70%)`, transform: "scale(2)" }} animate={{ opacity: [0.3, 0.7, 0.3] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.9 }} />
+                  <motion.div className="absolute inset-[-10px] rounded-full pointer-events-none" style={{ border: `1.5px dashed ${s.accent}30` }} animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden" style={{ boxShadow: `0 0 0 1.5px ${s.accent}50, 0 12px 40px -8px ${s.accent}55` }}>
+                    <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
+                    <div className="absolute -top-0.5 -right-0.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black text-white z-10" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accentDark})` }}>{i + 1}</div>
+                  </div>
+                </div>
+                <div className="w-full rounded-2xl p-3" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <span className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wide uppercase mb-1" style={{ background: `${s.accent}20`, color: s.accent, border: `1px solid ${s.accent}30` }}>{s.label}</span>
+                  <h3 className="text-xs font-semibold leading-snug mb-1" style={{ color: "#F3E8FF" }}>{s.title}</h3>
+                  <p className="text-[11px] leading-relaxed" style={{ color: "rgba(196,181,253,0.65)" }}>{s.desc}</p>
+                </div>
+              </motion.div>
+            ))}
           </div>
-          <div className="space-y-2">
-            <label className="text-sm font-medium text-foreground">Şehir *</label>
-            <select value={city} onChange={e => setCity(e.target.value)} className="w-full h-12 rounded-md border-2 border-input bg-background px-3 text-sm focus:border-primary focus:outline-none">
-              <option value="">Şehir seçin</option>
-              {turkishCities.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
+        </motion.div>
+        <div />
+      </div>
+
+      {/* Right panel — form */}
+      <div className="flex-1 flex items-center justify-center p-8 bg-background">
+        <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="w-full max-w-lg space-y-8">
+          <div className="flex items-center justify-center gap-2">
+            <div className="h-2 w-8 rounded-full bg-primary" />
+            <div className="h-2 w-8 rounded-full bg-border" />
+            <div className="h-2 w-8 rounded-full bg-border" />
           </div>
-        </div>
-        <div className="flex gap-4">
-          <Button asChild variant="outline" className="flex-1">
-            <Link to="/kobi/login"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
-          </Button>
-          <Button onClick={handleNext} disabled={!name || !email || !phone || !city} variant="hero" className="flex-1">İleri</Button>
-        </div>
-      </motion.div>
+          <p className="text-center text-sm text-muted-foreground">Adım 1/3</p>
+          <h1 className="text-2xl font-bold text-foreground text-center">İşletme Bilgileri</h1>
+          <div className="space-y-5">
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">İşletme Adı *</label>
+              <Input value={name} onChange={e => setName(e.target.value)} placeholder="İşletmenizin adı" className="h-12 border-2 focus:border-primary" />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">E-posta *</label>
+              <Input value={email} onChange={e => setEmail(e.target.value)} placeholder="ornek@firma.com" type="email" className="h-12 border-2 focus:border-primary" />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">Telefon *</label>
+              <Input value={phone} onChange={e => setPhone(e.target.value)} placeholder="05XX XXX XX XX" type="tel" className="h-12 border-2 focus:border-primary" />
+            </div>
+            <div className="space-y-2">
+              <label className="text-sm font-medium text-foreground">Şehir *</label>
+              <select value={city} onChange={e => setCity(e.target.value)} className="w-full h-12 rounded-md border-2 border-input bg-background px-3 text-sm focus:border-primary focus:outline-none">
+                <option value="">Şehir seçin</option>
+                {turkishCities.map(c => <option key={c} value={c}>{c}</option>)}
+              </select>
+            </div>
+          </div>
+          <div className="flex gap-4">
+            <Button asChild variant="outline" className="flex-1">
+              <Link to="/kobi/login"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
+            </Button>
+            <Button onClick={handleNext} disabled={!name || !email || !phone || !city} variant="hero" className="flex-1">İleri</Button>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };
