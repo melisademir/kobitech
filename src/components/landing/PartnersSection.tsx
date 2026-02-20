@@ -1,64 +1,71 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import heroDashboard from "@/assets/hero-dashboard.png";
+import tabTesvik from "@/assets/tab-tesvik.png";
+import tabEticaret from "@/assets/tab-eticaret.png";
+import tabOdeme from "@/assets/tab-odeme.png";
+import tabPara from "@/assets/tab-para.png";
+import tabUretim from "@/assets/tab-uretim.png";
+import tabStok from "@/assets/tab-stok.png";
+import tabGlobal from "@/assets/tab-global.png";
+import tabEkip from "@/assets/tab-ekip.png";
 
 const categories = [
   {
     label: "Teşviklerden Yararlan",
-    color: "hsl(268, 72%, 38%)",
     description:
       "Devlet teşvikleri, hibe programları ve vergi avantajlarından yararlanarak maliyetlerinizi düşürün. Size uygun destekleri keşfedin ve başvuru süreçlerinizi kolaylaştırın.",
     tags: ["Hibe Programları", "Vergi Avantajları", "Başvuru Desteği"],
+    image: tabTesvik,
   },
   {
     label: "E-Ticarete Açıl",
-    color: "hsl(268, 72%, 38%)",
     description:
       "Online satış kanallarınızı oluşturun, e-ticaret altyapınızı kurun ve dijital pazarlama stratejileriyle müşteri kitlenizi genişletin.",
     tags: ["E-Ticaret Altyapısı", "Çoklu Kanal Satış", "Mağaza Çözümleri"],
+    image: tabEticaret,
   },
   {
     label: "Ödeme Al",
-    color: "hsl(268, 72%, 38%)",
     description:
       "Fiziksel ve online ödeme çözümleriyle tahsilat süreçlerinizi hızlandırın. POS, sanal POS ve mobil ödeme seçenekleriyle her kanaldan ödeme alın.",
     tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
+    image: tabOdeme,
   },
   {
     label: "Paranı Yönet",
-    color: "hsl(268, 72%, 38%)",
     description:
       "Nakit akışınızı optimize edin, muhasebe süreçlerinizi otomatikleştirin ve finansal raporlarınızla işletmenizin mali sağlığını takip edin.",
     tags: ["Muhasebe Çözümleri", "ERP Yazılımı", "Fatura Yönetimi"],
+    image: tabPara,
   },
   {
     label: "Üretimini Optimize Et",
-    color: "hsl(268, 72%, 38%)",
     description:
       "Üretim süreçlerinizi dijitalleştirin, verimlilik analizi yapın ve operasyonel maliyetlerinizi minimize edin.",
     tags: ["Üretim Takibi", "Verimlilik Analizi", "Otomasyon"],
+    image: tabUretim,
   },
   {
     label: "Stoğunu Kontrol Et",
-    color: "hsl(268, 72%, 38%)",
     description:
       "Stok ve depo yönetiminizi dijitalleştirin. Min-max takibi, FIFO/LIFO ve tedarik zinciri optimizasyonu ile fire oranlarınızı düşürün.",
     tags: ["Kargo & Lojistik", "Depo Yönetimi", "Sipariş Takibi"],
+    image: tabStok,
   },
   {
     label: "Global Aç",
-    color: "hsl(268, 72%, 38%)",
     description:
       "Yurt dışı pazarlara açılın. İhracat süreçleri, uluslararası ödeme altyapısı ve lojistik çözümleriyle globalleşme yolculuğunuza başlayın.",
     tags: ["Kurumsal Çözümler", "Global Şirket Kurulumu", "Bulut Altyapısı"],
+    image: tabGlobal,
   },
   {
     label: "Ekibini Güçlendir",
-    color: "hsl(268, 72%, 38%)",
     description:
       "İK yönetimi, işe alım, eğitim programları ve performans takip sistemleriyle ekibinizi büyütün ve güçlendirin.",
     tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"],
+    image: tabEkip,
   },
 ];
 
@@ -199,7 +206,7 @@ const PartnersSection = () => {
                   }}
                 >
                   <img
-                    src={heroDashboard}
+                    src={cat.image}
                     alt={`${cat.label} ekran görüntüsü`}
                     className="w-full h-auto"
                   />
