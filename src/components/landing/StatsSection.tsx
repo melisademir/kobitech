@@ -3,10 +3,11 @@ import statsGem from "@/assets/stats-gem.svg";
 import statsPartner from "@/assets/stats-partner.svg";
 
 const stats = [
-{ value: "10.000+", label: "Aktif KOBİ", sub: "Türkiye geneli" },
-{ value: "48+", label: "Farklı Sektör", sub: "Tüm sektörler" },
-{ value: "50+", label: "Dijital Araç", sub: "Entegre çözümler" },
-{ value: "30+", label: "Çözüm Ortağı", sub: "Seçkin partnerler" }];
+  { value: "5.000+", label: "Aktif KOBİ", sub: "Türkiye geneli" },
+  { value: "20+", label: "Farklı Sektör", sub: "Tüm sektörler" },
+  { value: "50+", label: "Dijital Çözüm", sub: "Entegre çözümler" },
+  { value: "30+", label: "Çözüm Ortağı", sub: "Seçkin partnerler" },
+];
 
 
 const containerVariants = {
