@@ -97,12 +97,13 @@ const HeroSection = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="E-posta adresiniz"
-                  className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200"
+                  className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200 placeholder:text-violet-300/40"
                   style={{
-                    background: "rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.07)",
                     backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    color: "white"
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "white",
+                    colorScheme: "dark",
                   }} />
               </div>
 
@@ -114,12 +115,13 @@ const HeroSection = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Telefon numaranız"
-                  className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200"
+                  className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200 placeholder:text-violet-300/40"
                   style={{
-                    background: "rgba(255,255,255,0.08)",
+                    background: "rgba(255,255,255,0.07)",
                     backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255,255,255,0.12)",
-                    color: "white"
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    color: "white",
+                    colorScheme: "dark",
                   }} />
               </div>
 

@@ -16,7 +16,8 @@ const Landing = () => (
     {/* 1 — HERO: Deep navy / dark atmosphere */}
     <div className="relative" style={{ background: "hsl(258, 45%, 10%)" }}>
       <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-20 mix-blend-luminosity" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(258,45%,10%)] pointer-events-none" />
+      {/* Bottom fade to stats ivory */}
+      <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, hsl(258,45%,10%))" }} />
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
