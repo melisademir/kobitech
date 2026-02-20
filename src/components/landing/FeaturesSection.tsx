@@ -9,7 +9,7 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 30, scale: 0.96 },
+  hidden: { opacity: 0, y: 30, scale: 0.97 },
   visible: {
     opacity: 1, y: 0, scale: 1,
     transition: { duration: 0.5, ease: "easeOut" as const }
@@ -24,8 +24,7 @@ const features = [
     labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"],
     iconBg: "bg-gradient-to-br from-violet-500/20 to-purple-600/10",
     iconColor: "text-violet-600",
-    hoverGradient: "hover:bg-gradient-to-br hover:from-violet-50/60 hover:to-purple-50/30",
-    glow: "hover:shadow-[0_12px_40px_-8px_hsl(268,72%,38%/0.2)]",
+    glow: "hover:shadow-[0_16px_48px_-12px_hsl(268,72%,38%/0.18)]",
     labelBg: "bg-violet-500/10 text-violet-700",
   },
   {
@@ -35,8 +34,7 @@ const features = [
     labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"],
     iconBg: "bg-gradient-to-br from-cyan-500/20 to-teal-600/10",
     iconColor: "text-cyan-600",
-    hoverGradient: "hover:bg-gradient-to-br hover:from-cyan-50/60 hover:to-teal-50/30",
-    glow: "hover:shadow-[0_12px_40px_-8px_hsl(168,76%,42%/0.2)]",
+    glow: "hover:shadow-[0_16px_48px_-12px_hsl(168,76%,42%/0.18)]",
     labelBg: "bg-cyan-500/10 text-cyan-700",
   },
   {
@@ -46,8 +44,7 @@ const features = [
     labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"],
     iconBg: "bg-gradient-to-br from-emerald-500/20 to-green-600/10",
     iconColor: "text-emerald-600",
-    hoverGradient: "hover:bg-gradient-to-br hover:from-emerald-50/60 hover:to-green-50/30",
-    glow: "hover:shadow-[0_12px_40px_-8px_hsl(160,84%,39%/0.2)]",
+    glow: "hover:shadow-[0_16px_48px_-12px_hsl(160,84%,39%/0.18)]",
     labelBg: "bg-emerald-500/10 text-emerald-700",
   },
   {
@@ -57,8 +54,7 @@ const features = [
     labels: ["Canlı Chat", "Bayi Görüşme"],
     iconBg: "bg-gradient-to-br from-orange-500/20 to-amber-600/10",
     iconColor: "text-orange-600",
-    hoverGradient: "hover:bg-gradient-to-br hover:from-orange-50/60 hover:to-amber-50/30",
-    glow: "hover:shadow-[0_12px_40px_-8px_hsl(33,100%,57%/0.2)]",
+    glow: "hover:shadow-[0_16px_48px_-12px_hsl(33,100%,57%/0.18)]",
     labelBg: "bg-orange-500/10 text-orange-700",
   },
   {
@@ -68,8 +64,7 @@ const features = [
     labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"],
     iconBg: "bg-gradient-to-br from-pink-500/20 to-rose-600/10",
     iconColor: "text-pink-600",
-    hoverGradient: "hover:bg-gradient-to-br hover:from-pink-50/60 hover:to-rose-50/30",
-    glow: "hover:shadow-[0_12px_40px_-8px_hsl(330,80%,50%/0.2)]",
+    glow: "hover:shadow-[0_16px_48px_-12px_hsl(330,80%,50%/0.18)]",
     labelBg: "bg-pink-500/10 text-pink-700",
   },
   {
@@ -79,36 +74,35 @@ const features = [
     labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"],
     iconBg: "bg-gradient-to-br from-indigo-500/20 to-blue-600/10",
     iconColor: "text-indigo-600",
-    hoverGradient: "hover:bg-gradient-to-br hover:from-indigo-50/60 hover:to-blue-50/30",
-    glow: "hover:shadow-[0_12px_40px_-8px_hsl(217,91%,60%/0.2)]",
+    glow: "hover:shadow-[0_16px_48px_-12px_hsl(217,91%,60%/0.18)]",
     labelBg: "bg-indigo-500/10 text-indigo-700",
   },
 ];
 
 const FeaturesSection = () => (
-  <section id="features" className="py-20 bg-background">
+  <section id="features" className="section-gap bg-background">
     <div className="max-w-7xl mx-auto px-6">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center mb-14"
+        className="text-center mb-16"
       >
         <motion.span
           initial={{ opacity: 0, scale: 0.85 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4 tracking-wide uppercase"
+          className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-5 tracking-wide uppercase"
         >
           Neden Kobi Dijital?
         </motion.span>
-        <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-3">
+        <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
           50+ Çözüm Tek Platformda
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
-          İşletmenizi Türkiye'den globale taşıyacak ölçeklenebilir dijital altyapı.
+        <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed font-normal">
+          İşletmenizi Türkiye'den globale taşıyacak<br className="hidden md:block" /> ölçeklenebilir dijital altyapı.
         </p>
       </motion.div>
 
@@ -124,18 +118,18 @@ const FeaturesSection = () => (
             key={f.title}
             variants={cardVariants}
             whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className={`bg-card rounded-2xl p-7 border border-border shadow-card ${f.glow} transition-all duration-300 flex flex-col ${f.hoverGradient}`}
+            className={`glass-card rounded-2xl p-10 border border-white/30 shadow-card ${f.glow} transition-all duration-300 flex flex-col`}
           >
             <motion.div
-              className={`w-12 h-12 rounded-xl ${f.iconBg} flex items-center justify-center mb-5`}
+              className={`w-13 h-13 w-12 h-12 rounded-xl ${f.iconBg} flex items-center justify-center mb-6 border border-white/20`}
               whileHover={{ scale: 1.1, rotate: 8 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              transition={{ type: "spring", stiffness: 280 }}
             >
-              <f.icon className={`w-6 h-6 ${f.iconColor}`} />
+              <f.icon className={`w-5 h-5 ${f.iconColor}`} strokeWidth={1.75} />
             </motion.div>
-            <h3 className="text-base font-bold text-foreground mb-2">{f.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
-            <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border">
+            <h3 className="text-base font-bold text-foreground mb-3 leading-snug">{f.title}</h3>
+            <p className="text-muted-foreground text-sm leading-relaxed font-normal">{f.desc}</p>
+            <div className="flex flex-wrap gap-2 mt-auto pt-5 border-t border-border/50">
               {f.labels.map((label) => (
                 <span key={label} className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${f.labelBg}`}>
                   {label}
@@ -151,10 +145,14 @@ const FeaturesSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-center mt-14"
+        className="text-center mt-16"
       >
-        <h3 className="text-xl md:text-2xl font-extrabold text-foreground mb-2">Dijital Dönüşümünüz<br />Burada Başlıyor</h3>
-        <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.</p>
+        <h3 className="text-2xl md:text-3xl font-extrabold text-foreground mb-3 tracking-tight">
+          Dijital Dönüşümünüz Burada Başlıyor
+        </h3>
+        <p className="text-muted-foreground text-base mb-8 max-w-md mx-auto leading-relaxed">
+          3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.
+        </p>
         <Button asChild variant="hero" size="lg">
           <Link to="/kobi/signup">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
         </Button>
