@@ -165,23 +165,23 @@ const HeroSection = () => {
 
 
           {/* Floating stats card — bottom right */}
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -bottom-4 -right-4 z-20 hidden md:block"
-            style={{
-              background: "rgba(255,255,255,0.85)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.6)",
-              borderRadius: "16px",
-              boxShadow: "0 8px 32px -8px rgba(109,40,217,0.18)",
-              padding: "14px 20px"
-            }}>
-            <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-1">Bu Ay</p>
-            <p className="text-2xl font-black text-foreground" style={{ letterSpacing: "-0.03em" }}>+2.4K</p>
-            <p className="text-xs text-primary font-semibold mt-0.5">↑ %18 büyüme</p>
-          </motion.div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           {/* Dashboard mockup placeholder — perspective tilt */}
           
