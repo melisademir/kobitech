@@ -55,11 +55,10 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 32 },
+  hidden: { opacity: 0, y: 32, scale: 0.97 },
   visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] as any },
+    opacity: 1, y: 0, scale: 1,
+    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any },
   },
 };
 
@@ -86,7 +85,7 @@ const TestimonialsSection = () => (
         </motion.span>
         <h2
           className="text-3xl md:text-4xl font-bold text-foreground mb-4"
-          style={{ letterSpacing: "-0.025em", lineHeight: 1.2 }}
+          style={{ letterSpacing: "-0.03em", lineHeight: 1.2 }}
         >
           İşletmelerden Geri Bildirimler
         </h2>
@@ -101,50 +100,43 @@ const TestimonialsSection = () => (
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         variants={containerVariants}
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-4"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
       >
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
             variants={cardVariants}
             whileHover={{
-              y: -6,
-              boxShadow:
-                "0 0 0 1px rgba(255,255,255,0.85) inset, 0 20px 48px -8px rgba(109,40,217,0.14)",
+              y: -8,
+              boxShadow: "0 0 0 1px rgba(255,255,255,0.9) inset, 0 24px 56px -8px rgba(109,40,217,0.14)",
               transition: { type: "spring", stiffness: 300, damping: 20 },
             }}
-            className="rounded-2xl flex flex-col relative overflow-hidden"
+            className="rounded-3xl flex flex-col relative overflow-hidden cursor-default"
             style={{
-              background: "rgba(255,255,255,0.9)",
+              background: "rgba(255,255,255,0.92)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
               border: "1px solid rgba(255,255,255,0.95)",
-              outline: "1px solid hsl(252,20%,91%)",
+              outline: "1px solid hsl(252,20%,92%)",
               outlineOffset: "0px",
               padding: "2.5rem",
-              boxShadow:
-                "0 0 0 1px rgba(255,255,255,0.85) inset, 0 2px 20px -4px rgba(109,40,217,0.05)",
+              boxShadow: "0 0 0 1px rgba(255,255,255,0.85) inset, 0 2px 20px -4px rgba(109,40,217,0.05)",
             }}
           >
-            {/* Decorative quote */}
-            <Quote className="absolute top-5 right-5 w-8 h-8 text-primary/6" />
+            {/* Decorative quote mark */}
+            <Quote className="absolute top-5 right-5 w-8 h-8 text-primary/8" />
 
-            {/* Stars — all primary */}
+            {/* Stars — primary purple only */}
             <div className="flex gap-0.5 mb-5">
               {Array.from({ length: 5 }).map((_, si) => (
-                <Star
-                  key={si}
-                  className={`w-4 h-4 ${
-                    si < t.stars ? "text-primary fill-primary" : "text-slate-200"
-                  }`}
-                />
+                <Star key={si} className="w-4 h-4 text-primary fill-primary" />
               ))}
             </div>
 
-            {/* Quote */}
-            <p className="text-foreground text-sm flex-1" style={{ lineHeight: "1.75", opacity: 0.85 }}>
+            <p className="text-foreground text-sm flex-1" style={{ lineHeight: "1.75", opacity: 0.82 }}>
               "{t.quote}"
             </p>
 
-            {/* Author */}
             <div className="flex items-center gap-3 mt-6 pt-5 border-t border-slate-100">
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"

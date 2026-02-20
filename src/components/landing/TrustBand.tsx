@@ -10,7 +10,7 @@ const partners = [
 ];
 
 const TrustBand = () => (
-  <section className="py-14 border-y border-slate-100">
+  <section className="py-14">
     <div className="max-w-6xl mx-auto px-6">
       <motion.p
         initial={{ opacity: 0, y: 10 }}
@@ -36,37 +36,25 @@ const TrustBand = () => (
               visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: "easeOut" } },
             }}
             whileHover={{ scale: 1.08 }}
-            className="group flex items-center gap-2 cursor-default"
+            className="group flex items-center gap-2.5 cursor-default"
           >
-            {/* Logo placeholder — grayscale circle badge */}
+            {/* Grayscale badge → brand color on hover */}
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-[10px] font-black transition-all duration-300"
+              className="w-10 h-10 rounded-xl flex items-center justify-center text-[10px] font-black transition-all duration-300 group-hover:bg-primary/10"
               style={{
-                background: "hsl(252,20%,92%)",
-                color: "hsl(260,10%,55%)",
+                background: "hsl(252,20%,93%)",
+                color: "hsl(260,10%,60%)",
                 filter: "grayscale(1)",
               }}
             >
-              <span
-                className="group-hover:hidden block"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif" }}
-              >
-                {p.abbr}
-              </span>
-              <span
-                className="group-hover:block hidden"
-                style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", color: "#7C3AED" }}
-              >
+              <span className="group-hover:text-primary transition-colors duration-300" style={{ filter: "none" }}>
                 {p.abbr}
               </span>
             </div>
             <span
-              className="text-sm font-semibold transition-colors duration-300"
-              style={{ color: "hsl(260,10%,60%)" }}
+              className="text-sm font-semibold transition-colors duration-300 text-slate-400 group-hover:text-primary"
             >
-              <span className="group-hover:text-[#7C3AED] transition-colors duration-300">
-                {p.name}
-              </span>
+              {p.name}
             </span>
           </motion.div>
         ))}
