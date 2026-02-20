@@ -2,12 +2,16 @@ import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowRight, Target, BarChart3, TrendingUp, Search, FileText, Zap, Globe, Sparkles } from "lucide-react";
+import stepHedef from "@/assets/step-hedef-3d.png";
+import stepTeklif from "@/assets/step-teklif-3d.png";
+import stepBuyume from "@/assets/step-buyume-3d.png";
 
 const steps = [
   {
     num: "01",
     icon: Target,
     subIcons: [TrendingUp, BarChart3],
+    image: stepHedef,
     title: "Büyüme Hedefinizi Belirleyin",
     desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz? Hedefinizi belirleyin.",
     accent: "#A78BFA",
@@ -18,6 +22,7 @@ const steps = [
     num: "02",
     icon: Search,
     subIcons: [FileText, Sparkles],
+    image: stepTeklif,
     title: "Çözümleri Karşılaştırın ve Teklif Alın",
     desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.",
     accent: "#818CF8",
@@ -28,6 +33,7 @@ const steps = [
     num: "03",
     icon: Zap,
     subIcons: [Globe, TrendingUp],
+    image: stepBuyume,
     title: "Dijitalde Büyümenizi Başlatın",
     desc: "Size özel çözümleri seçin ve büyümeye başlayın.",
     accent: "#C084FC",
@@ -81,71 +87,55 @@ const ConnectorSVG = () => {
   );
 };
 
-// Rich icon illustration for each step
+// Rich 3D icon illustration for each step
 const StepIcon = ({ step, index }: { step: typeof steps[0]; index: number }) => {
-  const [Sub1, Sub2] = step.subIcons;
-  const Icon = step.icon;
-
   return (
-    <div className="relative w-28 h-28 mx-auto mb-8">
-      {/* Outer ambient glow */}
+    <div className="relative w-36 h-36 mx-auto mb-6">
+      {/* Outer ambient glow pulse */}
       <motion.div
-        className="absolute inset-0 rounded-full"
+        className="absolute inset-0 rounded-full pointer-events-none"
         style={{
-          background: `radial-gradient(circle, ${step.accent}30 0%, transparent 70%)`,
-          transform: "scale(2.8)",
+          background: `radial-gradient(circle, ${step.accent}28 0%, transparent 70%)`,
+          transform: "scale(2.4)",
         }}
-        animate={{ opacity: [0.4, 0.9, 0.4], scale: [2.6, 3.0, 2.6] }}
+        animate={{ opacity: [0.3, 0.8, 0.3], scale: [2.2, 2.7, 2.2] }}
         transition={{ duration: 4, repeat: Infinity, delay: index * 0.9, ease: "easeInOut" }}
       />
 
-      {/* Outer dashed ring */}
+      {/* Outer dashed spinning ring */}
       <motion.div
-        className="absolute inset-[-10px] rounded-full"
-        style={{ border: `1px dashed ${step.accent}30` }}
+        className="absolute inset-[-14px] rounded-full pointer-events-none"
+        style={{ border: `1.5px dashed ${step.accent}28` }}
         animate={{ rotate: 360 }}
-        transition={{ duration: 18, repeat: Infinity, ease: "linear" }}
+        transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
       />
 
-      {/* Mid ring */}
+      {/* Inner subtle ring */}
       <div
-        className="absolute inset-[-4px] rounded-full"
-        style={{ border: `1px solid ${step.accent}20` }}
+        className="absolute inset-[-6px] rounded-full pointer-events-none"
+        style={{ border: `1px solid ${step.accent}18` }}
       />
 
-      {/* Main icon container */}
+      {/* 3D Image */}
       <motion.div
-        className="relative w-28 h-28 rounded-full flex items-center justify-center"
+        className="relative w-36 h-36 rounded-full overflow-hidden flex items-center justify-center"
         style={{
-          background: `linear-gradient(135deg, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0.04) 100%)`,
-          backdropFilter: "blur(24px)",
-          border: `1.5px solid ${step.accent}50`,
-          boxShadow: `0 0 0 1px rgba(255,255,255,0.06) inset, 0 16px 48px -8px ${step.accent}55, 0 4px 16px -4px rgba(0,0,0,0.4)`,
+          boxShadow: `0 0 0 1.5px ${step.accent}40, 0 20px 60px -10px ${step.accent}55`,
         }}
         whileHover={{
           scale: 1.08,
-          boxShadow: `0 0 0 1px rgba(255,255,255,0.10) inset, 0 24px 64px -8px ${step.accent}77, 0 4px 16px -4px rgba(0,0,0,0.4)`,
+          boxShadow: `0 0 0 2px ${step.accent}70, 0 28px 72px -10px ${step.accent}77`,
           transition: { type: "spring", stiffness: 280, damping: 16 },
         }}
       >
-        {/* Center gradient background */}
-        <div
-          className="absolute inset-3 rounded-full"
-          style={{
-            background: `radial-gradient(circle at 35% 35%, ${step.accent}22 0%, transparent 65%)`,
-          }}
+        <img
+          src={step.image}
+          alt={step.title}
+          className="w-full h-full object-cover"
         />
-
-        {/* Main icon */}
-        <Icon
-          className="relative w-10 h-10"
-          style={{ color: step.accent, filter: `drop-shadow(0 0 8px ${step.accent}88)` }}
-          strokeWidth={1.4}
-        />
-
         {/* Step number badge */}
         <div
-          className="absolute -top-1 -right-1 w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-black text-white shadow-lg"
+          className="absolute -top-0.5 -right-0.5 w-7 h-7 rounded-full flex items-center justify-center text-[11px] font-black text-white shadow-lg z-10"
           style={{
             background: `linear-gradient(135deg, ${step.accent}, ${step.accentDark})`,
             boxShadow: `0 4px 12px -2px ${step.accent}66`,
@@ -153,34 +143,6 @@ const StepIcon = ({ step, index }: { step: typeof steps[0]; index: number }) => 
         >
           {index + 1}
         </div>
-      </motion.div>
-
-      {/* Floating sub-icon 1 — top-left */}
-      <motion.div
-        className="absolute -top-1 -left-2 w-8 h-8 rounded-xl flex items-center justify-center"
-        style={{
-          background: "rgba(255,255,255,0.06)",
-          border: `1px solid ${step.accent}30`,
-          backdropFilter: "blur(12px)",
-        }}
-        animate={{ y: [0, -5, 0], rotate: [0, 6, 0] }}
-        transition={{ duration: 3.5, repeat: Infinity, delay: index * 0.5, ease: "easeInOut" }}
-      >
-        <Sub1 className="w-3.5 h-3.5" style={{ color: step.accent }} strokeWidth={1.5} />
-      </motion.div>
-
-      {/* Floating sub-icon 2 — bottom-right */}
-      <motion.div
-        className="absolute -bottom-1 -right-2 w-8 h-8 rounded-xl flex items-center justify-center"
-        style={{
-          background: "rgba(255,255,255,0.06)",
-          border: `1px solid ${step.accent}30`,
-          backdropFilter: "blur(12px)",
-        }}
-        animate={{ y: [0, 5, 0], rotate: [0, -6, 0] }}
-        transition={{ duration: 4, repeat: Infinity, delay: index * 0.7 + 0.5, ease: "easeInOut" }}
-      >
-        <Sub2 className="w-3.5 h-3.5" style={{ color: step.accent }} strokeWidth={1.5} />
       </motion.div>
     </div>
   );
