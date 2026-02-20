@@ -23,23 +23,23 @@ const Landing = () => (
       </div>
     </div>
 
-    {/* 2 — STATS: Pure white, clean contrast after dark hero */}
-    <div className="bg-white">
+    {/* 2 — STATS: Warm ivory */}
+    <div style={{ background: "hsl(38, 60%, 98%)" }}>
       <StatsSection />
     </div>
 
-    {/* 3 — PARTNERS / SOLUTIONS: Very light lila atmosphere */}
-    <div style={{ background: "hsl(252, 60%, 97%)" }}>
+    {/* 3 — PARTNERS / SOLUTIONS: Faint lavender-cream gradient */}
+    <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
       <PartnersSection />
     </div>
 
-    {/* 4 — PARTNER ECOSYSTEM: Light grey — puzzle showcase */}
-    <div style={{ background: "#F9FAFB" }}>
+    {/* 4 — PARTNER ECOSYSTEM: Warm off-white */}
+    <div style={{ background: "hsl(38, 30%, 97%)" }}>
       <PartnerEcosystemSection />
     </div>
 
-    {/* 5 — FEATURES / HUB: Pure white — high contrast cards */}
-    <div className="bg-white">
+    {/* 5 — FEATURES / HUB: Ivory */}
+    <div style={{ background: "hsl(38, 60%, 98%)" }}>
       <FeaturesSection />
     </div>
 
@@ -48,18 +48,18 @@ const Landing = () => (
       <HowItWorksSection />
     </div>
 
-    {/* 7 — CTA: Soft lila */}
-    <div style={{ background: "hsl(252, 60%, 97%)" }}>
+    {/* 7 — CTA: Lavender-cream gradient */}
+    <div style={{ background: "linear-gradient(160deg, hsl(265,40%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
       <CtaSection />
     </div>
 
-    {/* 8 — TESTIMONIALS: White — calm close */}
-    <div className="bg-white">
+    {/* 8 — TESTIMONIALS: Ivory */}
+    <div style={{ background: "hsl(38, 60%, 98%)" }}>
       <TestimonialsSection />
     </div>
 
-    {/* 9 — TRUST BAND: Partner logos before footer */}
-    <div className="bg-white border-t border-slate-100">
+    {/* 9 — TRUST BAND: Warm white */}
+    <div style={{ background: "hsl(38, 30%, 97%)", borderTop: "1px solid hsl(43,65%,52%,0.15)" }}>
       <TrustBand />
     </div>
 
