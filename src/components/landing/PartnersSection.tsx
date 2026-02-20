@@ -102,7 +102,7 @@ const PartnersSection = () => {
             <span className="text-gradient-primary">Ticaretini Büyüt</span>
           </h2>
           <p className="text-slate-500 text-sm mt-4 max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
-            İşletmenize özel dijital çözümleri keşfedin
+            İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
           </p>
         </motion.div>
 
