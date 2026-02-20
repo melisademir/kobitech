@@ -124,17 +124,19 @@ const HeroSection = () => {
               </div>
 
               {/* CTA */}
-              <motion.button
-                whileHover={{ scale: 1.04, boxShadow: "0 8px 40px -4px rgba(124,58,237,0.8)" }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 320, damping: 18 }}
-                className="h-12 px-7 rounded-xl font-bold text-sm text-white whitespace-nowrap shrink-0 flex items-center gap-2"
-                style={{
-                  background: "linear-gradient(135deg, #6D28D9, #7C3AED)",
-                  boxShadow: "0 4px 20px -4px rgba(124,58,237,0.6)"
-                }}>
-                Hemen Başla <ArrowRight className="w-4 h-4" />
-              </motion.button>
+              <Link to="/kobi/step-1">
+                <motion.button
+                  whileHover={{ scale: 1.04, boxShadow: "0 8px 40px -4px rgba(124,58,237,0.8)" }}
+                  whileTap={{ scale: 0.97 }}
+                  transition={{ type: "spring", stiffness: 320, damping: 18 }}
+                  className="h-12 px-7 rounded-xl font-bold text-sm text-white whitespace-nowrap shrink-0 flex items-center gap-2"
+                  style={{
+                    background: "linear-gradient(135deg, #6D28D9, #7C3AED)",
+                    boxShadow: "0 4px 20px -4px rgba(124,58,237,0.6)"
+                  }}>
+                  Hemen Başla <ArrowRight className="w-4 h-4" />
+                </motion.button>
+              </Link>
             </div>
 
             <p className="text-xs mt-3 text-center" style={{ color: "rgba(196,181,253,0.35)" }}>

@@ -202,7 +202,7 @@ const HowItWorksSection = () => (
         transition={{ duration: 0.5, delay: 0.3 }}
         className="text-center mt-16"
       >
-        <Link to="/kobi/signup">
+        <Link to="/kobi/step-1">
           <motion.button
             whileHover={{ scale: 1.04, boxShadow: "0 8px 40px -4px rgba(124,58,237,0.7)" }}
             whileTap={{ scale: 0.97 }}
