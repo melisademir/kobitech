@@ -652,7 +652,7 @@ function PuzzleBoard({
 
 // ─── Main component ────────────────────────────────────────────────────────────
 const PartnerEcosystemSection = () => {
-  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [selectedId, setSelectedId] = useState<string | null>("param");
   const [visible,    setVisible]    = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView     = useInView(sectionRef, { once: true, amount: 0.06 });
