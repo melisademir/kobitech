@@ -13,53 +13,53 @@ import heroBg from "@/assets/hero-bg.png";
 
 const Landing = () => (
   <div className="min-h-screen bg-background">
-    {/* 1 — HERO: Deep navy / dark atmosphere */}
-    <div className="relative" style={{ background: "hsl(258, 45%, 10%)" }}>
-      <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-20 mix-blend-luminosity" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(258,45%,10%)] pointer-events-none" />
+    {/* 1 — HERO: Koyu ceviz/ahşap atmosferi */}
+    <div className="relative" style={{ background: "hsl(25, 38%, 8%)" }}>
+      <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-15 mix-blend-luminosity" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(25,38%,8%)] pointer-events-none" />
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
       </div>
     </div>
 
-    {/* 2 — STATS: Pure white, clean contrast after dark hero */}
-    <div className="bg-white">
+    {/* 2 — STATS: Fildişi krem, cevizden yumuşak geçiş */}
+    <div style={{ background: "hsl(38, 25%, 98%)" }}>
       <StatsSection />
     </div>
 
-    {/* 3 — TRUST BAND: White, minimal grayscale logos */}
-    <div className="bg-white border-t border-slate-100">
+    {/* 3 — TRUST BAND: Krem, minimal logo şeridi */}
+    <div style={{ background: "hsl(38, 25%, 98%)", borderTop: "1px solid hsl(38,20%,92%)" }}>
       <TrustBand />
     </div>
 
-    {/* 4 — PARTNERS / SOLUTIONS: Very light lila atmosphere */}
-    <div style={{ background: "hsl(252, 60%, 97%)" }}>
+    {/* 4 — PARTNERS / SOLUTIONS: Sıcak amber/krem atmosferi */}
+    <div style={{ background: "hsl(38, 55%, 96%)" }}>
       <PartnersSection />
     </div>
 
-    {/* 5 — PARTNER ECOSYSTEM: Light grey — puzzle showcase */}
-    <div style={{ background: "#F9FAFB" }}>
+    {/* 5 — PARTNER ECOSYSTEM: Açık krem */}
+    <div style={{ background: "hsl(35, 30%, 97%)" }}>
       <PartnerEcosystemSection />
     </div>
 
-    {/* 6 — FEATURES / HUB: Pure white — high contrast cards */}
-    <div className="bg-white">
+    {/* 6 — FEATURES: Saf krem, yüksek kontrast kartlar */}
+    <div style={{ background: "hsl(38, 25%, 98%)" }}>
       <FeaturesSection />
     </div>
 
-    {/* 7 — HOW IT WORKS: Deep navy again — creates rhythm contrast */}
-    <div style={{ background: "hsl(258, 45%, 10%)" }}>
+    {/* 7 — HOW IT WORKS: Koyu ceviz, ritim kırıcı */}
+    <div style={{ background: "hsl(25, 38%, 8%)" }}>
       <HowItWorksSection />
     </div>
 
-    {/* 8 — CTA: Soft lila */}
-    <div style={{ background: "hsl(252, 60%, 97%)" }}>
+    {/* 8 — CTA: Sıcak amber lila */}
+    <div style={{ background: "hsl(38, 55%, 96%)" }}>
       <CtaSection />
     </div>
 
-    {/* 9 — TESTIMONIALS: White — calm close */}
-    <div className="bg-white">
+    {/* 9 — TESTIMONIALS: Krem, sakin kapanış */}
+    <div style={{ background: "hsl(38, 25%, 98%)" }}>
       <TestimonialsSection />
     </div>
 

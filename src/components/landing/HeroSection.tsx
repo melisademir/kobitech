@@ -19,17 +19,17 @@ const HeroSection = () => {
 
   return (
     <section className="relative overflow-hidden pt-20 pb-24 lg:pt-36 lg:pb-36">
-      {/* Mesh gradient blobs — brand purple on dark navy */}
+      {/* Warm wood-toned mesh gradient blobs */}
       <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
-      style={{ background: "radial-gradient(circle, rgba(109,40,217,0.28) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(circle, rgba(201,150,60,0.22) 0%, transparent 70%)" }} />
       <div className="absolute bottom-[-5%] right-[-5%] w-[500px] h-[500px] rounded-full pointer-events-none"
-      style={{ background: "radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(circle, rgba(160,114,42,0.16) 0%, transparent 70%)" }} />
       {/* Dot grid overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.06]"
-      style={{
-        backgroundImage: "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
-        backgroundSize: "28px 28px"
-      }} />
+      <div className="absolute inset-0 pointer-events-none opacity-[0.05]"
+        style={{
+          backgroundImage: "radial-gradient(rgba(255,220,140,0.9) 1px, transparent 1px)",
+          backgroundSize: "28px 28px"
+        }} />
 
       <div className="max-w-7xl mx-auto px-6 text-center relative">
         <motion.div
@@ -40,12 +40,12 @@ const HeroSection = () => {
           {/* Badge */}
           <motion.div variants={itemVariants}>
             <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-10 tracking-widest uppercase"
-            style={{
-              background: "rgba(109,40,217,0.25)",
-              border: "1px solid rgba(139,92,246,0.4)",
-              color: "#C4B5FD"
-            }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+              style={{
+                background: "rgba(201,150,60,0.18)",
+                border: "1px solid rgba(201,150,60,0.38)",
+                color: "#F5C842"
+              }}>
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#F5C842" }} />
               Türkiye'nin Dijitalleşme Platformu
             </span>
           </motion.div>
@@ -57,12 +57,7 @@ const HeroSection = () => {
             style={{ letterSpacing: "-0.03em" }}>
             İşletmenizin tüm dijital
             <br />
-            <span style={{
-              background: "linear-gradient(135deg, #A78BFA 0%, #7C3AED 50%, #C4B5FD 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
-            }}>
+            <span className="text-gradient-gold">
               ihtiyaçları tek platformda!
             </span>
           </motion.h1>
@@ -71,7 +66,7 @@ const HeroSection = () => {
           <motion.p
             variants={itemVariants}
             className="text-sm md:text-base max-w-md mx-auto mb-12 font-normal"
-            style={{ lineHeight: "1.7", color: "rgba(196,181,253,0.7)" }}>
+            style={{ lineHeight: "1.7", color: "rgba(245,200,130,0.65)" }}>
             Dijitalleşin, verimli çalışın, dünyaya açılın.
             <br className="hidden md:block" />
             Yerelden küresele, yanınızdayız.
@@ -82,16 +77,16 @@ const HeroSection = () => {
             <div
               className="flex flex-col sm:flex-row gap-3 p-2 rounded-2xl"
               style={{
-                background: "rgba(255,255,255,0.06)",
+                background: "rgba(255,240,200,0.05)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                boxShadow: "0 0 0 1px rgba(139,92,246,0.15) inset, 0 10px 40px rgba(0,0,0,0.2)"
+                border: "1px solid rgba(201,150,60,0.18)",
+                boxShadow: "0 0 0 1px rgba(201,150,60,0.10) inset, 0 10px 40px rgba(0,0,0,0.25)"
               }}>
 
               {/* Email */}
               <div className="relative flex-1">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "rgba(196,181,253,0.5)" }} />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "rgba(245,200,130,0.45)" }} />
                 <input
                   type="email"
                   value={email}
@@ -99,16 +94,16 @@ const HeroSection = () => {
                   placeholder="E-posta adresiniz"
                   className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200"
                   style={{
-                    background: "rgba(255,255,255,0.08)",
+                    background: "rgba(255,240,200,0.07)",
                     backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(201,150,60,0.16)",
                     color: "white"
                   }} />
               </div>
 
               {/* Phone */}
               <div className="relative flex-1">
-                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "rgba(196,181,253,0.5)" }} />
+                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "rgba(245,200,130,0.45)" }} />
                 <input
                   type="tel"
                   value={phone}
@@ -116,9 +111,9 @@ const HeroSection = () => {
                   placeholder="Telefon numaranız"
                   className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200"
                   style={{
-                    background: "rgba(255,255,255,0.08)",
+                    background: "rgba(255,240,200,0.07)",
                     backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255,255,255,0.12)",
+                    border: "1px solid rgba(201,150,60,0.16)",
                     color: "white"
                   }} />
               </div>
@@ -126,44 +121,28 @@ const HeroSection = () => {
               {/* CTA */}
               <Link to="/kobi/step-1">
                 <motion.button
-                  whileHover={{ scale: 1.04, boxShadow: "0 8px 40px -4px rgba(124,58,237,0.8)" }}
+                  whileHover={{ scale: 1.04, boxShadow: "0 8px 40px -4px rgba(201,150,60,0.80)" }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 320, damping: 18 }}
-                  className="h-12 px-7 rounded-xl font-bold text-sm text-white whitespace-nowrap shrink-0 flex items-center gap-2"
+                  className="h-12 px-7 rounded-xl font-bold text-sm whitespace-nowrap shrink-0 flex items-center gap-2"
                   style={{
-                    background: "linear-gradient(135deg, #6D28D9, #7C3AED)",
-                    boxShadow: "0 4px 20px -4px rgba(124,58,237,0.6)"
+                    background: "linear-gradient(135deg, #A0722A, #C9963C)",
+                    color: "#FFF8E7",
+                    boxShadow: "0 4px 20px -4px rgba(201,150,60,0.65)"
                   }}>
                   Hemen Başla <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </Link>
             </div>
 
-            <p className="text-xs mt-3 text-center" style={{ color: "rgba(196,181,253,0.35)" }}>
+            <p className="text-xs mt-3 text-center" style={{ color: "rgba(245,200,130,0.30)" }}>
               <a href="#" className="underline hover:opacity-70 transition-opacity">KVKK Aydınlatma Metni</a>'ni kabul etmiş sayılırsınız.
             </p>
           </motion.div>
-
-          {/* Stats row */}
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </motion.div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default HeroSection;
