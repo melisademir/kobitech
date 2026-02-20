@@ -1,171 +1,230 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight, Store, ShoppingCart, BadgeDollarSign, MessageCircle, ClipboardList, FileText } from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.07 } }
-};
-
-const cardVariants = {
-  hidden: { opacity: 0, y: 32, scale: 0.96 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any } }
-};
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
+import { Store, ShoppingCart, BadgeDollarSign, MessageCircle, ClipboardList, FileText } from "lucide-react";
 
 const features = [
-{
-  icon: Store,
-  title: "Tüm Çözümlere Tek Platformdan Ulaşın",
-  desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.",
-  labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"],
-  iconColor: "#6D28D9",
-  iconBg: "rgba(109,40,217,0.08)"
-},
-{
-  icon: ShoppingCart,
-  title: "Sepet ile Hızlı Planlama",
-  desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.",
-  labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"],
-  iconColor: "#7C3AED",
-  iconBg: "rgba(124,58,237,0.08)"
-},
-{
-  icon: BadgeDollarSign,
-  title: "Size Özel Teklif Sistemi",
-  desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.",
-  labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"],
-  iconColor: "#8B5CF6",
-  iconBg: "rgba(139,92,246,0.08)"
-},
-{
-  icon: MessageCircle,
-  title: "Anlık Görüşme & Destek",
-  desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın.",
-  labels: ["Canlı Chat", "Bayi Görüşme"],
-  iconColor: "#6D28D9",
-  iconBg: "rgba(109,40,217,0.08)"
-},
-{
-  icon: ClipboardList,
-  title: "Kolay Proje Takibi",
-  desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.",
-  labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"],
-  iconColor: "#7C3AED",
-  iconBg: "rgba(124,58,237,0.08)"
-},
-{
-  icon: FileText,
-  title: "Dijital Döküman Merkezi",
-  desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.",
-  labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"],
-  iconColor: "#8B5CF6",
-  iconBg: "rgba(139,92,246,0.08)"
-}];
+  {
+    icon: Store,
+    title: "Tüm Çözümlere Tek Platformdan Ulaşın",
+    desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.",
+    labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"],
+  },
+  {
+    icon: ShoppingCart,
+    title: "Sepet ile Hızlı Planlama",
+    desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.",
+    labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"],
+  },
+  {
+    icon: BadgeDollarSign,
+    title: "Size Özel Teklif Sistemi",
+    desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.",
+    labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"],
+  },
+  {
+    icon: MessageCircle,
+    title: "Anlık Görüşme & Destek",
+    desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın.",
+    labels: ["Canlı Chat", "Bayi Görüşme"],
+  },
+  {
+    icon: ClipboardList,
+    title: "Kolay Proje Takibi",
+    desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.",
+    labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"],
+  },
+  {
+    icon: FileText,
+    title: "Dijital Döküman Merkezi",
+    desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.",
+    labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"],
+  },
+];
 
+const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
 
-const FeaturesSection = () =>
-<section id="features" className="py-24 md:py-32">
-    <div className="max-w-7xl mx-auto px-6">
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
+      className="group relative flex flex-col"
+      style={{
+        background: "white",
+        borderRadius: "24px",
+        padding: "40px",
+        border: "2px solid rgba(109,40,217,0.08)",
+        boxShadow:
+          "0 2px 4px rgba(109,40,217,0.04), 0 8px 16px rgba(109,40,217,0.05), 0 16px 32px rgba(109,40,217,0.03)",
+        transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+      }}
+      whileHover={{
+        y: -8,
+        boxShadow:
+          "0 12px 24px rgba(109,40,217,0.10), 0 24px 48px rgba(109,40,217,0.10)",
+        borderColor: "rgba(109,40,217,0.6)",
+        backgroundColor: "rgba(245,243,255,0.5)",
+        transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+      }}
+    >
+      {/* Icon */}
+      <div className="mb-7 w-fit">
+        <motion.div
+          initial={{ scale: 0.8, rotate: -5 }}
+          animate={inView ? { scale: 1, rotate: 0 } : { scale: 0.8, rotate: -5 }}
+          transition={{ type: "spring", stiffness: 260, damping: 18, delay: index * 0.1 + 0.2 }}
+          whileHover={{ scale: 1.1, rotate: 4, transition: { type: "spring", stiffness: 350, damping: 18 } }}
+          style={{
+            width: "72px",
+            height: "72px",
+            borderRadius: "50%",
+            background: "linear-gradient(135deg, hsl(268,72%,60%), hsl(268,72%,38%))",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 8px 20px rgba(109,40,217,0.15)",
+          }}
+        >
+          <f.icon className="w-8 h-8 text-white" strokeWidth={1.75} />
+        </motion.div>
+      </div>
+
+      {/* Text */}
+      <h3
+        className="text-foreground font-bold mb-4 leading-snug"
+        style={{ fontSize: "22px", letterSpacing: "-0.02em" }}
+      >
+        {f.title}
+      </h3>
+      <p
+        className="text-slate-500 flex-1"
+        style={{ fontSize: "16px", lineHeight: "1.7", marginBottom: "28px" }}
+      >
+        {f.desc}
+      </p>
+
+      {/* Pills */}
+      <div className="flex flex-wrap gap-2 pt-5 border-t border-slate-100">
+        {f.labels.map((label) => (
+          <motion.span
+            key={label}
+            whileHover={{ scale: 1.05, backgroundColor: "rgba(109,40,217,0.12)", transition: { duration: 0.2 } }}
+            style={{
+              display: "inline-block",
+              padding: "6px 14px",
+              borderRadius: "9999px",
+              background: "rgba(109,40,217,0.08)",
+              color: "hsl(268,72%,38%)",
+              fontSize: "13px",
+              fontWeight: 600,
+              border: "1px solid rgba(109,40,217,0.15)",
+              cursor: "default",
+              transition: "background 0.2s",
+            }}
+          >
+            {label}
+          </motion.span>
+        ))}
+      </div>
+    </motion.div>
+  );
+};
+
+const FeaturesSection = () => (
+  <section
+    id="features"
+    className="relative overflow-hidden"
+    style={{ paddingTop: "100px", paddingBottom: "80px", background: "linear-gradient(135deg, #F5F3FF 0%, #ffffff 60%)" }}
+  >
+    {/* Decorative orbs */}
+    <div
+      className="absolute pointer-events-none"
+      style={{ top: "-100px", left: "-120px", width: "400px", height: "400px", borderRadius: "50%", background: "radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)", filter: "blur(40px)" }}
+    />
+    <div
+      className="absolute pointer-events-none"
+      style={{ top: "40%", right: "-100px", width: "350px", height: "350px", borderRadius: "50%", background: "radial-gradient(circle, rgba(236,72,153,0.06) 0%, transparent 70%)", filter: "blur(40px)" }}
+    />
+    <div
+      className="absolute pointer-events-none"
+      style={{ bottom: "-80px", left: "35%", width: "380px", height: "380px", borderRadius: "50%", background: "radial-gradient(circle, rgba(96,165,250,0.05) 0%, transparent 70%)", filter: "blur(40px)" }}
+    />
+
+    {/* Dot pattern */}
+    <div
+      className="absolute inset-0 pointer-events-none"
+      style={{
+        backgroundImage: "radial-gradient(circle, rgba(109,40,217,0.04) 2px, transparent 2px)",
+        backgroundSize: "32px 32px",
+      }}
+    />
+
+    <div className="relative z-10 max-w-7xl mx-auto px-6">
       {/* Header */}
       <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="text-center mb-20">
-
-        <motion.span
-        initial={{ opacity: 0, scale: 0.85 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-6 tracking-widest uppercase border border-primary/15">
-
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="text-center mb-20"
+      >
+        <motion.span
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          style={{
+            display: "inline-block",
+            padding: "10px 24px",
+            borderRadius: "9999px",
+            background: "linear-gradient(135deg, hsl(268,72%,44%), hsl(268,72%,38%))",
+            color: "white",
+            fontSize: "12px",
+            fontWeight: 700,
+            letterSpacing: "0.1em",
+            textTransform: "uppercase",
+            marginBottom: "24px",
+            boxShadow: "0 4px 16px rgba(109,40,217,0.25)",
+          }}
+        >
           Neden Kobi Dijital?
         </motion.span>
-        <h2
-        className="text-4xl md:text-5xl font-bold text-foreground mb-5"
-        style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}>
 
+        <h2
+          style={{
+            fontSize: "clamp(42px, 6vw, 64px)",
+            fontWeight: 800,
+            letterSpacing: "-0.03em",
+            lineHeight: 1.1,
+            marginBottom: "20px",
+            background: "linear-gradient(135deg, hsl(260,25%,11%) 0%, hsl(268,72%,38%) 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
           Tüm Çözümlere Tek Platformdan Ulaşın
         </h2>
-        
 
-
-
+        <p style={{ fontSize: "20px", color: "#4B5563", lineHeight: 1.6, maxWidth: "600px", margin: "0 auto" }}>
+          KOBİ'lerin dijital dönüşümünü kolaylaştıran, tek çatı altında eksiksiz bir ekosistem.
+        </p>
       </motion.div>
 
-      {/* Bento Grid */}
-      <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-      variants={containerVariants}
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-
-        {features.map((f) =>
-      <motion.div
-        key={f.title}
-        variants={cardVariants}
-        className="rounded-2xl flex flex-col group cursor-default"
-        style={{
-          background: "rgba(255,255,255,0.9)",
-          border: "1px solid rgba(255,255,255,0.95)",
-          outline: "1px solid hsl(252,20%,91%)",
-          outlineOffset: "0px",
-          padding: "2.5rem",
-          boxShadow:
-          "0 0 0 1px rgba(255,255,255,0.85) inset, 0 2px 20px -4px rgba(109,40,217,0.06)"
-        }}
-        whileHover={{
-          y: -8,
-          boxShadow: `0 0 0 1px rgba(255,255,255,0.85) inset, 0 20px 48px -8px rgba(109,40,217,0.14)`,
-          transition: { type: "spring", stiffness: 300, damping: 20 }
-        }}>
-
-            {/* Icon with translucent circle */}
-            <div className="relative mb-7 w-fit">
-              <div
-            className="absolute -inset-3 rounded-full"
-            style={{ background: f.iconBg }} />
-
-              <motion.div
-            className="relative w-11 h-11 rounded-xl flex items-center justify-center bg-white border border-white/80"
-            style={{ boxShadow: "0 4px 12px -4px rgba(109,40,217,0.10)" }}
-            whileHover={{ y: -5, scale: 1.1, transition: { type: "spring", stiffness: 350, damping: 18 } }}>
-
-                <f.icon className="w-5 h-5" style={{ color: f.iconColor }} strokeWidth={1.75} />
-              </motion.div>
-            </div>
-
-            <h3
-          className="text-sm font-semibold text-foreground mb-3 leading-snug"
-          style={{ letterSpacing: "-0.01em" }}>
-
-              {f.title}
-            </h3>
-            <p className="text-slate-500 text-sm flex-1" style={{ lineHeight: "1.7" }}>
-              {f.desc}
-            </p>
-
-            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-slate-100">
-              {f.labels.map((label) =>
-          <span
-            key={label}
-            className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
-            style={{ background: f.iconBg, color: f.iconColor }}>
-
-                  {label}
-                </span>
-          )}
-            </div>
-          </motion.div>
-      )}
-      </motion.div>
-
+      {/* Card Grid */}
+      <div
+        className="grid md:grid-cols-2 lg:grid-cols-3"
+        style={{ gap: "32px" }}
+      >
+        {features.map((f, i) => (
+          <FeatureCard key={f.title} f={f} index={i} />
+        ))}
+      </div>
     </div>
-  </section>;
-
+  </section>
+);
 
 export default FeaturesSection;
