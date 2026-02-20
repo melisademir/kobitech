@@ -6,212 +6,251 @@ import {
   BarChart3, Package, Users, Building2, Star,
 } from "lucide-react";
 
-// ─── Partner data ──────────────────────────────────────────────────────────────
-const partners = [
+// ─── Puzzle geometry ──────────────────────────────────────────────────────────
+const CW = 90;   // cell width  px
+const CH = 75;   // cell height px
+const T  = 12;   // tab radius  px
+const COLS = 6;
+
+/**
+ * Generate SVG path for one puzzle piece.
+ *
+ * edges.top / bottom: array length = colSpan, one value per column-cell on that edge
+ * edges.left / right: array length = rowSpan, one value per row-cell on that edge
+ * +1 = tab protrudes outward, -1 = blank indents inward, 0 = flat (boundary)
+ */
+function puzzlePath(
+  px: number, py: number,
+  cs: number, rs: number,
+  edges: { top: number[]; right: number[]; bottom: number[]; left: number[] }
+): string {
+  const pw = cs * CW;
+  const ph = rs * CH;
+  const cp = T * 1.55; // cubic-bezier control-point distance
+
+  let d = `M ${px} ${py} `;
+
+  // ── TOP edge: left → right ────────────────────────────────────────────────
+  for (let c = 0; c < cs; c++) {
+    const sx  = px + c * CW;
+    const mx  = sx + CW / 2;
+    const tv  = edges.top[c] ?? 0;
+    if (tv === 0) {
+      d += `L ${sx + CW} ${py} `;
+    } else {
+      // tv=+1 → tab up (outward), tv=−1 → notch down (inward)
+      d += `L ${mx - T} ${py} `;
+      d += `C ${mx - T} ${py - tv * cp} ${mx + T} ${py - tv * cp} ${mx + T} ${py} `;
+      d += `L ${sx + CW} ${py} `;
+    }
+  }
+
+  // ── RIGHT edge: top → bottom ───────────────────────────────────────────────
+  const rx = px + pw;
+  for (let r = 0; r < rs; r++) {
+    const sy  = py + r * CH;
+    const my  = sy + CH / 2;
+    const tv  = edges.right[r] ?? 0;
+    if (tv === 0) {
+      d += `L ${rx} ${sy + CH} `;
+    } else {
+      // tv=+1 → tab right (outward), tv=−1 → notch left (inward)
+      d += `L ${rx} ${my - T} `;
+      d += `C ${rx + tv * cp} ${my - T} ${rx + tv * cp} ${my + T} ${rx} ${my + T} `;
+      d += `L ${rx} ${sy + CH} `;
+    }
+  }
+
+  // ── BOTTOM edge: right → left ──────────────────────────────────────────────
+  for (let c = cs - 1; c >= 0; c--) {
+    const sx  = px + c * CW;
+    const mx  = sx + CW / 2;
+    const tv  = edges.bottom[c] ?? 0;
+    const by  = py + ph;
+    if (tv === 0) {
+      d += `L ${sx} ${by} `;
+    } else {
+      // tv=+1 → tab down (outward), tv=−1 → notch up (inward)
+      d += `L ${mx + T} ${by} `;
+      d += `C ${mx + T} ${by + tv * cp} ${mx - T} ${by + tv * cp} ${mx - T} ${by} `;
+      d += `L ${sx} ${by} `;
+    }
+  }
+
+  // ── LEFT edge: bottom → top ────────────────────────────────────────────────
+  for (let r = rs - 1; r >= 0; r--) {
+    const sy  = py + r * CH;
+    const my  = sy + CH / 2;
+    const tv  = edges.left[r] ?? 0;
+    if (tv === 0) {
+      d += `L ${px} ${sy} `;
+    } else {
+      // tv=+1 → tab left (outward), tv=−1 → notch right (inward)
+      d += `L ${px} ${my + T} `;
+      d += `C ${px - tv * cp} ${my + T} ${px - tv * cp} ${my - T} ${px} ${my - T} `;
+      d += `L ${px} ${sy} `;
+    }
+  }
+
+  return d + "Z";
+}
+
+// ─── Partner piece definitions ────────────────────────────────────────────────
+// Layout: 6-column × 5-row grid (540 × 375 px total)
+//
+// col/row are 0-indexed cell positions.
+// edges: top[colSpan], right[rowSpan], bottom[colSpan], left[rowSpan]
+// Rule: A.right[r] = -B.left[r] for adjacent pieces
+//       A.bottom[c] = -C.top[c] for pieces above/below
+//
+const pieces = [
+  // ── Row 0 ──────────────────────────────────────────────────────────────────
   {
-    id: "tsoft", name: "T-SOFT", short: "TS", color: "#7D1F3E",
-    category: "E-Ticaret Çözümü",
-    description: "T-SOFT ile profesyonel e-ticaret sitenizi kurun. Ödeme, kargo, stok entegrasyonları hazır. Siparişlerinizi, ürünlerinizi, müşterilerinizi tek panelden yönetin.",
-    features: ["Hazır e-ticaret altyapısı", "Ödeme gateway entegrasyonu (Param, iyzico)", "Kargo entegrasyonu (Aras, Yurtiçi)", "Stok senkronizasyonu", "SEO & performans optimize"],
-    sectors: [{ name: "E-ticaret", stars: 5, pct: 95 }, { name: "Perakende", stars: 4, pct: 80 }],
-    badge: "Platform İndirimi Mevcut",
-    // grid span: col × row
-    cs: 2, rs: 2,
-    // per-corner border-radius: tl tr br bl
-    rad: "18px 6px 20px 8px",
+    id: "tsoft",   col: 0, row: 0, cs: 2, rs: 2, color: "#7D1F3E",
+    name: "T-SOFT", label: "T-SOFT",
+    edges: { top: [0,0], right: [1,-1], bottom: [1,-1], left: [0,0] },
   },
   {
-    id: "qnb", name: "QNB", short: "QNB", color: "#0891B2",
-    category: "Finansal Çözümler",
-    description: "Kurumsal bankacılık, dijital ödeme altyapısı ve işletmelere özel finansal ürünler ile nakit akışınızı optimize edin. KOBİ paketleri ve ayrıcalıklı faiz oranları.",
-    features: ["İşletme hesabı açılışı", "Dijital bankacılık paneli", "Kredi çözümleri", "Döviz işlemleri"],
-    sectors: [{ name: "Finans", stars: 5, pct: 98 }, { name: "Ticaret", stars: 4, pct: 82 }],
-    badge: "Özel Faiz Oranları",
-    cs: 1, rs: 1, rad: "8px 20px 8px 18px",
+    id: "qnb",     col: 2, row: 0, cs: 1, rs: 1, color: "#0891B2",
+    name: "QNB", label: "QNB",
+    edges: { top: [0], right: [-1], bottom: [1], left: [-1] },
   },
   {
-    id: "ikas", name: "ikas", short: "İKAS", color: "#3B82F6",
-    category: "E-Ticaret Altyapısı",
-    description: "Çok kanallı satış, otomatik stok yönetimi ve entegre pazaryeri çözümleriyle satışlarınızı büyütün. Trendyol, Hepsiburada, Amazon entegrasyonları dahil.",
-    features: ["Çok kanallı satış yönetimi", "Pazaryeri entegrasyonu", "Otomatik stok takibi", "Analitik dashboard"],
-    sectors: [{ name: "E-ticaret", stars: 5, pct: 97 }, { name: "Toptancı", stars: 4, pct: 75 }],
-    badge: "İlk 3 Ay Ücretsiz",
-    cs: 2, rs: 1, rad: "6px 14px 20px 10px",
+    id: "ikas",    col: 3, row: 0, cs: 2, rs: 1, color: "#3B82F6",
+    name: "ikas", label: "ikas",
+    edges: { top: [0,0], right: [-1], bottom: [1,-1], left: [1] },
   },
   {
-    id: "param", name: "Param", short: "P", color: "#FF6B35",
-    category: "Ödeme Sistemleri",
-    description: "Fiziksel POS, sanal POS, mobil ödeme — tüm ödeme altyapınızı tek çözümde. Güvenli, hızlı, entegre. Taksit kampanyaları ve sadakat programı desteğiyle satışlarınızı artırın.",
-    features: ["Param POS (Fiziksel satış noktası)", "Param Kart (Online ödemeler)", "Param Mobil (QR ödeme)", "Taksit ve kampanya yönetimi", "Ödeme raporlama"],
-    sectors: [{ name: "Perakende", stars: 5, pct: 98 }, { name: "Restoran", stars: 5, pct: 95 }],
-    badge: "Kurulum Ücretsiz",
-    cs: 1, rs: 2, rad: "20px 8px 6px 16px",
+    id: "param",   col: 5, row: 0, cs: 1, rs: 2, color: "#FF6B35",
+    name: "Param", label: "Param",
+    edges: { top: [0], right: [0,0], bottom: [-1], left: [1,-1] },
+  },
+  // ── Row 1 ──────────────────────────────────────────────────────────────────
+  {
+    id: "kredim",  col: 2, row: 1, cs: 1, rs: 1, color: "#F97316",
+    name: "Kredim", label: "Kredim",
+    edges: { top: [-1], right: [1], bottom: [1], left: [1] },
   },
   {
-    id: "kredim", name: "Kredim", short: "K", color: "#F97316",
-    category: "Finansman Çözümleri",
-    description: "KOBİ'lere özel esnek kredi imkânları, hızlı onay süreci ve rekabetçi faiz oranlarıyla büyümenizi destekler. Başvurudan onaya 24 saatte tamamlayın.",
-    features: ["Hızlı kredi onayı (24 saat)", "Esnek vade seçenekleri", "KOBİ'ye özel oranlar", "Online başvuru"],
-    sectors: [{ name: "Üretim", stars: 5, pct: 90 }, { name: "Ticaret", stars: 4, pct: 85 }],
-    badge: "%0 Komisyon",
-    cs: 1, rs: 1, rad: "14px 6px 18px 10px",
+    id: "qf",      col: 3, row: 1, cs: 1, rs: 1, color: "#7C3AED",
+    name: "QF", label: "QF",
+    edges: { top: [-1], right: [1], bottom: [-1], left: [-1] },
   },
   {
-    id: "qf", name: "QF", short: "QF", color: "#7C3AED",
-    category: "Dijital Finans",
-    description: "Dijital finans yönetimi, otomatik muhasebe ve gerçek zamanlı nakit akışı takibi ile finansal kontrolü ele alın. Banka entegrasyonuyla anlık mutabakat.",
-    features: ["Gerçek zamanlı nakit takibi", "Otomatik muhasebe", "Finansal raporlar", "Banka mutabakatı"],
-    sectors: [{ name: "Finans", stars: 5, pct: 95 }, { name: "Hizmet", stars: 4, pct: 80 }],
-    badge: "Ücretsiz Demo",
-    cs: 1, rs: 1, rad: "10px 18px 8px 20px",
+    id: "azalt",   col: 4, row: 1, cs: 1, rs: 1, color: "#EF4444",
+    name: "Azalt", label: "Azalt",
+    edges: { top: [1], right: [1], bottom: [1], left: [-1] },
+  },
+  // ── Row 2 ──────────────────────────────────────────────────────────────────
+  {
+    id: "qes",     col: 0, row: 2, cs: 1, rs: 1, color: "#6B21A8",
+    name: "QeS", label: "QeS",
+    edges: { top: [-1], right: [1], bottom: [-1], left: [0] },
   },
   {
-    id: "azalt", name: "Azalt", short: "AZ", color: "#EF4444",
-    category: "Maliyet Yönetimi",
-    description: "Operasyonel giderlerinizi analiz edin, israfı önleyin ve işletme maliyetlerinizi akıllı önerilerle azaltın. Ortalama %23 maliyet tasarrufu sağlıyoruz.",
-    features: ["Gider analizi & optimizasyon", "Tasarruf önerileri", "Bütçe planlama", "Maliyet raporları"],
-    sectors: [{ name: "Üretim", stars: 5, pct: 92 }, { name: "Hizmet", stars: 4, pct: 78 }],
-    badge: "Ortalama %23 Tasarruf",
-    cs: 2, rs: 1, rad: "8px 16px 6px 18px",
+    id: "aras",    col: 1, row: 2, cs: 2, rs: 1, color: "#10B981",
+    name: "Aras", label: "Aras",
+    edges: { top: [1,-1], right: [-1], bottom: [1,-1], left: [-1] },
   },
   {
-    id: "qes", name: "QeS", short: "QeS", color: "#6B21A8",
-    category: "E-Fatura Sistemi",
-    description: "GİB onaylı e-fatura, e-arşiv ve e-irsaliye çözümleriyle faturalaşma süreçlerinizi tamamen otomatikleştirin. Yasal uyumluluk garantisi.",
-    features: ["E-fatura & e-arşiv", "GİB entegrasyonu", "Otomatik gönderim", "Yasal uyum garantisi"],
-    sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 99 }, { name: "Üretim", stars: 5, pct: 95 }],
-    badge: "Mevzuat Uyumlu",
-    cs: 1, rs: 1, rad: "18px 10px 16px 6px",
+    id: "google",  col: 3, row: 2, cs: 1, rs: 1, color: "#4285F4",
+    name: "Google", label: "Google",
+    edges: { top: [1], right: [-1], bottom: [1], left: [1] },
   },
   {
-    id: "aras", name: "Aras", short: "AR", color: "#10B981",
-    category: "Kargo & Lojistik",
-    description: "Türkiye'nin en geniş kargo ağıyla gönderi takibi, toplu sevkiyat ve e-ticaret entegrasyonu tek panelde. Günlük, haftalık anlaşmalı tarifelerle tasarruf edin.",
-    features: ["Gönderi takibi (anlık)", "Toplu sevkiyat yönetimi", "E-ticaret entegrasyonu", "İndirimli tarifeler"],
-    sectors: [{ name: "E-ticaret", stars: 5, pct: 96 }, { name: "Perakende", stars: 4, pct: 82 }],
-    badge: "İndirimli Kargo Tarifeleri",
-    cs: 1, rs: 2, rad: "6px 20px 10px 16px",
+    id: "univera", col: 4, row: 2, cs: 1, rs: 1, color: "#2563EB",
+    name: "Univera", label: "Univera",
+    edges: { top: [-1], right: [1], bottom: [-1], left: [1] },
   },
   {
-    id: "google", name: "Google", short: "G", color: "#4285F4",
-    category: "Bulut & İşbirliği",
-    description: "Google Workspace ile ekip iletişimini güçlendirin, belgelerinizi bulutta tutun ve verimliliğinizi artırın. Gmail, Drive, Meet, Docs hepsi birlikte.",
-    features: ["Gmail & Google Drive", "Meet video konferans", "Docs, Sheets, Slides", "Kurumsal güvenlik"],
-    sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 95 }],
-    badge: "KOBİ'ye Özel Fiyat",
-    cs: 1, rs: 1, rad: "16px 8px 20px 12px",
+    id: "nebim",   col: 5, row: 2, cs: 1, rs: 1, color: "#1E3A8A",
+    name: "Nebim", label: "Nebim",
+    edges: { top: [1], right: [0], bottom: [1], left: [-1] },
+  },
+  // ── Row 3 ──────────────────────────────────────────────────────────────────
+  {
+    id: "kariyer", col: 0, row: 3, cs: 1, rs: 1, color: "#EA580C",
+    name: "Kariyer.net", label: "KR",
+    edges: { top: [1], right: [-1], bottom: [-1], left: [0] },
   },
   {
-    id: "univera", name: "Univera", short: "UV", color: "#2563EB",
-    category: "ERP Yazılımı",
-    description: "Üretim, satış, muhasebe ve İK modüllerini tek çatı altında toplayan entegre ERP çözümü. Stokbar stok yönetimi ve finansal takip ile güçlendirilmiş.",
-    features: ["Üretim & stok takibi", "Muhasebe modülü", "İK ve bordro yönetimi", "Raporlama & analitik"],
-    sectors: [{ name: "Üretim", stars: 5, pct: 93 }, { name: "Ticaret", stars: 4, pct: 80 }],
-    badge: "Ücretsiz Kurulum",
-    cs: 2, rs: 1, rad: "10px 18px 14px 8px",
+    id: "mukellef",col: 1, row: 3, cs: 1, rs: 1, color: "#1E40AF",
+    name: "Mükellef", label: "Mükellef",
+    edges: { top: [-1], right: [1], bottom: [1], left: [1] },
   },
   {
-    id: "nebim", name: "Nebim", short: "NB", color: "#1E3A8A",
-    category: "Perakende ERP",
-    description: "İşletmenizi tek platformdan yönetin. Üretim, finans, stok, satış, İK — tüm modüller entegre. Nebim V3 (KOBİ) ve Nebim Era (Kurumsal) seçenekleri.",
-    features: ["Entegre ERP modülleri", "Sektöre özel çözümler (Tekstil, Gıda, Perakende)", "Gerçek zamanlı raporlama", "Çoklu şube/depo yönetimi"],
-    sectors: [{ name: "Üretim", stars: 5, pct: 97 }, { name: "Tekstil", stars: 5, pct: 97 }],
-    badge: "Sektör Lideri",
-    cs: 1, rs: 1, rad: "20px 12px 8px 18px",
+    id: "ticimax", col: 2, row: 3, cs: 2, rs: 1, color: "#0EA5E9",
+    name: "Ticimax", label: "Ticimax",
+    edges: { top: [1,-1], right: [1], bottom: [-1,1], left: [-1] },
   },
   {
-    id: "kariyer", name: "Kariyer.net", short: "KR", color: "#EA580C",
-    category: "İK & İstihdam",
-    description: "Türkiye'nin en büyük iş ilanı platformunda doğru yetenekleri işe alın, işveren markanızı güçlendirin. CV havuzuna anında erişim.",
-    features: ["İş ilanı yayınlama", "CV havuzu erişimi", "İşveren markası yönetimi", "Aday takip sistemi"],
-    sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 92 }],
-    badge: "Öncelikli İlan Görünürlüğü",
-    cs: 1, rs: 1, rad: "8px 16px 20px 6px",
+    id: "kolaybi", col: 4, row: 3, cs: 1, rs: 1, color: "#14B8A6",
+    name: "KolayBi", label: "KolayBi",
+    edges: { top: [1], right: [-1], bottom: [-1], left: [-1] },
   },
   {
-    id: "mukellef", name: "Mükellef", short: "MK", color: "#1E40AF",
-    category: "Muhasebe & Vergi",
-    description: "Bulut tabanlı muhasebe, otomatik vergi hesaplama ve e-beyanname ile vergi süreçlerinizi kolaylaştırın. Mali müşavirlik desteği dahil.",
-    features: ["Bulut muhasebe sistemi", "Otomatik vergi hesaplama", "E-beyanname gönderimi", "Mali müşavirlik desteği"],
-    sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 99 }, { name: "Hizmet", stars: 5, pct: 97 }],
-    badge: "Mali Müşavirlik Desteği",
-    cs: 2, rs: 1, rad: "12px 8px 18px 14px",
+    id: "webplus", col: 5, row: 3, cs: 1, rs: 1, color: "#9333EA",
+    name: "Web Plus", label: "WP",
+    edges: { top: [-1], right: [0], bottom: [1], left: [1] },
+  },
+  // ── Row 4 ──────────────────────────────────────────────────────────────────
+  {
+    id: "stokbar", col: 0, row: 4, cs: 2, rs: 1, color: "#059669",
+    name: "Stokbar", label: "Stokbar",
+    edges: { top: [1,-1], right: [-1], bottom: [0,0], left: [0] },
   },
   {
-    id: "ticimax", name: "Ticimax", short: "TC", color: "#0EA5E9",
-    category: "E-Ticaret Çözümleri",
-    description: "Hazır e-ticaret altyapısı, mobil uygulama ve çok kanallı satış araçlarıyla online mağazanızı büyütün. SEO araçları ve pazaryeri entegrasyonları dahil.",
-    features: ["Mobil uygulama dahil", "SEO optimizasyon araçları", "Çok kanallı satış yönetimi", "30 gün ücretsiz deneme"],
-    sectors: [{ name: "E-ticaret", stars: 5, pct: 94 }, { name: "Perakende", stars: 4, pct: 80 }],
-    badge: "30 Gün Ücretsiz",
-    cs: 1, rs: 1, rad: "18px 14px 6px 20px",
+    id: "finrota", col: 2, row: 4, cs: 1, rs: 1, color: "#D946EF",
+    name: "Finrota", label: "Finrota",
+    edges: { top: [1], right: [-1], bottom: [0], left: [1] },
   },
   {
-    id: "kolaybi", name: "KolayBi", short: "KB", color: "#14B8A6",
-    category: "Ön Muhasebe",
-    description: "Fatura, gider, stok ve kasa yönetimini tek uygulamadan kolayca takip edin. Teknik bilgi gerekmez, dakikalar içinde başlayın.",
-    features: ["Fatura yönetimi", "Gider takibi & raporlama", "Stok sayımı & yönetimi", "Kasa takibi"],
-    sectors: [{ name: "Küçük İşletme", stars: 5, pct: 98 }, { name: "Hizmet", stars: 5, pct: 94 }],
-    badge: "Başlangıç Ücretsiz",
-    cs: 1, rs: 1, rad: "6px 18px 12px 16px",
+    id: "unidox",  col: 3, row: 4, cs: 1, rs: 1, color: "#0F766E",
+    name: "UniDOX", label: "UniDOX",
+    edges: { top: [-1], right: [1], bottom: [0], left: [1] },
   },
   {
-    id: "webplus", name: "Web Plus", short: "WP", color: "#9333EA",
-    category: "Web Çözümleri",
-    description: "Kurumsal web sitesi, dijital pazarlama ve SEO hizmetleriyle online varlığınızı profesyonel bir seviyeye taşıyın. Google Analytics entegrasyonu dahil.",
-    features: ["Kurumsal web sitesi tasarımı", "Dijital pazarlama", "SEO & Analytics", "Ücretsiz domain"],
-    sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 90 }, { name: "Hizmet", stars: 5, pct: 92 }],
-    badge: "Ücretsiz Domain",
-    cs: 1, rs: 1, rad: "14px 20px 8px 10px",
+    id: "varuna",  col: 4, row: 4, cs: 1, rs: 1, color: "#DC2626",
+    name: "Varuna", label: "Varuna",
+    edges: { top: [1], right: [1], bottom: [0], left: [-1] },
   },
   {
-    id: "stokbar", name: "Stokbar", short: "SB", color: "#059669",
-    category: "Stok Yönetimi",
-    description: "Barkodlu stok takibi, min-max uyarıları ve tedarikçi yönetimiyle depo süreçlerinizi dijitalleştirin. Mobil uygulama ile her yerden kontrol.",
-    features: ["Barkodlu stok takibi", "Min-max uyarı sistemi", "Tedarikçi yönetimi", "Mobil uygulama dahil"],
-    sectors: [{ name: "Perakende", stars: 5, pct: 95 }, { name: "Üretim", stars: 4, pct: 82 }],
-    badge: "Mobil Uygulama Dahil",
-    cs: 2, rs: 1, rad: "16px 10px 18px 8px",
-  },
-  {
-    id: "finrota", name: "Finrota", short: "FR", color: "#D946EF",
-    category: "Finansal Yönetim",
-    description: "Nakit akışı, çek/senet takibi ve banka mutabakasını otomatikleştiren akıllı finansal yönetim platformu. Otomatik raporlarla anında içgörü.",
-    features: ["Nakit akışı takibi", "Çek/senet yönetimi", "Banka mutabakatı", "Otomatik finansal raporlar"],
-    sectors: [{ name: "Finans", stars: 5, pct: 94 }, { name: "Üretim", stars: 4, pct: 80 }],
-    badge: "Otomatik Raporlar",
-    cs: 1, rs: 1, rad: "20px 6px 14px 18px",
-  },
-  {
-    id: "unidox", name: "UniDOX", short: "UD", color: "#0F766E",
-    category: "Dijital Arşiv",
-    description: "Kurumsal belge yönetimi, dijital arşiv ve iş akışı otomasyonuyla evrak süreçlerinizi sıfır kağıtla yönetin. KVKK uyumlu altyapı.",
-    features: ["Belge yönetimi sistemi", "Dijital arşiv çözümleri", "İş akışı otomasyonu", "KVKK uyumlu"],
-    sectors: [{ name: "Kamu & Kurumsal", stars: 5, pct: 96 }, { name: "Hizmet", stars: 4, pct: 82 }],
-    badge: "KVKK Uyumlu",
-    cs: 1, rs: 1, rad: "10px 16px 20px 8px",
-  },
-  {
-    id: "varuna", name: "Varuna", short: "VR", color: "#DC2626",
-    category: "Lojistik Yazılımı",
-    description: "Filo yönetimi, rota optimizasyonu ve teslimat takibiyle lojistik operasyonlarınızı verimli hale getirin. Yakıt ve zaman tasarrufu sağlayın.",
-    features: ["Filo yönetimi sistemi", "Rota optimizasyonu", "Gerçek zamanlı teslimat takibi", "Yakıt tasarruf raporu"],
-    sectors: [{ name: "Lojistik", stars: 5, pct: 97 }, { name: "E-ticaret", stars: 4, pct: 78 }],
-    badge: "Yakıt Tasarrufu",
-    cs: 1, rs: 2, rad: "8px 20px 14px 6px",
-  },
-  {
-    id: "enroute", name: "Enroute", short: "EN", color: "#7C3AED",
-    category: "Dağıtım Optimizasyonu",
-    description: "Akıllı dağıtım planlaması ve gerçek zamanlı görev yönetimiyle saha ekiplerinizin verimliliğini maksimize edin. %40 daha verimli operasyon.",
-    features: ["Akıllı dağıtım planlaması", "Saha ekip yönetimi", "Gerçek zamanlı takip", "Performans analitiği"],
-    sectors: [{ name: "Lojistik", stars: 5, pct: 95 }, { name: "Hizmet", stars: 4, pct: 80 }],
-    badge: "%40 Daha Verimli",
-    cs: 2, rs: 1, rad: "18px 12px 10px 20px",
+    id: "enroute", col: 5, row: 4, cs: 1, rs: 1, color: "#7C3AED",
+    name: "Enroute", label: "Enroute",
+    edges: { top: [-1], right: [0], bottom: [0], left: [-1] },
   },
 ];
 
-// ─── Default categories ────────────────────────────────────────────────────────
+// ─── Partner detail data ───────────────────────────────────────────────────────
+const partnerDetails: Record<string, {
+  category: string; description: string; features: string[];
+  sectors: { name: string; stars: number; pct: number }[]; badge: string;
+}> = {
+  tsoft:    { category:"E-Ticaret Çözümü",       description:"T-SOFT ile profesyonel e-ticaret sitenizi kurun. Ödeme, kargo, stok entegrasyonları hazır. Siparişlerinizi tek panelden yönetin.", features:["Hazır e-ticaret altyapısı","Ödeme gateway entegrasyonu","Kargo entegrasyonu (Aras, Yurtiçi)","Stok senkronizasyonu","SEO & performans optimize"], sectors:[{name:"E-ticaret",stars:5,pct:95},{name:"Perakende",stars:4,pct:80}], badge:"Platform İndirimi Mevcut" },
+  qnb:      { category:"Finansal Çözümler",      description:"Kurumsal bankacılık, dijital ödeme altyapısı ve işletmelere özel finansal ürünler ile nakit akışınızı optimize edin.", features:["İşletme hesabı açılışı","Dijital bankacılık paneli","Kredi çözümleri","Döviz işlemleri"], sectors:[{name:"Finans",stars:5,pct:98},{name:"Ticaret",stars:4,pct:82}], badge:"Özel Faiz Oranları" },
+  ikas:     { category:"E-Ticaret Altyapısı",    description:"Çok kanallı satış, otomatik stok yönetimi ve entegre pazaryeri çözümleriyle satışlarınızı büyütün. Trendyol, Hepsiburada dahil.", features:["Çok kanallı satış yönetimi","Pazaryeri entegrasyonu","Otomatik stok takibi","Analitik dashboard"], sectors:[{name:"E-ticaret",stars:5,pct:97},{name:"Toptancı",stars:4,pct:75}], badge:"İlk 3 Ay Ücretsiz" },
+  param:    { category:"Ödeme Sistemleri",       description:"Fiziksel POS, sanal POS, mobil ödeme — tüm ödeme altyapınızı tek çözümde. Güvenli, hızlı, entegre.", features:["Param POS (Fiziksel satış noktası)","Param Kart (Online ödemeler)","Param Mobil (QR ödeme)","Taksit ve kampanya yönetimi"], sectors:[{name:"Perakende",stars:5,pct:98},{name:"Restoran",stars:5,pct:95}], badge:"Kurulum Ücretsiz" },
+  kredim:   { category:"Finansman Çözümleri",    description:"KOBİ'lere özel esnek kredi imkânları, hızlı onay süreci ve rekabetçi faiz oranlarıyla büyümenizi destekler.", features:["Hızlı kredi onayı (24 saat)","Esnek vade seçenekleri","KOBİ'ye özel oranlar","Online başvuru"], sectors:[{name:"Üretim",stars:5,pct:90},{name:"Ticaret",stars:4,pct:85}], badge:"%0 Komisyon" },
+  qf:       { category:"Dijital Finans",         description:"Dijital finans yönetimi, otomatik muhasebe ve gerçek zamanlı nakit akışı takibi ile finansal kontrolü ele alın.", features:["Gerçek zamanlı nakit takibi","Otomatik muhasebe","Finansal raporlar","Banka mutabakatı"], sectors:[{name:"Finans",stars:5,pct:95},{name:"Hizmet",stars:4,pct:80}], badge:"Ücretsiz Demo" },
+  azalt:    { category:"Maliyet Yönetimi",       description:"Operasyonel giderlerinizi analiz edin, israfı önleyin ve işletme maliyetlerinizi akıllı önerilerle azaltın.", features:["Gider analizi & optimizasyon","Tasarruf önerileri","Bütçe planlama","Maliyet raporları"], sectors:[{name:"Üretim",stars:5,pct:92},{name:"Hizmet",stars:4,pct:78}], badge:"Ort. %23 Tasarruf" },
+  qes:      { category:"E-Fatura Sistemi",       description:"GİB onaylı e-fatura, e-arşiv ve e-irsaliye çözümleriyle faturalaşma süreçlerinizi tamamen otomatikleştirin.", features:["E-fatura & e-arşiv","GİB entegrasyonu","Otomatik gönderim","Yasal uyum garantisi"], sectors:[{name:"Tüm Sektörler",stars:5,pct:99},{name:"Üretim",stars:5,pct:95}], badge:"Mevzuat Uyumlu" },
+  aras:     { category:"Kargo & Lojistik",       description:"Türkiye'nin en geniş kargo ağıyla gönderi takibi, toplu sevkiyat ve e-ticaret entegrasyonu tek panelde.", features:["Gönderi takibi (anlık)","Toplu sevkiyat yönetimi","E-ticaret entegrasyonu","İndirimli tarifeler"], sectors:[{name:"E-ticaret",stars:5,pct:96},{name:"Perakende",stars:4,pct:82}], badge:"İndirimli Kargo" },
+  google:   { category:"Bulut & İşbirliği",      description:"Google Workspace ile ekip iletişimini güçlendirin, belgelerinizi bulutta tutun ve verimliliğinizi artırın.", features:["Gmail & Google Drive","Meet video konferans","Docs, Sheets, Slides","Kurumsal güvenlik"], sectors:[{name:"Tüm Sektörler",stars:5,pct:95},{name:"Hizmet",stars:5,pct:95}], badge:"KOBİ'ye Özel Fiyat" },
+  univera:  { category:"ERP Yazılımı",           description:"Üretim, satış, muhasebe ve İK modüllerini tek çatı altında toplayan entegre ERP çözümü.", features:["Üretim & stok takibi","Muhasebe modülü","İK ve bordro yönetimi","Raporlama & analitik"], sectors:[{name:"Üretim",stars:5,pct:93},{name:"Ticaret",stars:4,pct:80}], badge:"Ücretsiz Kurulum" },
+  nebim:    { category:"Perakende ERP",          description:"İşletmenizi tek platformdan yönetin. Üretim, finans, stok, satış, İK — tüm modüller entegre.", features:["Entegre ERP modülleri","Sektöre özel çözümler","Gerçek zamanlı raporlama","Çoklu şube/depo yönetimi"], sectors:[{name:"Üretim",stars:5,pct:97},{name:"Tekstil",stars:5,pct:97}], badge:"Sektör Lideri" },
+  kariyer:  { category:"İK & İstihdam",          description:"Türkiye'nin en büyük iş ilanı platformunda doğru yetenekleri işe alın, işveren markanızı güçlendirin.", features:["İş ilanı yayınlama","CV havuzu erişimi","İşveren markası yönetimi","Aday takip sistemi"], sectors:[{name:"Tüm Sektörler",stars:5,pct:95},{name:"Hizmet",stars:5,pct:92}], badge:"Öncelikli İlan" },
+  mukellef: { category:"Muhasebe & Vergi",       description:"Bulut tabanlı muhasebe, otomatik vergi hesaplama ve e-beyanname ile vergi süreçlerinizi kolaylaştırın.", features:["Bulut muhasebe sistemi","Otomatik vergi hesaplama","E-beyanname gönderimi","Mali müşavirlik desteği"], sectors:[{name:"Tüm Sektörler",stars:5,pct:99},{name:"Hizmet",stars:5,pct:97}], badge:"Mali Müşavirlik" },
+  ticimax:  { category:"E-Ticaret Çözümleri",   description:"Hazır e-ticaret altyapısı, mobil uygulama ve çok kanallı satış araçlarıyla online mağazanızı büyütün.", features:["Mobil uygulama dahil","SEO optimizasyon araçları","Çok kanallı satış","30 gün ücretsiz deneme"], sectors:[{name:"E-ticaret",stars:5,pct:94},{name:"Perakende",stars:4,pct:80}], badge:"30 Gün Ücretsiz" },
+  kolaybi:  { category:"Ön Muhasebe",            description:"Fatura, gider, stok ve kasa yönetimini tek uygulamadan kolayca takip edin. Teknik bilgi gerekmez.", features:["Fatura yönetimi","Gider takibi & raporlama","Stok sayımı & yönetimi","Kasa takibi"], sectors:[{name:"Küçük İşletme",stars:5,pct:98},{name:"Hizmet",stars:5,pct:94}], badge:"Başlangıç Ücretsiz" },
+  webplus:  { category:"Web Çözümleri",          description:"Kurumsal web sitesi, dijital pazarlama ve SEO hizmetleriyle online varlığınızı profesyonel bir seviyeye taşıyın.", features:["Kurumsal web sitesi","Dijital pazarlama","SEO & Analytics","Ücretsiz domain"], sectors:[{name:"Tüm Sektörler",stars:5,pct:90},{name:"Hizmet",stars:5,pct:92}], badge:"Ücretsiz Domain" },
+  stokbar:  { category:"Stok Yönetimi",          description:"Barkodlu stok takibi, min-max uyarıları ve tedarikçi yönetimiyle depo süreçlerinizi dijitalleştirin.", features:["Barkodlu stok takibi","Min-max uyarı sistemi","Tedarikçi yönetimi","Mobil uygulama dahil"], sectors:[{name:"Perakende",stars:5,pct:95},{name:"Üretim",stars:4,pct:82}], badge:"Mobil Uygulama" },
+  finrota:  { category:"Finansal Yönetim",       description:"Nakit akışı, çek/senet takibi ve banka mutabakasını otomatikleştiren akıllı finansal yönetim platformu.", features:["Nakit akışı takibi","Çek/senet yönetimi","Banka mutabakatı","Otomatik finansal raporlar"], sectors:[{name:"Finans",stars:5,pct:94},{name:"Üretim",stars:4,pct:80}], badge:"Otomatik Raporlar" },
+  unidox:   { category:"Dijital Arşiv",          description:"Kurumsal belge yönetimi, dijital arşiv ve iş akışı otomasyonuyla evrak süreçlerinizi sıfır kağıtla yönetin.", features:["Belge yönetimi sistemi","Dijital arşiv çözümleri","İş akışı otomasyonu","KVKK uyumlu"], sectors:[{name:"Kamu & Kurumsal",stars:5,pct:96},{name:"Hizmet",stars:4,pct:82}], badge:"KVKK Uyumlu" },
+  varuna:   { category:"Lojistik Yazılımı",      description:"Filo yönetimi, rota optimizasyonu ve teslimat takibiyle lojistik operasyonlarınızı verimli hale getirin.", features:["Filo yönetimi sistemi","Rota optimizasyonu","Teslimat takibi","Yakıt tasarruf raporu"], sectors:[{name:"Lojistik",stars:5,pct:97},{name:"E-ticaret",stars:4,pct:78}], badge:"Yakıt Tasarrufu" },
+  enroute:  { category:"Dağıtım Optimizasyonu",  description:"Akıllı dağıtım planlaması ve gerçek zamanlı görev yönetimiyle saha ekiplerinizin verimliliğini maksimize edin.", features:["Akıllı dağıtım planlaması","Saha ekip yönetimi","Gerçek zamanlı takip","Performans analitiği"], sectors:[{name:"Lojistik",stars:5,pct:95},{name:"Hizmet",stars:4,pct:80}], badge:"%40 Daha Verimli" },
+};
+
+// ─── Helpers ──────────────────────────────────────────────────────────────────
 const defaultCategories = [
   { icon: ShoppingCart, label: "E-ticaret" },
   { icon: CreditCard,   label: "Ödeme" },
@@ -223,26 +262,14 @@ const defaultCategories = [
   { icon: Building2,    label: "ERP" },
 ];
 
-// ─── Float offsets per logo ───────────────────────────────────────────────────
-const floatData = partners.map((_, i) => ({
-  yAmt:     2 + (i % 4) * 1.1,
-  duration: 4.5 + (i % 5) * 0.6,
-  delay:    (i * 0.37) % 2.8,
-}));
-
-// ─── Star rating helper ───────────────────────────────────────────────────────
 const StarRow = ({ name, stars, pct }: { name: string; stars: number; pct: number }) => (
   <div className="flex items-center gap-2">
     <span className="text-xs text-muted-foreground w-28 truncate font-medium">{name}</span>
     <div className="flex gap-0.5">
       {Array.from({ length: 5 }).map((_, i) => (
-        <Star
-          key={i}
-          className="w-3 h-3"
+        <Star key={i} className="w-3 h-3"
           fill={i < stars ? "#FBBF24" : "none"}
-          stroke={i < stars ? "#FBBF24" : "#D1D5DB"}
-          strokeWidth={1.5}
-        />
+          stroke={i < stars ? "#FBBF24" : "#D1D5DB"} strokeWidth={1.5} />
       ))}
     </div>
     <span className="text-xs font-bold text-muted-foreground">%{pct}</span>
@@ -252,42 +279,29 @@ const StarRow = ({ name, stars, pct }: { name: string; stars: number; pct: numbe
 // ─── Default right panel ───────────────────────────────────────────────────────
 const DefaultPanel = () => (
   <div className="flex flex-col h-full justify-center">
-    <span
-      className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
-      style={{ background: "hsl(268,72%,92%)", color: "hsl(268,72%,38%)" }}
-    >
+    <span className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
+      style={{ background: "hsl(268,72%,92%)", color: "hsl(268,72%,38%)" }}>
       DİJİTAL EKOSİSTEM
     </span>
-
-    <h3
-      className="font-black text-foreground mb-3"
-      style={{ fontSize: "clamp(1.9rem,3vw,2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}
-    >
+    <h3 className="font-black text-foreground mb-3"
+      style={{ fontSize: "clamp(1.9rem,3vw,2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
       50+ Çözüm Ortağımız
     </h3>
-
     <p className="text-muted-foreground mb-8" style={{ fontSize: "1rem", lineHeight: 1.75 }}>
       Sol taraftaki puzzle parçalarından birini seçin, size nasıl değer kattıklarını keşfedin.
     </p>
-
     <div className="grid grid-cols-2 gap-3 mb-8">
       {defaultCategories.map(({ icon: Icon, label }) => (
-        <div
-          key={label}
-          className="flex items-center gap-2.5 px-4 py-3 rounded-xl"
-          style={{ background: "hsl(268,72%,97%)", border: "1px solid hsl(268,72%,90%)" }}
-        >
-          <div
-            className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-            style={{ background: "hsl(268,72%,92%)" }}
-          >
+        <div key={label} className="flex items-center gap-2.5 px-4 py-3 rounded-xl"
+          style={{ background: "hsl(268,72%,97%)", border: "1px solid hsl(268,72%,90%)" }}>
+          <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
+            style={{ background: "hsl(268,72%,92%)" }}>
             <Icon className="w-3.5 h-3.5" style={{ color: "hsl(268,72%,40%)" }} />
           </div>
           <span className="text-sm font-semibold text-foreground">{label}</span>
         </div>
       ))}
     </div>
-
     <div className="flex items-center gap-2 text-muted-foreground text-sm">
       <span className="text-base">←</span>
       <span>Bir puzzle parçasına tıklayın</span>
@@ -296,319 +310,371 @@ const DefaultPanel = () => (
 );
 
 // ─── Partner right panel ───────────────────────────────────────────────────────
-const PartnerPanel = ({
-  partner,
-  onDeselect,
-}: {
-  partner: typeof partners[0];
-  onDeselect: () => void;
-}) => (
-  <div className="flex flex-col h-full justify-center">
-    {/* Category badge */}
-    <span
-      className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
-      style={{ background: `${partner.color}22`, color: partner.color }}
-    >
-      {partner.category.toUpperCase()}
-    </span>
-
-    {/* Partner logo + name row */}
-    <div className="flex items-center gap-4 mb-4">
-      <div
-        className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
-        style={{ background: partner.color, boxShadow: `0 8px 28px -6px ${partner.color}66`, borderRadius: partner.rad }}
-      >
-        <span
-          className="font-black text-white"
-          style={{
-            fontSize:
-              partner.short.length > 3 ? "11px" :
-              partner.short.length > 2 ? "14px" :
-              partner.short.length > 1 ? "17px" : "24px",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          {partner.short}
+const PartnerPanel = ({ piece, onDeselect }: {
+  piece: typeof pieces[0]; onDeselect: () => void;
+}) => {
+  const d = partnerDetails[piece.id];
+  if (!d) return null;
+  return (
+    <div className="flex flex-col h-full justify-center">
+      <span className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
+        style={{ background: `${piece.color}22`, color: piece.color }}>
+        {d.category.toUpperCase()}
+      </span>
+      <div className="flex items-center gap-4 mb-4">
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
+          style={{ background: piece.color, boxShadow: `0 8px 28px -6px ${piece.color}66` }}>
+          <span className="font-black text-white text-center leading-tight px-1"
+            style={{ fontSize: piece.name.length > 6 ? "9px" : piece.name.length > 4 ? "11px" : "15px", letterSpacing: "-0.02em" }}>
+            {piece.name}
+          </span>
+        </div>
+        <div>
+          <h3 className="font-black text-foreground"
+            style={{ fontSize: "clamp(1.8rem,2.8vw,2.4rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
+            {piece.name}
+          </h3>
+          <p className="text-muted-foreground font-medium text-sm mt-0.5">{d.category}</p>
+        </div>
+      </div>
+      <p className="text-foreground mb-5"
+        style={{ fontSize: "0.975rem", lineHeight: 1.72, borderLeft: `3px solid ${piece.color}`, paddingLeft: "14px" }}>
+        {d.description}
+      </p>
+      <div className="grid grid-cols-1 gap-1.5 mb-5">
+        {d.features.map((f) => (
+          <div key={f} className="flex items-start gap-2.5">
+            <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+              style={{ background: `${piece.color}20` }}>
+              <Check className="w-2.5 h-2.5" style={{ color: piece.color }} strokeWidth={3} />
+            </div>
+            <span className="text-sm text-foreground font-medium">{f}</span>
+          </div>
+        ))}
+      </div>
+      {d.sectors.length > 0 && (
+        <div className="rounded-xl p-4 mb-5"
+          style={{ background: "hsl(250,30%,98%)", border: "1px solid hsl(252,20%,90%)" }}>
+          <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2.5">En Uygun Sektörler</p>
+          <div className="flex flex-col gap-1.5">
+            {d.sectors.map((s) => <StarRow key={s.name} {...s} />)}
+          </div>
+        </div>
+      )}
+      <div className="flex items-center gap-3 flex-wrap mb-4">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold"
+          style={{ background: "#DCFCE7", color: "#15803D" }}>
+          <Check className="w-3 h-3" strokeWidth={3} />
+          {d.badge}
         </span>
       </div>
-      <div>
-        <h3
-          className="font-black text-foreground"
-          style={{ fontSize: "clamp(1.8rem,2.8vw,2.4rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}
-        >
-          {partner.name}
-        </h3>
-        <p className="text-muted-foreground font-medium text-sm mt-0.5">{partner.category}</p>
-      </div>
-    </div>
-
-    {/* Description */}
-    <p
-      className="text-foreground mb-5"
-      style={{ fontSize: "0.975rem", lineHeight: 1.72, borderLeft: `3px solid ${partner.color}`, paddingLeft: "14px" }}
-    >
-      {partner.description}
-    </p>
-
-    {/* Features */}
-    <div className="grid grid-cols-1 gap-1.5 mb-5">
-      {partner.features.map((f) => (
-        <div key={f} className="flex items-start gap-2.5">
-          <div
-            className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-            style={{ background: `${partner.color}20` }}
-          >
-            <Check className="w-2.5 h-2.5" style={{ color: partner.color }} strokeWidth={3} />
-          </div>
-          <span className="text-sm text-foreground font-medium">{f}</span>
-        </div>
-      ))}
-    </div>
-
-    {/* Sector affinity */}
-    {partner.sectors.length > 0 && (
-      <div
-        className="rounded-xl p-4 mb-5"
-        style={{ background: "hsl(250,30%,98%)", border: "1px solid hsl(252,20%,90%)" }}
-      >
-        <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2.5">
-          En Uygun Sektörler
-        </p>
-        <div className="flex flex-col gap-1.5">
-          {partner.sectors.map((s) => (
-            <StarRow key={s.name} {...s} />
-          ))}
-        </div>
-      </div>
-    )}
-
-    {/* Discount badge + CTA */}
-    <div className="flex items-center gap-3 flex-wrap mb-4">
-      <span
-        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold"
-        style={{ background: "#DCFCE7", color: "#15803D" }}
-      >
-        <Check className="w-3 h-3" strokeWidth={3} />
-        {partner.badge}
-      </span>
-    </div>
-
-    <Link to="/kobi/urunler" className="block">
-      <motion.button
-        whileHover={{ scale: 1.03, boxShadow: `0 12px 32px -8px ${partner.color}77` }}
-        whileTap={{ scale: 0.97 }}
-        transition={{ type: "spring", stiffness: 320, damping: 18 }}
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold text-sm w-full justify-center"
-        style={{ background: partner.color, boxShadow: `0 4px 18px -6px ${partner.color}55` }}
-      >
-        {partner.name} Çözümünü İncele <ArrowRight className="w-4 h-4" />
-      </motion.button>
-    </Link>
-
-    <button
-      onClick={onDeselect}
-      className="mt-3 text-xs text-muted-foreground hover:text-foreground transition-colors font-medium"
-    >
-      ← Başka partner seç
-    </button>
-  </div>
-);
-
-// ─── Jigsaw Puzzle Grid Layout ────────────────────────────────────────────────
-// 6-column grid; each partner has cs (col-span) and rs (row-span)
-// The grid fills top-to-bottom, left-to-right automatically via CSS Grid auto-placement
-const PuzzleGrid = ({
-  selected,
-  onSelect,
-  visible,
-}: {
-  selected: number | null;
-  onSelect: (i: number) => void;
-  visible: boolean;
-}) => {
-  const [hovered, setHovered] = useState<number | null>(null);
-  const isAnySelected = selected !== null;
-
-  return (
-    <div
-      className="w-full"
-      style={{
-        display: "grid",
-        gridTemplateColumns: "repeat(6, 1fr)",
-        gap: "3px",
-      }}
-    >
-      {partners.map((partner, i) => {
-        const isSel    = selected === i;
-        const isHov    = hovered === i;
-        const opVal    = isAnySelected ? (isSel ? 1 : 0.55) : 1;
-        const fp       = floatData[i];
-
-        // font size scaling based on initials length
-        const fontSize =
-          partner.short.length > 3 ? "9px"  :
-          partner.short.length > 2 ? "11px" :
-          partner.short.length > 1 ? "14px" : "20px";
-
-        return (
-          <motion.div
-            key={partner.id}
-            style={{
-              gridColumn: `span ${partner.cs}`,
-              gridRow:    `span ${partner.rs}`,
-              minHeight:  partner.rs === 2 ? "160px" : "80px",
-              cursor:     "pointer",
-              zIndex:     isSel ? 20 : isHov ? 15 : 1,
-              position:   "relative",
-            }}
-            initial={{ opacity: 0, scale: 0.7 }}
-            animate={
-              visible
-                ? { opacity: opVal, scale: isSel ? 1.04 : 1 }
-                : { opacity: 0, scale: 0.7 }
-            }
-            transition={{
-              opacity: { duration: 0.2 },
-              scale:   { duration: 0.4, delay: 0.05 + i * 0.03, ease: [0.22, 1, 0.36, 1] },
-            }}
-            onClick={() => onSelect(i)}
-            onHoverStart={() => setHovered(i)}
-            onHoverEnd={() => setHovered(null)}
-          >
-            {/* Float wrapper */}
-            <motion.div
-              animate={{ y: [0, -fp.yAmt, 0] }}
-              transition={{
-                duration: fp.duration,
-                delay:    fp.delay,
-                repeat:   Infinity,
-                ease:     "easeInOut",
-              }}
-              className="w-full h-full"
-            >
-              {/* The puzzle piece tile */}
-              <motion.div
-                className="w-full h-full flex flex-col items-center justify-center select-none relative overflow-hidden"
-                style={{
-                  background:   partner.color,
-                  borderRadius: partner.rad,
-                  boxShadow:    isSel
-                    ? `inset 0 0 0 3px rgba(255,255,255,0.9), 0 0 0 3px hsl(268,72%,38%), 0 8px 24px -4px ${partner.color}88`
-                    : `inset 0 1px 0 rgba(255,255,255,0.18), 0 2px 8px -2px ${partner.color}50`,
-                  transition:   "box-shadow 0.2s, opacity 0.2s",
-                }}
-                whileHover={{
-                  scale:      1.06,
-                  y:          -3,
-                  boxShadow:  `inset 0 1px 0 rgba(255,255,255,0.28), 0 8px 20px -4px ${partner.color}70`,
-                  transition: { type: "spring", stiffness: 400, damping: 24 },
-                }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* Subtle shine overlay */}
-                <div
-                  className="absolute inset-0 pointer-events-none"
-                  style={{
-                    background: "linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 60%)",
-                    borderRadius: "inherit",
-                  }}
-                />
-
-                {/* Initials */}
-                <span
-                  className="font-black text-white relative z-10 tracking-tight"
-                  style={{ fontSize, letterSpacing: "-0.02em", textShadow: "0 1px 4px rgba(0,0,0,0.25)" }}
-                >
-                  {partner.short}
-                </span>
-
-                {/* Partner name (shown when selected) */}
-                <AnimatePresence>
-                  {isSel && (
-                    <motion.span
-                      initial={{ opacity: 0, y: 4 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 4 }}
-                      transition={{ duration: 0.2 }}
-                      className="absolute bottom-2 left-0 right-0 text-center text-white font-semibold"
-                      style={{ fontSize: "8px", letterSpacing: "0.03em", opacity: 0.85 }}
-                    >
-                      {partner.name}
-                    </motion.span>
-                  )}
-                </AnimatePresence>
-              </motion.div>
-            </motion.div>
-
-            {/* Tooltip on hover */}
-            <AnimatePresence>
-              {isHov && !isSel && (
-                <motion.div
-                  initial={{ opacity: 0, y: 6, scale: 0.88 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: 6, scale: 0.88 }}
-                  transition={{ duration: 0.16 }}
-                  className="absolute pointer-events-none"
-                  style={{
-                    bottom:      "calc(100% + 8px)",
-                    left:        "50%",
-                    transform:   "translateX(-50%)",
-                    whiteSpace:  "nowrap",
-                    background:  "white",
-                    borderRadius: "10px",
-                    padding:     "5px 11px",
-                    boxShadow:   "0 4px 18px -4px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.06)",
-                    zIndex:      50,
-                  }}
-                >
-                  <p className="text-xs font-bold text-foreground">{partner.name}</p>
-                  <p className="text-[10px] text-muted-foreground">{partner.category}</p>
-                  {/* Arrow */}
-                  <div
-                    className="absolute left-1/2 -translate-x-1/2"
-                    style={{
-                      bottom:      "-5px",
-                      borderLeft:  "5px solid transparent",
-                      borderRight: "5px solid transparent",
-                      borderTop:   "5px solid white",
-                    }}
-                  />
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        );
-      })}
+      <Link to="/kobi/urunler" className="block">
+        <motion.button
+          whileHover={{ scale: 1.03, boxShadow: `0 12px 32px -8px ${piece.color}77` }}
+          whileTap={{ scale: 0.97 }}
+          transition={{ type: "spring", stiffness: 320, damping: 18 }}
+          className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold text-sm w-full justify-center"
+          style={{ background: piece.color, boxShadow: `0 4px 18px -6px ${piece.color}55` }}>
+          {piece.name} Çözümünü İncele <ArrowRight className="w-4 h-4" />
+        </motion.button>
+      </Link>
+      <button onClick={onDeselect}
+        className="mt-3 text-xs text-muted-foreground hover:text-foreground transition-colors font-medium">
+        ← Başka partner seç
+      </button>
     </div>
   );
 };
 
+// ─── Logo text fitting inside a piece ────────────────────────────────────────
+function LogoText({ piece, cx, cy }: { piece: typeof pieces[0]; cx: number; cy: number }) {
+  const name = piece.name;
+  // Split into max 2 lines for long names
+  const words = name.split(" ");
+  const line1 = words.length > 1 ? words.slice(0, Math.ceil(words.length / 2)).join(" ") : name;
+  const line2 = words.length > 1 ? words.slice(Math.ceil(words.length / 2)).join(" ") : null;
+
+  const pieceW = piece.cs * CW;
+  const pieceH = piece.rs * CH;
+  // Font size based on piece area and name length
+  const area = pieceW * pieceH;
+  const maxChars = Math.max(line1.length, (line2 || "").length);
+  const baseFontSize = Math.min(
+    pieceW * 0.8 / Math.max(maxChars * 0.55, 2),
+    pieceH * 0.28,
+    area > 10000 ? 22 : area > 6000 ? 16 : 12
+  );
+  const fontSize = Math.max(8, Math.min(baseFontSize, 18));
+
+  const lineH = fontSize * 1.25;
+  const totalH = line2 ? lineH * 2 : lineH;
+  const startY = cy - totalH / 2 + lineH * 0.7;
+
+  return (
+    <g>
+      <text
+        x={cx} y={startY}
+        textAnchor="middle" dominantBaseline="middle"
+        fill="white"
+        fontFamily="'Plus Jakarta Sans', 'Inter', sans-serif"
+        fontWeight="800"
+        fontSize={fontSize}
+        letterSpacing="-0.3"
+        style={{ userSelect: "none", pointerEvents: "none" }}
+      >
+        {line1}
+      </text>
+      {line2 && (
+        <text
+          x={cx} y={startY + lineH}
+          textAnchor="middle" dominantBaseline="middle"
+          fill="white"
+          fontFamily="'Plus Jakarta Sans', 'Inter', sans-serif"
+          fontWeight="800"
+          fontSize={fontSize}
+          letterSpacing="-0.3"
+          style={{ userSelect: "none", pointerEvents: "none" }}
+        >
+          {line2}
+        </text>
+      )}
+    </g>
+  );
+}
+
+// ─── SVG Puzzle component ─────────────────────────────────────────────────────
+function PuzzleBoard({
+  selectedId,
+  onSelect,
+  visible,
+}: {
+  selectedId: string | null;
+  onSelect: (id: string) => void;
+  visible: boolean;
+}) {
+  const SVG_W = COLS * CW;           // 540
+  const SVG_H = 5 * CH;             // 375
+  const [hovered, setHovered] = useState<string | null>(null);
+
+  return (
+    <svg
+      viewBox={`0 0 ${SVG_W} ${SVG_H}`}
+      width="100%"
+      style={{ display: "block", overflow: "visible" }}
+      aria-label="Partner ekosistemi puzzle"
+    >
+      <defs>
+        {/* Bevel light gradient — applied as fill pattern to each piece */}
+        {pieces.map((p) => {
+          const gx = p.col * CW;
+          const gy = p.row * CH;
+          const gw = p.cs * CW;
+          const gh = p.rs * CH;
+          return (
+            <linearGradient
+              key={`grad-${p.id}`}
+              id={`bevel-${p.id}`}
+              x1={gx} y1={gy} x2={gx + gw} y2={gy + gh}
+              gradientUnits="userSpaceOnUse"
+            >
+              <stop offset="0%"   stopColor="rgba(255,255,255,0.22)" />
+              <stop offset="45%"  stopColor="rgba(255,255,255,0.04)" />
+              <stop offset="100%" stopColor="rgba(0,0,0,0.12)" />
+            </linearGradient>
+          );
+        })}
+
+        {/* Selected glow filter */}
+        <filter id="glow-selected" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur" />
+          <feFlood floodColor="hsl(268,72%,48%)" floodOpacity="0.9" result="color" />
+          <feComposite in="color" in2="blur" operator="in" result="shadow" />
+          <feMerge>
+            <feMergeNode in="shadow" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+
+        {/* Inner shadow filter for cutline depth */}
+        <filter id="inner-shadow" x="-5%" y="-5%" width="110%" height="110%">
+          <feOffset dx="0" dy="1" />
+          <feGaussianBlur stdDeviation="1.5" result="blur" />
+          <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+      </defs>
+
+      {/* Render pieces */}
+      {pieces.map((piece, i) => {
+        const px = piece.col * CW;
+        const py = piece.row * CH;
+        const pw = piece.cs * CW;
+        const ph = piece.rs * CH;
+        const cx = px + pw / 2;
+        const cy = py + ph / 2;
+
+        const pathD  = puzzlePath(px, py, piece.cs, piece.rs, piece.edges);
+        const isSel  = selectedId === piece.id;
+        const isHov  = hovered === piece.id;
+        const anySelected = selectedId !== null;
+        const dimmed = anySelected && !isSel;
+
+        return (
+          <motion.g
+            key={piece.id}
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={visible ? {
+              opacity: dimmed ? 0.45 : 1,
+              scale: 1,
+              filter: isSel ? "drop-shadow(0 0 8px hsl(268,72%,55%))" : "none",
+            } : { opacity: 0, scale: 0.8 }}
+            transition={{
+              opacity: { duration: 0.22 },
+              scale:   { duration: 0.5, delay: 0.04 + i * 0.035, ease: [0.22, 1, 0.36, 1] },
+            }}
+            style={{ cursor: "pointer", transformOrigin: `${cx}px ${cy}px` }}
+            onClick={() => onSelect(piece.id)}
+            onMouseEnter={() => setHovered(piece.id)}
+            onMouseLeave={() => setHovered(null)}
+          >
+            {/* Selected pop-out lift */}
+            <motion.g
+              animate={isSel ? { y: -5 } : { y: 0 }}
+              transition={{ type: "spring", stiffness: 340, damping: 22 }}
+            >
+              {/* Main fill */}
+              <path d={pathD} fill={piece.color} />
+
+              {/* Bevel gradient overlay */}
+              <path d={pathD} fill={`url(#bevel-${piece.id})`} />
+
+              {/* Inner shadow cutline (thin dark edge) */}
+              <path
+                d={pathD}
+                fill="none"
+                stroke="rgba(0,0,0,0.18)"
+                strokeWidth="1.5"
+              />
+
+              {/* Hover / selected highlight ring */}
+              {(isHov || isSel) && (
+                <path
+                  d={pathD}
+                  fill="none"
+                  stroke={isSel ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.55)"}
+                  strokeWidth={isSel ? 2.5 : 1.5}
+                />
+              )}
+
+              {/* Selected outer glow ring */}
+              {isSel && (
+                <path
+                  d={pathD}
+                  fill="none"
+                  stroke="hsl(268,72%,52%)"
+                  strokeWidth="4"
+                  strokeOpacity="0.7"
+                  style={{ filter: "blur(2px)" }}
+                />
+              )}
+
+              {/* Top-left corner light (bevel highlight) */}
+              <clipPath id={`clip-${piece.id}`}>
+                <path d={pathD} />
+              </clipPath>
+              <rect
+                x={px} y={py} width={pw} height={6}
+                fill="rgba(255,255,255,0.18)"
+                clipPath={`url(#clip-${piece.id})`}
+              />
+              <rect
+                x={px} y={py} width={6} height={ph}
+                fill="rgba(255,255,255,0.12)"
+                clipPath={`url(#clip-${piece.id})`}
+              />
+
+              {/* White logo text */}
+              <LogoText piece={piece} cx={cx} cy={cy} />
+            </motion.g>
+
+            {/* Tooltip */}
+            <AnimatePresence>
+              {isHov && (
+                <motion.g
+                  initial={{ opacity: 0, y: 4 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 4 }}
+                  transition={{ duration: 0.15 }}
+                  style={{ pointerEvents: "none" }}
+                >
+                  <rect
+                    x={cx - 52} y={py - 38}
+                    width={104} height={32}
+                    rx={8}
+                    fill="white"
+                    style={{ filter: "drop-shadow(0 2px 8px rgba(0,0,0,0.14))" }}
+                  />
+                  <text
+                    x={cx} y={py - 25}
+                    textAnchor="middle"
+                    fill="#1a1a2e"
+                    fontFamily="'Plus Jakarta Sans', sans-serif"
+                    fontWeight="700"
+                    fontSize="11"
+                    style={{ pointerEvents: "none" }}
+                  >
+                    {piece.name}
+                  </text>
+                  <text
+                    x={cx} y={py - 12}
+                    textAnchor="middle"
+                    fill="#666"
+                    fontFamily="'Plus Jakarta Sans', sans-serif"
+                    fontWeight="500"
+                    fontSize="9"
+                    style={{ pointerEvents: "none" }}
+                  >
+                    {partnerDetails[piece.id]?.category}
+                  </text>
+                  {/* arrow */}
+                  <polygon
+                    points={`${cx - 5},${py - 6} ${cx + 5},${py - 6} ${cx},${py - 1}`}
+                    fill="white"
+                  />
+                </motion.g>
+              )}
+            </AnimatePresence>
+          </motion.g>
+        );
+      })}
+    </svg>
+  );
+}
+
 // ─── Main component ────────────────────────────────────────────────────────────
 const PartnerEcosystemSection = () => {
-  const [selected, setSelected] = useState<number | null>(null);
-  const [visible,  setVisible]  = useState(false);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [visible,    setVisible]    = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView     = useInView(sectionRef, { once: true, amount: 0.06 });
   const timerRef   = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  // Auto-deselect after 10s inactivity
   useEffect(() => {
-    if (selected !== null) {
+    if (selectedId !== null) {
       if (timerRef.current) clearTimeout(timerRef.current);
-      timerRef.current = setTimeout(() => setSelected(null), 10000);
+      timerRef.current = setTimeout(() => setSelectedId(null), 12000);
     }
     return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [selected]);
+  }, [selectedId]);
 
   useEffect(() => {
-    if (inView) setTimeout(() => setVisible(true), 100);
+    if (inView) setTimeout(() => setVisible(true), 80);
   }, [inView]);
 
-  const handleSelect = (idx: number) => {
-    setSelected((prev) => (prev === idx ? null : idx));
+  const handleSelect = (id: string) => {
+    setSelectedId((prev) => (prev === id ? null : id));
   };
 
-  const selectedPartner = selected !== null ? partners[selected] : null;
+  const selectedPiece = selectedId ? pieces.find((p) => p.id === selectedId) ?? null : null;
 
   return (
     <section
@@ -629,54 +695,42 @@ const PartnerEcosystemSection = () => {
           <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase border border-primary/15 mb-4">
             Çözüm Ortakları
           </span>
-          <h2
-            className="font-black text-foreground mx-auto"
-            style={{
-              fontSize: "clamp(1.8rem,3.5vw,2.75rem)",
-              lineHeight: 1.1,
-              letterSpacing: "-0.035em",
-              maxWidth: "640px",
-            }}
-          >
+          <h2 className="font-black text-foreground mx-auto"
+            style={{ fontSize: "clamp(1.8rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}>
             Çözüm Ortaklarımız
           </h2>
-          <p className="text-muted-foreground mt-3 mx-auto" style={{ maxWidth: "480px", fontSize: "1rem", lineHeight: 1.7 }}>
-            Parçaya tıklayın, partnerinizi keşfedin
+          <p className="text-muted-foreground mt-3 mx-auto"
+            style={{ maxWidth: "460px", fontSize: "1rem", lineHeight: 1.7 }}>
+            Bir puzzle parçasına tıklayın — partnerinizi keşfedin
           </p>
         </motion.div>
 
         {/* Two-column layout */}
-        <div
-          ref={sectionRef}
-          className="flex flex-col-reverse lg:flex-row items-start gap-8 xl:gap-12"
-        >
-          {/* ── LEFT: Jigsaw Puzzle Grid (45%) ── */}
-          <motion.div
-            className="w-full lg:w-[48%] flex-shrink-0"
-            initial={{ opacity: 0, x: -24 }}
-            animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -24 }}
-            transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <PuzzleGrid selected={selected} onSelect={handleSelect} visible={visible} />
+        <div ref={sectionRef} className="flex flex-col-reverse lg:flex-row items-start gap-8 xl:gap-14">
 
-            {/* Stats below puzzle */}
+          {/* LEFT: SVG Puzzle */}
+          <motion.div
+            className="w-full lg:w-[50%] flex-shrink-0"
+            initial={{ opacity: 0, x: -20 }}
+            animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <PuzzleBoard selectedId={selectedId} onSelect={handleSelect} visible={visible} />
+
+            {/* Stats + CTA */}
             <div className="flex justify-center gap-8 md:gap-12 mt-8">
               {[
                 { value: "50+", label: "Çözüm Ortağı" },
                 { value: "21",  label: "Param Ürünü"  },
                 { value: "10",  label: "Kategori"     },
               ].map((s, i) => (
-                <motion.div
-                  key={s.label}
+                <motion.div key={s.label}
                   initial={{ opacity: 0, y: 10 }}
-                  animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
+                  animate={visible ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
-                  className="flex flex-col items-center"
-                >
-                  <span
-                    className="font-black text-primary"
-                    style={{ fontSize: "clamp(1.5rem,2.2vw,1.9rem)", lineHeight: 1, letterSpacing: "-0.03em" }}
-                  >
+                  className="flex flex-col items-center">
+                  <span className="font-black text-primary"
+                    style={{ fontSize: "clamp(1.5rem,2.2vw,1.9rem)", lineHeight: 1, letterSpacing: "-0.03em" }}>
                     {s.value}
                   </span>
                   <span className="text-xs text-muted-foreground mt-1 font-medium">{s.label}</span>
@@ -684,93 +738,79 @@ const PartnerEcosystemSection = () => {
               ))}
             </div>
 
-            {/* CTA below stats */}
-            <motion.div
-              className="mt-6 flex justify-center"
+            <motion.div className="mt-6 flex justify-center"
               initial={{ opacity: 0, y: 10 }}
-              animate={visible ? { opacity: 1, y: 0 } : { opacity: 0, y: 10 }}
-              transition={{ duration: 0.4, delay: 0.8 }}
-            >
+              animate={visible ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: 0.8 }}>
               <Link to="/kobi/urunler">
                 <motion.button
                   whileHover={{ scale: 1.04, boxShadow: "0 12px 40px -6px rgba(109,40,217,0.52)" }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 300, damping: 18 }}
                   className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm"
-                  style={{
-                    background: "linear-gradient(135deg, hsl(268,72%,38%), hsl(268,72%,52%))",
-                    boxShadow:  "0 6px 24px -4px rgba(109,40,217,0.38)",
-                  }}
-                >
+                  style={{ background: "linear-gradient(135deg, hsl(268,72%,38%), hsl(268,72%,52%))", boxShadow: "0 6px 24px -4px rgba(109,40,217,0.38)" }}>
                   Çözüm Ortaklarını Keşfet <ArrowRight className="h-4 w-4" />
                 </motion.button>
               </Link>
             </motion.div>
           </motion.div>
 
-          {/* ── RIGHT: Dynamic Content (55%) ── */}
-          <div className="w-full lg:w-[52%] lg:sticky lg:top-24">
+          {/* RIGHT: Dynamic content panel */}
+          <div className="w-full lg:w-[50%] lg:sticky lg:top-24">
             <motion.div
               className="rounded-3xl p-8 md:p-10"
               style={{
                 background: "white",
-                boxShadow:  "0 4px 40px -8px rgba(109,40,217,0.10), 0 1px 4px rgba(0,0,0,0.04)",
-                border:     "1px solid hsl(252,20%,92%)",
-                minHeight:  "540px",
+                boxShadow: "0 4px 40px -8px rgba(109,40,217,0.10), 0 1px 4px rgba(0,0,0,0.04)",
+                border: "1px solid hsl(252,20%,92%)",
+                minHeight: "540px",
               }}
-              initial={{ opacity: 0, x: 24 }}
-              animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 24 }}
-              transition={{ duration: 0.65, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
               <AnimatePresence mode="wait">
-                {selectedPartner ? (
-                  <motion.div
-                    key={selectedPartner.id}
+                {selectedPiece ? (
+                  <motion.div key={selectedPiece.id}
                     initial={{ opacity: 0, scale: 0.96, y: 10 }}
-                    animate={{ opacity: 1, scale: 1,    y: 0  }}
-                    exit={{    opacity: 0, scale: 0.96, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.96, y: -10 }}
                     transition={{ duration: 0.28, ease: "easeInOut" }}
-                    className="h-full"
-                  >
-                    <PartnerPanel partner={selectedPartner} onDeselect={() => setSelected(null)} />
+                    className="h-full">
+                    <PartnerPanel piece={selectedPiece} onDeselect={() => setSelectedId(null)} />
                   </motion.div>
                 ) : (
-                  <motion.div
-                    key="default"
+                  <motion.div key="default"
                     initial={{ opacity: 0, scale: 0.96, y: 10 }}
-                    animate={{ opacity: 1, scale: 1,    y: 0  }}
-                    exit={{    opacity: 0, scale: 0.96, y: -10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.96, y: -10 }}
                     transition={{ duration: 0.28, ease: "easeInOut" }}
-                    className="h-full"
-                  >
+                    className="h-full">
                     <DefaultPanel />
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
 
-            {/* Auto-reset hint */}
             <AnimatePresence>
-              {selected !== null && (
+              {selectedId && (
                 <motion.p
                   initial={{ opacity: 0, y: 5 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{    opacity: 0, y: 5 }}
+                  exit={{ opacity: 0, y: 5 }}
                   transition={{ duration: 0.25 }}
-                  className="mt-4 text-xs text-muted-foreground font-medium flex items-center gap-1.5 px-1"
-                >
-                  <span
-                    className="inline-block w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ background: partners[selected].color }}
-                  />
-                  <strong style={{ color: partners[selected].color }}>{partners[selected].name}</strong>
-                  &nbsp;seçildi — 10 saniye sonra sıfırlanır.
+                  className="mt-4 text-xs text-muted-foreground font-medium flex items-center gap-1.5 px-1">
+                  <span className="inline-block w-2 h-2 rounded-full flex-shrink-0"
+                    style={{ background: pieces.find(p => p.id === selectedId)?.color }} />
+                  <strong style={{ color: pieces.find(p => p.id === selectedId)?.color }}>
+                    {pieces.find(p => p.id === selectedId)?.name}
+                  </strong>
+                  &nbsp;seçildi — 12 saniye sonra sıfırlanır.
                 </motion.p>
               )}
             </AnimatePresence>
           </div>
         </div>
-
       </div>
     </section>
   );
