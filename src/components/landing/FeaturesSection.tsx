@@ -90,10 +90,10 @@ const FeaturesSection = () =>
 
           Tüm Çözümlere Tek Platformdan Ulaşın
         </h2>
-        <p className="text-slate-500 text-sm max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
-          İşletmenizi Türkiye'den globale taşıyacak
-          <br className="hidden md:block" /> ölçeklenebilir dijital altyapı.
-        </p>
+        
+
+
+
       </motion.div>
 
       {/* Bento Grid */}
@@ -164,26 +164,26 @@ const FeaturesSection = () =>
       )}
       </motion.div>
 
-      
+      <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="text-center mt-20">
 
+        <h3
+        className="text-2xl md:text-3xl font-bold text-foreground mb-4"
+        style={{ letterSpacing: "-0.025em" }}>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          Dijital Dönüşümünüz Burada Başlıyor
+        </h3>
+        <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
+          3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.
+        </p>
+        <Button asChild variant="hero" size="lg">
+          <Link to="/kobi/signup">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
+        </Button>
+      </motion.div>
     </div>
   </section>;
 
