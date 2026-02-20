@@ -4,8 +4,16 @@ import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
-import loginHero from "@/assets/login-hero.png";
 import { useOnboarding } from "@/contexts/OnboardingContext";
+import stepHedef from "@/assets/step-hedef-3d.png";
+import stepTeklif from "@/assets/step-teklif-3d.png";
+import stepBuyume from "@/assets/step-buyume-3d.png";
+
+const steps = [
+  { image: stepHedef, label: "Hedef Belirleme", title: "Büyüme Hedefinizi Belirleyin", desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz?", accent: "#A78BFA", accentDark: "#7C3AED" },
+  { image: stepTeklif, label: "Teklif Al", title: "Çözümleri Karşılaştırın ve Teklif Alın", desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.", accent: "#818CF8", accentDark: "#6366F1" },
+  { image: stepBuyume, label: "Büyümeye Başla", title: "Dijitalde Büyümenizi Başlatın", desc: "Size özel çözümleri seçin ve büyümeye başlayın.", accent: "#C084FC", accentDark: "#A855F7" },
+];
 
 const KobiSignup = () => {
   const navigate = useNavigate();
@@ -30,26 +38,41 @@ const KobiSignup = () => {
 
   return (
     <div className="flex min-h-screen">
-      <div className="hidden lg:flex lg:w-1/2 gradient-primary relative overflow-hidden flex-col justify-between p-16">
+      {/* Left panel */}
+      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-between p-12" style={{ background: "linear-gradient(160deg, #0F0720 0%, #1A0A3C 50%, #0D1240 100%)" }}>
+        {/* Ambient glows */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(124,58,237,0.22) 0%, transparent 70%)" }} />
+
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl bg-primary-foreground/20 flex items-center justify-center text-2xl">🏢</div>
-            <span className="text-2xl font-extrabold text-primary-foreground tracking-tight">KOBİ DİJİTAL</span>
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xl" style={{ background: "rgba(124,58,237,0.25)", border: "1px solid rgba(167,139,250,0.3)" }}>🏢</div>
+            <span className="text-xl font-extrabold tracking-tight" style={{ color: "#E9D5FF" }}>KOBİ DİJİTAL</span>
           </div>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }} className="space-y-8">
-          <h2 className="text-3xl font-bold text-primary-foreground leading-tight">3 Adımda Dijitalleşin</h2>
-          <div className="space-y-6">
-            {[
-              { num: "1", title: "Ücretsiz Kayıt Olun", desc: "Sadece e-posta ve şifre ile 2 dakikada kayıt olun." },
-              { num: "2", title: "İşletmenizi Tanımlayın", desc: "Sektörünüzü ve ihtiyaçlarınızı belirleyin." },
-              { num: "3", title: "Dijitalleşmeye Başlayın", desc: "Yol haritanızı takip edin, büyümeye başlayın." },
-            ].map((s, i) => (
-              <motion.div key={s.num} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 + i * 0.15 }} className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full bg-primary-foreground/20 flex items-center justify-center text-primary-foreground font-extrabold text-lg shrink-0">{s.num}</div>
-                <div>
-                  <h3 className="text-base font-bold text-primary-foreground">{s.title}</h3>
-                  <p className="text-sm text-primary-foreground/70 leading-relaxed">{s.desc}</p>
+
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.15 }} className="space-y-6">
+          <div className="text-center mb-4">
+            <h2 className="text-2xl font-bold leading-snug" style={{ color: "#F3E8FF", letterSpacing: "-0.02em" }}>Dijitalde Büyümeye Başlayın</h2>
+            <p className="mt-2 text-sm" style={{ color: "rgba(196,181,253,0.65)" }}>Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.</p>
+          </div>
+
+          <div className="grid grid-cols-3 gap-4">
+            {steps.map((s, i) => (
+              <motion.div key={s.label} initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 + i * 0.15 }} className="flex flex-col items-center text-center gap-3">
+                {/* Circle image */}
+                <div className="relative w-24 h-24">
+                  <motion.div className="absolute inset-0 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${s.accent}30 0%, transparent 70%)`, transform: "scale(2)" }} animate={{ opacity: [0.3, 0.7, 0.3] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.9 }} />
+                  <motion.div className="absolute inset-[-10px] rounded-full pointer-events-none" style={{ border: `1.5px dashed ${s.accent}30` }} animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden" style={{ boxShadow: `0 0 0 1.5px ${s.accent}50, 0 12px 40px -8px ${s.accent}55` }}>
+                    <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
+                    <div className="absolute -top-0.5 -right-0.5 w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black text-white z-10" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accentDark})` }}>{i + 1}</div>
+                  </div>
+                </div>
+                {/* Card */}
+                <div className="w-full rounded-2xl p-3" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <span className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wide uppercase mb-1" style={{ background: `${s.accent}20`, color: s.accent, border: `1px solid ${s.accent}30` }}>{s.label}</span>
+                  <h3 className="text-xs font-semibold leading-snug mb-1" style={{ color: "#F3E8FF" }}>{s.title}</h3>
+                  <p className="text-[11px] leading-relaxed" style={{ color: "rgba(196,181,253,0.65)" }}>{s.desc}</p>
                 </div>
               </motion.div>
             ))}
