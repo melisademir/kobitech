@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
@@ -23,7 +23,7 @@
     --secondary-foreground: 0 0% 100%;
 
     --muted: 252 20% 94%;
-    --muted-foreground: 260 8% 50%;
+    --muted-foreground: 260 10% 55%;
 
     --accent: 168 76% 42%;
     --accent-foreground: 0 0% 100%;
@@ -40,11 +40,11 @@
     --info: 217 91% 60%;
     --info-foreground: 0 0% 100%;
 
-    --border: 252 20% 92%;
-    --input: 252 20% 92%;
+    --border: 252 20% 90%;
+    --input: 252 20% 90%;
     --ring: 268 72% 38%;
 
-    --radius: 0.75rem;
+    --radius: 1rem;
 
     --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 260 25% 11%;
@@ -95,7 +95,17 @@
 
   body {
     @apply bg-background text-foreground font-sans antialiased;
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    line-height: 1.6;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  p {
+    line-height: 1.7;
   }
 }
 
@@ -126,14 +136,14 @@
 
   .shadow-card {
     box-shadow:
-      0 1px 3px hsl(260, 20%, 10% / 0.04),
-      0 4px 16px -2px hsl(260, 20%, 10% / 0.06);
+      0 1px 2px hsl(260, 20%, 10% / 0.03),
+      0 4px 20px -4px hsl(260, 20%, 10% / 0.05);
   }
 
   .shadow-card-hover {
     box-shadow:
-      0 2px 6px hsl(260, 20%, 10% / 0.06),
-      0 12px 32px -4px hsl(268, 72%, 38% / 0.14);
+      0 2px 8px hsl(260, 20%, 10% / 0.04),
+      0 16px 40px -8px hsl(268, 72%, 38% / 0.12);
   }
 
   .shadow-elegant {
@@ -149,14 +159,36 @@
     background-clip: text;
   }
 
+  /* True glassmorphism */
   .glass-card {
-    background: hsl(0, 0%, 100% / 0.7);
+    background: rgba(255, 255, 255, 0.65);
     backdrop-filter: blur(20px);
-    border: 1px solid hsl(252, 20%, 92% / 0.8);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .glass-card-dark {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
   }
 
   .ring-glow {
     box-shadow: 0 0 0 3px hsl(268, 72%, 38% / 0.12);
+  }
+
+  /* Section spacing */
+  .section-gap {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+
+  @media (min-width: 1024px) {
+    .section-gap {
+      padding-top: 10rem;
+      padding-bottom: 10rem;
+    }
   }
 }
 
