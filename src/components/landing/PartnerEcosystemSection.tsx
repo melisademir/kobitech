@@ -322,13 +322,6 @@ const PartnerPanel = ({ piece, onDeselect }: {
           </div>
         </div>
       )}
-      <div className="flex items-center gap-3 flex-wrap mb-4">
-        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-bold"
-          style={{ background: "#DCFCE7", color: "#15803D" }}>
-          <Check className="w-3 h-3" strokeWidth={3} />
-          {d.badge}
-        </span>
-      </div>
       <Link to="/kobi/urunler" className="block">
         <motion.button
           whileHover={{ scale: 1.03, boxShadow: `0 12px 32px -8px ${piece.color}77` }}
