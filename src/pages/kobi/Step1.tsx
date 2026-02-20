@@ -50,23 +50,23 @@ const Step1 = () => {
             <p className="mt-2 text-sm" style={{ color: "rgba(196,181,253,0.65)" }}>Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.</p>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-5">
             {steps.map((s, i) => (
-              <motion.div key={s.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.15 }} className="flex items-center gap-4">
+              <motion.div key={s.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.15 }} className="flex items-center gap-5">
                 {/* Circle image */}
-                <div className="relative w-16 h-16 shrink-0">
+                <div className="relative w-24 h-24 shrink-0">
                   <motion.div className="absolute inset-0 rounded-full pointer-events-none" style={{ background: `radial-gradient(circle, ${s.accent}30 0%, transparent 70%)`, transform: "scale(2)" }} animate={{ opacity: [0.3, 0.7, 0.3] }} transition={{ duration: 4, repeat: Infinity, delay: i * 0.9 }} />
-                  <motion.div className="absolute inset-[-8px] rounded-full pointer-events-none" style={{ border: `1.5px dashed ${s.accent}30` }} animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
-                  <div className="relative w-16 h-16 rounded-full overflow-hidden" style={{ boxShadow: `0 0 0 1.5px ${s.accent}50, 0 8px 24px -4px ${s.accent}55` }}>
+                  <motion.div className="absolute inset-[-10px] rounded-full pointer-events-none" style={{ border: `1.5px dashed ${s.accent}35` }} animate={{ rotate: 360 }} transition={{ duration: 20, repeat: Infinity, ease: "linear" }} />
+                  <div className="relative w-24 h-24 rounded-full overflow-hidden" style={{ boxShadow: `0 0 0 2px ${s.accent}55, 0 12px 32px -6px ${s.accent}60` }}>
                     <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
-                    <div className="absolute -top-0.5 -right-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[9px] font-black text-white z-10" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accentDark})` }}>{i + 1}</div>
+                    <div className="absolute -top-0.5 -right-0.5 w-6 h-6 rounded-full flex items-center justify-center text-[11px] font-black text-white z-10" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accentDark})` }}>{i + 1}</div>
                   </div>
                 </div>
                 {/* Text */}
-                <div className="flex-1 rounded-xl px-3 py-2.5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase mb-1" style={{ background: `${s.accent}20`, color: s.accent, border: `1px solid ${s.accent}30` }}>{s.label}</span>
-                  <h3 className="text-base font-bold leading-snug mb-0.5" style={{ color: "#F3E8FF" }}>{s.title}</h3>
-                  <p className="text-[13px] leading-relaxed" style={{ color: "rgba(196,181,253,0.75)" }}>{s.desc}</p>
+                <div className="flex-1 rounded-xl px-4 py-3" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase mb-1.5" style={{ background: `${s.accent}20`, color: s.accent, border: `1px solid ${s.accent}30` }}>{s.label}</span>
+                  <h3 className="text-lg font-bold leading-snug mb-1" style={{ color: "#F3E8FF" }}>{s.title}</h3>
+                  <p className="text-sm leading-relaxed" style={{ color: "rgba(196,181,253,0.80)" }}>{s.desc}</p>
                 </div>
               </motion.div>
             ))}
