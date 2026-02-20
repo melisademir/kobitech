@@ -105,7 +105,7 @@ const HowItWorksSection = () => (
           Dijitalleşmeye 3 Adımda Başlayın
         </h2>
         <p className="text-sm mt-4 max-w-sm mx-auto" style={{ color: "rgba(196,181,253,0.6)", lineHeight: "1.7" }}>
-          Kurulum yok, teknik bilgi yok. Sadece 3 kısa adım.
+          Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.
         </p>
       </motion.div>
 
