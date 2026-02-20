@@ -108,38 +108,38 @@ function puzzlePath(
 // ─── Partner piece definitions ────────────────────────────────────────────────
 // Layout: 5-column × 4-row grid (450 × 300 px total, excl. GAP)
 //
-// Row 0: tsoft(0-1,0-1), ikas(2-3,0), param(4,0-1)
-// Row 1:                  kredim(2,1), google(3,1)
-// Row 2: kariyer(0,2), aras(1-2,2), univera(3,2), nebim(4,2-3)
+// Row 0: param(0,0-1), tsoft(1-2,0-1), ikas(3-4,0)
+// Row 1:               kredim(3,1),     google(4,1)
+// Row 2: kariyer(0,2), aras(1-2,2),     univera(3,2), nebim(4,2-3)
 // Row 3: mukellef(0,3), ticimax(1-2,3), finrota(3,3)
 //
 const pieces = [
   // ── Row 0 ──────────────────────────────────────────────────────────────────
   {
-    id: "tsoft",   col: 0, row: 0, cs: 2, rs: 2, color: "#1a1a2e",
-    name: "T-SOFT", label: "T-SOFT", logo: logoTsoft,
-    edges: { top: [0,0], right: [1,-1], bottom: [1,-1], left: [0,0] },
-  },
-  {
-    id: "ikas",    col: 2, row: 0, cs: 2, rs: 1, color: "#3B82F6",
-    name: "ikas", label: "ikas", logo: logoIkas,
-    edges: { top: [0,0], right: [-1], bottom: [1,-1], left: [-1] },
-  },
-  {
-    id: "param",   col: 4, row: 0, cs: 1, rs: 2, color: "#4B0082",
+    id: "param",   col: 0, row: 0, cs: 1, rs: 2, color: "#4B0082",
     name: "Param", label: "Param", logo: logoParam,
-    edges: { top: [0], right: [0,0], bottom: [-1], left: [1,1] },
+    edges: { top: [0], right: [-1,1], bottom: [1], left: [0,0] },
+  },
+  {
+    id: "tsoft",   col: 1, row: 0, cs: 2, rs: 2, color: "#1a1a2e",
+    name: "T-SOFT", label: "T-SOFT", logo: logoTsoft,
+    edges: { top: [0,0], right: [1,-1], bottom: [1,-1], left: [1,-1] },
+  },
+  {
+    id: "ikas",    col: 3, row: 0, cs: 2, rs: 1, color: "#3B82F6",
+    name: "ikas", label: "ikas", logo: logoIkas,
+    edges: { top: [0,0], right: [0], bottom: [1,-1], left: [-1] },
   },
   // ── Row 1 ──────────────────────────────────────────────────────────────────
   {
-    id: "kredim",  col: 2, row: 1, cs: 1, rs: 1, color: "#26D07C",
+    id: "kredim",  col: 3, row: 1, cs: 1, rs: 1, color: "#26D07C",
     name: "Kredim", label: "Kredim", logo: logoKredim,
     edges: { top: [-1], right: [1], bottom: [-1], left: [1] },
   },
   {
-    id: "google",  col: 3, row: 1, cs: 1, rs: 1, color: "#4285F4",
+    id: "google",  col: 4, row: 1, cs: 1, rs: 1, color: "#4285F4",
     name: "Google", label: "Google", logo: logoGoogle,
-    edges: { top: [1], right: [-1], bottom: [-1], left: [-1] },
+    edges: { top: [1], right: [0], bottom: [-1], left: [-1] },
   },
   // ── Row 2 ──────────────────────────────────────────────────────────────────
   {
