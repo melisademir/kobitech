@@ -14,6 +14,7 @@ import logoTicimax from "@/assets/logo-ticimax.png";
 import logoGoogle from "@/assets/logo-google.png";
 import logoIkas from "@/assets/logo-ikas.png";
 import logoKariyer from "@/assets/logo-kariyer.png";
+import logoMukellef from "@/assets/logo-mukellef.png";
 
 // ─── Puzzle geometry ──────────────────────────────────────────────────────────
 const CW = 90;   // cell width  px
@@ -184,7 +185,7 @@ const pieces = [
   },
   {
     id: "mukellef",col: 1, row: 3, cs: 1, rs: 1, color: "#1E40AF",
-    name: "Mükellef", label: "Mükellef",
+    name: "Mükellef", label: "Mükellef", logo: logoMukellef,
     edges: { top: [-1], right: [1], bottom: [1], left: [1] },
   },
   {
