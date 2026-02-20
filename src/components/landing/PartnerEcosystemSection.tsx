@@ -781,7 +781,7 @@ const PartnerEcosystemSection = () => {
               animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}>
 
-              <div className="flex-1 flex items-center justify-center" style={{ marginTop: "-60px" }}>
+              <div className="flex-1 flex items-center justify-center" style={{ marginTop: "-92px" }}>
                 <div className="w-full">
                   <PuzzleBoard selectedId={selectedId} onSelect={handleSelect} visible={visible} />
                 </div>
