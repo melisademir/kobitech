@@ -70,16 +70,17 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
         transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
       }}
     >
-      {/* Icon */}
-      <div className="mb-7 w-fit">
+      {/* Icon + Title side by side */}
+      <div className="flex items-center gap-4 mb-4">
         <motion.div
           initial={{ scale: 0.8, rotate: -5 }}
           animate={inView ? { scale: 1, rotate: 0 } : { scale: 0.8, rotate: -5 }}
           transition={{ type: "spring", stiffness: 260, damping: 18, delay: index * 0.1 + 0.2 }}
           whileHover={{ scale: 1.1, rotate: 4, transition: { type: "spring", stiffness: 350, damping: 18 } }}
           style={{
-            width: "72px",
-            height: "72px",
+            flexShrink: 0,
+            width: "56px",
+            height: "56px",
             borderRadius: "50%",
             background: "linear-gradient(135deg, hsl(268,72%,60%), hsl(268,72%,38%))",
             display: "flex",
@@ -88,17 +89,16 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
             boxShadow: "0 8px 20px rgba(109,40,217,0.15)",
           }}
         >
-          <f.icon className="w-8 h-8 text-white" strokeWidth={1.75} />
+          <f.icon className="w-6 h-6 text-white" strokeWidth={1.75} />
         </motion.div>
-      </div>
 
-      {/* Text */}
-      <h3
-        className="text-foreground font-bold mb-4 leading-snug"
-        style={{ fontSize: "22px", letterSpacing: "-0.02em" }}
-      >
-        {f.title}
-      </h3>
+        <h3
+          className="text-foreground font-bold leading-snug"
+          style={{ fontSize: "20px", letterSpacing: "-0.02em" }}
+        >
+          {f.title}
+        </h3>
+      </div>
       <p
         className="text-slate-500 flex-1"
         style={{ fontSize: "16px", lineHeight: "1.7", marginBottom: "28px" }}
@@ -171,28 +171,6 @@ const FeaturesSection = () => (
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="text-center mb-20"
       >
-        <motion.span
-          initial={{ opacity: 0, scale: 0.85 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          style={{
-            display: "inline-block",
-            padding: "10px 24px",
-            borderRadius: "9999px",
-            background: "linear-gradient(135deg, hsl(268,72%,44%), hsl(268,72%,38%))",
-            color: "white",
-            fontSize: "12px",
-            fontWeight: 700,
-            letterSpacing: "0.1em",
-            textTransform: "uppercase",
-            marginBottom: "24px",
-            boxShadow: "0 4px 16px rgba(109,40,217,0.25)",
-          }}
-        >
-          Neden Kobi Dijital?
-        </motion.span>
-
         <h2
           style={{
             fontSize: "clamp(42px, 6vw, 64px)",
