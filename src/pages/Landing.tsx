@@ -8,6 +8,7 @@ import CtaSection from "@/components/landing/CtaSection";
 import FooterSection from "@/components/landing/FooterSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import TrustBand from "@/components/landing/TrustBand";
+import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
 import heroBg from "@/assets/hero-bg.png";
 
 const Landing = () => (
@@ -55,6 +56,11 @@ const Landing = () => (
     {/* 8 — TESTIMONIALS: White — calm close */}
     <div className="bg-white">
       <TestimonialsSection />
+    </div>
+
+    {/* 9 — PARTNER ECOSYSTEM: Light grey — orbital showcase */}
+    <div style={{ background: "#F9FAFB" }}>
+      <PartnerEcosystemSection />
     </div>
 
     <FooterSection />
