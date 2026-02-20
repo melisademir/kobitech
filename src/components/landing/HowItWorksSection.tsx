@@ -102,7 +102,7 @@ const HowItWorksSection = () => (
           className="text-4xl md:text-5xl font-bold text-white"
           style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
         >
-          Dijitalleşmeye 3 Adımda Başlayın
+          Dijitalde Büyümeye Başlayın
         </h2>
         <p className="text-sm mt-4 max-w-sm mx-auto" style={{ color: "rgba(196,181,253,0.6)", lineHeight: "1.7" }}>
           Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.
