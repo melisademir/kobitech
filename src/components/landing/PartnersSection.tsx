@@ -54,7 +54,7 @@ const categories = [
   image: tabStok
 },
 {
-  label: "Global Aç",
+  label: "Globale Açıl",
   description:
   "Yurt dışı pazarlara açılın. İhracat süreçleri, uluslararası ödeme altyapısı ve lojistik çözümleriyle globalleşme yolculuğunuza başlayın.",
   tags: ["Kurumsal Çözümler", "Global Şirket Kurulumu", "Bulut Altyapısı"],
