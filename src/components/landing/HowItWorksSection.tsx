@@ -7,22 +7,22 @@ const steps = [
   {
     num: "01",
     icon: UserPlus,
-    title: "İhtiyaçlarınızı Belirleyin",
-    desc: "İşletmenizin sektörünü ve büyüme önceliklerini tanımlayın.",
+    title: "Büyüme Hedefinizi Belirleyin",
+    desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz? Hedefinizi belirleyin.",
     accent: "#A78BFA",
   },
   {
     num: "02",
     icon: Building2,
-    title: "Çözümleri Keşfedin ve Değerlendirin",
-    desc: "Size uygun sağlayıcıları inceleyin, sorularınızı iletin ve teklif alın.",
+    title: "Çözümleri Karşılaştırın ve Teklif Alın",
+    desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.",
     accent: "#8B5CF6",
   },
   {
     num: "03",
     icon: Rocket,
     title: "Dijitalde Büyümenizi Başlatın",
-    desc: "En uygun çözümü seçin ve operasyonel dönüşüm sürecinizi başlatın.",
+    desc: "Size özel çözümleri seçin ve büyümeye başlayın.",
     accent: "#7C3AED",
   },
 ];
