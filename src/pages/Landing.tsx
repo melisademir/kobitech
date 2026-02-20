@@ -12,47 +12,48 @@ import heroBg from "@/assets/hero-bg.png";
 
 const Landing = () => (
   <div className="min-h-screen bg-background">
-    {/* Unified bg wrapper for nav + hero — pure white */}
-    <div className="relative bg-white">
-      <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-60" />
+    {/* 1 — HERO: Deep navy / dark atmosphere */}
+    <div className="relative" style={{ background: "hsl(258, 45%, 10%)" }}>
+      <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-20 mix-blend-luminosity" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-[hsl(258,45%,10%)] pointer-events-none" />
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
       </div>
     </div>
 
-    {/* Section 2 — very light slate, trust band */}
-    <div className="bg-[#F9FAFB]">
+    {/* 2 — STATS: Pure white, clean contrast after dark hero */}
+    <div className="bg-white">
       <StatsSection />
     </div>
 
-    {/* Section 3 — Grayscale trust band, pure white */}
-    <div className="bg-white">
+    {/* 3 — TRUST BAND: White, minimal grayscale logos */}
+    <div className="bg-white border-t border-slate-100">
       <TrustBand />
     </div>
 
-    {/* Section 4 — Partners/Solutions, lightest lila */}
-    <div className="bg-[#F5F3FF]">
+    {/* 4 — PARTNERS / SOLUTIONS: Very light lila atmosphere */}
+    <div style={{ background: "hsl(252, 60%, 97%)" }}>
       <PartnersSection />
     </div>
 
-    {/* Section 5 — Features/Hub, white */}
+    {/* 5 — FEATURES / HUB: Pure white — high contrast cards */}
     <div className="bg-white">
       <FeaturesSection />
     </div>
 
-    {/* Section 6 — How it works, light slate */}
-    <div className="bg-[#F9FAFB]">
+    {/* 6 — HOW IT WORKS: Deep navy again — creates rhythm contrast */}
+    <div style={{ background: "hsl(258, 45%, 10%)" }}>
       <HowItWorksSection />
     </div>
 
-    {/* Section 7 — CTA, white */}
-    <div className="bg-white">
+    {/* 7 — CTA: Soft lila */}
+    <div style={{ background: "hsl(252, 60%, 97%)" }}>
       <CtaSection />
     </div>
 
-    {/* Section 8 — Testimonials, lightest lila */}
-    <div className="bg-[#F5F3FF]">
+    {/* 8 — TESTIMONIALS: White — calm close */}
+    <div className="bg-white">
       <TestimonialsSection />
     </div>
 
