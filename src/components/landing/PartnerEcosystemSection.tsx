@@ -108,12 +108,10 @@ edges: {top: number[];right: number[];bottom: number[];left: number[];})
 // ─── Partner piece definitions ────────────────────────────────────────────────
 // Layout: 5-column × 4-row grid
 //
-// BIG pieces: Param(2×2), Univera(2×2), Nebim(1×2), Kredim(2×1), Finrota(2×1)
-//
-// Row 0: param(col0,cs2,rs2), ikas(col2,cs1),   kariyer(col3,cs1), google(col4,cs1)
-// Row 1: [param cont],         tsoft(col2,cs1),  mukellef(col3,cs1), aras(col4,cs1)
-// Row 2: kredim(col0,cs2,rs1), univera(col2,cs2,rs2),               nebim(col4,cs1,rs2)
-// Row 3: finrota(col0,cs2,rs1),[univera cont],                       [nebim cont]
+// Row 0: param(col0,cs2,rs2), mukellef(col2,cs1,rs2), kariyer(col3,cs1,rs2), aras(col4,cs1,rs2)
+// Row 1: [param cont],        [mukellef cont],         [kariyer cont],        [aras cont]
+// Row 2: kredim(col0,cs2,rs1), univera(col2,cs2,rs2),                         nebim(col4,cs1,rs2)
+// Row 3: finrota(col0,cs2,rs1),[univera cont],                                [nebim cont]
 //
 const pieces = [
 // ── Param — BIG 2×2 ────────────────────────────────────────────────────────
@@ -122,61 +120,47 @@ const pieces = [
   name: "Param", label: "Param", logo: logoParam,
   edges: { top: [0, 0], right: [1, -1], bottom: [1, -1], left: [0, 0] }
 },
-// ── Row 0 (small) ──────────────────────────────────────────────────────────
+// ── Mükellef — BIG 1×2 ─────────────────────────────────────────────────────
 {
-  id: "ikas", col: 2, row: 0, cs: 1, rs: 1, color: "#3B82F6",
-  name: "ikas", label: "ikas", logo: logoIkas,
-  edges: { top: [0], right: [1], bottom: [-1], left: [-1] }
-},
-{
-  id: "kariyer", col: 3, row: 0, cs: 1, rs: 1, color: "#EA580C",
-  name: "Kariyer.net", label: "Kariyer", logo: logoKariyer,
-  edges: { top: [0], right: [-1], bottom: [1], left: [-1] }
-},
-{
-  id: "google", col: 4, row: 0, cs: 1, rs: 1, color: "#4285F4",
-  name: "Google", label: "Google", logo: logoGoogle,
-  edges: { top: [0], right: [0], bottom: [-1], left: [1] }
-},
-// ── Row 1 (small) ──────────────────────────────────────────────────────────
-{
-  id: "tsoft", col: 2, row: 1, cs: 1, rs: 1, color: "#1a1a2e",
-  name: "T-SOFT", label: "T-SOFT", logo: logoTsoft,
-  edges: { top: [1], right: [1], bottom: [1], left: [1] }
-},
-{
-  id: "mukellef", col: 3, row: 1, cs: 1, rs: 1, color: "#1E40AF",
+  id: "mukellef", col: 2, row: 0, cs: 1, rs: 2, color: "#1E40AF",
   name: "Mükellef", label: "Mükellef", logo: logoMukellef,
-  edges: { top: [-1], right: [-1], bottom: [-1], left: [-1] }
+  edges: { top: [0], right: [1, -1], bottom: [-1], left: [-1, 1] }
 },
+// ── Kariyer — BIG 1×2 ──────────────────────────────────────────────────────
 {
-  id: "aras", col: 4, row: 1, cs: 1, rs: 1, color: "#10B981",
-  name: "Aras", label: "Aras", logo: logoAras,
-  edges: { top: [1], right: [0], bottom: [1], left: [1] }
+  id: "kariyer", col: 3, row: 0, cs: 1, rs: 2, color: "#EA580C",
+  name: "Kariyer.net", label: "Kariyer", logo: logoKariyer,
+  edges: { top: [0], right: [1, -1], bottom: [1], left: [-1, 1] }
 },
-// ── Kredim — BIG 2×1 ───────────────────────────────────────────────────────
+// ── Aras — BIG 1×2 ─────────────────────────────────────────────────────────
+{
+  id: "aras", col: 4, row: 0, cs: 1, rs: 2, color: "#10B981",
+  name: "Aras", label: "Aras", logo: logoAras,
+  edges: { top: [0], right: [0, 0], bottom: [-1], left: [-1, 1] }
+},
+// ── Kredim — 2×1 ───────────────────────────────────────────────────────────
 {
   id: "kredim", col: 0, row: 2, cs: 2, rs: 1, color: "#26D07C",
   name: "Kredim", label: "Kredim", logo: logoKredim,
-  edges: { top: [-1, 1], right: [-1], bottom: [1, -1], left: [0, 0] }
+  edges: { top: [-1, 1], right: [1], bottom: [-1, 1], left: [0] }
 },
 // ── Univera — BIG 2×2 ──────────────────────────────────────────────────────
 {
   id: "univera", col: 2, row: 2, cs: 2, rs: 2, color: "#4D008C",
   name: "Univera", label: "Univera", logo: logoUnivera,
-  edges: { top: [-1, 1], right: [1, -1], bottom: [-1, 1], left: [1, -1] }
+  edges: { top: [1, -1], right: [1, -1], bottom: [0, 0], left: [-1, 1] }
 },
 // ── Nebim — BIG 1×2 ────────────────────────────────────────────────────────
 {
   id: "nebim", col: 4, row: 2, cs: 1, rs: 2, color: "#00A2E1",
   name: "Nebim", label: "Nebim", logo: logoNebim,
-  edges: { top: [-1], right: [0, 0], bottom: [0], left: [-1, 1] }
+  edges: { top: [1], right: [0, 0], bottom: [0], left: [-1, 1] }
 },
-// ── Finrota — BIG 2×1 ──────────────────────────────────────────────────────
+// ── Finrota — 2×1 ──────────────────────────────────────────────────────────
 {
   id: "finrota", col: 0, row: 3, cs: 2, rs: 1, color: "#FF671D",
   name: "Finrota", label: "Finrota", logo: logoFinrotaNew,
-  edges: { top: [-1, 1], right: [1], bottom: [0, 0], left: [0, 0] }
+  edges: { top: [1, -1], right: [-1], bottom: [0, 0], left: [0] }
 }];
 
 
