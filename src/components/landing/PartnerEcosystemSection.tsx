@@ -346,16 +346,20 @@ function LogoText({ piece, cx, cy }: { piece: typeof pieces[0]; cx: number; cy: 
   const px = cx - pieceW / 2;
   const py = cy - pieceH / 2;
 
-  // If piece has a logo image → fill the entire piece area, clipped to puzzle shape
+  // If piece has a logo image → render based on logo type
   if ((piece as any).logo) {
+    // param: square icon with colored bg → fill entire piece with slice
+    // tsoft/finrota: wide landscape logos → fit inside with padding using meet
+    const isSquare = piece.id === "param";
+    const pad = isSquare ? 0 : 10; // padding for wide logos
     return (
       <image
         href={(piece as any).logo}
-        x={px}
-        y={py}
-        width={pieceW}
-        height={pieceH}
-        preserveAspectRatio="xMidYMid slice"
+        x={px + pad}
+        y={py + pad}
+        width={pieceW - pad * 2}
+        height={pieceH - pad * 2}
+        preserveAspectRatio={isSquare ? "xMidYMid slice" : "xMidYMid meet"}
         clipPath={`url(#clip-${piece.id})`}
         style={{ pointerEvents: "none" }}
       />
