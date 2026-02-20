@@ -291,39 +291,6 @@ const PartnersSection = () => {
                       />
                       {/* Overlay gradient for readability */}
                       <div className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(to top, ${cat.accent}44 0%, transparent 60%)` }} />
-                      {/* Corner floating badge */}
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.28, type: "spring", stiffness: 280 }}
-                        className="absolute top-4 right-4 rounded-xl px-3 py-2 z-10"
-                        style={{
-                          background: "rgba(255,255,255,0.92)",
-                          backdropFilter: "blur(12px)",
-                          border: `1px solid ${cat.accent}20`,
-                          boxShadow: `0 4px 16px -4px ${cat.accent}22`,
-                        }}
-                      >
-                        <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">
-                          Çözüm Sayısı
-                        </p>
-                        <p className="text-sm font-black" style={{ color: cat.accent }}>50+</p>
-                      </motion.div>
-                      {/* Bottom tag pill */}
-                      <motion.div
-                        initial={{ opacity: 0, y: 8 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ delay: 0.35 }}
-                        className="absolute bottom-4 left-4 px-4 py-1.5 rounded-full text-xs font-bold z-10"
-                        style={{
-                          background: "rgba(255,255,255,0.92)",
-                          backdropFilter: "blur(12px)",
-                          color: cat.accent,
-                          border: `1px solid ${cat.accent}25`,
-                        }}
-                      >
-                        {cat.tags[0]}
-                      </motion.div>
                     </>
                   ) : (
                     /* Icon illustration fallback */
