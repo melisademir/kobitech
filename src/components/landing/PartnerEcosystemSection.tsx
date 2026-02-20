@@ -9,6 +9,11 @@ import logoNebim from "@/assets/logo-nebim.svg";
 import logoUnivera from "@/assets/logo-univera.svg";
 import logoFinrotaNew from "@/assets/logo-finrota-new.svg";
 import logoKredim from "@/assets/logo-kredim.svg";
+import logoAras from "@/assets/logo-aras.png";
+import logoTicimax from "@/assets/logo-ticimax.png";
+import logoGoogle from "@/assets/logo-google.png";
+import logoIkas from "@/assets/logo-ikas.png";
+import logoKariyer from "@/assets/logo-kariyer.png";
 
 // ─── Puzzle geometry ──────────────────────────────────────────────────────────
 const CW = 90;   // cell width  px
@@ -121,7 +126,7 @@ const pieces = [
   },
   {
     id: "ikas",    col: 3, row: 0, cs: 2, rs: 1, color: "#3B82F6",
-    name: "ikas", label: "ikas",
+    name: "ikas", label: "ikas", logo: logoIkas,
     edges: { top: [0,0], right: [-1], bottom: [1,-1], left: [1] },
   },
   {
@@ -153,12 +158,12 @@ const pieces = [
   },
   {
     id: "aras",    col: 1, row: 2, cs: 2, rs: 1, color: "#10B981",
-    name: "Aras", label: "Aras",
+    name: "Aras", label: "Aras", logo: logoAras,
     edges: { top: [1,-1], right: [-1], bottom: [1,-1], left: [-1] },
   },
   {
     id: "google",  col: 3, row: 2, cs: 1, rs: 1, color: "#4285F4",
-    name: "Google", label: "Google",
+    name: "Google", label: "Google", logo: logoGoogle,
     edges: { top: [1], right: [-1], bottom: [1], left: [1] },
   },
   {
@@ -174,7 +179,7 @@ const pieces = [
   // ── Row 3 ──────────────────────────────────────────────────────────────────
   {
     id: "kariyer", col: 0, row: 3, cs: 1, rs: 1, color: "#EA580C",
-    name: "Kariyer.net", label: "KR",
+    name: "Kariyer.net", label: "KR", logo: logoKariyer,
     edges: { top: [1], right: [-1], bottom: [-1], left: [0] },
   },
   {
@@ -184,7 +189,7 @@ const pieces = [
   },
   {
     id: "ticimax", col: 2, row: 3, cs: 2, rs: 1, color: "#0EA5E9",
-    name: "Ticimax", label: "Ticimax",
+    name: "Ticimax", label: "Ticimax", logo: logoTicimax,
     edges: { top: [1,-1], right: [1], bottom: [-1,1], left: [-1] },
   },
   {
