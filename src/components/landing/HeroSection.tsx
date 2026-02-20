@@ -161,10 +161,10 @@ const HeroSection = () => {
           {/* Stat badges */}
           <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 mt-8">
             {[
-              { label: "Aktif KOBİ", value: "10.000+" },
+              { label: "Aktif KOBİ", value: "5.000+" },
               { label: "Dijital Çözüm", value: "50+" },
-              { label: "Farklı Sektör", value: "48" },
-              { label: "Partner", value: "30+" },
+              { label: "Farklı Sektör", value: "20+" },
+              { label: "Çözüm Ortağı", value: "30+" },
             ].map((s) => (
               <div
                 key={s.label}
