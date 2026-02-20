@@ -346,21 +346,16 @@ function LogoText({ piece, cx, cy }: { piece: typeof pieces[0]; cx: number; cy: 
   const px = cx - pieceW / 2;
   const py = cy - pieceH / 2;
 
-  // If piece has a logo image → render it as SVG <image>
+  // If piece has a logo image → fill the entire piece area, clipped to puzzle shape
   if ((piece as any).logo) {
-    // param has its own colored square bg → show logo filling piece
-    // tsoft/finrota have light bg logos → show centered at ~60% width
-    const isSquareLogo = piece.id === "param";
-    const logoW = isSquareLogo ? Math.min(pieceW, pieceH) * 0.72 : pieceW * 0.60;
-    const logoH = isSquareLogo ? logoW : pieceH * 0.42;
     return (
       <image
         href={(piece as any).logo}
-        x={cx - logoW / 2}
-        y={cy - logoH / 2}
-        width={logoW}
-        height={logoH}
-        preserveAspectRatio="xMidYMid meet"
+        x={px}
+        y={py}
+        width={pieceW}
+        height={pieceH}
+        preserveAspectRatio="xMidYMid slice"
         clipPath={`url(#clip-${piece.id})`}
         style={{ pointerEvents: "none" }}
       />
