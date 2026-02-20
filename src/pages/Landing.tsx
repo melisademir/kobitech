@@ -28,39 +28,39 @@ const Landing = () => (
       <StatsSection />
     </div>
 
-    {/* 3 — TRUST BAND: White, minimal grayscale logos */}
-    <div className="bg-white border-t border-slate-100">
-      <TrustBand />
-    </div>
-
-    {/* 4 — PARTNERS / SOLUTIONS: Very light lila atmosphere */}
+    {/* 3 — PARTNERS / SOLUTIONS: Very light lila atmosphere */}
     <div style={{ background: "hsl(252, 60%, 97%)" }}>
       <PartnersSection />
     </div>
 
-    {/* 5 — PARTNER ECOSYSTEM: Light grey — puzzle showcase */}
+    {/* 4 — PARTNER ECOSYSTEM: Light grey — puzzle showcase */}
     <div style={{ background: "#F9FAFB" }}>
       <PartnerEcosystemSection />
     </div>
 
-    {/* 6 — FEATURES / HUB: Pure white — high contrast cards */}
+    {/* 5 — FEATURES / HUB: Pure white — high contrast cards */}
     <div className="bg-white">
       <FeaturesSection />
     </div>
 
-    {/* 7 — HOW IT WORKS: Deep navy again — creates rhythm contrast */}
+    {/* 6 — HOW IT WORKS: Deep navy again — creates rhythm contrast */}
     <div style={{ background: "hsl(258, 45%, 10%)" }}>
       <HowItWorksSection />
     </div>
 
-    {/* 8 — CTA: Soft lila */}
+    {/* 7 — CTA: Soft lila */}
     <div style={{ background: "hsl(252, 60%, 97%)" }}>
       <CtaSection />
     </div>
 
-    {/* 9 — TESTIMONIALS: White — calm close */}
+    {/* 8 — TESTIMONIALS: White — calm close */}
     <div className="bg-white">
       <TestimonialsSection />
+    </div>
+
+    {/* 9 — TRUST BAND: Partner logos before footer */}
+    <div className="bg-white border-t border-slate-100">
+      <TrustBand />
     </div>
 
     <FooterSection />
