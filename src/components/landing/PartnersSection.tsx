@@ -11,6 +11,13 @@ import {
   Globe2,
   Users,
 } from "lucide-react";
+import tabEticaret from "@/assets/tab-eticaret-new.png";
+import tabOdeme from "@/assets/tab-odeme-new.png";
+import tabPara from "@/assets/tab-para-new.png";
+import tabStok from "@/assets/tab-stok-new.png";
+import tabGlobal from "@/assets/tab-global-new.png";
+import tabEkip from "@/assets/tab-ekip-new.png";
+
 
 const categories = [
   {
@@ -19,6 +26,7 @@ const categories = [
       "Devlet teşvikleri, hibe programları ve vergi avantajlarından yararlanarak maliyetlerinizi düşürün. Size uygun destekleri keşfedin ve başvuru süreçlerinizi kolaylaştırın.",
     tags: ["Hibe Programları", "Vergi Avantajları", "Başvuru Desteği"],
     icon: BadgePercent,
+    image: null,
     accent: "#7C3AED",
     accentBg: "rgba(124,58,237,0.08)",
     decorColor: "#A78BFA",
@@ -30,6 +38,7 @@ const categories = [
       "Online satış kanallarınızı oluşturun, e-ticaret altyapınızı kurun ve dijital pazarlama stratejileriyle müşteri kitlenizi genişletin.",
     tags: ["E-Ticaret Altyapısı", "Çoklu Kanal Satış", "Mağaza Çözümleri"],
     icon: ShoppingCart,
+    image: tabEticaret,
     accent: "#2563EB",
     accentBg: "rgba(37,99,235,0.08)",
     decorColor: "#93C5FD",
@@ -41,6 +50,7 @@ const categories = [
       "Fiziksel ve online ödeme çözümleriyle tahsilat süreçlerinizi hızlandırın. POS, sanal POS ve mobil ödeme seçenekleriyle her kanaldan ödeme alın.",
     tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
     icon: CreditCard,
+    image: tabOdeme,
     accent: "#059669",
     accentBg: "rgba(5,150,105,0.08)",
     decorColor: "#6EE7B7",
@@ -52,6 +62,7 @@ const categories = [
       "Nakit akışınızı optimize edin, muhasebe süreçlerinizi otomatikleştirin ve finansal raporlarınızla işletmenizin mali sağlığını takip edin.",
     tags: ["Muhasebe Çözümleri", "ERP Yazılımı", "Fatura Yönetimi"],
     icon: Wallet,
+    image: tabPara,
     accent: "#D97706",
     accentBg: "rgba(217,119,6,0.08)",
     decorColor: "#FCD34D",
@@ -63,6 +74,7 @@ const categories = [
       "Üretim süreçlerinizi dijitalleştirin, verimlilik analizi yapın ve operasyonel maliyetlerinizi minimize edin.",
     tags: ["Üretim Takibi", "Verimlilik Analizi", "Otomasyon"],
     icon: Factory,
+    image: null,
     accent: "#DC2626",
     accentBg: "rgba(220,38,38,0.08)",
     decorColor: "#FCA5A5",
@@ -74,6 +86,7 @@ const categories = [
       "Stok ve depo yönetiminizi dijitalleştirin. Min-max takibi, FIFO/LIFO ve tedarik zinciri optimizasyonu ile fire oranlarınızı düşürün.",
     tags: ["Kargo & Lojistik", "Depo Yönetimi", "Sipariş Takibi"],
     icon: Package,
+    image: tabStok,
     accent: "#0891B2",
     accentBg: "rgba(8,145,178,0.08)",
     decorColor: "#67E8F9",
@@ -85,6 +98,7 @@ const categories = [
       "Yurt dışı pazarlara açılın. İhracat süreçleri, uluslararası ödeme altyapısı ve lojistik çözümleriyle globalleşme yolculuğunuza başlayın.",
     tags: ["Kurumsal Çözümler", "Global Şirket Kurulumu", "Bulut Altyapısı"],
     icon: Globe2,
+    image: tabGlobal,
     accent: "#7C3AED",
     accentBg: "rgba(124,58,237,0.08)",
     decorColor: "#C4B5FD",
@@ -96,12 +110,14 @@ const categories = [
       "İK yönetimi, işe alım, eğitim programları ve performans takip sistemleriyle ekibinizi büyütün ve güçlendirin.",
     tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"],
     icon: Users,
+    image: tabEkip,
     accent: "#DB2777",
     accentBg: "rgba(219,39,119,0.08)",
     decorColor: "#F9A8D4",
     gradient: "from-pink-500/20 via-rose-400/10 to-fuchsia-300/10",
   },
 ];
+
 
 /* Decorative orbiting circles for visual depth */
 const OrbitRings = ({ color }: { color: string }) => (
@@ -258,92 +274,113 @@ const PartnersSection = () => {
                     zIndex: 1,
                   }}
                 >
-                  {/* Gradient fill */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${cat.gradient}`} />
-
-                  {/* Orbit rings */}
-                  <OrbitRings color={cat.decorColor} />
-
-                  {/* Center icon */}
-                  <motion.div
-                    key={activeIndex}
-                    initial={{ scale: 0.6, opacity: 0, rotate: -15 }}
-                    animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                    transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.05 }}
-                    className="relative z-10 flex flex-col items-center gap-5"
-                  >
-                    {/* Icon container */}
-                    <div
-                      className="w-28 h-28 rounded-3xl flex items-center justify-center"
-                      style={{
-                        background: "rgba(255,255,255,0.9)",
-                        border: `1.5px solid ${cat.accent}30`,
-                        boxShadow: `0 8px 40px -8px ${cat.accent}55, 0 0 0 1px rgba(255,255,255,0.9) inset`,
-                        backdropFilter: "blur(12px)",
-                      }}
-                    >
-                      <Icon
-                        strokeWidth={1.4}
-                        style={{ color: cat.accent, width: 52, height: 52 }}
+                  {cat.image ? (
+                    /* Photo illustration */
+                    <>
+                      <motion.img
+                        key={activeIndex}
+                        src={cat.image}
+                        alt={cat.label}
+                        initial={{ opacity: 0, scale: 1.05 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                        className="w-full h-full object-cover"
+                        style={{ minHeight: "280px", maxHeight: "340px" }}
                       />
-                    </div>
-
-                    {/* Label pill */}
-                    <motion.div
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.18 }}
-                      className="px-5 py-2 rounded-full text-xs font-bold tracking-wide"
-                      style={{
-                        background: cat.accentBg,
-                        color: cat.accent,
-                        border: `1px solid ${cat.accent}25`,
-                      }}
-                    >
-                      {cat.tags[0]}
-                    </motion.div>
-                  </motion.div>
-
-                  {/* Corner floating mini stats */}
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.25, type: "spring", stiffness: 280 }}
-                    className="absolute top-4 right-4 rounded-xl px-3 py-2 z-10"
-                    style={{
-                      background: "rgba(255,255,255,0.88)",
-                      backdropFilter: "blur(12px)",
-                      border: `1px solid ${cat.accent}20`,
-                      boxShadow: `0 4px 16px -4px ${cat.accent}22`,
-                    }}
-                  >
-                    <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">
-                      Çözüm Sayısı
-                    </p>
-                    <p className="text-sm font-black" style={{ color: cat.accent }}>
-                      50+
-                    </p>
-                  </motion.div>
-
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ delay: 0.32, type: "spring", stiffness: 280 }}
-                    className="absolute bottom-4 left-4 rounded-xl px-3 py-2 z-10"
-                    style={{
-                      background: "rgba(255,255,255,0.88)",
-                      backdropFilter: "blur(12px)",
-                      border: `1px solid ${cat.accent}20`,
-                      boxShadow: `0 4px 16px -4px ${cat.accent}22`,
-                    }}
-                  >
-                    <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">
-                      Aktif Partner
-                    </p>
-                    <p className="text-sm font-black" style={{ color: cat.accent }}>
-                      {cat.tags[1]}
-                    </p>
-                  </motion.div>
+                      {/* Overlay gradient for readability */}
+                      <div className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(to top, ${cat.accent}44 0%, transparent 60%)` }} />
+                      {/* Corner floating badge */}
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.28, type: "spring", stiffness: 280 }}
+                        className="absolute top-4 right-4 rounded-xl px-3 py-2 z-10"
+                        style={{
+                          background: "rgba(255,255,255,0.92)",
+                          backdropFilter: "blur(12px)",
+                          border: `1px solid ${cat.accent}20`,
+                          boxShadow: `0 4px 16px -4px ${cat.accent}22`,
+                        }}
+                      >
+                        <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">
+                          Çözüm Sayısı
+                        </p>
+                        <p className="text-sm font-black" style={{ color: cat.accent }}>50+</p>
+                      </motion.div>
+                      {/* Bottom tag pill */}
+                      <motion.div
+                        initial={{ opacity: 0, y: 8 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.35 }}
+                        className="absolute bottom-4 left-4 px-4 py-1.5 rounded-full text-xs font-bold z-10"
+                        style={{
+                          background: "rgba(255,255,255,0.92)",
+                          backdropFilter: "blur(12px)",
+                          color: cat.accent,
+                          border: `1px solid ${cat.accent}25`,
+                        }}
+                      >
+                        {cat.tags[0]}
+                      </motion.div>
+                    </>
+                  ) : (
+                    /* Icon illustration fallback */
+                    <>
+                      {/* Gradient fill */}
+                      <div className={`absolute inset-0 bg-gradient-to-br ${cat.gradient}`} />
+                      {/* Orbit rings */}
+                      <OrbitRings color={cat.decorColor} />
+                      {/* Center icon */}
+                      <motion.div
+                        key={activeIndex}
+                        initial={{ scale: 0.6, opacity: 0, rotate: -15 }}
+                        animate={{ scale: 1, opacity: 1, rotate: 0 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.05 }}
+                        className="relative z-10 flex flex-col items-center gap-5"
+                      >
+                        <div
+                          className="w-28 h-28 rounded-3xl flex items-center justify-center"
+                          style={{
+                            background: "rgba(255,255,255,0.9)",
+                            border: `1.5px solid ${cat.accent}30`,
+                            boxShadow: `0 8px 40px -8px ${cat.accent}55, 0 0 0 1px rgba(255,255,255,0.9) inset`,
+                            backdropFilter: "blur(12px)",
+                          }}
+                        >
+                          <Icon strokeWidth={1.4} style={{ color: cat.accent, width: 52, height: 52 }} />
+                        </div>
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          transition={{ delay: 0.18 }}
+                          className="px-5 py-2 rounded-full text-xs font-bold tracking-wide"
+                          style={{ background: cat.accentBg, color: cat.accent, border: `1px solid ${cat.accent}25` }}
+                        >
+                          {cat.tags[0]}
+                        </motion.div>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.25, type: "spring", stiffness: 280 }}
+                        className="absolute top-4 right-4 rounded-xl px-3 py-2 z-10"
+                        style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(12px)", border: `1px solid ${cat.accent}20`, boxShadow: `0 4px 16px -4px ${cat.accent}22` }}
+                      >
+                        <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">Çözüm Sayısı</p>
+                        <p className="text-sm font-black" style={{ color: cat.accent }}>50+</p>
+                      </motion.div>
+                      <motion.div
+                        initial={{ opacity: 0, scale: 0.8 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: 0.32, type: "spring", stiffness: 280 }}
+                        className="absolute bottom-4 left-4 rounded-xl px-3 py-2 z-10"
+                        style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(12px)", border: `1px solid ${cat.accent}20`, boxShadow: `0 4px 16px -4px ${cat.accent}22` }}
+                      >
+                        <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">Aktif Partner</p>
+                        <p className="text-sm font-black" style={{ color: cat.accent }}>{cat.tags[1]}</p>
+                      </motion.div>
+                    </>
+                  )}
                 </div>
               </motion.div>
             </motion.div>
