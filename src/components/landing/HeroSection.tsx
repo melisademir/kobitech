@@ -48,11 +48,11 @@ const HeroSection = () => {
             variants={itemVariants}
             className="relative px-8 py-10 md:px-14 md:py-14 mb-6"
             style={{
-              background: "radial-gradient(ellipse 90% 90% at 50% 50%, rgba(253,251,247,0.68) 0%, rgba(253,251,247,0.52) 40%, rgba(253,251,247,0.22) 70%, rgba(253,251,247,0) 100%)",
-              backdropFilter: "blur(16px)",
-              WebkitBackdropFilter: "blur(16px)",
-              WebkitMaskImage: "radial-gradient(ellipse 90% 90% at 50% 50%, black 0%, black 25%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,0.15) 80%, transparent 100%)",
-              maskImage: "radial-gradient(ellipse 90% 90% at 50% 50%, black 0%, black 25%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0.5) 62%, rgba(0,0,0,0.15) 80%, transparent 100%)",
+              background: "radial-gradient(circle 480px at 50% 50%, rgba(248,245,255,0.85) 0%, rgba(248,245,255,0.80) 38%, rgba(248,245,255,0.38) 65%, rgba(248,245,255,0) 100%)",
+              backdropFilter: "blur(22px)",
+              WebkitBackdropFilter: "blur(22px)",
+              WebkitMaskImage: "radial-gradient(circle 480px at 50% 50%, black 0%, black 40%, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.10) 85%, transparent 100%)",
+              maskImage: "radial-gradient(circle 480px at 50% 50%, black 0%, black 40%, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.10) 85%, transparent 100%)",
             }}
           >
             {/* Badge */}
