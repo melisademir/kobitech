@@ -1,10 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import {
-  ArrowRight, Check, ShoppingCart, CreditCard, Globe,
-  BarChart3, Package, Users, Building2, Star,
-} from "lucide-react";
+import { ArrowRight, Check, Star } from "lucide-react";
 
 // ─── Puzzle geometry ──────────────────────────────────────────────────────────
 const CW = 90;   // cell width  px
@@ -251,16 +248,6 @@ const partnerDetails: Record<string, {
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
-const defaultCategories = [
-  { icon: ShoppingCart, label: "E-ticaret" },
-  { icon: CreditCard,   label: "Ödeme" },
-  { icon: BarChart3,    label: "Muhasebe" },
-  { icon: Package,      label: "Stok" },
-  { icon: Globe,        label: "Global" },
-  { icon: Building2,    label: "Finansman" },
-  { icon: Users,        label: "İK" },
-  { icon: Building2,    label: "ERP" },
-];
 
 const StarRow = ({ name, stars, pct }: { name: string; stars: number; pct: number }) => (
   <div className="flex items-center gap-2">
@@ -273,39 +260,6 @@ const StarRow = ({ name, stars, pct }: { name: string; stars: number; pct: numbe
       ))}
     </div>
     <span className="text-xs font-bold text-muted-foreground">%{pct}</span>
-  </div>
-);
-
-// ─── Default right panel ───────────────────────────────────────────────────────
-const DefaultPanel = () => (
-  <div className="flex flex-col h-full justify-center">
-    <span className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
-      style={{ background: "hsl(268,72%,92%)", color: "hsl(268,72%,38%)" }}>
-      DİJİTAL EKOSİSTEM
-    </span>
-    <h3 className="font-black text-foreground mb-3"
-      style={{ fontSize: "clamp(1.9rem,3vw,2.5rem)", lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-      50+ Çözüm Ortağımız
-    </h3>
-    <p className="text-muted-foreground mb-8" style={{ fontSize: "1rem", lineHeight: 1.75 }}>
-      Sol taraftaki puzzle parçalarından birini seçin, size nasıl değer kattıklarını keşfedin.
-    </p>
-    <div className="grid grid-cols-2 gap-3 mb-8">
-      {defaultCategories.map(({ icon: Icon, label }) => (
-        <div key={label} className="flex items-center gap-2.5 px-4 py-3 rounded-xl"
-          style={{ background: "hsl(268,72%,97%)", border: "1px solid hsl(268,72%,90%)" }}>
-          <div className="w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0"
-            style={{ background: "hsl(268,72%,92%)" }}>
-            <Icon className="w-3.5 h-3.5" style={{ color: "hsl(268,72%,40%)" }} />
-          </div>
-          <span className="text-sm font-semibold text-foreground">{label}</span>
-        </div>
-      ))}
-    </div>
-    <div className="flex items-center gap-2 text-muted-foreground text-sm">
-      <span className="text-base">←</span>
-      <span>Bir puzzle parçasına tıklayın</span>
-    </div>
   </div>
 );
 
@@ -378,10 +332,6 @@ const PartnerPanel = ({ piece, onDeselect }: {
           {piece.name} Çözümünü İncele <ArrowRight className="w-4 h-4" />
         </motion.button>
       </Link>
-      <button onClick={onDeselect}
-        className="mt-3 text-xs text-muted-foreground hover:text-foreground transition-colors font-medium">
-        ← Başka partner seç
-      </button>
     </div>
   );
 };
@@ -656,22 +606,13 @@ const PartnerEcosystemSection = () => {
   const [visible,    setVisible]    = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView     = useInView(sectionRef, { once: true, amount: 0.06 });
-  const timerRef   = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  useEffect(() => {
-    if (selectedId !== null) {
-      if (timerRef.current) clearTimeout(timerRef.current);
-      timerRef.current = setTimeout(() => setSelectedId(null), 12000);
-    }
-    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
-  }, [selectedId]);
 
   useEffect(() => {
     if (inView) setTimeout(() => setVisible(true), 80);
   }, [inView]);
 
   const handleSelect = (id: string) => {
-    setSelectedId((prev) => (prev === id ? null : id));
+    setSelectedId(id);
   };
 
   const selectedPiece = selectedId ? pieces.find((p) => p.id === selectedId) ?? null : null;
@@ -770,45 +711,18 @@ const PartnerEcosystemSection = () => {
               transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
             >
               <AnimatePresence mode="wait">
-                {selectedPiece ? (
+                {selectedPiece && (
                   <motion.div key={selectedPiece.id}
                     initial={{ opacity: 0, scale: 0.96, y: 10 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.96, y: -10 }}
                     transition={{ duration: 0.28, ease: "easeInOut" }}
                     className="h-full">
-                    <PartnerPanel piece={selectedPiece} onDeselect={() => setSelectedId(null)} />
-                  </motion.div>
-                ) : (
-                  <motion.div key="default"
-                    initial={{ opacity: 0, scale: 0.96, y: 10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.96, y: -10 }}
-                    transition={{ duration: 0.28, ease: "easeInOut" }}
-                    className="h-full">
-                    <DefaultPanel />
+                    <PartnerPanel piece={selectedPiece} onDeselect={() => setSelectedId("param")} />
                   </motion.div>
                 )}
               </AnimatePresence>
             </motion.div>
-
-            <AnimatePresence>
-              {selectedId && (
-                <motion.p
-                  initial={{ opacity: 0, y: 5 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: 5 }}
-                  transition={{ duration: 0.25 }}
-                  className="mt-4 text-xs text-muted-foreground font-medium flex items-center gap-1.5 px-1">
-                  <span className="inline-block w-2 h-2 rounded-full flex-shrink-0"
-                    style={{ background: pieces.find(p => p.id === selectedId)?.color }} />
-                  <strong style={{ color: pieces.find(p => p.id === selectedId)?.color }}>
-                    {pieces.find(p => p.id === selectedId)?.name}
-                  </strong>
-                  &nbsp;seçildi — 12 saniye sonra sıfırlanır.
-                </motion.p>
-              )}
-            </AnimatePresence>
           </div>
         </div>
       </div>
