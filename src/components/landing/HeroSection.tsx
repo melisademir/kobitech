@@ -62,7 +62,7 @@ const HeroSection = () => {
               background: "rgba(255,255,255,0.08)",
               backdropFilter: "blur(10px)",
               WebkitBackdropFilter: "blur(10px)",
-              boxShadow: "0 10px 30px rgba(0,0,0,0.05)",
+              boxShadow: "0 10px 30px rgba(0,0,0,0.05)"
             }}>
 
             {/* Email input */}
@@ -135,8 +135,8 @@ const HeroSection = () => {
           {/* Big purple blob behind — z-index layering */}
           <div
             className="absolute inset-x-[10%] inset-y-[5%] rounded-full blur-[80px] pointer-events-none"
-            style={{ background: "rgba(109,40,217,0.18)", zIndex: 0 }}
-          />
+            style={{ background: "rgba(109,40,217,0.18)", zIndex: 0 }} />
+
 
           {/* Floating glass card — top left */}
           <motion.div
@@ -151,7 +151,7 @@ const HeroSection = () => {
               borderRadius: "16px",
               boxShadow: "0 8px 32px -8px rgba(109,40,217,0.18)",
               padding: "14px 18px",
-              minWidth: "160px",
+              minWidth: "160px"
             }}>
             <div className="flex items-center gap-2.5">
               <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: "linear-gradient(135deg,#6D28D9,#7C3AED)" }}>
@@ -176,7 +176,7 @@ const HeroSection = () => {
               border: "1px solid rgba(255,255,255,0.6)",
               borderRadius: "16px",
               boxShadow: "0 8px 32px -8px rgba(109,40,217,0.18)",
-              padding: "14px 20px",
+              padding: "14px 20px"
             }}>
             <p className="text-[10px] font-semibold text-muted-foreground uppercase tracking-widest mb-1">Bu Ay</p>
             <p className="text-2xl font-black text-foreground" style={{ letterSpacing: "-0.03em" }}>+2.4K</p>
@@ -184,44 +184,44 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Dashboard mockup placeholder — perspective tilt */}
-          <div
-            className="relative z-10 w-full rounded-3xl overflow-hidden border border-white/30"
-            style={{
-              transform: "perspective(1000px) rotateX(2deg)",
-              boxShadow: "0 32px 80px -16px rgba(109,40,217,0.25), 0 8px 32px -8px rgba(0,0,0,0.08)",
-              background: "rgba(255,255,255,0.7)",
-              backdropFilter: "blur(20px)",
-              minHeight: "320px",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}>
-            {/* Mock UI inside */}
-            <div className="w-full p-8">
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-3 h-3 rounded-full bg-red-400/60" />
-                <div className="w-3 h-3 rounded-full bg-yellow-400/60" />
-                <div className="w-3 h-3 rounded-full bg-green-400/60" />
-              </div>
-              <div className="grid grid-cols-3 gap-4 mb-6">
-                {[{ label: "Aktif Çözümler", val: "12" }, { label: "Teklifler", val: "4" }, { label: "Tasarruf", val: "₺8.2K" }].map(item => (
-                  <div key={item.label} className="rounded-2xl p-4 border border-white/40" style={{ background: "rgba(109,40,217,0.05)" }}>
-                    <p className="text-xs text-muted-foreground mb-1">{item.label}</p>
-                    <p className="text-xl font-black text-foreground" style={{ letterSpacing: "-0.03em" }}>{item.val}</p>
-                  </div>
-                ))}
-              </div>
-              <div className="rounded-2xl h-24 border border-white/40 flex items-end gap-1.5 px-4 pb-4" style={{ background: "rgba(109,40,217,0.03)" }}>
-                {[30, 50, 40, 70, 55, 80, 65, 90, 75, 100, 85, 95].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-full" style={{ height: `${h}%`, background: `rgba(109,40,217,${0.15 + (h / 100) * 0.35})` }} />
-                ))}
-              </div>
-            </div>
-          </div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
