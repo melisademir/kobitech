@@ -33,33 +33,33 @@ const Landing = () => (
       <TrustBand />
     </div>
 
-    {/* 4 — PARTNERS / SOLUTIONS: Very light lila atmosphere */}
-    <div style={{ background: "hsl(252, 60%, 97%)" }}>
+    {/* 4 — PARTNERS / SOLUTIONS */}
+    <div className="bg-white">
       <PartnersSection />
     </div>
 
-    {/* 5 — FEATURES / HUB: Pure white — high contrast cards */}
+    {/* 5 — FEATURES / HUB */}
     <div className="bg-white">
       <FeaturesSection />
     </div>
 
-    {/* 6 — HOW IT WORKS: Deep navy again — creates rhythm contrast */}
-    <div style={{ background: "hsl(258, 45%, 10%)" }}>
+    {/* 6 — HOW IT WORKS */}
+    <div className="bg-white">
       <HowItWorksSection />
     </div>
 
-    {/* 7 — CTA: Soft lila */}
-    <div style={{ background: "hsl(252, 60%, 97%)" }}>
+    {/* 7 — CTA */}
+    <div className="bg-white">
       <CtaSection />
     </div>
 
-    {/* 8 — TESTIMONIALS: White — calm close */}
+    {/* 8 — TESTIMONIALS */}
     <div className="bg-white">
       <TestimonialsSection />
     </div>
 
-    {/* 9 — PARTNER ECOSYSTEM: Light grey — orbital showcase */}
-    <div style={{ background: "#F9FAFB" }}>
+    {/* 9 — PARTNER ECOSYSTEM */}
+    <div className="bg-white">
       <PartnerEcosystemSection />
     </div>
 
