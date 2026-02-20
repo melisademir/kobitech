@@ -48,11 +48,7 @@ const HeroSection = () => {
             variants={itemVariants}
             className="relative px-8 py-10 md:px-14 md:py-14 mb-6"
             style={{
-              background: "radial-gradient(circle 480px at 50% 50%, rgba(248,245,255,0.85) 0%, rgba(248,245,255,0.80) 38%, rgba(248,245,255,0.38) 65%, rgba(248,245,255,0) 100%)",
-              backdropFilter: "blur(22px)",
-              WebkitBackdropFilter: "blur(22px)",
-              WebkitMaskImage: "radial-gradient(circle 480px at 50% 50%, black 0%, black 40%, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.10) 85%, transparent 100%)",
-              maskImage: "radial-gradient(circle 480px at 50% 50%, black 0%, black 40%, rgba(0,0,0,0.95) 50%, rgba(0,0,0,0.72) 60%, rgba(0,0,0,0.38) 72%, rgba(0,0,0,0.10) 85%, transparent 100%)",
+              background: "radial-gradient(circle 520px at 50% 50%, rgba(240,234,255,0.92) 0%, rgba(240,234,255,0.86) 30%, rgba(240,234,255,0.60) 52%, rgba(240,234,255,0.28) 68%, rgba(240,234,255,0.08) 82%, transparent 100%)",
             }}
           >
             {/* Badge */}
