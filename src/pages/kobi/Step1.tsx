@@ -50,7 +50,7 @@ const Step1 = () => {
             <p className="mt-2 text-sm" style={{ color: "rgba(196,181,253,0.65)" }}>Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.</p>
           </div>
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col gap-4">
             {steps.map((s, i) => (
               <motion.div key={s.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.15 }} className="flex items-center gap-4">
                 {/* Circle image */}
@@ -63,10 +63,10 @@ const Step1 = () => {
                   </div>
                 </div>
                 {/* Text */}
-                <div className="flex-1 rounded-2xl px-4 py-3" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
-                  <span className="inline-block px-2 py-0.5 rounded-full text-[9px] font-bold tracking-wide uppercase mb-1" style={{ background: `${s.accent}20`, color: s.accent, border: `1px solid ${s.accent}30` }}>{s.label}</span>
-                  <h3 className="text-sm font-semibold leading-snug mb-0.5" style={{ color: "#F3E8FF" }}>{s.title}</h3>
-                  <p className="text-[11px] leading-relaxed" style={{ color: "rgba(196,181,253,0.65)" }}>{s.desc}</p>
+                <div className="flex-1 rounded-xl px-3 py-2.5" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
+                  <span className="inline-block px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wide uppercase mb-1" style={{ background: `${s.accent}20`, color: s.accent, border: `1px solid ${s.accent}30` }}>{s.label}</span>
+                  <h3 className="text-base font-bold leading-snug mb-0.5" style={{ color: "#F3E8FF" }}>{s.title}</h3>
+                  <p className="text-[13px] leading-relaxed" style={{ color: "rgba(196,181,253,0.75)" }}>{s.desc}</p>
                 </div>
               </motion.div>
             ))}
