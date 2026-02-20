@@ -29,7 +29,7 @@ const StatsSection = () =>
       transition={{ duration: 0.5 }}
       className="text-center mb-12">
 
-        <p className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-400">
+        <p className="text-sm font-semibold tracking-[0.18em] uppercase text-slate-400">
           İşletmeler Kobi Dijital ile büyüyor
         </p>
       </motion.div>

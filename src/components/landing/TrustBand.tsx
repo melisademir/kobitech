@@ -35,7 +35,7 @@ const TrustBand = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
-        className="text-xs font-semibold tracking-[0.18em] uppercase text-slate-400 text-center mb-10"
+        className="text-sm font-semibold tracking-[0.18em] uppercase text-slate-400 text-center mb-10"
       >
         Güvenilen Çözüm Ortakları
       </motion.p>

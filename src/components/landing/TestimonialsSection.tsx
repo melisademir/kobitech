@@ -84,12 +84,12 @@ const TestimonialsSection = () => (
           Başarı Hikayeleri
         </motion.span>
         <h2
-          className="text-3xl md:text-4xl font-bold text-foreground mb-4"
-          style={{ letterSpacing: "-0.03em", lineHeight: 1.2 }}
+          className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+          style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
         >
           İşletmelerden Geri Bildirimler
         </h2>
-        <p className="text-slate-500 text-sm max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
+        <p className="text-slate-500 max-w-md mx-auto" style={{ fontSize: "17px", lineHeight: "1.7" }}>
           Kobi Dijital ile dönüşen işletme sahiplerinin deneyimleri
         </p>
       </motion.div>
@@ -133,7 +133,7 @@ const TestimonialsSection = () => (
               ))}
             </div>
 
-            <p className="text-foreground text-sm flex-1" style={{ lineHeight: "1.75", opacity: 0.82 }}>
+            <p className="text-foreground flex-1" style={{ fontSize: "16px", lineHeight: "1.75", opacity: 0.82 }}>
               "{t.quote}"
             </p>
 
