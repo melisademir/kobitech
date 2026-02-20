@@ -11,88 +11,148 @@ const containerVariants = {
 const cardVariants = {
   hidden: { opacity: 0, y: 30, scale: 0.96 },
   visible: {
-    opacity: 1,
-    y: 0,
-    scale: 1,
+    opacity: 1, y: 0, scale: 1,
     transition: { duration: 0.5, ease: "easeOut" as const }
   }
 };
 
 const features = [
-{ icon: Store, title: "50+ Çözüm Tek Platformda", desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.", labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"] },
-{ icon: ShoppingCart, title: "Sepet ile Hızlı Planlama", desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.", labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"] },
-{ icon: BadgeDollarSign, title: "Size Özel Teklif Sistemi", desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.", labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"] },
-{ icon: MessageCircle, title: "Anlık Görüşme & Destek", desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın.", labels: ["Canlı Chat", "Bayi Görüşme"] },
-{ icon: ClipboardList, title: "Kolay Proje Takibi", desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.", labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"] },
-{ icon: FileText, title: "Dijital Döküman Merkezi", desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.", labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"] }];
+  {
+    icon: Store,
+    title: "50+ Çözüm Tek Platformda",
+    desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.",
+    labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"],
+    iconBg: "bg-gradient-to-br from-violet-500/20 to-purple-600/10",
+    iconColor: "text-violet-600",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-violet-50/60 hover:to-purple-50/30",
+    glow: "hover:shadow-[0_12px_40px_-8px_hsl(268,72%,38%/0.2)]",
+    labelBg: "bg-violet-500/10 text-violet-700",
+  },
+  {
+    icon: ShoppingCart,
+    title: "Sepet ile Hızlı Planlama",
+    desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.",
+    labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"],
+    iconBg: "bg-gradient-to-br from-cyan-500/20 to-teal-600/10",
+    iconColor: "text-cyan-600",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-cyan-50/60 hover:to-teal-50/30",
+    glow: "hover:shadow-[0_12px_40px_-8px_hsl(168,76%,42%/0.2)]",
+    labelBg: "bg-cyan-500/10 text-cyan-700",
+  },
+  {
+    icon: BadgeDollarSign,
+    title: "Size Özel Teklif Sistemi",
+    desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.",
+    labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"],
+    iconBg: "bg-gradient-to-br from-emerald-500/20 to-green-600/10",
+    iconColor: "text-emerald-600",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-emerald-50/60 hover:to-green-50/30",
+    glow: "hover:shadow-[0_12px_40px_-8px_hsl(160,84%,39%/0.2)]",
+    labelBg: "bg-emerald-500/10 text-emerald-700",
+  },
+  {
+    icon: MessageCircle,
+    title: "Anlık Görüşme & Destek",
+    desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın.",
+    labels: ["Canlı Chat", "Bayi Görüşme"],
+    iconBg: "bg-gradient-to-br from-orange-500/20 to-amber-600/10",
+    iconColor: "text-orange-600",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-orange-50/60 hover:to-amber-50/30",
+    glow: "hover:shadow-[0_12px_40px_-8px_hsl(33,100%,57%/0.2)]",
+    labelBg: "bg-orange-500/10 text-orange-700",
+  },
+  {
+    icon: ClipboardList,
+    title: "Kolay Proje Takibi",
+    desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.",
+    labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"],
+    iconBg: "bg-gradient-to-br from-pink-500/20 to-rose-600/10",
+    iconColor: "text-pink-600",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-pink-50/60 hover:to-rose-50/30",
+    glow: "hover:shadow-[0_12px_40px_-8px_hsl(330,80%,50%/0.2)]",
+    labelBg: "bg-pink-500/10 text-pink-700",
+  },
+  {
+    icon: FileText,
+    title: "Dijital Döküman Merkezi",
+    desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.",
+    labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"],
+    iconBg: "bg-gradient-to-br from-indigo-500/20 to-blue-600/10",
+    iconColor: "text-indigo-600",
+    hoverGradient: "hover:bg-gradient-to-br hover:from-indigo-50/60 hover:to-blue-50/30",
+    glow: "hover:shadow-[0_12px_40px_-8px_hsl(217,91%,60%/0.2)]",
+    labelBg: "bg-indigo-500/10 text-indigo-700",
+  },
+];
 
-
-const FeaturesSection = () =>
-<section id="features" className="py-20 bg-background">
+const FeaturesSection = () => (
+  <section id="features" className="py-20 bg-background">
     <div className="max-w-7xl mx-auto px-6">
       <motion.div
-      initial={{ opacity: 0, y: 24 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-      className="text-center mb-14">
-
-        <motion.span
-        initial={{ opacity: 0, scale: 0.85 }}
-        whileInView={{ opacity: 1, scale: 1 }}
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.4, delay: 0.1 }}
-        className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4 tracking-wide uppercase">
-
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className="text-center mb-14"
+      >
+        <motion.span
+          initial={{ opacity: 0, scale: 0.85 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.4, delay: 0.1 }}
+          className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-4 tracking-wide uppercase"
+        >
           Neden Kobi Dijital?
         </motion.span>
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground mb-3">
           50+ Çözüm Tek Platformda
         </h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">İşletmenizi Türkiye'den globale taşıyacak ölçeklenebilir dijital altyapı.
-
-      </p>
+        <p className="text-muted-foreground max-w-2xl mx-auto">
+          İşletmenizi Türkiye'den globale taşıyacak ölçeklenebilir dijital altyapı.
+        </p>
       </motion.div>
 
       <motion.div
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-60px" }}
-      variants={containerVariants}
-      className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-
-        {features.map((f) =>
-      <motion.div
-        key={f.title}
-        variants={cardVariants}
-        whileHover={{ y: -6, transition: { duration: 0.25 } }}
-        className="bg-card rounded-2xl p-7 border border-border shadow-card hover:shadow-card-hover transition-shadow duration-300 flex flex-col">
-
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-60px" }}
+        variants={containerVariants}
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+      >
+        {features.map((f) => (
+          <motion.div
+            key={f.title}
+            variants={cardVariants}
+            whileHover={{ y: -6, transition: { duration: 0.25 } }}
+            className={`bg-card rounded-2xl p-7 border border-border shadow-card ${f.glow} transition-all duration-300 flex flex-col ${f.hoverGradient}`}
+          >
             <motion.div
-          className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5"
-          whileHover={{ scale: 1.1, rotate: 8 }}
-          transition={{ type: "spring", stiffness: 300 }}>
-
-              <f.icon className="w-6 h-6 text-primary" />
+              className={`w-12 h-12 rounded-xl ${f.iconBg} flex items-center justify-center mb-5`}
+              whileHover={{ scale: 1.1, rotate: 8 }}
+              transition={{ type: "spring", stiffness: 300 }}
+            >
+              <f.icon className={`w-6 h-6 ${f.iconColor}`} />
             </motion.div>
             <h3 className="text-base font-bold text-foreground mb-2">{f.title}</h3>
             <p className="text-muted-foreground text-sm leading-relaxed">{f.desc}</p>
             <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border">
-              {f.labels.map((label) =>
-          <span key={label} className="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">{label}</span>
-          )}
+              {f.labels.map((label) => (
+                <span key={label} className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${f.labelBg}`}>
+                  {label}
+                </span>
+              ))}
             </div>
           </motion.div>
-      )}
+        ))}
       </motion.div>
 
       <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="text-center mt-14">
-
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-center mt-14"
+      >
         <h3 className="text-xl md:text-2xl font-extrabold text-foreground mb-2">Dijital Dönüşümünüz<br />Burada Başlıyor</h3>
         <p className="text-muted-foreground text-sm mb-6 max-w-md mx-auto">3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.</p>
         <Button asChild variant="hero" size="lg">
@@ -100,7 +160,7 @@ const FeaturesSection = () =>
         </Button>
       </motion.div>
     </div>
-  </section>;
-
+  </section>
+);
 
 export default FeaturesSection;

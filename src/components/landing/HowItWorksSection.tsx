@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const steps = [
-  { num: "1", title: "Ücretsiz Kayıt Olun", desc: "Sadece ad-soyad ve telefon numaranızla hemen kayıt olun." },
-  { num: "2", title: "İşletmenizi Tanımlayın", desc: "Sektörünüzü ve ihtiyaçlarınızı belirleyin, size özel çözümler sunalım." },
-  { num: "3", title: "Dijitalleşmeye Başlayın", desc: "Yol haritanızı takip edin, partnerlerimizle büyümeye başlayın." },
+  { num: "1", title: "Ücretsiz Kayıt Olun", desc: "Sadece ad-soyad ve telefon numaranızla hemen kayıt olun.", color: "from-violet-500 to-purple-600" },
+  { num: "2", title: "İşletmenizi Tanımlayın", desc: "Sektörünüzü ve ihtiyaçlarınızı belirleyin, size özel çözümler sunalım.", color: "from-cyan-500 to-teal-600" },
+  { num: "3", title: "Dijitalleşmeye Başlayın", desc: "Yol haritanızı takip edin, partnerlerimizle büyümeye başlayın.", color: "from-emerald-500 to-green-600" },
 ];
 
 const containerVariants = {
@@ -13,30 +16,18 @@ const containerVariants = {
 
 const stepVariants = {
   hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, ease: "easeOut" as const },
-  },
-};
-
-const lineVariants = {
-  hidden: { scaleY: 0 },
-  visible: {
-    scaleY: 1,
-    transition: { duration: 0.8, ease: "easeOut" as const },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
 };
 
 const HowItWorksSection = () => (
   <section id="how" className="py-20">
-    <div className="max-w-3xl mx-auto px-6">
+    <div className="max-w-5xl mx-auto px-6">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center mb-14"
+        className="text-center mb-16"
       >
         <motion.span
           initial={{ opacity: 0, scale: 0.85 }}
@@ -50,59 +41,71 @@ const HowItWorksSection = () => (
         <h2 className="text-3xl md:text-4xl font-extrabold text-foreground">Dijitalleşmeye 3 Adımda Başlayın</h2>
       </motion.div>
 
+      {/* 3 Column Layout */}
       <div className="relative">
-        {/* Animated vertical line */}
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={lineVariants}
-          className="absolute left-[1.375rem] md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px origin-top"
-        />
+        {/* Gradient connector line */}
+        <div className="hidden md:block absolute top-10 left-[calc(16.67%+1.5rem)] right-[calc(16.67%+1.5rem)] h-px bg-gradient-to-r from-violet-500 via-cyan-500 to-emerald-500 z-0" />
 
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-60px" }}
           variants={containerVariants}
-          className="space-y-12"
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6"
         >
           {steps.map((s, i) => (
             <motion.div
               key={s.num}
               variants={stepVariants}
-              className={`relative flex items-start gap-6 ${i % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'} md:text-${i % 2 === 0 ? 'right' : 'left'}`}
+              className="flex flex-col items-center text-center relative z-10"
             >
-              {/* Content */}
-              <div className={`flex-1 pl-[4.5rem] md:pl-0 ${i % 2 === 0 ? 'md:pr-12' : 'md:pl-12'}`}>
-                <h3 className="text-lg font-bold text-foreground mb-1">{s.title}</h3>
-                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
+              {/* Pulse circle */}
+              <div className="relative mb-6">
+                {/* Pulse rings */}
+                <motion.div
+                  className={`absolute inset-0 rounded-full bg-gradient-to-br ${s.color} opacity-20`}
+                  animate={{ scale: [1, 1.5, 1], opacity: [0.2, 0, 0.2] }}
+                  transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.5 }}
+                />
+                <motion.div
+                  className={`absolute inset-0 rounded-full bg-gradient-to-br ${s.color} opacity-15`}
+                  animate={{ scale: [1, 1.8, 1], opacity: [0.15, 0, 0.15] }}
+                  transition={{ duration: 2.5, repeat: Infinity, delay: i * 0.5 + 0.3 }}
+                />
+                {/* Main circle */}
+                <motion.div
+                  className={`relative w-20 h-20 rounded-full bg-gradient-to-br ${s.color} text-white font-extrabold text-2xl flex items-center justify-center shadow-premium`}
+                  whileHover={{ scale: 1.12 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                >
+                  {s.num}
+                </motion.div>
               </div>
 
-              {/* Number circle */}
+              {/* Card */}
               <motion.div
-                className="absolute left-0 md:left-1/2 md:-translate-x-1/2 w-12 h-12 rounded-full gradient-primary text-primary-foreground font-extrabold text-lg flex items-center justify-center shrink-0 shadow-premium z-10"
-                whileHover={{ scale: 1.15 }}
-                whileInView={{
-                  boxShadow: [
-                    "0 0 0 0px hsl(268, 72%, 38% / 0.3)",
-                    "0 0 0 12px hsl(268, 72%, 38% / 0)",
-                  ],
-                }}
-                transition={{
-                  boxShadow: { duration: 1.2, delay: 0.3 + i * 0.2, ease: "easeOut" },
-                }}
-                viewport={{ once: true }}
+                className="bg-card border border-border rounded-2xl p-6 shadow-card hover:shadow-card-hover transition-shadow duration-300 w-full"
+                whileHover={{ y: -4, transition: { duration: 0.22 } }}
               >
-                {s.num}
+                <h3 className="text-base font-bold text-foreground mb-2">{s.title}</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
               </motion.div>
-
-              {/* Spacer for other side */}
-              <div className="hidden md:block flex-1" />
             </motion.div>
           ))}
         </motion.div>
       </div>
+
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="text-center mt-14"
+      >
+        <Button asChild variant="hero" size="lg">
+          <Link to="/kobi/signup">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
+        </Button>
+      </motion.div>
     </div>
   </section>
 );
