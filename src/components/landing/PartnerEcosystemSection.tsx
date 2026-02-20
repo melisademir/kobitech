@@ -2,6 +2,9 @@ import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { ArrowRight, Check, Star } from "lucide-react";
+import logoFinrota from "@/assets/logo-finrota.png";
+import logoParam from "@/assets/logo-param.jpg";
+import logoTsoft from "@/assets/logo-tsoft.png";
 
 // ─── Puzzle geometry ──────────────────────────────────────────────────────────
 const CW = 90;   // cell width  px
@@ -103,8 +106,8 @@ function puzzlePath(
 const pieces = [
   // ── Row 0 ──────────────────────────────────────────────────────────────────
   {
-    id: "tsoft",   col: 0, row: 0, cs: 2, rs: 2, color: "#7D1F3E",
-    name: "T-SOFT", label: "T-SOFT",
+    id: "tsoft",   col: 0, row: 0, cs: 2, rs: 2, color: "#1a1a2e",
+    name: "T-SOFT", label: "T-SOFT", logo: logoTsoft,
     edges: { top: [0,0], right: [1,-1], bottom: [1,-1], left: [0,0] },
   },
   {
@@ -118,8 +121,8 @@ const pieces = [
     edges: { top: [0,0], right: [-1], bottom: [1,-1], left: [1] },
   },
   {
-    id: "param",   col: 5, row: 0, cs: 1, rs: 2, color: "#FF6B35",
-    name: "Param", label: "Param",
+    id: "param",   col: 5, row: 0, cs: 1, rs: 2, color: "#4B0082",
+    name: "Param", label: "Param", logo: logoParam,
     edges: { top: [0], right: [0,0], bottom: [-1], left: [1,-1] },
   },
   // ── Row 1 ──────────────────────────────────────────────────────────────────
@@ -197,8 +200,8 @@ const pieces = [
     edges: { top: [1,-1], right: [-1], bottom: [0,0], left: [0] },
   },
   {
-    id: "finrota", col: 2, row: 4, cs: 1, rs: 1, color: "#D946EF",
-    name: "Finrota", label: "Finrota",
+    id: "finrota", col: 2, row: 4, cs: 1, rs: 1, color: "#F97316",
+    name: "Finrota", label: "Finrota", logo: logoFinrota,
     edges: { top: [1], right: [-1], bottom: [0], left: [1] },
   },
   {
@@ -336,17 +339,40 @@ const PartnerPanel = ({ piece, onDeselect }: {
   );
 };
 
-// ─── Logo text fitting inside a piece ────────────────────────────────────────
+// ─── Logo / text fitting inside a piece ──────────────────────────────────────
 function LogoText({ piece, cx, cy }: { piece: typeof pieces[0]; cx: number; cy: number }) {
+  const pieceW = piece.cs * CW;
+  const pieceH = piece.rs * CH;
+  const px = cx - pieceW / 2;
+  const py = cy - pieceH / 2;
+
+  // If piece has a logo image → render it as SVG <image>
+  if ((piece as any).logo) {
+    // param has its own colored square bg → show logo filling piece
+    // tsoft/finrota have light bg logos → show centered at ~60% width
+    const isSquareLogo = piece.id === "param";
+    const logoW = isSquareLogo ? Math.min(pieceW, pieceH) * 0.72 : pieceW * 0.60;
+    const logoH = isSquareLogo ? logoW : pieceH * 0.42;
+    return (
+      <image
+        href={(piece as any).logo}
+        x={cx - logoW / 2}
+        y={cy - logoH / 2}
+        width={logoW}
+        height={logoH}
+        preserveAspectRatio="xMidYMid meet"
+        clipPath={`url(#clip-${piece.id})`}
+        style={{ pointerEvents: "none" }}
+      />
+    );
+  }
+
+  // Fallback: text
   const name = piece.name;
-  // Split into max 2 lines for long names
   const words = name.split(" ");
   const line1 = words.length > 1 ? words.slice(0, Math.ceil(words.length / 2)).join(" ") : name;
   const line2 = words.length > 1 ? words.slice(Math.ceil(words.length / 2)).join(" ") : null;
 
-  const pieceW = piece.cs * CW;
-  const pieceH = piece.rs * CH;
-  // Font size based on piece area and name length
   const area = pieceW * pieceH;
   const maxChars = Math.max(line1.length, (line2 || "").length);
   const baseFontSize = Math.min(
@@ -355,7 +381,6 @@ function LogoText({ piece, cx, cy }: { piece: typeof pieces[0]; cx: number; cy: 
     area > 10000 ? 22 : area > 6000 ? 16 : 12
   );
   const fontSize = Math.max(8, Math.min(baseFontSize, 18));
-
   const lineH = fontSize * 1.25;
   const totalH = line2 ? lineH * 2 : lineH;
   const startY = cy - totalH / 2 + lineH * 0.7;
