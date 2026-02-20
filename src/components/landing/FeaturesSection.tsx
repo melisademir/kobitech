@@ -164,26 +164,26 @@ const FeaturesSection = () =>
       )}
       </motion.div>
 
-      <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: 0.2 }}
-      className="text-center mt-20">
-
-        
+      
 
 
 
 
 
-        <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
-          3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.
-        </p>
-        <Button asChild variant="hero" size="lg">
-          <Link to="/kobi/signup">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
-        </Button>
-      </motion.div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </div>
   </section>;
 
