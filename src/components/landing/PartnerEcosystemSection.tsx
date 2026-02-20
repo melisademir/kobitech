@@ -369,17 +369,17 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
       {/* Platform badge */}
       {d.badge &&
       <motion.div variants={item} className="mb-5">
-          
+          <span
+          className="inline-flex items-center font-semibold rounded-full px-4 py-1.5"
+          style={{
+            fontSize: "13px",
+            background: "linear-gradient(135deg, hsl(160,84%,39%), hsl(160,84%,50%))",
+            color: "white",
+            boxShadow: "0 4px 12px rgba(22,163,74,0.25)"
+          }}>
 
-
-
-
-
-
-
-
-
-
+            {d.badge}
+          </span>
         </motion.div>
       }
 
@@ -733,16 +733,16 @@ const PartnerEcosystemSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-10">
 
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase border border-primary/15 mb-4">
-            Çözüm Ortakları
-          </span>
+          
+
+
           <h2 className="font-black text-foreground mx-auto"
-          style={{ fontSize: "clamp(1.8rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}>
-            Çözüm Ortaklarımız
+          style={{ fontSize: "clamp(1.8rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}>Güçlü Partner Ekosistemi
+
           </h2>
           <p className="text-muted-foreground mt-3 mx-auto"
-          style={{ maxWidth: "460px", fontSize: "1rem", lineHeight: 1.7 }}>
-            Bir puzzle parçasına tıklayın — partnerinizi keşfedin
+          style={{ maxWidth: "460px", fontSize: "1rem", lineHeight: 1.7 }}>Alanında lider sağlayıcılara tek noktadan ulaşın, karşılaştırın ve teklif alın.
+
           </p>
         </motion.div>
 
