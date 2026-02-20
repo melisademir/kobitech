@@ -75,15 +75,15 @@ const FeaturesSection = () =>
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="text-center mb-20">
 
-        
+        <motion.span
+        initial={{ opacity: 0, scale: 0.85 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-6 tracking-widest uppercase border border-primary/15">
 
-
-
-
-
-
-
-
+          Neden Kobi Dijital?
+        </motion.span>
         <h2
         className="text-4xl md:text-5xl font-bold text-foreground mb-5"
         style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}>
@@ -171,17 +171,17 @@ const FeaturesSection = () =>
       transition={{ duration: 0.5, delay: 0.2 }}
       className="text-center mt-20">
 
-        <h3
-        className="text-2xl md:text-3xl font-bold text-foreground mb-4"
-        style={{ letterSpacing: "-0.025em" }}>
+        
 
-          Dijital Dönüşümünüz Burada Başlıyor
-        </h3>
+
+
+
+
         <p className="text-slate-500 text-sm mb-8 max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
           3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.
         </p>
         <Button asChild variant="hero" size="lg">
-          <Link to="/kobi/step-1">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
+          <Link to="/kobi/signup">Hemen Başla <ArrowRight className="h-5 w-5 ml-1" /></Link>
         </Button>
       </motion.div>
     </div>
