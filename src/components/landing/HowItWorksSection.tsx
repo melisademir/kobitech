@@ -217,7 +217,7 @@ const HowItWorksSection = () => (
         >
           Dijitalde Büyümeye Başlayın
         </h2>
-        <p className="text-sm mt-4 max-w-sm mx-auto" style={{ color: "rgba(196,181,253,0.6)", lineHeight: "1.7" }}>
+        <p className="mt-4 max-w-sm mx-auto" style={{ fontSize: "17px", color: "rgba(196,181,253,0.7)", lineHeight: "1.7" }}>
           Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.
         </p>
       </motion.div>
@@ -271,12 +271,12 @@ const HowItWorksSection = () => (
                   </span>
                 </div>
                 <h3
-                  className="text-base font-semibold text-white mb-3 leading-snug"
+                  className="text-lg font-semibold text-white mb-3 leading-snug"
                   style={{ letterSpacing: "-0.01em" }}
                 >
                   {s.title}
                 </h3>
-                <p className="text-sm" style={{ color: "rgba(196,181,253,0.6)", lineHeight: "1.7" }}>
+                <p style={{ fontSize: "15px", color: "rgba(196,181,253,0.7)", lineHeight: "1.7" }}>
                   {s.desc}
                 </p>
               </motion.div>

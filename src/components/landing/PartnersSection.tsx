@@ -164,7 +164,7 @@ const PartnersSection = () => {
             <br />
             <span className="text-gradient-primary">Ticaretini Büyüt</span>
           </h2>
-          <p className="text-slate-500 text-sm mt-4 max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
+          <p className="text-slate-500 mt-4 max-w-md mx-auto" style={{ fontSize: "17px", lineHeight: "1.7" }}>
             İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
           </p>
         </motion.div>
@@ -208,12 +208,12 @@ const PartnersSection = () => {
               {/* Left */}
               <div className="flex-1 space-y-5">
                 <h3
-                  className="text-2xl font-semibold text-foreground"
+                  className="text-3xl font-bold text-foreground"
                   style={{ letterSpacing: "-0.02em" }}
                 >
                   {cat.label}
                 </h3>
-                <p className="text-slate-500 text-sm leading-relaxed" style={{ lineHeight: "1.7" }}>
+                <p className="text-slate-500 leading-relaxed" style={{ fontSize: "17px", lineHeight: "1.7" }}>
                   {cat.description}
                 </p>
                 <div className="flex flex-wrap gap-2">
