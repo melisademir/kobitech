@@ -279,12 +279,16 @@ const PartnerPanel = ({ piece, onDeselect }: {
         {d.category.toUpperCase()}
       </span>
       <div className="flex items-center gap-4 mb-4">
-        <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0"
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden"
           style={{ background: piece.color, boxShadow: `0 8px 28px -6px ${piece.color}66` }}>
-          <span className="font-black text-white text-center leading-tight px-1"
-            style={{ fontSize: piece.name.length > 6 ? "9px" : piece.name.length > 4 ? "11px" : "15px", letterSpacing: "-0.02em" }}>
-            {piece.name}
-          </span>
+          {(piece as any).logo ? (
+            <img src={(piece as any).logo} alt={piece.name} className="w-full h-full object-cover" />
+          ) : (
+            <span className="font-black text-white text-center leading-tight px-1"
+              style={{ fontSize: piece.name.length > 6 ? "9px" : piece.name.length > 4 ? "11px" : "15px", letterSpacing: "-0.02em" }}>
+              {piece.name}
+            </span>
+          )}
         </div>
         <div>
           <h3 className="font-black text-foreground"
