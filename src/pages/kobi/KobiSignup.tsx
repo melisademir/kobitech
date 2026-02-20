@@ -5,9 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { motion } from "framer-motion";
 import { useOnboarding } from "@/contexts/OnboardingContext";
-import stepHedef from "@/assets/step-hedef-3d.png";
-import stepTeklif from "@/assets/step-teklif-3d.png";
-import stepBuyume from "@/assets/step-buyume-3d.png";
+import stepHedef from "@/assets/step-hedef-corp.png";
+import stepTeklif from "@/assets/step-teklif-corp.png";
+import stepBuyume from "@/assets/step-buyume-corp.png";
 
 const steps = [
   { image: stepHedef, label: "Hedef Belirleme", title: "Büyüme Hedefinizi Belirleyin", desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz?", accent: "#A78BFA", accentDark: "#7C3AED" },
