@@ -22,60 +22,60 @@ const features = [
     title: "50+ Çözüm Tek Platformda",
     desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.",
     labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"],
-    iconBg: "bg-gradient-to-br from-violet-500/20 to-purple-600/10",
-    iconColor: "text-violet-600",
-    glow: "hover:shadow-[0_16px_48px_-12px_hsl(268,72%,38%/0.18)]",
-    labelBg: "bg-violet-500/10 text-violet-700",
+    iconBg: "rgba(109,40,217,0.08)",
+    iconColor: "text-primary",
+    glow: "rgba(109,40,217,0.18)",
+    labelStyle: { background: "rgba(109,40,217,0.08)", color: "#6D28D9" },
   },
   {
     icon: ShoppingCart,
     title: "Sepet ile Hızlı Planlama",
     desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.",
     labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"],
-    iconBg: "bg-gradient-to-br from-cyan-500/20 to-teal-600/10",
-    iconColor: "text-cyan-600",
-    glow: "hover:shadow-[0_16px_48px_-12px_hsl(168,76%,42%/0.18)]",
-    labelBg: "bg-cyan-500/10 text-cyan-700",
+    iconBg: "rgba(124,58,237,0.08)",
+    iconColor: "text-primary",
+    glow: "rgba(124,58,237,0.18)",
+    labelStyle: { background: "rgba(124,58,237,0.08)", color: "#7C3AED" },
   },
   {
     icon: BadgeDollarSign,
     title: "Size Özel Teklif Sistemi",
     desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.",
     labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"],
-    iconBg: "bg-gradient-to-br from-emerald-500/20 to-green-600/10",
-    iconColor: "text-emerald-600",
-    glow: "hover:shadow-[0_16px_48px_-12px_hsl(160,84%,39%/0.18)]",
-    labelBg: "bg-emerald-500/10 text-emerald-700",
+    iconBg: "rgba(147,51,234,0.08)",
+    iconColor: "text-primary",
+    glow: "rgba(147,51,234,0.18)",
+    labelStyle: { background: "rgba(147,51,234,0.08)", color: "#9333EA" },
   },
   {
     icon: MessageCircle,
     title: "Anlık Görüşme & Destek",
     desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın.",
     labels: ["Canlı Chat", "Bayi Görüşme"],
-    iconBg: "bg-gradient-to-br from-orange-500/20 to-amber-600/10",
-    iconColor: "text-orange-600",
-    glow: "hover:shadow-[0_16px_48px_-12px_hsl(33,100%,57%/0.18)]",
-    labelBg: "bg-orange-500/10 text-orange-700",
+    iconBg: "rgba(168,85,247,0.08)",
+    iconColor: "text-primary",
+    glow: "rgba(168,85,247,0.18)",
+    labelStyle: { background: "rgba(168,85,247,0.08)", color: "#A855F7" },
   },
   {
     icon: ClipboardList,
     title: "Kolay Proje Takibi",
     desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.",
     labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"],
-    iconBg: "bg-gradient-to-br from-pink-500/20 to-rose-600/10",
-    iconColor: "text-pink-600",
-    glow: "hover:shadow-[0_16px_48px_-12px_hsl(330,80%,50%/0.18)]",
-    labelBg: "bg-pink-500/10 text-pink-700",
+    iconBg: "rgba(109,40,217,0.08)",
+    iconColor: "text-primary",
+    glow: "rgba(109,40,217,0.18)",
+    labelStyle: { background: "rgba(109,40,217,0.08)", color: "#6D28D9" },
   },
   {
     icon: FileText,
     title: "Dijital Döküman Merkezi",
     desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.",
     labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"],
-    iconBg: "bg-gradient-to-br from-indigo-500/20 to-blue-600/10",
-    iconColor: "text-indigo-600",
-    glow: "hover:shadow-[0_16px_48px_-12px_hsl(217,91%,60%/0.18)]",
-    labelBg: "bg-indigo-500/10 text-indigo-700",
+    iconBg: "rgba(124,58,237,0.08)",
+    iconColor: "text-primary",
+    glow: "rgba(124,58,237,0.18)",
+    labelStyle: { background: "rgba(124,58,237,0.08)", color: "#7C3AED" },
   },
 ];
 
@@ -87,22 +87,23 @@ const FeaturesSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center mb-16"
+        className="text-center mb-20"
       >
         <motion.span
           initial={{ opacity: 0, scale: 0.85 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4, delay: 0.1 }}
-          className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-semibold mb-5 tracking-wide uppercase"
+          className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-6 tracking-widest uppercase border border-primary/15"
         >
           Neden Kobi Dijital?
         </motion.span>
-        <h2 className="text-4xl md:text-5xl font-extrabold text-foreground mb-4 tracking-tight">
+        <h2 className="text-4xl md:text-5xl font-black text-foreground mb-5 tracking-tight" style={{ letterSpacing: "-0.02em" }}>
           50+ Çözüm Tek Platformda
         </h2>
-        <p className="text-muted-foreground text-lg max-w-xl mx-auto leading-relaxed font-normal">
-          İşletmenizi Türkiye'den globale taşıyacak<br className="hidden md:block" /> ölçeklenebilir dijital altyapı.
+        <p className="text-muted-foreground text-lg max-w-lg mx-auto font-normal" style={{ lineHeight: "1.75" }}>
+          İşletmenizi Türkiye'den globale taşıyacak
+          <br className="hidden md:block" /> ölçeklenebilir dijital altyapı.
         </p>
       </motion.div>
 
@@ -111,27 +112,58 @@ const FeaturesSection = () => (
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         variants={containerVariants}
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {features.map((f) => (
           <motion.div
             key={f.title}
             variants={cardVariants}
-            whileHover={{ y: -6, transition: { duration: 0.25 } }}
-            className={`glass-card rounded-2xl p-10 border border-white/30 shadow-card ${f.glow} transition-all duration-300 flex flex-col`}
+            whileHover={{ y: -8, transition: { duration: 0.25 } }}
+            className="rounded-2xl border border-white/25 transition-all duration-300 flex flex-col group"
+            style={{
+              background: "rgba(255,255,255,0.72)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              boxShadow: "0 2px 24px -4px rgba(109,40,217,0.07), 0 1px 0 rgba(255,255,255,0.8) inset",
+              padding: "2.5rem",
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLDivElement).style.boxShadow = `0 16px 48px -8px ${f.glow}, 0 1px 0 rgba(255,255,255,0.8) inset`;
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 24px -4px rgba(109,40,217,0.07), 0 1px 0 rgba(255,255,255,0.8) inset";
+            }}
           >
-            <motion.div
-              className={`w-13 h-13 w-12 h-12 rounded-xl ${f.iconBg} flex items-center justify-center mb-6 border border-white/20`}
-              whileHover={{ scale: 1.1, rotate: 8 }}
-              transition={{ type: "spring", stiffness: 280 }}
-            >
-              <f.icon className={`w-5 h-5 ${f.iconColor}`} strokeWidth={1.75} />
-            </motion.div>
+            {/* Icon with large translucent circle behind */}
+            <div className="relative mb-7 w-fit">
+              {/* Large faded circle behind icon */}
+              <div
+                className="absolute -inset-3 rounded-full"
+                style={{ background: f.iconBg }}
+              />
+              <motion.div
+                className="relative w-12 h-12 rounded-xl flex items-center justify-center border border-white/40"
+                style={{
+                  background: "rgba(255,255,255,0.95)",
+                  boxShadow: "0 4px 16px -4px rgba(109,40,217,0.10)",
+                }}
+                whileHover={{ scale: 1.1, rotate: 8 }}
+                transition={{ type: "spring", stiffness: 280 }}
+              >
+                <f.icon className={`w-5 h-5 ${f.iconColor}`} strokeWidth={1.75} />
+              </motion.div>
+            </div>
+
             <h3 className="text-base font-bold text-foreground mb-3 leading-snug">{f.title}</h3>
-            <p className="text-muted-foreground text-sm leading-relaxed font-normal">{f.desc}</p>
-            <div className="flex flex-wrap gap-2 mt-auto pt-5 border-t border-border/50">
+            <p className="text-muted-foreground text-sm font-normal flex-1" style={{ lineHeight: "1.7" }}>{f.desc}</p>
+
+            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-border/40">
               {f.labels.map((label) => (
-                <span key={label} className={`inline-block px-3 py-1 rounded-full text-xs font-medium ${f.labelBg}`}>
+                <span
+                  key={label}
+                  className="inline-block px-3 py-1 rounded-full text-xs font-semibold"
+                  style={f.labelStyle}
+                >
                   {label}
                 </span>
               ))}
@@ -145,12 +177,12 @@ const FeaturesSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.5, delay: 0.2 }}
-        className="text-center mt-16"
+        className="text-center mt-20"
       >
-        <h3 className="text-2xl md:text-3xl font-extrabold text-foreground mb-3 tracking-tight">
+        <h3 className="text-2xl md:text-3xl font-black text-foreground mb-4 tracking-tight" style={{ letterSpacing: "-0.02em" }}>
           Dijital Dönüşümünüz Burada Başlıyor
         </h3>
-        <p className="text-muted-foreground text-base mb-8 max-w-md mx-auto leading-relaxed">
+        <p className="text-muted-foreground text-base mb-8 max-w-md mx-auto" style={{ lineHeight: "1.75" }}>
           3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.
         </p>
         <Button asChild variant="hero" size="lg">
