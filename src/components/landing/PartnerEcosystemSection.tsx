@@ -234,7 +234,7 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       animate="show"
     >
       {/* Category badge */}
-      <motion.div variants={item} className="mb-6">
+      <motion.div variants={item} className="mb-5">
         <span
           className="inline-flex items-center px-5 py-2 rounded-full font-semibold tracking-widest uppercase"
           style={{
@@ -250,15 +250,15 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       </motion.div>
 
       {/* Partner logo — centered, glowing */}
-      <motion.div variants={item} className="flex justify-center mb-6">
+      <motion.div variants={item} className="flex justify-center mb-5">
         <div
           className="flex items-center justify-center overflow-hidden rounded-2xl bg-white"
           style={{
-            width: 140,
-            height: 80,
+            width: 100,
+            height: 60,
             boxShadow: `0 8px 24px ${piece.color}26, 0 2px 8px rgba(0,0,0,0.06)`,
             border: "1px solid rgba(0,0,0,0.06)",
-            padding: "12px 16px",
+            padding: "10px 14px",
           }}
         >
           {(piece as any).logo ? (
@@ -279,11 +279,11 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       </motion.div>
 
       {/* Partner name — gradient text */}
-      <motion.div variants={item} className="text-center mb-1">
+      <motion.div variants={item} className="text-center mb-2">
         <h3
           className="font-black"
           style={{
-            fontSize: "clamp(2rem, 3.2vw, 2.8rem)",
+            fontSize: "clamp(1.7rem, 2.8vw, 2.4rem)",
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
             background: `linear-gradient(135deg, ${piece.color}, ${piece.color}BB)`,
@@ -297,8 +297,8 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       </motion.div>
 
       {/* Category subtitle */}
-      <motion.div variants={item} className="text-center mb-7">
-        <p style={{ fontSize: "17px", fontWeight: 500, color: "hsl(var(--muted-foreground))" }}>
+      <motion.div variants={item} className="text-center mb-6">
+        <p style={{ fontSize: "16px", fontWeight: 500, color: "hsl(var(--muted-foreground))" }}>
           {d.category}
         </p>
       </motion.div>
@@ -310,13 +310,13 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
         style={{
           background: "linear-gradient(135deg, rgba(72,11,135,0.05), rgba(139,92,246,0.08))",
           borderLeft: "4px solid hsl(var(--primary))",
-          padding: "20px 24px",
+          padding: "16px 20px",
         }}
       >
         <p
           className="font-bold"
           style={{
-            fontSize: "clamp(1rem,1.6vw,1.2rem)",
+            fontSize: "clamp(0.95rem,1.45vw,1.1rem)",
             lineHeight: 1.35,
             color: "hsl(var(--primary))",
           }}
@@ -326,12 +326,12 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       </motion.div>
 
       {/* Description */}
-      <motion.div variants={item} className="mb-7">
+      <motion.div variants={item} className="mb-6">
         <p
           style={{
             fontSize: "17px",
             fontWeight: 400,
-            lineHeight: 1.72,
+            lineHeight: 1.6,
             color: "hsl(var(--muted-foreground))",
             letterSpacing: "0.01em",
             maxWidth: "520px",
@@ -342,25 +342,25 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       </motion.div>
 
       {/* Features */}
-      <motion.div variants={item} className="mb-7">
+      <motion.div variants={item} className="mb-6">
         <p
-          className="uppercase tracking-widest font-semibold mb-4"
+          className="uppercase tracking-widest font-semibold mb-3"
           style={{ fontSize: "12px", color: "hsl(var(--muted-foreground))" }}
         >
           Özellikler
         </p>
-        <div className="flex flex-col gap-3.5">
+        <div className="flex flex-col gap-2.5">
           {d.features.map((f) => (
             <div key={f} className="flex items-center gap-3">
               <div
                 className="flex-shrink-0 flex items-center justify-center rounded-full"
                 style={{
-                  width: 32,
-                  height: 32,
+                  width: 28,
+                  height: 28,
                   background: `${piece.color}18`,
                 }}
               >
-                <Check style={{ width: 15, height: 15, color: piece.color, strokeWidth: 2.8 }} />
+                <Check style={{ width: 13, height: 13, color: piece.color, strokeWidth: 2.8 }} />
               </div>
               <span style={{ fontSize: "16px", fontWeight: 500, color: "hsl(var(--foreground))" }}>
                 {f}
@@ -372,7 +372,7 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
 
       {/* Platform badge */}
       {d.badge && (
-        <motion.div variants={item} className="mb-6">
+        <motion.div variants={item} className="mb-5">
           <span
             className="inline-flex items-center font-semibold rounded-full px-4 py-1.5"
             style={{
@@ -400,9 +400,9 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
             transition={{ duration: 0.3, ease: "easeOut" }}
             className="inline-flex items-center justify-center gap-2 w-full font-bold text-white"
             style={{
-              height: "56px",
-              padding: "0 48px",
-              borderRadius: "28px",
+              height: "50px",
+              padding: "0 40px",
+              borderRadius: "25px",
               fontSize: "17px",
               letterSpacing: "0.02em",
               background: `linear-gradient(135deg, ${piece.color}, ${piece.color}CC)`,
@@ -765,7 +765,6 @@ const PartnerEcosystemSection = () => {
             border: "1px solid rgba(0,0,0,0.03)",
             maxWidth: "1400px",
             margin: "0 auto",
-            minHeight: "700px",
           }}
         >
           <div className="flex flex-col lg:flex-row items-stretch gap-8 xl:gap-10 h-full">
@@ -784,42 +783,6 @@ const PartnerEcosystemSection = () => {
                 </div>
               </div>
 
-              {/* Stats + CTA */}
-              <div className="flex justify-center gap-8 md:gap-12 mt-6">
-                {[
-                  { value: "50+", label: "Çözüm Ortağı" },
-                  { value: "21",  label: "Param Ürünü"  },
-                  { value: "10",  label: "Kategori"     },
-                ].map((s, i) => (
-                  <motion.div key={s.label}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={visible ? { opacity: 1, y: 0 } : {}}
-                    transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
-                    className="flex flex-col items-center">
-                    <span className="font-black text-primary"
-                      style={{ fontSize: "clamp(1.5rem,2.2vw,1.9rem)", lineHeight: 1, letterSpacing: "-0.03em" }}>
-                      {s.value}
-                    </span>
-                    <span className="text-xs text-muted-foreground mt-1 font-medium">{s.label}</span>
-                  </motion.div>
-                ))}
-              </div>
-
-              <motion.div className="mt-5 flex justify-center"
-                initial={{ opacity: 0, y: 10 }}
-                animate={visible ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.4, delay: 0.8 }}>
-                <Link to="/kobi/urunler">
-                  <motion.button
-                    whileHover={{ scale: 1.04, boxShadow: "0 12px 40px -6px rgba(109,40,217,0.52)" }}
-                    whileTap={{ scale: 0.97 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
-                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm"
-                    style={{ background: "linear-gradient(135deg, hsl(268,72%,38%), hsl(268,72%,52%))", boxShadow: "0 6px 24px -4px rgba(109,40,217,0.38)" }}>
-                    Çözüm Ortaklarını Keşfet <ArrowRight className="h-4 w-4" />
-                  </motion.button>
-                </Link>
-              </motion.div>
             </motion.div>
 
             {/* Divider */}
@@ -828,11 +791,10 @@ const PartnerEcosystemSection = () => {
             {/* RIGHT: Dynamic content panel */}
             <div className="w-full lg:flex-1 flex flex-col">
               <motion.div
-                className="flex-1 rounded-2xl p-8 md:p-10 flex flex-col justify-center"
+                className="flex-1 rounded-2xl p-7 flex flex-col justify-start"
                 style={{
                   background: "linear-gradient(145deg, #ffffff 0%, hsl(252,60%,98%) 100%)",
                   border: "1px solid rgba(0,0,0,0.04)",
-                  minHeight: "540px",
                 }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
