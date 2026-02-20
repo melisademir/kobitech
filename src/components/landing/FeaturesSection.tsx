@@ -23,8 +23,7 @@ const features = [
     desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.",
     labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"],
     iconBg: "rgba(109,40,217,0.08)",
-    iconColor: "text-primary",
-    glow: "rgba(109,40,217,0.18)",
+    shadowColor: "rgba(109,40,217,0.22)",
     labelStyle: { background: "rgba(109,40,217,0.08)", color: "#6D28D9" },
   },
   {
@@ -33,8 +32,7 @@ const features = [
     desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.",
     labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"],
     iconBg: "rgba(124,58,237,0.08)",
-    iconColor: "text-primary",
-    glow: "rgba(124,58,237,0.18)",
+    shadowColor: "rgba(124,58,237,0.22)",
     labelStyle: { background: "rgba(124,58,237,0.08)", color: "#7C3AED" },
   },
   {
@@ -42,40 +40,36 @@ const features = [
     title: "Size Özel Teklif Sistemi",
     desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.",
     labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"],
-    iconBg: "rgba(147,51,234,0.08)",
-    iconColor: "text-primary",
-    glow: "rgba(147,51,234,0.18)",
-    labelStyle: { background: "rgba(147,51,234,0.08)", color: "#9333EA" },
+    iconBg: "rgba(139,92,246,0.08)",
+    shadowColor: "rgba(139,92,246,0.22)",
+    labelStyle: { background: "rgba(139,92,246,0.08)", color: "#8B5CF6" },
   },
   {
     icon: MessageCircle,
     title: "Anlık Görüşme & Destek",
     desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın.",
     labels: ["Canlı Chat", "Bayi Görüşme"],
-    iconBg: "rgba(168,85,247,0.08)",
-    iconColor: "text-primary",
-    glow: "rgba(168,85,247,0.18)",
-    labelStyle: { background: "rgba(168,85,247,0.08)", color: "#A855F7" },
+    iconBg: "rgba(109,40,217,0.08)",
+    shadowColor: "rgba(109,40,217,0.22)",
+    labelStyle: { background: "rgba(109,40,217,0.08)", color: "#6D28D9" },
   },
   {
     icon: ClipboardList,
     title: "Kolay Proje Takibi",
     desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.",
     labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"],
-    iconBg: "rgba(109,40,217,0.08)",
-    iconColor: "text-primary",
-    glow: "rgba(109,40,217,0.18)",
-    labelStyle: { background: "rgba(109,40,217,0.08)", color: "#6D28D9" },
+    iconBg: "rgba(124,58,237,0.08)",
+    shadowColor: "rgba(124,58,237,0.22)",
+    labelStyle: { background: "rgba(124,58,237,0.08)", color: "#7C3AED" },
   },
   {
     icon: FileText,
     title: "Dijital Döküman Merkezi",
     desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.",
     labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"],
-    iconBg: "rgba(124,58,237,0.08)",
-    iconColor: "text-primary",
-    glow: "rgba(124,58,237,0.18)",
-    labelStyle: { background: "rgba(124,58,237,0.08)", color: "#7C3AED" },
+    iconBg: "rgba(139,92,246,0.08)",
+    shadowColor: "rgba(139,92,246,0.22)",
+    labelStyle: { background: "rgba(139,92,246,0.08)", color: "#8B5CF6" },
   },
 ];
 
@@ -98,28 +92,28 @@ const FeaturesSection = () => (
         >
           Neden Kobi Dijital?
         </motion.span>
-        <h2 className="text-4xl md:text-5xl font-black text-foreground mb-5 tracking-tight" style={{ letterSpacing: "-0.02em" }}>
+        <h2 className="text-4xl md:text-5xl font-black text-foreground mb-5 tracking-tight" style={{ letterSpacing: "-0.03em" }}>
           50+ Çözüm Tek Platformda
         </h2>
-        <p className="text-muted-foreground text-lg max-w-lg mx-auto font-normal" style={{ lineHeight: "1.75" }}>
+        <p className="text-muted-foreground text-base max-w-lg mx-auto font-normal" style={{ lineHeight: "1.6", opacity: 0.7 }}>
           İşletmenizi Türkiye'den globale taşıyacak
           <br className="hidden md:block" /> ölçeklenebilir dijital altyapı.
         </p>
       </motion.div>
 
+      {/* Bento Grid */}
       <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         variants={containerVariants}
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
       >
         {features.map((f) => (
           <motion.div
             key={f.title}
             variants={cardVariants}
-            whileHover={{ y: -8, transition: { duration: 0.25 } }}
-            className="rounded-2xl border border-white/25 transition-all duration-300 flex flex-col group"
+            className="rounded-3xl border border-white/25 transition-all duration-300 flex flex-col group cursor-default"
             style={{
               background: "rgba(255,255,255,0.72)",
               backdropFilter: "blur(20px)",
@@ -127,37 +121,37 @@ const FeaturesSection = () => (
               boxShadow: "0 2px 24px -4px rgba(109,40,217,0.07), 0 1px 0 rgba(255,255,255,0.8) inset",
               padding: "2.5rem",
             }}
+            whileHover={{ y: -8, transition: { duration: 0.25 } }}
             onMouseEnter={e => {
-              (e.currentTarget as HTMLDivElement).style.boxShadow = `0 16px 48px -8px ${f.glow}, 0 1px 0 rgba(255,255,255,0.8) inset`;
+              (e.currentTarget as HTMLDivElement).style.boxShadow = `0 20px 56px -8px ${f.shadowColor}, 0 1px 0 rgba(255,255,255,0.8) inset`;
             }}
             onMouseLeave={e => {
               (e.currentTarget as HTMLDivElement).style.boxShadow = "0 2px 24px -4px rgba(109,40,217,0.07), 0 1px 0 rgba(255,255,255,0.8) inset";
             }}
           >
-            {/* Icon with large translucent circle behind */}
+            {/* Icon — large translucent circle bg, jumps on hover */}
             <div className="relative mb-7 w-fit">
-              {/* Large faded circle behind icon */}
               <div
                 className="absolute -inset-3 rounded-full"
                 style={{ background: f.iconBg }}
               />
               <motion.div
-                className="relative w-12 h-12 rounded-xl flex items-center justify-center border border-white/40"
+                className="relative w-12 h-12 rounded-2xl flex items-center justify-center border border-white/50"
                 style={{
                   background: "rgba(255,255,255,0.95)",
                   boxShadow: "0 4px 16px -4px rgba(109,40,217,0.10)",
                 }}
-                whileHover={{ scale: 1.1, rotate: 8 }}
-                transition={{ type: "spring", stiffness: 280 }}
+                whileHover={{ y: -5, scale: 1.08 }}
+                transition={{ type: "spring", stiffness: 300, damping: 18 }}
               >
-                <f.icon className={`w-5 h-5 ${f.iconColor}`} strokeWidth={1.75} />
+                <f.icon className="w-5 h-5 text-primary" strokeWidth={1.75} />
               </motion.div>
             </div>
 
             <h3 className="text-base font-bold text-foreground mb-3 leading-snug">{f.title}</h3>
-            <p className="text-muted-foreground text-sm font-normal flex-1" style={{ lineHeight: "1.7" }}>{f.desc}</p>
+            <p className="text-muted-foreground text-sm font-normal flex-1" style={{ lineHeight: "1.7", opacity: 0.75 }}>{f.desc}</p>
 
-            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-border/40">
+            <div className="flex flex-wrap gap-2 mt-6 pt-5 border-t border-border/30">
               {f.labels.map((label) => (
                 <span
                   key={label}
@@ -179,10 +173,10 @@ const FeaturesSection = () => (
         transition={{ duration: 0.5, delay: 0.2 }}
         className="text-center mt-20"
       >
-        <h3 className="text-2xl md:text-3xl font-black text-foreground mb-4 tracking-tight" style={{ letterSpacing: "-0.02em" }}>
+        <h3 className="text-2xl md:text-3xl font-black text-foreground mb-4 tracking-tight" style={{ letterSpacing: "-0.03em" }}>
           Dijital Dönüşümünüz Burada Başlıyor
         </h3>
-        <p className="text-muted-foreground text-base mb-8 max-w-md mx-auto" style={{ lineHeight: "1.75" }}>
+        <p className="text-muted-foreground text-sm mb-8 max-w-md mx-auto" style={{ lineHeight: "1.6", opacity: 0.7 }}>
           3 kısa adımda işletmenizi tanıyalım ve size özel dijital dönüşüm yol haritanızı oluşturalım.
         </p>
         <Button asChild variant="hero" size="lg">

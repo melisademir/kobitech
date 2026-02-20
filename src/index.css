@@ -184,10 +184,10 @@
     padding-bottom: clamp(80px, 12vh, 160px);
   }
 
-  /* Smooth scroll fade-in-up via Intersection Observer */
+  /* Smooth scroll slide-up-fade via Intersection Observer */
   .fade-in-up {
     opacity: 0;
-    transform: translateY(28px);
+    transform: translateY(20px);
     transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
   }
 

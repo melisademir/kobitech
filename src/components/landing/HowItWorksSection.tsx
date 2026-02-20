@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
+import { useRef } from "react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -9,24 +10,24 @@ const steps = [
     title: "Ücretsiz Kayıt Olun",
     desc: "Sadece ad-soyad ve telefon numaranızla hemen kayıt olun.",
     gradient: "linear-gradient(135deg, #6D28D9, #7C3AED)",
-    bgGlow: "rgba(109,40,217,0.14)",
+    bgGlow: "rgba(109,40,217,0.12)",
     shadowColor: "rgba(109,40,217,0.35)",
   },
   {
     num: "2",
     title: "İşletmenizi Tanımlayın",
     desc: "Sektörünüzü ve ihtiyaçlarınızı belirleyin, size özel çözümler sunalım.",
-    gradient: "linear-gradient(135deg, #7C3AED, #9333EA)",
-    bgGlow: "rgba(124,58,237,0.14)",
+    gradient: "linear-gradient(135deg, #7C3AED, #8B5CF6)",
+    bgGlow: "rgba(124,58,237,0.12)",
     shadowColor: "rgba(124,58,237,0.35)",
   },
   {
     num: "3",
     title: "Dijitalleşmeye Başlayın",
     desc: "Yol haritanızı takip edin, partnerlerimizle büyümeye başlayın.",
-    gradient: "linear-gradient(135deg, #9333EA, #A855F7)",
-    bgGlow: "rgba(147,51,234,0.14)",
-    shadowColor: "rgba(147,51,234,0.35)",
+    gradient: "linear-gradient(135deg, #8B5CF6, #A78BFA)",
+    bgGlow: "rgba(139,92,246,0.12)",
+    shadowColor: "rgba(139,92,246,0.35)",
   },
 ];
 
@@ -38,6 +39,28 @@ const containerVariants = {
 const stepVariants = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" as const } },
+};
+
+// Animated connector line
+const ConnectorLine = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  return (
+    <div
+      ref={ref}
+      className="hidden md:block absolute top-[2.8rem] left-[calc(16.67%+3rem)] right-[calc(16.67%+3rem)] h-[2px] z-0 overflow-hidden rounded-full"
+      style={{ background: "rgba(109,40,217,0.1)" }}
+    >
+      <motion.div
+        className="h-full rounded-full"
+        style={{ background: "linear-gradient(90deg, #6D28D9 0%, #8B5CF6 50%, #A78BFA 100%)" }}
+        initial={{ scaleX: 0, originX: 0 }}
+        animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
+        transition={{ duration: 1.2, delay: 0.4, ease: [0.22, 1, 0.36, 1] }}
+      />
+    </div>
+  );
 };
 
 const HowItWorksSection = () => (
@@ -59,24 +82,18 @@ const HowItWorksSection = () => (
         >
           Nasıl Çalışır?
         </motion.span>
-        <h2 className="text-4xl md:text-5xl font-black text-foreground tracking-tight" style={{ letterSpacing: "-0.02em" }}>
+        <h2 className="text-4xl md:text-5xl font-black text-foreground tracking-tight" style={{ letterSpacing: "-0.03em" }}>
           Dijitalleşmeye 3 Adımda Başlayın
         </h2>
-        <p className="text-muted-foreground text-lg mt-4 max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
+        <p className="text-muted-foreground text-base mt-4 max-w-md mx-auto" style={{ lineHeight: "1.6", opacity: 0.7 }}>
           Kurulum yok, teknik bilgi yok. Sadece 3 kısa adım.
         </p>
       </motion.div>
 
       {/* 3 Column Layout */}
       <div className="relative">
-        {/* Gradient connector line - desktop only */}
-        <div
-          className="hidden md:block absolute top-[2.4rem] left-[calc(16.67%+2.5rem)] right-[calc(16.67%+2.5rem)] h-[2px] z-0 rounded-full"
-          style={{
-            background: "linear-gradient(90deg, #6D28D9 0%, #9333EA 50%, #A855F7 100%)",
-            opacity: 0.35,
-          }}
-        />
+        {/* Animated gradient connector line */}
+        <ConnectorLine />
 
         <motion.div
           initial="hidden"
@@ -91,27 +108,25 @@ const HowItWorksSection = () => (
               variants={stepVariants}
               className="flex flex-col items-center text-center relative z-10 group"
             >
-              {/* Pulse circle — bigger, gradient */}
+              {/* Pulse circle */}
               <div className="relative mb-10">
-                {/* Soft ambient glow */}
                 <div
                   className="absolute inset-0 rounded-full blur-2xl scale-[2]"
                   style={{ background: s.bgGlow }}
                 />
-                {/* Pulse rings */}
                 <motion.div
-                  className="absolute inset-0 rounded-full opacity-20"
-                  style={{ background: s.gradient }}
-                  animate={{ scale: [1, 1.8, 1], opacity: [0.2, 0, 0.2] }}
+                  className="absolute inset-0 rounded-full"
+                  style={{ background: s.gradient, opacity: 0.18 }}
+                  animate={{ scale: [1, 1.8, 1], opacity: [0.18, 0, 0.18] }}
                   transition={{ duration: 3.5, repeat: Infinity, delay: i * 0.7 }}
                 />
                 <motion.div
-                  className="absolute inset-0 rounded-full opacity-12"
-                  style={{ background: s.gradient }}
-                  animate={{ scale: [1, 2.4, 1], opacity: [0.12, 0, 0.12] }}
+                  className="absolute inset-0 rounded-full"
+                  style={{ background: s.gradient, opacity: 0.1 }}
+                  animate={{ scale: [1, 2.4, 1], opacity: [0.1, 0, 0.1] }}
                   transition={{ duration: 3.5, repeat: Infinity, delay: i * 0.7 + 0.5 }}
                 />
-                {/* Main circle — larger w-24 h-24 */}
+                {/* Main circle */}
                 <motion.div
                   className="relative w-24 h-24 rounded-full text-white font-black text-3xl flex items-center justify-center border border-white/25"
                   style={{
@@ -120,26 +135,26 @@ const HowItWorksSection = () => (
                   }}
                   whileHover={{
                     scale: 1.12,
-                    boxShadow: `0 12px 48px -4px ${s.shadowColor}`,
+                    boxShadow: `0 16px 56px -4px ${s.shadowColor}`,
                   }}
-                  transition={{ type: "spring", stiffness: 280 }}
+                  transition={{ type: "spring", stiffness: 280, damping: 18 }}
                 >
                   {s.num}
                 </motion.div>
               </div>
 
-              {/* Card — glass, hover text slides right */}
+              {/* Card */}
               <motion.div
-                className="rounded-2xl p-10 w-full border border-white/25 transition-all duration-300"
+                className="rounded-3xl p-10 w-full border border-white/25 transition-all duration-300"
                 style={{
                   background: "rgba(255,255,255,0.72)",
                   backdropFilter: "blur(20px)",
                   WebkitBackdropFilter: "blur(20px)",
-                  boxShadow: "0 2px 24px -4px rgba(109,40,217,0.08), 0 1px 0 rgba(255,255,255,0.8) inset",
+                  boxShadow: "0 2px 24px -4px rgba(109,40,217,0.07), 0 1px 0 rgba(255,255,255,0.8) inset",
                 }}
                 whileHover={{
                   y: -6,
-                  boxShadow: `0 16px 48px -8px ${s.shadowColor}`,
+                  boxShadow: `0 20px 56px -8px ${s.shadowColor}`,
                   transition: { duration: 0.22 },
                 }}
               >
@@ -149,7 +164,7 @@ const HowItWorksSection = () => (
                 >
                   {s.title}
                 </motion.h3>
-                <p className="text-sm text-muted-foreground leading-relaxed font-normal" style={{ lineHeight: "1.7" }}>
+                <p className="text-sm text-muted-foreground font-normal" style={{ lineHeight: "1.7", opacity: 0.75 }}>
                   {s.desc}
                 </p>
               </motion.div>
