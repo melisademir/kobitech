@@ -16,7 +16,7 @@ const cardVariants = {
 const features = [
   {
     icon: Store,
-    title: "50+ Çözüm Tek Platformda",
+    title: "Tüm Çözümlere Tek Platformdan Ulaşın",
     desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.",
     labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"],
     iconColor: "#6D28D9",
@@ -88,7 +88,7 @@ const FeaturesSection = () => (
           className="text-4xl md:text-5xl font-bold text-foreground mb-5"
           style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
         >
-          50+ Çözüm Tek Platformda
+          Tüm Çözümlere Tek Platformdan Ulaşın
         </h2>
         <p className="text-slate-500 text-sm max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
           İşletmenizi Türkiye'den globale taşıyacak
