@@ -5,12 +5,12 @@ import { ArrowRight, Mail, Phone } from "lucide-react";
 
 const containerVariants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.12 } },
+  visible: { transition: { staggerChildren: 0.12 } }
 };
 
 const itemVariants = {
   hidden: { opacity: 0, y: 28, scale: 0.97 },
-  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as any } },
+  visible: { opacity: 1, y: 0, scale: 1, transition: { duration: 0.7, ease: [0.22, 1, 0.36, 1] as any } }
 };
 
 const HeroSection = () => {
@@ -21,30 +21,30 @@ const HeroSection = () => {
     <section className="relative overflow-hidden pt-20 pb-24 lg:pt-36 lg:pb-36">
       {/* Mesh gradient blobs — brand purple on dark navy */}
       <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(109,40,217,0.28) 0%, transparent 70%)" }} />
+      style={{ background: "radial-gradient(circle, rgba(109,40,217,0.28) 0%, transparent 70%)" }} />
       <div className="absolute bottom-[-5%] right-[-5%] w-[500px] h-[500px] rounded-full pointer-events-none"
-        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)" }} />
+      style={{ background: "radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)" }} />
       {/* Dot grid overlay */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.06]"
-        style={{
-          backgroundImage: "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
-          backgroundSize: "28px 28px",
-        }} />
+      style={{
+        backgroundImage: "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
+        backgroundSize: "28px 28px"
+      }} />
 
       <div className="max-w-7xl mx-auto px-6 text-center relative">
         <motion.div
           initial="hidden"
           animate="visible"
-          variants={containerVariants}
-        >
+          variants={containerVariants}>
+
           {/* Badge */}
           <motion.div variants={itemVariants}>
             <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-10 tracking-widest uppercase"
-              style={{
-                background: "rgba(109,40,217,0.25)",
-                border: "1px solid rgba(139,92,246,0.4)",
-                color: "#C4B5FD",
-              }}>
+            style={{
+              background: "rgba(109,40,217,0.25)",
+              border: "1px solid rgba(139,92,246,0.4)",
+              color: "#C4B5FD"
+            }}>
               <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
               Türkiye'nin Dijitalleşme Platformu
             </span>
@@ -61,7 +61,7 @@ const HeroSection = () => {
               background: "linear-gradient(135deg, #A78BFA 0%, #7C3AED 50%, #C4B5FD 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
+              backgroundClip: "text"
             }}>
               ihtiyaçları tek platformda!
             </span>
@@ -86,7 +86,7 @@ const HeroSection = () => {
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
                 border: "1px solid rgba(255,255,255,0.1)",
-                boxShadow: "0 0 0 1px rgba(139,92,246,0.15) inset, 0 10px 40px rgba(0,0,0,0.2)",
+                boxShadow: "0 0 0 1px rgba(139,92,246,0.15) inset, 0 10px 40px rgba(0,0,0,0.2)"
               }}>
 
               {/* Email */}
@@ -102,7 +102,7 @@ const HeroSection = () => {
                     background: "rgba(255,255,255,0.08)",
                     backdropFilter: "blur(12px)",
                     border: "1px solid rgba(255,255,255,0.12)",
-                    color: "white",
+                    color: "white"
                   }} />
               </div>
 
@@ -119,7 +119,7 @@ const HeroSection = () => {
                     background: "rgba(255,255,255,0.08)",
                     backdropFilter: "blur(12px)",
                     border: "1px solid rgba(255,255,255,0.12)",
-                    color: "white",
+                    color: "white"
                   }} />
               </div>
 
@@ -131,7 +131,7 @@ const HeroSection = () => {
                 className="h-12 px-7 rounded-xl font-bold text-sm text-white whitespace-nowrap shrink-0 flex items-center gap-2"
                 style={{
                   background: "linear-gradient(135deg, #6D28D9, #7C3AED)",
-                  boxShadow: "0 4px 20px -4px rgba(124,58,237,0.6)",
+                  boxShadow: "0 4px 20px -4px rgba(124,58,237,0.6)"
                 }}>
                 Hemen Başla <ArrowRight className="w-4 h-4" />
               </motion.button>
@@ -143,25 +143,25 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Stats row */}
-          <motion.div
-            variants={itemVariants}
-            className="flex flex-wrap justify-center gap-8 mt-14 pt-10"
-            style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
-            {[
-              { value: "10.000+", label: "Aktif KOBİ" },
-              { value: "50+", label: "Dijital Araç" },
-              { value: "30+", label: "Çözüm Ortağı" },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <p className="text-2xl font-black text-white" style={{ letterSpacing: "-0.03em" }}>{s.value}</p>
-                <p className="text-xs font-semibold tracking-widest uppercase" style={{ color: "rgba(196,181,253,0.55)", marginTop: "2px" }}>{s.label}</p>
-              </div>
-            ))}
-          </motion.div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </motion.div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
