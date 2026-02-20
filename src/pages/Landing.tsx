@@ -38,29 +38,29 @@ const Landing = () => (
       <PartnersSection />
     </div>
 
-    {/* 5 — FEATURES / HUB: Pure white — high contrast cards */}
+    {/* 5 — PARTNER ECOSYSTEM: Light grey — puzzle showcase */}
+    <div style={{ background: "#F9FAFB" }}>
+      <PartnerEcosystemSection />
+    </div>
+
+    {/* 6 — FEATURES / HUB: Pure white — high contrast cards */}
     <div className="bg-white">
       <FeaturesSection />
     </div>
 
-    {/* 6 — HOW IT WORKS: Deep navy again — creates rhythm contrast */}
+    {/* 7 — HOW IT WORKS: Deep navy again — creates rhythm contrast */}
     <div style={{ background: "hsl(258, 45%, 10%)" }}>
       <HowItWorksSection />
     </div>
 
-    {/* 7 — CTA: Soft lila */}
+    {/* 8 — CTA: Soft lila */}
     <div style={{ background: "hsl(252, 60%, 97%)" }}>
       <CtaSection />
     </div>
 
-    {/* 8 — TESTIMONIALS: White — calm close */}
+    {/* 9 — TESTIMONIALS: White — calm close */}
     <div className="bg-white">
       <TestimonialsSection />
-    </div>
-
-    {/* 9 — PARTNER ECOSYSTEM: Light grey — orbital showcase */}
-    <div style={{ background: "#F9FAFB" }}>
-      <PartnerEcosystemSection />
     </div>
 
     <FooterSection />
