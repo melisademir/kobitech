@@ -46,13 +46,13 @@ const HeroSection = () => {
           {/* Glass card wrapping just the title area */}
           <motion.div
             variants={itemVariants}
-            className="rounded-3xl px-8 py-10 md:px-14 md:py-14 mb-6"
+            className="relative px-8 py-10 md:px-14 md:py-14 mb-6"
             style={{
-              background: "rgba(253,251,247,0.62)",
-              backdropFilter: "blur(22px)",
-              WebkitBackdropFilter: "blur(22px)",
-              border: "1.5px solid rgba(255,255,255,0.90)",
-              boxShadow: "0 0 0 1px rgba(255,255,255,0.95) inset, 0 24px 80px -12px rgba(109,40,217,0.18), 0 8px 24px rgba(0,0,0,0.06)",
+              background: "radial-gradient(ellipse 80% 80% at 50% 50%, rgba(253,251,247,0.72) 30%, rgba(253,251,247,0.45) 60%, rgba(253,251,247,0) 100%)",
+              backdropFilter: "blur(18px)",
+              WebkitBackdropFilter: "blur(18px)",
+              WebkitMaskImage: "radial-gradient(ellipse 88% 88% at 50% 50%, black 35%, transparent 100%)",
+              maskImage: "radial-gradient(ellipse 88% 88% at 50% 50%, black 35%, transparent 100%)",
             }}
           >
             {/* Badge */}
@@ -101,11 +101,11 @@ const HeroSection = () => {
             <div
               className="flex flex-col sm:flex-row gap-3 p-2 rounded-2xl"
               style={{
-                background: "rgba(255,255,255,0.70)",
-                backdropFilter: "blur(28px)",
-                WebkitBackdropFilter: "blur(28px)",
-                border: "1.5px solid rgba(109,40,217,0.18)",
-                boxShadow: "0 0 0 1px rgba(255,255,255,0.95) inset, 0 12px 48px -8px rgba(109,40,217,0.16)",
+                background: "rgba(255,255,255,0.78)",
+                backdropFilter: "blur(20px)",
+                WebkitBackdropFilter: "blur(20px)",
+                border: "1px solid rgba(255,255,255,0.60)",
+                boxShadow: "0 8px 40px -8px rgba(109,40,217,0.12), 0 2px 12px rgba(0,0,0,0.04)",
               }}
             >
               <div className="relative flex-1">
