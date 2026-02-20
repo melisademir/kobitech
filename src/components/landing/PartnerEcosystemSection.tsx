@@ -1,213 +1,446 @@
-import { useState, useRef } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-import { motion, useInView } from "framer-motion";
-import {
-  ShoppingCart, CreditCard, Globe, BarChart3, Package,
-  Building2, Users, FileText, ArrowRight, Check, Layers
-} from "lucide-react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import { ArrowRight, Check, ShoppingCart, CreditCard, Globe, BarChart3, Package, Building2, Layers } from "lucide-react";
 
-// ─── Partner data ───────────────────────────────────────────────────────────
+// ─── Full partner data with interactive content ──────────────────────────────
 const partners = [
-  { name: "T-SOFT", category: "E-ticaret Platformu", color: "#7D1F3E", short: "TS" },
-  { name: "QNB", category: "Finansal Çözümler", color: "#0891B2", short: "QNB" },
-  { name: "ikas", category: "E-ticaret Altyapısı", color: "#3B82F6", short: "İ" },
-  { name: "Param", category: "Ödeme Sistemleri", color: "#FF6B35", short: "P" },
-  { name: "Kredim", category: "Finansman Çözümleri", color: "#F97316", short: "K" },
-  { name: "QF", category: "Dijital Finans", color: "#7C3AED", short: "QF" },
-  { name: "Azalt", category: "Maliyet Yönetimi", color: "#EF4444", short: "AZ" },
-  { name: "QeS", category: "E-fatura Sistemi", color: "#6B21A8", short: "QeS" },
-  { name: "Aras", category: "Kargo & Lojistik", color: "#10B981", short: "AR" },
-  { name: "Google", category: "Bulut & İşbirliği", color: "#4285F4", short: "G" },
-  { name: "Univera", category: "ERP Yazılımı", color: "#2563EB", short: "UV" },
-  { name: "Nebim", category: "Perakende ERP", color: "#1E3A8A", short: "NB" },
-  { name: "Kariyer.net", category: "İK & İstihdam", color: "#F97316", short: "KR" },
-  { name: "Mükellef", category: "Muhasebe & Vergi", color: "#1E40AF", short: "MK" },
-  { name: "Ticimax", category: "E-ticaret Çözümleri", color: "#0EA5E9", short: "TC" },
-  { name: "KolayBi", category: "Ön Muhasebe", color: "#14B8A6", short: "KB" },
-  { name: "Web Plus", category: "Web Çözümleri", color: "#9333EA", short: "WP" },
-  { name: "Stokbar", category: "Stok Yönetimi", color: "#059669", short: "SB" },
-  { name: "Varuna", category: "Lojistik Yazılımı", color: "#DC2626", short: "VR" },
-  { name: "Enroute", category: "Dağıtım Optimizasyonu", color: "#7C3AED", short: "EN" },
-  { name: "Finrota", category: "Finansal Yönetim", color: "#D946EF", short: "FR" },
-  { name: "UniDOX", category: "Dijital Dönüşüm", color: "#0F766E", short: "UD" },
-  { name: "Quest", category: "Teknoloji Çözümleri", color: "#B45309", short: "QT" },
+  {
+    name: "T-SOFT",
+    short: "TS",
+    color: "#7D1F3E",
+    category: "E-Ticaret Çözümü",
+    description: "E-ticaret platformu, online mağaza kurulumu, ödeme ve kargo entegrasyonu. Siparişlerinizi tek panelden yönetin.",
+    features: ["Hazır e-ticaret sitesi", "Ödeme entegrasyonu", "Stok senkronizasyonu"],
+    badge: "Platform indirimi mevcut",
+    size: 76,
+  },
+  {
+    name: "QNB",
+    short: "QNB",
+    color: "#0891B2",
+    category: "Finansal Çözümler",
+    description: "Kurumsal bankacılık, dijital ödeme altyapısı ve işletmelere özel finansal ürünler ile nakit akışınızı optimize edin.",
+    features: ["İşletme hesabı", "Dijital bankacılık", "Kredi çözümleri"],
+    badge: "Özel faiz oranları",
+    size: 72,
+  },
+  {
+    name: "ikas",
+    short: "İKAS",
+    color: "#3B82F6",
+    category: "E-Ticaret Altyapısı",
+    description: "Çok kanallı satış, otomatik stok yönetimi ve entegre pazaryeri çözümleriyle satışlarınızı büyütün.",
+    features: ["Çok kanallı satış", "Pazaryeri entegrasyonu", "Otomatik stok takibi"],
+    badge: "İlk 3 ay ücretsiz",
+    size: 68,
+  },
+  {
+    name: "Param",
+    short: "P",
+    color: "#FF6B35",
+    category: "Ödeme Sistemleri",
+    description: "Fiziksel ve dijital POS, sanal pos ve mobil ödeme çözümleriyle her kanaldan anlık ödeme alın.",
+    features: ["Fiziksel & sanal POS", "Mobil ödeme", "Taksit seçenekleri"],
+    badge: "Kurulum ücretsiz",
+    size: 80,
+  },
+  {
+    name: "Kredim",
+    short: "K",
+    color: "#F97316",
+    category: "Finansman Çözümleri",
+    description: "KOBİ'lere özel esnek kredi imkânları, hızlı onay süreci ve rekabetçi faiz oranlarıyla büyümenizi destekler.",
+    features: ["Hızlı kredi onayı", "Esnek vade seçenekleri", "KOBİ'ye özel oranlar"],
+    badge: "%0 komisyon",
+    size: 66,
+  },
+  {
+    name: "QF",
+    short: "QF",
+    color: "#7C3AED",
+    category: "Dijital Finans",
+    description: "Dijital finans yönetimi, otomatik muhasebe ve gerçek zamanlı nakit akışı takibi ile finansal kontrolü ele alın.",
+    features: ["Gerçek zamanlı takip", "Otomatik muhasebe", "Finansal raporlar"],
+    badge: "Ücretsiz demo",
+    size: 72,
+  },
+  {
+    name: "Azalt",
+    short: "AZ",
+    color: "#EF4444",
+    category: "Maliyet Yönetimi",
+    description: "Operasyonel giderlerinizi analiz edin, israfı önleyin ve işletme maliyetlerinizi akıllı önerilerle azaltın.",
+    features: ["Gider analizi", "Tasarruf önerileri", "Bütçe planlama"],
+    badge: "Ortalama %23 tasarruf",
+    size: 68,
+  },
+  {
+    name: "QeS",
+    short: "QeS",
+    color: "#6B21A8",
+    category: "E-Fatura Sistemi",
+    description: "GİB onaylı e-fatura, e-arşiv ve e-irsaliye çözümleriyle faturalaşma süreçlerinizi tamamen otomatikleştirin.",
+    features: ["E-fatura & e-arşiv", "GİB entegrasyonu", "Otomatik gönderim"],
+    badge: "Mevzuat uyumlu",
+    size: 64,
+  },
+  {
+    name: "Aras",
+    short: "AR",
+    color: "#10B981",
+    category: "Kargo & Lojistik",
+    description: "Türkiye'nin en geniş kargo ağıyla gönderi takibi, toplu sevkiyat ve e-ticaret entegrasyonu tek panelde.",
+    features: ["Gönderi takibi", "Toplu sevkiyat", "E-ticaret entegrasyonu"],
+    badge: "İndirimli kargo tarifeleri",
+    size: 74,
+  },
+  {
+    name: "Google",
+    short: "G",
+    color: "#4285F4",
+    category: "Bulut & İşbirliği",
+    description: "Google Workspace ile ekip iletişimini güçlendirin, belgelerinizi bulutta tutun ve verimliliğinizi artırın.",
+    features: ["Gmail & Drive", "Meet & Docs", "Kurumsal güvenlik"],
+    badge: "KOBİ'ye özel fiyat",
+    size: 70,
+  },
+  {
+    name: "Univera",
+    short: "UV",
+    color: "#2563EB",
+    category: "ERP Yazılımı",
+    description: "Üretim, satış, muhasebe ve İK modüllerini tek çatı altında toplayan entegre ERP çözümü.",
+    features: ["Üretim takibi", "Muhasebe modülü", "İK yönetimi"],
+    badge: "Ücretsiz kurulum",
+    size: 68,
+  },
+  {
+    name: "Nebim",
+    short: "NB",
+    color: "#1E3A8A",
+    category: "Perakende ERP",
+    description: "Perakende, mağaza zinciri ve e-ticaret için geliştirilmiş kapsamlı yönetim ve analitik platformu.",
+    features: ["Mağaza yönetimi", "Stok optimizasyonu", "Satış analitiği"],
+    badge: "Sektör lideri",
+    size: 66,
+  },
+  {
+    name: "Kariyer.net",
+    short: "KR",
+    color: "#EA580C",
+    category: "İK & İstihdam",
+    description: "Türkiye'nin en büyük iş ilanı platformunda doğru yetenekleri işe alın, işveren markanızı güçlendirin.",
+    features: ["İş ilanı yayınlama", "CV havuzu erişimi", "İşveren markası"],
+    badge: "Öncelikli ilan görünürlüğü",
+    size: 72,
+  },
+  {
+    name: "Mükellef",
+    short: "MK",
+    color: "#1E40AF",
+    category: "Muhasebe & Vergi",
+    description: "Bulut tabanlı muhasebe, otomatik vergi hesaplama ve e-beyanname ile vergi süreçlerinizi kolaylaştırın.",
+    features: ["Bulut muhasebe", "Otomatik vergi", "E-beyanname"],
+    badge: "Mali müşavirlik desteği",
+    size: 68,
+  },
+  {
+    name: "Ticimax",
+    short: "TC",
+    color: "#0EA5E9",
+    category: "E-Ticaret Çözümleri",
+    description: "Hazır e-ticaret altyapısı, mobil uygulama ve çok kanallı satış araçlarıyla online mağazanızı büyütün.",
+    features: ["Mobil uygulama", "SEO araçları", "Çok kanallı yönetim"],
+    badge: "30 gün ücretsiz",
+    size: 66,
+  },
+  {
+    name: "KolayBi",
+    short: "KB",
+    color: "#14B8A6",
+    category: "Ön Muhasebe",
+    description: "Fatura, gider, stok ve kasa yönetimini tek uygulamadan kolayca takip edin. Teknik bilgi gerekmez.",
+    features: ["Fatura yönetimi", "Gider takibi", "Stok sayımı"],
+    badge: "Başlangıç ücretsiz",
+    size: 64,
+  },
+  {
+    name: "Web Plus",
+    short: "WP",
+    color: "#9333EA",
+    category: "Web Çözümleri",
+    description: "Kurumsal web sitesi, dijital pazarlama ve SEO hizmetleriyle online varlığınızı profesyonel bir seviyeye taşıyın.",
+    features: ["Kurumsal web sitesi", "Dijital pazarlama", "SEO & Analytics"],
+    badge: "Ücretsiz domain",
+    size: 68,
+  },
+  {
+    name: "Stokbar",
+    short: "SB",
+    color: "#059669",
+    category: "Stok Yönetimi",
+    description: "Barkodlu stok takibi, min-max uyarıları ve tedarikçi yönetimiyle depo süreçlerinizi dijitalleştirin.",
+    features: ["Barkodlu takip", "Min-max uyarıları", "Tedarikçi yönetimi"],
+    badge: "Mobil uygulama dahil",
+    size: 66,
+  },
+  {
+    name: "Finrota",
+    short: "FR",
+    color: "#D946EF",
+    category: "Finansal Yönetim",
+    description: "Nakit akışı, çek/senet takibi ve banka mutabakasını otomatikleştiren akıllı finansal yönetim platformu.",
+    features: ["Nakit akışı takibi", "Çek/senet yönetimi", "Banka mutabakatı"],
+    badge: "Otomatik raporlar",
+    size: 70,
+  },
+  {
+    name: "UniDOX",
+    short: "UD",
+    color: "#0F766E",
+    category: "Dijital Dönüşüm",
+    description: "Kurumsal belge yönetimi, dijital arşiv ve iş akışı otomasyonuyla evrak süreçlerinizi sıfır kağıtla yönetin.",
+    features: ["Belge yönetimi", "Dijital arşiv", "İş akışı otomasyonu"],
+    badge: "KVKK uyumlu",
+    size: 64,
+  },
+  {
+    name: "Varuna",
+    short: "VR",
+    color: "#DC2626",
+    category: "Lojistik Yazılımı",
+    description: "Filo yönetimi, rota optimizasyonu ve teslimat takibiyle lojistik operasyonlarınızı verimli hale getirin.",
+    features: ["Filo yönetimi", "Rota optimizasyonu", "Teslimat takibi"],
+    badge: "Yakıt tasarrufu",
+    size: 66,
+  },
+  {
+    name: "Enroute",
+    short: "EN",
+    color: "#7C3AED",
+    category: "Dağıtım Optimizasyonu",
+    description: "Akıllı dağıtım planlaması ve gerçek zamanlı görev yönetimiyle saha ekiplerinizin verimliliğini maksimize edin.",
+    features: ["Akıllı planlama", "Saha yönetimi", "Gerçek zamanlı takip"],
+    badge: "%40 daha verimli",
+    size: 64,
+  },
 ];
 
-// ─── Orbital positions — angle + radius variations for organic feel ──────────
-function getOrbitalPositions(count: number, baseRadius: number) {
-  const positions = [];
-  const angleStep = (2 * Math.PI) / count;
-  // Predefined offsets for organic feel
-  const radiusOffsets = [0, 20, -15, 25, -10, 18, -20, 10, -25, 15, -5, 22, -18, 8, 20, -12, 15, -20, 10, -15, 22, -8, 16];
-  const angleOffsets = [0, 0.08, -0.06, 0.1, -0.05, 0.07, -0.09, 0.04, -0.08, 0.06, 0.03, -0.07, 0.09, -0.04, 0.06, -0.1, 0.05, -0.03, 0.08, -0.06, 0.04, 0.09, -0.05];
-
-  for (let i = 0; i < count; i++) {
-    const angle = i * angleStep + (angleOffsets[i % angleOffsets.length] || 0);
-    const radius = baseRadius + (radiusOffsets[i % radiusOffsets.length] || 0);
-    positions.push({
-      x: Math.cos(angle - Math.PI / 2) * radius,
-      y: Math.sin(angle - Math.PI / 2) * radius,
-    });
-  }
-  return positions;
-}
-
-// ─── Categories list ─────────────────────────────────────────────────────────
-const categories = [
-  "E-ticaret", "Ödeme Sistemleri", "Muhasebe",
-  "Stok Yönetimi", "Global Açılım", "Finansman",
-  "İK Çözümleri", "ERP",
-];
-
-const centerIcons = [
-  { icon: ShoppingCart, color: "#8B5CF6" },
-  { icon: CreditCard, color: "#6D28D9" },
-  { icon: Globe, color: "#A78BFA" },
-  { icon: BarChart3, color: "#7C3AED" },
-  { icon: Package, color: "#9333EA" },
-];
-
-// ─── Connecting line partners (subset) ───────────────────────────────────────
-const connectedIndices = [0, 2, 4, 6, 9, 12, 15, 18, 20];
-
-// ─── Floating animation params ───────────────────────────────────────────────
-const floatParams = [
-  { duration: 3.8, delay: 0 }, { duration: 4.2, delay: 0.4 },
-  { duration: 3.5, delay: 0.8 }, { duration: 4.6, delay: 0.2 },
-  { duration: 3.9, delay: 1.1 }, { duration: 4.1, delay: 0.6 },
-  { duration: 3.7, delay: 1.5 }, { duration: 4.4, delay: 0.3 },
-  { duration: 3.6, delay: 0.9 }, { duration: 4.3, delay: 1.3 },
-  { duration: 3.8, delay: 0.5 }, { duration: 4.0, delay: 1.7 },
-  { duration: 3.4, delay: 0.7 }, { duration: 4.5, delay: 1.0 },
-  { duration: 3.9, delay: 1.4 }, { duration: 4.2, delay: 0.1 },
-  { duration: 3.7, delay: 1.6 }, { duration: 4.1, delay: 0.8 },
-  { duration: 3.5, delay: 1.2 }, { duration: 4.3, delay: 0.4 },
-  { duration: 3.8, delay: 1.8 }, { duration: 4.0, delay: 0.6 },
-  { duration: 3.6, delay: 1.0 },
-];
+// ─── Default center categories ────────────────────────────────────────────────
+const defaultCategories = ["E-ticaret", "Ödeme", "Muhasebe", "Stok", "Global Açılım", "Finansman", "İK Çözümleri", "ERP"];
 
 // ─── Stats ───────────────────────────────────────────────────────────────────
 const stats = [
-  { value: "50+", label: "Çözüm Ortağı", icon: Building2 },
-  { value: "21", label: "Param Ürünü", icon: Layers },
-  { value: "10", label: "Kategori", icon: Package },
+  { value: "50+", label: "Çözüm Ortağı" },
+  { value: "21", label: "Param Ürünü" },
+  { value: "10", label: "Kategori" },
 ];
 
-// ─── SVG Connecting Lines Component ──────────────────────────────────────────
-const ConnectingLines = ({
-  positions,
-  centerSize,
-}: {
-  positions: { x: number; y: number }[];
-  centerSize: number;
-}) => {
-  const ref = useRef<SVGSVGElement>(null);
-  const inView = useInView(ref, { once: true, amount: 0.3 });
-  const svgSize = 700;
-  const cx = svgSize / 2;
-  const cy = svgSize / 2;
-  const cr = centerSize / 2; // center circle radius
+// ─── Puzzle grid positions (organic, asymmetric, absolute within 640x640 box) ─
+// Center is at (320, 320). Logos scattered around, none overlapping.
+const logoPositions = [
+  { x: 55,  y: 80  }, // T-SOFT      top-left cluster
+  { x: 150, y: 32  }, // QNB         top center-left
+  { x: 260, y: 12  }, // ikas        top center
+  { x: 385, y: 28  }, // Param       top center-right
+  { x: 490, y: 72  }, // Kredim      top-right
+  { x: 555, y: 175 }, // QF          right-top
+  { x: 570, y: 295 }, // Azalt       right-mid
+  { x: 555, y: 415 }, // QeS         right-bottom
+  { x: 490, y: 520 }, // Aras        bottom-right
+  { x: 375, y: 572 }, // Google      bottom center-right
+  { x: 255, y: 585 }, // Univera     bottom center
+  { x: 140, y: 562 }, // Nebim       bottom center-left
+  { x: 50,  y: 505 }, // Kariyer.net bottom-left
+  { x: 18,  y: 390 }, // Mükellef    left-bottom
+  { x: 22,  y: 268 }, // Ticimax     left-mid
+  { x: 50,  y: 155 }, // KolayBi     left-top
+  { x: 168, y: 108 }, // Web Plus    inner top-left
+  { x: 450, y: 118 }, // Stokbar     inner top-right
+  { x: 475, y: 455 }, // Finrota     inner bottom-right
+  { x: 152, y: 462 }, // UniDOX      inner bottom-left
+  { x: 108, y: 285 }, // Varuna      inner left
+  { x: 465, y: 298 }, // Enroute     inner right
+];
 
-  return (
-    <svg
-      ref={ref}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      viewBox={`0 0 ${svgSize} ${svgSize}`}
-      style={{ zIndex: 0 }}
+// ─── Floating animation params ────────────────────────────────────────────────
+const floatData = partners.map((_, i) => ({
+  yAmt:     6 + (i % 4) * 1.5,
+  duration: 4.2 + (i % 5) * 0.45,
+  delay:    (i * 0.37) % 2.2,
+}));
+
+// ─── Center circle content ────────────────────────────────────────────────────
+const CenterDefault = () => (
+  <div className="flex flex-col items-center justify-center text-center h-full px-5 py-6 gap-2">
+    <span
+      className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase mb-1"
+      style={{ background: "hsl(268,72%,92%)", color: "hsl(268,72%,38%)" }}
     >
-      <defs>
-        <linearGradient id="connGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#7C3AED" stopOpacity="0" />
-          <stop offset="40%" stopColor="#8B5CF6" stopOpacity="0.22" />
-          <stop offset="100%" stopColor="#A78BFA" stopOpacity="0.12" />
-        </linearGradient>
-        <radialGradient id="connGradR" cx="50%" cy="50%">
-          <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.25" />
-          <stop offset="100%" stopColor="#7C3AED" stopOpacity="0" />
-        </radialGradient>
-      </defs>
-      {connectedIndices.map((idx) => {
-        if (!positions[idx]) return null;
-        const px = cx + positions[idx].x;
-        const py = cy + positions[idx].y;
+      EKOSİSTEM
+    </span>
+    <div className="flex gap-2.5 justify-center mb-1">
+      {[ShoppingCart, CreditCard, Globe, BarChart3, Package].map((Icon, i) => (
+        <div
+          key={i}
+          className="w-7 h-7 rounded-lg flex items-center justify-center"
+          style={{ background: "hsl(268,72%,93%)" }}
+        >
+          <Icon className="w-3.5 h-3.5" style={{ color: "hsl(268,72%,40%)" }} strokeWidth={2} />
+        </div>
+      ))}
+    </div>
+    <h3 className="font-black" style={{ fontSize: "1.35rem", letterSpacing: "-0.025em", color: "hsl(268,72%,28%)", lineHeight: 1.1 }}>
+      Dijital<br />Ekosistem
+    </h3>
+    <p className="text-slate-500" style={{ fontSize: "11px", lineHeight: 1.5 }}>
+      E-ticaret, Ödeme, Muhasebe,<br />Lojistik, İK, ERP — Tümü burada!
+    </p>
+    <div className="grid grid-cols-2 gap-x-4 gap-y-0.5 mt-1">
+      {defaultCategories.map((cat) => (
+        <div key={cat} className="flex items-center gap-1">
+          <Check className="w-2.5 h-2.5 flex-shrink-0" style={{ color: "hsl(268,72%,42%)" }} strokeWidth={3} />
+          <span style={{ fontSize: "9px", color: "hsl(260,15%,42%)", fontWeight: 600 }}>{cat}</span>
+        </div>
+      ))}
+    </div>
+    <Link to="/kobi/signup" className="mt-2">
+      <motion.button
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.97 }}
+        className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-white font-bold"
+        style={{ background: "hsl(268,72%,40%)", fontSize: "10px", boxShadow: "0 2px 8px rgba(109,40,217,0.3)" }}
+      >
+        Keşfet <ArrowRight className="w-2.5 h-2.5" />
+      </motion.button>
+    </Link>
+  </div>
+);
 
-        // Direction vector from partner to center
-        const dx = cx - px;
-        const dy = cy - py;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-        // Endpoint just at edge of center circle
-        const ex = px + (dx / dist) * (dist - cr - 4);
-        const ey = py + (dy / dist) * (dist - cr - 4);
-
-        // Slight quadratic curve midpoint offset
-        const mx = (px + ex) / 2 + dy * 0.1;
-        const my = (py + ey) / 2 - dx * 0.1;
-
-        return (
-          <motion.path
-            key={idx}
-            d={`M ${px} ${py} Q ${mx} ${my} ${ex} ${ey}`}
-            stroke="url(#connGrad)"
-            strokeWidth="1.5"
-            fill="none"
-            strokeLinecap="round"
-            initial={{ pathLength: 0, opacity: 0 }}
-            animate={inView ? { pathLength: 1, opacity: 1 } : {}}
-            transition={{ duration: 1.2, delay: 0.4 + (idx % 5) * 0.15, ease: [0.22, 1, 0.36, 1] }}
-          />
-        );
-      })}
-    </svg>
-  );
-};
+interface PartnerCenterProps {
+  partner: typeof partners[0];
+}
+const CenterPartner = ({ partner }: PartnerCenterProps) => (
+  <div className="flex flex-col items-center justify-center text-center h-full px-5 py-4 gap-2">
+    <span
+      className="inline-block px-3 py-1 rounded-full text-[10px] font-bold tracking-widest uppercase"
+      style={{ background: `${partner.color}22`, color: partner.color }}
+    >
+      {partner.category}
+    </span>
+    {/* Large logo circle */}
+    <div
+      className="w-16 h-16 rounded-2xl flex items-center justify-center my-1"
+      style={{
+        background: partner.color,
+        boxShadow: `0 8px 24px -4px ${partner.color}55`,
+      }}
+    >
+      <span
+        className="font-black text-white"
+        style={{ fontSize: partner.short.length > 2 ? "11px" : partner.short.length > 1 ? "13px" : "18px" }}
+      >
+        {partner.short}
+      </span>
+    </div>
+    <h3 className="font-black text-foreground" style={{ fontSize: "1.1rem", letterSpacing: "-0.02em", lineHeight: 1.1 }}>
+      {partner.name}
+    </h3>
+    <p className="text-slate-500" style={{ fontSize: "10.5px", lineHeight: 1.5, maxWidth: "230px" }}>
+      {partner.description}
+    </p>
+    <div className="flex flex-col gap-0.5 w-full px-2">
+      {partner.features.map((f) => (
+        <div key={f} className="flex items-center gap-1.5">
+          <Check className="w-2.5 h-2.5 flex-shrink-0" style={{ color: partner.color }} strokeWidth={3} />
+          <span style={{ fontSize: "9.5px", color: "hsl(260,15%,38%)", fontWeight: 600 }}>{f}</span>
+        </div>
+      ))}
+    </div>
+    <span
+      className="inline-block px-2.5 py-0.5 rounded-full text-[9px] font-bold mt-0.5"
+      style={{ background: "#DCFCE7", color: "#15803D" }}
+    >
+      ✓ {partner.badge}
+    </span>
+    <Link to="/kobi/urunler" className="mt-1">
+      <motion.button
+        whileHover={{ scale: 1.06 }}
+        whileTap={{ scale: 0.97 }}
+        className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full text-white font-bold"
+        style={{ background: partner.color, fontSize: "10px", boxShadow: `0 2px 8px ${partner.color}44` }}
+      >
+        Detaylı Bilgi <ArrowRight className="w-2.5 h-2.5" />
+      </motion.button>
+    </Link>
+  </div>
+);
 
 // ─── Main Component ───────────────────────────────────────────────────────────
 const PartnerEcosystemSection = () => {
-  const [tooltip, setTooltip] = useState<{ idx: number; name: string; category: string } | null>(null);
+  const [selected, setSelected] = useState<number | null>(null);
+  const [hovered, setHovered]   = useState<number | null>(null);
+  const [visible, setVisible]   = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
-  const inView = useInView(sectionRef, { once: true, amount: 0.15 });
+  const inView = useInView(sectionRef, { once: true, amount: 0.1 });
+  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const ORBIT_SIZE = 620; // SVG viewport size
-  const CENTER_PX = 220;   // center circle px (visual)
-  const BASE_RADIUS = 268; // orbit radius from center
+  // Auto-deselect after 10s inactivity
+  useEffect(() => {
+    if (selected !== null) {
+      if (timerRef.current) clearTimeout(timerRef.current);
+      timerRef.current = setTimeout(() => setSelected(null), 10000);
+    }
+    return () => { if (timerRef.current) clearTimeout(timerRef.current); };
+  }, [selected]);
 
-  const positions = getOrbitalPositions(partners.length, BASE_RADIUS);
+  // Trigger entrance animation
+  useEffect(() => {
+    if (inView) setTimeout(() => setVisible(true), 100);
+  }, [inView]);
+
+  const handleClick = (idx: number) => {
+    setSelected((prev) => (prev === idx ? null : idx));
+  };
+
+  // Grid visual box size
+  const BOX = 640;
+  const CENTER = BOX / 2; // 320
+
+  const selectedPartner = selected !== null ? partners[selected] : null;
 
   return (
-    <section id="partners" className="py-24 md:py-36 overflow-hidden" style={{ background: "#F9FAFB" }}>
+    <section id="partner-ecosystem" className="py-24 md:py-36 overflow-hidden" style={{ background: "#F9FAFB" }}>
       <div className="max-w-7xl mx-auto px-6">
 
-        {/* ── Section label ── */}
+        {/* Section pill */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-16"
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 0.5 }}
+          className="text-center mb-14"
         >
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-5 tracking-widest uppercase border border-primary/15">
-            Ekosistem
+          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase border border-primary/15">
+            Çözüm Ortakları
           </span>
         </motion.div>
 
-        {/* ── Two-column layout ── */}
-        <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-20">
+        {/* Two-column */}
+        <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
-          {/* ── LEFT: Copy ── */}
+          {/* ── LEFT ──────────────────────────────────────────────── */}
           <motion.div
-            initial={{ opacity: 0, x: -32 }}
+            initial={{ opacity: 0, x: -28 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-            className="flex-1 max-w-xl"
+            className="flex-shrink-0 w-full lg:w-[40%] max-w-lg"
           >
             <h2
-              className="font-black text-foreground mb-6"
-              style={{
-                fontSize: "clamp(2.4rem, 4vw, 3.5rem)",
-                lineHeight: 1.1,
-                letterSpacing: "-0.035em",
-              }}
+              className="font-black text-foreground mb-5"
+              style={{ fontSize: "clamp(2.2rem, 3.8vw, 3.4rem)", lineHeight: 1.08, letterSpacing: "-0.035em" }}
             >
               Dijital Dönüşüm Ekosistemi:{" "}
               <span className="text-gradient-primary">Tek Platformda</span>{" "}
@@ -215,8 +448,8 @@ const PartnerEcosystemSection = () => {
             </h2>
 
             <p
-              className="text-slate-500 mb-10"
-              style={{ fontSize: "clamp(1rem, 1.5vw, 1.15rem)", lineHeight: 1.75, maxWidth: "560px" }}
+              className="text-slate-500 mb-9"
+              style={{ fontSize: "clamp(0.95rem, 1.4vw, 1.1rem)", lineHeight: 1.78, maxWidth: "520px" }}
             >
               E-ticaretten ödeme sistemlerine, muhasebeden global açılıma, stok yönetiminden
               finansmana — işletmenizin tüm dijital ihtiyaçlarını karşılayan{" "}
@@ -224,20 +457,20 @@ const PartnerEcosystemSection = () => {
               çalışıyoruz. Hepsi tek platformda, size özel!
             </p>
 
-            {/* Stats row */}
-            <div className="flex gap-8 mb-10">
+            {/* Stats */}
+            <div className="flex gap-8 mb-9">
               {stats.map((s, i) => (
                 <motion.div
                   key={s.label}
-                  initial={{ opacity: 0, y: 16 }}
+                  initial={{ opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: 0.1 + i * 0.1, ease: [0.22, 1, 0.36, 1] }}
+                  transition={{ duration: 0.5, delay: 0.1 + i * 0.1 }}
                   className="flex flex-col"
                 >
                   <span
                     className="font-black text-primary"
-                    style={{ fontSize: "clamp(1.6rem, 2.5vw, 2rem)", lineHeight: 1, letterSpacing: "-0.03em" }}
+                    style={{ fontSize: "clamp(1.6rem, 2.4vw, 2rem)", lineHeight: 1, letterSpacing: "-0.03em" }}
                   >
                     {s.value}
                   </span>
@@ -246,220 +479,208 @@ const PartnerEcosystemSection = () => {
               ))}
             </div>
 
-            {/* CTA button */}
+            {/* CTA */}
             <Link to="/kobi/signup">
               <motion.button
-                whileHover={{
-                  scale: 1.04,
-                  boxShadow: "0 12px 40px -6px rgba(109,40,217,0.55)",
-                  transition: { type: "spring", stiffness: 300, damping: 18 },
-                }}
+                whileHover={{ scale: 1.04, boxShadow: "0 12px 40px -6px rgba(109,40,217,0.52)" }}
                 whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 300, damping: 18 }}
                 className="inline-flex items-center gap-2.5 px-8 py-4 rounded-full text-white font-bold text-sm"
                 style={{
                   background: "linear-gradient(135deg, hsl(268,72%,38%), hsl(268,72%,52%))",
-                  boxShadow: "0 6px 24px -4px rgba(109,40,217,0.4)",
+                  boxShadow: "0 6px 24px -4px rgba(109,40,217,0.38)",
                 }}
               >
                 Çözüm Ortaklarını Keşfet <ArrowRight className="h-4 w-4" />
               </motion.button>
             </Link>
+
+            {/* Hint when a logo is selected */}
+            <AnimatePresence>
+              {selected !== null && (
+                <motion.p
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 6 }}
+                  transition={{ duration: 0.3 }}
+                  className="mt-5 text-xs text-slate-400 font-medium flex items-center gap-1.5"
+                >
+                  <span
+                    className="inline-block w-2 h-2 rounded-full"
+                    style={{ background: partners[selected].color }}
+                  />
+                  <strong style={{ color: partners[selected].color }}>{partners[selected].name}</strong>{" "}
+                  seçildi — 10 saniye sonra sıfırlanır.
+                </motion.p>
+              )}
+            </AnimatePresence>
           </motion.div>
 
-          {/* ── RIGHT: Orbital visual ── */}
+          {/* ── RIGHT: Puzzle grid ────────────────────────────────── */}
           <div
             ref={sectionRef}
-            className="flex-1 flex items-center justify-center relative"
-            style={{
-              width: "100%",
-              maxWidth: "620px",
-              minHeight: "620px",
-            }}
+            className="flex-1 flex items-center justify-center"
+            style={{ minHeight: "640px" }}
           >
-            {/* SVG overlay for connecting lines */}
+            {/* Outer wrapper — fixed aspect */}
             <div
-              className="absolute"
-              style={{ width: `${ORBIT_SIZE}px`, height: `${ORBIT_SIZE}px`, left: "50%", top: "50%", transform: "translate(-50%, -50%)" }}
+              className="relative"
+              style={{ width: `${BOX}px`, height: `${BOX}px`, maxWidth: "100%" }}
             >
-              <ConnectingLines positions={positions} centerSize={CENTER_PX} />
-            </div>
 
-            {/* ── Center circle ── */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={inView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-              className="relative z-10 flex flex-col items-center justify-center text-center rounded-full"
-              style={{
-                width: `${CENTER_PX}px`,
-                height: `${CENTER_PX}px`,
-                background: "radial-gradient(circle at 40% 35%, hsl(268,72%,97%), hsl(252,60%,94%))",
-                border: "6px solid hsl(268,72%,38%)",
-                boxShadow:
-                  "0 0 0 1px rgba(255,255,255,0.9) inset, 0 0 60px -10px rgba(109,40,217,0.25), 0 24px 80px -20px rgba(109,40,217,0.18)",
-                backdropFilter: "blur(8px)",
-                flexShrink: 0,
-              }}
-            >
-              {/* Mini icon grid */}
-              <div className="grid grid-cols-3 gap-2 mb-3">
-                {centerIcons.map((item, i) => (
-                  <motion.div
-                    key={i}
-                    initial={{ opacity: 0, scale: 0.6 }}
-                    animate={inView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ duration: 0.4, delay: 0.5 + i * 0.08 }}
-                    className={`w-8 h-8 rounded-xl flex items-center justify-center ${i === 2 ? "col-start-2" : ""}`}
-                    style={{ background: `${item.color}18`, border: `1px solid ${item.color}30` }}
-                  >
-                    <item.icon className="w-4 h-4" style={{ color: item.color }} strokeWidth={1.8} />
-                  </motion.div>
-                ))}
-              </div>
-
-              <h3
-                className="font-black"
-                style={{ fontSize: "1.25rem", letterSpacing: "-0.025em", color: "hsl(268,72%,30%)", lineHeight: 1.1 }}
+              {/* ── Center circle ── */}
+              <motion.div
+                className="absolute z-20 rounded-full overflow-hidden"
+                style={{
+                  width:  "310px",
+                  height: "310px",
+                  left:   `${CENTER - 155}px`,
+                  top:    `${CENTER - 155}px`,
+                  background: "radial-gradient(circle at 40% 35%, hsl(268,72%,97%), hsl(252,60%,93%))",
+                  border: "6px solid hsl(268,72%,38%)",
+                  boxShadow: "0 0 0 1.5px rgba(255,255,255,0.85) inset, 0 0 70px -12px rgba(109,40,217,0.28), 0 24px 80px -20px rgba(109,40,217,0.16)",
+                }}
+                initial={{ opacity: 0, scale: 0.82 }}
+                animate={inView ? { opacity: 1, scale: 1 } : {}}
+                transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
               >
-                Dijital
-                <br />
-                Ekosistem
-              </h3>
-
-              <p className="text-slate-500 mt-1.5 px-4" style={{ fontSize: "11px", lineHeight: 1.5 }}>
-                E-ticaret, Ödeme, Muhasebe,<br />Lojistik, İK, ERP — Burada!
-              </p>
-
-              {/* 2-col category checklist */}
-              <div className="grid grid-cols-2 gap-x-3 gap-y-0.5 mt-3 px-4">
-                {categories.map((cat) => (
-                  <div key={cat} className="flex items-center gap-1">
-                    <Check className="w-2.5 h-2.5 flex-shrink-0" style={{ color: "hsl(268,72%,38%)" }} strokeWidth={3} />
-                    <span style={{ fontSize: "9.5px", color: "hsl(260,15%,45%)", fontWeight: 600 }}>{cat}</span>
-                  </div>
-                ))}
-              </div>
-
-              {/* Inner keşfet button */}
-              <Link to="/kobi/signup" className="mt-3">
-                <motion.button
-                  whileHover={{ scale: 1.06 }}
-                  whileTap={{ scale: 0.96 }}
-                  className="inline-flex items-center gap-1 px-4 py-1.5 rounded-full font-bold"
-                  style={{
-                    background: "hsl(268,72%,38%)",
-                    color: "white",
-                    fontSize: "10px",
-                    boxShadow: "0 2px 8px rgba(109,40,217,0.3)",
-                  }}
-                >
-                  Keşfet <ArrowRight className="w-2.5 h-2.5" />
-                </motion.button>
-              </Link>
-            </motion.div>
-
-            {/* ── Orbiting partner logos ── */}
-            {partners.map((partner, i) => {
-              const pos = positions[i];
-              if (!pos) return null;
-              const fp = floatParams[i] || { duration: 4, delay: 0 };
-
-              return (
-                <motion.div
-                  key={partner.name}
-                  className="absolute z-20 cursor-pointer"
-                  style={{
-                    left: "50%",
-                    top: "50%",
-                    width: "64px",
-                    height: "64px",
-                    marginLeft: "-32px",
-                    marginTop: "-32px",
-                    x: pos.x,
-                    y: pos.y,
-                  }}
-                  initial={{ opacity: 0, scale: 0.7 }}
-                  animate={inView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{
-                    duration: 0.45,
-                    delay: 0.3 + i * 0.05,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  onHoverStart={() => setTooltip({ idx: i, name: partner.name, category: partner.category })}
-                  onHoverEnd={() => setTooltip(null)}
-                >
-                  {/* Floating animation wrapper */}
-                  <motion.div
-                    animate={{
-                      y: [0, -10, 0],
-                    }}
-                    transition={{
-                      duration: fp.duration,
-                      delay: fp.delay,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    }}
-                    className="relative w-full h-full"
-                  >
-                    {/* Logo circle */}
+                <AnimatePresence mode="wait">
+                  {selectedPartner ? (
                     <motion.div
-                      className="w-full h-full rounded-2xl flex items-center justify-center select-none"
-                      style={{
-                        background: partner.color,
-                        boxShadow: `0 4px 16px -4px ${partner.color}66, 0 1px 4px rgba(0,0,0,0.12)`,
-                        border: "2px solid rgba(255,255,255,0.9)",
-                      }}
-                      whileHover={{
-                        scale: 1.22,
-                        boxShadow: `0 8px 28px -4px ${partner.color}99`,
-                        transition: { type: "spring", stiffness: 320, damping: 18 },
-                      }}
+                      key={selectedPartner.name}
+                      initial={{ opacity: 0, scale: 0.94 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.94 }}
+                      transition={{ duration: 0.28, ease: "easeInOut" }}
+                      className="w-full h-full"
                     >
-                      <span
-                        className="font-black text-white select-none"
-                        style={{ fontSize: partner.short.length > 2 ? "9px" : partner.short.length > 1 ? "11px" : "14px", letterSpacing: "-0.02em" }}
-                      >
-                        {partner.short}
-                      </span>
+                      <CenterPartner partner={selectedPartner} />
                     </motion.div>
+                  ) : (
+                    <motion.div
+                      key="default"
+                      initial={{ opacity: 0, scale: 0.94 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.94 }}
+                      transition={{ duration: 0.28, ease: "easeInOut" }}
+                      className="w-full h-full"
+                    >
+                      <CenterDefault />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
 
-                    {/* Tooltip */}
-                    {tooltip?.idx === i && (
+              {/* ── Partner logo squares ── */}
+              {partners.map((partner, i) => {
+                const pos  = logoPositions[i];
+                if (!pos) return null;
+
+                const sz   = partner.size;
+                const fp   = floatData[i];
+                const isSel = selected === i;
+                const isAnySelected = selected !== null;
+                const opacity = isAnySelected ? (isSel ? 1 : 0.55) : 1;
+                const tooltipVisible = hovered === i;
+
+                return (
+                  <motion.div
+                    key={partner.name}
+                    className="absolute"
+                    style={{
+                      left:     `${pos.x}px`,
+                      top:      `${pos.y}px`,
+                      width:    `${sz}px`,
+                      height:   `${sz}px`,
+                      position: "absolute",
+                      zIndex:   isSel ? 30 : (hovered === i ? 25 : 10),
+                      cursor:   "pointer",
+                    }}
+                    initial={{ opacity: 0, scale: 0.65 }}
+                    animate={visible ? { opacity, scale: 1 } : { opacity: 0, scale: 0.65 }}
+                    transition={{
+                      opacity: { duration: 0.25 },
+                      scale: { duration: 0.45, delay: 0.2 + i * 0.045, ease: [0.22, 1, 0.36, 1] },
+                    }}
+                    onClick={() => handleClick(i)}
+                    onHoverStart={() => setHovered(i)}
+                    onHoverEnd={() => setHovered(null)}
+                  >
+                    {/* Gentle float */}
+                    <motion.div
+                      animate={{ y: [0, -fp.yAmt, 0] }}
+                      transition={{ duration: fp.duration, delay: fp.delay, repeat: Infinity, ease: "easeInOut" }}
+                      className="w-full h-full relative"
+                    >
+                      {/* Logo square */}
                       <motion.div
-                        initial={{ opacity: 0, y: 6, scale: 0.92 }}
-                        animate={{ opacity: 1, y: 0, scale: 1 }}
-                        className="absolute z-30 pointer-events-none"
+                        className="w-full h-full rounded-2xl flex items-center justify-center select-none"
                         style={{
-                          bottom: "calc(100% + 8px)",
-                          left: "50%",
-                          transform: "translateX(-50%)",
-                          whiteSpace: "nowrap",
-                          background: "white",
-                          borderRadius: "10px",
-                          padding: "6px 12px",
-                          boxShadow: "0 4px 20px -4px rgba(0,0,0,0.18), 0 0 0 1px rgba(0,0,0,0.06)",
+                          background:  partner.color,
+                          boxShadow:   isSel
+                            ? `0 0 0 3px white, 0 0 0 5px ${partner.color}, 0 8px 28px -4px ${partner.color}88`
+                            : `0 4px 14px -4px ${partner.color}55, 0 1px 4px rgba(0,0,0,0.10)`,
+                          border:      isSel ? `2px solid ${partner.color}` : "2px solid rgba(255,255,255,0.85)",
+                          transition:  "box-shadow 0.25s, border 0.25s",
                         }}
+                        whileHover={{
+                          scale:     1.1,
+                          boxShadow: `0 0 0 2.5px white, 0 0 0 4px ${partner.color}, 0 10px 28px -4px ${partner.color}77`,
+                          transition: { type: "spring", stiffness: 350, damping: 20 },
+                        }}
+                        whileTap={{ scale: 0.94 }}
                       >
-                        <p className="text-xs font-bold text-foreground">{partner.name}</p>
-                        <p className="text-[10px] text-slate-400 font-medium">{partner.category}</p>
-                        {/* Arrow */}
-                        <div
-                          className="absolute left-1/2 -translate-x-1/2"
+                        <span
+                          className="font-black text-white select-none"
                           style={{
-                            bottom: "-5px",
-                            width: 0,
-                            height: 0,
-                            borderLeft: "5px solid transparent",
-                            borderRight: "5px solid transparent",
-                            borderTop: "5px solid white",
+                            fontSize: partner.short.length > 3 ? "8px" : partner.short.length > 2 ? "10px" : partner.short.length > 1 ? "12px" : "16px",
+                            letterSpacing: "-0.02em",
                           }}
-                        />
+                        >
+                          {partner.short}
+                        </span>
                       </motion.div>
-                    )}
+
+                      {/* Tooltip */}
+                      <AnimatePresence>
+                        {tooltipVisible && (
+                          <motion.div
+                            initial={{ opacity: 0, y: 4, scale: 0.9 }}
+                            animate={{ opacity: 1, y: 0, scale: 1 }}
+                            exit={{ opacity: 0, y: 4, scale: 0.9 }}
+                            transition={{ duration: 0.18 }}
+                            className="absolute pointer-events-none"
+                            style={{
+                              bottom: "calc(100% + 8px)",
+                              left:   "50%",
+                              transform: "translateX(-50%)",
+                              whiteSpace: "nowrap",
+                              background: "white",
+                              borderRadius: "10px",
+                              padding: "5px 11px",
+                              boxShadow: "0 4px 18px -4px rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.06)",
+                              zIndex: 40,
+                            }}
+                          >
+                            <p className="text-xs font-bold text-foreground">{partner.name}</p>
+                            {/* Arrow */}
+                            <div
+                              className="absolute left-1/2 -translate-x-1/2"
+                              style={{
+                                bottom: "-5px",
+                                borderLeft: "5px solid transparent",
+                                borderRight: "5px solid transparent",
+                                borderTop: "5px solid white",
+                              }}
+                            />
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              );
-            })}
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
