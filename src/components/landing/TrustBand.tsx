@@ -1,12 +1,30 @@
 import { motion } from "framer-motion";
+import logoAras from "@/assets/logo-aras.png";
+import logoFinrota from "@/assets/logo-finrota-new.svg";
+import logoIkas from "@/assets/logo-ikas.png";
+import logoKariyer from "@/assets/logo-kariyer.png";
+import logoMukellef from "@/assets/logo-mukellef.png";
+import logoNebim from "@/assets/logo-nebim.svg";
+import logoParam from "@/assets/logo-param.jpg";
+import logoTicimax from "@/assets/logo-ticimax.png";
+import logoTsoft from "@/assets/logo-tsoft.png";
+import logoUnivaera from "@/assets/logo-univera.svg";
+import logoKredim from "@/assets/logo-kredim.svg";
+import logoGoogle from "@/assets/logo-google.png";
 
 const partners = [
-  { name: "Garanti BBVA", abbr: "GBB" },
-  { name: "İş Bankası", abbr: "İŞB" },
-  { name: "Akbank", abbr: "AKB" },
-  { name: "Yapı Kredi", abbr: "YKB" },
-  { name: "QNB Finansbank", abbr: "QNB" },
-  { name: "Ziraat Bankası", abbr: "ZRT" },
+  { name: "Param", logo: logoParam },
+  { name: "T-SOFT", logo: logoTsoft },
+  { name: "Finrota", logo: logoFinrota },
+  { name: "ikas", logo: logoIkas },
+  { name: "Nebim", logo: logoNebim },
+  { name: "Aras Kargo", logo: logoAras },
+  { name: "Univera", logo: logoUnivaera },
+  { name: "Kredim", logo: logoKredim },
+  { name: "Ticimax", logo: logoTicimax },
+  { name: "Mükelllef", logo: logoMukellef },
+  { name: "Kariyer.net", logo: logoKariyer },
+  { name: "Google", logo: logoGoogle },
 ];
 
 const TrustBand = () => (
@@ -26,7 +44,7 @@ const TrustBand = () => (
         whileInView="visible"
         viewport={{ once: true }}
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.07 } } }}
-        className="flex flex-wrap justify-center items-center gap-x-12 gap-y-6"
+        className="flex flex-wrap justify-center items-center gap-x-10 gap-y-8"
       >
         {partners.map((p) => (
           <motion.div
@@ -36,26 +54,19 @@ const TrustBand = () => (
               visible: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: "easeOut" } },
             }}
             whileHover={{ scale: 1.08 }}
-            className="group flex items-center gap-2.5 cursor-default"
+            className="group flex items-center justify-center cursor-default"
+            title={p.name}
           >
-            {/* Grayscale badge → brand color on hover */}
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-[10px] font-black transition-all duration-300 group-hover:bg-primary/10"
+            <img
+              src={p.logo}
+              alt={p.name}
+              className="h-8 w-auto max-w-[110px] object-contain transition-all duration-300"
               style={{
-                background: "hsl(252,20%,93%)",
-                color: "hsl(260,10%,60%)",
-                filter: "grayscale(1)",
+                filter: "grayscale(1) opacity(0.45)",
               }}
-            >
-              <span className="group-hover:text-primary transition-colors duration-300" style={{ filter: "none" }}>
-                {p.abbr}
-              </span>
-            </div>
-            <span
-              className="text-sm font-semibold transition-colors duration-300 text-slate-400 group-hover:text-primary"
-            >
-              {p.name}
-            </span>
+              onMouseEnter={e => (e.currentTarget.style.filter = "grayscale(0) opacity(1)")}
+              onMouseLeave={e => (e.currentTarget.style.filter = "grayscale(1) opacity(0.45)")}
+            />
           </motion.div>
         ))}
       </motion.div>
