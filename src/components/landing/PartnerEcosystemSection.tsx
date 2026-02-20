@@ -20,7 +20,7 @@ import logoMukellef from "@/assets/logo-mukellef.png";
 const CW = 90;   // cell width  px
 const CH = 75;   // cell height px
 const T  = 12;   // tab radius  px
-const COLS = 6;
+const COLS = 5;
 
 /**
  * Generate SVG path for one puzzle piece.
@@ -106,12 +106,12 @@ function puzzlePath(
 }
 
 // ─── Partner piece definitions ────────────────────────────────────────────────
-// Layout: 6-column × 5-row grid (540 × 375 px total)
+// Layout: 5-column × 4-row grid (450 × 300 px total, excl. GAP)
 //
-// col/row are 0-indexed cell positions.
-// edges: top[colSpan], right[rowSpan], bottom[colSpan], left[rowSpan]
-// Rule: A.right[r] = -B.left[r] for adjacent pieces
-//       A.bottom[c] = -C.top[c] for pieces above/below
+// Row 0: tsoft(0-1,0-1), ikas(2-3,0), param(4,0-1)
+// Row 1:                  kredim(2,1), google(3,1)
+// Row 2: kariyer(0,2), aras(1-2,2), univera(3,2), nebim(4,2-3)
+// Row 3: mukellef(0,3), ticimax(1-2,3), finrota(3,3)
 //
 const pieces = [
   // ── Row 0 ──────────────────────────────────────────────────────────────────
@@ -121,113 +121,62 @@ const pieces = [
     edges: { top: [0,0], right: [1,-1], bottom: [1,-1], left: [0,0] },
   },
   {
-    id: "qnb",     col: 2, row: 0, cs: 1, rs: 1, color: "#0891B2",
-    name: "QNB", label: "QNB",
-    edges: { top: [0], right: [-1], bottom: [1], left: [-1] },
-  },
-  {
-    id: "ikas",    col: 3, row: 0, cs: 2, rs: 1, color: "#3B82F6",
+    id: "ikas",    col: 2, row: 0, cs: 2, rs: 1, color: "#3B82F6",
     name: "ikas", label: "ikas", logo: logoIkas,
-    edges: { top: [0,0], right: [-1], bottom: [1,-1], left: [1] },
+    edges: { top: [0,0], right: [-1], bottom: [1,-1], left: [-1] },
   },
   {
-    id: "param",   col: 5, row: 0, cs: 1, rs: 2, color: "#4B0082",
+    id: "param",   col: 4, row: 0, cs: 1, rs: 2, color: "#4B0082",
     name: "Param", label: "Param", logo: logoParam,
-    edges: { top: [0], right: [0,0], bottom: [-1], left: [1,-1] },
+    edges: { top: [0], right: [0,0], bottom: [-1], left: [1,1] },
   },
   // ── Row 1 ──────────────────────────────────────────────────────────────────
   {
     id: "kredim",  col: 2, row: 1, cs: 1, rs: 1, color: "#26D07C",
     name: "Kredim", label: "Kredim", logo: logoKredim,
-    edges: { top: [-1], right: [1], bottom: [1], left: [1] },
+    edges: { top: [-1], right: [1], bottom: [-1], left: [1] },
   },
   {
-    id: "qf",      col: 3, row: 1, cs: 1, rs: 1, color: "#7C3AED",
-    name: "QF", label: "QF",
-    edges: { top: [-1], right: [1], bottom: [-1], left: [-1] },
-  },
-  {
-    id: "azalt",   col: 4, row: 1, cs: 1, rs: 1, color: "#EF4444",
-    name: "Azalt", label: "Azalt",
-    edges: { top: [1], right: [1], bottom: [1], left: [-1] },
+    id: "google",  col: 3, row: 1, cs: 1, rs: 1, color: "#4285F4",
+    name: "Google", label: "Google", logo: logoGoogle,
+    edges: { top: [1], right: [-1], bottom: [-1], left: [-1] },
   },
   // ── Row 2 ──────────────────────────────────────────────────────────────────
   {
-    id: "qes",     col: 0, row: 2, cs: 1, rs: 1, color: "#6B21A8",
-    name: "QeS", label: "QeS",
-    edges: { top: [-1], right: [1], bottom: [-1], left: [0] },
+    id: "kariyer", col: 0, row: 2, cs: 1, rs: 1, color: "#EA580C",
+    name: "Kariyer.net", label: "Kariyer", logo: logoKariyer,
+    edges: { top: [-1], right: [-1], bottom: [1], left: [0] },
   },
   {
     id: "aras",    col: 1, row: 2, cs: 2, rs: 1, color: "#10B981",
     name: "Aras", label: "Aras", logo: logoAras,
-    edges: { top: [1,-1], right: [-1], bottom: [1,-1], left: [-1] },
+    edges: { top: [1,1], right: [1], bottom: [-1,1], left: [1] },
   },
   {
-    id: "google",  col: 3, row: 2, cs: 1, rs: 1, color: "#4285F4",
-    name: "Google", label: "Google", logo: logoGoogle,
-    edges: { top: [1], right: [-1], bottom: [1], left: [1] },
-  },
-  {
-    id: "univera", col: 4, row: 2, cs: 1, rs: 1, color: "#4D008C",
+    id: "univera", col: 3, row: 2, cs: 1, rs: 1, color: "#4D008C",
     name: "Univera", label: "Univera", logo: logoUnivera,
-    edges: { top: [-1], right: [1], bottom: [-1], left: [1] },
+    edges: { top: [1], right: [-1], bottom: [1], left: [-1] },
   },
   {
-    id: "nebim",   col: 5, row: 2, cs: 1, rs: 1, color: "#00A2E1",
+    id: "nebim",   col: 4, row: 2, cs: 1, rs: 2, color: "#00A2E1",
     name: "Nebim", label: "Nebim", logo: logoNebim,
-    edges: { top: [1], right: [0], bottom: [1], left: [-1] },
+    edges: { top: [1], right: [0,0], bottom: [0], left: [1,-1] },
   },
   // ── Row 3 ──────────────────────────────────────────────────────────────────
   {
-    id: "kariyer", col: 0, row: 3, cs: 1, rs: 1, color: "#EA580C",
-    name: "Kariyer.net", label: "KR", logo: logoKariyer,
-    edges: { top: [1], right: [-1], bottom: [-1], left: [0] },
-  },
-  {
-    id: "mukellef",col: 1, row: 3, cs: 1, rs: 1, color: "#1E40AF",
+    id: "mukellef",col: 0, row: 3, cs: 1, rs: 1, color: "#1E40AF",
     name: "Mükellef", label: "Mükellef", logo: logoMukellef,
-    edges: { top: [-1], right: [1], bottom: [1], left: [1] },
+    edges: { top: [-1], right: [1], bottom: [0], left: [0] },
   },
   {
-    id: "ticimax", col: 2, row: 3, cs: 2, rs: 1, color: "#0EA5E9",
+    id: "ticimax", col: 1, row: 3, cs: 2, rs: 1, color: "#0EA5E9",
     name: "Ticimax", label: "Ticimax", logo: logoTicimax,
-    edges: { top: [1,-1], right: [1], bottom: [-1,1], left: [-1] },
+    edges: { top: [1,-1], right: [-1], bottom: [0,0], left: [-1] },
   },
   {
-    id: "kolaybi", col: 4, row: 3, cs: 1, rs: 1, color: "#14B8A6",
-    name: "KolayBi", label: "KolayBi",
-    edges: { top: [1], right: [-1], bottom: [-1], left: [-1] },
-  },
-  {
-    id: "webplus", col: 5, row: 3, cs: 1, rs: 1, color: "#9333EA",
-    name: "Web Plus", label: "WP",
-    edges: { top: [-1], right: [0], bottom: [1], left: [1] },
-  },
-  // ── Row 4 ──────────────────────────────────────────────────────────────────
-  {
-    id: "stokbar", col: 0, row: 4, cs: 2, rs: 1, color: "#059669",
-    name: "Stokbar", label: "Stokbar",
-    edges: { top: [1,-1], right: [-1], bottom: [0,0], left: [0] },
-  },
-  {
-    id: "finrota", col: 2, row: 4, cs: 1, rs: 1, color: "#FF671D",
+    id: "finrota", col: 3, row: 3, cs: 1, rs: 1, color: "#FF671D",
     name: "Finrota", label: "Finrota", logo: logoFinrotaNew,
-    edges: { top: [1], right: [-1], bottom: [0], left: [1] },
-  },
-  {
-    id: "unidox",  col: 3, row: 4, cs: 1, rs: 1, color: "#0F766E",
-    name: "UniDOX", label: "UniDOX",
     edges: { top: [-1], right: [1], bottom: [0], left: [1] },
-  },
-  {
-    id: "varuna",  col: 4, row: 4, cs: 1, rs: 1, color: "#DC2626",
-    name: "Varuna", label: "Varuna",
-    edges: { top: [1], right: [1], bottom: [0], left: [-1] },
-  },
-  {
-    id: "enroute", col: 5, row: 4, cs: 1, rs: 1, color: "#7C3AED",
-    name: "Enroute", label: "Enroute",
-    edges: { top: [-1], right: [0], bottom: [0], left: [-1] },
   },
 ];
 
@@ -435,8 +384,8 @@ function PuzzleBoard({
   visible: boolean;
 }) {
   const GAP = 3;
-  const SVG_W = COLS * CW + (COLS - 1) * GAP;   // 540 + 15 = 555
-  const SVG_H = 5 * CH + (5 - 1) * GAP;          // 375 + 12 = 387
+  const SVG_W = COLS * CW + (COLS - 1) * GAP;   // 5*90 + 4*3 = 462
+  const SVG_H = 4 * CH + (4 - 1) * GAP;          // 4*75 + 3*3 = 309
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
