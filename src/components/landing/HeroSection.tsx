@@ -26,7 +26,8 @@ const HeroSection = () => {
         <img
           src={heroIllustration}
           alt=""
-          className="w-full h-full object-cover object-center"
+          className="w-full h-full object-cover"
+          style={{ objectPosition: "left center" }}
           aria-hidden="true"
         />
       </div>
