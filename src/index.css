@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
 @layer base {
   :root {
@@ -155,78 +155,12 @@
     border: 1px solid hsl(252, 20%, 92% / 0.8);
   }
 
-  .glass-nav {
-    background: hsl(250, 30%, 98% / 0.72);
-    backdrop-filter: blur(24px) saturate(180%);
-    border-bottom: 1px solid hsl(252, 20%, 92% / 0.5);
-  }
-
   .ring-glow {
     box-shadow: 0 0 0 3px hsl(268, 72%, 38% / 0.12);
-  }
-
-  .noise-bg::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .gradient-mesh {
-    background:
-      radial-gradient(ellipse 80% 60% at 10% -10%, hsl(268, 72%, 38% / 0.12) 0%, transparent 60%),
-      radial-gradient(ellipse 60% 50% at 90% 10%, hsl(168, 76%, 42% / 0.10) 0%, transparent 55%),
-      radial-gradient(ellipse 50% 40% at 50% 100%, hsl(268, 72%, 38% / 0.06) 0%, transparent 60%),
-      hsl(var(--background));
-  }
-
-  .stat-glow {
-    box-shadow:
-      0 0 0 1px hsl(268, 72%, 38% / 0.1),
-      0 8px 32px -8px hsl(268, 72%, 38% / 0.15),
-      inset 0 1px 0 hsl(0, 0%, 100% / 0.8);
-  }
-
-  .feature-card {
-    background: hsl(0, 0%, 100%);
-    border: 1px solid hsl(252, 20%, 91%);
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-  }
-
-  .feature-card:hover {
-    border-color: hsl(268, 72%, 38% / 0.3);
-    box-shadow:
-      0 0 0 1px hsl(268, 72%, 38% / 0.08),
-      0 20px 60px -12px hsl(268, 72%, 38% / 0.18),
-      0 4px 16px -4px hsl(260, 20%, 10% / 0.06);
-    transform: translateY(-4px);
-  }
-
-  .hero-badge {
-    background: linear-gradient(135deg, hsl(268, 72%, 38% / 0.12), hsl(168, 76%, 42% / 0.08));
-    border: 1px solid hsl(268, 72%, 38% / 0.2);
-    backdrop-filter: blur(8px);
-  }
-
-  .dot-grid {
-    background-image: radial-gradient(circle, hsl(268, 72%, 38% / 0.12) 1px, transparent 1px);
-    background-size: 28px 28px;
   }
 }
 
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 12px 2px hsl(268, 72%, 38% / 0.3); }
   50% { box-shadow: 0 0 24px 6px hsl(268, 72%, 38% / 0.5); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
 }
