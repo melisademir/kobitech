@@ -18,34 +18,47 @@ const HeroSection = () => {
   const [phone, setPhone] = useState("");
 
   return (
-    <section className="relative overflow-hidden pt-20 pb-24 lg:pt-36 lg:pb-36">
-      {/* Mesh gradient blobs — brand purple on dark navy */}
-      <div className="absolute top-[-10%] left-[-10%] w-[700px] h-[700px] rounded-full pointer-events-none"
-      style={{ background: "radial-gradient(circle, rgba(109,40,217,0.28) 0%, transparent 70%)" }} />
-      <div className="absolute bottom-[-5%] right-[-5%] w-[500px] h-[500px] rounded-full pointer-events-none"
-      style={{ background: "radial-gradient(circle, rgba(139,92,246,0.18) 0%, transparent 70%)" }} />
-      {/* Dot grid overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-[0.06]"
-      style={{
-        backgroundImage: "radial-gradient(rgba(255,255,255,0.8) 1px, transparent 1px)",
-        backgroundSize: "28px 28px"
-      }} />
+    <section className="relative overflow-hidden pt-20 pb-28 lg:pt-36 lg:pb-40">
+
+      {/* Soft purple blob — top left */}
+      <div
+        className="absolute top-[-12%] left-[-8%] w-[600px] h-[600px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(124,58,237,0.10) 0%, transparent 68%)" }}
+      />
+      {/* Gold-tinted blob — bottom right */}
+      <div
+        className="absolute bottom-[-10%] right-[-5%] w-[500px] h-[500px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(212,175,55,0.10) 0%, transparent 68%)" }}
+      />
+      {/* Mid lavender blob */}
+      <div
+        className="absolute top-[30%] right-[15%] w-[320px] h-[320px] rounded-full pointer-events-none"
+        style={{ background: "radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)" }}
+      />
+
+      {/* Subtle dot grid */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          backgroundImage: "radial-gradient(rgba(109,40,217,0.07) 1px, transparent 1px)",
+          backgroundSize: "28px 28px",
+        }}
+      />
 
       <div className="max-w-7xl mx-auto px-6 text-center relative">
-        <motion.div
-          initial="hidden"
-          animate="visible"
-          variants={containerVariants}>
+        <motion.div initial="hidden" animate="visible" variants={containerVariants}>
 
           {/* Badge */}
           <motion.div variants={itemVariants}>
-            <span className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-10 tracking-widest uppercase"
-            style={{
-              background: "rgba(109,40,217,0.25)",
-              border: "1px solid rgba(139,92,246,0.4)",
-              color: "#C4B5FD"
-            }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
+            <span
+              className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-10 tracking-widest uppercase"
+              style={{
+                background: "rgba(124,58,237,0.08)",
+                border: "1px solid rgba(124,58,237,0.20)",
+                color: "#6D28D9",
+              }}
+            >
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#7C3AED" }} />
               Türkiye'nin Dijitalleşme Platformu
             </span>
           </motion.div>
@@ -53,15 +66,16 @@ const HeroSection = () => {
           {/* H1 */}
           <motion.h1
             variants={itemVariants}
-            className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.06] mb-6 text-white"
-            style={{ letterSpacing: "-0.03em" }}>
+            className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.06] mb-6"
+            style={{ letterSpacing: "-0.03em", color: "hsl(260, 30%, 12%)" }}
+          >
             İşletmenizin tüm dijital
             <br />
             <span style={{
-              background: "linear-gradient(135deg, #A78BFA 0%, #7C3AED 50%, #C4B5FD 100%)",
+              background: "linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #A78BFA 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
-              backgroundClip: "text"
+              backgroundClip: "text",
             }}>
               ihtiyaçları tek platformda!
             </span>
@@ -71,101 +85,87 @@ const HeroSection = () => {
           <motion.p
             variants={itemVariants}
             className="max-w-md mx-auto mb-12 font-normal"
-            style={{ fontSize: "19px", lineHeight: "1.7", color: "rgba(196,181,253,0.7)" }}>
+            style={{ fontSize: "19px", lineHeight: "1.7", color: "hsl(260, 15%, 44%)" }}
+          >
             Dijitalleşin, verimli çalışın, dünyaya açılın.
             <br className="hidden md:block" />
             Yerelden küresele, yanınızdayız.
           </motion.p>
 
-          {/* Glassmorphism Input Group */}
+          {/* Glassmorphism Input Group — light glass */}
           <motion.div variants={itemVariants} className="max-w-2xl mx-auto mb-6">
             <div
               className="flex flex-col sm:flex-row gap-3 p-2 rounded-2xl"
               style={{
-                background: "rgba(255,255,255,0.06)",
-                backdropFilter: "blur(20px)",
-                WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(255,255,255,0.1)",
-                boxShadow: "0 0 0 1px rgba(139,92,246,0.15) inset, 0 10px 40px rgba(0,0,0,0.2)"
-              }}>
-
+                background: "rgba(255,255,255,0.60)",
+                backdropFilter: "blur(24px)",
+                WebkitBackdropFilter: "blur(24px)",
+                border: "1px solid rgba(124,58,237,0.14)",
+                boxShadow: "0 0 0 1px rgba(255,255,255,0.9) inset, 0 12px 48px -8px rgba(109,40,217,0.12), 0 4px 16px rgba(0,0,0,0.04)",
+              }}
+            >
               {/* Email */}
               <div className="relative flex-1">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "rgba(196,181,253,0.5)" }} />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "rgba(109,40,217,0.4)" }} />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="E-posta adresiniz"
-                  className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200 placeholder:text-violet-300/40"
+                  className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200"
                   style={{
-                    background: "rgba(255,255,255,0.07)",
+                    background: "rgba(255,255,255,0.70)",
                     backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "white",
-                    colorScheme: "dark",
-                  }} />
+                    border: "1px solid rgba(124,58,237,0.12)",
+                    color: "hsl(260,30%,14%)",
+                  }}
+                />
               </div>
 
               {/* Phone */}
               <div className="relative flex-1">
-                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "rgba(196,181,253,0.5)" }} />
+                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "rgba(109,40,217,0.4)" }} />
                 <input
                   type="tel"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Telefon numaranız"
-                  className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200 placeholder:text-violet-300/40"
+                  className="w-full h-12 pl-10 pr-4 rounded-xl text-sm font-medium outline-none transition-all duration-200"
                   style={{
-                    background: "rgba(255,255,255,0.07)",
+                    background: "rgba(255,255,255,0.70)",
                     backdropFilter: "blur(12px)",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    color: "white",
-                    colorScheme: "dark",
-                  }} />
+                    border: "1px solid rgba(124,58,237,0.12)",
+                    color: "hsl(260,30%,14%)",
+                  }}
+                />
               </div>
 
               {/* CTA */}
               <Link to="/kobi/step-1">
                 <motion.button
-                  whileHover={{ scale: 1.04, boxShadow: "0 8px 40px -4px rgba(124,58,237,0.8)" }}
+                  whileHover={{ scale: 1.04, boxShadow: "0 8px 40px -4px rgba(124,58,237,0.55)" }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ type: "spring", stiffness: 320, damping: 18 }}
                   className="h-12 px-7 rounded-xl font-bold text-sm text-white whitespace-nowrap shrink-0 flex items-center gap-2"
                   style={{
                     background: "linear-gradient(135deg, #6D28D9, #7C3AED)",
-                    boxShadow: "0 4px 20px -4px rgba(124,58,237,0.6)"
-                  }}>
+                    boxShadow: "0 4px 20px -4px rgba(124,58,237,0.50)",
+                  }}
+                >
                   Hemen Başla <ArrowRight className="w-4 h-4" />
                 </motion.button>
               </Link>
             </div>
 
-            <p className="text-xs mt-3 text-center" style={{ color: "rgba(196,181,253,0.35)" }}>
+            <p className="text-xs mt-3 text-center" style={{ color: "rgba(109,40,217,0.35)" }}>
               <a href="#" className="underline hover:opacity-70 transition-opacity">KVKK Aydınlatma Metni</a>'ni kabul etmiş sayılırsınız.
             </p>
           </motion.div>
 
-          {/* Stats row */}
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         </motion.div>
       </div>
-    </section>);
-
+    </section>
+  );
 };
 
 export default HeroSection;
