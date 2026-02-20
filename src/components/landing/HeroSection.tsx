@@ -70,8 +70,8 @@ const HeroSection = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="text-sm md:text-base max-w-md mx-auto mb-12 font-normal"
-            style={{ lineHeight: "1.7", color: "rgba(196,181,253,0.7)" }}>
+            className="max-w-md mx-auto mb-12 font-normal"
+            style={{ fontSize: "19px", lineHeight: "1.7", color: "rgba(196,181,253,0.7)" }}>
             Dijitalleşin, verimli çalışın, dünyaya açılın.
             <br className="hidden md:block" />
             Yerelden küresele, yanınızdayız.

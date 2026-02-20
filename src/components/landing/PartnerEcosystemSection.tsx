@@ -750,7 +750,7 @@ const PartnerEcosystemSection = () => {
             Güçlü Partner Ekosistemi
           </h2>
           <p className="text-muted-foreground mt-3 mx-auto"
-          style={{ maxWidth: "460px", fontSize: "1rem", lineHeight: 1.7 }}>
+          style={{ maxWidth: "460px", fontSize: "19px", lineHeight: 1.7 }}>
             Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
         </motion.div>
