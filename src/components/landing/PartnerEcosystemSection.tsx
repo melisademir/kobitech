@@ -733,9 +733,6 @@ const PartnerEcosystemSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-10">
 
-          <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold tracking-widest uppercase border border-primary/15 mb-4">
-            Çözüm Ortakları
-          </span>
           <h2 className="font-black text-foreground mx-auto"
           style={{ fontSize: "clamp(1.8rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}>
             Güçlü Partner Ekosistemi
