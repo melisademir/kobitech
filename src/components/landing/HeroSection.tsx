@@ -139,30 +139,30 @@ const HeroSection = () => {
 
 
           {/* Floating glass card — top left */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-6 -left-4 z-20 hidden md:block"
-            style={{
-              background: "rgba(255,255,255,0.85)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.6)",
-              borderRadius: "16px",
-              boxShadow: "0 8px 32px -8px rgba(109,40,217,0.18)",
-              padding: "14px 18px",
-              minWidth: "160px"
-            }}>
-            <div className="flex items-center gap-2.5">
-              <div className="w-8 h-8 rounded-full flex items-center justify-center text-sm" style={{ background: "linear-gradient(135deg,#6D28D9,#7C3AED)" }}>
-                ✓
-              </div>
-              <div>
-                <p className="text-xs font-bold text-foreground" style={{ letterSpacing: "-0.01em" }}>Teklif Onaylandı</p>
-                <p className="text-[10px] text-muted-foreground">az önce</p>
-              </div>
-            </div>
-          </motion.div>
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           {/* Floating stats card — bottom right */}
           <motion.div
