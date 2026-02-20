@@ -17,9 +17,9 @@ import logoKariyer from "@/assets/logo-kariyer.png";
 import logoMukellef from "@/assets/logo-mukellef.png";
 
 // ─── Puzzle geometry ──────────────────────────────────────────────────────────
-const CW = 112; // cell width  px
-const CH = 94;  // cell height px
-const T = 13;   // tab radius  px
+const CW = 90; // cell width  px
+const CH = 75; // cell height px
+const T = 12; // tab radius  px
 const COLS = 5;
 
 /**
@@ -424,7 +424,7 @@ function LogoText({ piece, cx, cy }: {piece: typeof pieces[0];cx: number;cy: num
   // If piece has a logo image → fill the entire piece area, clipped to puzzle shape
   if ((piece as any).logo) {
     // Padding inside piece for contain-style logo
-    const padding = Math.min(pieceW, pieceH) * 0.10;
+    const padding = Math.min(pieceW, pieceH) * 0.18;
     return (
       <g clipPath={`url(#clip-${piece.id})`} style={{ pointerEvents: "none" }}>
         {/* White background */}
