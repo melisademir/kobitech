@@ -5,10 +5,34 @@ import statsGem from "@/assets/stats-gem.svg";
 import statsPartner from "@/assets/stats-partner.svg";
 
 const stats = [
-  { icon: statsFolders, value: "10.000+", label: "Aktif Kobi", color: "from-violet-500/15 to-purple-500/8", glow: "hover:shadow-[0_8px_40px_-8px_hsl(268,72%,38%/0.28)]" },
-  { icon: statsChart, value: "48+", label: "Farklı Sektör", color: "from-cyan-500/15 to-teal-500/8", glow: "hover:shadow-[0_8px_40px_-8px_hsl(168,76%,42%/0.28)]" },
-  { icon: statsGem, value: "50+", label: "Dijital Dönüşüm Aracı", color: "from-indigo-500/15 to-violet-500/8", glow: "hover:shadow-[0_8px_40px_-8px_hsl(245,70%,55%/0.28)]" },
-  { icon: statsPartner, value: "30+", label: "Çözüm Ortağı", color: "from-emerald-500/15 to-cyan-500/8", glow: "hover:shadow-[0_8px_40px_-8px_hsl(160,84%,39%/0.28)]" },
+  {
+    icon: statsFolders,
+    value: "10.000+",
+    label: "Aktif Kobi",
+    circleBg: "rgba(109,40,217,0.10)",
+    glow: "hover:shadow-[0_12px_48px_-8px_rgba(109,40,217,0.22)]",
+  },
+  {
+    icon: statsChart,
+    value: "48+",
+    label: "Farklı Sektör",
+    circleBg: "rgba(109,40,217,0.10)",
+    glow: "hover:shadow-[0_12px_48px_-8px_rgba(109,40,217,0.22)]",
+  },
+  {
+    icon: statsGem,
+    value: "50+",
+    label: "Dijital Dönüşüm Aracı",
+    circleBg: "rgba(109,40,217,0.10)",
+    glow: "hover:shadow-[0_12px_48px_-8px_rgba(109,40,217,0.22)]",
+  },
+  {
+    icon: statsPartner,
+    value: "30+",
+    label: "Çözüm Ortağı",
+    circleBg: "rgba(109,40,217,0.10)",
+    glow: "hover:shadow-[0_12px_48px_-8px_rgba(109,40,217,0.22)]",
+  },
 ];
 
 const containerVariants = {
@@ -25,7 +49,7 @@ const itemVariants = {
 };
 
 const StatsSection = () => (
-  <section className="py-16 border-y border-border/60">
+  <section className="py-16 border-y border-border/50">
     <motion.div
       initial="hidden"
       whileInView="visible"
@@ -38,16 +62,34 @@ const StatsSection = () => (
           key={s.label}
           variants={itemVariants}
           whileHover={{ y: -6, scale: 1.03, transition: { duration: 0.22 } }}
-          className={`flex flex-col items-center gap-3 glass-card rounded-2xl py-8 px-5 transition-shadow duration-300 ${s.glow}`}
+          className={`flex flex-col items-center gap-4 rounded-2xl py-10 px-6 transition-all duration-300 ${s.glow} border border-white/20`}
+          style={{
+            background: "rgba(255,255,255,0.72)",
+            backdropFilter: "blur(20px)",
+            WebkitBackdropFilter: "blur(20px)",
+            boxShadow: "0 2px 24px -4px rgba(109,40,217,0.07), 0 1px 0 rgba(255,255,255,0.8) inset",
+          }}
         >
-          <motion.div
-            className={`w-14 h-14 rounded-xl bg-gradient-to-br ${s.color} flex items-center justify-center border border-white/30`}
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            transition={{ type: "spring", stiffness: 280 }}
-          >
-            <img src={s.icon} alt={s.label} className="w-7 h-7" />
-          </motion.div>
-          <p className="text-3xl md:text-4xl font-extrabold text-foreground tracking-tight">{s.value}</p>
+          {/* Icon with large circle background */}
+          <div className="relative flex items-center justify-center">
+            {/* Large faded circle */}
+            <div
+              className="absolute w-16 h-16 rounded-full"
+              style={{ background: s.circleBg }}
+            />
+            <motion.div
+              className="relative w-14 h-14 rounded-xl flex items-center justify-center border border-white/40"
+              style={{
+                background: "rgba(255,255,255,0.9)",
+                boxShadow: "0 4px 16px -4px rgba(109,40,217,0.12)",
+              }}
+              whileHover={{ scale: 1.1, rotate: 5 }}
+              transition={{ type: "spring", stiffness: 280 }}
+            >
+              <img src={s.icon} alt={s.label} className="w-7 h-7" />
+            </motion.div>
+          </div>
+          <p className="text-3xl md:text-4xl font-black text-foreground tracking-tight" style={{ letterSpacing: "-0.02em" }}>{s.value}</p>
           <p className="text-sm text-muted-foreground font-medium leading-snug">{s.label}</p>
         </motion.div>
       ))}

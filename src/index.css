@@ -178,21 +178,44 @@
     box-shadow: 0 0 0 3px hsl(268, 72%, 38% / 0.12);
   }
 
-  /* Section spacing */
+  /* Section spacing — clamp for fluid premium breathing */
   .section-gap {
-    padding-top: 7rem;
-    padding-bottom: 7rem;
+    padding-top: clamp(80px, 12vh, 160px);
+    padding-bottom: clamp(80px, 12vh, 160px);
   }
 
-  @media (min-width: 1024px) {
-    .section-gap {
-      padding-top: 10rem;
-      padding-bottom: 10rem;
-    }
+  /* Smooth scroll fade-in-up via Intersection Observer */
+  .fade-in-up {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .fade-in-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Floating animation for glass cards */
+  .float-slow {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .float-medium {
+    animation: float 4s ease-in-out infinite 1s;
   }
 }
 
 @keyframes pulse-glow {
   0%, 100% { box-shadow: 0 0 12px 2px hsl(268, 72%, 38% / 0.3); }
   50% { box-shadow: 0 0 24px 6px hsl(268, 72%, 38% / 0.5); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+html {
+  scroll-behavior: smooth;
 }
