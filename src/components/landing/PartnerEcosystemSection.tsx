@@ -738,11 +738,11 @@ const PartnerEcosystemSection = () => {
           </span>
           <h2 className="font-black text-foreground mx-auto"
           style={{ fontSize: "clamp(1.8rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}>
-            Çözüm Ortaklarımız
+            Güçlü Partner Ekosistemi
           </h2>
           <p className="text-muted-foreground mt-3 mx-auto"
           style={{ maxWidth: "460px", fontSize: "1rem", lineHeight: 1.7 }}>
-            Bir puzzle parçasına tıklayın — partnerinizi keşfedin
+            Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
         </motion.div>
 
