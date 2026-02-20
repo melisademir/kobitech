@@ -11,14 +11,14 @@ import {
   Globe2,
   Users,
 } from "lucide-react";
-import tabEticaret from "@/assets/tab-eticaret-new.png";
-import tabOdeme from "@/assets/tab-odeme-new.png";
-import tabPara from "@/assets/tab-para-new.png";
-import tabStok from "@/assets/tab-stok-new.png";
-import tabGlobal from "@/assets/tab-global-new.png";
-import tabEkip from "@/assets/tab-ekip-new.png";
-import tabTesvik from "@/assets/tab-tesvik.png";
-import tabUretim from "@/assets/tab-uretim.png";
+import tabEticaret from "@/assets/tab-eticaret-ai.png";
+import tabOdeme from "@/assets/tab-odeme-ai.png";
+import tabPara from "@/assets/tab-para-ai.png";
+import tabStok from "@/assets/tab-stok-ai.png";
+import tabGlobal from "@/assets/tab-global-ai.png";
+import tabEkip from "@/assets/tab-ekip-ai.png";
+import tabTesvik from "@/assets/tab-tesvik-new.png";
+import tabUretim from "@/assets/tab-uretim-ai.png";
 
 
 const categories = [
