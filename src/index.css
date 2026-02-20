@@ -233,3 +233,9 @@
 html {
   scroll-behavior: smooth;
 }
+
+/* Hero light-theme input placeholder */
+.hero-input::placeholder {
+  color: hsl(260, 20%, 52%);
+  font-weight: 400;
+}
