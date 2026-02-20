@@ -9,15 +9,17 @@ import FooterSection from "@/components/landing/FooterSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import TrustBand from "@/components/landing/TrustBand";
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
-import heroBg from "@/assets/hero-bg.png";
+
 
 const Landing = () => (
   <div className="min-h-screen bg-background">
-    {/* 1 — HERO: Deep navy / dark atmosphere */}
-    <div className="relative" style={{ background: "hsl(258, 45%, 10%)" }}>
-      <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover pointer-events-none opacity-20 mix-blend-luminosity" />
-      {/* Bottom fade to stats ivory */}
-      <div className="absolute bottom-0 left-0 right-0 h-24 pointer-events-none" style={{ background: "linear-gradient(to bottom, transparent, hsl(258,45%,10%))" }} />
+    {/* 1 — HERO: Light ivory with glass & soft purple blobs */}
+    <div
+      className="relative"
+      style={{
+        background: "linear-gradient(145deg, hsl(38,60%,98%) 0%, hsl(265,50%,96%) 55%, hsl(38,50%,97%) 100%)",
+      }}
+    >
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
