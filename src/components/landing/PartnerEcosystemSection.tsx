@@ -428,8 +428,9 @@ function PuzzleBoard({
   onSelect: (id: string) => void;
   visible: boolean;
 }) {
-  const SVG_W = COLS * CW;           // 540
-  const SVG_H = 5 * CH;             // 375
+  const GAP = 3;
+  const SVG_W = COLS * CW + (COLS - 1) * GAP;   // 540 + 15 = 555
+  const SVG_H = 5 * CH + (5 - 1) * GAP;          // 375 + 12 = 387
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
@@ -481,8 +482,9 @@ function PuzzleBoard({
 
       {/* Render pieces */}
       {pieces.map((piece, i) => {
-        const px = piece.col * CW;
-        const py = piece.row * CH;
+        const GAP = 3; // px gap between pieces
+        const px = piece.col * CW + piece.col * GAP;
+        const py = piece.row * CH + piece.row * GAP;
         const pw = piece.cs * CW;
         const ph = piece.rs * CH;
         const cx = px + pw / 2;
