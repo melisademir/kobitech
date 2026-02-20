@@ -154,30 +154,6 @@ const HeroSection = () => {
             </p>
           </motion.div>
 
-          {/* Stat badges */}
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-3 mt-8">
-            {[
-              { label: "Aktif KOBİ", value: "5.000+" },
-              { label: "Dijital Çözüm", value: "50+" },
-              { label: "Farklı Sektör", value: "20+" },
-              { label: "Çözüm Ortağı", value: "30+" },
-            ].map((s) => (
-              <div
-                key={s.label}
-                className="px-5 py-2.5 rounded-2xl flex items-center gap-3"
-                style={{
-                  background: "rgba(255,255,255,0.68)",
-                  backdropFilter: "blur(16px)",
-                  WebkitBackdropFilter: "blur(16px)",
-                  border: "1.5px solid rgba(109,40,217,0.13)",
-                  boxShadow: "0 4px 16px -4px rgba(109,40,217,0.10)",
-                }}
-              >
-                <span className="text-xl font-black" style={{ color: "#6D28D9" }}>{s.value}</span>
-                <span className="text-xs font-semibold" style={{ color: "hsl(260,20%,40%)" }}>{s.label}</span>
-              </div>
-            ))}
-          </motion.div>
         </motion.div>
       </div>
     </section>
