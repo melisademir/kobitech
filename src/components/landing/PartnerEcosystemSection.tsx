@@ -750,84 +750,109 @@ const PartnerEcosystemSection = () => {
           </p>
         </motion.div>
 
-        {/* Two-column layout */}
-        <div ref={sectionRef} className="flex flex-col-reverse lg:flex-row items-start gap-8 xl:gap-14">
+        {/* Unified container card */}
+        <motion.div
+          ref={sectionRef}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.08 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          style={{
+            background: "white",
+            borderRadius: "28px",
+            padding: "40px",
+            boxShadow: "0 4px 8px rgba(0,0,0,0.04), 0 12px 24px rgba(0,0,0,0.08), 0 24px 48px rgba(0,0,0,0.06)",
+            border: "1px solid rgba(0,0,0,0.03)",
+            maxWidth: "1400px",
+            margin: "0 auto",
+            minHeight: "700px",
+          }}
+        >
+          <div className="flex flex-col lg:flex-row items-stretch gap-8 xl:gap-10 h-full">
 
-          {/* LEFT: SVG Puzzle */}
-          <motion.div
-            className="w-full lg:w-[50%] flex-shrink-0"
-            initial={{ opacity: 0, x: -20 }}
-            animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
-            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <PuzzleBoard selectedId={selectedId} onSelect={handleSelect} visible={visible} />
-
-            {/* Stats + CTA */}
-            <div className="flex justify-center gap-8 md:gap-12 mt-8">
-              {[
-                { value: "50+", label: "Çözüm Ortağı" },
-                { value: "21",  label: "Param Ürünü"  },
-                { value: "10",  label: "Kategori"     },
-              ].map((s, i) => (
-                <motion.div key={s.label}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={visible ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
-                  className="flex flex-col items-center">
-                  <span className="font-black text-primary"
-                    style={{ fontSize: "clamp(1.5rem,2.2vw,1.9rem)", lineHeight: 1, letterSpacing: "-0.03em" }}>
-                    {s.value}
-                  </span>
-                  <span className="text-xs text-muted-foreground mt-1 font-medium">{s.label}</span>
-                </motion.div>
-              ))}
-            </div>
-
-            <motion.div className="mt-6 flex justify-center"
-              initial={{ opacity: 0, y: 10 }}
-              animate={visible ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: 0.8 }}>
-              <Link to="/kobi/urunler">
-                <motion.button
-                  whileHover={{ scale: 1.04, boxShadow: "0 12px 40px -6px rgba(109,40,217,0.52)" }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 18 }}
-                  className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm"
-                  style={{ background: "linear-gradient(135deg, hsl(268,72%,38%), hsl(268,72%,52%))", boxShadow: "0 6px 24px -4px rgba(109,40,217,0.38)" }}>
-                  Çözüm Ortaklarını Keşfet <ArrowRight className="h-4 w-4" />
-                </motion.button>
-              </Link>
-            </motion.div>
-          </motion.div>
-
-          {/* RIGHT: Dynamic content panel */}
-          <div className="w-full lg:w-[50%] lg:sticky lg:top-24">
+            {/* LEFT: SVG Puzzle */}
             <motion.div
-              className="rounded-3xl p-10 md:p-12"
-              style={{
-                background: "linear-gradient(145deg, #ffffff 0%, hsl(252,60%,98%) 100%)",
-                boxShadow: "0 4px 6px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.08), 0 20px 40px rgba(0,0,0,0.06)",
-                border: "1px solid rgba(0,0,0,0.04)",
-                minHeight: "600px",
-              }}
-              initial={{ opacity: 0, x: 20 }}
-              animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+              className="w-full lg:w-[46%] flex-shrink-0 flex flex-col"
+              initial={{ opacity: 0, x: -20 }}
+              animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <AnimatePresence mode="wait">
-                {selectedPiece && (
-                  <motion.div key={selectedPiece.id}
-                    initial={{ opacity: 0, scale: 0.96 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.96 }}
-                    transition={{ duration: 0.2, ease: "easeInOut" }}>
-                    <PartnerPanel piece={selectedPiece} />
+              {/* Puzzle fills remaining space */}
+              <div className="flex-1 flex items-center justify-center">
+                <div className="w-full">
+                  <PuzzleBoard selectedId={selectedId} onSelect={handleSelect} visible={visible} />
+                </div>
+              </div>
+
+              {/* Stats + CTA */}
+              <div className="flex justify-center gap-8 md:gap-12 mt-6">
+                {[
+                  { value: "50+", label: "Çözüm Ortağı" },
+                  { value: "21",  label: "Param Ürünü"  },
+                  { value: "10",  label: "Kategori"     },
+                ].map((s, i) => (
+                  <motion.div key={s.label}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={visible ? { opacity: 1, y: 0 } : {}}
+                    transition={{ duration: 0.4, delay: 0.5 + i * 0.1 }}
+                    className="flex flex-col items-center">
+                    <span className="font-black text-primary"
+                      style={{ fontSize: "clamp(1.5rem,2.2vw,1.9rem)", lineHeight: 1, letterSpacing: "-0.03em" }}>
+                      {s.value}
+                    </span>
+                    <span className="text-xs text-muted-foreground mt-1 font-medium">{s.label}</span>
                   </motion.div>
-                )}
-              </AnimatePresence>
+                ))}
+              </div>
+
+              <motion.div className="mt-5 flex justify-center"
+                initial={{ opacity: 0, y: 10 }}
+                animate={visible ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.8 }}>
+                <Link to="/kobi/urunler">
+                  <motion.button
+                    whileHover={{ scale: 1.04, boxShadow: "0 12px 40px -6px rgba(109,40,217,0.52)" }}
+                    whileTap={{ scale: 0.97 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 18 }}
+                    className="inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white font-bold text-sm"
+                    style={{ background: "linear-gradient(135deg, hsl(268,72%,38%), hsl(268,72%,52%))", boxShadow: "0 6px 24px -4px rgba(109,40,217,0.38)" }}>
+                    Çözüm Ortaklarını Keşfet <ArrowRight className="h-4 w-4" />
+                  </motion.button>
+                </Link>
+              </motion.div>
             </motion.div>
+
+            {/* Divider */}
+            <div className="hidden lg:block w-px self-stretch" style={{ background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.06) 20%, rgba(0,0,0,0.06) 80%, transparent)" }} />
+
+            {/* RIGHT: Dynamic content panel */}
+            <div className="w-full lg:flex-1 flex flex-col">
+              <motion.div
+                className="flex-1 rounded-2xl p-8 md:p-10 flex flex-col justify-center"
+                style={{
+                  background: "linear-gradient(145deg, #ffffff 0%, hsl(252,60%,98%) 100%)",
+                  border: "1px solid rgba(0,0,0,0.04)",
+                  minHeight: "540px",
+                }}
+                initial={{ opacity: 0, x: 20 }}
+                animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
+                transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
+              >
+                <AnimatePresence mode="wait">
+                  {selectedPiece && (
+                    <motion.div key={selectedPiece.id}
+                      initial={{ opacity: 0, scale: 0.96 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.96 }}
+                      transition={{ duration: 0.2, ease: "easeInOut" }}>
+                      <PartnerPanel piece={selectedPiece} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            </div>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
