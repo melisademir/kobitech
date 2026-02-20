@@ -75,25 +75,25 @@ const FeaturesSection = () =>
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
       className="text-center mb-20">
 
-        
+        <motion.span
+        initial={{ opacity: 0, scale: 0.85 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.4, delay: 0.1 }}
+        className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-6 tracking-widest uppercase border border-primary/15">
 
-
-
-
-
-
-
-
+          Neden Kobi Dijital?
+        </motion.span>
         <h2
         className="text-4xl md:text-5xl font-bold text-foreground mb-5"
         style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}>
 
           Tüm Çözümlere Tek Platformdan Ulaşın
         </h2>
-        <p className="text-slate-500 text-sm max-w-md mx-auto" style={{ lineHeight: "1.7" }}>
-          İşletmenizi Türkiye'den globale taşıyacak
-          <br className="hidden md:block" /> ölçeklenebilir dijital altyapı.
-        </p>
+        
+
+
+
       </motion.div>
 
       {/* Bento Grid */}
