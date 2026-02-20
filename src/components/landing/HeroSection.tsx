@@ -179,28 +179,28 @@ const HeroSection = () => {
 
 
           {/* Floating stats card */}
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-            className="absolute -top-4 right-6 md:right-10"
-            style={{
-              background: "rgba(255,255,255,0.85)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.4)",
-              boxShadow: "0 8px 32px -4px rgba(109,40,217,0.18)",
-              borderRadius: "16px",
-              padding: "12px 18px"
-            }}>
+          
 
-            <div className="flex items-center gap-2">
-              <span className="text-lg">📈</span>
-              <div>
-                <p className="text-xs font-bold text-foreground">10.000+ KOBİ</p>
-                <p className="text-[11px] text-muted-foreground">Platformumuza güveniyor</p>
-              </div>
-            </div>
-          </motion.div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
         </motion.div>
       </div>
     </section>);
