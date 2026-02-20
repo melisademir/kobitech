@@ -465,15 +465,13 @@ function PuzzleBoard({
         const pathD  = puzzlePath(px, py, piece.cs, piece.rs, piece.edges);
         const isSel  = selectedId === piece.id;
         const isHov  = hovered === piece.id;
-        const anySelected = selectedId !== null;
-        const dimmed = anySelected && !isSel;
 
         return (
           <motion.g
             key={piece.id}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={visible ? {
-              opacity: dimmed ? 0.45 : 1,
+              opacity: 1,
               scale: 1,
               filter: isSel ? "drop-shadow(0 0 8px hsl(268,72%,55%))" : "none",
             } : { opacity: 0, scale: 0.8 }}
