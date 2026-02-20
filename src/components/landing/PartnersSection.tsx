@@ -17,6 +17,8 @@ import tabPara from "@/assets/tab-para-new.png";
 import tabStok from "@/assets/tab-stok-new.png";
 import tabGlobal from "@/assets/tab-global-new.png";
 import tabEkip from "@/assets/tab-ekip-new.png";
+import tabTesvik from "@/assets/tab-tesvik.png";
+import tabUretim from "@/assets/tab-uretim.png";
 
 
 const categories = [
@@ -26,7 +28,7 @@ const categories = [
       "Devlet teşvikleri, hibe programları ve vergi avantajlarından yararlanarak maliyetlerinizi düşürün. Size uygun destekleri keşfedin ve başvuru süreçlerinizi kolaylaştırın.",
     tags: ["Hibe Programları", "Vergi Avantajları", "Başvuru Desteği"],
     icon: BadgePercent,
-    image: null,
+    image: tabTesvik,
     accent: "#7C3AED",
     accentBg: "rgba(124,58,237,0.08)",
     decorColor: "#A78BFA",
@@ -74,7 +76,7 @@ const categories = [
       "Üretim süreçlerinizi dijitalleştirin, verimlilik analizi yapın ve operasyonel maliyetlerinizi minimize edin.",
     tags: ["Üretim Takibi", "Verimlilik Analizi", "Otomasyon"],
     icon: Factory,
-    image: null,
+    image: tabUretim,
     accent: "#DC2626",
     accentBg: "rgba(220,38,38,0.08)",
     decorColor: "#FCA5A5",
