@@ -349,17 +349,22 @@ function LogoText({ piece, cx, cy }: { piece: typeof pieces[0]; cx: number; cy: 
 
   // If piece has a logo image → fill the entire piece area, clipped to puzzle shape
   if ((piece as any).logo) {
+    // Padding inside piece for contain-style logo
+    const padding = Math.min(pieceW, pieceH) * 0.18;
     return (
-      <image
-        href={(piece as any).logo}
-        x={px}
-        y={py}
-        width={pieceW}
-        height={pieceH}
-        preserveAspectRatio="xMidYMid slice"
-        clipPath={`url(#clip-${piece.id})`}
-        style={{ pointerEvents: "none" }}
-      />
+      <g clipPath={`url(#clip-${piece.id})`} style={{ pointerEvents: "none" }}>
+        {/* White background */}
+        <rect x={px} y={py} width={pieceW} height={pieceH} fill="#FFFFFF" />
+        {/* Logo contained with padding */}
+        <image
+          href={(piece as any).logo}
+          x={px + padding}
+          y={py + padding}
+          width={pieceW - padding * 2}
+          height={pieceH - padding * 2}
+          preserveAspectRatio="xMidYMid meet"
+        />
+      </g>
     );
   }
 
@@ -386,7 +391,7 @@ function LogoText({ piece, cx, cy }: { piece: typeof pieces[0]; cx: number; cy: 
       <text
         x={cx} y={startY}
         textAnchor="middle" dominantBaseline="middle"
-        fill="white"
+        fill="#1a1a2e"
         fontFamily="'Plus Jakarta Sans', 'Inter', sans-serif"
         fontWeight="800"
         fontSize={fontSize}
@@ -399,7 +404,7 @@ function LogoText({ piece, cx, cy }: { piece: typeof pieces[0]; cx: number; cy: 
         <text
           x={cx} y={startY + lineH}
           textAnchor="middle" dominantBaseline="middle"
-          fill="white"
+          fill="#1a1a2e"
           fontFamily="'Plus Jakarta Sans', 'Inter', sans-serif"
           fontWeight="800"
           fontSize={fontSize}
@@ -510,8 +515,8 @@ function PuzzleBoard({
               animate={isSel ? { y: -5 } : { y: 0 }}
               transition={{ type: "spring", stiffness: 340, damping: 22 }}
             >
-              {/* Main fill */}
-              <path d={pathD} fill={piece.color} />
+              {/* Main fill — white */}
+              <path d={pathD} fill="#FFFFFF" />
 
               {/* Bevel gradient overlay */}
               <path d={pathD} fill={`url(#bevel-${piece.id})`} />
