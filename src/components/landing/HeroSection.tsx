@@ -32,14 +32,14 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* ── Organic vignette overlay — no box, just a soft radial dark gradient ── */}
+      {/* ── Organic vignette overlay ── */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: [
-            "radial-gradient(ellipse 70% 80% at 55% 45%, rgba(15,7,32,0.62) 0%, rgba(15,7,32,0.44) 35%, rgba(15,7,32,0.18) 60%, transparent 85%)",
-            "radial-gradient(ellipse 100% 60% at 50% 100%, rgba(8,4,20,0.55) 0%, transparent 70%)",
-            "radial-gradient(ellipse 50% 100% at 0% 50%, rgba(8,4,20,0.35) 0%, transparent 70%)",
+            "radial-gradient(ellipse 75% 85% at 55% 48%, rgba(10,4,24,0.88) 0%, rgba(10,4,24,0.75) 30%, rgba(10,4,24,0.45) 55%, rgba(10,4,24,0.12) 75%, transparent 92%)",
+            "radial-gradient(ellipse 100% 55% at 50% 100%, rgba(6,2,16,0.70) 0%, transparent 70%)",
+            "radial-gradient(ellipse 45% 100% at 0% 50%, rgba(6,2,16,0.50) 0%, transparent 70%)",
           ].join(", "),
         }}
       />
@@ -73,13 +73,13 @@ const HeroSection = () => {
           {/* H1 */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] mb-5"
-            style={{ letterSpacing: "-0.03em", color: "#F5F0FF" }}
+          className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] mb-5"
+            style={{ letterSpacing: "-0.03em", color: "#FFFFFF", textShadow: "0 2px 24px rgba(0,0,0,0.5)" }}
           >
             İşletmenizin tüm dijital
             <br />
             <span style={{
-              background: "linear-gradient(135deg, #C4B5FD 0%, #A78BFA 55%, #DDD6FE 100%)",
+              background: "linear-gradient(135deg, #E9D5FF 0%, #C4B5FD 55%, #F3E8FF 100%)",
               WebkitBackgroundClip: "text",
               WebkitTextFillColor: "transparent",
               backgroundClip: "text",
@@ -92,7 +92,7 @@ const HeroSection = () => {
           <motion.p
             variants={itemVariants}
             className="max-w-lg mx-auto font-medium mb-8"
-            style={{ fontSize: "19px", lineHeight: "1.75", color: "rgba(221,214,254,0.80)" }}
+            style={{ fontSize: "19px", lineHeight: "1.75", color: "rgba(243,232,255,0.92)", textShadow: "0 1px 12px rgba(0,0,0,0.4)" }}
           >
             Dijitalleşin, verimli çalışın, dünyaya açılın.
             <br />
