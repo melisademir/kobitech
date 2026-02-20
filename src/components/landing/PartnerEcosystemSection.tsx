@@ -423,8 +423,11 @@ function LogoText({ piece, cx, cy }: {piece: typeof pieces[0];cx: number;cy: num
 
   // If piece has a logo image → fill the entire piece area, clipped to puzzle shape
   if ((piece as any).logo) {
-    // Padding inside piece for contain-style logo
-    const padding = Math.min(pieceW, pieceH) * 0.18;
+    // Small 1×1 pieces get minimal padding so logos are legible
+    const isSmall = piece.cs === 1 && piece.rs === 1;
+    const padding = isSmall
+      ? Math.min(pieceW, pieceH) * 0.10
+      : Math.min(pieceW, pieceH) * 0.18;
     return (
       <g clipPath={`url(#clip-${piece.id})`} style={{ pointerEvents: "none" }}>
         {/* White background */}
