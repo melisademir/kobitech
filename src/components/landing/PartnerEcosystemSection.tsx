@@ -1,7 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence, useInView } from "framer-motion";
-import { ArrowRight, Check, Star } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import logoFinrota from "@/assets/logo-finrota.png";
 import logoParam from "@/assets/logo-param.jpg";
 import logoTsoft from "@/assets/logo-tsoft.png";
@@ -211,91 +211,210 @@ const partnerDetails: Record<string, {
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-const StarRow = ({ name, stars, pct }: { name: string; stars: number; pct: number }) => (
-  <div className="flex items-center gap-2">
-    <span className="text-xs text-muted-foreground w-28 truncate font-medium">{name}</span>
-    <div className="flex gap-0.5">
-      {Array.from({ length: 5 }).map((_, i) => (
-        <Star key={i} className="w-3 h-3"
-          fill={i < stars ? "#FBBF24" : "none"}
-          stroke={i < stars ? "#FBBF24" : "#D1D5DB"} strokeWidth={1.5} />
-      ))}
-    </div>
-    <span className="text-xs font-bold text-muted-foreground">%{pct}</span>
-  </div>
-);
-
-// ─── Partner right panel ───────────────────────────────────────────────────────
-const PartnerPanel = ({ piece, onDeselect }: {
-  piece: typeof pieces[0]; onDeselect: () => void;
-}) => {
+// ─── Partner right panel (Premium) ────────────────────────────────────────────
+const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
   const d = partnerDetails[piece.id];
   if (!d) return null;
+
+  // Stagger animation variants for children
+  const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.05, delayChildren: 0.08 } },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 12 },
+    show:   { opacity: 1, y: 0, transition: { duration: 0.32, ease: "easeOut" as const } },
+  };
+
   return (
-    <div className="flex flex-col h-full justify-center">
-      <span className="inline-block self-start px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase mb-5"
-        style={{ background: `${piece.color}22`, color: piece.color }}>
-        {d.category.toUpperCase()}
-      </span>
-      <div className="flex items-center gap-4 mb-4">
-        <div className="w-20 h-20 rounded-2xl flex items-center justify-center flex-shrink-0 overflow-hidden"
-          style={{ background: piece.color, boxShadow: `0 8px 28px -6px ${piece.color}66` }}>
+    <motion.div
+      className="flex flex-col"
+      variants={container}
+      initial="hidden"
+      animate="show"
+    >
+      {/* Category badge */}
+      <motion.div variants={item} className="mb-6">
+        <span
+          className="inline-flex items-center px-5 py-2 rounded-full font-semibold tracking-widest uppercase"
+          style={{
+            fontSize: "11px",
+            background: `${piece.color}1A`,
+            color: piece.color,
+            border: `1.5px solid ${piece.color}33`,
+            letterSpacing: "0.1em",
+          }}
+        >
+          {d.category}
+        </span>
+      </motion.div>
+
+      {/* Partner logo — centered, glowing */}
+      <motion.div variants={item} className="flex justify-center mb-6">
+        <div
+          className="flex items-center justify-center overflow-hidden rounded-2xl bg-white"
+          style={{
+            width: 140,
+            height: 80,
+            boxShadow: `0 8px 24px ${piece.color}26, 0 2px 8px rgba(0,0,0,0.06)`,
+            border: "1px solid rgba(0,0,0,0.06)",
+            padding: "12px 16px",
+          }}
+        >
           {(piece as any).logo ? (
-            <img src={(piece as any).logo} alt={piece.name} className="w-full h-full object-cover" />
+            <img
+              src={(piece as any).logo}
+              alt={piece.name}
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+            />
           ) : (
-            <span className="font-black text-white text-center leading-tight px-1"
-              style={{ fontSize: piece.name.length > 6 ? "9px" : piece.name.length > 4 ? "11px" : "15px", letterSpacing: "-0.02em" }}>
+            <span
+              className="font-black text-center"
+              style={{ color: piece.color, fontSize: "18px", letterSpacing: "-0.02em" }}
+            >
               {piece.name}
             </span>
           )}
         </div>
-        <div>
-          <h3 className="font-black text-foreground"
-            style={{ fontSize: "clamp(1.8rem,2.8vw,2.4rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}>
-            {piece.name}
-          </h3>
-          <p className="text-muted-foreground font-medium text-sm mt-0.5">{d.category}</p>
-        </div>
-      </div>
-      <div className="mb-5" style={{ borderLeft: `3px solid ${piece.color}`, paddingLeft: "14px" }}>
-        <p className="font-bold text-foreground mb-1" style={{ fontSize: "0.925rem", lineHeight: 1.45, color: piece.color }}>
+      </motion.div>
+
+      {/* Partner name — gradient text */}
+      <motion.div variants={item} className="text-center mb-1">
+        <h3
+          className="font-black"
+          style={{
+            fontSize: "clamp(2rem, 3.2vw, 2.8rem)",
+            lineHeight: 1.05,
+            letterSpacing: "-0.03em",
+            background: `linear-gradient(135deg, ${piece.color}, ${piece.color}BB)`,
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+          }}
+        >
+          {piece.name}
+        </h3>
+      </motion.div>
+
+      {/* Category subtitle */}
+      <motion.div variants={item} className="text-center mb-7">
+        <p style={{ fontSize: "17px", fontWeight: 500, color: "hsl(var(--muted-foreground))" }}>
+          {d.category}
+        </p>
+      </motion.div>
+
+      {/* Leadership statement box */}
+      <motion.div
+        variants={item}
+        className="mb-5 rounded-xl"
+        style={{
+          background: "linear-gradient(135deg, rgba(72,11,135,0.05), rgba(139,92,246,0.08))",
+          borderLeft: "4px solid hsl(var(--primary))",
+          padding: "20px 24px",
+        }}
+      >
+        <p
+          className="font-bold"
+          style={{
+            fontSize: "clamp(1rem,1.6vw,1.2rem)",
+            lineHeight: 1.35,
+            color: "hsl(var(--primary))",
+          }}
+        >
           {d.leadership}
         </p>
-        <p className="text-muted-foreground" style={{ fontSize: "0.9rem", lineHeight: 1.68 }}>
+      </motion.div>
+
+      {/* Description */}
+      <motion.div variants={item} className="mb-7">
+        <p
+          style={{
+            fontSize: "17px",
+            fontWeight: 400,
+            lineHeight: 1.72,
+            color: "hsl(var(--muted-foreground))",
+            letterSpacing: "0.01em",
+            maxWidth: "520px",
+          }}
+        >
           {d.description}
         </p>
-      </div>
-      <div className="grid grid-cols-1 gap-1.5 mb-5">
-        {d.features.map((f) => (
-          <div key={f} className="flex items-start gap-2.5">
-            <div className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-              style={{ background: `${piece.color}20` }}>
-              <Check className="w-2.5 h-2.5" style={{ color: piece.color }} strokeWidth={3} />
+      </motion.div>
+
+      {/* Features */}
+      <motion.div variants={item} className="mb-7">
+        <p
+          className="uppercase tracking-widest font-semibold mb-4"
+          style={{ fontSize: "12px", color: "hsl(var(--muted-foreground))" }}
+        >
+          Özellikler
+        </p>
+        <div className="flex flex-col gap-3.5">
+          {d.features.map((f) => (
+            <div key={f} className="flex items-center gap-3">
+              <div
+                className="flex-shrink-0 flex items-center justify-center rounded-full"
+                style={{
+                  width: 32,
+                  height: 32,
+                  background: `${piece.color}18`,
+                }}
+              >
+                <Check style={{ width: 15, height: 15, color: piece.color, strokeWidth: 2.8 }} />
+              </div>
+              <span style={{ fontSize: "16px", fontWeight: 500, color: "hsl(var(--foreground))" }}>
+                {f}
+              </span>
             </div>
-            <span className="text-sm text-foreground font-medium">{f}</span>
-          </div>
-        ))}
-      </div>
-      {d.sectors.length > 0 && (
-        <div className="rounded-xl p-4 mb-5"
-          style={{ background: "hsl(250,30%,98%)", border: "1px solid hsl(252,20%,90%)" }}>
-          <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest mb-2.5">En Uygun Sektörler</p>
-          <div className="flex flex-col gap-1.5">
-            {d.sectors.map((s) => <StarRow key={s.name} {...s} />)}
-          </div>
+          ))}
         </div>
+      </motion.div>
+
+      {/* Platform badge */}
+      {d.badge && (
+        <motion.div variants={item} className="mb-6">
+          <span
+            className="inline-flex items-center font-semibold rounded-full px-4 py-1.5"
+            style={{
+              fontSize: "13px",
+              background: "linear-gradient(135deg, hsl(160,84%,39%), hsl(160,84%,50%))",
+              color: "white",
+              boxShadow: "0 4px 12px rgba(22,163,74,0.25)",
+            }}
+          >
+            {d.badge}
+          </span>
+        </motion.div>
       )}
-      <Link to="/kobi/urunler" className="block">
-        <motion.button
-          whileHover={{ scale: 1.03, boxShadow: `0 12px 32px -8px ${piece.color}77` }}
-          whileTap={{ scale: 0.97 }}
-          transition={{ type: "spring", stiffness: 320, damping: 18 }}
-          className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white font-bold text-sm w-full justify-center"
-          style={{ background: piece.color, boxShadow: `0 4px 18px -6px ${piece.color}55` }}>
-          {piece.name} Çözümünü İncele <ArrowRight className="w-4 h-4" />
-        </motion.button>
-      </Link>
-    </div>
+
+      {/* CTA button */}
+      <motion.div variants={item}>
+        <Link to="/kobi/urunler" className="block">
+          <motion.button
+            whileHover={{
+              scale: 1.02,
+              translateY: -2,
+              boxShadow: `0 8px 28px ${piece.color}40, 0 16px 40px ${piece.color}25`,
+            }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.3, ease: "easeOut" }}
+            className="inline-flex items-center justify-center gap-2 w-full font-bold text-white"
+            style={{
+              height: "56px",
+              padding: "0 48px",
+              borderRadius: "28px",
+              fontSize: "17px",
+              letterSpacing: "0.02em",
+              background: `linear-gradient(135deg, ${piece.color}, ${piece.color}CC)`,
+              boxShadow: `0 4px 12px ${piece.color}40, 0 8px 24px ${piece.color}25`,
+            }}
+          >
+            {piece.name} Çözümünü İncele
+            <ArrowRight style={{ width: 20, height: 20 }} />
+          </motion.button>
+        </Link>
+      </motion.div>
+    </motion.div>
   );
 };
 
@@ -684,26 +803,25 @@ const PartnerEcosystemSection = () => {
           {/* RIGHT: Dynamic content panel */}
           <div className="w-full lg:w-[50%] lg:sticky lg:top-24">
             <motion.div
-              className="rounded-3xl p-8 md:p-10"
+              className="rounded-3xl p-10 md:p-12"
               style={{
-                background: "white",
-                boxShadow: "0 4px 40px -8px rgba(109,40,217,0.10), 0 1px 4px rgba(0,0,0,0.04)",
-                border: "1px solid hsl(252,20%,92%)",
-                minHeight: "540px",
+                background: "linear-gradient(145deg, #ffffff 0%, hsl(252,60%,98%) 100%)",
+                boxShadow: "0 4px 6px rgba(0,0,0,0.05), 0 10px 20px rgba(0,0,0,0.08), 0 20px 40px rgba(0,0,0,0.06)",
+                border: "1px solid rgba(0,0,0,0.04)",
+                minHeight: "600px",
               }}
               initial={{ opacity: 0, x: 20 }}
               animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
-              transition={{ duration: 0.6, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
             >
               <AnimatePresence mode="wait">
                 {selectedPiece && (
                   <motion.div key={selectedPiece.id}
-                    initial={{ opacity: 0, scale: 0.96, y: 10 }}
-                    animate={{ opacity: 1, scale: 1, y: 0 }}
-                    exit={{ opacity: 0, scale: 0.96, y: -10 }}
-                    transition={{ duration: 0.28, ease: "easeInOut" }}
-                    className="h-full">
-                    <PartnerPanel piece={selectedPiece} onDeselect={() => setSelectedId("param")} />
+                    initial={{ opacity: 0, scale: 0.96 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.96 }}
+                    transition={{ duration: 0.2, ease: "easeInOut" }}>
+                    <PartnerPanel piece={selectedPiece} />
                   </motion.div>
                 )}
               </AnimatePresence>
