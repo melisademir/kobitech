@@ -369,17 +369,17 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
       {/* Platform badge */}
       {d.badge &&
       <motion.div variants={item} className="mb-5">
-          <span
-          className="inline-flex items-center font-semibold rounded-full px-4 py-1.5"
-          style={{
-            fontSize: "13px",
-            background: "linear-gradient(135deg, hsl(160,84%,39%), hsl(160,84%,50%))",
-            color: "white",
-            boxShadow: "0 4px 12px rgba(22,163,74,0.25)"
-          }}>
+          
 
-            {d.badge}
-          </span>
+
+
+
+
+
+
+
+
+
         </motion.div>
       }
 
@@ -737,12 +737,12 @@ const PartnerEcosystemSection = () => {
             Çözüm Ortakları
           </span>
           <h2 className="font-black text-foreground mx-auto"
-          style={{ fontSize: "clamp(1.8rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}>Güçlü Partner Ekosistemi
-
+          style={{ fontSize: "clamp(1.8rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}>
+            Çözüm Ortaklarımız
           </h2>
           <p className="text-muted-foreground mt-3 mx-auto"
           style={{ maxWidth: "460px", fontSize: "1rem", lineHeight: 1.7 }}>
-            Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
+            Bir puzzle parçasına tıklayın — partnerinizi keşfedin
           </p>
         </motion.div>
 
