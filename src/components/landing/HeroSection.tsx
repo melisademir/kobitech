@@ -152,31 +152,31 @@ const HeroSection = () => {
 
 
           {/* Floating glass card */}
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -bottom-5 left-6 md:left-10"
-            style={{
-              background: "rgba(255,255,255,0.85)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.4)",
-              boxShadow: "0 8px 32px -4px rgba(109,40,217,0.18)",
-              borderRadius: "16px",
-              padding: "14px 20px"
-            }}>
+          
 
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-full flex items-center justify-center text-lg"
-              style={{ background: "linear-gradient(135deg, rgba(109,40,217,0.15), rgba(109,40,217,0.05))" }}>
-                ✅
-              </div>
-              <div>
-                <p className="text-xs font-bold text-foreground">Dijitalleşme Tamamlandı!</p>
-                <p className="text-[11px] text-muted-foreground">+%34 verimlilik artışı</p>
-              </div>
-            </div>
-          </motion.div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
           {/* Floating stats card */}
           <motion.div
