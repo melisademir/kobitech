@@ -7,22 +7,22 @@ const steps = [
   {
     num: "01",
     icon: UserPlus,
-    title: "Ücretsiz Kayıt Olun",
-    desc: "Sadece ad-soyad ve telefon numaranızla hemen kayıt olun.",
+    title: "İhtiyaçlarınızı Belirleyin",
+    desc: "İşletmenizin sektörünü ve büyüme önceliklerini tanımlayın.",
     accent: "#A78BFA",
   },
   {
     num: "02",
     icon: Building2,
-    title: "İşletmenizi Tanımlayın",
-    desc: "Sektörünüzü ve ihtiyaçlarınızı belirleyin, size özel çözümler sunalım.",
+    title: "Çözümleri Keşfedin ve Değerlendirin",
+    desc: "Size uygun sağlayıcıları inceleyin, sorularınızı iletin ve teklif alın.",
     accent: "#8B5CF6",
   },
   {
     num: "03",
     icon: Rocket,
-    title: "Dijitalleşmeye Başlayın",
-    desc: "Yol haritanızı takip edin, partnerlerimizle büyümeye başlayın.",
+    title: "Dijitalde Büyümenizi Başlatın",
+    desc: "En uygun çözümü seçin ve operasyonel dönüşüm sürecinizi başlatın.",
     accent: "#7C3AED",
   },
 ];
