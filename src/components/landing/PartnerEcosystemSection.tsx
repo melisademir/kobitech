@@ -5,6 +5,10 @@ import { ArrowRight, Check, Star } from "lucide-react";
 import logoFinrota from "@/assets/logo-finrota.png";
 import logoParam from "@/assets/logo-param.jpg";
 import logoTsoft from "@/assets/logo-tsoft.png";
+import logoNebim from "@/assets/logo-nebim.svg";
+import logoUnivera from "@/assets/logo-univera.svg";
+import logoFinrotaNew from "@/assets/logo-finrota-new.svg";
+import logoKredim from "@/assets/logo-kredim.svg";
 
 // ─── Puzzle geometry ──────────────────────────────────────────────────────────
 const CW = 90;   // cell width  px
@@ -127,8 +131,8 @@ const pieces = [
   },
   // ── Row 1 ──────────────────────────────────────────────────────────────────
   {
-    id: "kredim",  col: 2, row: 1, cs: 1, rs: 1, color: "#F97316",
-    name: "Kredim", label: "Kredim",
+    id: "kredim",  col: 2, row: 1, cs: 1, rs: 1, color: "#26D07C",
+    name: "Kredim", label: "Kredim", logo: logoKredim,
     edges: { top: [-1], right: [1], bottom: [1], left: [1] },
   },
   {
@@ -158,13 +162,13 @@ const pieces = [
     edges: { top: [1], right: [-1], bottom: [1], left: [1] },
   },
   {
-    id: "univera", col: 4, row: 2, cs: 1, rs: 1, color: "#2563EB",
-    name: "Univera", label: "Univera",
+    id: "univera", col: 4, row: 2, cs: 1, rs: 1, color: "#4D008C",
+    name: "Univera", label: "Univera", logo: logoUnivera,
     edges: { top: [-1], right: [1], bottom: [-1], left: [1] },
   },
   {
-    id: "nebim",   col: 5, row: 2, cs: 1, rs: 1, color: "#1E3A8A",
-    name: "Nebim", label: "Nebim",
+    id: "nebim",   col: 5, row: 2, cs: 1, rs: 1, color: "#00A2E1",
+    name: "Nebim", label: "Nebim", logo: logoNebim,
     edges: { top: [1], right: [0], bottom: [1], left: [-1] },
   },
   // ── Row 3 ──────────────────────────────────────────────────────────────────
@@ -200,8 +204,8 @@ const pieces = [
     edges: { top: [1,-1], right: [-1], bottom: [0,0], left: [0] },
   },
   {
-    id: "finrota", col: 2, row: 4, cs: 1, rs: 1, color: "#F97316",
-    name: "Finrota", label: "Finrota", logo: logoFinrota,
+    id: "finrota", col: 2, row: 4, cs: 1, rs: 1, color: "#FF671D",
+    name: "Finrota", label: "Finrota", logo: logoFinrotaNew,
     edges: { top: [1], right: [-1], bottom: [0], left: [1] },
   },
   {
