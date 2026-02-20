@@ -101,7 +101,7 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
       </div>
       <p
         className="text-slate-500 flex-1"
-        style={{ fontSize: "16px", lineHeight: "1.7", marginBottom: "28px" }}
+        style={{ fontSize: "17px", lineHeight: "1.75", marginBottom: "28px" }}
       >
         {f.desc}
       </p>
