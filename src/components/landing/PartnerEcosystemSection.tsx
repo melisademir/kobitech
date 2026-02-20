@@ -236,12 +236,12 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       {/* Category badge */}
       <motion.div variants={item} className="mb-5">
         <span
-          className="inline-flex items-center px-5 py-2 rounded-full font-semibold tracking-widest uppercase"
+          className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-widest uppercase"
           style={{
             fontSize: "11px",
-            background: `${piece.color}1A`,
-            color: piece.color,
-            border: `1.5px solid ${piece.color}33`,
+            background: "hsl(var(--background))",
+            color: "hsl(var(--foreground))",
+            border: "1.5px solid hsl(var(--border))",
             letterSpacing: "0.1em",
           }}
         >
@@ -249,15 +249,15 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
         </span>
       </motion.div>
 
-      {/* Partner logo — centered, glowing */}
+      {/* Partner logo — centered */}
       <motion.div variants={item} className="flex justify-center mb-5">
         <div
           className="flex items-center justify-center overflow-hidden rounded-2xl bg-white"
           style={{
             width: 100,
             height: 60,
-            boxShadow: `0 8px 24px ${piece.color}26, 0 2px 8px rgba(0,0,0,0.06)`,
-            border: "1px solid rgba(0,0,0,0.06)",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)",
+            border: "1px solid rgba(0,0,0,0.07)",
             padding: "10px 14px",
           }}
         >
@@ -278,18 +278,15 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
         </div>
       </motion.div>
 
-      {/* Partner name — gradient text */}
-      <motion.div variants={item} className="text-center mb-2">
+      {/* Partner name — dark foreground */}
+      <motion.div variants={item} className="text-center mb-1">
         <h3
           className="font-black"
           style={{
             fontSize: "clamp(1.7rem, 2.8vw, 2.4rem)",
             lineHeight: 1.05,
             letterSpacing: "-0.03em",
-            background: `linear-gradient(135deg, ${piece.color}, ${piece.color}BB)`,
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
+            color: "hsl(var(--foreground))",
           }}
         >
           {piece.name}
@@ -308,16 +305,16 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
         variants={item}
         className="mb-5 rounded-xl"
         style={{
-          background: "linear-gradient(135deg, rgba(72,11,135,0.05), rgba(139,92,246,0.08))",
+          background: "hsl(var(--primary) / 0.06)",
           borderLeft: "4px solid hsl(var(--primary))",
           padding: "16px 20px",
         }}
       >
         <p
-          className="font-bold"
+          className="font-semibold"
           style={{
-            fontSize: "clamp(0.95rem,1.45vw,1.1rem)",
-            lineHeight: 1.35,
+            fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)",
+            lineHeight: 1.4,
             color: "hsl(var(--primary))",
           }}
         >
@@ -329,9 +326,9 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       <motion.div variants={item} className="mb-6">
         <p
           style={{
-            fontSize: "17px",
+            fontSize: "15px",
             fontWeight: 400,
-            lineHeight: 1.6,
+            lineHeight: 1.65,
             color: "hsl(var(--muted-foreground))",
             letterSpacing: "0.01em",
             maxWidth: "520px",
@@ -345,24 +342,23 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
       <motion.div variants={item} className="mb-6">
         <p
           className="uppercase tracking-widest font-semibold mb-3"
-          style={{ fontSize: "12px", color: "hsl(var(--muted-foreground))" }}
+          style={{ fontSize: "11px", color: "hsl(var(--muted-foreground))" }}
         >
           Özellikler
         </p>
         <div className="flex flex-col gap-2.5">
           {d.features.map((f) => (
-            <div key={f} className="flex items-center gap-3">
-              <div
-                className="flex-shrink-0 flex items-center justify-center rounded-full"
+            <div key={f} className="flex items-center gap-2.5">
+              <Check
                 style={{
-                  width: 28,
-                  height: 28,
-                  background: `${piece.color}18`,
+                  width: 15,
+                  height: 15,
+                  color: "hsl(var(--primary))",
+                  strokeWidth: 2.8,
+                  flexShrink: 0,
                 }}
-              >
-                <Check style={{ width: 13, height: 13, color: piece.color, strokeWidth: 2.8 }} />
-              </div>
-              <span style={{ fontSize: "16px", fontWeight: 500, color: "hsl(var(--foreground))" }}>
+              />
+              <span style={{ fontSize: "15px", fontWeight: 500, color: "hsl(var(--foreground))" }}>
                 {f}
               </span>
             </div>
@@ -387,14 +383,14 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
         </motion.div>
       )}
 
-      {/* CTA button */}
+      {/* CTA button — dark navy */}
       <motion.div variants={item}>
         <Link to="/kobi/urunler" className="block">
           <motion.button
             whileHover={{
               scale: 1.02,
               translateY: -2,
-              boxShadow: `0 8px 28px ${piece.color}40, 0 16px 40px ${piece.color}25`,
+              boxShadow: "0 8px 28px rgba(15,15,30,0.35), 0 16px 40px rgba(15,15,30,0.18)",
             }}
             whileTap={{ scale: 0.97 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
@@ -403,14 +399,14 @@ const PartnerPanel = ({ piece }: { piece: typeof pieces[0] }) => {
               height: "50px",
               padding: "0 40px",
               borderRadius: "25px",
-              fontSize: "17px",
-              letterSpacing: "0.02em",
-              background: `linear-gradient(135deg, ${piece.color}, ${piece.color}CC)`,
-              boxShadow: `0 4px 12px ${piece.color}40, 0 8px 24px ${piece.color}25`,
+              fontSize: "16px",
+              letterSpacing: "0.01em",
+              background: "hsl(258, 45%, 10%)",
+              boxShadow: "0 4px 14px rgba(15,15,30,0.22)",
             }}
           >
             {piece.name} Çözümünü İncele
-            <ArrowRight style={{ width: 20, height: 20 }} />
+            <ArrowRight style={{ width: 18, height: 18 }} />
           </motion.button>
         </Link>
       </motion.div>
