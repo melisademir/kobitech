@@ -781,8 +781,7 @@ const PartnerEcosystemSection = () => {
               animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}>
 
-              {/* Puzzle aligned to top */}
-              <div className="flex-1 flex items-start justify-center pt-2">
+              <div className="flex-1 flex items-center justify-center">
                 <div className="w-full">
                   <PuzzleBoard selectedId={selectedId} onSelect={handleSelect} visible={visible} />
                 </div>
