@@ -548,15 +548,9 @@ function PuzzleBoard({
 
         })}
 
-        {/* Selected glow filter */}
-        <filter id="glow-selected" x="-20%" y="-20%" width="140%" height="140%">
-          <feGaussianBlur in="SourceAlpha" stdDeviation="4" result="blur" />
-          <feFlood floodColor="hsl(268,72%,48%)" floodOpacity="0.9" result="color" />
-          <feComposite in="color" in2="blur" operator="in" result="shadow" />
-          <feMerge>
-            <feMergeNode in="shadow" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
+        {/* Corporate shadow filter for selected pieces */}
+        <filter id="shadow-selected" x="-10%" y="-10%" width="120%" height="130%">
+          <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="rgba(72,11,135,0.25)" />
         </filter>
 
         {/* Inner shadow filter for cutline depth */}
@@ -584,25 +578,21 @@ function PuzzleBoard({
         return (
           <motion.g
             key={piece.id}
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0 }}
             animate={visible ? {
               opacity: 1,
-              scale: 1,
-              filter: isSel ? "drop-shadow(0 0 8px hsl(268,72%,55%))" : "none"
-            } : { opacity: 0, scale: 0.8 }}
+              filter: isSel ? "drop-shadow(0 2px 6px rgba(72,11,135,0.25))" : "drop-shadow(0 1px 3px rgba(0,0,0,0.08))"
+            } : { opacity: 0 }}
             transition={{
-              opacity: { duration: 0.22 },
-              scale: { duration: 0.5, delay: 0.04 + i * 0.035, ease: [0.22, 1, 0.36, 1] }
+              opacity: { duration: 0.4, delay: 0.04 + i * 0.035 },
             }}
             style={{ cursor: "pointer", transformOrigin: `${cx}px ${cy}px` }}
             onClick={() => onSelect(piece.id)}
             onMouseEnter={() => setHovered(piece.id)}
             onMouseLeave={() => setHovered(null)}>
 
-            {/* Selected pop-out lift */}
-            <motion.g
-              animate={isSel ? { y: -5 } : { y: 0 }}
-              transition={{ type: "spring", stiffness: 340, damping: 22 }}>
+            {/* No lift animation — corporate: static */}
+            <g>
 
               {/* Main fill — white */}
               <path d={pathD} fill="#FFFFFF" />
@@ -618,26 +608,13 @@ function PuzzleBoard({
                 strokeWidth="1.5" />
 
 
-              {/* Hover / selected highlight ring */}
+              {/* Hover / selected highlight — corporate subtle border */}
               {(isHov || isSel) &&
               <path
                 d={pathD}
                 fill="none"
-                stroke={isSel ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.55)"}
+                stroke={isSel ? "hsl(268,72%,38%)" : "rgba(109,40,217,0.3)"}
                 strokeWidth={isSel ? 2.5 : 1.5} />
-
-              }
-
-              {/* Selected outer glow ring */}
-              {isSel &&
-              <path
-                d={pathD}
-                fill="none"
-                stroke="hsl(268,72%,52%)"
-                strokeWidth="4"
-                strokeOpacity="0.7"
-                style={{ filter: "blur(2px)" }} />
-
               }
 
               {/* Top-left corner light (bevel highlight) */}
@@ -657,7 +634,7 @@ function PuzzleBoard({
 
               {/* White logo text */}
               <LogoText piece={piece} cx={cx} cy={cy} />
-            </motion.g>
+            </g>
 
             {/* Tooltip */}
             <AnimatePresence>
