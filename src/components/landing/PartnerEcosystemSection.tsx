@@ -192,30 +192,30 @@ const pieces = [
 // ─── Partner detail data ───────────────────────────────────────────────────────
 const partnerDetails: Record<string, {
   category: string;leadership: string;description: string;features: string[];
-  sectors: {name: string;stars: number;pct: number;}[];badge: string;
+  sectors: {name: string;stars: number;pct: number;}[];badge: string;headline: string;
 }> = {
-  tsoft: { category: "E-Ticaret Çözümü", leadership: "25 Yıldır Türkiye'nin Önde Gelen E-ticaret Platformu", description: "Binlerce işletmeye güvenilir online satış altyapısı sağlıyoruz. Hızlı kurulum, kolay yönetim.", features: ["Hazır e-ticaret altyapısı", "Ödeme gateway entegrasyonu", "Kargo entegrasyonu (Aras, Yurtiçi)", "Stok senkronizasyonu", "SEO & performans optimize"], sectors: [{ name: "E-ticaret", stars: 5, pct: 95 }, { name: "Perakende", stars: 4, pct: 80 }], badge: "Platform İndirimi Mevcut" },
-  qnb: { category: "Finansal Çözümler", leadership: "Türkiye'nin Önde Gelen Bankası", description: "Kurumsal bankacılık, ticari krediler, dış ticaret finansmanı. KOBİ'lere özel çözümler.", features: ["İşletme hesabı açılışı", "Dijital bankacılık paneli", "Kredi çözümleri", "Döviz işlemleri"], sectors: [{ name: "Finans", stars: 5, pct: 98 }, { name: "Ticaret", stars: 4, pct: 82 }], badge: "Özel Faiz Oranları" },
-  ikas: { category: "E-Ticaret Altyapısı", leadership: "Türkiye'nin En Hızlı Büyüyen E-ticaret Platformu", description: "Sıfırdan e-ticaret sitenizi kurun, tüm satış kanallarınızı tek panelden yönetin. Kullanımı çok kolay.", features: ["Çok kanallı satış yönetimi", "Pazaryeri entegrasyonu", "Otomatik stok takibi", "Analitik dashboard"], sectors: [{ name: "E-ticaret", stars: 5, pct: 97 }, { name: "Toptancı", stars: 4, pct: 75 }], badge: "İlk 3 Ay Ücretsiz" },
-  param: { category: "Ödeme Sistemleri", leadership: "Türkiye'nin En Büyük Sanal POS Altyapısı", description: "Fiziksel POS, sanal POS, mobil ödeme ile kolay ve güvenli ödeme alın. Tüm ödeme altyapınızı tek çözümde entegre edin.", features: ["Param POS (Fiziksel satış noktası)", "Param Kart (Online ödemeler)", "Param Mobil (QR ödeme)", "Taksit ve kampanya yönetimi"], sectors: [{ name: "Perakende", stars: 5, pct: 98 }, { name: "Restoran", stars: 5, pct: 95 }], badge: "Kurulum Ücretsiz" },
-  kredim: { category: "Finansman Çözümleri", leadership: "Türkiye'nin İlk Dijital KOBİ Finansman Platformu", description: "Hızlı onay, esnek geri ödeme ile işletme sermayenizi güçlendirin. 500K'ya kadar kredi.", features: ["Hızlı kredi onayı (24 saat)", "Esnek vade seçenekleri", "KOBİ'ye özel oranlar", "Online başvuru"], sectors: [{ name: "Üretim", stars: 5, pct: 90 }, { name: "Ticaret", stars: 4, pct: 85 }], badge: "%0 Komisyon" },
-  qf: { category: "Dijital Finans", leadership: "KOBİ'lerin Güvendiği Dijital Finans Platformu", description: "Dijital finans yönetimi, otomatik muhasebe ve gerçek zamanlı nakit akışı takibi ile finansal kontrolü ele alın.", features: ["Gerçek zamanlı nakit takibi", "Otomatik muhasebe", "Finansal raporlar", "Banka mutabakatı"], sectors: [{ name: "Finans", stars: 5, pct: 95 }, { name: "Hizmet", stars: 4, pct: 80 }], badge: "Ücretsiz Demo" },
-  azalt: { category: "Maliyet Yönetimi", leadership: "Ortalama %23 Maliyet Tasarrufu Sağlayan Çözüm", description: "Operasyonel giderlerinizi analiz edin, israfı önleyin ve işletme maliyetlerinizi akıllı önerilerle azaltın.", features: ["Gider analizi & optimizasyon", "Tasarruf önerileri", "Bütçe planlama", "Maliyet raporları"], sectors: [{ name: "Üretim", stars: 5, pct: 92 }, { name: "Hizmet", stars: 4, pct: 78 }], badge: "Ort. %23 Tasarruf" },
-  qes: { category: "E-Fatura Sistemi", leadership: "GİB Onaylı, Mevzuata %100 Uyumlu E-Fatura Sistemi", description: "E-fatura, e-arşiv ve e-irsaliye çözümleriyle faturalaşma süreçlerinizi tamamen otomatikleştirin.", features: ["E-fatura & e-arşiv", "GİB entegrasyonu", "Otomatik gönderim", "Yasal uyum garantisi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 99 }, { name: "Üretim", stars: 5, pct: 95 }], badge: "Mevzuat Uyumlu" },
-  aras: { category: "Kargo & Lojistik", leadership: "Türkiye'nin En Yaygın Lojistik Ağı", description: "1.800+ şube, 81 il kargo hizmeti. Uluslararası gönderim, hızlı teslimat, e-ticaret entegrasyonu.", features: ["Gönderi takibi (anlık)", "Toplu sevkiyat yönetimi", "E-ticaret entegrasyonu", "İndirimli tarifeler"], sectors: [{ name: "E-ticaret", stars: 5, pct: 96 }, { name: "Perakende", stars: 4, pct: 82 }], badge: "İndirimli Kargo" },
-  google: { category: "Bulut & İşbirliği", leadership: "Dünya Çapında 3 Milyar Kullanıcı", description: "Email, Drive, Doküman, Takvim, Meet. İş iletişiminizi ve işbirliğinizi bulutta yönetin.", features: ["Gmail & Google Drive", "Meet video konferans", "Docs, Sheets, Slides", "Kurumsal güvenlik"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 95 }], badge: "KOBİ'ye Özel Fiyat" },
-  univera: { category: "ERP Yazılımı", leadership: "Kurumsal İşletmelerin Tercih Ettiği İş Yönetim Çözümleri", description: "Stok, tedarik, proje, döküman, çağrı merkezi — operasyonel mükemmelliği tek platformda.", features: ["Üretim & stok takibi", "Muhasebe modülü", "İK ve bordro yönetimi", "Raporlama & analitik"], sectors: [{ name: "Üretim", stars: 5, pct: 93 }, { name: "Ticaret", stars: 4, pct: 80 }], badge: "Ücretsiz Kurulum" },
-  nebim: { category: "Perakende ERP", leadership: "Türkiye'de 40 Yıllık ERP Liderliği", description: "Nebim V3 ve Nebim Era ile üretimden finansa, stoktan satışa tüm işletme süreçlerinizi entegre yönetin.", features: ["Entegre ERP modülleri", "Sektöre özel çözümler", "Gerçek zamanlı raporlama", "Çoklu şube/depo yönetimi"], sectors: [{ name: "Üretim", stars: 5, pct: 97 }, { name: "Tekstil", stars: 5, pct: 97 }], badge: "Sektör Lideri" },
-  kariyer: { category: "İK & İstihdam", leadership: "Türkiye'nin 1 Numaralı İş İlanı Sitesi", description: "Milyonlarca özgeçmiş, en geniş aday havuzu. Doğru elemanı hızlıca bulun, işe alım sürecinizi dijitalleştirin.", features: ["İş ilanı yayınlama", "CV havuzu erişimi", "İşveren markası yönetimi", "Aday takip sistemi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 92 }], badge: "Öncelikli İlan" },
-  mukellef: { category: "Global Şirket Kuruluşu", leadership: "Global Şirket Kuruluşunda Uzman", description: "Yurt dışı şirket kuruluşu, vergi danışmanlığı, uluslararası ticaret hukuku. 50+ ülkede tecrübe.", features: ["Yurt dışı şirket kuruluşu", "Vergi danışmanlığı", "Uluslararası ticaret hukuku", "50+ ülke tecrübesi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 99 }, { name: "Hizmet", stars: 5, pct: 97 }], badge: "50+ Ülke" },
-  ticimax: { category: "E-Ticaret Çözümleri", leadership: "20.000+ E-ticaret Sitesine Güç Veren Platform", description: "Kolay kurulum, sınırsız ürün, güçlü yönetim paneli. Büyümenize ölçeklenebilir altyapı.", features: ["Mobil uygulama dahil", "SEO optimizasyon araçları", "Çok kanallı satış", "30 gün ücretsiz deneme"], sectors: [{ name: "E-ticaret", stars: 5, pct: 94 }, { name: "Perakende", stars: 4, pct: 80 }], badge: "30 Gün Ücretsiz" },
-  kolaybi: { category: "Ön Muhasebe", leadership: "KOBİ'lerin Tercihi Bulut Muhasebe Çözümü", description: "E-fatura, e-defter, tahsilat otomasyonu. Muhasebenizi her yerden yönetin, zamandan %60 tasarruf.", features: ["Fatura yönetimi", "Gider takibi & raporlama", "Stok sayımı & yönetimi", "Kasa takibi"], sectors: [{ name: "Küçük İşletme", stars: 5, pct: 98 }, { name: "Hizmet", stars: 5, pct: 94 }], badge: "Başlangıç Ücretsiz" },
-  webplus: { category: "Web Çözümleri", leadership: "Hızlı ve SEO Uyumlu E-ticaret Altyapısı", description: "1.5 saniyede açılan, Google'da ilk sıralarda çıkan siteler. Ödeme-kargo hazır entegre.", features: ["Kurumsal web sitesi", "Dijital pazarlama", "SEO & Analytics", "Ücretsiz domain"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 90 }, { name: "Hizmet", stars: 5, pct: 92 }], badge: "Ücretsiz Domain" },
-  stokbar: { category: "Stok Yönetimi", leadership: "15.000+ İşletmenin Stok Yönetim Tercihi", description: "FIFO/LIFO takibi, çoklu depo, barkod, min-max uyarılar. Stok fire oranınızı %40 azaltın.", features: ["Barkodlu stok takibi", "Min-max uyarı sistemi", "Tedarikçi yönetimi", "Mobil uygulama dahil"], sectors: [{ name: "Perakende", stars: 5, pct: 95 }, { name: "Üretim", stars: 4, pct: 82 }], badge: "Mobil Uygulama" },
-  finrota: { category: "Finansal Yönetim", leadership: "10.000+ İşletmenin Güvendiği Finansal Yönetim Çözümü", description: "Tahsilat, ödeme, banka mutabakatı otomasyonu. Nakit akışınızı tam kontrol altına alın.", features: ["Nakit akışı takibi", "Çek/senet yönetimi", "Banka mutabakatı", "Otomatik finansal raporlar"], sectors: [{ name: "Finans", stars: 5, pct: 94 }, { name: "Üretim", stars: 4, pct: 80 }], badge: "Otomatik Raporlar" },
-  unidox: { category: "Dijital Arşiv", leadership: "Kurumsal Belge Yönetiminde KVKK Uyumlu Lider Çözüm", description: "Kurumsal belge yönetimi, dijital arşiv ve iş akışı otomasyonuyla evrak süreçlerinizi sıfır kağıtla yönetin.", features: ["Belge yönetimi sistemi", "Dijital arşiv çözümleri", "İş akışı otomasyonu", "KVKK uyumlu"], sectors: [{ name: "Kamu & Kurumsal", stars: 5, pct: 96 }, { name: "Hizmet", stars: 4, pct: 82 }], badge: "KVKK Uyumlu" },
-  varuna: { category: "Lojistik Yazılımı", leadership: "Tedarik Zinciri Yönetiminde Sektör Lideri", description: "Tedarikçi yönetimi, satınalma, lojistik planlama. Maliyetleri %25 düşürün.", features: ["Filo yönetimi sistemi", "Rota optimizasyonu", "Teslimat takibi", "Yakıt tasarruf raporu"], sectors: [{ name: "Lojistik", stars: 5, pct: 97 }, { name: "E-ticaret", stars: 4, pct: 78 }], badge: "Yakıt Tasarrufu" },
-  enroute: { category: "Dağıtım Optimizasyonu", leadership: "Saha Ekip Verimliliğinde %40 Artış Sağlayan Platform", description: "Akıllı dağıtım planlaması ve gerçek zamanlı görev yönetimiyle saha ekiplerinizin verimliliğini maksimize edin.", features: ["Akıllı dağıtım planlaması", "Saha ekip yönetimi", "Gerçek zamanlı takip", "Performans analitiği"], sectors: [{ name: "Lojistik", stars: 5, pct: 95 }, { name: "Hizmet", stars: 4, pct: 80 }], badge: "%40 Daha Verimli" }
+  tsoft: { category: "E-Ticaret Çözümü", headline: "T-SOFT ile Güçlü E-Ticaret", leadership: "25 Yıldır Türkiye'nin Önde Gelen E-ticaret Platformu", description: "Binlerce işletmeye güvenilir online satış altyapısı sağlıyoruz. Hızlı kurulum, kolay yönetim.", features: ["Hazır e-ticaret altyapısı", "Ödeme gateway entegrasyonu", "Kargo entegrasyonu (Aras, Yurtiçi)", "Stok senkronizasyonu", "SEO & performans optimize"], sectors: [{ name: "E-ticaret", stars: 5, pct: 95 }, { name: "Perakende", stars: 4, pct: 80 }], badge: "Platform İndirimi Mevcut" },
+  qnb: { category: "Finansal Çözümler", headline: "QNB ile Kurumsal Bankacılık", leadership: "Türkiye'nin Önde Gelen Bankası", description: "Kurumsal bankacılık, ticari krediler, dış ticaret finansmanı. KOBİ'lere özel çözümler.", features: ["İşletme hesabı açılışı", "Dijital bankacılık paneli", "Kredi çözümleri", "Döviz işlemleri"], sectors: [{ name: "Finans", stars: 5, pct: 98 }, { name: "Ticaret", stars: 4, pct: 82 }], badge: "Özel Faiz Oranları" },
+  ikas: { category: "E-Ticaret Altyapısı", headline: "ikas ile Hızlı E-Ticaret", leadership: "Türkiye'nin En Hızlı Büyüyen E-ticaret Platformu", description: "Sıfırdan e-ticaret sitenizi kurun, tüm satış kanallarınızı tek panelden yönetin. Kullanımı çok kolay.", features: ["Çok kanallı satış yönetimi", "Pazaryeri entegrasyonu", "Otomatik stok takibi", "Analitik dashboard"], sectors: [{ name: "E-ticaret", stars: 5, pct: 97 }, { name: "Toptancı", stars: 4, pct: 75 }], badge: "İlk 3 Ay Ücretsiz" },
+  param: { category: "Ödeme Sistemleri", headline: "Param ile Kolay Ödeme", leadership: "Türkiye'nin En Büyük Sanal POS Altyapısı", description: "Fiziksel POS, sanal POS, mobil ödeme ile kolay ve güvenli ödeme alın. Tüm ödeme altyapınızı tek çözümde entegre edin.", features: ["Param POS (Fiziksel satış noktası)", "Param Kart (Online ödemeler)", "Param Mobil (QR ödeme)", "Taksit ve kampanya yönetimi"], sectors: [{ name: "Perakende", stars: 5, pct: 98 }, { name: "Restoran", stars: 5, pct: 95 }], badge: "Kurulum Ücretsiz" },
+  kredim: { category: "Finansman Çözümleri", headline: "Kredim ile İşletme Finansmanı", leadership: "Türkiye'nin İlk Dijital KOBİ Finansman Platformu", description: "Hızlı onay, esnek geri ödeme ile işletme sermayenizi güçlendirin. 500K'ya kadar kredi.", features: ["Hızlı kredi onayı (24 saat)", "Esnek vade seçenekleri", "KOBİ'ye özel oranlar", "Online başvuru"], sectors: [{ name: "Üretim", stars: 5, pct: 90 }, { name: "Ticaret", stars: 4, pct: 85 }], badge: "%0 Komisyon" },
+  qf: { category: "Dijital Finans", headline: "QF ile Dijital Finans Yönetimi", leadership: "KOBİ'lerin Güvendiği Dijital Finans Platformu", description: "Dijital finans yönetimi, otomatik muhasebe ve gerçek zamanlı nakit akışı takibi ile finansal kontrolü ele alın.", features: ["Gerçek zamanlı nakit takibi", "Otomatik muhasebe", "Finansal raporlar", "Banka mutabakatı"], sectors: [{ name: "Finans", stars: 5, pct: 95 }, { name: "Hizmet", stars: 4, pct: 80 }], badge: "Ücretsiz Demo" },
+  azalt: { category: "Maliyet Yönetimi", headline: "Azalt ile Maliyet Tasarrufu", leadership: "Ortalama %23 Maliyet Tasarrufu Sağlayan Çözüm", description: "Operasyonel giderlerinizi analiz edin, israfı önleyin ve işletme maliyetlerinizi akıllı önerilerle azaltın.", features: ["Gider analizi & optimizasyon", "Tasarruf önerileri", "Bütçe planlama", "Maliyet raporları"], sectors: [{ name: "Üretim", stars: 5, pct: 92 }, { name: "Hizmet", stars: 4, pct: 78 }], badge: "Ort. %23 Tasarruf" },
+  qes: { category: "E-Fatura Sistemi", headline: "QES ile E-Fatura Yönetimi", leadership: "GİB Onaylı, Mevzuata %100 Uyumlu E-Fatura Sistemi", description: "E-fatura, e-arşiv ve e-irsaliye çözümleriyle faturalaşma süreçlerinizi tamamen otomatikleştirin.", features: ["E-fatura & e-arşiv", "GİB entegrasyonu", "Otomatik gönderim", "Yasal uyum garantisi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 99 }, { name: "Üretim", stars: 5, pct: 95 }], badge: "Mevzuat Uyumlu" },
+  aras: { category: "Kargo & Lojistik", headline: "Aras ile Hızlı Teslimat", leadership: "Türkiye'nin En Yaygın Lojistik Ağı", description: "1.800+ şube, 81 il kargo hizmeti. Uluslararası gönderim, hızlı teslimat, e-ticaret entegrasyonu.", features: ["Gönderi takibi (anlık)", "Toplu sevkiyat yönetimi", "E-ticaret entegrasyonu", "İndirimli tarifeler"], sectors: [{ name: "E-ticaret", stars: 5, pct: 96 }, { name: "Perakende", stars: 4, pct: 82 }], badge: "İndirimli Kargo" },
+  google: { category: "Bulut & İşbirliği", headline: "Google ile Dijitalleşme", leadership: "Dünya Çapında 3 Milyar Kullanıcı", description: "Email, Drive, Doküman, Takvim, Meet. İş iletişiminizi ve işbirliğinizi bulutta yönetin.", features: ["Gmail & Google Drive", "Meet video konferans", "Docs, Sheets, Slides", "Kurumsal güvenlik"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 95 }], badge: "KOBİ'ye Özel Fiyat" },
+  univera: { category: "ERP Yazılımı", headline: "Univera ile İş Yönetimi", leadership: "Kurumsal İşletmelerin Tercih Ettiği İş Yönetim Çözümleri", description: "Stok, tedarik, proje, döküman, çağrı merkezi — operasyonel mükemmelliği tek platformda.", features: ["Üretim & stok takibi", "Muhasebe modülü", "İK ve bordro yönetimi", "Raporlama & analitik"], sectors: [{ name: "Üretim", stars: 5, pct: 93 }, { name: "Ticaret", stars: 4, pct: 80 }], badge: "Ücretsiz Kurulum" },
+  nebim: { category: "Perakende ERP", headline: "Nebim ile Entegre ERP", leadership: "Türkiye'de 40 Yıllık ERP Liderliği", description: "Nebim V3 ve Nebim Era ile üretimden finansa, stoktan satışa tüm işletme süreçlerinizi entegre yönetin.", features: ["Entegre ERP modülleri", "Sektöre özel çözümler", "Gerçek zamanlı raporlama", "Çoklu şube/depo yönetimi"], sectors: [{ name: "Üretim", stars: 5, pct: 97 }, { name: "Tekstil", stars: 5, pct: 97 }], badge: "Sektör Lideri" },
+  kariyer: { category: "İK & İstihdam", headline: "Kariyer.net ile Doğru Eleman", leadership: "Türkiye'nin 1 Numaralı İş İlanı Sitesi", description: "Milyonlarca özgeçmiş, en geniş aday havuzu. Doğru elemanı hızlıca bulun, işe alım sürecinizi dijitalleştirin.", features: ["İş ilanı yayınlama", "CV havuzu erişimi", "İşveren markası yönetimi", "Aday takip sistemi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 92 }], badge: "Öncelikli İlan" },
+  mukellef: { category: "Global Şirket Kuruluşu", headline: "Mükellef ile Globalleşme", leadership: "Global Şirket Kuruluşunda Uzman", description: "Yurt dışı şirket kuruluşu, vergi danışmanlığı, uluslararası ticaret hukuku. 50+ ülkede tecrübe.", features: ["Yurt dışı şirket kuruluşu", "Vergi danışmanlığı", "Uluslararası ticaret hukuku", "50+ ülke tecrübesi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 99 }, { name: "Hizmet", stars: 5, pct: 97 }], badge: "50+ Ülke" },
+  ticimax: { category: "E-Ticaret Çözümleri", headline: "Ticimax ile Online Satış", leadership: "20.000+ E-ticaret Sitesine Güç Veren Platform", description: "Kolay kurulum, sınırsız ürün, güçlü yönetim paneli. Büyümenize ölçeklenebilir altyapı.", features: ["Mobil uygulama dahil", "SEO optimizasyon araçları", "Çok kanallı satış", "30 gün ücretsiz deneme"], sectors: [{ name: "E-ticaret", stars: 5, pct: 94 }, { name: "Perakende", stars: 4, pct: 80 }], badge: "30 Gün Ücretsiz" },
+  kolaybi: { category: "Ön Muhasebe", headline: "KolayBi ile Kolay Muhasebe", leadership: "KOBİ'lerin Tercihi Bulut Muhasebe Çözümü", description: "E-fatura, e-defter, tahsilat otomasyonu. Muhasebenizi her yerden yönetin, zamandan %60 tasarruf.", features: ["Fatura yönetimi", "Gider takibi & raporlama", "Stok sayımı & yönetimi", "Kasa takibi"], sectors: [{ name: "Küçük İşletme", stars: 5, pct: 98 }, { name: "Hizmet", stars: 5, pct: 94 }], badge: "Başlangıç Ücretsiz" },
+  webplus: { category: "Web Çözümleri", headline: "WebPlus ile Dijital Varlık", leadership: "Hızlı ve SEO Uyumlu E-ticaret Altyapısı", description: "1.5 saniyede açılan, Google'da ilk sıralarda çıkan siteler. Ödeme-kargo hazır entegre.", features: ["Kurumsal web sitesi", "Dijital pazarlama", "SEO & Analytics", "Ücretsiz domain"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 90 }, { name: "Hizmet", stars: 5, pct: 92 }], badge: "Ücretsiz Domain" },
+  stokbar: { category: "Stok Yönetimi", headline: "StokBar ile Stok Kontrolü", leadership: "15.000+ İşletmenin Stok Yönetim Tercihi", description: "FIFO/LIFO takibi, çoklu depo, barkod, min-max uyarılar. Stok fire oranınızı %40 azaltın.", features: ["Barkodlu stok takibi", "Min-max uyarı sistemi", "Tedarikçi yönetimi", "Mobil uygulama dahil"], sectors: [{ name: "Perakende", stars: 5, pct: 95 }, { name: "Üretim", stars: 4, pct: 82 }], badge: "Mobil Uygulama" },
+  finrota: { category: "Finansal Yönetim", headline: "Finrota ile Nakit Yönetimi", leadership: "10.000+ İşletmenin Güvendiği Finansal Yönetim Çözümü", description: "Tahsilat, ödeme, banka mutabakatı otomasyonu. Nakit akışınızı tam kontrol altına alın.", features: ["Nakit akışı takibi", "Çek/senet yönetimi", "Banka mutabakatı", "Otomatik finansal raporlar"], sectors: [{ name: "Finans", stars: 5, pct: 94 }, { name: "Üretim", stars: 4, pct: 80 }], badge: "Otomatik Raporlar" },
+  unidox: { category: "Dijital Arşiv", headline: "Unidox ile Dijital Arşiv", leadership: "Kurumsal Belge Yönetiminde KVKK Uyumlu Lider Çözüm", description: "Kurumsal belge yönetimi, dijital arşiv ve iş akışı otomasyonuyla evrak süreçlerinizi sıfır kağıtla yönetin.", features: ["Belge yönetimi sistemi", "Dijital arşiv çözümleri", "İş akışı otomasyonu", "KVKK uyumlu"], sectors: [{ name: "Kamu & Kurumsal", stars: 5, pct: 96 }, { name: "Hizmet", stars: 4, pct: 82 }], badge: "KVKK Uyumlu" },
+  varuna: { category: "Lojistik Yazılımı", headline: "Varuna ile Lojistik Yönetimi", leadership: "Tedarik Zinciri Yönetiminde Sektör Lideri", description: "Tedarikçi yönetimi, satınalma, lojistik planlama. Maliyetleri %25 düşürün.", features: ["Filo yönetimi sistemi", "Rota optimizasyonu", "Teslimat takibi", "Yakıt tasarruf raporu"], sectors: [{ name: "Lojistik", stars: 5, pct: 97 }, { name: "E-ticaret", stars: 4, pct: 78 }], badge: "Yakıt Tasarrufu" },
+  enroute: { category: "Dağıtım Optimizasyonu", headline: "Enroute ile Saha Yönetimi", leadership: "Saha Ekip Verimliliğinde %40 Artış Sağlayan Platform", description: "Akıllı dağıtım planlaması ve gerçek zamanlı görev yönetimiyle saha ekiplerinizin verimliliğini maksimize edin.", features: ["Akıllı dağıtım planlaması", "Saha ekip yönetimi", "Gerçek zamanlı takip", "Performans analitiği"], sectors: [{ name: "Lojistik", stars: 5, pct: 95 }, { name: "Hizmet", stars: 4, pct: 80 }], badge: "%40 Daha Verimli" }
 };
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
@@ -225,7 +225,8 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
   const d = partnerDetails[piece.id];
   if (!d) return null;
 
-  // Stagger animation variants for children
+  const brandColor = piece.color;
+
   const container = {
     hidden: {},
     show: { transition: { staggerChildren: 0.05, delayChildren: 0.08 } }
@@ -242,52 +243,59 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
       initial="hidden"
       animate="show">
 
-      {/* Category badge */}
+      {/* Category badge — brand colored */}
       <motion.div variants={item} className="mb-5">
         <span
           className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-widest uppercase"
           style={{
             fontSize: "11px",
-            background: "hsl(var(--background))",
-            color: "hsl(var(--foreground))",
-            border: "1.5px solid hsl(var(--border))",
+            background: `${brandColor}12`,
+            color: brandColor,
+            border: `1.5px solid ${brandColor}30`,
             letterSpacing: "0.1em"
           }}>
-
           {d.category}
         </span>
       </motion.div>
 
-      {/* Partner logo — centered */}
-      <motion.div variants={item} className="flex justify-center mb-5">
+      {/* Partner logo with brand accent glow */}
+      <motion.div variants={item} className="flex justify-center mb-5 relative">
+        {/* Accent glow behind logo */}
         <div
-          className="flex items-center justify-center overflow-hidden rounded-2xl bg-white"
+          className="absolute inset-0 flex items-center justify-center"
+          style={{ pointerEvents: "none" }}>
+          <div style={{
+            width: 120,
+            height: 60,
+            borderRadius: "50%",
+            background: `radial-gradient(ellipse, ${brandColor}18 0%, transparent 70%)`,
+            filter: "blur(8px)"
+          }} />
+        </div>
+        <div
+          className="relative flex items-center justify-center overflow-hidden rounded-2xl bg-white"
           style={{
             width: 100,
             height: 60,
-            boxShadow: "0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06)",
-            border: "1px solid rgba(0,0,0,0.07)",
+            boxShadow: `0 2px 8px rgba(0,0,0,0.08), 0 1px 3px rgba(0,0,0,0.06), 0 0 0 1px ${brandColor}15`,
+            border: `1.5px solid ${brandColor}25`,
             padding: "10px 14px"
           }}>
-
           {(piece as any).logo ?
           <img
             src={(piece as any).logo}
             alt={piece.name}
             style={{ width: "100%", height: "100%", objectFit: "contain" }} /> :
-
-
           <span
             className="font-black text-center"
             style={{ color: piece.color, fontSize: "18px", letterSpacing: "-0.02em" }}>
-
               {piece.name}
             </span>
           }
         </div>
       </motion.div>
 
-      {/* Partner name — dark foreground */}
+      {/* Headline — brand-specific title */}
       <motion.div variants={item} className="text-center mb-1">
         <h3
           className="font-black"
@@ -297,102 +305,84 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
             letterSpacing: "-0.03em",
             color: "hsl(var(--foreground))"
           }}>
-
-          {piece.name}
+          {d.headline}
         </h3>
       </motion.div>
 
-      {/* Category subtitle */}
-      <motion.div variants={item} className="text-center mb-6">
-        <p style={{ fontSize: "16px", fontWeight: 500, color: "hsl(var(--muted-foreground))" }}>
-          {d.category}
-        </p>
+      {/* Accent band under heading */}
+      <motion.div variants={item} className="flex justify-center mb-6">
+        <div style={{
+          width: 60,
+          height: 3,
+          borderRadius: 2,
+          background: `linear-gradient(90deg, transparent, ${brandColor}, transparent)`,
+          opacity: 0.6
+        }} />
       </motion.div>
 
-      {/* Leadership statement box */}
+      {/* Leadership statement box — brand left border */}
       <motion.div
         variants={item}
         className="mb-5 rounded-xl"
         style={{
-          background: "hsl(var(--primary) / 0.06)",
-          borderLeft: "4px solid hsl(var(--primary))",
+          background: `${brandColor}08`,
+          borderLeft: `4px solid ${brandColor}`,
           padding: "16px 20px"
         }}>
-
         <p
           className="font-semibold"
           style={{
             fontSize: "clamp(0.9rem, 1.4vw, 1.05rem)",
             lineHeight: 1.4,
-            color: "hsl(var(--primary))"
+            color: brandColor
           }}>
-
           {d.leadership}
         </p>
       </motion.div>
 
       {/* Description */}
       <motion.div variants={item} className="mb-6">
-        <p
-          style={{
-            fontSize: "15px",
-            fontWeight: 400,
-            lineHeight: 1.65,
-            color: "hsl(var(--muted-foreground))",
-            letterSpacing: "0.01em",
-            maxWidth: "520px"
-          }}>
-
+        <p style={{
+          fontSize: "15px", fontWeight: 400, lineHeight: 1.65,
+          color: "hsl(var(--muted-foreground))", letterSpacing: "0.01em", maxWidth: "520px"
+        }}>
           {d.description}
         </p>
       </motion.div>
 
-      {/* Features */}
+      {/* Features — brand check color */}
       <motion.div variants={item} className="mb-6">
-        <p
-          className="uppercase tracking-widest font-semibold mb-3"
+        <p className="uppercase tracking-widest font-semibold mb-3"
           style={{ fontSize: "11px", color: "hsl(var(--muted-foreground))" }}>
-
           Özellikler
         </p>
         <div className="flex flex-col gap-2.5">
           {d.features.map((f) =>
           <div key={f} className="flex items-center gap-2.5">
-              <Check
-              style={{
-                width: 15,
-                height: 15,
-                color: "hsl(var(--primary))",
-                strokeWidth: 2.8,
-                flexShrink: 0
-              }} />
-
-              <span style={{ fontSize: "15px", fontWeight: 500, color: "hsl(var(--foreground))" }}>
-                {f}
-              </span>
+              <Check style={{ width: 15, height: 15, color: brandColor, strokeWidth: 2.8, flexShrink: 0 }} />
+              <span style={{ fontSize: "15px", fontWeight: 500, color: "hsl(var(--foreground))" }}>{f}</span>
             </div>
           )}
         </div>
       </motion.div>
 
-      {/* Platform badge */}
+      {/* Platform badge — brand tinted */}
       {d.badge &&
       <motion.div variants={item} className="mb-5">
-          
-
-
-
-
-
-
-
-
-
-
-        </motion.div>
+        <span
+          className="inline-flex items-center px-4 py-2 rounded-full font-semibold"
+          style={{
+            fontSize: "13px",
+            background: `${brandColor}10`,
+            color: brandColor,
+            border: `1px solid ${brandColor}20`
+          }}>
+          {d.badge}
+        </span>
+      </motion.div>
       }
 
-      {/* CTA button — corporate */}
+      {/* CTA button — brand colored */}
       <motion.div variants={item}>
         <Link to="/kobi/urunler" className="block">
           <button
@@ -403,16 +393,16 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
               borderRadius: "24px",
               fontSize: "16px",
               letterSpacing: "0.01em",
-              background: "hsl(268,72%,38%)",
-              boxShadow: "0 4px 16px rgba(109,40,217,0.35)",
+              background: brandColor,
+              boxShadow: `0 4px 16px ${brandColor}40`,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.background = "hsl(268,72%,32%)";
-              e.currentTarget.style.boxShadow = "0 6px 24px rgba(109,40,217,0.50)";
+              e.currentTarget.style.boxShadow = `0 6px 24px ${brandColor}55`;
+              e.currentTarget.style.filter = "brightness(0.9)";
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.background = "hsl(268,72%,38%)";
-              e.currentTarget.style.boxShadow = "0 4px 16px rgba(109,40,217,0.35)";
+              e.currentTarget.style.boxShadow = `0 4px 16px ${brandColor}40`;
+              e.currentTarget.style.filter = "brightness(1)";
             }}
           >
             {piece.name} Çözümünü İncele
@@ -421,9 +411,7 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
         </Link>
       </motion.div>
     </motion.div>);
-
 };
-
 // ─── Logo / text fitting inside a piece ──────────────────────────────────────
 function LogoText({ piece, cx, cy }: {piece: typeof pieces[0];cx: number;cy: number;}) {
   const pieceW = piece.cs * CW;
@@ -767,20 +755,52 @@ const PartnerEcosystemSection = () => {
 
             </motion.div>
 
-            {/* Divider */}
-            <div className="hidden lg:block w-px self-stretch" style={{ background: "linear-gradient(to bottom, transparent, rgba(0,0,0,0.06) 20%, rgba(0,0,0,0.06) 80%, transparent)" }} />
+            {/* Connector — gradient line from puzzle to panel */}
+            <div className="hidden lg:flex flex-col items-center self-stretch" style={{ width: "20px" }}>
+              <motion.div
+                className="flex-1"
+                style={{
+                  width: "2px",
+                  background: selectedPiece
+                    ? `linear-gradient(to bottom, transparent 10%, ${selectedPiece.color}40 30%, ${selectedPiece.color}60 50%, ${selectedPiece.color}40 70%, transparent 90%)`
+                    : "linear-gradient(to bottom, transparent, rgba(0,0,0,0.06) 20%, rgba(0,0,0,0.06) 80%, transparent)",
+                  transition: "background 0.4s ease",
+                  borderRadius: "1px",
+                  boxShadow: selectedPiece ? `0 0 8px ${selectedPiece.color}20` : "none"
+                }}
+              />
+            </div>
 
             {/* RIGHT: Dynamic content panel */}
             <div className="w-full lg:flex-1 flex flex-col">
               <motion.div
-                className="flex-1 rounded-2xl p-7 flex flex-col justify-start"
+                className="flex-1 rounded-2xl p-7 flex flex-col justify-start relative overflow-hidden"
                 style={{
                   background: "linear-gradient(145deg, #ffffff 0%, hsl(252,60%,98%) 100%)",
-                  border: "1px solid rgba(0,0,0,0.04)"
+                  border: "1px solid rgba(0,0,0,0.04)",
+                  borderLeft: selectedPiece ? `3px solid ${selectedPiece.color}50` : "1px solid rgba(0,0,0,0.04)",
+                  transition: "border-left-color 0.4s ease"
                 }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                 transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}>
+
+                {/* Top accent glow band — brand color */}
+                {selectedPiece && (
+                  <motion.div
+                    key={`glow-${selectedPiece.id}`}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.4 }}
+                    className="absolute top-0 left-0 right-0"
+                    style={{
+                      height: "3px",
+                      background: `linear-gradient(90deg, ${selectedPiece.color}60, ${selectedPiece.color}30, transparent)`,
+                      borderRadius: "0 0 4px 4px"
+                    }}
+                  />
+                )}
 
                 <AnimatePresence mode="wait">
                   {selectedPiece &&
