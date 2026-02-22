@@ -17,7 +17,7 @@ import tabPara from "@/assets/tab-para-ai.png";
 import tabStok from "@/assets/tab-stok-ai.png";
 import tabGlobal from "@/assets/tab-global-ai.png";
 import tabEkip from "@/assets/tab-ekip-ai.png";
-import tabTesvik from "@/assets/tab-tesvik-new.png";
+import tabTesvik from "@/assets/tab-tesvik-ai.png";
 import tabUretim from "@/assets/tab-uretim-ai.png";
 
 
