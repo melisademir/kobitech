@@ -160,9 +160,9 @@ const PartnersSection = () => {
             className="text-4xl md:text-5xl font-bold text-foreground"
             style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
           >
-            Maliyetlerini Düşür
+            Ticaretini Büyüt
             <br />
-            <span className="text-gradient-primary">Ticaretini Büyüt</span>
+            <span className="text-gradient-primary">Maliyetlerini Düşür</span>
           </h2>
           <p className="text-slate-500 mt-4 max-w-md mx-auto" style={{ fontSize: "19px", lineHeight: "1.7" }}>
             İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
