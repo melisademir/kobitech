@@ -51,14 +51,14 @@ const Landing = () => (
       <HowItWorksSection />
     </div>
 
-    {/* 7 — CTA: Lavender-cream gradient */}
-    <div style={{ background: "linear-gradient(160deg, hsl(265,40%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
-      <CtaSection />
-    </div>
-
-    {/* 8 — TESTIMONIALS: Ivory */}
+    {/* 7 — TESTIMONIALS: Ivory */}
     <div style={{ background: "hsl(38, 60%, 98%)" }}>
       <TestimonialsSection />
+    </div>
+
+    {/* 8 — CTA: Lavender-cream gradient */}
+    <div style={{ background: "linear-gradient(160deg, hsl(265,40%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
+      <CtaSection />
     </div>
 
     {/* 9 — TRUST BAND: Warm white */}
