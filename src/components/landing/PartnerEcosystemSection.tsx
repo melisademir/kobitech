@@ -392,31 +392,32 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
         </motion.div>
       }
 
-      {/* CTA button — dark navy */}
+      {/* CTA button — corporate */}
       <motion.div variants={item}>
         <Link to="/kobi/urunler" className="block">
-          <motion.button
-            whileHover={{
-              scale: 1.02,
-              translateY: -2,
-              boxShadow: "0 8px 28px rgba(15,15,30,0.35), 0 16px 40px rgba(15,15,30,0.18)"
-            }}
-            whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.3, ease: "easeOut" }}
-            className="inline-flex items-center justify-center gap-2 w-full font-bold text-white"
+          <button
+            className="inline-flex items-center justify-center gap-2 w-full font-bold text-white transition-all duration-200"
             style={{
-              height: "50px",
+              height: "54px",
               padding: "0 40px",
-              borderRadius: "25px",
+              borderRadius: "24px",
               fontSize: "16px",
               letterSpacing: "0.01em",
-              background: "hsl(258, 45%, 10%)",
-              boxShadow: "0 4px 14px rgba(15,15,30,0.22)"
-            }}>
-
+              background: "hsl(268,72%,38%)",
+              boxShadow: "0 4px 16px rgba(109,40,217,0.35)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "hsl(268,72%,32%)";
+              e.currentTarget.style.boxShadow = "0 6px 24px rgba(109,40,217,0.50)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "hsl(268,72%,38%)";
+              e.currentTarget.style.boxShadow = "0 4px 16px rgba(109,40,217,0.35)";
+            }}
+          >
             {piece.name} Çözümünü İncele
             <ArrowRight style={{ width: 18, height: 18 }} />
-          </motion.button>
+          </button>
         </Link>
       </motion.div>
     </motion.div>);

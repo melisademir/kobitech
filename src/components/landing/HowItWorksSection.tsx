@@ -12,7 +12,6 @@ const steps = [
     label: "HEDEF BELİRLEME",
     title: "Büyüme Hedefinizi Belirleyin",
     desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz? Hedefinizi belirleyin.",
-    accent: "#7C3AED",
   },
   {
     num: "02",
@@ -20,7 +19,6 @@ const steps = [
     label: "TEKLİF AL",
     title: "Çözümleri Karşılaştırın ve Teklif Alın",
     desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.",
-    accent: "#6D28D9",
   },
   {
     num: "03",
@@ -28,7 +26,6 @@ const steps = [
     label: "BÜYÜMEYE BAŞLA",
     title: "Dijitalde Büyümenizi Başlatın",
     desc: "Size özel çözümleri seçin ve büyümeye başlayın.",
-    accent: "#5B21B6",
   },
 ];
 
@@ -53,20 +50,16 @@ const HowItWorksSection = () => (
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="text-center mb-20"
       >
-        <motion.span
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="inline-block px-4 py-1.5 rounded-full text-[11px] font-semibold mb-6 tracking-widest uppercase"
+        <span
+          className="inline-block px-5 py-2 rounded-full text-[11px] font-semibold mb-6 tracking-widest uppercase cursor-default"
           style={{
             background: "rgba(124,58,237,0.15)",
-            border: "1px solid rgba(124,58,237,0.3)",
+            border: "1.5px solid rgba(124,58,237,0.3)",
             color: "#A78BFA",
           }}
         >
           Nasıl Çalışır?
-        </motion.span>
+        </span>
         <h2
           className="text-5xl md:text-6xl font-extrabold text-white"
           style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
@@ -89,32 +82,28 @@ const HowItWorksSection = () => (
         variants={containerVariants}
         className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10"
       >
-        {steps.map((s, i) => (
+        {steps.map((s) => (
           <motion.div
             key={s.num}
             variants={stepVariants}
             className="group flex flex-col"
           >
-            {/* Image Container — rectangular */}
-            <motion.div
+            {/* Image Container */}
+            <div
               className="relative overflow-hidden w-full"
               style={{
-                borderRadius: "16px 16px 0 0",
+                borderRadius: "20px 20px 0 0",
                 aspectRatio: "16/10",
                 background: "#0F172A",
                 border: "1px solid rgba(255,255,255,0.08)",
                 borderBottom: "none",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
               }}
-              whileHover={{ scale: 1.01 }}
-              transition={{ duration: 0.3, ease: "easeOut" }}
             >
-              <motion.img
+              <img
                 src={s.image}
                 alt={s.title}
                 className="w-full h-full object-cover"
-                whileHover={{ scale: 1.05 }}
-                transition={{ duration: 0.5, ease: "easeOut" }}
               />
               {/* Step number overlay */}
               <div
@@ -127,32 +116,35 @@ const HowItWorksSection = () => (
               >
                 {s.num}
               </div>
-            </motion.div>
+            </div>
 
             {/* Card body */}
-            <motion.div
-              className="flex-1 flex flex-col"
+            <div
+              className="flex-1 flex flex-col transition-colors duration-200"
               style={{
                 background: "rgba(255,255,255,0.04)",
-                borderRadius: "0 0 16px 16px",
+                borderRadius: "0 0 20px 20px",
                 border: "1px solid rgba(255,255,255,0.08)",
                 borderTop: "1px solid rgba(124,58,237,0.2)",
                 padding: "1.5rem 1.75rem 1.75rem",
                 boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
               }}
-              whileHover={{
-                background: "rgba(255,255,255,0.06)",
-                borderColor: "rgba(124,58,237,0.35)",
-                transition: { duration: 0.25 },
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
+                e.currentTarget.style.borderColor = "rgba(124,58,237,0.35)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "rgba(255,255,255,0.04)";
+                e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
               }}
             >
               {/* Label */}
               <span
-                className="inline-block self-start mb-3 px-2.5 py-0.5 rounded-full text-[10px] font-semibold tracking-widest uppercase"
+                className="inline-block self-start mb-3 px-3 py-1 rounded-full text-[10px] font-semibold tracking-widest uppercase cursor-default"
                 style={{
-                  background: `rgba(124,58,237,0.12)`,
+                  background: "rgba(124,58,237,0.12)",
                   color: "#A78BFA",
-                  border: "1px solid rgba(124,58,237,0.25)",
+                  border: "1.5px solid rgba(124,58,237,0.25)",
                 }}
               >
                 {s.label}
@@ -167,12 +159,12 @@ const HowItWorksSection = () => (
               <p style={{ fontSize: "15px", color: "rgba(156,163,175,0.85)", lineHeight: "1.65" }}>
                 {s.desc}
               </p>
-            </motion.div>
+            </div>
           </motion.div>
         ))}
       </motion.div>
 
-      {/* CTA Button */}
+      {/* CTA Button — large, corporate */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -181,22 +173,28 @@ const HowItWorksSection = () => (
         className="text-center mt-16"
       >
         <Link to="/kobi/step-1">
-          <motion.button
-            whileHover={{ y: -2, scale: 1.02, boxShadow: "0 8px 32px rgba(107,33,168,0.45)" }}
-            whileTap={{ scale: 0.98 }}
-            transition={{ type: "spring", stiffness: 340, damping: 22 }}
-            className="inline-flex items-center gap-3 text-white font-bold"
+          <button
+            className="inline-flex items-center gap-3 text-white font-bold transition-all duration-200"
             style={{
               height: "54px",
               padding: "0 48px",
-              borderRadius: "28px",
-              fontSize: "17px",
+              borderRadius: "24px",
+              fontSize: "16px",
               background: "linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #8B5CF6 100%)",
               boxShadow: "0 4px 16px rgba(107,33,168,0.35)",
+              minWidth: "260px",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "linear-gradient(135deg, #5B21B6 0%, #6D28D9 50%, #7C3AED 100%)";
+              e.currentTarget.style.boxShadow = "0 6px 24px rgba(107,33,168,0.50)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #8B5CF6 100%)";
+              e.currentTarget.style.boxShadow = "0 4px 16px rgba(107,33,168,0.35)";
             }}
           >
             Hemen Başla <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-          </motion.button>
+          </button>
         </Link>
       </motion.div>
     </div>
