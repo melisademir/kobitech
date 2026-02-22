@@ -26,29 +26,29 @@ const Landing = () => (
       </div>
     </div>
 
-    {/* 2 — STATS: Warm ivory */}
-    <div style={{ background: "hsl(38, 60%, 98%)" }}>
-      <StatsSection />
-    </div>
-
-    {/* 3 — PARTNERS / SOLUTIONS: Faint lavender-cream gradient */}
+    {/* 2 — PARTNERS / SOLUTIONS: Faint lavender-cream gradient */}
     <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
       <PartnersSection />
     </div>
 
-    {/* 4 — PARTNER ECOSYSTEM: Warm off-white */}
+    {/* 3 — PARTNER ECOSYSTEM: Warm off-white */}
     <div style={{ background: "hsl(38, 30%, 97%)" }}>
       <PartnerEcosystemSection />
     </div>
 
-    {/* 5 — FEATURES / HUB: Ivory */}
+    {/* 4 — FEATURES / HUB: Ivory */}
     <div style={{ background: "hsl(38, 60%, 98%)" }}>
       <FeaturesSection />
     </div>
 
-    {/* 6 — HOW IT WORKS: Deep navy again — creates rhythm contrast */}
+    {/* 5 — HOW IT WORKS: Deep navy */}
     <div style={{ background: "hsl(258, 45%, 10%)" }}>
       <HowItWorksSection />
+    </div>
+
+    {/* 6 — STATS */}
+    <div style={{ background: "hsl(38, 60%, 98%)" }}>
+      <StatsSection />
     </div>
 
     {/* 7 — TESTIMONIALS: Ivory */}
