@@ -151,7 +151,7 @@ export default function PuzzleBoard({
                     : isHov ? "hsl(268,72%,38%,0.45)"
                     : "hsl(260,30%,14%,0.18)"
                 }
-                strokeWidth={isSel ? 2.5 : isHov ? 2 : 1.5}
+                strokeWidth={isSel ? 4 : isHov ? 2.5 : 1.5}
               />
 
               {/* Inner glow for selected state */}
