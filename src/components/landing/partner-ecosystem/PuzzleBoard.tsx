@@ -123,30 +123,50 @@ export default function PuzzleBoard({
             animate={visible ? {
               opacity: 1,
               filter: isSel
-                ? "drop-shadow(0 2px 6px hsl(268,72%,26%,0.25))"
-                : "drop-shadow(0 1px 3px hsl(260,30%,14%,0.08))"
+                ? "drop-shadow(0 4px 12px hsl(268,72%,26%,0.32)) drop-shadow(0 1px 3px hsl(268,72%,38%,0.18))"
+                : isHov
+                  ? "drop-shadow(0 3px 8px hsl(268,72%,26%,0.18)) drop-shadow(0 1px 2px hsl(260,30%,14%,0.06))"
+                  : "drop-shadow(0 1px 3px hsl(260,30%,14%,0.08))"
             } : { opacity: 0 }}
-            transition={{ opacity: { duration: 0.4, delay: 0.04 + i * 0.035 } }}
+            transition={{
+              opacity: { duration: 0.4, delay: 0.04 + i * 0.035 },
+              filter: { duration: 0.25, ease: "easeOut" }
+            }}
             style={{ cursor: "pointer", transformOrigin: `${cx}px ${cy}px` }}
             onClick={() => onSelect(piece.id)}
             onMouseEnter={() => setHovered(piece.id)}
             onMouseLeave={() => setHovered(null)}
           >
             <g>
-              <path d={pathD} fill="#FFFFFF" />
+              {/* Base fill — selected gets a faint purple tint */}
+              <path d={pathD} fill={isSel ? "hsl(268,60%,98%)" : "#FFFFFF"} />
               <path d={pathD} fill={`url(#bevel-${piece.id})`} />
-              <path d={pathD} fill="none" stroke="hsl(260,30%,14%,0.18)" strokeWidth="1.5" />
 
-              {(isHov || isSel) && (
-                <path d={pathD} fill="none"
-                  stroke={isSel ? "hsl(268,72%,38%)" : "hsl(268,72%,38%,0.3)"}
-                  strokeWidth={isSel ? 2.5 : 1.5}
+              {/* Border — transitions between states */}
+              <path
+                d={pathD}
+                fill="none"
+                stroke={
+                  isSel ? "hsl(268,72%,38%)"
+                    : isHov ? "hsl(268,72%,38%,0.45)"
+                    : "hsl(260,30%,14%,0.18)"
+                }
+                strokeWidth={isSel ? 2.5 : isHov ? 2 : 1.5}
+              />
+
+              {/* Inner glow for selected state */}
+              {isSel && (
+                <path
+                  d={pathD}
+                  fill="hsl(268,72%,38%,0.04)"
                 />
               )}
 
               <clipPath id={`clip-${piece.id}`}>
                 <path d={pathD} />
               </clipPath>
+
+              {/* Top/left bevel highlights */}
               <rect x={px} y={py} width={pw} height={6} fill="rgba(255,255,255,0.18)" clipPath={`url(#clip-${piece.id})`} />
               <rect x={px} y={py} width={6} height={ph} fill="rgba(255,255,255,0.12)" clipPath={`url(#clip-${piece.id})`} />
 
