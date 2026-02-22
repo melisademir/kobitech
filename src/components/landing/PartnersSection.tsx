@@ -130,13 +130,13 @@ const PartnersSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-wrap justify-center gap-3 mb-16"
+          className="flex justify-center gap-3 mb-16 overflow-x-auto pb-2 scrollbar-hide"
         >
           {categories.map((c, i) => (
             <button
               key={c.label}
               onClick={() => setActiveIndex(i)}
-              className="transition-all duration-200 cursor-pointer"
+              className="transition-all duration-200 cursor-pointer whitespace-nowrap flex-shrink-0"
               style={{
                 padding: "10px 24px",
                 borderRadius: "24px",
