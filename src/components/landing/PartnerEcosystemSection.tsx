@@ -225,7 +225,7 @@ const PartnerPanel = ({ piece }: {piece: typeof pieces[0];}) => {
   const d = partnerDetails[piece.id];
   if (!d) return null;
 
-  const brandColor = piece.color;
+  const brandColor = "#4B0082";
 
   const container = {
     hidden: {},
@@ -762,11 +762,11 @@ const PartnerEcosystemSection = () => {
                 style={{
                   width: "2px",
                   background: selectedPiece
-                    ? `linear-gradient(to bottom, transparent 10%, ${selectedPiece.color}40 30%, ${selectedPiece.color}60 50%, ${selectedPiece.color}40 70%, transparent 90%)`
+                    ? "linear-gradient(to bottom, transparent 10%, #4B008240 30%, #4B008260 50%, #4B008240 70%, transparent 90%)"
                     : "linear-gradient(to bottom, transparent, rgba(0,0,0,0.06) 20%, rgba(0,0,0,0.06) 80%, transparent)",
                   transition: "background 0.4s ease",
                   borderRadius: "1px",
-                  boxShadow: selectedPiece ? `0 0 8px ${selectedPiece.color}20` : "none"
+                  boxShadow: selectedPiece ? "0 0 8px #4B008220" : "none"
                 }}
               />
             </div>
@@ -778,7 +778,7 @@ const PartnerEcosystemSection = () => {
                 style={{
                   background: "linear-gradient(145deg, #ffffff 0%, hsl(252,60%,98%) 100%)",
                   border: "1px solid rgba(0,0,0,0.04)",
-                  borderLeft: selectedPiece ? `3px solid ${selectedPiece.color}50` : "1px solid rgba(0,0,0,0.04)",
+                  borderLeft: selectedPiece ? "3px solid #4B008250" : "1px solid rgba(0,0,0,0.04)",
                   transition: "border-left-color 0.4s ease"
                 }}
                 initial={{ opacity: 0, x: 20 }}
@@ -796,7 +796,7 @@ const PartnerEcosystemSection = () => {
                     className="absolute top-0 left-0 right-0"
                     style={{
                       height: "3px",
-                      background: `linear-gradient(90deg, ${selectedPiece.color}60, ${selectedPiece.color}30, transparent)`,
+                      background: "linear-gradient(90deg, #4B008260, #4B008230, transparent)",
                       borderRadius: "0 0 4px 4px"
                     }}
                   />
