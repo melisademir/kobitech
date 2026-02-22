@@ -73,7 +73,7 @@ const HeroSection = () => {
           {/* H1 */}
           <motion.h1
             variants={itemVariants}
-          className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] mb-5"
+            className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] mb-5"
             style={{ letterSpacing: "-0.03em", color: "#FFFFFF", textShadow: "0 2px 24px rgba(0,0,0,0.5)" }}
           >
             İşletmenizin tüm dijital
@@ -142,18 +142,24 @@ const HeroSection = () => {
                 />
               </div>
               <Link to="/kobi/step-1">
-                <motion.button
-                  whileHover={{ scale: 1.04, boxShadow: "0 8px 40px -4px rgba(167,139,250,0.60)" }}
-                  whileTap={{ scale: 0.97 }}
-                  transition={{ type: "spring", stiffness: 320, damping: 18 }}
-                  className="h-12 px-7 rounded-xl font-bold text-sm text-white whitespace-nowrap shrink-0 flex items-center gap-2 w-full sm:w-auto justify-center"
+                <button
+                  className="h-[54px] px-10 rounded-[24px] font-bold text-[15px] text-white whitespace-nowrap shrink-0 flex items-center gap-2 w-full sm:w-auto justify-center transition-colors duration-200"
                   style={{
                     background: "linear-gradient(135deg, #6D28D9, #7C3AED)",
-                    boxShadow: "0 4px 20px -4px rgba(124,58,237,0.55)",
+                    boxShadow: "0 4px 16px -4px rgba(109,40,217,0.45)",
+                    minWidth: "200px",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "linear-gradient(135deg, #5B21B6, #6D28D9)";
+                    e.currentTarget.style.boxShadow = "0 6px 24px -4px rgba(109,40,217,0.55)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "linear-gradient(135deg, #6D28D9, #7C3AED)";
+                    e.currentTarget.style.boxShadow = "0 4px 16px -4px rgba(109,40,217,0.45)";
                   }}
                 >
                   Hemen Başla <ArrowRight className="w-4 h-4" />
-                </motion.button>
+                </button>
               </Link>
             </div>
             <p className="text-xs mt-3" style={{ color: "rgba(196,181,253,0.55)" }}>

@@ -51,46 +51,38 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
-      className="group relative flex flex-col"
+      className="group relative flex flex-col transition-shadow duration-300"
       style={{
         background: "white",
-        borderRadius: "24px",
+        borderRadius: "20px",
         padding: "40px",
-        border: "2px solid rgba(109,40,217,0.08)",
-        boxShadow:
-          "0 2px 4px rgba(109,40,217,0.04), 0 8px 16px rgba(109,40,217,0.05), 0 16px 32px rgba(109,40,217,0.03)",
-        transition: "all 0.4s cubic-bezier(0.22, 1, 0.36, 1)",
+        border: "1px solid rgba(0,0,0,0.06)",
+        boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
       }}
-      whileHover={{
-        y: -8,
-        boxShadow:
-          "0 12px 24px rgba(109,40,217,0.10), 0 24px 48px rgba(109,40,217,0.10)",
-        borderColor: "rgba(109,40,217,0.6)",
-        backgroundColor: "rgba(245,243,255,0.5)",
-        transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+      onMouseEnter={(e) => {
+        e.currentTarget.style.boxShadow = "0 2px 8px rgba(72,11,135,0.14), 0 12px 40px rgba(72,11,135,0.16)";
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.boxShadow = "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)";
       }}
     >
-      {/* Icon + Title side by side */}
+      {/* Icon + Title */}
       <div className="flex items-center gap-4 mb-4">
-        <motion.div
-          initial={{ scale: 0.8, rotate: -5 }}
-          animate={inView ? { scale: 1, rotate: 0 } : { scale: 0.8, rotate: -5 }}
-          transition={{ type: "spring", stiffness: 260, damping: 18, delay: index * 0.1 + 0.2 }}
-          whileHover={{ scale: 1.1, rotate: 4, transition: { type: "spring", stiffness: 350, damping: 18 } }}
+        <div
           style={{
             flexShrink: 0,
-            width: "56px",
-            height: "56px",
-            borderRadius: "50%",
+            width: "52px",
+            height: "52px",
+            borderRadius: "14px",
             background: "linear-gradient(135deg, hsl(268,72%,60%), hsl(268,72%,38%))",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            boxShadow: "0 8px 20px rgba(109,40,217,0.15)",
+            boxShadow: "0 4px 12px rgba(109,40,217,0.15)",
           }}
         >
           <f.icon className="w-6 h-6 text-white" strokeWidth={1.75} />
-        </motion.div>
+        </div>
 
         <h3
           className="text-foreground font-bold leading-snug"
@@ -100,33 +92,31 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
         </h3>
       </div>
       <p
-        className="text-slate-500 flex-1"
-        style={{ fontSize: "17px", lineHeight: "1.75", marginBottom: "28px" }}
+        className="text-muted-foreground flex-1"
+        style={{ fontSize: "16px", lineHeight: "1.75", marginBottom: "28px" }}
       >
         {f.desc}
       </p>
 
-      {/* Pills */}
-      <div className="flex flex-wrap gap-2 pt-5 border-t border-slate-100">
+      {/* Pills — corporate tags */}
+      <div className="flex flex-wrap gap-2.5 pt-5 border-t" style={{ borderColor: "hsl(38,30%,88%)" }}>
         {f.labels.map((label) => (
-          <motion.span
+          <span
             key={label}
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(109,40,217,0.12)", transition: { duration: 0.2 } }}
+            className="cursor-default"
             style={{
               display: "inline-block",
-              padding: "6px 14px",
-              borderRadius: "9999px",
-              background: "rgba(109,40,217,0.08)",
+              padding: "8px 18px",
+              borderRadius: "24px",
+              background: "rgba(109,40,217,0.06)",
               color: "hsl(268,72%,38%)",
               fontSize: "13px",
               fontWeight: 600,
-              border: "1px solid rgba(109,40,217,0.15)",
-              cursor: "default",
-              transition: "background 0.2s",
+              border: "1.5px solid rgba(109,40,217,0.12)",
             }}
           >
             {label}
-          </motion.span>
+          </span>
         ))}
       </div>
     </motion.div>
@@ -137,31 +127,8 @@ const FeaturesSection = () => (
   <section
     id="features"
     className="relative overflow-hidden"
-    style={{ paddingTop: "100px", paddingBottom: "80px", background: "linear-gradient(135deg, #F5F3FF 0%, #ffffff 60%)" }}
+    style={{ paddingTop: "100px", paddingBottom: "80px" }}
   >
-    {/* Decorative orbs */}
-    <div
-      className="absolute pointer-events-none"
-      style={{ top: "-100px", left: "-120px", width: "400px", height: "400px", borderRadius: "50%", background: "radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 70%)", filter: "blur(40px)" }}
-    />
-    <div
-      className="absolute pointer-events-none"
-      style={{ top: "40%", right: "-100px", width: "350px", height: "350px", borderRadius: "50%", background: "radial-gradient(circle, rgba(236,72,153,0.06) 0%, transparent 70%)", filter: "blur(40px)" }}
-    />
-    <div
-      className="absolute pointer-events-none"
-      style={{ bottom: "-80px", left: "35%", width: "380px", height: "380px", borderRadius: "50%", background: "radial-gradient(circle, rgba(96,165,250,0.05) 0%, transparent 70%)", filter: "blur(40px)" }}
-    />
-
-    {/* Dot pattern */}
-    <div
-      className="absolute inset-0 pointer-events-none"
-      style={{
-        backgroundImage: "radial-gradient(circle, rgba(109,40,217,0.04) 2px, transparent 2px)",
-        backgroundSize: "32px 32px",
-      }}
-    />
-
     <div className="relative z-10 max-w-7xl mx-auto px-6">
       {/* Header */}
       <motion.div
@@ -172,31 +139,25 @@ const FeaturesSection = () => (
         className="text-center mb-20"
       >
         <h2
+          className="text-foreground"
           style={{
-            fontSize: "clamp(42px, 6vw, 64px)",
+            fontSize: "clamp(36px, 5vw, 52px)",
             fontWeight: 800,
             letterSpacing: "-0.03em",
             lineHeight: 1.1,
             marginBottom: "20px",
-            background: "linear-gradient(135deg, hsl(260,25%,11%) 0%, hsl(268,72%,38%) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            backgroundClip: "text",
           }}
         >
           Tüm Çözümlere Tek Platformdan Ulaşın
         </h2>
 
-        <p style={{ fontSize: "19px", color: "#4B5563", lineHeight: 1.7, maxWidth: "600px", margin: "0 auto" }}>
+        <p className="text-muted-foreground" style={{ fontSize: "19px", lineHeight: 1.7, maxWidth: "600px", margin: "0 auto" }}>
           KOBİ'lerin dijital dönüşümünü kolaylaştıran, tek çatı altında eksiksiz bir ekosistem.
         </p>
       </motion.div>
 
       {/* Card Grid */}
-      <div
-        className="grid md:grid-cols-2 lg:grid-cols-3"
-        style={{ gap: "32px" }}
-      >
+      <div className="grid md:grid-cols-2 lg:grid-cols-3" style={{ gap: "32px" }}>
         {features.map((f, i) => (
           <FeatureCard key={f.title} f={f} index={i} />
         ))}

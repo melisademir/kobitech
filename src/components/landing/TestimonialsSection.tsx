@@ -55,9 +55,9 @@ const containerVariants = {
 };
 
 const cardVariants = {
-  hidden: { opacity: 0, y: 32, scale: 0.97 },
+  hidden: { opacity: 0, y: 24 },
   visible: {
-    opacity: 1, y: 0, scale: 1,
+    opacity: 1, y: 0,
     transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] as any },
   },
 };
@@ -73,23 +73,24 @@ const TestimonialsSection = () => (
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="text-center mb-16"
       >
-        <motion.span
-          initial={{ opacity: 0, scale: 0.85 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4, delay: 0.1 }}
-          className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-primary/10 text-primary text-xs font-bold mb-6 tracking-widest uppercase border border-primary/15"
+        <span
+          className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase cursor-default"
+          style={{
+            background: "rgba(109,40,217,0.06)",
+            color: "hsl(268,72%,38%)",
+            border: "1.5px solid rgba(109,40,217,0.15)",
+          }}
         >
           <Star className="w-3.5 h-3.5 fill-current" />
           Başarı Hikayeleri
-        </motion.span>
+        </span>
         <h2
           className="text-4xl md:text-5xl font-bold text-foreground mb-4"
           style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
         >
           İşletmelerden Geri Bildirimler
         </h2>
-        <p className="text-slate-500 max-w-md mx-auto" style={{ fontSize: "19px", lineHeight: "1.7" }}>
+        <p className="text-muted-foreground max-w-md mx-auto" style={{ fontSize: "19px", lineHeight: "1.7" }}>
           Kobi Dijital ile dönüşen işletme sahiplerinin deneyimleri
         </p>
       </motion.div>
@@ -100,33 +101,30 @@ const TestimonialsSection = () => (
         whileInView="visible"
         viewport={{ once: true, margin: "-60px" }}
         variants={containerVariants}
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
       >
         {testimonials.map((t, i) => (
           <motion.div
             key={t.name}
             variants={cardVariants}
-            whileHover={{
-              y: -8,
-              boxShadow: "0 0 0 1px rgba(255,255,255,0.9) inset, 0 24px 56px -8px rgba(109,40,217,0.14)",
-              transition: { type: "spring", stiffness: 300, damping: 20 },
-            }}
-            className="rounded-3xl flex flex-col relative overflow-hidden cursor-default"
+            className="rounded-[20px] flex flex-col relative overflow-hidden cursor-default transition-shadow duration-300"
             style={{
-              background: "rgba(255,255,255,0.92)",
-              backdropFilter: "blur(20px)",
-              WebkitBackdropFilter: "blur(20px)",
-              border: "1px solid rgba(255,255,255,0.95)",
-              outline: "1px solid hsl(252,20%,92%)",
-              outlineOffset: "0px",
+              background: "white",
+              border: "1px solid rgba(0,0,0,0.06)",
               padding: "2.5rem",
-              boxShadow: "0 0 0 1px rgba(255,255,255,0.85) inset, 0 2px 20px -4px rgba(109,40,217,0.05)",
+              boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(72,11,135,0.14), 0 12px 40px rgba(72,11,135,0.18)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)";
             }}
           >
             {/* Decorative quote mark */}
-            <Quote className="absolute top-5 right-5 w-8 h-8 text-primary/8" />
+            <Quote className="absolute top-5 right-5 w-8 h-8" style={{ color: "rgba(109,40,217,0.08)" }} />
 
-            {/* Stars — primary purple only */}
+            {/* Stars */}
             <div className="flex gap-0.5 mb-5">
               {Array.from({ length: 5 }).map((_, si) => (
                 <Star key={si} className="w-4 h-4 text-primary fill-primary" />
@@ -137,7 +135,7 @@ const TestimonialsSection = () => (
               "{t.quote}"
             </p>
 
-            <div className="flex items-center gap-3 mt-6 pt-5 border-t border-slate-100">
+            <div className="flex items-center gap-3 mt-6 pt-5 border-t" style={{ borderColor: "hsl(38,30%,88%)" }}>
               <div
                 className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
                 style={{ background: avatarGradients[i] }}
@@ -146,9 +144,7 @@ const TestimonialsSection = () => (
               </div>
               <div>
                 <p className="font-semibold text-foreground text-sm">{t.name}</p>
-                <p className="text-slate-400 text-xs mt-0.5" style={{ letterSpacing: "0.01em" }}>
-                  {t.role}
-                </p>
+                <p className="text-muted-foreground text-xs mt-0.5">{t.role}</p>
               </div>
             </div>
           </motion.div>

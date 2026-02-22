@@ -10,6 +10,7 @@ import {
   Package,
   Globe2,
   Users,
+  ArrowRight,
 } from "lucide-react";
 import tabEticaret from "@/assets/tab-eticaret-ai.png";
 import tabOdeme from "@/assets/tab-odeme-ai.png";
@@ -20,7 +21,6 @@ import tabEkip from "@/assets/tab-ekip-ai.png";
 import tabTesvik from "@/assets/tab-tesvik-ai.png";
 import tabUretim from "@/assets/tab-uretim-ai.png";
 
-
 const categories = [
   {
     label: "Teşviklerden Yararlan",
@@ -30,9 +30,6 @@ const categories = [
     icon: BadgePercent,
     image: tabTesvik,
     accent: "#7C3AED",
-    accentBg: "rgba(124,58,237,0.08)",
-    decorColor: "#A78BFA",
-    gradient: "from-violet-500/20 via-purple-500/10 to-fuchsia-400/10",
   },
   {
     label: "E-Ticarete Açıl",
@@ -42,9 +39,6 @@ const categories = [
     icon: ShoppingCart,
     image: tabEticaret,
     accent: "#2563EB",
-    accentBg: "rgba(37,99,235,0.08)",
-    decorColor: "#93C5FD",
-    gradient: "from-blue-500/20 via-blue-400/10 to-cyan-300/10",
   },
   {
     label: "Ödeme Al",
@@ -54,9 +48,6 @@ const categories = [
     icon: CreditCard,
     image: tabOdeme,
     accent: "#059669",
-    accentBg: "rgba(5,150,105,0.08)",
-    decorColor: "#6EE7B7",
-    gradient: "from-emerald-500/20 via-green-400/10 to-teal-300/10",
   },
   {
     label: "Paranı Yönet",
@@ -66,9 +57,6 @@ const categories = [
     icon: Wallet,
     image: tabPara,
     accent: "#D97706",
-    accentBg: "rgba(217,119,6,0.08)",
-    decorColor: "#FCD34D",
-    gradient: "from-amber-500/20 via-yellow-400/10 to-orange-300/10",
   },
   {
     label: "Üretimini Optimize Et",
@@ -78,9 +66,6 @@ const categories = [
     icon: Factory,
     image: tabUretim,
     accent: "#DC2626",
-    accentBg: "rgba(220,38,38,0.08)",
-    decorColor: "#FCA5A5",
-    gradient: "from-red-500/20 via-rose-400/10 to-pink-300/10",
   },
   {
     label: "Stoğunu Kontrol Et",
@@ -90,9 +75,6 @@ const categories = [
     icon: Package,
     image: tabStok,
     accent: "#0891B2",
-    accentBg: "rgba(8,145,178,0.08)",
-    decorColor: "#67E8F9",
-    gradient: "from-cyan-500/20 via-sky-400/10 to-blue-300/10",
   },
   {
     label: "Globale Açıl",
@@ -102,9 +84,6 @@ const categories = [
     icon: Globe2,
     image: tabGlobal,
     accent: "#7C3AED",
-    accentBg: "rgba(124,58,237,0.08)",
-    decorColor: "#C4B5FD",
-    gradient: "from-violet-600/20 via-indigo-500/10 to-purple-400/10",
   },
   {
     label: "Ekibini Güçlendir",
@@ -114,36 +93,12 @@ const categories = [
     icon: Users,
     image: tabEkip,
     accent: "#DB2777",
-    accentBg: "rgba(219,39,119,0.08)",
-    decorColor: "#F9A8D4",
-    gradient: "from-pink-500/20 via-rose-400/10 to-fuchsia-300/10",
   },
 ];
-
-
-/* Decorative orbiting circles for visual depth */
-const OrbitRings = ({ color }: { color: string }) => (
-  <svg
-    className="absolute inset-0 w-full h-full pointer-events-none"
-    viewBox="0 0 400 320"
-    fill="none"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle cx="200" cy="160" r="90" stroke={color} strokeWidth="1" strokeOpacity="0.18" strokeDasharray="6 6" />
-    <circle cx="200" cy="160" r="130" stroke={color} strokeWidth="1" strokeOpacity="0.10" strokeDasharray="4 8" />
-    <circle cx="200" cy="160" r="170" stroke={color} strokeWidth="0.75" strokeOpacity="0.07" strokeDasharray="3 10" />
-    {/* Small accent dots */}
-    <circle cx="200" cy="70" r="5" fill={color} fillOpacity="0.35" />
-    <circle cx="290" cy="160" r="4" fill={color} fillOpacity="0.25" />
-    <circle cx="110" cy="200" r="3" fill={color} fillOpacity="0.20" />
-    <circle cx="240" cy="250" r="6" fill={color} fillOpacity="0.15" />
-  </svg>
-);
 
 const PartnersSection = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const cat = categories[activeIndex];
-  const Icon = cat.icon;
 
   return (
     <section id="solutions" className="py-24 md:py-32">
@@ -154,7 +109,7 @@ const PartnersSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="text-center mb-12"
+          className="text-center mb-14"
         >
           <h2
             className="text-4xl md:text-5xl font-bold text-foreground"
@@ -164,33 +119,49 @@ const PartnersSection = () => {
             <br />
             <span className="text-gradient-primary">Maliyetlerini Düşür</span>
           </h2>
-          <p className="text-slate-500 mt-4 max-w-md mx-auto" style={{ fontSize: "19px", lineHeight: "1.7" }}>
+          <p className="text-muted-foreground mt-4 max-w-md mx-auto" style={{ fontSize: "19px", lineHeight: "1.7" }}>
             İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
           </p>
         </motion.div>
 
-        {/* Category Pills */}
+        {/* Category Pills — corporate, no bounce */}
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex flex-wrap justify-center gap-2.5 mb-16"
+          className="flex flex-wrap justify-center gap-3 mb-16"
         >
           {categories.map((c, i) => (
-            <motion.button
+            <button
               key={c.label}
               onClick={() => setActiveIndex(i)}
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96, transition: { type: "spring", stiffness: 400, damping: 20 } }}
-              className={`px-5 py-2 rounded-full text-sm font-medium border transition-all duration-200 ${
-                activeIndex === i
-                  ? "bg-primary text-primary-foreground border-primary shadow-[0_4px_16px_-4px_rgba(109,40,217,0.4)]"
-                  : "text-slate-500 border-slate-200 hover:border-primary/30 hover:text-primary bg-white"
-              }`}
+              className="transition-all duration-200 cursor-pointer"
+              style={{
+                padding: "10px 24px",
+                borderRadius: "24px",
+                fontSize: "14px",
+                fontWeight: 600,
+                border: activeIndex === i ? "2px solid hsl(268,72%,38%)" : "2px solid hsl(38,30%,88%)",
+                background: activeIndex === i ? "hsl(268,72%,38%)" : "white",
+                color: activeIndex === i ? "white" : "hsl(260,12%,48%)",
+                boxShadow: activeIndex === i ? "0 4px 16px -4px rgba(109,40,217,0.35)" : "0 2px 8px rgba(72,11,135,0.06)",
+              }}
+              onMouseEnter={(e) => {
+                if (activeIndex !== i) {
+                  e.currentTarget.style.borderColor = "hsl(268,72%,38%)";
+                  e.currentTarget.style.color = "hsl(268,72%,38%)";
+                }
+              }}
+              onMouseLeave={(e) => {
+                if (activeIndex !== i) {
+                  e.currentTarget.style.borderColor = "hsl(38,30%,88%)";
+                  e.currentTarget.style.color = "hsl(260,12%,48%)";
+                }
+              }}
             >
               {c.label}
-            </motion.button>
+            </button>
           ))}
         </motion.div>
 
@@ -199,157 +170,96 @@ const PartnersSection = () => {
           <AnimatePresence mode="wait">
             <motion.div
               key={activeIndex}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
+              exit={{ opacity: 0, y: -12 }}
               transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
               className="flex flex-col md:flex-row items-center gap-12"
             >
-              {/* Left */}
-              <div className="flex-1 space-y-5">
+              {/* Left — Text */}
+              <div className="flex-1 space-y-6">
                 <h3
                   className="text-3xl font-bold text-foreground"
                   style={{ letterSpacing: "-0.02em" }}
                 >
                   {cat.label}
                 </h3>
-                <p className="text-slate-500 leading-relaxed" style={{ fontSize: "19px", lineHeight: "1.7" }}>
+                <p className="text-muted-foreground leading-relaxed" style={{ fontSize: "17px", lineHeight: "1.75" }}>
                   {cat.description}
                 </p>
-                <div className="flex flex-wrap gap-2">
-                  {cat.tags.map((tag, idx) => (
-                    <motion.span
+
+                {/* Tags — corporate, sade */}
+                <div className="flex flex-wrap gap-2.5">
+                  {cat.tags.map((tag) => (
+                    <span
                       key={tag}
-                      initial={{ opacity: 0, scale: 0.85 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.08 + idx * 0.05 }}
-                      className="inline-block px-3 py-1 rounded-full text-xs font-semibold border"
+                      className="inline-block cursor-default"
                       style={{
-                        background: cat.accentBg,
-                        color: cat.accent,
-                        borderColor: `${cat.accent}22`,
+                        padding: "8px 20px",
+                        borderRadius: "24px",
+                        fontSize: "13px",
+                        fontWeight: 600,
+                        letterSpacing: "0.01em",
+                        background: "rgba(109,40,217,0.06)",
+                        color: "hsl(268,72%,38%)",
+                        border: "1.5px solid rgba(109,40,217,0.15)",
                       }}
                     >
                       {tag}
-                    </motion.span>
+                    </span>
                   ))}
                 </div>
-                <Link to="/kobi/step-1" className="inline-block mt-2">
-                  <motion.button
-                    whileHover={{
-                      scale: 1.04,
-                      boxShadow: "0 8px 28px -4px rgba(109,40,217,0.45)",
-                      transition: { type: "spring", stiffness: 320, damping: 18 },
+
+                {/* CTA — large corporate button */}
+                <Link to="/kobi/step-1" className="inline-block mt-3">
+                  <button
+                    className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200"
+                    style={{
+                      height: "54px",
+                      padding: "0 40px",
+                      borderRadius: "24px",
+                      fontSize: "15px",
+                      background: "hsl(268,72%,38%)",
+                      boxShadow: "0 4px 16px -4px rgba(109,40,217,0.35)",
+                      minWidth: "220px",
                     }}
-                    whileTap={{ scale: 0.97 }}
-                    className="inline-flex items-center px-7 py-3 rounded-full text-sm font-semibold text-white bg-primary"
-                    style={{ boxShadow: "0 4px 16px -4px rgba(109,40,217,0.35)" }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = "hsl(268,72%,32%)";
+                      e.currentTarget.style.boxShadow = "0 6px 24px -4px rgba(109,40,217,0.50)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = "hsl(268,72%,38%)";
+                      e.currentTarget.style.boxShadow = "0 4px 16px -4px rgba(109,40,217,0.35)";
+                    }}
                   >
-                    Çözümleri Keşfet
-                  </motion.button>
+                    Çözümleri Keşfet <ArrowRight className="w-4 h-4" />
+                  </button>
                 </Link>
               </div>
 
-              {/* Right — Icon illustration */}
+              {/* Right — Image card with corporate shadow */}
               <motion.div
-                initial={{ opacity: 0, x: 24 }}
+                initial={{ opacity: 0, x: 16 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.4, delay: 0.1 }}
                 className="flex-1 max-w-md relative"
               >
-                {/* Glow blob */}
                 <div
-                  className="absolute inset-[-20px] rounded-3xl blur-3xl pointer-events-none"
-                  style={{ background: `${cat.accent}18`, zIndex: 0 }}
-                />
-
-                {/* Card */}
-                <div
-                  className="relative rounded-2xl overflow-hidden flex items-center justify-center"
+                  className="relative rounded-[20px] overflow-hidden"
                   style={{
-                    border: "1px solid rgba(255,255,255,0.9)",
-                    outline: "1px solid hsl(252,20%,90%)",
-                    outlineOffset: "0",
-                    boxShadow: `0 0 0 1px rgba(255,255,255,0.8) inset, 0 24px 64px -12px ${cat.accent}33`,
-                    background: "rgba(255,255,255,0.97)",
+                    border: "1px solid rgba(0,0,0,0.06)",
+                    boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
+                    background: "white",
                     minHeight: "280px",
-                    zIndex: 1,
                   }}
                 >
-                  {cat.image ? (
-                    /* Photo illustration */
-                    <>
-                      <motion.img
-                        key={activeIndex}
-                        src={cat.image}
-                        alt={cat.label}
-                        initial={{ opacity: 0, scale: 1.05 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-                        className="w-full h-full object-cover"
-                        style={{ minHeight: "280px", maxHeight: "340px" }}
-                      />
-                      {/* Overlay gradient for readability */}
-                      <div className="absolute inset-0 pointer-events-none" style={{ background: `linear-gradient(to top, ${cat.accent}44 0%, transparent 60%)` }} />
-                    </>
-                  ) : (
-                    /* Icon illustration fallback */
-                    <>
-                      {/* Gradient fill */}
-                      <div className={`absolute inset-0 bg-gradient-to-br ${cat.gradient}`} />
-                      {/* Orbit rings */}
-                      <OrbitRings color={cat.decorColor} />
-                      {/* Center icon */}
-                      <motion.div
-                        key={activeIndex}
-                        initial={{ scale: 0.6, opacity: 0, rotate: -15 }}
-                        animate={{ scale: 1, opacity: 1, rotate: 0 }}
-                        transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.05 }}
-                        className="relative z-10 flex flex-col items-center gap-5"
-                      >
-                        <div
-                          className="w-28 h-28 rounded-3xl flex items-center justify-center"
-                          style={{
-                            background: "rgba(255,255,255,0.9)",
-                            border: `1.5px solid ${cat.accent}30`,
-                            boxShadow: `0 8px 40px -8px ${cat.accent}55, 0 0 0 1px rgba(255,255,255,0.9) inset`,
-                            backdropFilter: "blur(12px)",
-                          }}
-                        >
-                          <Icon strokeWidth={1.4} style={{ color: cat.accent, width: 52, height: 52 }} />
-                        </div>
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          transition={{ delay: 0.18 }}
-                          className="px-5 py-2 rounded-full text-xs font-bold tracking-wide"
-                          style={{ background: cat.accentBg, color: cat.accent, border: `1px solid ${cat.accent}25` }}
-                        >
-                          {cat.tags[0]}
-                        </motion.div>
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.25, type: "spring", stiffness: 280 }}
-                        className="absolute top-4 right-4 rounded-xl px-3 py-2 z-10"
-                        style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(12px)", border: `1px solid ${cat.accent}20`, boxShadow: `0 4px 16px -4px ${cat.accent}22` }}
-                      >
-                        <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">Çözüm Sayısı</p>
-                        <p className="text-sm font-black" style={{ color: cat.accent }}>50+</p>
-                      </motion.div>
-                      <motion.div
-                        initial={{ opacity: 0, scale: 0.8 }}
-                        animate={{ opacity: 1, scale: 1 }}
-                        transition={{ delay: 0.32, type: "spring", stiffness: 280 }}
-                        className="absolute bottom-4 left-4 rounded-xl px-3 py-2 z-10"
-                        style={{ background: "rgba(255,255,255,0.88)", backdropFilter: "blur(12px)", border: `1px solid ${cat.accent}20`, boxShadow: `0 4px 16px -4px ${cat.accent}22` }}
-                      >
-                        <p className="text-[9px] font-semibold text-slate-400 uppercase tracking-widest mb-0.5">Aktif Partner</p>
-                        <p className="text-sm font-black" style={{ color: cat.accent }}>{cat.tags[1]}</p>
-                      </motion.div>
-                    </>
-                  )}
+                  <img
+                    key={activeIndex}
+                    src={cat.image}
+                    alt={cat.label}
+                    className="w-full h-full object-cover"
+                    style={{ minHeight: "280px", maxHeight: "340px" }}
+                  />
                 </div>
               </motion.div>
             </motion.div>
