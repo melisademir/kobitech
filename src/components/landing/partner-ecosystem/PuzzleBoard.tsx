@@ -79,7 +79,7 @@ export default function PuzzleBoard({
 
   return (
     <svg
-      viewBox={`0 0 ${SVG_W} ${SVG_H}`}
+      viewBox={`-12 -12 ${SVG_W + 24} ${SVG_H + 24}`}
       width="100%"
       style={{ display: "block", overflow: "visible" }}
       aria-label="Partner ekosistemi puzzle"
@@ -99,10 +99,24 @@ export default function PuzzleBoard({
             </linearGradient>
           );
         })}
+        {/* Selected piece purple gradient */}
+        <linearGradient id="selected-fill" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="hsl(268,60%,97%)" />
+          <stop offset="100%" stopColor="hsl(268,50%,94%)" />
+        </linearGradient>
+        {/* Background radial gradient */}
+        <radialGradient id="puzzle-bg-glow" cx="50%" cy="45%" r="55%">
+          <stop offset="0%" stopColor="hsl(268,40%,95%)" stopOpacity="0.5" />
+          <stop offset="60%" stopColor="hsl(38,30%,97%)" stopOpacity="0.2" />
+          <stop offset="100%" stopColor="hsl(38,30%,97%)" stopOpacity="0" />
+        </radialGradient>
         <filter id="shadow-selected" x="-10%" y="-10%" width="120%" height="130%">
           <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="hsl(268,72%,26%,0.25)" />
         </filter>
       </defs>
+
+      {/* Subtle background glow behind puzzle */}
+      <rect x="-12" y="-12" width={SVG_W + 24} height={SVG_H + 24} fill="url(#puzzle-bg-glow)" rx="16" />
 
       {pieces.map((piece, i) => {
         const px = piece.col * CW + piece.col * GAP;
@@ -138,8 +152,8 @@ export default function PuzzleBoard({
             onMouseLeave={() => setHovered(null)}
           >
             <g>
-              {/* Base fill — selected gets a faint purple tint */}
-              <path d={pathD} fill={isSel ? "hsl(268,60%,98%)" : "#FFFFFF"} />
+              {/* Base fill — selected gets purple gradient */}
+              <path d={pathD} fill={isSel ? "url(#selected-fill)" : "#FFFFFF"} />
               <path d={pathD} fill={`url(#bevel-${piece.id})`} />
 
               {/* Border — transitions between states */}
