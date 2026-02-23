@@ -61,7 +61,7 @@ const Products = () => {
           <Menu className="h-6 w-6" />
         </button>
         <Link to="/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
-          <img src={kobiLogo} alt="KobiTECH" className="h-14 w-auto" />
+          <img src={kobiLogo} alt="KobiTECH" className="h-20 w-auto" />
           <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>
         <div className="hidden md:flex flex-1 max-w-md mx-auto relative">
