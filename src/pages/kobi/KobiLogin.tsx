@@ -33,7 +33,7 @@ const KobiLogin = () => {
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <div className="flex items-center gap-3 mb-2">
             <div className="w-10 h-10 rounded-xl bg-primary-foreground/20 flex items-center justify-center text-2xl">🏢</div>
-            <span className="text-2xl font-extrabold text-primary-foreground tracking-tight">KOBİ DİJİTAL</span>
+            <span className="text-2xl font-extrabold text-primary-foreground tracking-tight">KobiTECH</span>
           </div>
           <p className="text-primary-foreground/70 text-sm ml-[52px]">Dijital Dönüşüm Platformu</p>
         </motion.div>
@@ -48,7 +48,7 @@ const KobiLogin = () => {
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="w-full max-w-[400px] space-y-8">
           <div className="lg:hidden flex items-center gap-2 mb-4">
             <span className="text-2xl">🏢</span>
-            <span className="text-xl font-extrabold text-primary">KOBİ DİJİTAL</span>
+            <span className="text-xl font-extrabold text-primary">KobiTECH</span>
           </div>
           <div>
             <h1 className="text-3xl font-bold text-foreground">KOBİ Girişi</h1>

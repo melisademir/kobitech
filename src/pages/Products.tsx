@@ -61,7 +61,7 @@ const Products = () => {
         </button>
         <Link to="/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
           <span className="text-xl">🏢</span>
-          <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KOBİ DİJİTAL</span>
+          <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>
         <div className="hidden md:flex flex-1 max-w-md mx-auto relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
