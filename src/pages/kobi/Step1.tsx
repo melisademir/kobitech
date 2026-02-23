@@ -40,7 +40,7 @@ const Step1 = () => {
 
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="flex items-center gap-3">
-            <img src={kobiLogo} alt="KobiTECH" className="h-10 w-auto" />
+            <img src={kobiLogo} alt="KobiTECH" className="h-14 w-auto" />
             <span className="text-xl font-extrabold tracking-tight" style={{ color: "#E9D5FF" }}>KobiTECH</span>
           </div>
         </motion.div>
