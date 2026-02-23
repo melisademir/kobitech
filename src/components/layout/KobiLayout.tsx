@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
 import { useOnboarding } from "@/contexts/OnboardingContext";
 import AiAssistantWidget from "@/components/kobi/AiAssistantWidget";
+import kobiLogo from "@/assets/logo-kobitech.png";
 const navItems = [
   { icon: Map, label: "Harita", path: "/kobi/harita" },
   { icon: ClipboardList, label: "Planlarım", path: "/kobi/planlarim" },
@@ -33,7 +34,7 @@ const KobiLayout = ({ children }: Props) => {
           <Menu className="h-6 w-6" />
         </button>
         <Link to="/kobi/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
-          <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center text-primary-foreground font-bold text-sm">K</div>
+          <img src={kobiLogo} alt="KobiTECH" className="h-9 w-auto" />
           <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>
         <div className="hidden md:flex flex-1 max-w-md mx-auto relative">
@@ -90,7 +91,7 @@ const KobiLayout = ({ children }: Props) => {
               <motion.aside initial={{ x: -260 }} animate={{ x: 0 }} exit={{ x: -260 }} className="fixed left-0 top-0 bottom-0 w-[260px] bg-card z-50 lg:hidden shadow-premium-hover">
                 <div className="flex items-center justify-between p-4 border-b border-border">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center text-primary-foreground font-bold text-sm">K</div>
+                    <img src={kobiLogo} alt="KobiTECH" className="h-8 w-auto" />
                     <span className="font-extrabold text-primary">KobiTECH</span>
                   </div>
                   <button onClick={() => setSidebarOpen(false)}><X className="h-5 w-5" /></button>

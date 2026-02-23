@@ -9,6 +9,7 @@ import { useOnboarding } from "@/contexts/OnboardingContext";
 import stepHedef from "@/assets/step-hedef-corp.png";
 import stepTeklif from "@/assets/step-teklif-corp.png";
 import stepBuyume from "@/assets/step-buyume-corp.png";
+import kobiLogo from "@/assets/logo-kobitech.png";
 
 const steps = [
   { image: stepHedef, label: "Hedef Belirleme", title: "Büyüme Hedefinizi Belirleyin", desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz?", accent: "#A78BFA", accentDark: "#7C3AED" },
@@ -39,7 +40,7 @@ const Step1 = () => {
 
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="flex items-center gap-3">
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xl" style={{ background: "rgba(124,58,237,0.25)", border: "1px solid rgba(167,139,250,0.3)" }}>🏢</div>
+            <img src={kobiLogo} alt="KobiTECH" className="h-10 w-auto" />
             <span className="text-xl font-extrabold tracking-tight" style={{ color: "#E9D5FF" }}>KobiTECH</span>
           </div>
         </motion.div>
