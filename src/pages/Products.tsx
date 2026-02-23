@@ -11,6 +11,7 @@ import { catalogProducts, catalogCategories, type CatalogProduct } from "@/data/
 import ProductCatalogCard from "@/components/products/ProductCatalogCard";
 import ProductDetailModal from "@/components/products/ProductDetailModal";
 import SectorExamplesModal from "@/components/products/SectorExamplesModal";
+import kobiLogo from "@/assets/logo-kobitech.png";
 
 const navItems = [
   { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
@@ -60,7 +61,7 @@ const Products = () => {
           <Menu className="h-6 w-6" />
         </button>
         <Link to="/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
-          <span className="text-xl">🏢</span>
+          <img src={kobiLogo} alt="KobiTECH" className="h-9 w-auto" />
           <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>
         <div className="hidden md:flex flex-1 max-w-md mx-auto relative">
