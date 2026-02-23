@@ -34,7 +34,7 @@ const KobiLayout = ({ children }: Props) => {
         </button>
         <Link to="/kobi/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
           <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center text-primary-foreground font-bold text-sm">K</div>
-          <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KOBİ DİJİTAL</span>
+          <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>
         <div className="hidden md:flex flex-1 max-w-md mx-auto relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -91,7 +91,7 @@ const KobiLayout = ({ children }: Props) => {
                 <div className="flex items-center justify-between p-4 border-b border-border">
                   <div className="flex items-center gap-2">
                     <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center text-primary-foreground font-bold text-sm">K</div>
-                    <span className="font-extrabold text-primary">KOBİ DİJİTAL</span>
+                    <span className="font-extrabold text-primary">KobiTECH</span>
                   </div>
                   <button onClick={() => setSidebarOpen(false)}><X className="h-5 w-5" /></button>
                 </div>

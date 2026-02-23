@@ -46,7 +46,7 @@ const KobiSignup = () => {
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="flex items-center gap-3 mb-2">
             <div className="w-9 h-9 rounded-xl flex items-center justify-center text-xl" style={{ background: "rgba(124,58,237,0.25)", border: "1px solid rgba(167,139,250,0.3)" }}>🏢</div>
-            <span className="text-xl font-extrabold tracking-tight" style={{ color: "#E9D5FF" }}>KOBİ DİJİTAL</span>
+            <span className="text-xl font-extrabold tracking-tight" style={{ color: "#E9D5FF" }}>KobiTECH</span>
           </div>
         </motion.div>
 

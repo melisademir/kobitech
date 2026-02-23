@@ -91,7 +91,7 @@ const TestimonialsSection = () => (
           İşletmelerden Geri Bildirimler
         </h2>
         <p className="text-muted-foreground max-w-md mx-auto" style={{ fontSize: "19px", lineHeight: "1.7" }}>
-          Kobi Dijital ile dönüşen işletme sahiplerinin deneyimleri
+          KobiTECH ile dönüşen işletme sahiplerinin deneyimleri
         </p>
       </motion.div>
 

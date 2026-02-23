@@ -28,7 +28,7 @@ const StatsSection = () => (
         className="text-center mb-12"
       >
         <p className="text-sm font-semibold tracking-[0.18em] uppercase text-muted-foreground">
-          İşletmeler Kobi Dijital ile büyüyor
+          İşletmeler KobiTECH ile büyüyor
         </p>
       </motion.div>
       <motion.div
