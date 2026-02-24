@@ -43,7 +43,7 @@ const categories = [
   {
     label: "Ödeme Al",
     description:
-      "Fiziksel ve online ödeme çözümleriyle tahsilat süreçlerinizi hızlandırın. POS, sanal POS ve mobil ödeme seçenekleriyle her kanaldan ödeme alın.",
+      "Fiziksel ve online satışlarınız için Türkiye’nin önde gelen ödeme altyapılarından Param çözümlerini inceleyerek işletmenize uygun ödeme yöntemlerini seçebilirsiniz. Böylece tüm satış kanallarınızdan güvenli şekilde ödeme almaya başlayabilirsiniz.",
     tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
     icon: CreditCard,
     image: tabOdeme,
