@@ -102,17 +102,6 @@ const HowItWorksSection = () => (
                 alt={s.title}
                 className="w-full h-full object-cover"
               />
-              {/* Label overlay */}
-              <div
-                className="absolute top-3 left-3 px-3 py-1.5 rounded-lg text-xs font-bold text-white"
-                style={{
-                  background: "rgba(0,0,0,0.55)",
-                  backdropFilter: "blur(8px)",
-                  border: "1px solid rgba(255,255,255,0.12)",
-                }}
-              >
-                {s.title}
-              </div>
             </div>
 
             {/* Card body */}
@@ -135,11 +124,21 @@ const HowItWorksSection = () => (
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
               }}
             >
+              <span
+                className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase mb-3"
+                style={{
+                  background: "rgba(124,58,237,0.15)",
+                  border: "1px solid rgba(124,58,237,0.3)",
+                  color: "#A78BFA",
+                }}
+              >
+                {s.title}
+              </span>
               <h3
                 className="text-white font-bold mb-3 leading-snug"
                 style={{ fontSize: "21px", letterSpacing: "-0.015em" }}
               >
-                {s.title}
+                {s.desc}
               </h3>
               <p style={{ fontSize: "15px", color: "rgba(156,163,175,0.85)", lineHeight: "1.65" }}>
                 {s.desc}
