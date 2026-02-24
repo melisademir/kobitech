@@ -35,7 +35,7 @@ const Step1 = () => {
   return (
     <div className="flex min-h-screen">
       {/* Left panel — steps visual */}
-      <div className="hidden lg:flex lg:w-1/2 relative overflow-hidden flex-col justify-between p-12" style={{ background: "linear-gradient(160deg, #0F0720 0%, #1A0A3C 50%, #0D1240 100%)" }}>
+      <div className="hidden lg:flex lg:w-1/3 relative overflow-hidden flex-col justify-between p-10" style={{ background: "linear-gradient(160deg, #0F0720 0%, #1A0A3C 50%, #0D1240 100%)" }}>
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(124,58,237,0.22) 0%, transparent 70%)" }} />
 
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
