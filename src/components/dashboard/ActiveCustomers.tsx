@@ -38,7 +38,7 @@ const ActiveCustomers = () => (
             <tr className="bg-background text-muted-foreground text-xs font-bold uppercase tracking-wider">
               <th className="text-left p-4">Şirket</th>
               <th className="text-left p-4">Sektör</th>
-              <th className="text-center p-4">Global Readiness</th>
+              
               <th className="text-left p-4">Son Aktivite</th>
               <th className="text-right p-4">Aksiyon</th>
             </tr>
@@ -48,7 +48,7 @@ const ActiveCustomers = () => (
               <tr key={c.name} className="border-t border-border hover:bg-background/50 transition-colors">
                 <td className="p-4 font-semibold text-foreground">{c.name}</td>
                 <td className="p-4"><Badge>{c.sector}</Badge></td>
-                <td className="p-4 flex justify-center"><CircularProgress value={c.readiness} /></td>
+                
                 <td className="p-4 text-sm text-muted-foreground">{c.lastActivity}</td>
                 <td className="p-4 text-right">
                   <Button asChild variant="outline" size="sm" className="rounded-full">
@@ -70,7 +70,7 @@ const ActiveCustomers = () => (
                 <p className="font-semibold text-foreground">{c.name}</p>
                 <Badge className="mt-1">{c.sector}</Badge>
               </div>
-              <CircularProgress value={c.readiness} />
+              
             </div>
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted-foreground">{c.lastActivity}</span>
