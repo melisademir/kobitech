@@ -25,7 +25,7 @@ const categories = [
   {
     label: "Teşviklerden Yararlan",
     description:
-      "Devlet teşvikleri, hibe programları ve vergi avantajlarından yararlanarak maliyetlerinizi düşürün. Size uygun destekleri keşfedin ve başvuru süreçlerinizi kolaylaştırın.",
+      "Uzman danışmanlarımız, işletmenizin ihtiyaçlarına uygun teşvik ve hibe fırsatlarını belirler; başvuru süreçlerinde rehberlik eder ve sizi ilgili kurum ve kuruluşlarla buluşturur. Böylece işletmeniz için sunulan desteklerden etkin biçimde yararlanmış olursunuz.",
     tags: ["Hibe Programları", "Vergi Avantajları", "Başvuru Desteği"],
     icon: BadgePercent,
     image: tabTesvik,
