@@ -34,23 +34,18 @@ const Login = () => {
   return (
     <div className="flex min-h-screen">
       {/* Left - Branding */}
-      <div className="hidden lg:flex lg:w-1/2 gradient-primary relative overflow-hidden flex-col justify-between p-16">
-        <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <div className="flex items-center gap-3 mb-2">
-            <img src={kobiLogo} alt="KobiTECH" className="h-[36px] w-auto" />
-            <span className="text-2xl font-extrabold text-primary-foreground tracking-tight">KobiTECH</span>
+      <div className="hidden lg:flex lg:w-1/3 relative overflow-hidden flex-col justify-center items-center"
+        style={{ background: "linear-gradient(160deg, #0f0a1e 0%, #1a1040 40%, #2d1b69 100%)" }}
+      >
+        <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 30% 50%, rgba(124,58,237,0.3) 0%, transparent 60%)" }} />
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative z-10 px-8 text-center space-y-6">
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <img src={kobiLogo} alt="KobiTECH" className="h-[32px] w-auto brightness-200" />
+            <span className="text-xl font-extrabold text-white tracking-tight">KobiTECH</span>
           </div>
-          <p className="text-primary-foreground/70 text-sm ml-[52px]">Dijital Dönüşüm Platformu</p>
+          <img src={loginHero} alt="Enterprise Dashboard" className="rounded-2xl shadow-2xl max-w-[280px] mx-auto" />
+          <p className="text-white/60 text-sm leading-relaxed max-w-[240px] mx-auto">Dijital dönüşüm yolculuğunuzda yanınızdayız</p>
         </motion.div>
-
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="space-y-6">
-          <h2 className="text-4xl font-bold text-primary-foreground leading-tight">
-            Param Satış<br />Platformu
-          </h2>
-          <img src={loginHero} alt="Sales Dashboard" className="rounded-2xl shadow-premium-hover max-w-sm opacity-90" />
-        </motion.div>
-
-        <div />
       </div>
 
       {/* Right - Form */}
