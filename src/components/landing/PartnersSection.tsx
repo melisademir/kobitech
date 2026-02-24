@@ -79,7 +79,7 @@ const categories = [
   {
     label: "Globale Açıl",
     description:
-      "Yurt dışı pazarlara açılın. İhracat süreçleri, uluslararası ödeme altyapısı ve lojistik çözümleriyle globalleşme yolculuğunuza başlayın.",
+      "Yurt dışı pazarlara açılmak için Mükellef çözümleri ile yurt dışında şirket kurabilir, vergi ve yasal süreçlerinizi yönetebilirsiniz. İhracat, uluslararası ödeme altyapısı ve lojistik süreçlerinizi oluşturarak global satış kanallarına açılabilirsiniz.",
     tags: ["Kurumsal Çözümler", "Global Şirket Kurulumu", "Bulut Altyapısı"],
     icon: Globe2,
     image: tabGlobal,
