@@ -4,7 +4,6 @@ import { pieces } from "./partner-ecosystem/partner-data";
 import PuzzleBoard from "./partner-ecosystem/PuzzleBoard";
 import PartnerPanel from "./partner-ecosystem/PartnerPanel";
 
-// Design system primary hex for inline styles
 const PRIMARY_HEX = "#6B21A8";
 
 const PartnerEcosystemSection = () => {
@@ -22,50 +21,50 @@ const PartnerEcosystemSection = () => {
   return (
     <section
       id="partner-ecosystem"
-      className="py-20 md:py-28 overflow-hidden"
+      className="py-12 md:py-20 lg:py-28 overflow-hidden"
       style={{ background: "hsl(38,30%,97%)" }}
     >
-      <div className="max-w-[1340px] mx-auto px-6">
+      <div className="max-w-[1340px] mx-auto px-4 md:px-6">
         {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.4 }}
           transition={{ duration: 0.5 }}
-          className="text-center mb-10"
+          className="text-center mb-6 md:mb-10"
         >
           <h2
             className="font-black text-foreground mx-auto"
-            style={{ fontSize: "clamp(1.8rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}
+            style={{ fontSize: "clamp(1.4rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}
           >
             Güçlü Partner Ekosistemi
           </h2>
           <p
-            className="text-muted-foreground mt-3 mx-auto"
-            style={{ maxWidth: "460px", fontSize: "19px", lineHeight: 1.7 }}
+            className="text-muted-foreground mt-2 md:mt-3 mx-auto text-sm md:text-base"
+            style={{ maxWidth: "460px", lineHeight: 1.7 }}
           >
             Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
         </motion.div>
 
-        {/* Unified container card — 24px radius, corporate shadow */}
+        {/* Unified container card */}
         <motion.div
           ref={sectionRef}
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.08 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
+          className="p-4 md:p-6 lg:p-10"
           style={{
             background: "white",
-            borderRadius: "24px",
-            padding: "40px",
+            borderRadius: "16px",
             boxShadow: "0 2px 8px hsl(268 30% 20% / 0.04), 0 8px 32px hsl(268 72% 38% / 0.07)",
             border: "1px solid hsl(38,30%,88%)",
             maxWidth: "1400px",
             margin: "0 auto"
           }}
         >
-          <div className="flex flex-col lg:flex-row items-stretch gap-8 xl:gap-10 h-full">
+          <div className="flex flex-col lg:flex-row items-stretch gap-4 md:gap-6 xl:gap-10 h-full">
             {/* LEFT: SVG Puzzle */}
             <motion.div
               className="w-full lg:w-[46%] flex-shrink-0 flex flex-col"
@@ -74,7 +73,7 @@ const PartnerEcosystemSection = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div className="flex-1 flex items-center justify-center lg:mt-[-92px]">
-                <div className="w-full max-w-[400px] lg:max-w-none mx-auto">
+                <div className="w-full max-w-[280px] md:max-w-[360px] lg:max-w-none mx-auto">
                   <PuzzleBoard selectedId={selectedId} onSelect={setSelectedId} visible={visible} />
                 </div>
               </div>
@@ -99,7 +98,7 @@ const PartnerEcosystemSection = () => {
             {/* RIGHT: Dynamic content panel */}
             <div className="w-full lg:flex-1 flex flex-col">
               <motion.div
-                className="flex-1 rounded-2xl p-7 flex flex-col justify-start relative overflow-hidden"
+                className="flex-1 rounded-xl md:rounded-2xl p-4 md:p-7 flex flex-col justify-start relative overflow-hidden"
                 style={{
                   background: "linear-gradient(145deg, hsl(0,0%,100%) 0%, hsl(252,60%,98%) 100%)",
                   border: "1px solid hsl(38,30%,88%)",
@@ -110,7 +109,6 @@ const PartnerEcosystemSection = () => {
                 animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                 transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               >
-                {/* Top accent glow band */}
                 {selectedPiece && (
                   <motion.div
                     key={`glow-${selectedPiece.id}`}
