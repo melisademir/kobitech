@@ -64,7 +64,7 @@ const PartnerEcosystemSection = () => {
             margin: "0 auto"
           }}
         >
-          <div className="flex flex-col lg:flex-row items-stretch gap-4 md:gap-6 xl:gap-10 h-full">
+          <div className="flex flex-col lg:flex-row items-stretch gap-6 md:gap-8 xl:gap-10 h-full">
             {/* LEFT: SVG Puzzle */}
             <motion.div
               className="w-full lg:w-[46%] flex-shrink-0 flex flex-col"
