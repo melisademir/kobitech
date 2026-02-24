@@ -74,7 +74,7 @@ const Harita = () => {
         <div className="bg-card rounded-2xl p-6 border border-border shadow-card">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-foreground flex items-center gap-2"><Target className="h-5 w-5 text-primary" /> Büyüme Hedeflerim</h2>
-            <Button variant="ghost" size="sm" onClick={openEditModal}><Edit3 className="h-4 w-4 mr-1" /> Düzenle</Button>
+            <Button variant="ghost" size="sm" onClick={openEditModal}><Edit3 className="h-4 w-4 mr-1" /> Hedef Ekle</Button>
           </div>
           {selectedGoals.length > 0 ? (
             <div className="flex flex-wrap gap-2">
