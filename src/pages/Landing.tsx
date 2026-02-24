@@ -74,12 +74,8 @@ const Landing = () => (
       <CtaSection />
     </div>
 
-    <SectionDivider />
 
-    {/* 8 — TRUST BAND */}
-    <div style={{ background: "hsl(38, 30%, 97%)", borderTop: "1px solid hsl(43,65%,52%,0.15)" }}>
-      <TrustBand />
-    </div>
+
 
     <FooterSection />
   </div>
