@@ -52,14 +52,14 @@ const Landing = () => (
 
     <SectionDivider />
 
-    {/* 4 — FEATURES */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,25%,97%) 100%)" }}>
-      <FeaturesSection />
-    </div>
-
-    {/* 5 — HOW IT WORKS */}
+    {/* 4 — HOW IT WORKS */}
     <div style={{ background: "hsl(258, 45%, 10%)" }}>
       <HowItWorksSection />
+    </div>
+
+    {/* 5 — FEATURES */}
+    <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,25%,97%) 100%)" }}>
+      <FeaturesSection />
     </div>
 
     {/* 6 — STATS + TESTIMONIALS grouped */}
