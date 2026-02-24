@@ -6,15 +6,12 @@ import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { turkishCities } from "@/data/sectors";
 import { useOnboarding } from "@/contexts/OnboardingContext";
-import stepHedef from "@/assets/step-hedef-corp.png";
-import stepTeklif from "@/assets/step-teklif-corp.png";
-import stepBuyume from "@/assets/step-buyume-corp.png";
 import kobiLogo from "@/assets/logo-kobitech.png";
 
 const steps = [
-  { image: stepHedef, label: "Hedef Belirleme", title: "Büyüme Hedefinizi Belirleyin", desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz?", accent: "#A78BFA", accentDark: "#7C3AED" },
-  { image: stepTeklif, label: "Teklif Al", title: "Çözümleri Karşılaştırın ve Teklif Alın", desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.", accent: "#818CF8", accentDark: "#6366F1" },
-  { image: stepBuyume, label: "Büyümeye Başla", title: "Dijitalde Büyümenizi Başlatın", desc: "Size özel çözümleri seçin ve büyümeye başlayın.", accent: "#C084FC", accentDark: "#A855F7" },
+  { label: "Hedef Belirleme", title: "Büyüme Hedefinizi Belirleyin", desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz?", accent: "#A78BFA", accentDark: "#7C3AED" },
+  { label: "Teklif Al", title: "Çözümleri Karşılaştırın ve Teklif Alın", desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.", accent: "#818CF8", accentDark: "#6366F1" },
+  { label: "Büyümeye Başla", title: "Dijitalde Büyümenizi Başlatın", desc: "Size özel çözümleri seçin ve büyümeye başlayın.", accent: "#C084FC", accentDark: "#A855F7" },
 ];
 
 const Step1 = () => {
@@ -53,17 +50,14 @@ const Step1 = () => {
 
           <div className="flex flex-col gap-5">
             {steps.map((s, i) => (
-              <motion.div key={s.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.15 }} className="flex items-center gap-5">
-                {/* Card image */}
-                <div className="relative w-28 h-[70px] shrink-0 overflow-hidden" style={{ borderRadius: "14px", background: "#0F172A", border: "1px solid rgba(255,255,255,0.08)", boxShadow: `0 8px 24px -6px ${s.accent}40` }}>
-                  <img src={s.image} alt={s.title} className="w-full h-full object-cover" />
-                  <div className="absolute top-1.5 left-1.5 w-6 h-6 rounded-lg flex items-center justify-center text-[11px] font-black text-white" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accentDark})` }}>{i + 1}</div>
-                </div>
+              <motion.div key={s.label} initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 + i * 0.15 }} className="flex items-center gap-4">
+                {/* Step number */}
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center text-[12px] font-black text-white shrink-0" style={{ background: `linear-gradient(135deg, ${s.accent}, ${s.accentDark})` }}>{i + 1}</div>
                 {/* Text */}
                 <div className="flex-1 rounded-xl px-4 py-3" style={{ background: "rgba(255,255,255,0.05)", border: "1px solid rgba(255,255,255,0.08)" }}>
                   <span className="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide uppercase mb-1.5" style={{ background: `${s.accent}20`, color: s.accent, border: `1px solid ${s.accent}30` }}>{s.label}</span>
-                  <h3 className="text-lg font-bold leading-snug mb-1" style={{ color: "#F3E8FF" }}>{s.title}</h3>
-                  <p className="text-sm leading-relaxed" style={{ color: "rgba(196,181,253,0.80)" }}>{s.desc}</p>
+                  <h3 className="text-base font-bold leading-snug mb-1" style={{ color: "#F3E8FF" }}>{s.title}</h3>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(196,181,253,0.80)" }}>{s.desc}</p>
                 </div>
               </motion.div>
             ))}
