@@ -50,7 +50,7 @@ const PromotionsSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-2xl overflow-hidden min-h-[340px] flex flex-col"
+            className="relative rounded-2xl overflow-hidden min-h-[480px] flex flex-col"
           >
             {/* Background image */}
             <img
