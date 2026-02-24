@@ -88,7 +88,7 @@ const categories = [
   {
     label: "Ekibini Güçlendir",
     description:
-      "İK yönetimi, işe alım, eğitim programları ve performans takip sistemleriyle ekibinizi büyütün ve güçlendirin.",
+      "İK süreçlerinizi daha etkin yönetmek için Türkiye'nin en büyük iş ilanı platformu Kariyer.net üzerinden iş ilanı yayınlayabilir, milyonlarca özgeçmiş arasından işletmenize uygun adaylara ulaşabilirsiniz. Böylece ekibinizi doğru yeteneklerle büyütebilirsiniz.",
     tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"],
     icon: Users,
     image: tabEkip,
