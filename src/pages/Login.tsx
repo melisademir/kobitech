@@ -42,10 +42,9 @@ const Login = () => {
           <img src={kobiLogo} alt="KobiTECH" className="h-[28px] w-auto brightness-200" />
           <span className="text-lg font-extrabold text-white tracking-tight">KobiTECH</span>
         </motion.div>
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative z-10 flex-1 flex flex-col items-center justify-center gap-5">
-          <h2 className="text-2xl font-bold text-white leading-snug text-center">KOBİ'lerin<br />Dijital Partneri</h2>
-          <img src={loginHero} alt="Enterprise Dashboard" className="rounded-2xl shadow-2xl w-full max-w-[320px]" />
-          <p className="text-white/50 text-xs leading-relaxed max-w-[240px] text-center">Dijital dönüşüm yolculuğunuzda yanınızdayız</p>
+        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative z-10 flex-1 flex flex-col items-center justify-center gap-6">
+          <h2 className="text-3xl font-bold text-white leading-tight text-center whitespace-nowrap">KOBİ'lerin Dijital Partneri</h2>
+          <img src={loginHero} alt="Enterprise Dashboard" className="rounded-2xl shadow-2xl w-full" />
         </motion.div>
         <div />
       </div>
