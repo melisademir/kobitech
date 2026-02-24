@@ -55,10 +55,10 @@ const PartnerEcosystemSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.08 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
-          className="px-4 py-6 md:p-10"
           style={{
             background: "white",
             borderRadius: "24px",
+            padding: "40px",
             boxShadow: "0 2px 8px hsl(268 30% 20% / 0.04), 0 8px 32px hsl(268 72% 38% / 0.07)",
             border: "1px solid hsl(38,30%,88%)",
             maxWidth: "1400px",
@@ -68,12 +68,12 @@ const PartnerEcosystemSection = () => {
           <div className="flex flex-col lg:flex-row items-stretch gap-8 xl:gap-10 h-full">
             {/* LEFT: SVG Puzzle */}
             <motion.div
-              className="w-full lg:w-[58%] flex-shrink-0 flex flex-col"
+              className="w-full lg:w-[46%] flex-shrink-0 flex flex-col"
               initial={{ opacity: 0, x: -20 }}
               animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <div className="flex-1 flex items-center justify-center lg:mt-[-92px] max-w-[360px] mx-auto md:max-w-[400px] lg:max-w-none">
+              <div className="flex-1 flex items-center justify-center lg:mt-[-92px]">
                 <div className="w-full">
                   <PuzzleBoard selectedId={selectedId} onSelect={setSelectedId} visible={visible} />
                 </div>
@@ -99,8 +99,8 @@ const PartnerEcosystemSection = () => {
             {/* RIGHT: Dynamic content panel */}
             <div className="w-full lg:flex-1 flex flex-col">
               <motion.div
-                className="flex-1 rounded-2xl p-5 md:p-7 flex flex-col justify-start relative overflow-hidden"
-              style={{
+                className="flex-1 rounded-2xl p-7 flex flex-col justify-start relative overflow-hidden"
+                style={{
                   background: "linear-gradient(145deg, hsl(0,0%,100%) 0%, hsl(252,60%,98%) 100%)",
                   border: "1px solid hsl(38,30%,88%)",
                   borderLeft: selectedPiece ? `3px solid ${PRIMARY_HEX}50` : "1px solid hsl(38,30%,88%)",
