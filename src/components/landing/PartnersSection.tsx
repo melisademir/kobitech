@@ -34,7 +34,7 @@ const categories = [
   {
     label: "E-Ticarete Açıl",
     description:
-      "Online satış kanallarınızı oluşturmak için Türkiye’nin önde gelen ve güçlü e-ticaret altyapıları T-Soft ve Ticimax arasından işletmenize uygun çözümü seçebilir, ilgili sağlayıcılarla buluşarak e-ticaret sitenizi kurup dijital satışa başlayabilirsiniz.",
+      "Online satış kanallarınızı oluşturmak için Türkiye'nin önde gelen ve güçlü e-ticaret altyapıları T-Soft ve Ticimax arasından işletmenize uygun çözümü seçebilir, ilgili sağlayıcılarla buluşarak e-ticaret sitenizi kurup dijital satışa başlayabilirsiniz.",
     tags: ["E-Ticaret Altyapısı", "Çoklu Kanal Satış", "Mağaza Çözümleri"],
     icon: ShoppingCart,
     image: tabEticaret,
@@ -43,7 +43,7 @@ const categories = [
   {
     label: "Ödeme Al",
     description:
-      "Fiziksel ve online satışlarınız için Türkiye’nin önde gelen ödeme altyapılarından Param çözümlerini inceleyerek işletmenize uygun ödeme yöntemlerini seçebilirsiniz. Böylece tüm satış kanallarınızdan güvenli şekilde ödeme almaya başlayabilirsiniz.",
+      "Fiziksel ve online satışlarınız için Türkiye'nin önde gelen ödeme altyapılarından Param çözümleri ile POS, sanal POS ve mobil ödeme yöntemlerini kullanarak işletmenize uygun ödeme yapısını oluşturabilirsiniz. Böylece tüm satış kanallarınızdan güvenli şekilde ödeme almaya başlayabilirsiniz.",
     tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
     icon: CreditCard,
     image: tabOdeme,
