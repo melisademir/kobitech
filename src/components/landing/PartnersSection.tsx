@@ -112,8 +112,8 @@ const PartnersSection = () => {
           className="text-center mb-14"
         >
           <h2
-            className="text-4xl md:text-5xl font-bold text-foreground"
-            style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
+            className="text-5xl md:text-7xl font-extrabold text-foreground"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
             Ticaretini Büyüt
             <br />
