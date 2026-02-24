@@ -52,7 +52,7 @@ const CtaSection = () => (
               e.currentTarget.style.boxShadow = "0 4px 16px rgba(124,58,237,0.45)";
             }}
           >
-            Hemen Başvur <ArrowRight className="w-5 h-5" />
+            Hemen Başla <ArrowRight className="w-5 h-5" />
           </button>
         </Link>
       </motion.div>
