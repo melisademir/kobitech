@@ -55,11 +55,11 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
         <div
           className="relative flex items-center justify-center overflow-hidden bg-white"
           style={{
-            width: 80, height: 48,
-            borderRadius: "12px",
+            width: 100, height: 60,
+            borderRadius: "14px",
             boxShadow: `0 2px 8px hsl(268 30% 20% / 0.08), 0 0 0 1px ${BRAND_HEX}15`,
             border: `1.5px solid ${BRAND_HEX}25`,
-            padding: "8px 10px"
+            padding: "10px 14px"
           }}
         >
           {piece.logo ? (
