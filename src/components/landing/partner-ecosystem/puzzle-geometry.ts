@@ -1,6 +1,6 @@
 // ─── Puzzle geometry constants & path generator ──────────────────────────────
-export const CW = 240; // cell width px
-export const CH = 200; // cell height px
+export const CW = 400; // cell width px
+export const CH = 340; // cell height px
 export const T = 12;  // tab radius px
 export const COLS = 5;
 export const GAP = 3;
