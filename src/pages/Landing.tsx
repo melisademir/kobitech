@@ -7,7 +7,7 @@ import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import CtaSection from "@/components/landing/CtaSection";
 import FooterSection from "@/components/landing/FooterSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
-import TrustBand from "@/components/landing/TrustBand";
+
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
 
 /* Shared section divider — horizontal gradient line */
@@ -73,9 +73,6 @@ const Landing = () => (
     <div style={{ background: "linear-gradient(160deg, hsl(265,40%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
       <CtaSection />
     </div>
-
-
-
 
     <FooterSection />
   </div>
