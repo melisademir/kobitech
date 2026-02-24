@@ -1,0 +1,100 @@
+{
+  "project": "KobiTECH / SalesPartner",
+  "generatedAt": "2026-02-24",
+
+  "sitemap": {
+    "landing": [
+      { "path": "/", "page": "Landing.tsx", "desc": "Pazarlama sayfası" }
+    ],
+    "bayiAuth": [
+      { "path": "/login", "page": "Login.tsx" },
+      { "path": "/signup", "page": "Signup.tsx" },
+      { "path": "/reset-password", "page": "ResetPassword.tsx" }
+    ],
+    "bayiPages": [
+      { "path": "/dashboard", "page": "Dashboard.tsx" },
+      { "path": "/products", "page": "Products.tsx" },
+      { "path": "/proposals", "page": "Proposals.tsx" },
+      { "path": "/proposal-builder", "page": "ProposalBuilder.tsx" },
+      { "path": "/customer-analysis", "page": "CustomerAnalysis.tsx" },
+      { "path": "/performance", "page": "Performance.tsx" },
+      { "path": "/commissions", "page": "Commissions.tsx" },
+      { "path": "/notifications", "page": "Notifications.tsx" },
+      { "path": "/settings", "page": "Settings.tsx" },
+      { "path": "/application-confirmation", "page": "ApplicationConfirmation.tsx" },
+      { "path": "/gorusmeler", "page": "BayiGorusmeler.tsx" }
+    ],
+    "kobiAuth": [
+      { "path": "/kobi/login", "page": "KobiLogin.tsx" },
+      { "path": "/kobi/signup", "page": "KobiSignup.tsx" },
+      { "path": "/kobi/reset-password", "page": "KobiResetPassword.tsx" }
+    ],
+    "kobiOnboarding": [
+      { "path": "/kobi/step-1", "page": "Step1.tsx", "desc": "Sektör & çalışan seçimi" },
+      { "path": "/kobi/step-2", "page": "Step2.tsx", "desc": "Hedef belirleme" },
+      { "path": "/kobi/step-3", "page": "Step3.tsx", "desc": "Ürün önerileri" }
+    ],
+    "kobiDashboard": [
+      { "path": "/kobi/dashboard", "page": "KobiDashboard.tsx" },
+      { "path": "/kobi/products", "page": "KobiProducts.tsx" },
+      { "path": "/kobi/tekliflerim", "page": "KobiTekliflerim.tsx" },
+      { "path": "/kobi/teklif-talebi", "page": "TeklifTalebi.tsx" },
+      { "path": "/kobi/teklif/:id", "page": "KobiTeklifDetay.tsx" },
+      { "path": "/kobi/planlarim", "page": "Planlarim.tsx" },
+      { "path": "/kobi/harita", "page": "Harita.tsx" },
+      { "path": "/kobi/bildirimler", "page": "KobiBildirimler.tsx" },
+      { "path": "/kobi/profil", "page": "KobiProfile.tsx" },
+      { "path": "/kobi/gorusmeler", "page": "KobiGorusmeler.tsx" }
+    ]
+  },
+
+  "dataSchemas": {
+    "Product": {
+      "fields": ["id", "name", "description", "icon", "color", "category", "details", "features", "sectorMatch", "priceRange"],
+      "source": "src/data/products.ts"
+    },
+    "CatalogProduct": {
+      "fields": ["id", "name", "tagline", "description", "category", "icon", "color", "features", "featureFlags", "sectorBenefits", "integrations", "priceRange"],
+      "source": "src/data/catalog-products.ts"
+    },
+    "Bundle": {
+      "fields": ["id", "name", "description", "products", "discount", "totalPrice", "monthlyPrice", "badge", "popular"],
+      "source": "src/data/bundles.ts"
+    },
+    "OnboardingData": {
+      "fields": ["sector", "employeeCount", "currentTools", "goals", "budget", "selectedProducts"],
+      "source": "src/contexts/OnboardingContext.tsx"
+    }
+  },
+
+  "architecture": {
+    "type": "Frontend SPA (React + Vite + TypeScript + Tailwind CSS)",
+    "stateManagement": ["OnboardingContext", "CartContext"],
+    "uiLibrary": "shadcn/ui (Radix + Tailwind)",
+    "animation": "framer-motion",
+    "routing": "react-router-dom v6",
+    "backend": "Yok — tüm veri statik TS dosyalarında",
+    "auth": "Yok — mock / placeholder"
+  },
+
+  "componentTree": {
+    "layouts": {
+      "DashboardLayout": "Bayi paneli (sidebar + header)",
+      "KobiLayout": "KOBİ paneli (top-nav + mobile sidebar)"
+    },
+    "landingSections": [
+      "LandingNav", "HeroSection", "TrustBand", "StatsSection",
+      "FeaturesSection", "HowItWorksSection", "PartnerEcosystemSection",
+      "PartnersSection", "TestimonialsSection", "CtaSection", "FooterSection"
+    ],
+    "dashboardWidgets": [
+      "StatsCards", "PerformanceChart", "ActiveCustomers",
+      "RecentActivity", "GoalsSection", "QuickAccess"
+    ],
+    "sharedComponents": [
+      "AiAssistantWidget", "ProductCatalogCard", "ProductDetailModal",
+      "BundleCard", "ComparisonModal", "CustomerForm",
+      "ProductSelectorModal", "DijitalEsnafModal", "StickyProposalBar"
+    ]
+  }
+}
