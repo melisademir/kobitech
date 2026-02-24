@@ -9,23 +9,20 @@ const steps = [
   {
     num: "01",
     image: stepHedef,
-    label: "HEDEF BELİRLEME",
-    title: "Büyüme Hedefinizi Belirleyin",
-    desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz? Hedefinizi belirleyin.",
+    title: "Karşılaştır",
+    desc: "İşletmenize özel çözümleri inceleyin ve karşılaştırın.",
   },
   {
     num: "02",
     image: stepTeklif,
-    label: "TEKLİF AL",
-    title: "Çözümleri Karşılaştırın ve Teklif Alın",
-    desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.",
+    title: "Teklif Al",
+    desc: "Size özel çözümleri seçin ve teklif alın.",
   },
   {
     num: "03",
     image: stepBuyume,
-    label: "BÜYÜMEYE BAŞLA",
-    title: "Dijitalde Büyümenizi Başlatın",
-    desc: "Size özel çözümleri seçin ve büyümeye başlayın.",
+    title: "Ticaretini Büyüt, Maliyetini Düşür",
+    desc: "Dijital büyümenizi hemen başlatın.",
   },
 ];
 
@@ -138,18 +135,6 @@ const HowItWorksSection = () => (
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
               }}
             >
-              {/* Label */}
-              <span
-                className="inline-block self-start mb-3 px-3 py-1 rounded-full text-[10px] font-semibold tracking-widest uppercase cursor-default"
-                style={{
-                  background: "rgba(124,58,237,0.12)",
-                  color: "#A78BFA",
-                  border: "1.5px solid rgba(124,58,237,0.25)",
-                }}
-              >
-                {s.label}
-              </span>
-
               <h3
                 className="text-white font-bold mb-3 leading-snug"
                 style={{ fontSize: "21px", letterSpacing: "-0.015em" }}
