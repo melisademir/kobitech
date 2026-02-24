@@ -70,7 +70,7 @@ const categories = [
   {
     label: "Stoğunu Kontrol Et",
     description:
-      "Stok ve depo yönetiminizi dijitalleştirin. Min-max takibi, FIFO/LIFO ve tedarik zinciri optimizasyonu ile fire oranlarınızı düşürün.",
+      "Univera ve Nebim ERP çözümleri ile stok ve depo yönetiminizi dijitalleştirerek ürün hareketlerinizi anlık takip edebilir, min-max stok seviyeleri ve FIFO/LIFO yöntemleriyle stok planlamanızı optimize edebilirsiniz. Böylece tedarik zinciri süreçlerinizi iyileştirerek fire oranlarınızı azaltabilirsiniz.",
     tags: ["Kargo & Lojistik", "Depo Yönetimi", "Sipariş Takibi"],
     icon: Package,
     image: tabStok,
