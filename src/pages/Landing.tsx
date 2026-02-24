@@ -6,6 +6,7 @@ import PartnersSection from "@/components/landing/PartnersSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import CtaSection from "@/components/landing/CtaSection";
 import FooterSection from "@/components/landing/FooterSection";
+import PromotionsSection from "@/components/landing/PromotionsSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
@@ -62,6 +63,10 @@ const Landing = () => (
       <FeaturesSection />
     </div>
 
+    {/* 5b — PROMOTIONS */}
+    <div style={{ background: "linear-gradient(180deg, hsl(252,25%,97%) 0%, hsl(38,50%,97%) 100%)" }}>
+      <PromotionsSection />
+    </div>
     {/* 6 — TESTIMONIALS */}
     <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,20%,97%) 100%)" }}>
       <TestimonialsSection />
