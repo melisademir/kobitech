@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
 import { motion } from "framer-motion";
 import loginHero from "@/assets/login-hero.png";
+import kobiLogo from "@/assets/logo-kobitech.png";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -36,10 +37,10 @@ const Login = () => {
       <div className="hidden lg:flex lg:w-1/2 gradient-primary relative overflow-hidden flex-col justify-between p-16">
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
           <div className="flex items-center gap-3 mb-2">
-            <div className="w-10 h-10 rounded-xl bg-primary-foreground/20 flex items-center justify-center text-2xl">🎯</div>
-            <span className="text-2xl font-extrabold text-primary-foreground tracking-tight">SALESPARTNER</span>
+            <img src={kobiLogo} alt="KobiTECH" className="h-[36px] w-auto" />
+            <span className="text-2xl font-extrabold text-primary-foreground tracking-tight">KobiTECH</span>
           </div>
-          <p className="text-primary-foreground/70 text-sm ml-[52px]">Param Satış Platformu</p>
+          <p className="text-primary-foreground/70 text-sm ml-[52px]">Dijital Dönüşüm Platformu</p>
         </motion.div>
 
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="space-y-6">
@@ -57,8 +58,8 @@ const Login = () => {
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="w-full max-w-[400px] space-y-8">
           {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-2 mb-4">
-            <span className="text-2xl">🎯</span>
-            <span className="text-xl font-extrabold text-primary">SALESPARTNER</span>
+            <img src={kobiLogo} alt="KobiTECH" className="h-[28px] w-auto" />
+            <span className="text-xl font-extrabold text-primary">KobiTECH</span>
           </div>
 
           <div>
