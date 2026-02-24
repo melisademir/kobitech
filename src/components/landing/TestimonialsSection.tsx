@@ -1,5 +1,8 @@
+import { useState, useRef } from "react";
 import { motion } from "framer-motion";
-import { Star, Quote } from "lucide-react";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const testimonials = [
   {
@@ -62,96 +65,121 @@ const cardVariants = {
   },
 };
 
-const TestimonialsSection = () => (
-  <section className="py-24 md:py-32">
-    <div className="max-w-7xl mx-auto px-6">
-      {/* Header */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center mb-16"
-      >
-        <span
-          className="inline-flex items-center gap-1.5 px-5 py-2 rounded-full text-xs font-bold mb-6 tracking-widest uppercase cursor-default"
-          style={{
-            background: "rgba(109,40,217,0.06)",
-            color: "hsl(268,72%,38%)",
-            border: "1.5px solid rgba(109,40,217,0.15)",
-          }}
-        >
-          <Star className="w-3.5 h-3.5 fill-current" />
-          Başarı Hikayeleri
-        </span>
-        <h2
-          className="text-4xl md:text-5xl font-bold text-foreground mb-4"
-          style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
-        >
-          İşletmelerden Geri Bildirimler
-        </h2>
-        <p className="text-muted-foreground max-w-md mx-auto" style={{ fontSize: "19px", lineHeight: "1.7" }}>
-          KobiTECH ile dönüşen işletme sahiplerinin deneyimleri
-        </p>
-      </motion.div>
+const TestimonialCard = ({ t, i }: { t: typeof testimonials[0]; i: number }) => (
+  <div
+    className="rounded-[16px] flex flex-col relative overflow-hidden cursor-default transition-shadow duration-300 h-full"
+    style={{
+      background: "white",
+      border: "1px solid rgba(0,0,0,0.06)",
+      padding: "1.5rem",
+      boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
+    }}
+  >
+    <Quote className="absolute top-4 right-4 w-6 h-6" style={{ color: "rgba(109,40,217,0.08)" }} />
 
-      {/* Cards Grid */}
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-60px" }}
-        variants={containerVariants}
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+    <div className="flex gap-0.5 mb-3">
+      {Array.from({ length: 5 }).map((_, si) => (
+        <Star key={si} className="w-3.5 h-3.5 text-primary fill-primary" />
+      ))}
+    </div>
+
+    <p className="text-foreground flex-1 text-sm" style={{ lineHeight: "1.7", opacity: 0.82 }}>
+      "{t.quote}"
+    </p>
+
+    <div className="flex items-center gap-2.5 mt-4 pt-3 border-t" style={{ borderColor: "hsl(38,30%,88%)" }}>
+      <div
+        className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs shrink-0"
+        style={{ background: avatarGradients[i] }}
       >
-        {testimonials.map((t, i) => (
-          <motion.div
-            key={t.name}
-            variants={cardVariants}
-            className="rounded-[20px] flex flex-col relative overflow-hidden cursor-default transition-shadow duration-300"
+        {t.name.charAt(0)}
+      </div>
+      <div>
+        <p className="font-semibold text-foreground text-xs">{t.name}</p>
+        <p className="text-muted-foreground text-[11px] mt-0.5">{t.role}</p>
+      </div>
+    </div>
+  </div>
+);
+
+const TestimonialsSection = () => {
+  const isMobile = useIsMobile();
+  const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: false, dragFree: true });
+
+  return (
+    <section className="py-14 md:py-24 lg:py-32">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-8 md:mb-16"
+        >
+          <span
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-4 md:mb-6 tracking-widest uppercase cursor-default"
             style={{
-              background: "white",
-              border: "1px solid rgba(0,0,0,0.06)",
-              padding: "2.5rem",
-              boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = "0 2px 8px rgba(72,11,135,0.14), 0 12px 40px rgba(72,11,135,0.18)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)";
+              background: "rgba(109,40,217,0.06)",
+              color: "hsl(268,72%,38%)",
+              border: "1.5px solid rgba(109,40,217,0.15)",
             }}
           >
-            {/* Decorative quote mark */}
-            <Quote className="absolute top-5 right-5 w-8 h-8" style={{ color: "rgba(109,40,217,0.08)" }} />
+            <Star className="w-3 h-3 fill-current" />
+            Başarı Hikayeleri
+          </span>
+          <h2
+            className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4"
+            style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
+          >
+            İşletmelerden Geri Bildirimler
+          </h2>
+          <p className="text-muted-foreground max-w-md mx-auto text-sm md:text-lg" style={{ lineHeight: "1.7" }}>
+            KobiTECH ile dönüşen işletme sahiplerinin deneyimleri
+          </p>
+        </motion.div>
 
-            {/* Stars */}
-            <div className="flex gap-0.5 mb-5">
-              {Array.from({ length: 5 }).map((_, si) => (
-                <Star key={si} className="w-4 h-4 text-primary fill-primary" />
+        {/* Mobile: Swipeable carousel */}
+        {isMobile ? (
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-3" style={{ touchAction: "pan-y pinch-zoom" }}>
+              {testimonials.map((t, i) => (
+                <div key={t.name} className="flex-shrink-0" style={{ width: "75%" }}>
+                  <TestimonialCard t={t} i={i} />
+                </div>
               ))}
             </div>
-
-            <p className="text-foreground flex-1" style={{ fontSize: "16px", lineHeight: "1.75", opacity: 0.82 }}>
-              "{t.quote}"
-            </p>
-
-            <div className="flex items-center gap-3 mt-6 pt-5 border-t" style={{ borderColor: "hsl(38,30%,88%)" }}>
-              <div
-                className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm shrink-0"
-                style={{ background: avatarGradients[i] }}
-              >
-                {t.name.charAt(0)}
-              </div>
-              <div>
-                <p className="font-semibold text-foreground text-sm">{t.name}</p>
-                <p className="text-muted-foreground text-xs mt-0.5">{t.role}</p>
-              </div>
+            {/* Dots indicator */}
+            <div className="flex justify-center gap-1.5 mt-4">
+              {testimonials.map((_, i) => (
+                <button
+                  key={i}
+                  className="w-1.5 h-1.5 rounded-full transition-colors"
+                  style={{ background: "hsl(268,72%,38%,0.2)" }}
+                  onClick={() => emblaApi?.scrollTo(i)}
+                />
+              ))}
             </div>
+          </div>
+        ) : (
+          /* Desktop: Grid */
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            variants={containerVariants}
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
+          >
+            {testimonials.map((t, i) => (
+              <motion.div key={t.name} variants={cardVariants}>
+                <TestimonialCard t={t} i={i} />
+              </motion.div>
+            ))}
           </motion.div>
-        ))}
-      </motion.div>
-    </div>
-  </section>
-);
+        )}
+      </div>
+    </section>
+  );
+};
 
 export default TestimonialsSection;
