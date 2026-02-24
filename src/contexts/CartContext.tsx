@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import type { CatalogProduct } from "@/data/catalog-products";
 
 interface CartContextType {
@@ -12,8 +12,21 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | null>(null);
 
+const CART_KEY = "kobitech-cart";
+
+const loadCart = (): CatalogProduct[] => {
+  try {
+    const raw = localStorage.getItem(CART_KEY);
+    return raw ? JSON.parse(raw) : [];
+  } catch { return []; }
+};
+
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [items, setItems] = useState<CatalogProduct[]>([]);
+  const [items, setItems] = useState<CatalogProduct[]>(loadCart);
+
+  useEffect(() => {
+    localStorage.setItem(CART_KEY, JSON.stringify(items));
+  }, [items]);
 
   const addItem = (p: CatalogProduct) => {
     setItems(prev => prev.find(i => i.id === p.id) ? prev : [...prev, p]);
