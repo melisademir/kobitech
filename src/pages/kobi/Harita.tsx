@@ -68,22 +68,6 @@ const Harita = () => {
             <h1 className="text-2xl md:text-3xl font-bold text-foreground">{businessName} İçin Dijital Dönüşüm Planı</h1>
             <p className="text-muted-foreground mt-1">Büyüme hedeflerinize göre özel aksiyon planınız</p>
           </div>
-          {/* Global Readiness */}
-          <div className="flex items-center gap-4 shrink-0">
-            <div className="relative w-20 h-20">
-              <svg viewBox="0 0 80 80" className="w-full h-full -rotate-90">
-                <circle cx="40" cy="40" r="34" fill="none" stroke="hsl(var(--muted))" strokeWidth="6" />
-                <circle cx="40" cy="40" r="34" fill="none" stroke="hsl(var(--primary))" strokeWidth="6" strokeDasharray={`${2 * Math.PI * 34}`} strokeDashoffset={`${2 * Math.PI * 34 * (1 - globalPercent / 100)}`} strokeLinecap="round" className="transition-all duration-700" />
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center">
-                <span className="text-lg font-bold text-primary">%{globalPercent}</span>
-              </div>
-            </div>
-            <div className="text-sm">
-              <p className="font-bold text-foreground">Global Readiness</p>
-              <p className="text-muted-foreground">{completedActions}/{totalActions} aksiyon</p>
-            </div>
-          </div>
         </div>
 
         {/* Goals Selection */}
