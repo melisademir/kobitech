@@ -21,17 +21,6 @@ const StatsSection = () => (
   <section className="py-20">
     <div className="max-w-5xl mx-auto px-6">
       <motion.div
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-center mb-12"
-      >
-        <p className="text-sm font-semibold tracking-[0.18em] uppercase text-muted-foreground">
-          İşletmeler KobiTECH ile büyüyor
-        </p>
-      </motion.div>
-      <motion.div
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, margin: "-50px" }}
