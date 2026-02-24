@@ -1,6 +1,6 @@
 import LandingNav from "@/components/landing/LandingNav";
 import HeroSection from "@/components/landing/HeroSection";
-import StatsSection from "@/components/landing/StatsSection";
+
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import PartnersSection from "@/components/landing/PartnersSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
@@ -62,10 +62,8 @@ const Landing = () => (
       <FeaturesSection />
     </div>
 
-    {/* 6 — STATS + TESTIMONIALS grouped */}
+    {/* 6 — TESTIMONIALS */}
     <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,20%,97%) 100%)" }}>
-      <StatsSection />
-      <SectionDivider />
       <TestimonialsSection />
     </div>
 
