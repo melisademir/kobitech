@@ -11,9 +11,9 @@ import stepBuyume from "@/assets/step-buyume-corp.png";
 import kobiLogo from "@/assets/logo-kobitech.png";
 
 const steps = [
-  { image: stepHedef, label: "Hedef Belirleme", title: "Büyüme Hedefinizi Belirleyin", desc: "Satışlarınızı artırmak, maliyetleri düşürmek ya da yeni pazarlara açılmak mı istiyorsunuz?", accent: "#A78BFA", accentDark: "#7C3AED" },
-  { image: stepTeklif, label: "Teklif Al", title: "Çözümleri Karşılaştırın ve Teklif Alın", desc: "İşletmenize özel çözümleri inceleyin ve teklif alın.", accent: "#818CF8", accentDark: "#6366F1" },
-  { image: stepBuyume, label: "Büyümeye Başla", title: "Dijitalde Büyümenizi Başlatın", desc: "Size özel çözümleri seçin ve büyümeye başlayın.", accent: "#C084FC", accentDark: "#A855F7" },
+  { image: stepHedef, label: "Karşılaştır", title: "İşletmenize özel çözümleri inceleyin ve karşılaştırın.", desc: "İşletmenize özel çözümleri inceleyin ve karşılaştırın.", accent: "#A78BFA", accentDark: "#7C3AED" },
+  { image: stepTeklif, label: "Teklif Al", title: "Size özel çözümleri seçin ve teklif alın.", desc: "Size özel çözümleri seçin ve teklif alın.", accent: "#818CF8", accentDark: "#6366F1" },
+  { image: stepBuyume, label: "Ticaretini Büyüt, Maliyetini Düşür", title: "Dijital büyümenizi hemen başlatın.", desc: "Dijital büyümenizi hemen başlatın.", accent: "#C084FC", accentDark: "#A855F7" },
 ];
 
 const KobiSignup = () => {
