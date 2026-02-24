@@ -85,11 +85,11 @@ const Step1 = () => {
           <div className="space-y-5">
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">İşletme Adı *</label>
-              <Input value={name} onChange={e => setName(e.target.value)} placeholder="İşletmenizin adı" className="h-12 border-2 focus:border-primary" />
+              <Input value={name} onChange={e => { setName(e.target.value); setData({ businessName: e.target.value }); }} placeholder="İşletmenizin adı" className="h-12 border-2 focus:border-primary" />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">E-posta *</label>
-              <Input value={email} onChange={e => setEmail(e.target.value)} placeholder="ornek@firma.com" type="email" className="h-12 border-2 focus:border-primary" />
+              <Input value={email} onChange={e => { setEmail(e.target.value); setData({ email: e.target.value }); }} placeholder="ornek@firma.com" type="email" className="h-12 border-2 focus:border-primary" />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-foreground">Telefon *</label>

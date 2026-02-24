@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 
 interface OnboardingData {
   businessName: string;
@@ -16,15 +16,23 @@ interface OnboardingContextType {
 
 const OnboardingContext = createContext<OnboardingContextType | null>(null);
 
+const OB_KEY = "kobitech-onboarding";
+
+const defaultData: OnboardingData = { businessName: "", email: "", phone: "", city: "", sector: "", goals: [] };
+
+const loadData = (): OnboardingData => {
+  try {
+    const raw = localStorage.getItem(OB_KEY);
+    return raw ? { ...defaultData, ...JSON.parse(raw) } : defaultData;
+  } catch { return defaultData; }
+};
+
 export const OnboardingProvider = ({ children }: { children: ReactNode }) => {
-  const [data, setDataState] = useState<OnboardingData>({
-    businessName: "",
-    email: "",
-    phone: "",
-    city: "",
-    sector: "",
-    goals: [],
-  });
+  const [data, setDataState] = useState<OnboardingData>(loadData);
+
+  useEffect(() => {
+    localStorage.setItem(OB_KEY, JSON.stringify(data));
+  }, [data]);
 
   const setData = (d: Partial<OnboardingData>) => setDataState(prev => ({ ...prev, ...d }));
 
