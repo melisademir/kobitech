@@ -1,4 +1,4 @@
-import { Target, Package, FileText } from "lucide-react";
+import { Package, FileText } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -7,18 +7,7 @@ import { motion } from "framer-motion";
 const QuickAccess = () => (
   <div>
     <h2 className="text-xl font-bold text-foreground mb-5">Hızlı Erişim</h2>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-      {/* Hero Card */}
-      <motion.div whileHover={{ scale: 1.02 }} className="gradient-primary rounded-2xl p-8 text-primary-foreground flex flex-col justify-between min-h-[220px] shadow-premium">
-        <Target className="h-16 w-16 opacity-80" />
-        <div className="space-y-2">
-          <h3 className="text-xl font-bold">Yeni Müşteri Analizi</h3>
-          <p className="text-primary-foreground/80 text-sm">Müşterinize özel ürün önerileri alın</p>
-        </div>
-        <Button asChild variant="secondary" className="w-fit bg-card/95 text-primary hover:bg-card font-bold">
-          <Link to="/customer-analysis">Analiz Başlat</Link>
-        </Button>
-      </motion.div>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
 
       {/* Products Card */}
       <div className="bg-card rounded-2xl p-7 border-2 border-primary/20 hover:border-primary/40 transition-colors shadow-card flex flex-col justify-between min-h-[220px]">
