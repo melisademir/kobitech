@@ -67,7 +67,7 @@ const PartnerEcosystemSection = () => {
           <div className="flex flex-col lg:flex-row items-stretch gap-6 md:gap-8 xl:gap-10 h-full">
             {/* LEFT: SVG Puzzle */}
             <motion.div
-              className="w-full lg:w-[46%] flex-shrink-0 flex flex-col"
+              className="w-full lg:w-[46%] flex-shrink-0 flex flex-col pb-2 md:pb-3 lg:pb-0"
               initial={{ opacity: 0, x: -20 }}
               animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
@@ -96,7 +96,7 @@ const PartnerEcosystemSection = () => {
             </div>
 
             {/* RIGHT: Dynamic content panel */}
-            <div className="w-full lg:flex-1 flex flex-col">
+            <div className="w-full lg:flex-1 flex flex-col mt-2 md:mt-3 lg:mt-0">
               <motion.div
                 className="flex-1 rounded-xl md:rounded-2xl p-4 md:p-7 flex flex-col justify-start relative overflow-hidden"
                 style={{
