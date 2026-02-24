@@ -102,16 +102,16 @@ const HowItWorksSection = () => (
                 alt={s.title}
                 className="w-full h-full object-cover"
               />
-              {/* Step number overlay */}
+              {/* Label overlay */}
               <div
-                className="absolute top-3 left-3 w-8 h-8 rounded-lg flex items-center justify-center text-xs font-bold text-white"
+                className="absolute top-3 left-3 px-3 py-1.5 rounded-lg text-xs font-bold text-white"
                 style={{
                   background: "rgba(0,0,0,0.55)",
                   backdropFilter: "blur(8px)",
                   border: "1px solid rgba(255,255,255,0.12)",
                 }}
               >
-                {s.num}
+                {s.title}
               </div>
             </div>
 
