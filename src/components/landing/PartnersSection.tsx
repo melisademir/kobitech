@@ -34,7 +34,7 @@ const categories = [
   {
     label: "E-Ticarete Açıl",
     description:
-      "Online satış kanallarınızı oluşturmak için Türkiye'nin önde gelen ve güçlü e-ticaret altyapıları T-Soft ve Ticimax arasından işletmenize uygun çözümü seçebilir, ilgili sağlayıcılarla buluşarak e-ticaret sitenizi kurup dijital satışa başlayabilirsiniz.",
+      "Online satış kanallarınızı oluşturmak için Türkiye'nin önde gelen ve güçlü e-ticaret altyapıları olan T-Soft, Ticimax ve İkas çözümlerini inceleyerek işletmenize uygun olanı seçebilir, e-ticaret sitenizi kurup dijital satışa başlayabilirsiniz.",
     tags: ["E-Ticaret Altyapısı", "Çoklu Kanal Satış", "Mağaza Çözümleri"],
     icon: ShoppingCart,
     image: tabEticaret,
