@@ -74,7 +74,7 @@ const PartnerEcosystemSection = () => {
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
               <div className="flex-1 flex items-center justify-center lg:mt-[-92px]">
-                <div className="w-full">
+                <div className="w-full max-w-[400px] lg:max-w-none mx-auto">
                   <PuzzleBoard selectedId={selectedId} onSelect={setSelectedId} visible={visible} />
                 </div>
               </div>
