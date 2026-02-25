@@ -94,11 +94,11 @@ const PromotionsSection = () => (
               className="absolute inset-0 w-full h-full object-cover object-bottom"
               aria-hidden="true"
             />
-            {/* Light overlay for text readability at top */}
+            {/* Gradient overlay for text readability */}
             <div
               className="absolute inset-0"
               style={{
-                background: `linear-gradient(180deg, ${card.overlayColor} 0%, transparent 55%, transparent 100%)`,
+                background: `linear-gradient(180deg, ${card.overlayColor} 0%, rgba(0,0,0,0.10) 40%, rgba(0,0,0,0.05) 60%, ${card.overlayColor} 85%, rgba(0,0,0,0.50) 100%)`,
               }}
             />
 
@@ -108,18 +108,18 @@ const PromotionsSection = () => (
               <div>
                 <h3
                   className="font-bold leading-snug mb-3 text-white"
-                  style={{ fontSize: "clamp(22px, 2.5vw, 28px)", letterSpacing: "-0.02em", textShadow: "0 2px 12px rgba(0,0,0,0.3)" }}
+                  style={{ fontSize: "clamp(22px, 2.5vw, 28px)", letterSpacing: "-0.02em", textShadow: "0 2px 16px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4)" }}
                 >
                   {card.title}
                 </h3>
 
                 <p
-                  className="mb-4 text-white/75"
+                  className="mb-4 text-white/90"
                   style={{
                     fontSize: "15px",
                     lineHeight: 1.7,
                     maxWidth: "380px",
-                    textShadow: "0 1px 6px rgba(0,0,0,0.2)",
+                    textShadow: "0 1px 10px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.35)",
                   }}
                 >
                   {card.description}
