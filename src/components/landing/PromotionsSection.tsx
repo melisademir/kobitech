@@ -6,8 +6,7 @@ import promoCloud from "@/assets/promo-cloud.jpg";
 
 const cards = [
   {
-    title: "Sektörden Haberler Veren AI Agent'ımız ile Tanışın!",
-    subtitle: "Size Özel 1.000 Chat Hediye",
+    title: "Size Özel 1.000 Chat Hediye — AI Agent'ımız ile Tanışın!",
     description: "1.000 chat hediyenizle sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
     icon: MessageSquare,
     image: promoAiAgent,
@@ -22,8 +21,7 @@ const cards = [
     btnColor: "#E0E7FF",
   },
   {
-    title: "ParamTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
-    subtitle: "Size Özel 2 Ay Ücretsiz",
+    title: "2 Ay Ücretsiz — ParamTECH Cloud ile Dijitale Taşıyın!",
     description: "2 ay ücretsiz deneme ile bulut altyapısı, veri yönetimi ve dijital araçlarla işletmenizi geleceğe hazırlayın.",
     icon: Cloud,
     image: promoCloud,
@@ -38,8 +36,7 @@ const cards = [
     btnColor: "#E9D5FF",
   },
   {
-    title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
-    subtitle: "Size Özel 1.000 Kontör Hediye",
+    title: "1.000 Kontör Hediye — Uni-dox ile Belge Yönetimini Keşfedin!",
     description: "1.000 kontör hediyenizle dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın. Uni-dox ile tüm evrak işleriniz tek platformda.",
     icon: FileText,
     image: promoAiAgent,
@@ -54,8 +51,7 @@ const cards = [
     btnColor: "#DBEAFE",
   },
   {
-    title: "Param ile Ödemelerinizi Kolaylaştırın!",
-    subtitle: "Size Özel %2,29 Komisyon Oranı",
+    title: "%2,29 Komisyon Oranı — Param ile Ödemelerinizi Kolaylaştırın!",
     description: "Özel %2,29 komisyon oranıyla fiziksel ve sanal POS çözümleri sayesinde tüm ödeme kanallarınızı avantajlı şekilde yönetin.",
     icon: CreditCard,
     image: promoCloud,
@@ -99,20 +95,6 @@ const PromotionsSection = () => (
 
             {/* Content */}
             <div className="relative z-10 p-8 md:p-10 flex flex-col justify-between flex-1">
-              {/* Badge */}
-              <span
-                className="inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full text-sm font-extrabold tracking-wide mb-5 shadow-lg"
-                style={{
-                  background: card.subtitleBg,
-                  border: `1px solid ${card.subtitleBorder}`,
-                  color: card.subtitleColor,
-                  backdropFilter: "blur(8px)",
-                }}
-              >
-                <card.icon className="w-3.5 h-3.5" />
-                {card.subtitle}
-              </span>
-
               {/* Title */}
               <h3
                 className="font-bold leading-snug mb-3"
