@@ -25,7 +25,7 @@ const categories = [
   {
     label: "Ödeme Al",
     description:
-      "Fiziksel ve online satışlarınız için Türkiye'nin önde gelen ödeme altyapılarından Param çözümleri ile POS, sanal POS ve mobil ödeme yöntemlerini kullanarak işletmenize uygun ödeme yapısını oluşturabilirsiniz. Böylece tüm satış kanallarınızdan güvenli şekilde ödeme almaya başlayabilirsiniz.\n\nDükkanda, yolda veya internette... Satış yaptığınız her yerde ParamTECH yanınızda! Türkiye'nin en güçlü ödeme altyapısıyla POS, Sanal POS ve mobil ödemelerinizi saniyeler içinde kurun. Karmaşık sistemlerle uğraşmayın; tüm kanallardan güvenli ve tıkır tıkır ödeme almanın keyfini sürün.\n\nTürkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize profesyonellik katın. İster mağazanızda ister web sitenizde; POS, Sanal POS ve mobil ödeme çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Param'ın yüksek performanslı ve güvenli altyapısı sayesinde operasyonel yükünüzü azaltın. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.",
+      "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister web sitenizde; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Param'ın yüksek performanslı ve güvenli altyapısı sayesinde operasyonel yükünüzü azaltın. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.",
     tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
     icon: CreditCard,
     image: tabOdeme,
