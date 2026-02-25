@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 
@@ -31,7 +32,10 @@ const Step2 = () => {
         <h1 className="text-2xl font-bold text-foreground text-center">Hangi Sektördesiniz?</h1>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {sectors.map(s => (
-            <button key={s.name} onClick={() => setSelected(s.name)} className={`flex flex-col items-center gap-2 p-5 rounded-2xl border-2 transition-all ${selected === s.name ? "border-primary bg-primary/5 shadow-premium" : "border-border hover:border-primary/30 bg-card"}`}>
+            <button key={s.name} onClick={() => setSelected(s.name)} className={`relative flex flex-col items-center gap-2 p-5 rounded-2xl border-2 transition-all ${selected === s.name ? "border-primary bg-primary/5 shadow-premium" : "border-border hover:border-primary/30 bg-card"}`}>
+              <div className="absolute top-3 right-3">
+                <Checkbox checked={selected === s.name} tabIndex={-1} className="pointer-events-none" />
+              </div>
               <span className="text-3xl">{s.icon}</span>
               <span className="text-sm font-medium text-foreground">{s.name}</span>
             </button>
