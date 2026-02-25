@@ -32,7 +32,7 @@ const cards = [
   {
     title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
     benefit: "1.000 Kontör Hediye",
-    description: "1.000 kontör hediyenizle dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın.",
+    description: "1.000 kontör hediyenizle e-Fatura, e-İrsaliye, e-Defter, e-Mutabakat ve e-Arşiv süreçlerinizi tek platformda hızlandırın.",
     icon: FileText,
     image: promoDocuments,
     badgeBg: "rgba(34,197,94,0.15)",
