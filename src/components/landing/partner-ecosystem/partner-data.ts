@@ -11,7 +11,7 @@ import logoGoogle from "@/assets/logo-google.png";
 import logoIkas from "@/assets/logo-ikas.png";
 import logoWorkcube from "@/assets/logo-workcube.png";
 import logoMukellef from "@/assets/logo-mukellef.png";
-import logoParamtech from "@/assets/logo-paramtech.svg";
+import logoParamtech from "@/assets/logo-paramtech.png";
 
 // ─── Piece type ───────────────────────────────────────────────────────────────
 export interface PuzzlePiece {
