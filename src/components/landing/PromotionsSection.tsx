@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, MessageSquare, Cloud } from "lucide-react";
+import { ArrowRight, MessageSquare, Cloud, FileText, CreditCard } from "lucide-react";
 import { Link } from "react-router-dom";
 import promoAiAgent from "@/assets/promo-ai-agent.jpg";
 import promoCloud from "@/assets/promo-cloud.jpg";
@@ -36,6 +36,38 @@ const cards = [
     btnBg: "rgba(255,255,255,0.1)",
     btnBorder: "rgba(255,255,255,0.15)",
     btnColor: "#E9D5FF",
+  },
+  {
+    title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
+    subtitle: "Size Özel 1.000 Kontör Hediye",
+    description: "Dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın. Uni-dox ile tüm evrak işleriniz tek platformda.",
+    icon: FileText,
+    image: promoAiAgent,
+    overlay: "linear-gradient(180deg, rgba(6,28,60,0.88) 0%, rgba(10,20,50,0.72) 50%, rgba(6,28,60,0.92) 100%)",
+    textColor: "#FFFFFF",
+    subtitleBg: "rgba(59,130,246,0.2)",
+    subtitleColor: "#93C5FD",
+    subtitleBorder: "rgba(59,130,246,0.35)",
+    descColor: "rgba(191,219,254,0.8)",
+    btnBg: "rgba(255,255,255,0.1)",
+    btnBorder: "rgba(255,255,255,0.18)",
+    btnColor: "#DBEAFE",
+  },
+  {
+    title: "Param ile Ödemelerinizi Kolaylaştırın!",
+    subtitle: "Size Özel %2,29 Komisyon Oranı",
+    description: "Fiziksel ve sanal POS çözümleriyle tüm ödeme kanallarınızı avantajlı komisyon oranlarıyla yönetin.",
+    icon: CreditCard,
+    image: promoCloud,
+    overlay: "linear-gradient(180deg, rgba(30,10,60,0.86) 0%, rgba(40,15,70,0.7) 50%, rgba(30,10,60,0.9) 100%)",
+    textColor: "#FFFFFF",
+    subtitleBg: "rgba(168,85,247,0.2)",
+    subtitleColor: "#C4B5FD",
+    subtitleBorder: "rgba(168,85,247,0.35)",
+    descColor: "rgba(216,200,255,0.8)",
+    btnBg: "rgba(255,255,255,0.1)",
+    btnBorder: "rgba(255,255,255,0.15)",
+    btnColor: "#EDE9FE",
   },
 ];
 
