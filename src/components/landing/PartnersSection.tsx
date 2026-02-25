@@ -61,7 +61,7 @@ const categories = [
   {
     label: "Üretimini Optimize Et",
     description:
-      "Nebim V3'ün güçlü altyapısıyla hammaddenizi en verimli şekilde kullanın. Üretimin her aşamasını tek noktadan takip ederek iş yükünüzü hafifletin. Dijitalleşmenin getirdiği hızla maliyetlerinizi düşürün ve ticaretinizi büyütün.",
+      "Nebim V3 ile üretiminizi uçtan uca yönetin ve optimize edin. Planlamadan sahaya, maliyetlerden stoklara kadar tüm üretim süreçlerinizi tek platformda izleyin. Operasyonel verimliliği artırın, maliyetleri kontrol altına alın ve büyümeye hazır bir üretim yapısı kurun.",
     tags: ["Nebim V3"],
     icon: Factory,
     image: tabUretim,
