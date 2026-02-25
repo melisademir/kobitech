@@ -35,7 +35,7 @@ const categories = [
     label: "E-Ticarete Açıl",
     description:
       "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin. Online mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin avantajını yaşayın.",
-    tags: ["E-Ticaret Altyapısı", "Çoklu Kanal Satış", "Mağaza Çözümleri"],
+    tags: ["Ticimax", "İkas", "T-Soft"],
     icon: ShoppingCart,
     image: tabEticaret,
     accent: "#2563EB",
