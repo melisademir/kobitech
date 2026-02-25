@@ -67,7 +67,7 @@ const HowItWorksSection = () => (
           Dijitalde Büyümeye Başlayın
         </h2>
         <p
-          className="mt-5 max-w-md mx-auto"
+          className="mt-5 mx-auto whitespace-nowrap"
           style={{ fontSize: "19px", color: "rgba(156,163,175,0.9)", lineHeight: "1.7" }}
         >
           Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.
