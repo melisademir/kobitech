@@ -61,7 +61,9 @@ const HowItWorksSection = () => (
           className="text-5xl md:text-7xl font-extrabold text-white"
           style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
-          Dijitalde Büyümeye Başlayın
+          Dijitalde Büyümeye
+          <br />
+          <span className="text-gradient-primary">Başlayın</span>
         </h2>
         <p
           className="mt-5 mx-auto whitespace-nowrap"

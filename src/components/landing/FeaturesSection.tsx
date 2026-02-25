@@ -137,7 +137,9 @@ const FeaturesSection = () => (
           className="text-5xl md:text-7xl font-extrabold text-foreground"
           style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
-          Tüm Çözümlere Tek Platformdan Ulaşın
+          Tüm Çözümlere
+          <br />
+          <span className="text-gradient-primary">Tek Platformdan Ulaşın</span>
         </h2>
 
         <p className="text-muted-foreground text-sm md:text-lg whitespace-nowrap" style={{ lineHeight: 1.7, margin: "0 auto" }}>
