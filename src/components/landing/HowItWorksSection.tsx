@@ -21,7 +21,7 @@ const steps = [
   {
     num: "3",
     image: stepBuyume,
-    badges: ["Ticaretini Büyüt · Maliyetini Düşür"],
+    badges: ["Ticaretini Büyüt, Maliyetini Düşür"],
     title: "Dijital büyümenizi hemen başlatın.",
   },
 ];
