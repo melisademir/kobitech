@@ -13,15 +13,15 @@ const cards = [
     description: "Sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
     icon: MessageSquare,
     image: promoAiAgent,
-    overlay: "none",
-    textColor: "#FFFFFF",
-    subtitleBg: "rgba(99,102,241,0.2)",
-    subtitleColor: "#A5B4FC",
-    subtitleBorder: "rgba(99,102,241,0.35)",
-    descColor: "rgba(230,230,245,0.85)",
-    btnBg: "rgba(255,255,255,0.12)",
-    btnBorder: "rgba(255,255,255,0.2)",
-    btnColor: "#E0E7FF",
+    overlay: "linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.88) 100%)",
+    textColor: "#1a1a2e",
+    subtitleBg: "rgba(99,102,241,0.12)",
+    subtitleColor: "#6366F1",
+    subtitleBorder: "rgba(99,102,241,0.3)",
+    descColor: "rgba(30,30,60,0.7)",
+    btnBg: "rgba(99,102,241,0.1)",
+    btnBorder: "rgba(99,102,241,0.3)",
+    btnColor: "#4F46E5",
   },
   {
     title: "ParamTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
@@ -29,15 +29,15 @@ const cards = [
     description: "Bulut altyapısı, veri yönetimi ve dijital araçlarla işletmenizi geleceğe hazırlayın.",
     icon: Cloud,
     image: promoCloud,
-    overlay: "none",
-    textColor: "#FFFFFF",
-    subtitleBg: "rgba(139,92,246,0.2)",
-    subtitleColor: "#A78BFA",
-    subtitleBorder: "rgba(139,92,246,0.35)",
-    descColor: "rgba(220,215,245,0.85)",
-    btnBg: "rgba(255,255,255,0.12)",
-    btnBorder: "rgba(255,255,255,0.2)",
-    btnColor: "#E9D5FF",
+    overlay: "linear-gradient(180deg, rgba(255,255,255,0.78) 0%, rgba(255,255,255,0.65) 50%, rgba(255,255,255,0.85) 100%)",
+    textColor: "#1a1a2e",
+    subtitleBg: "rgba(139,92,246,0.12)",
+    subtitleColor: "#7C3AED",
+    subtitleBorder: "rgba(139,92,246,0.3)",
+    descColor: "rgba(30,30,60,0.65)",
+    btnBg: "rgba(139,92,246,0.1)",
+    btnBorder: "rgba(139,92,246,0.3)",
+    btnColor: "#6D28D9",
   },
   {
     title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
@@ -45,15 +45,15 @@ const cards = [
     description: "Dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın. Uni-dox ile tüm evrak işleriniz tek platformda.",
     icon: FileText,
     image: promoUnidox,
-    overlay: "none",
-    textColor: "#FFFFFF",
-    subtitleBg: "rgba(59,130,246,0.2)",
-    subtitleColor: "#93C5FD",
-    subtitleBorder: "rgba(59,130,246,0.35)",
-    descColor: "rgba(220,230,250,0.85)",
-    btnBg: "rgba(255,255,255,0.12)",
-    btnBorder: "rgba(255,255,255,0.2)",
-    btnColor: "#DBEAFE",
+    overlay: "linear-gradient(180deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.68) 50%, rgba(255,255,255,0.86) 100%)",
+    textColor: "#1a1a2e",
+    subtitleBg: "rgba(59,130,246,0.12)",
+    subtitleColor: "#2563EB",
+    subtitleBorder: "rgba(59,130,246,0.3)",
+    descColor: "rgba(30,30,60,0.68)",
+    btnBg: "rgba(59,130,246,0.1)",
+    btnBorder: "rgba(59,130,246,0.3)",
+    btnColor: "#1D4ED8",
   },
   {
     title: "Param ile Ödemelerinizi Kolaylaştırın!",
@@ -61,15 +61,15 @@ const cards = [
     description: "Fiziksel ve sanal POS çözümleriyle tüm ödeme kanallarınızı avantajlı komisyon oranlarıyla yönetin.",
     icon: CreditCard,
     image: promoParam,
-    overlay: "none",
-    textColor: "#FFFFFF",
-    subtitleBg: "rgba(168,85,247,0.2)",
-    subtitleColor: "#C4B5FD",
-    subtitleBorder: "rgba(168,85,247,0.35)",
-    descColor: "rgba(230,220,255,0.85)",
-    btnBg: "rgba(255,255,255,0.12)",
-    btnBorder: "rgba(255,255,255,0.2)",
-    btnColor: "#EDE9FE",
+    overlay: "linear-gradient(180deg, rgba(255,255,255,0.82) 0%, rgba(255,255,255,0.7) 50%, rgba(255,255,255,0.88) 100%)",
+    textColor: "#1a1a2e",
+    subtitleBg: "rgba(168,85,247,0.12)",
+    subtitleColor: "#7C3AED",
+    subtitleBorder: "rgba(168,85,247,0.3)",
+    descColor: "rgba(30,30,60,0.68)",
+    btnBg: "rgba(168,85,247,0.1)",
+    btnBorder: "rgba(168,85,247,0.3)",
+    btnColor: "#6D28D9",
   },
 ];
 
@@ -93,16 +93,14 @@ const PromotionsSection = () => (
               className="absolute inset-0 w-full h-full object-cover"
               aria-hidden="true"
             />
-
-            {/* Content — frosted glass panel behind text only */}
+            {/* Overlay */}
             <div
-              className="relative z-10 mt-auto m-4 md:m-6 p-6 md:p-8 rounded-xl flex flex-col"
-              style={{
-                background: "rgba(10, 8, 30, 0.55)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)",
-              }}
-            >
+              className="absolute inset-0"
+              style={{ background: card.overlay }}
+            />
+
+            {/* Content */}
+            <div className="relative z-10 p-8 md:p-10 flex flex-col justify-between flex-1">
               {/* Badge */}
               <span
                 className="inline-flex items-center gap-1.5 self-start px-4 py-1.5 rounded-full text-xs font-bold tracking-wide mb-5"
