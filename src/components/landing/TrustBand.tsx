@@ -5,7 +5,7 @@ import logoIkas from "@/assets/logo-ikas.png";
 import logoKariyer from "@/assets/logo-kariyer.png";
 import logoMukellef from "@/assets/logo-mukellef.png";
 import logoNebim from "@/assets/logo-nebim.svg";
-import logoParam from "@/assets/logo-param.jpg";
+import logoParam from "@/assets/logo-param.png";
 import logoTicimax from "@/assets/logo-ticimax.png";
 import logoTsoft from "@/assets/logo-tsoft.png";
 import logoUnivaera from "@/assets/logo-univera.svg";
