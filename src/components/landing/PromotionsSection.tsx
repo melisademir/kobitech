@@ -119,7 +119,7 @@ const PromotionsSection = () => (
 
               {/* Speech bubble — bottom right */}
               <div
-                className="absolute bottom-36 left-6 md:left-8 z-20 px-5 py-3 rounded-2xl rounded-bl-sm text-sm font-bold leading-snug text-left whitespace-pre-line backdrop-blur-lg shadow-xl"
+                className="absolute bottom-44 left-6 md:left-8 z-20 px-5 py-3 rounded-2xl rounded-bl-sm text-sm font-bold leading-snug text-left whitespace-pre-line backdrop-blur-lg shadow-xl"
                 style={{
                   background: "rgba(255,255,255,0.2)",
                   border: "1px solid rgba(255,255,255,0.3)",
