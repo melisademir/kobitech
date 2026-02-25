@@ -40,8 +40,8 @@ const PartnerEcosystemSection = () => {
             Güçlü Partner Ekosistemi
           </h2>
           <p
-            className="text-muted-foreground mt-2 md:mt-3 mx-auto text-sm md:text-base"
-            style={{ maxWidth: "460px", lineHeight: 1.7 }}
+            className="text-muted-foreground mt-2 md:mt-3 mx-auto text-sm md:text-base whitespace-nowrap"
+            style={{ lineHeight: 1.7 }}
           >
             Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
