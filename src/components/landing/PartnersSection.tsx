@@ -70,7 +70,7 @@ const categories = [
   {
     label: "Ekibine Yön Ver",
     description:
-      "İşe alımdan emekliliğe kadar tüm İK süreçlerini kapsar. Rol bazlı yapısı ile işletmenizde yetkiler, sorumluluklar, koltuklar netleşir. Doğru personel seçimi yapmanıza yardımcı olacak çok sayıda fonksiyona sahiptir. Çalışanların tüm bilgileri, özlük dosyaları, maaş planları, izinleri, mesaileri, puantaj ve bordrolarını Workcube HR ile yönetirsiniz.",
+      "Ekip arkadaşlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Çalışanlarınızın tüm bilgilerini; maaş planlarını, izinlerini, mesailerini ve bordro hesaplarını Workcube HR ile güvenle yönetin.",
     tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"],
     icon: Users,
     image: tabEkip,
