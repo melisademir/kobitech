@@ -18,19 +18,11 @@ const CtaSection = () => (
         }}
       >
         <h2
-          className="text-white font-bold mb-4"
+          className="text-white font-bold mb-8"
           style={{ fontSize: "clamp(28px, 4vw, 42px)", letterSpacing: "-0.03em", lineHeight: 1.15 }}
         >
-          İşletmenizi Dijitalde Büyütmeye
-          <br />
-          Hazır mısınız?
+          Dijitalde Büyümeye Başlayın
         </h2>
-        <p
-          className="mb-8 mx-auto"
-          style={{ fontSize: "18px", lineHeight: 1.7, color: "rgba(196,181,253,0.8)", maxWidth: "480px" }}
-        >
-          50+ dijital çözüm, 30+ çözüm ortağı. Tek platformda tüm ihtiyaçlarınıza yanıt bulun.
-        </p>
         <Link to="/kobi/step-1">
           <button
             className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200"
