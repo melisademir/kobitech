@@ -117,18 +117,22 @@ const PromotionsSection = () => (
                 </p>
               </div>
 
-              {/* Speech bubble — bottom right */}
-              <div
-                className="absolute bottom-44 left-6 md:left-8 z-20 px-5 py-3 rounded-2xl rounded-bl-sm text-sm font-bold leading-snug text-left whitespace-pre-line backdrop-blur-lg shadow-xl"
+              {/* Speech bubble */}
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8, y: 10 }}
+                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.4 + i * 0.12, ease: "backOut" }}
+                className="absolute bottom-44 left-6 md:left-8 z-20 px-6 py-3.5 rounded-2xl rounded-bl-sm text-base font-extrabold leading-snug text-left whitespace-pre-line shadow-2xl"
                 style={{
-                  background: "rgba(255,255,255,0.2)",
-                  border: "1px solid rgba(255,255,255,0.3)",
-                  color: "#FFFFFF",
-                  textShadow: "0 1px 4px rgba(0,0,0,0.2)",
+                  background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)",
+                  color: "#1E1B4B",
+                  border: "1px solid rgba(255,255,255,0.6)",
+                  boxShadow: "0 8px 32px rgba(0,0,0,0.18), 0 0 0 1px rgba(255,255,255,0.2)",
                 }}
               >
                 {card.bubble}
-              </div>
+              </motion.div>
 
               {/* Bottom section: CTA */}
               <div>
