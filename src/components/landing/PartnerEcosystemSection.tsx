@@ -34,7 +34,7 @@ const PartnerEcosystemSection = () => {
           className="text-center mb-6 md:mb-10"
         >
           <h2
-            className="text-3xl md:text-5xl font-extrabold text-foreground mx-auto"
+            className="text-3xl md:text-5xl font-extrabold text-gradient-heading mx-auto"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05, maxWidth: "640px" }}
           >
             Güçlü Partner Ekosistemi
