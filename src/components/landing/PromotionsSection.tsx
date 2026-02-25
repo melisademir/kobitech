@@ -10,7 +10,7 @@ const cards = [
   {
     title: "Sektörden Haber Veren AI Agent'ımız ile Tanışın!",
     bubble: "İlk 100 Bülten Ücretsiz!",
-    description: "İlk 100 bülten hediyenizle sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
+    description: "Sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
     icon: MessageSquare,
     image: promoAiChat,
     badgeBg: "rgba(99,102,241,0.18)",
