@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration-new.png";
+import heroMockup from "@/assets/hero-mockup.png";
 
 const containerVariants = {
   hidden: {},
@@ -165,6 +166,19 @@ const HeroSection = () => {
             <p className="text-xs mt-3" style={{ color: "rgba(196,181,253,0.55)" }}>
               <a href="#" className="underline hover:opacity-70 transition-opacity">KVKK Aydınlatma Metni</a>'ni kabul etmiş sayılırsınız.
             </p>
+          </motion.div>
+
+          {/* Dashboard Mockup */}
+          <motion.div variants={itemVariants} className="mt-12">
+            <img
+              src={heroMockup}
+              alt="KobiTech platformu - Dijital Dönüşüm Planı ve Çözümler ekranları"
+              className="w-full max-w-4xl mx-auto rounded-2xl"
+              style={{
+                boxShadow: "0 25px 80px -12px rgba(109,40,217,0.35), 0 8px 24px -4px rgba(0,0,0,0.3)",
+                border: "1px solid rgba(167,139,250,0.2)",
+              }}
+            />
           </motion.div>
         </motion.div>
       </div>
