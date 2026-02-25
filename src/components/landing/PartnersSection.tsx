@@ -88,7 +88,7 @@ const categories = [
   {
     label: "Globale Açıl",
     description:
-      "TÜSİAD, MÜSİAD, TOBB, İTO, HİB ve KAGİDER gibi Türkiye'nin en güçlü iş dünyası kuruluşlarının güç ve vizyonunu arkanıza alarak ticaretinizi sınırların ötesine taşıyın. Uluslararası ödeme altyapısı ve lojistik çözümleriyle global satış kanallarında yerinizi alın; ürünlerinizi dünya vitrinine güvenle çıkarın.",
+      "TÜSİAD, MÜSİAD, TOBB, İTO, HİB ve KAGİDER gibi Türkiye'nin en güçlü iş dünyası kuruluşlarının güç ve vizyonunu arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru ürün ve hizmetlerle tam dijital bir adım atın. Global satış kanallarında yerinizi profesyonelce alın ve ürünlerinizi dünya vitrinine güvenle çıkarın.",
     tags: ["Mükellef", "TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER"],
     icon: Globe2,
     image: tabGlobal,
