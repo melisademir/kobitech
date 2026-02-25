@@ -67,14 +67,14 @@ const Landing = () => (
     <div style={{ background: "linear-gradient(180deg, hsl(252,25%,97%) 0%, hsl(38,50%,97%) 100%)" }}>
       <FeaturesSection />
     </div>
-    {/* 6 — TESTIMONIALS */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,20%,97%) 100%)" }}>
-      <TestimonialsSection />
-    </div>
-
-    {/* 7 — CTA */}
+    {/* 6 — CTA */}
     <div style={{ background: "linear-gradient(160deg, hsl(265,40%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
       <CtaSection />
+    </div>
+
+    {/* 7 — TESTIMONIALS */}
+    <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,20%,97%) 100%)" }}>
+      <TestimonialsSection />
     </div>
 
     <FooterSection />
