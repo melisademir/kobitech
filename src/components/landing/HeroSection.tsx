@@ -169,14 +169,13 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Dashboard Mockup */}
-          <motion.div variants={itemVariants} className="mt-12">
+          <motion.div variants={itemVariants} className="mt-12 -mb-16">
             <img
               src={heroMockup}
               alt="KobiTech platformu - Dijital Dönüşüm Planı ve Çözümler ekranları"
-              className="w-full max-w-4xl mx-auto rounded-2xl"
+              className="w-full max-w-5xl mx-auto"
               style={{
-                boxShadow: "0 25px 80px -12px rgba(109,40,217,0.35), 0 8px 24px -4px rgba(0,0,0,0.3)",
-                border: "1px solid rgba(167,139,250,0.2)",
+                filter: "drop-shadow(0 25px 60px rgba(109,40,217,0.3)) drop-shadow(0 8px 20px rgba(0,0,0,0.25))",
               }}
             />
           </motion.div>
