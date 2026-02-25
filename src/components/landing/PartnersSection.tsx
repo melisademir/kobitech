@@ -53,7 +53,7 @@ const categories = [
     label: "Stoğunu Kontrol Et",
     description:
       "Univera Stokbar ve Nebim V3 çözümleriyle depo yönetiminizi modernleştirin, ürün giriş çıkışlarını anlık verilerle izleyin. Akıllı stok planlama yöntemleriyle depo seviyelerinizi en ideal noktada tutun, fazla veya eksik stok riskini ortadan kaldırın. Tüm tedarik zincirinizi iyileştirerek operasyonel hataları ve fireleri en aza indirin; işletmenize özel dijital çözümlerle kârlılığınızı koruyun.",
-    tags: ["Kargo & Lojistik", "Depo Yönetimi", "Sipariş Takibi"],
+    tags: ["Univera Stokbar", "Nebim V3"],
     icon: Package,
     image: tabStok,
     accent: "#0891B2",
