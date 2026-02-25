@@ -38,7 +38,7 @@ const cards = [
   {
     title: "Uni-dox ile e-Dönüşümünüzü Tamamlayın!",
     bubble: "1000 Kontör Ücretsiz!",
-    description: "1.000 kontör hediyenizle e-Fatura, e-İrsaliye, e-Defter, e-Mutabakat ve e-Arşiv süreçlerinizi tek platformda hızlandırın.",
+    description: "e-Fatura, e-İrsaliye, e-Defter, e-Mutabakat ve e-Arşiv süreçlerinizi tek platformda yönetin.",
     icon: FileText,
     image: promoDocuments,
     badgeBg: "rgba(34,197,94,0.15)",
