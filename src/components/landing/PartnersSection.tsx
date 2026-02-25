@@ -34,7 +34,7 @@ const categories = [
   {
     label: "E-Ticarete Açıl",
     description:
-      "Online satışın gücüyle dükkanınızın sınırlarını aşın ve müşteri ağınızı genişletin. Türkiye'nin önde gelen e-ticaret sistemleri T-Soft, Ticimax ve İkas arasından işletmenize en uygun olanı ParamTECH uzmanlığıyla belirleyin. İnternet mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin avantajını yaşayın.",
+      "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin. Online mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin avantajını yaşayın.",
     tags: ["E-Ticaret Altyapısı", "Çoklu Kanal Satış", "Mağaza Çözümleri"],
     icon: ShoppingCart,
     image: tabEticaret,
