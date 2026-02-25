@@ -17,6 +17,9 @@ const cards = [
     badgeBorder: "rgba(99,102,241,0.35)",
     badgeColor: "#6366F1",
     overlayColor: "rgba(15,25,60,0.45)",
+    btnBg: "rgba(99,102,241,0.2)",
+    btnBorder: "rgba(99,102,241,0.4)",
+    btnColor: "#A5B4FC",
   },
   {
     title: "ParamTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
@@ -28,6 +31,9 @@ const cards = [
     badgeBorder: "rgba(59,130,246,0.35)",
     badgeColor: "#3B82F6",
     overlayColor: "rgba(10,20,50,0.4)",
+    btnBg: "rgba(59,130,246,0.2)",
+    btnBorder: "rgba(59,130,246,0.4)",
+    btnColor: "#93C5FD",
   },
   {
     title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
@@ -39,6 +45,9 @@ const cards = [
     badgeBorder: "rgba(34,197,94,0.35)",
     badgeColor: "#16A34A",
     overlayColor: "rgba(30,20,10,0.35)",
+    btnBg: "rgba(34,197,94,0.2)",
+    btnBorder: "rgba(34,197,94,0.4)",
+    btnColor: "#86EFAC",
   },
   {
     title: "Param ile Ödemelerinizi Kolaylaştırın!",
@@ -50,6 +59,9 @@ const cards = [
     badgeBorder: "rgba(168,85,247,0.35)",
     badgeColor: "#A855F7",
     overlayColor: "rgba(30,15,50,0.35)",
+    btnBg: "rgba(168,85,247,0.2)",
+    btnBorder: "rgba(168,85,247,0.4)",
+    btnColor: "#C4B5FD",
   },
 ];
 
@@ -109,7 +121,12 @@ const PromotionsSection = () => (
               <div>
                 <Link to="/kobi/step-1">
                   <button
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 bg-white/90 text-gray-900 hover:bg-white shadow-lg backdrop-blur-sm"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 shadow-lg backdrop-blur-md"
+                    style={{
+                      background: card.btnBg,
+                      border: `1px solid ${card.btnBorder}`,
+                      color: card.btnColor,
+                    }}
                   >
                     Detaylı Bilgi <ArrowRight className="w-4 h-4" />
                   </button>
