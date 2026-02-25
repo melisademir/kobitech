@@ -68,7 +68,7 @@ const categories = [
     accent: "#DC2626",
   },
   {
-    label: "Ekibini Güçlendir",
+    label: "Ekibine Yön Ver",
     description:
       "İK süreçlerinizi daha etkin yönetmek için Türkiye'nin en büyük iş ilanı platformu Kariyer.net üzerinden iş ilanı yayınlayabilir, milyonlarca özgeçmiş arasından işletmenize uygun adaylara ulaşabilirsiniz. Böylece ekibinizi doğru yeteneklerle büyütebilirsiniz.",
     tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"],
