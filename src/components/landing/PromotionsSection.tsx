@@ -8,7 +8,7 @@ import promoPayment from "@/assets/promo-payment.jpg";
 
 const cards = [
   {
-    title: "Size Özel 1.000 Chat Hediye — AI Agent'ımız ile Tanışın!",
+    title: "Sektörden Haber Veren AI Agent'ımız ile Tanışın! — Size Özel 1.000 Chat Hediye",
     description: "1.000 chat hediyenizle sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
     icon: MessageSquare,
     image: promoAiChat,
