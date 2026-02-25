@@ -9,7 +9,7 @@ import promoPayment from "@/assets/promo-payment.jpg";
 const cards = [
   {
     title: "Sektörden Haber Veren AI Agent'ımız ile Tanışın!",
-    benefit: "Size Özel ilk 100 Bülten Hediye!",
+    bubble: "İlk 100 Bülten Ücretsiz!",
     description: "İlk 100 bülten hediyenizle sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
     icon: MessageSquare,
     image: promoAiChat,
@@ -23,7 +23,7 @@ const cards = [
   },
   {
     title: "ParamTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
-    benefit: "2 Ay Ücretsiz",
+    bubble: "2 Ay Ücretsiz Deneme!",
     description: "2 ay ücretsiz deneme ile bulut altyapısı, veri yönetimi ve dijital araçlarla işletmenizi geleceğe hazırlayın.",
     icon: Cloud,
     image: promoCloudTech,
@@ -37,7 +37,7 @@ const cards = [
   },
   {
     title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
-    benefit: "1.000 Kontör Hediye",
+    bubble: "1000 Kontör Ücretsiz!",
     description: "1.000 kontör hediyenizle e-Fatura, e-İrsaliye, e-Defter, e-Mutabakat ve e-Arşiv süreçlerinizi tek platformda hızlandırın.",
     icon: FileText,
     image: promoDocuments,
@@ -51,7 +51,7 @@ const cards = [
   },
   {
     title: "Param ile Ödemelerinizi Kolaylaştırın!",
-    benefit: "%2,29 Komisyon Oranı",
+    bubble: "Size Özel %2,29\nKomisyon Oranı!",
     description: "Özel %2,29 komisyon oranıyla fiziksel ve sanal POS çözümleri sayesinde tüm ödeme kanallarınızı avantajlı şekilde yönetin.",
     icon: CreditCard,
     image: promoPayment,
@@ -115,6 +115,19 @@ const PromotionsSection = () => (
                 >
                   {card.description}
                 </p>
+              </div>
+
+              {/* Speech bubble — bottom right */}
+              <div
+                className="absolute bottom-20 right-6 md:right-8 z-20 px-5 py-3 rounded-2xl rounded-br-sm text-sm font-bold leading-snug text-center whitespace-pre-line backdrop-blur-lg shadow-xl"
+                style={{
+                  background: "rgba(255,255,255,0.2)",
+                  border: "1px solid rgba(255,255,255,0.3)",
+                  color: "#FFFFFF",
+                  textShadow: "0 1px 4px rgba(0,0,0,0.2)",
+                }}
+              >
+                {card.bubble}
               </div>
 
               {/* Bottom section: CTA */}
