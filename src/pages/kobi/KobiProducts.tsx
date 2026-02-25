@@ -1,13 +1,14 @@
 import { useState } from "react";
 import KobiLayout from "@/components/layout/KobiLayout";
 import { catalogProducts, type CatalogProduct } from "@/data/catalog-products";
-import { Star, ShoppingCart, Info, X, LogIn, Mail } from "lucide-react";
+import { Star, ShoppingCart, X, LogIn, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { useOnboarding } from "@/contexts/OnboardingContext";
 import { motion, AnimatePresence } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+import ProductDetailModal from "@/components/products/ProductDetailModal";
 
 const goalTabs = [
   { id: "all", label: "Tümü" },
@@ -43,6 +44,7 @@ const KobiProducts = () => {
   const [activeTab, setActiveTab] = useState("all");
   const [cartOpen, setCartOpen] = useState(false);
   const [authPromptOpen, setAuthPromptOpen] = useState(false);
+  const [detailProduct, setDetailProduct] = useState<CatalogProduct | null>(null);
   const { items, addItem, removeItem, isInCart, count } = useCart();
   const { data: onboardingData } = useOnboarding();
   const navigate = useNavigate();
@@ -128,7 +130,7 @@ const KobiProducts = () => {
               <div className="text-xs text-muted-foreground mb-4">⏱ Kurulum: {product.setupDays} gün</div>
 
               <div className="flex gap-2">
-                <Button variant="outline" size="sm" className="flex-1"><Info className="h-4 w-4 mr-1" /> Detaylı Bilgi</Button>
+                <Button variant="outline" size="sm" className="flex-1" onClick={() => setDetailProduct(product)}>Detaylı Bilgi</Button>
                 <Button
                   variant={isInCart(product.id) ? "secondary" : "hero"}
                   size="sm"
@@ -246,6 +248,11 @@ const KobiProducts = () => {
           </>
         )}
       </AnimatePresence>
+
+      {/* Product Detail Modal */}
+      {detailProduct && (
+        <ProductDetailModal product={detailProduct} onClose={() => setDetailProduct(null)} />
+      )}
     </KobiLayout>
   );
 };
