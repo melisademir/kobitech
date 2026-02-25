@@ -9,7 +9,7 @@ import logoAras from "@/assets/logo-aras.png";
 import logoTicimax from "@/assets/logo-ticimax.png";
 import logoGoogle from "@/assets/logo-google.png";
 import logoIkas from "@/assets/logo-ikas.png";
-import logoKariyer from "@/assets/logo-kariyer.png";
+import logoWorkcube from "@/assets/logo-workcube.png";
 import logoMukellef from "@/assets/logo-mukellef.png";
 
 // ─── Piece type ───────────────────────────────────────────────────────────────
@@ -39,8 +39,8 @@ export const pieces: PuzzlePiece[] = [
     edges: { top: [0], right: [1, -1], bottom: [-1], left: [-1, 1] }
   },
   {
-    id: "kariyer", col: 3, row: 0, cs: 1, rs: 2, color: "#EA580C",
-    name: "Kariyer.net", label: "Kariyer", logo: logoKariyer,
+    id: "workcube", col: 3, row: 0, cs: 1, rs: 2, color: "#1DA1D4",
+    name: "Workcube", label: "Workcube", logo: logoWorkcube,
     edges: { top: [0], right: [1, -1], bottom: [1], left: [-1, 1] }
   },
   {
@@ -110,7 +110,7 @@ export const partnerDetails: Record<string, PartnerDetail> = {
   google: { category: "Bulut & İşbirliği", headline: "Google ile Dijitalleşme", leadership: "Dünya Çapında 3 Milyar Kullanıcı", description: "Email, Drive, Doküman, Takvim, Meet. İş iletişiminizi ve işbirliğinizi bulutta yönetin.", features: ["Gmail & Google Drive", "Meet video konferans", "Docs, Sheets, Slides", "Kurumsal güvenlik"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 95 }], badge: "KOBİ'ye Özel Fiyat" },
   univera: { category: "ERP Yazılımı", headline: "Univera ile İş Yönetimi", leadership: "Kurumsal İşletmelerin Tercih Ettiği İş Yönetim Çözümleri", description: "Stok, tedarik, proje, döküman, çağrı merkezi — operasyonel mükemmelliği tek platformda.", features: ["Üretim & stok takibi", "Muhasebe modülü", "İK ve bordro yönetimi", "Raporlama & analitik"], sectors: [{ name: "Üretim", stars: 5, pct: 93 }, { name: "Ticaret", stars: 4, pct: 80 }], badge: "Ücretsiz Kurulum" },
   nebim: { category: "Perakende ERP", headline: "Nebim ile Entegre ERP", leadership: "Türkiye'de 40 Yıllık ERP Liderliği", description: "Nebim V3 ve Nebim Era ile üretimden finansa, stoktan satışa tüm işletme süreçlerinizi entegre yönetin.", features: ["Entegre ERP modülleri", "Sektöre özel çözümler", "Gerçek zamanlı raporlama", "Çoklu şube/depo yönetimi"], sectors: [{ name: "Üretim", stars: 5, pct: 97 }, { name: "Tekstil", stars: 5, pct: 97 }], badge: "Sektör Lideri" },
-  kariyer: { category: "İK & İstihdam", headline: "Kariyer.net ile Doğru Eleman", leadership: "Türkiye'nin 1 Numaralı İş İlanı Sitesi", description: "Milyonlarca özgeçmiş, en geniş aday havuzu. Doğru elemanı hızlıca bulun, işe alım sürecinizi dijitalleştirin.", features: ["İş ilanı yayınlama", "CV havuzu erişimi", "İşveren markası yönetimi", "Aday takip sistemi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 92 }], badge: "Öncelikli İlan" },
+  workcube: { category: "İK & İş Yönetimi", headline: "Workcube HR ile Ekibine Yön Ver", leadership: "Türkiye'nin Kapsamlı İK Yönetim Platformu", description: "İşe alımdan emekliliğe kadar tüm İK süreçlerinizi tek çatı altında yönetin. Maaş, izin, mesai, bordro ve özlük dosyalarını güvenle takip edin.", features: ["Bordro ve puantaj yönetimi", "İzin ve mesai takibi", "Özlük dosyası yönetimi", "Rol bazlı yetkilendirme"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Hizmet", stars: 5, pct: 92 }], badge: "Kapsamlı İK Çözümü" },
   mukellef: { category: "Global Şirket Kuruluşu", headline: "Mükellef ile Globalleşme", leadership: "Global Şirket Kuruluşunda Uzman", description: "Yurt dışı şirket kuruluşu, vergi danışmanlığı, uluslararası ticaret hukuku. 50+ ülkede tecrübe.", features: ["Yurt dışı şirket kuruluşu", "Vergi danışmanlığı", "Uluslararası ticaret hukuku", "50+ ülke tecrübesi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 99 }, { name: "Hizmet", stars: 5, pct: 97 }], badge: "50+ Ülke" },
   ticimax: { category: "E-Ticaret Çözümleri", headline: "Ticimax ile Online Satış", leadership: "20.000+ E-ticaret Sitesine Güç Veren Platform", description: "Kolay kurulum, sınırsız ürün, güçlü yönetim paneli. Büyümenize ölçeklenebilir altyapı.", features: ["Mobil uygulama dahil", "SEO optimizasyon araçları", "Çok kanallı satış", "30 gün ücretsiz deneme"], sectors: [{ name: "E-ticaret", stars: 5, pct: 94 }, { name: "Perakende", stars: 4, pct: 80 }], badge: "30 Gün Ücretsiz" },
   finrota: { category: "Finansal Yönetim", headline: "Finrota ile Nakit Yönetimi", leadership: "10.000+ İşletmenin Güvendiği Finansal Yönetim Çözümü", description: "Tahsilat, ödeme, banka mutabakatı otomasyonu. Nakit akışınızı tam kontrol altına alın.", features: ["Nakit akışı takibi", "Çek/senet yönetimi", "Banka mutabakatı", "Otomatik finansal raporlar"], sectors: [{ name: "Finans", stars: 5, pct: 94 }, { name: "Üretim", stars: 4, pct: 80 }], badge: "Otomatik Raporlar" },
