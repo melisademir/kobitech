@@ -31,13 +31,13 @@ export interface PuzzlePiece {
 // ─── Partner piece definitions ────────────────────────────────────────────────
 export const pieces: PuzzlePiece[] = [
   {
-    id: "param", col: 0, row: 0, cs: 2, rs: 2, color: "#6B21A8",
-    name: "Param", label: "Param", logo: logoParam,
+    id: "paramtech", col: 0, row: 0, cs: 2, rs: 2, color: "#1a1a2e",
+    name: "ParamTech", label: "ParamTech", logo: logoParamtech,
     edges: { top: [0, 0], right: [1, -1], bottom: [1, -1], left: [0, 0] }
   },
   {
-    id: "paramtech", col: 2, row: 0, cs: 2, rs: 2, color: "#1a1a2e",
-    name: "ParamTech", label: "ParamTech", logo: logoParamtech,
+    id: "param", col: 2, row: 0, cs: 2, rs: 2, color: "#6B21A8",
+    name: "Param", label: "Param", logo: logoParam,
     edges: { top: [0, 0], right: [1, -1], bottom: [-1, 1], left: [-1, 1] }
   },
   {

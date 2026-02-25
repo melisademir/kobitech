@@ -7,7 +7,7 @@ import PartnerPanel from "./partner-ecosystem/PartnerPanel";
 const PRIMARY_HEX = "#6B21A8";
 
 const PartnerEcosystemSection = () => {
-  const [selectedId, setSelectedId] = useState<string | null>("param");
+  const [selectedId, setSelectedId] = useState<string | null>("paramtech");
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
   const inView = useInView(sectionRef, { once: true, amount: 0.06 });
