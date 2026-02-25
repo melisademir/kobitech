@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { Checkbox } from "@/components/ui/checkbox";
 import { motion } from "framer-motion";
 import { ArrowLeft } from "lucide-react";
 import { useOnboarding } from "@/contexts/OnboardingContext";
@@ -44,7 +45,10 @@ const Step3 = () => {
         <p className="text-muted-foreground text-center text-sm">Birden fazla seçebilirsiniz</p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4">
           {goals.map(g => (
-            <button key={g.name} onClick={() => toggle(g.name)} className={`flex flex-col items-center gap-2 p-5 rounded-2xl border-2 transition-all ${selected.includes(g.name) ? "border-primary bg-primary/5 shadow-premium" : "border-border hover:border-primary/30 bg-card"}`}>
+            <button key={g.name} onClick={() => toggle(g.name)} className={`relative flex flex-col items-center gap-2 p-5 rounded-2xl border-2 transition-all ${selected.includes(g.name) ? "border-primary bg-primary/5 shadow-premium" : "border-border hover:border-primary/30 bg-card"}`}>
+              <div className="absolute top-3 right-3">
+                <Checkbox checked={selected.includes(g.name)} tabIndex={-1} className="pointer-events-none" />
+              </div>
               <span className="text-3xl">{g.icon}</span>
               <span className="text-sm font-medium text-foreground text-center">{g.name}</span>
             </button>
