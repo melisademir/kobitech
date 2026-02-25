@@ -11,21 +11,18 @@ const steps = [
     image: stepHedef,
     badge: "Karşılaştır",
     title: "İşletmenize özel çözümleri inceleyin ve karşılaştırın.",
-    desc: "İşletmenize özel çözümleri inceleyin ve karşılaştırın.",
   },
   {
     num: "02",
     image: stepTeklif,
     badge: "Teklif Al",
     title: "Size özel çözümleri seçin ve teklif alın.",
-    desc: "Size özel çözümleri seçin ve teklif alın.",
   },
   {
     num: "03",
     image: stepBuyume,
     badge: "Ticaretini Büyüt, Maliyetini Düşür",
     title: "Dijital büyümenizi hemen başlatın.",
-    desc: "Dijital büyümenizi hemen başlatın.",
   },
 ];
 
@@ -143,9 +140,6 @@ const HowItWorksSection = () => (
               >
                 {s.title}
               </h3>
-              <p style={{ fontSize: "15px", color: "rgba(156,163,175,0.85)", lineHeight: "1.65" }}>
-                {s.desc}
-              </p>
             </div>
           </motion.div>
         ))}
