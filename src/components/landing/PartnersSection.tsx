@@ -70,7 +70,7 @@ const categories = [
   {
     label: "Ekibine Yön Ver",
     description:
-      "İK süreçlerinizi daha etkin yönetmek için Türkiye'nin en büyük iş ilanı platformu Kariyer.net üzerinden iş ilanı yayınlayabilir, milyonlarca özgeçmiş arasından işletmenize uygun adaylara ulaşabilirsiniz. Böylece ekibinizi doğru yeteneklerle büyütebilirsiniz.",
+      "İşe alımdan emekliliğe kadar tüm İK süreçlerini kapsar. Rol bazlı yapısı ile işletmenizde yetkiler, sorumluluklar, koltuklar netleşir. Doğru personel seçimi yapmanıza yardımcı olacak çok sayıda fonksiyona sahiptir. Çalışanların tüm bilgileri, özlük dosyaları, maaş planları, izinleri, mesaileri, puantaj ve bordrolarını Workcube HR ile yönetirsiniz.",
     tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"],
     icon: Users,
     image: tabEkip,
