@@ -134,14 +134,8 @@ const FeaturesSection = () => (
         className="text-center mb-8 md:mb-20"
       >
         <h2
-          className="text-foreground"
-          style={{
-            fontSize: "clamp(22px, 5vw, 52px)",
-            fontWeight: 800,
-            letterSpacing: "-0.03em",
-            lineHeight: 1.1,
-            marginBottom: "12px",
-          }}
+          className="text-5xl md:text-7xl font-extrabold text-foreground"
+          style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
           Tüm Çözümlere Tek Platformdan Ulaşın
         </h2>
