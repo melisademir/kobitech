@@ -71,7 +71,7 @@ const categories = [
     label: "Ekibine Yön Ver",
     description:
       "Ekip arkadaşlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Çalışanlarınızın tüm bilgilerini; maaş planlarını, izinlerini, mesailerini ve bordro hesaplarını Workcube HR ile güvenle yönetin.",
-    tags: ["İK Yönetimi", "Bordro Çözümleri", "Yetenek Arama"],
+    tags: ["Workcube HR"],
     icon: Users,
     image: tabEkip,
     accent: "#DB2777",
