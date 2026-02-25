@@ -25,7 +25,7 @@ const categories = [
   {
     label: "Ödeme Al",
     description:
-      "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister web sitenizde; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Param'ın yüksek performanslı ve güvenli altyapısı sayesinde operasyonel yükünüzü azaltın. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.",
+      "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.",
     tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"],
     icon: CreditCard,
     image: tabOdeme,
