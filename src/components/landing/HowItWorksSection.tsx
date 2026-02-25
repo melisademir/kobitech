@@ -58,7 +58,7 @@ const HowItWorksSection = () => (
           Nasıl Çalışır?
         </span>
         <h2
-          className="text-5xl md:text-7xl font-extrabold text-white"
+          className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-white"
           style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
           Dijitalde Büyümeye
@@ -66,8 +66,8 @@ const HowItWorksSection = () => (
           <span className="text-gradient-primary">Başlayın</span>
         </h2>
         <p
-          className="mt-5 mx-auto whitespace-nowrap"
-          style={{ fontSize: "19px", color: "rgba(156,163,175,0.9)", lineHeight: "1.7" }}
+          className="mt-5 mx-auto md:whitespace-nowrap"
+          style={{ fontSize: "17px", color: "rgba(156,163,175,0.9)", lineHeight: "1.7" }}
         >
           Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.
         </p>
@@ -79,7 +79,7 @@ const HowItWorksSection = () => (
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
-        className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10"
       >
         {steps.map((s) => (
           <motion.div
@@ -156,7 +156,7 @@ const HowItWorksSection = () => (
               </div>
               <h3
                 className="text-white font-bold mb-3 leading-snug"
-                style={{ fontSize: "21px", letterSpacing: "-0.015em" }}
+                style={{ fontSize: "clamp(17px, 2vw, 21px)", letterSpacing: "-0.015em" }}
               >
                 {s.title}
               </h3>
