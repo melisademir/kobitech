@@ -7,21 +7,21 @@ import stepBuyume from "@/assets/step-buyume-corp.png";
 
 const steps = [
   {
-    num: "01",
+    num: "1",
     image: stepHedef,
-    badge: "Adım 1",
+    badges: ["Karşılaştır"],
     title: "İşletmenize özel çözümleri inceleyin ve karşılaştırın.",
   },
   {
-    num: "02",
+    num: "2",
     image: stepTeklif,
-    badge: "Adım 2",
+    badges: ["Teklif Al"],
     title: "Size özel çözümleri seçin ve teklif alın.",
   },
   {
-    num: "03",
+    num: "3",
     image: stepBuyume,
-    badge: "Adım 3",
+    badges: ["Ticaretini Büyüt", "Maliyetini Düşür"],
     title: "Dijital büyümenizi hemen başlatın.",
   },
 ];
@@ -124,16 +124,34 @@ const HowItWorksSection = () => (
                 e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
               }}
             >
-              <span
-                className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase mb-3"
-                style={{
-                  background: "rgba(124,58,237,0.15)",
-                  border: "1px solid rgba(124,58,237,0.3)",
-                  color: "#A78BFA",
-                }}
-              >
-                {s.badge}
-              </span>
+              {/* Number icon */}
+              <div className="flex items-center gap-2 mb-3">
+                <span
+                  className="inline-flex items-center justify-center rounded-full font-extrabold text-white"
+                  style={{
+                    width: "32px",
+                    height: "32px",
+                    fontSize: "14px",
+                    background: "linear-gradient(135deg, #6D28D9, #8B5CF6)",
+                    boxShadow: "0 2px 8px rgba(124,58,237,0.35)",
+                  }}
+                >
+                  {s.num}
+                </span>
+                {s.badges.map((b) => (
+                  <span
+                    key={b}
+                    className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase"
+                    style={{
+                      background: "rgba(124,58,237,0.15)",
+                      border: "1px solid rgba(124,58,237,0.3)",
+                      color: "#A78BFA",
+                    }}
+                  >
+                    {b}
+                  </span>
+                ))}
+              </div>
               <h3
                 className="text-white font-bold mb-3 leading-snug"
                 style={{ fontSize: "21px", letterSpacing: "-0.015em" }}
