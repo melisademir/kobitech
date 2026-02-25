@@ -19,7 +19,7 @@ const HeroSection = () => {
   const [phone, setPhone] = useState("");
 
   return (
-    <section className="relative overflow-hidden" style={{ minHeight: "88vh" }}>
+    <section className="relative overflow-hidden" style={{ minHeight: "72vh" }}>
 
       {/* ── Background image ── */}
       <div className="absolute inset-0 z-0">
@@ -27,7 +27,7 @@ const HeroSection = () => {
           src={heroIllustration}
           alt=""
           className="w-full h-full object-cover"
-          style={{ objectPosition: "left center" }}
+          style={{ objectPosition: "left top" }}
           aria-hidden="true"
         />
       </div>
@@ -47,7 +47,7 @@ const HeroSection = () => {
       {/* ── Content ── */}
       <div
         className="relative z-[2] flex flex-col items-center justify-center text-center"
-        style={{ minHeight: "88vh", paddingTop: "6rem", paddingBottom: "6rem", paddingLeft: "1.5rem", paddingRight: "1.5rem" }}
+        style={{ minHeight: "72vh", paddingTop: "5rem", paddingBottom: "4rem", paddingLeft: "1.5rem", paddingRight: "1.5rem" }}
       >
         <motion.div
           className="w-full max-w-3xl"
