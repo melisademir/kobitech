@@ -32,15 +32,6 @@ const categories = [
     accent: "#059669",
   },
   {
-    label: "Teşviklerden Yararlan",
-    description:
-      "İşletmenize en uygun hibe ve teşvik fırsatlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.",
-    tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"],
-    icon: BadgePercent,
-    image: tabTesvik,
-    accent: "#7C3AED",
-  },
-  {
     label: "E-Ticarete Açıl",
     description:
       "Online satışın gücüyle dükkanınızın sınırlarını aşın ve müşteri ağınızı genişletin. Türkiye'nin önde gelen e-ticaret sistemleri T-Soft, Ticimax ve İkas arasından işletmenize en uygun olanı ParamTECH uzmanlığıyla belirleyin. İnternet mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin avantajını yaşayın.",
@@ -77,12 +68,12 @@ const categories = [
     accent: "#DC2626",
   },
   {
-    label: "Globale Açıl",
+    label: "Teşviklerden Yararlan",
     description:
-      "Yurt dışı pazarlara açılmak için Mükellef çözümleri ile yurt dışında şirket kurabilir, vergi ve yasal süreçlerinizi yönetebilirsiniz. İhracat, uluslararası ödeme altyapısı ve lojistik süreçlerinizi oluşturarak global satış kanallarına açılabilirsiniz.",
-    tags: ["Kurumsal Çözümler", "Global Şirket Kurulumu", "Bulut Altyapısı"],
-    icon: Globe2,
-    image: tabGlobal,
+      "İşletmenize en uygun hibe ve teşvik fırsatlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.",
+    tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"],
+    icon: BadgePercent,
+    image: tabTesvik,
     accent: "#7C3AED",
   },
   {
@@ -93,6 +84,15 @@ const categories = [
     icon: Users,
     image: tabEkip,
     accent: "#DB2777",
+  },
+  {
+    label: "Globale Açıl",
+    description:
+      "Yurt dışı pazarlara açılmak için Mükellef çözümleri ile yurt dışında şirket kurabilir, vergi ve yasal süreçlerinizi yönetebilirsiniz. İhracat, uluslararası ödeme altyapısı ve lojistik süreçlerinizi oluşturarak global satış kanallarına açılabilirsiniz.",
+    tags: ["Kurumsal Çözümler", "Global Şirket Kurulumu", "Bulut Altyapısı"],
+    icon: Globe2,
+    image: tabGlobal,
+    accent: "#7C3AED",
   },
 ];
 
