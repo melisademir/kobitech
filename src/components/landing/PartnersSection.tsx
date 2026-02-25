@@ -88,7 +88,7 @@ const categories = [
   {
     label: "Globale Açıl",
     description:
-      "Ticaretinizi sınırların ötesine taşıyın ve dünya pazarlarında yerinizi alın. Mükellef çözümleriyle yurt dışında şirketinizi güvenle kurun; vergi ve resmi süreçlerinizi profesyonel bir destekle takip edin. Uluslararası ödeme sistemlerinden lojistik çözümlerine kadar her şeyi eksiksiz hazırlayın; ürünlerinizi tüm dünyaya ulaştırarak satış ağınızı global düzeye taşıyın.",
+      "TÜSİAD, MÜSİAD, İTO, TOBB, HİB ve KAGİDER gibi Türkiye'nin en güçlü organizasyonlarının desteğini arkanıza alarak ticaretinizi küresel pazara taşıyın. Mükellef çözümleriyle yurt dışında şirketinizi hızla kurun ve yasal süreçlerdeki iş yükünüzü hafifletin. Uluslararası ödeme ve lojistik altyapınızı oluşturarak global satış kanallarında güvenle yerinizi alın.",
     tags: ["Mükellef"],
     icon: Globe2,
     image: tabGlobal,
