@@ -18,8 +18,8 @@ const CtaSection = () => (
         }}
       >
         <h2
-          className="text-white font-bold mb-4"
-          style={{ fontSize: "clamp(28px, 4vw, 42px)", letterSpacing: "-0.03em", lineHeight: 1.15 }}
+          className="text-5xl md:text-7xl font-extrabold text-white mb-4"
+          style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
           İşletmenizi Dijitalde Büyütmeye
           <br />

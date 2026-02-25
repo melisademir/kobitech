@@ -34,8 +34,8 @@ const PartnerEcosystemSection = () => {
           className="text-center mb-6 md:mb-10"
         >
           <h2
-            className="font-black text-foreground mx-auto"
-            style={{ fontSize: "clamp(1.4rem,3.5vw,2.75rem)", lineHeight: 1.1, letterSpacing: "-0.035em", maxWidth: "640px" }}
+            className="text-5xl md:text-7xl font-extrabold text-foreground mx-auto"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, maxWidth: "640px" }}
           >
             Güçlü Partner Ekosistemi
           </h2>

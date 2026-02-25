@@ -129,8 +129,8 @@ const TestimonialsSection = () => {
             Başarı Hikayeleri
           </span>
           <h2
-            className="text-2xl md:text-4xl lg:text-5xl font-bold text-foreground mb-3 md:mb-4"
-            style={{ letterSpacing: "-0.03em", lineHeight: 1.15 }}
+            className="text-5xl md:text-7xl font-extrabold text-foreground mb-3 md:mb-4"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
             İşletmelerden Geri Bildirimler
           </h2>
