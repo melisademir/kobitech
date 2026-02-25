@@ -77,7 +77,16 @@ const PromotionsSection = () => (
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
             className="group relative rounded-2xl overflow-hidden min-h-[480px] flex flex-col"
+            style={{
+              boxShadow: "0 0 0 1.5px rgba(255,255,255,0.25), 0 8px 32px rgba(0,0,0,0.12)",
+              border: "1.5px solid rgba(255,255,255,0.18)",
+              backdropFilter: "blur(2px)",
+            }}
           >
+            {/* Glass border inset */}
+            <div className="absolute inset-0 z-30 pointer-events-none rounded-2xl" style={{
+              boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.25)",
+            }} />
             {/* Background image — objects sit at bottom */}
             <img
               src={card.image}
