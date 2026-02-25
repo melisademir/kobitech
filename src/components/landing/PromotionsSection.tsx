@@ -8,10 +8,10 @@ const cards = [
   {
     title: "Sektörden Haberler Veren AI Agent'ımız ile Tanışın!",
     subtitle: "Size Özel 1.000 Chat Hediye",
-    description: "Sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
+    description: "1.000 chat hediyenizle sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
     icon: MessageSquare,
     image: promoAiAgent,
-    overlay: "linear-gradient(180deg, rgba(15,10,35,0.88) 0%, rgba(15,10,35,0.72) 50%, rgba(15,10,35,0.92) 100%)",
+    overlay: "linear-gradient(180deg, rgba(15,10,35,0.78) 0%, rgba(15,10,35,0.58) 50%, rgba(15,10,35,0.82) 100%)",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(99,102,241,0.2)",
     subtitleColor: "#A5B4FC",
@@ -24,10 +24,10 @@ const cards = [
   {
     title: "ParamTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
     subtitle: "Size Özel 2 Ay Ücretsiz",
-    description: "Bulut altyapısı, veri yönetimi ve dijital araçlarla işletmenizi geleceğe hazırlayın.",
+    description: "2 ay ücretsiz deneme ile bulut altyapısı, veri yönetimi ve dijital araçlarla işletmenizi geleceğe hazırlayın.",
     icon: Cloud,
     image: promoCloud,
-    overlay: "linear-gradient(180deg, rgba(10,8,30,0.82) 0%, rgba(15,12,40,0.7) 50%, rgba(10,8,30,0.88) 100%)",
+    overlay: "linear-gradient(180deg, rgba(10,8,30,0.72) 0%, rgba(15,12,40,0.55) 50%, rgba(10,8,30,0.78) 100%)",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(139,92,246,0.2)",
     subtitleColor: "#A78BFA",
@@ -40,10 +40,10 @@ const cards = [
   {
     title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
     subtitle: "Size Özel 1.000 Kontör Hediye",
-    description: "Dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın. Uni-dox ile tüm evrak işleriniz tek platformda.",
+    description: "1.000 kontör hediyenizle dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın. Uni-dox ile tüm evrak işleriniz tek platformda.",
     icon: FileText,
     image: promoAiAgent,
-    overlay: "linear-gradient(180deg, rgba(6,28,60,0.88) 0%, rgba(10,20,50,0.72) 50%, rgba(6,28,60,0.92) 100%)",
+    overlay: "linear-gradient(180deg, rgba(6,28,60,0.78) 0%, rgba(10,20,50,0.58) 50%, rgba(6,28,60,0.82) 100%)",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(59,130,246,0.2)",
     subtitleColor: "#93C5FD",
@@ -56,10 +56,10 @@ const cards = [
   {
     title: "Param ile Ödemelerinizi Kolaylaştırın!",
     subtitle: "Size Özel %2,29 Komisyon Oranı",
-    description: "Fiziksel ve sanal POS çözümleriyle tüm ödeme kanallarınızı avantajlı komisyon oranlarıyla yönetin.",
+    description: "Özel %2,29 komisyon oranıyla fiziksel ve sanal POS çözümleri sayesinde tüm ödeme kanallarınızı avantajlı şekilde yönetin.",
     icon: CreditCard,
     image: promoCloud,
-    overlay: "linear-gradient(180deg, rgba(30,10,60,0.86) 0%, rgba(40,15,70,0.7) 50%, rgba(30,10,60,0.9) 100%)",
+    overlay: "linear-gradient(180deg, rgba(30,10,60,0.76) 0%, rgba(40,15,70,0.55) 50%, rgba(30,10,60,0.8) 100%)",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(168,85,247,0.2)",
     subtitleColor: "#C4B5FD",
@@ -101,7 +101,7 @@ const PromotionsSection = () => (
             <div className="relative z-10 p-8 md:p-10 flex flex-col justify-between flex-1">
               {/* Badge */}
               <span
-                className="inline-flex items-center gap-1.5 self-start px-4 py-1.5 rounded-full text-xs font-bold tracking-wide mb-5"
+                className="inline-flex items-center gap-2 self-start px-5 py-2.5 rounded-full text-sm font-extrabold tracking-wide mb-5 shadow-lg"
                 style={{
                   background: card.subtitleBg,
                   border: `1px solid ${card.subtitleBorder}`,
