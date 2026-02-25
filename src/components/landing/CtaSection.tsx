@@ -23,7 +23,7 @@ const CtaSection = () => (
         >
           İşletmenizi Dijitalde Büyütmeye
           <br />
-          Hazır mısınız?
+          <span className="text-gradient-primary">Hazır mısınız?</span>
         </h2>
         <p
           className="mb-8 mx-auto"

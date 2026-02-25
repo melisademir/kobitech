@@ -132,7 +132,9 @@ const TestimonialsSection = () => {
             className="text-3xl md:text-5xl font-extrabold text-foreground mb-3 md:mb-4"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
-            İşletmelerden Geri Bildirimler
+            İşletmelerden
+            <br />
+            <span className="text-gradient-primary">Geri Bildirimler</span>
           </h2>
           <p className="text-muted-foreground max-w-md mx-auto text-sm md:text-lg" style={{ lineHeight: "1.7" }}>
             KobiTECH ile dönüşen işletme sahiplerinin deneyimleri

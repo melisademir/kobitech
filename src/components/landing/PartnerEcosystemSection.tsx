@@ -33,11 +33,13 @@ const PartnerEcosystemSection = () => {
           transition={{ duration: 0.5 }}
           className="text-center mb-6 md:mb-10"
         >
-          <h2
+           <h2
             className="text-3xl md:text-5xl font-extrabold text-foreground mx-auto"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05, maxWidth: "640px" }}
           >
-            Güçlü Partner Ekosistemi
+            Güçlü Partner
+            <br />
+            <span className="text-gradient-primary">Ekosistemi</span>
           </h2>
           <p
             className="text-muted-foreground mt-2 md:mt-3 mx-auto text-sm md:text-base whitespace-nowrap"
