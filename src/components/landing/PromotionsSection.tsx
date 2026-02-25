@@ -138,9 +138,9 @@ const PromotionsSection = () => (
               <div>
                 <Link to="/kobi/step-1">
                   <button
-                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold transition-all duration-200 backdrop-blur-xl border border-white/20 hover:border-white/40 hover:bg-white/15"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold transition-all duration-200 shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:shadow-[0_0_30px_rgba(124,58,237,0.7)]"
                     style={{
-                      background: "rgba(255,255,255,0.1)",
+                      background: "linear-gradient(135deg, hsl(265,80%,55%) 0%, hsl(280,85%,50%) 100%)",
                       color: "#FFFFFF",
                     }}
                   >
