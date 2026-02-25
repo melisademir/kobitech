@@ -72,8 +72,8 @@ const categories = [
   {
     label: "Ekibine Yön Ver",
     description:
-      "Çalışanlarınızın hem idari süreçlerini hem de saha operasyonlarını tek merkezden yönetin. Workcube HR ile özlük ve bordro işlemlerini güvenle takip ederken, EnRoute ile saha satış ekiplerinizin rotalarını optimize edin ve mobil operasyonlarınızı anlık verilerle yöneterek ekibinizin verimliliğini artırın.",
-    tags: ["Workcube HR", "EnRoute"],
+      "Çalışanlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Özlük bilgilerini; maaş planlarını, izinlerini, mesailerini ve bordro hesaplarını Workcube HR ile güvenle yönetin.",
+    tags: ["Workcube HR"],
     icon: Users,
     image: tabEkip,
     accent: "#DB2777",
