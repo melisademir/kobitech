@@ -34,7 +34,7 @@ const categories = [
   {
     label: "Teşviklerden Yararlan",
     description:
-      "Uzman danışmanlarımız, işletmenizin ihtiyaçlarına uygun teşvik ve hibe fırsatlarını belirler; başvuru süreçlerinde rehberlik eder ve sizi ilgili kurum ve kuruluşlarla buluşturur. Böylece işletmeniz için sunulan desteklerden etkin biçimde yararlanmış olursunuz.",
+      "Uzman danışmanlarımız, işletmenizin ihtiyaçlarına uygun teşvik ve hibe fırsatlarını belirler; başvuru süreçlerinde rehberlik eder ve sizi ilgili kurum ve kuruluşlarla buluşturur. Böylece işletmeniz için sunulan desteklerden etkin biçimde yararlanmış olursunuz.\n\nİşletmenize en uygun hibe ve teşvik fırsatlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.",
     tags: ["Hibe Programları", "Vergi Avantajları", "Başvuru Desteği"],
     icon: BadgePercent,
     image: tabTesvik,
