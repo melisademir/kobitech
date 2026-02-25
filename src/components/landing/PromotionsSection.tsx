@@ -121,14 +121,13 @@ const PromotionsSection = () => (
               <div>
                 <Link to="/kobi/step-1">
                   <button
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 shadow-lg backdrop-blur-md"
+                    className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold transition-all duration-200 shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:shadow-[0_0_30px_rgba(124,58,237,0.7)]"
                     style={{
-                      background: card.btnBg,
-                      border: `1px solid ${card.btnBorder}`,
-                      color: card.btnColor,
+                      background: "linear-gradient(135deg, hsl(265,80%,55%) 0%, hsl(280,85%,50%) 100%)",
+                      color: "#FFFFFF",
                     }}
                   >
-                    Detaylı Bilgi <ArrowRight className="w-4 h-4" />
+                    Hemen Başla <ArrowRight className="w-4 h-4" />
                   </button>
                 </Link>
               </div>
