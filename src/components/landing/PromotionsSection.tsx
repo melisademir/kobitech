@@ -123,7 +123,7 @@ const PromotionsSection = () => (
                 whileInView={{ opacity: 1, scale: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.12, ease: "backOut" }}
-                className="absolute bottom-44 left-6 md:left-8 z-20 px-6 py-3.5 rounded-2xl rounded-bl-sm text-base font-extrabold leading-snug text-left whitespace-pre-line shadow-2xl"
+                className="absolute bottom-44 left-0 md:left-0 z-20 px-6 py-3.5 rounded-2xl rounded-bl-sm text-base font-extrabold leading-snug text-left whitespace-pre-line shadow-2xl"
                 style={{
                   background: "linear-gradient(135deg, rgba(255,255,255,0.95) 0%, rgba(255,255,255,0.85) 100%)",
                   color: "#1E1B4B",
