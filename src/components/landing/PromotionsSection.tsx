@@ -105,8 +105,8 @@ const PromotionsSection = () => (
                 </p>
               </div>
 
-              {/* Bottom section: CTA left + benefit badge right */}
-              <div className="flex items-end justify-between gap-4">
+              {/* Bottom section: CTA */}
+              <div>
                 <Link to="/kobi/step-1">
                   <button
                     className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 bg-white/90 text-gray-900 hover:bg-white shadow-lg backdrop-blur-sm"
@@ -114,20 +114,6 @@ const PromotionsSection = () => (
                     Detaylı Bilgi <ArrowRight className="w-4 h-4" />
                   </button>
                 </Link>
-
-                {/* Benefit badge */}
-                <span
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold backdrop-blur-md shadow-lg"
-                  style={{
-                    background: card.badgeBg,
-                    border: `1px solid ${card.badgeBorder}`,
-                    color: card.badgeColor,
-                    backdropFilter: "blur(12px)",
-                  }}
-                >
-                  <card.icon className="w-4 h-4" />
-                  {card.benefit}
-                </span>
               </div>
             </div>
           </motion.div>
