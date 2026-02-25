@@ -35,7 +35,7 @@ const categories = [
     label: "Teşviklerden Yararlan",
     description:
       "İşletmenize en uygun hibe ve teşvik fırsatlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.",
-    tags: ["Hibe Programları", "Vergi Avantajları", "Başvuru Desteği"],
+    tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"],
     icon: BadgePercent,
     image: tabTesvik,
     accent: "#7C3AED",
