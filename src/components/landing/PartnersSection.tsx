@@ -20,6 +20,8 @@ import tabGlobal from "@/assets/tab-global-ai.png";
 import tabEkip from "@/assets/tab-ekip-ai.png";
 import tabTesvik from "@/assets/tab-tesvik-ai.png";
 import tabUretim from "@/assets/tab-uretim-ai.png";
+import tabKargo from "@/assets/tab-kargo-ai.png";
+import { Truck } from "lucide-react";
 
 const categories = [
   {
@@ -57,6 +59,15 @@ const categories = [
     icon: Package,
     image: tabStok,
     accent: "#0891B2",
+  },
+  {
+    label: "Ürünlerini Gönder",
+    description:
+      "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her köşesine hızlı ve güvenli şekilde ulaştırın. E-ticaret entegrasyonu sayesinde siparişleriniz otomatik olarak kargoya verilir, anlık takip imkanıyla müşterilerinizi her adımda bilgilendirin. İndirimli kurumsal tarifelerle gönderim maliyetlerinizi düşürün.",
+    tags: ["Aras Kargo", "E-ticaret Entegrasyonu", "Gönderi Takibi"],
+    icon: Truck,
+    image: tabKargo,
+    accent: "#10B981",
   },
   {
     label: "Üretimini Optimize Et",
