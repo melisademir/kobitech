@@ -35,17 +35,12 @@ const ProductDetailModal = ({ product, onClose }: Props) => {
       >
         {/* Header */}
         <div className="gradient-primary px-7 py-6 flex items-center justify-between shrink-0">
-          <div>
-            <div className="flex items-center gap-3">
+            <div>
               <h2 className="text-2xl font-bold text-primary-foreground">{product.name}</h2>
-              {"brand" in product && (product as any).brand && (
-                <span className="text-primary-foreground/60 text-sm font-medium">by {(product as any).brand}</span>
-              )}
+              <span className="text-primary-foreground/80 text-sm border border-primary-foreground/30 rounded-full px-3 py-0.5 inline-block mt-1">
+                {product.categoryLabel}
+              </span>
             </div>
-            <span className="text-primary-foreground/80 text-sm border border-primary-foreground/30 rounded-full px-3 py-0.5 inline-block mt-1">
-              {product.categoryLabel}
-            </span>
-          </div>
           <button onClick={onClose} className="text-primary-foreground hover:scale-110 transition-transform">
             <X className="h-8 w-8" />
           </button>
