@@ -56,10 +56,12 @@ const PartnerEcosystemSection = () => {
           transition={{ duration: 0.6, ease: "easeOut" }}
           className="p-4 md:p-6 lg:p-10"
           style={{
-            background: "white",
+            background: "rgba(255,255,255,0.7)",
+            backdropFilter: "blur(16px)",
+            WebkitBackdropFilter: "blur(16px)",
             borderRadius: "16px",
-            boxShadow: "0 2px 8px hsl(268 30% 20% / 0.04), 0 8px 32px hsl(268 72% 38% / 0.07)",
-            border: "1px solid hsl(38,30%,88%)",
+            boxShadow: "0 2px 8px hsl(268 30% 20% / 0.04), 0 8px 32px hsl(268 72% 38% / 0.07), inset 0 1px 0 rgba(255,255,255,0.6)",
+            border: "1.5px solid rgba(255,255,255,0.35)",
             maxWidth: "1400px",
             margin: "0 auto"
           }}
