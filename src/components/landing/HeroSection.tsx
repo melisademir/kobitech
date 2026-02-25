@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone } from "lucide-react";
-import heroIllustration from "@/assets/hero-illustration-new.png";
+import heroIllustration from "@/assets/hero-illustration.png";
 
 const containerVariants = {
   hidden: {},
