@@ -94,7 +94,7 @@ const PromotionsSection = () => (
             />
 
             {/* Content */}
-            <div className="relative z-10 p-8 md:p-10 flex flex-col justify-between flex-1">
+            <div className="relative z-10 p-8 md:p-10 flex flex-col justify-center items-center text-center flex-1">
               {/* Title */}
               <h3
                 className="font-bold leading-snug mb-3"
