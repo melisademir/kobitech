@@ -68,15 +68,6 @@ const categories = [
     accent: "#DC2626",
   },
   {
-    label: "Teşviklerden Yararlan",
-    description:
-      "İşletmenize en uygun hibe ve teşvik fırsatlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.",
-    tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"],
-    icon: BadgePercent,
-    image: tabTesvik,
-    accent: "#7C3AED",
-  },
-  {
     label: "Ekibini Güçlendir",
     description:
       "İK süreçlerinizi daha etkin yönetmek için Türkiye'nin en büyük iş ilanı platformu Kariyer.net üzerinden iş ilanı yayınlayabilir, milyonlarca özgeçmiş arasından işletmenize uygun adaylara ulaşabilirsiniz. Böylece ekibinizi doğru yeteneklerle büyütebilirsiniz.",
@@ -84,6 +75,15 @@ const categories = [
     icon: Users,
     image: tabEkip,
     accent: "#DB2777",
+  },
+  {
+    label: "Teşviklerden Yararlan",
+    description:
+      "İşletmenize en uygun hibe ve teşvik fırsatlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.",
+    tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"],
+    icon: BadgePercent,
+    image: tabTesvik,
+    accent: "#7C3AED",
   },
   {
     label: "Globale Açıl",
