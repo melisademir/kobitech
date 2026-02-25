@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration-new.png";
-import heroMockup from "@/assets/hero-mockup.png";
+import HeroMockup from "./HeroMockup";
 
 const containerVariants = {
   hidden: {},
@@ -169,16 +169,7 @@ const HeroSection = () => {
           </motion.div>
 
           {/* Dashboard Mockup */}
-          <motion.div variants={itemVariants} className="mt-12 -mb-16">
-            <img
-              src={heroMockup}
-              alt="KobiTech platformu - Dijital Dönüşüm Planı ve Çözümler ekranları"
-              className="w-full max-w-5xl mx-auto"
-              style={{
-                filter: "drop-shadow(0 25px 60px rgba(109,40,217,0.3)) drop-shadow(0 8px 20px rgba(0,0,0,0.25))",
-              }}
-            />
-          </motion.div>
+          <HeroMockup />
         </motion.div>
       </div>
     </section>
