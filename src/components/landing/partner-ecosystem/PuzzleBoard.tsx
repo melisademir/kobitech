@@ -13,7 +13,7 @@ function LogoText({ piece, cx, cy }: { piece: PuzzlePiece; cx: number; cy: numbe
 
   if (piece.logo) {
     const isSmall = piece.cs === 1 && piece.rs === 1;
-    const padding = isSmall ? Math.min(pieceW, pieceH) * 0.10 : Math.min(pieceW, pieceH) * 0.18;
+    const padding = isSmall ? Math.min(pieceW, pieceH) * 0.06 : Math.min(pieceW, pieceH) * 0.12;
     return (
       <g clipPath={`url(#clip-${piece.id})`} style={{ pointerEvents: "none" }}>
         <rect x={px} y={py} width={pieceW} height={pieceH} fill="#FFFFFF" />
