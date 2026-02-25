@@ -22,7 +22,7 @@ const cards = [
     btnColor: "#E0E7FF",
   },
   {
-    title: "ParamTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
+    title: "KobiTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
     subtitle: "Size Özel 2 Ay Ücretsiz",
     description: "Bulut altyapısı, veri yönetimi ve dijital araçlarla işletmenizi geleceğe hazırlayın.",
     icon: Cloud,
