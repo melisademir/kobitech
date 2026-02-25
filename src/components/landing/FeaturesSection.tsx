@@ -134,7 +134,7 @@ const FeaturesSection = () => (
         className="text-center mb-8 md:mb-20"
       >
         <h2
-          className="text-5xl md:text-7xl font-extrabold text-gradient-heading"
+          className="text-5xl md:text-7xl font-extrabold text-foreground"
           style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
           Tüm Çözümlere Tek Platformdan Ulaşın

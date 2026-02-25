@@ -176,20 +176,6 @@
     background-clip: text;
   }
 
-  .text-gradient-heading {
-    background: linear-gradient(135deg, hsl(240, 40%, 16%) 0%, hsl(268, 72%, 38%) 50%, hsl(168, 76%, 42%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  .text-gradient-heading-light {
-    background: linear-gradient(135deg, hsl(0, 0%, 100%) 0%, hsl(168, 76%, 72%) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
   /* Warm glassmorphism */
   .glass-card {
     background: rgba(253, 251, 247, 0.75);

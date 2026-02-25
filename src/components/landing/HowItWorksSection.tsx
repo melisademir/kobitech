@@ -58,7 +58,7 @@ const HowItWorksSection = () => (
           Nasıl Çalışır?
         </span>
         <h2
-          className="text-5xl md:text-7xl font-extrabold text-gradient-heading-light"
+          className="text-5xl md:text-7xl font-extrabold text-white"
           style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
           Dijitalde Büyümeye Başlayın

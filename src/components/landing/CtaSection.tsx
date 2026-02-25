@@ -18,7 +18,7 @@ const CtaSection = () => (
         }}
       >
         <h2
-          className="text-3xl md:text-5xl font-extrabold text-gradient-heading-light mb-4"
+          className="text-3xl md:text-5xl font-extrabold text-white mb-4"
           style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
         >
           İşletmenizi Dijitalde Büyütmeye

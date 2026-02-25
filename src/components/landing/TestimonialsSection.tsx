@@ -129,7 +129,7 @@ const TestimonialsSection = () => {
             Başarı Hikayeleri
           </span>
           <h2
-            className="text-3xl md:text-5xl font-extrabold text-gradient-heading mb-3 md:mb-4"
+            className="text-3xl md:text-5xl font-extrabold text-foreground mb-3 md:mb-4"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
             İşletmelerden Geri Bildirimler
