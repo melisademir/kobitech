@@ -9,19 +9,19 @@ const steps = [
   {
     num: "01",
     image: stepHedef,
-    badge: "Karşılaştır",
+    badge: "Adım 1",
     title: "İşletmenize özel çözümleri inceleyin ve karşılaştırın.",
   },
   {
     num: "02",
     image: stepTeklif,
-    badge: "Teklif Al",
+    badge: "Adım 2",
     title: "Size özel çözümleri seçin ve teklif alın.",
   },
   {
     num: "03",
     image: stepBuyume,
-    badge: "Ticaretini Büyüt, Maliyetini Düşür",
+    badge: "Adım 3",
     title: "Dijital büyümenizi hemen başlatın.",
   },
 ];
