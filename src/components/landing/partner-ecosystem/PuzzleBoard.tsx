@@ -16,7 +16,7 @@ function LogoText({ piece, cx, cy }: { piece: PuzzlePiece; cx: number; cy: numbe
     const padding = isSmall ? Math.min(pieceW, pieceH) * 0.06 : Math.min(pieceW, pieceH) * 0.12;
     return (
       <g clipPath={`url(#clip-${piece.id})`} style={{ pointerEvents: "none" }}>
-        <rect x={px} y={py} width={pieceW} height={pieceH} fill={piece.darkBg ? piece.color : "hsl(268, 35%, 92%)"} />
+        <rect x={px} y={py} width={pieceW} height={pieceH} fill={piece.darkBg ? piece.color : "#FFFFFF"} />
         <image
           href={piece.logo}
           x={px + padding} y={py + padding}
@@ -154,7 +154,7 @@ export default function PuzzleBoard({
           >
             <g>
               {/* Base fill — selected gets purple gradient */}
-              <path d={pathD} fill={isSel ? "url(#selected-fill)" : "hsl(268, 35%, 92%)"} />
+              <path d={pathD} fill={isSel ? "url(#selected-fill)" : "#FFFFFF"} />
               <path d={pathD} fill={`url(#bevel-${piece.id})`} />
 
               {/* Border — transitions between states */}
