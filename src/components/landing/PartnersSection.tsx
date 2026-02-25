@@ -41,7 +41,7 @@ const categories = [
     accent: "#2563EB",
   },
   {
-    label: "Paranı Yönet",
+    label: "Ödeme Al",
     description:
       "Finrota ile nakit akışınızı kontrol altına alabilir, Kredim ile KOBİ'ye özel finansman imkanlarından yararlanabilirsiniz. İşletmenize uygun çözümleri inceleyerek finansal süreçlerinizi daha düzenli şekilde yönetebilirsiniz.",
     tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
