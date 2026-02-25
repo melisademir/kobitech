@@ -82,10 +82,10 @@ const categories = [
   {
     label: "Sahayı Yönet",
     description:
-      "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. EnRoute ile sahadan gelen verileri anında analiz ederek ekibinizin verimliliğini artırın.",
-    tags: ["EnRoute"],
+      "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. Univera EnRoute ile sahadan gelen verileri anında analiz ederek ekibinizin verimliliğini artırın.",
+    tags: ["Univera EnRoute"],
     icon: MapPin,
-    image: tabEkip,
+    image: tabKargo,
     accent: "#F59E0B",
   },
   {
