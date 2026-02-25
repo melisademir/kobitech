@@ -103,7 +103,7 @@ const HeroSection = () => {
           {/* Input row */}
           <motion.div variants={itemVariants}>
             <div
-              className="flex flex-col sm:flex-row gap-3 p-2 rounded-2xl"
+              className="flex flex-col sm:flex-row gap-2 p-1.5 rounded-xl"
               style={{
                 background: "rgba(15,7,32,0.55)",
                 backdropFilter: "blur(20px)",
@@ -119,7 +119,7 @@ const HeroSection = () => {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="E-posta adresiniz"
-                  className="hero-input w-full h-12 pl-10 pr-4 rounded-xl text-sm font-semibold outline-none"
+                  className="hero-input w-full h-10 pl-10 pr-4 rounded-lg text-xs font-semibold outline-none"
                   style={{
                     background: "rgba(255,255,255,0.08)",
                     border: "1px solid rgba(167,139,250,0.20)",
@@ -134,7 +134,7 @@ const HeroSection = () => {
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Telefon numaranız"
-                  className="hero-input w-full h-12 pl-10 pr-4 rounded-xl text-sm font-semibold outline-none"
+                  className="hero-input w-full h-10 pl-10 pr-4 rounded-lg text-xs font-semibold outline-none"
                   style={{
                     background: "rgba(255,255,255,0.08)",
                     border: "1px solid rgba(167,139,250,0.20)",
@@ -144,11 +144,11 @@ const HeroSection = () => {
               </div>
               <Link to="/kobi/step-1">
                 <button
-                  className="h-[54px] px-10 rounded-[24px] font-bold text-[15px] text-white whitespace-nowrap shrink-0 flex items-center gap-2 w-full sm:w-auto justify-center transition-colors duration-200"
+                  className="h-[44px] px-8 rounded-[20px] font-bold text-[14px] text-white whitespace-nowrap shrink-0 flex items-center gap-2 w-full sm:w-auto justify-center transition-colors duration-200"
                   style={{
                     background: "linear-gradient(135deg, #6D28D9, #7C3AED)",
                     boxShadow: "0 4px 16px -4px rgba(109,40,217,0.45)",
-                    minWidth: "200px",
+                    minWidth: "170px",
                   }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.background = "linear-gradient(135deg, #5B21B6, #6D28D9)";
