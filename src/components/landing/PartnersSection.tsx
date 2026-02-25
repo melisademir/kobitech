@@ -52,7 +52,7 @@ const categories = [
   {
     label: "Paranı Yönet",
     description:
-      "Fiziksel ve online satışlarınız için Türkiye'nin önde gelen ödeme altyapılarından Param çözümleri ile POS, sanal POS ve mobil ödeme yöntemlerini kullanarak işletmenize uygun ödeme yapısını oluşturabilirsiniz. Böylece tüm satış kanallarınızdan güvenli şekilde ödeme almaya başlayabilirsiniz.",
+      "Finrota ile nakit akışınızı kontrol altına alabilir, Kredim ile KOBİ'ye özel finansman imkanlarından yararlanabilirsiniz. İşletmenize uygun çözümleri inceleyerek finansal süreçlerinizi daha düzenli şekilde yönetebilirsiniz.",
     tags: ["Muhasebe Çözümleri", "ERP Yazılımı", "Fatura Yönetimi"],
     icon: Wallet,
     image: tabPara,
