@@ -44,7 +44,7 @@ const categories = [
     label: "Paranı Yönet",
     description:
       "Finrota'nın sunduğu Netahsilat, Netekstre, Nap360 ve Posrapor çözümleriyle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına ulaşarak ticaretinize güç katın. İşletmenize özel dijital çözümlerle finansal süreçlerinizi daha düzenli hale getirin ve kontrolü her an elinizde tutun.",
-    tags: ["Muhasebe Çözümleri", "ERP Yazılımı", "Fatura Yönetimi"],
+    tags: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"],
     icon: Wallet,
     image: tabPara,
     accent: "#D97706",
