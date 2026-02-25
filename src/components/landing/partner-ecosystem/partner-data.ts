@@ -1,5 +1,5 @@
 import logoFinrota from "@/assets/logo-finrota.png";
-import logoParam from "@/assets/logo-param.png";
+import logoParam from "@/assets/logo-param.jpg";
 import logoTsoft from "@/assets/logo-tsoft.svg";
 import logoNebim from "@/assets/logo-nebim.svg";
 import logoUnivera from "@/assets/logo-univera.svg";
