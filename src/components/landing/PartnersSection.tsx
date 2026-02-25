@@ -61,8 +61,8 @@ const categories = [
   {
     label: "Üretimini Optimize Et",
     description:
-      "Üretim süreçlerinizi dijitalleştirerek verimliliğinizi artırabilir ve operasyonel maliyetlerinizi düşürebilirsiniz. Univera ve Nebim çözümleriyle üretim, stok ve finans süreçlerinizi entegre şekilde yöneterek operasyonlarınızı optimize edebilirsiniz.",
-    tags: ["Üretim Takibi", "Verimlilik Analizi", "Otomasyon"],
+      "Nebim V3'ün güçlü altyapısıyla üretim, stok ve finans yönetimini tek noktada birleştirerek iş yükünüzü hafifletin. Dijitalleşmenin getirdiği hızla maliyetlerinizi düşürün; süreçlerinizi kusursuz yöneterek ticaretinizde sağlam bir düzen kurun.",
+    tags: ["Nebim V3"],
     icon: Factory,
     image: tabUretim,
     accent: "#DC2626",
