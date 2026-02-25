@@ -11,6 +11,7 @@ import {
   Globe2,
   Users,
   ArrowRight,
+  MapPin,
 } from "lucide-react";
 import tabEticaret from "@/assets/tab-eticaret-ai.png";
 import tabOdeme from "@/assets/tab-odeme-ai.png";
@@ -77,6 +78,15 @@ const categories = [
     icon: Users,
     image: tabEkip,
     accent: "#DB2777",
+  },
+  {
+    label: "Sahayı Yönet",
+    description:
+      "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. EnRoute ile sahadan gelen verileri anında analiz ederek ekibinizin verimliliğini artırın.",
+    tags: ["EnRoute"],
+    icon: MapPin,
+    image: tabEkip,
+    accent: "#F59E0B",
   },
   {
     label: "Teşviklerden Yararlan",
