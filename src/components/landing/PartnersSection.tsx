@@ -125,12 +125,12 @@ const PartnersSection = () => {
           className="text-center mb-14"
         >
           <h2
-            className="text-5xl md:text-7xl font-extrabold text-foreground"
+            className="text-5xl md:text-7xl font-extrabold text-gradient-heading"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
             Ticaretini Büyüt
             <br />
-            <span className="text-gradient-primary">Maliyetlerini Düşür</span>
+            Maliyetlerini Düşür
           </h2>
           <p className="text-muted-foreground mt-4 max-w-2xl mx-auto whitespace-nowrap" style={{ fontSize: "19px", lineHeight: "1.7" }}>
             İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
