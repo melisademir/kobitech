@@ -52,7 +52,7 @@ const categories = [
   {
     label: "Paranı Yönet",
     description:
-      "Finrota ile nakit akışınızı kontrol altına alabilir, Kredim ile KOBİ'ye özel finansman imkanlarından yararlanabilirsiniz. İşletmenize uygun çözümleri inceleyerek finansal süreçlerinizi daha düzenli şekilde yönetebilirsiniz.",
+      "Finrota'nın sunduğu akıllı çözümlerle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim üzerinden işletmenize uygun finansman imkanlarına ulaşarak ticaretinize güç katın. İşletmenize özel dijital çözümlerle finansal süreçlerinizi daha düzenli hale getirin ve kontrolü her an elinizde tutun.",
     tags: ["Muhasebe Çözümleri", "ERP Yazılımı", "Fatura Yönetimi"],
     icon: Wallet,
     image: tabPara,
