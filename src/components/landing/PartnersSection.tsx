@@ -70,15 +70,6 @@ const categories = [
     accent: "#10B981",
   },
   {
-    label: "Üretimini Optimize Et",
-    description:
-      "Nebim V3 ile üretiminizi uçtan uca yönetin ve optimize edin. Planlamadan sahaya, maliyetlerden stoklara kadar tüm üretim süreçlerinizi tek platformda izleyin. Operasyonel verimliliği artırın, maliyetleri kontrol altına alın ve büyümeye hazır bir üretim yapısı kurun.",
-    tags: ["Nebim V3"],
-    icon: Factory,
-    image: tabUretim,
-    accent: "#DC2626",
-  },
-  {
     label: "Ekibine Yön Ver",
     description:
       "Çalışanlarınızın hem idari süreçlerini hem de saha operasyonlarını tek merkezden yönetin. Workcube HR ile özlük ve bordro işlemlerini güvenle takip ederken, EnRoute ile saha satış ekiplerinizin rotalarını optimize edin ve mobil operasyonlarınızı anlık verilerle yöneterek ekibinizin verimliliğini artırın.",
