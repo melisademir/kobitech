@@ -36,7 +36,7 @@ const cards = [
     btnColor: "#93C5FD",
   },
   {
-    title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
+    title: "Uni-dox ile e-Dönüşümünüzü Tamamlayın!",
     bubble: "1000 Kontör Ücretsiz!",
     description: "1.000 kontör hediyenizle e-Fatura, e-İrsaliye, e-Defter, e-Mutabakat ve e-Arşiv süreçlerinizi tek platformda hızlandırın.",
     icon: FileText,
