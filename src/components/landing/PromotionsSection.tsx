@@ -13,7 +13,7 @@ const cards = [
     description: "Sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
     icon: MessageSquare,
     image: promoAiAgent,
-    overlay: "linear-gradient(180deg, rgba(15,10,35,0.35) 0%, rgba(15,10,35,0.25) 50%, rgba(15,10,35,0.4) 100%)",
+    overlay: "none",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(99,102,241,0.2)",
     subtitleColor: "#A5B4FC",
@@ -29,7 +29,7 @@ const cards = [
     description: "Bulut altyapısı, veri yönetimi ve dijital araçlarla işletmenizi geleceğe hazırlayın.",
     icon: Cloud,
     image: promoCloud,
-    overlay: "linear-gradient(180deg, rgba(10,8,30,0.35) 0%, rgba(10,8,30,0.25) 50%, rgba(10,8,30,0.4) 100%)",
+    overlay: "none",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(139,92,246,0.2)",
     subtitleColor: "#A78BFA",
@@ -45,7 +45,7 @@ const cards = [
     description: "Dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın. Uni-dox ile tüm evrak işleriniz tek platformda.",
     icon: FileText,
     image: promoUnidox,
-    overlay: "linear-gradient(180deg, rgba(6,28,60,0.35) 0%, rgba(6,28,60,0.25) 50%, rgba(6,28,60,0.4) 100%)",
+    overlay: "none",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(59,130,246,0.2)",
     subtitleColor: "#93C5FD",
@@ -61,7 +61,7 @@ const cards = [
     description: "Fiziksel ve sanal POS çözümleriyle tüm ödeme kanallarınızı avantajlı komisyon oranlarıyla yönetin.",
     icon: CreditCard,
     image: promoParam,
-    overlay: "linear-gradient(180deg, rgba(30,10,60,0.35) 0%, rgba(30,10,60,0.25) 50%, rgba(30,10,60,0.4) 100%)",
+    overlay: "none",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(168,85,247,0.2)",
     subtitleColor: "#C4B5FD",
@@ -93,14 +93,16 @@ const PromotionsSection = () => (
               className="absolute inset-0 w-full h-full object-cover"
               aria-hidden="true"
             />
-            {/* Overlay */}
-            <div
-              className="absolute inset-0"
-              style={{ background: card.overlay }}
-            />
 
-            {/* Content */}
-            <div className="relative z-10 p-8 md:p-10 flex flex-col justify-between flex-1">
+            {/* Content — frosted glass panel behind text only */}
+            <div
+              className="relative z-10 mt-auto m-4 md:m-6 p-6 md:p-8 rounded-xl flex flex-col"
+              style={{
+                background: "rgba(10, 8, 30, 0.55)",
+                backdropFilter: "blur(16px)",
+                WebkitBackdropFilter: "blur(16px)",
+              }}
+            >
               {/* Badge */}
               <span
                 className="inline-flex items-center gap-1.5 self-start px-4 py-1.5 rounded-full text-xs font-bold tracking-wide mb-5"
