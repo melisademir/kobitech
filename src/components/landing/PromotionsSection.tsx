@@ -50,9 +50,9 @@ const cards = [
     btnColor: "#86EFAC",
   },
   {
-    title: "Param ile Ödemelerinizi Kolaylaştırın!",
+    title: "Param ile Ödeme Almayı Kolaylaştırın!",
     bubble: "Size Özel %2,29\nKomisyon Oranı!",
-    description: "Özel %2,29 komisyon oranıyla fiziksel ve sanal POS çözümleri sayesinde tüm ödeme kanallarınızı avantajlı şekilde yönetin.",
+    description: "Fiziki, sanal ve cep POS çözümleri ile tüm ödemelerinizi avantajlı komisyon oranlarıyla alın.",
     icon: CreditCard,
     image: promoPayment,
     badgeBg: "rgba(168,85,247,0.15)",
