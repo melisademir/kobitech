@@ -3,6 +3,8 @@ import { ArrowRight, MessageSquare, Cloud, FileText, CreditCard } from "lucide-r
 import { Link } from "react-router-dom";
 import promoAiAgent from "@/assets/promo-ai-agent.jpg";
 import promoCloud from "@/assets/promo-cloud.jpg";
+import promoUnidox from "@/assets/promo-unidox.jpg";
+import promoParam from "@/assets/promo-param.jpg";
 
 const cards = [
   {
@@ -42,7 +44,7 @@ const cards = [
     subtitle: "Size Özel 1.000 Kontör Hediye",
     description: "Dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın. Uni-dox ile tüm evrak işleriniz tek platformda.",
     icon: FileText,
-    image: promoAiAgent,
+    image: promoUnidox,
     overlay: "linear-gradient(180deg, rgba(6,28,60,0.88) 0%, rgba(10,20,50,0.72) 50%, rgba(6,28,60,0.92) 100%)",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(59,130,246,0.2)",
@@ -58,7 +60,7 @@ const cards = [
     subtitle: "Size Özel %2,29 Komisyon Oranı",
     description: "Fiziksel ve sanal POS çözümleriyle tüm ödeme kanallarınızı avantajlı komisyon oranlarıyla yönetin.",
     icon: CreditCard,
-    image: promoCloud,
+    image: promoParam,
     overlay: "linear-gradient(180deg, rgba(30,10,60,0.86) 0%, rgba(40,15,70,0.7) 50%, rgba(30,10,60,0.9) 100%)",
     textColor: "#FFFFFF",
     subtitleBg: "rgba(168,85,247,0.2)",
