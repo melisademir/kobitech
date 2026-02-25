@@ -177,10 +177,10 @@ const itemVariants = {
 };
 
 const HeroMockup = () => (
-  <motion.div variants={itemVariants} className="mt-12 -mb-16 relative">
+  <motion.div variants={itemVariants} className="mt-8 md:mt-12 -mb-8 md:-mb-16 relative mx-auto max-w-5xl">
     {/* Brand gradient background */}
     <div
-      className="absolute inset-0 rounded-3xl"
+      className="absolute inset-0 rounded-2xl md:rounded-3xl"
       style={{
         background: "linear-gradient(135deg, hsl(263,70%,18%) 0%, hsl(263,60%,28%) 35%, hsl(270,50%,22%) 65%, hsl(258,65%,15%) 100%)",
         transform: "scale(1.04, 1.08)",
@@ -190,35 +190,35 @@ const HeroMockup = () => (
 
     {/* Devices container */}
     <div
-      className="relative z-10 flex items-center justify-center gap-4 md:gap-8 px-6 py-8 md:py-12"
+      className="relative z-10 flex items-center justify-center gap-3 md:gap-8 px-4 md:px-6 py-6 md:py-12"
       style={{ perspective: "1200px" }}
     >
       {/* Desktop - Harita */}
       <div
-        className="relative w-[55%] md:w-[60%] max-w-[580px]"
+        className="relative w-[62%] md:w-[60%] max-w-[580px]"
         style={{
-          transform: "rotateY(6deg) rotateX(2deg)",
+          transform: "rotateY(4deg) rotateX(1deg)",
           transformStyle: "preserve-3d",
         }}
       >
         {/* Laptop frame */}
         <div
-          className="rounded-xl overflow-hidden shadow-2xl"
+          className="rounded-lg md:rounded-xl overflow-hidden shadow-2xl"
           style={{
-            border: "3px solid #1F1F2E",
+            border: "2px solid #1F1F2E",
             background: "#1F1F2E",
             boxShadow: "0 30px 60px -15px rgba(0,0,0,0.5), 0 15px 30px -10px rgba(109,40,217,0.2)",
           }}
         >
           {/* Browser chrome */}
-          <div className="flex items-center gap-1.5 px-3 py-1.5 bg-[#2A2A3C]">
-            <div className="flex gap-1">
-              <div className="w-2 h-2 rounded-full bg-red-400" />
-              <div className="w-2 h-2 rounded-full bg-yellow-400" />
-              <div className="w-2 h-2 rounded-full bg-green-400" />
+          <div className="flex items-center gap-1 md:gap-1.5 px-2 md:px-3 py-1 md:py-1.5 bg-[#2A2A3C]">
+            <div className="flex gap-0.5 md:gap-1">
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-red-400" />
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-yellow-400" />
+              <div className="w-1.5 h-1.5 md:w-2 md:h-2 rounded-full bg-green-400" />
             </div>
-            <div className="flex-1 mx-3">
-              <div className="bg-[#1F1F2E] rounded px-2 py-0.5 text-center" style={{ fontSize: "6px", color: "#888" }}>
+            <div className="flex-1 mx-2 md:mx-3">
+              <div className="bg-[#1F1F2E] rounded px-1.5 md:px-2 py-0.5 text-center hidden sm:block" style={{ fontSize: "6px", color: "#888" }}>
                 kobitech.lovable.app/kobi/harita
               </div>
             </div>
@@ -230,43 +230,41 @@ const HeroMockup = () => (
         </div>
         {/* Laptop base */}
         <div
-          className="mx-auto mt-0 h-2 rounded-b-lg"
+          className="mx-auto mt-0 h-1.5 md:h-2 rounded-b-lg"
           style={{
             width: "60%",
             background: "linear-gradient(180deg, #1F1F2E, #15151F)",
-            borderBottomLeftRadius: "8px",
-            borderBottomRightRadius: "8px",
           }}
         />
       </div>
 
       {/* Mobile - Ürünler */}
       <div
-        className="relative w-[22%] md:w-[18%] max-w-[180px]"
+        className="relative w-[28%] md:w-[18%] max-w-[180px]"
         style={{
-          transform: "rotateY(-8deg) rotateX(2deg) translateY(10px)",
+          transform: "rotateY(-6deg) rotateX(1deg) translateY(8px)",
           transformStyle: "preserve-3d",
         }}
       >
         <div
-          className="rounded-[16px] overflow-hidden shadow-2xl"
+          className="rounded-[12px] md:rounded-[16px] overflow-hidden shadow-2xl"
           style={{
-            border: "4px solid #1F1F2E",
+            border: "3px solid #1F1F2E",
             background: "#1F1F2E",
             boxShadow: "0 30px 60px -15px rgba(0,0,0,0.5), 0 15px 30px -10px rgba(109,40,217,0.2)",
           }}
         >
           {/* Notch */}
           <div className="flex justify-center py-0.5 bg-[#1F1F2E]">
-            <div className="w-12 h-1.5 rounded-full bg-[#2A2A3C]" />
+            <div className="w-8 md:w-12 h-1 md:h-1.5 rounded-full bg-[#2A2A3C]" />
           </div>
           {/* Screen */}
           <div className="aspect-[9/19.5] overflow-hidden bg-white">
             <UrunlerScreen />
           </div>
           {/* Home indicator */}
-          <div className="flex justify-center py-1 bg-[#1F1F2E]">
-            <div className="w-8 h-1 rounded-full bg-[#3A3A4C]" />
+          <div className="flex justify-center py-0.5 md:py-1 bg-[#1F1F2E]">
+            <div className="w-6 md:w-8 h-0.5 md:h-1 rounded-full bg-[#3A3A4C]" />
           </div>
         </div>
       </div>

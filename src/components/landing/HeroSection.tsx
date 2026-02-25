@@ -20,7 +20,7 @@ const HeroSection = () => {
   const [phone, setPhone] = useState("");
 
   return (
-    <section className="relative overflow-hidden" style={{ minHeight: "88vh" }}>
+    <section className="relative overflow-x-hidden" style={{ minHeight: "88vh" }}>
 
       {/* ── Background image ── */}
       <div className="absolute inset-0 z-0">
