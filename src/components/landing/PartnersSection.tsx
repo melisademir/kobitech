@@ -119,7 +119,7 @@ const PartnersSection = () => {
             <br />
             <span className="text-gradient-primary">Maliyetlerini Düşür</span>
           </h2>
-          <p className="text-muted-foreground mt-4 max-w-md mx-auto" style={{ fontSize: "19px", lineHeight: "1.7" }}>
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto whitespace-nowrap" style={{ fontSize: "19px", lineHeight: "1.7" }}>
             İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
           </p>
         </motion.div>
