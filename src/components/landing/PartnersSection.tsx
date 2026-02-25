@@ -23,6 +23,15 @@ import tabUretim from "@/assets/tab-uretim-ai.png";
 
 const categories = [
   {
+    label: "Ödeme Al",
+    description:
+      "Fiziksel ve online satışlarınız için Türkiye'nin önde gelen ödeme altyapılarından Param çözümleri ile POS, sanal POS ve mobil ödeme yöntemlerini kullanarak işletmenize uygun ödeme yapısını oluşturabilirsiniz. Böylece tüm satış kanallarınızdan güvenli şekilde ödeme almaya başlayabilirsiniz.",
+    tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
+    icon: CreditCard,
+    image: tabOdeme,
+    accent: "#059669",
+  },
+  {
     label: "Teşviklerden Yararlan",
     description:
       "Uzman danışmanlarımız, işletmenizin ihtiyaçlarına uygun teşvik ve hibe fırsatlarını belirler; başvuru süreçlerinde rehberlik eder ve sizi ilgili kurum ve kuruluşlarla buluşturur. Böylece işletmeniz için sunulan desteklerden etkin biçimde yararlanmış olursunuz.",
@@ -41,15 +50,6 @@ const categories = [
     accent: "#2563EB",
   },
   {
-    label: "Ödeme Al",
-    description:
-      "Fiziksel ve online satışlarınız için Türkiye'nin önde gelen ödeme altyapılarından Param çözümleri ile POS, sanal POS ve mobil ödeme yöntemlerini kullanarak işletmenize uygun ödeme yapısını oluşturabilirsiniz. Böylece tüm satış kanallarınızdan güvenli şekilde ödeme almaya başlayabilirsiniz.",
-    tags: ["Ödeme Çözümleri", "Dijital Finansal Yönetim", "Finansman Desteği"],
-    icon: CreditCard,
-    image: tabOdeme,
-    accent: "#059669",
-  },
-  {
     label: "Paranı Yönet",
     description:
       "Finrota ile nakit akışınızı kontrol altına alabilir, Kredim ile KOBİ'ye özel finansman imkanlarından yararlanabilirsiniz. İşletmenize uygun çözümleri inceleyerek finansal süreçlerinizi daha düzenli şekilde yönetebilirsiniz.",
@@ -59,15 +59,6 @@ const categories = [
     accent: "#D97706",
   },
   {
-    label: "Üretimini Optimize Et",
-    description:
-      "Üretim süreçlerinizi dijitalleştirerek verimliliğinizi artırabilir ve operasyonel maliyetlerinizi düşürebilirsiniz. Univera ve Nebim çözümleriyle üretim, stok ve finans süreçlerinizi entegre şekilde yöneterek operasyonlarınızı optimize edebilirsiniz.",
-    tags: ["Üretim Takibi", "Verimlilik Analizi", "Otomasyon"],
-    icon: Factory,
-    image: tabUretim,
-    accent: "#DC2626",
-  },
-  {
     label: "Stoğunu Kontrol Et",
     description:
       "Univera ve Nebim ERP çözümleri ile stok ve depo yönetiminizi dijitalleştirerek ürün hareketlerinizi anlık takip edebilir, min-max stok seviyeleri ve FIFO/LIFO yöntemleriyle stok planlamanızı optimize edebilirsiniz. Böylece tedarik zinciri süreçlerinizi iyileştirerek fire oranlarınızı azaltabilirsiniz.",
@@ -75,6 +66,15 @@ const categories = [
     icon: Package,
     image: tabStok,
     accent: "#0891B2",
+  },
+  {
+    label: "Üretimini Optimize Et",
+    description:
+      "Üretim süreçlerinizi dijitalleştirerek verimliliğinizi artırabilir ve operasyonel maliyetlerinizi düşürebilirsiniz. Univera ve Nebim çözümleriyle üretim, stok ve finans süreçlerinizi entegre şekilde yöneterek operasyonlarınızı optimize edebilirsiniz.",
+    tags: ["Üretim Takibi", "Verimlilik Analizi", "Otomasyon"],
+    icon: Factory,
+    image: tabUretim,
+    accent: "#DC2626",
   },
   {
     label: "Globale Açıl",
