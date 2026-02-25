@@ -63,7 +63,7 @@ const categories = [
   {
     label: "Ürünlerini Gönder",
     description:
-      "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her köşesine hızlı ve güvenli şekilde ulaştırın. E-ticaret entegrasyonu sayesinde siparişleriniz otomatik olarak kargoya verilir, anlık takip imkanıyla müşterilerinizi her adımda bilgilendirin. İndirimli kurumsal tarifelerle gönderim maliyetlerinizi düşürün.",
+      "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her yerine hızlıca ulaştırın. E-ticaret entegrasyonu ile siparişlerinizi anında kargoya hazırlayın ve operasyonel iş yükünüzü hafifletin. Kurumsal indirimlerle gönderim maliyetlerinizi düşürürken, anlık takip sistemiyle müşterilerinize her adımda güven verin.",
     tags: ["Aras Kargo", "E-ticaret Entegrasyonu", "Gönderi Takibi"],
     icon: Truck,
     image: tabKargo,
