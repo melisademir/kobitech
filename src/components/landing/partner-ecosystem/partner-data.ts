@@ -11,6 +11,7 @@ import logoGoogle from "@/assets/logo-google.png";
 import logoIkas from "@/assets/logo-ikas.png";
 import logoWorkcube from "@/assets/logo-workcube.png";
 import logoMukellef from "@/assets/logo-mukellef.png";
+import logoParamtech from "@/assets/logo-paramtech.svg";
 
 // ─── Piece type ───────────────────────────────────────────────────────────────
 export interface PuzzlePiece {
@@ -23,6 +24,7 @@ export interface PuzzlePiece {
   name: string;
   label: string;
   logo: string;
+  darkBg?: boolean;
   edges: { top: number[]; right: number[]; bottom: number[]; left: number[] };
 }
 
@@ -86,7 +88,12 @@ export const pieces: PuzzlePiece[] = [
   {
     id: "ticimax", col: 2, row: 4, cs: 2, rs: 1, color: "#6366F1",
     name: "Ticimax", label: "Ticimax", logo: logoTicimax,
-    edges: { top: [1, -1], right: [1], bottom: [0, 0], left: [1] }
+    edges: { top: [1, -1], right: [1], bottom: [0, -1], left: [1] }
+  },
+  {
+    id: "paramtech", col: 0, row: 5, cs: 2, rs: 2, color: "#1a1a2e",
+    name: "ParamTech", label: "ParamTech", logo: logoParamtech, darkBg: true,
+    edges: { top: [1, -1], right: [1, -1], bottom: [0, 0], left: [0, 0] }
   }
 ];
 
@@ -114,4 +121,5 @@ export const partnerDetails: Record<string, PartnerDetail> = {
   mukellef: { category: "Global Şirket Kuruluşu", headline: "Mükellef ile Globalleşme", leadership: "Global Şirket Kuruluşunda Uzman", description: "Yurt dışı şirket kuruluşu, vergi danışmanlığı, uluslararası ticaret hukuku. 50+ ülkede tecrübe.", features: ["Yurt dışı şirket kuruluşu", "Vergi danışmanlığı", "Uluslararası ticaret hukuku", "50+ ülke tecrübesi"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 99 }, { name: "Hizmet", stars: 5, pct: 97 }], badge: "50+ Ülke" },
   ticimax: { category: "E-Ticaret Çözümleri", headline: "Ticimax ile Online Satış", leadership: "20.000+ E-ticaret Sitesine Güç Veren Platform", description: "Kolay kurulum, sınırsız ürün, güçlü yönetim paneli. Büyümenize ölçeklenebilir altyapı.", features: ["Mobil uygulama dahil", "SEO optimizasyon araçları", "Çok kanallı satış", "30 gün ücretsiz deneme"], sectors: [{ name: "E-ticaret", stars: 5, pct: 94 }, { name: "Perakende", stars: 4, pct: 80 }], badge: "30 Gün Ücretsiz" },
   finrota: { category: "Finansal Yönetim", headline: "Finrota ile Nakit Yönetimi", leadership: "10.000+ İşletmenin Güvendiği Finansal Yönetim Çözümü", description: "Tahsilat, ödeme, banka mutabakatı otomasyonu. Nakit akışınızı tam kontrol altına alın.", features: ["Nakit akışı takibi", "Çek/senet yönetimi", "Banka mutabakatı", "Otomatik finansal raporlar"], sectors: [{ name: "Finans", stars: 5, pct: 94 }, { name: "Üretim", stars: 4, pct: 80 }], badge: "Otomatik Raporlar" },
+  paramtech: { category: "Bulut Çözümleri", headline: "ParamTech Cloud ile Dijitalleşin", leadership: "KOBİ'ler İçin Kurumsal Bulut Altyapısı", description: "ParamTech Cloud ile işletmenizin tüm dijital ihtiyaçlarını tek platformda karşılayın. Güvenli, ölçeklenebilir ve yönetimi kolay bulut altyapısı.", features: ["Bulut sunucu yönetimi", "Veri yedekleme & güvenlik", "Ölçeklenebilir altyapı", "7/24 teknik destek"], sectors: [{ name: "Tüm Sektörler", stars: 5, pct: 95 }, { name: "Teknoloji", stars: 5, pct: 98 }], badge: "Cloud Çözümü" },
 };

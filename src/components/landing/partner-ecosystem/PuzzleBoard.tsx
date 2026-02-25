@@ -16,7 +16,7 @@ function LogoText({ piece, cx, cy }: { piece: PuzzlePiece; cx: number; cy: numbe
     const padding = isSmall ? Math.min(pieceW, pieceH) * 0.06 : Math.min(pieceW, pieceH) * 0.12;
     return (
       <g clipPath={`url(#clip-${piece.id})`} style={{ pointerEvents: "none" }}>
-        <rect x={px} y={py} width={pieceW} height={pieceH} fill="#FFFFFF" />
+        <rect x={px} y={py} width={pieceW} height={pieceH} fill={piece.darkBg ? piece.color : "#FFFFFF"} />
         <image
           href={piece.logo}
           x={px + padding} y={py + padding}
@@ -74,7 +74,8 @@ export default function PuzzleBoard({
   visible: boolean;
 }) {
   const SVG_W = COLS * CW + (COLS - 1) * GAP;
-  const SVG_H = 4 * CH + (4 - 1) * GAP;
+  const maxRow = Math.max(...pieces.map(p => p.row + p.rs));
+  const SVG_H = maxRow * CH + (maxRow - 1) * GAP;
   const [hovered, setHovered] = useState<string | null>(null);
 
   return (
