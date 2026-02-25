@@ -206,7 +206,7 @@ const PartnersSection = () => {
                 </p>
 
                 {/* Tags — corporate, sade */}
-                <div className="flex flex-wrap justify-center gap-2.5">
+                <div className="flex flex-wrap gap-2.5">
                   {cat.tags.map((tag) => (
                     <span
                       key={tag}
