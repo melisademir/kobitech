@@ -8,64 +8,48 @@ import promoPayment from "@/assets/promo-payment.jpg";
 
 const cards = [
   {
-    title: "Sektörden Haber Veren AI Agent'ımız ile Tanışın! Size Özel ilk 100 Bülten Hediye!",
-    description: "1.000 chat hediyenizle sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
+    title: "Sektörden Haber Veren AI Agent'ımız ile Tanışın!",
+    benefit: "Size Özel ilk 100 Bülten Hediye!",
+    description: "İlk 100 bülten hediyenizle sektörünüzdeki güncel gelişmeleri, trendleri ve fırsatları yapay zeka destekli asistanımızla anında öğrenin.",
     icon: MessageSquare,
     image: promoAiChat,
-    overlay: "linear-gradient(180deg, rgba(15,10,35,0.78) 0%, rgba(15,10,35,0.58) 50%, rgba(15,10,35,0.82) 100%)",
-    textColor: "#FFFFFF",
-    subtitleBg: "rgba(99,102,241,0.2)",
-    subtitleColor: "#A5B4FC",
-    subtitleBorder: "rgba(99,102,241,0.35)",
-    descColor: "rgba(210,215,230,0.8)",
-    btnBg: "rgba(255,255,255,0.1)",
-    btnBorder: "rgba(255,255,255,0.18)",
-    btnColor: "#E0E7FF",
+    badgeBg: "rgba(99,102,241,0.18)",
+    badgeBorder: "rgba(99,102,241,0.35)",
+    badgeColor: "#6366F1",
+    overlayColor: "rgba(15,25,60,0.45)",
   },
   {
-    title: "2 Ay Ücretsiz — ParamTECH Cloud ile Dijitale Taşıyın!",
+    title: "ParamTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
+    benefit: "2 Ay Ücretsiz",
     description: "2 ay ücretsiz deneme ile bulut altyapısı, veri yönetimi ve dijital araçlarla işletmenizi geleceğe hazırlayın.",
     icon: Cloud,
     image: promoCloudTech,
-    overlay: "linear-gradient(180deg, rgba(10,8,30,0.72) 0%, rgba(15,12,40,0.55) 50%, rgba(10,8,30,0.78) 100%)",
-    textColor: "#FFFFFF",
-    subtitleBg: "rgba(139,92,246,0.2)",
-    subtitleColor: "#A78BFA",
-    subtitleBorder: "rgba(139,92,246,0.35)",
-    descColor: "rgba(196,181,253,0.75)",
-    btnBg: "rgba(255,255,255,0.1)",
-    btnBorder: "rgba(255,255,255,0.15)",
-    btnColor: "#E9D5FF",
+    badgeBg: "rgba(59,130,246,0.18)",
+    badgeBorder: "rgba(59,130,246,0.35)",
+    badgeColor: "#3B82F6",
+    overlayColor: "rgba(10,20,50,0.4)",
   },
   {
-    title: "1.000 Kontör Hediye — Uni-dox ile Belge Yönetimini Keşfedin!",
-    description: "1.000 kontör hediyenizle dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın. Uni-dox ile tüm evrak işleriniz tek platformda.",
+    title: "Uni-dox ile Dijital Belge Yönetimini Keşfedin!",
+    benefit: "1.000 Kontör Hediye",
+    description: "1.000 kontör hediyenizle dijital belge oluşturma, imzalama ve arşivleme süreçlerinizi hızlandırın.",
     icon: FileText,
     image: promoDocuments,
-    overlay: "linear-gradient(180deg, rgba(6,28,60,0.78) 0%, rgba(10,20,50,0.58) 50%, rgba(6,28,60,0.82) 100%)",
-    textColor: "#FFFFFF",
-    subtitleBg: "rgba(59,130,246,0.2)",
-    subtitleColor: "#93C5FD",
-    subtitleBorder: "rgba(59,130,246,0.35)",
-    descColor: "rgba(191,219,254,0.8)",
-    btnBg: "rgba(255,255,255,0.1)",
-    btnBorder: "rgba(255,255,255,0.18)",
-    btnColor: "#DBEAFE",
+    badgeBg: "rgba(34,197,94,0.15)",
+    badgeBorder: "rgba(34,197,94,0.35)",
+    badgeColor: "#16A34A",
+    overlayColor: "rgba(30,20,10,0.35)",
   },
   {
-    title: "%2,29 Komisyon Oranı — Param ile Ödemelerinizi Kolaylaştırın!",
+    title: "Param ile Ödemelerinizi Kolaylaştırın!",
+    benefit: "%2,29 Komisyon Oranı",
     description: "Özel %2,29 komisyon oranıyla fiziksel ve sanal POS çözümleri sayesinde tüm ödeme kanallarınızı avantajlı şekilde yönetin.",
     icon: CreditCard,
     image: promoPayment,
-    overlay: "linear-gradient(180deg, rgba(30,10,60,0.76) 0%, rgba(40,15,70,0.55) 50%, rgba(30,10,60,0.8) 100%)",
-    textColor: "#FFFFFF",
-    subtitleBg: "rgba(168,85,247,0.2)",
-    subtitleColor: "#C4B5FD",
-    subtitleBorder: "rgba(168,85,247,0.35)",
-    descColor: "rgba(216,200,255,0.8)",
-    btnBg: "rgba(255,255,255,0.1)",
-    btnBorder: "rgba(255,255,255,0.15)",
-    btnColor: "#EDE9FE",
+    badgeBg: "rgba(168,85,247,0.15)",
+    badgeBorder: "rgba(168,85,247,0.35)",
+    badgeColor: "#A855F7",
+    overlayColor: "rgba(30,15,50,0.35)",
   },
 ];
 
@@ -80,63 +64,71 @@ const PromotionsSection = () => (
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-60px" }}
             transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-            className="relative rounded-2xl overflow-hidden min-h-[480px] flex flex-col"
+            className="group relative rounded-2xl overflow-hidden min-h-[480px] flex flex-col"
           >
-            {/* Background image */}
+            {/* Background image — objects sit at bottom */}
             <img
               src={card.image}
               alt=""
-              className="absolute inset-0 w-full h-full object-cover"
+              className="absolute inset-0 w-full h-full object-cover object-bottom"
               aria-hidden="true"
             />
-            {/* Overlay */}
+            {/* Light overlay for text readability at top */}
             <div
               className="absolute inset-0"
-              style={{ background: card.overlay }}
-            />
-            {/* Center text-safe zone */}
-            <div
-              className="absolute inset-0"
-              style={{ background: "radial-gradient(ellipse 70% 50% at center, rgba(0,0,0,0.35) 0%, transparent 100%)" }}
+              style={{
+                background: `linear-gradient(180deg, ${card.overlayColor} 0%, transparent 55%, transparent 100%)`,
+              }}
             />
 
-            {/* Content */}
-            <div className="relative z-10 p-8 md:p-10 flex flex-col justify-center items-center text-center flex-1">
-              {/* Title */}
-              <h3
-                className="font-bold leading-snug mb-3"
-                style={{ fontSize: "clamp(22px, 2.5vw, 28px)", color: card.textColor, letterSpacing: "-0.02em" }}
-              >
-                {card.title}
-              </h3>
+            {/* Content — top-aligned, left-aligned */}
+            <div className="relative z-10 p-8 md:p-10 flex flex-col justify-between flex-1">
+              {/* Top section: title + description */}
+              <div>
+                <h3
+                  className="font-bold leading-snug mb-3 text-white"
+                  style={{ fontSize: "clamp(22px, 2.5vw, 28px)", letterSpacing: "-0.02em", textShadow: "0 2px 12px rgba(0,0,0,0.3)" }}
+                >
+                  {card.title}
+                </h3>
 
-              {/* Description */}
-              <p
-                className="mb-8"
-                style={{
-                  fontSize: "15px",
-                  lineHeight: 1.7,
-                  color: card.descColor,
-                  maxWidth: "380px",
-                }}
-              >
-                {card.description}
-              </p>
-
-              {/* CTA */}
-              <Link to="/kobi/step-1" className="self-start">
-                <button
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200"
+                <p
+                  className="mb-4 text-white/75"
                   style={{
-                    background: card.btnBg,
-                    border: `1px solid ${card.btnBorder}`,
-                    color: card.btnColor,
-                    backdropFilter: "blur(6px)",
+                    fontSize: "15px",
+                    lineHeight: 1.7,
+                    maxWidth: "380px",
+                    textShadow: "0 1px 6px rgba(0,0,0,0.2)",
                   }}
                 >
-                  Detaylı Bilgi <ArrowRight className="w-4 h-4" />
-                </button>
-              </Link>
+                  {card.description}
+                </p>
+              </div>
+
+              {/* Bottom section: CTA left + benefit badge right */}
+              <div className="flex items-end justify-between gap-4">
+                <Link to="/kobi/step-1">
+                  <button
+                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 bg-white/90 text-gray-900 hover:bg-white shadow-lg backdrop-blur-sm"
+                  >
+                    Detaylı Bilgi <ArrowRight className="w-4 h-4" />
+                  </button>
+                </Link>
+
+                {/* Benefit badge */}
+                <span
+                  className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl text-sm font-bold backdrop-blur-md shadow-lg"
+                  style={{
+                    background: card.badgeBg,
+                    border: `1px solid ${card.badgeBorder}`,
+                    color: card.badgeColor,
+                    backdropFilter: "blur(12px)",
+                  }}
+                >
+                  <card.icon className="w-4 h-4" />
+                  {card.benefit}
+                </span>
+              </div>
             </div>
           </motion.div>
         ))}
