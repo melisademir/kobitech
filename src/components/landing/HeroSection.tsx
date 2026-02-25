@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone } from "lucide-react";
 import heroIllustration from "@/assets/hero-illustration-new.png";
-import HeroMockup from "./HeroMockup";
+
 
 const containerVariants = {
   hidden: {},
@@ -20,7 +20,7 @@ const HeroSection = () => {
   const [phone, setPhone] = useState("");
 
   return (
-    <section className="relative overflow-x-hidden" style={{ minHeight: "88vh" }}>
+    <section className="relative overflow-hidden" style={{ minHeight: "88vh" }}>
 
       {/* ── Background image ── */}
       <div className="absolute inset-0 z-0">
@@ -168,8 +168,6 @@ const HeroSection = () => {
             </p>
           </motion.div>
 
-          {/* Dashboard Mockup */}
-          <HeroMockup />
         </motion.div>
       </div>
     </section>
