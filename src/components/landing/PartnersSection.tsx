@@ -22,6 +22,7 @@ import tabEkip from "@/assets/tab-ekip-ai.png";
 import tabTesvik from "@/assets/tab-tesvik-ai.png";
 import tabUretim from "@/assets/tab-uretim-ai.png";
 import tabKargo from "@/assets/tab-kargo-ai.png";
+import tabSaha from "@/assets/tab-saha-ai.png";
 import { Truck } from "lucide-react";
 
 const categories = [
@@ -85,7 +86,7 @@ const categories = [
       "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. Univera EnRoute ile sahadan gelen verileri anında analiz ederek ekibinizin verimliliğini artırın.",
     tags: ["Univera EnRoute"],
     icon: MapPin,
-    image: tabKargo,
+    image: tabSaha,
     accent: "#F59E0B",
   },
   {
