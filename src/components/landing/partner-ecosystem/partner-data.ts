@@ -36,14 +36,9 @@ export const pieces: PuzzlePiece[] = [
     edges: { top: [0, 0], right: [1, -1], bottom: [1, -1], left: [0, 0] }
   },
   {
-    id: "mukellef", col: 2, row: 0, cs: 1, rs: 2, color: "#1E40AF",
-    name: "Mükellef", label: "Mükellef", logo: logoMukellef,
-    edges: { top: [0], right: [1, -1], bottom: [-1], left: [-1, 1] }
-  },
-  {
-    id: "workcube", col: 3, row: 0, cs: 1, rs: 2, color: "#1DA1D4",
-    name: "Workcube", label: "Workcube", logo: logoWorkcube,
-    edges: { top: [0], right: [1, -1], bottom: [1], left: [-1, 1] }
+    id: "paramtech", col: 2, row: 0, cs: 2, rs: 2, color: "#1a1a2e",
+    name: "ParamTech", label: "ParamTech", logo: logoParamtech, darkBg: true,
+    edges: { top: [0, 0], right: [1, -1], bottom: [-1, 1], left: [-1, 1] }
   },
   {
     id: "aras", col: 4, row: 0, cs: 1, rs: 2, color: "#10B981",
@@ -61,14 +56,19 @@ export const pieces: PuzzlePiece[] = [
     edges: { top: [1], right: [-1], bottom: [1], left: [-1] }
   },
   {
+    id: "mukellef", col: 2, row: 2, cs: 1, rs: 2, color: "#1E40AF",
+    name: "Mükellef", label: "Mükellef", logo: logoMukellef,
+    edges: { top: [1], right: [1, -1], bottom: [-1], left: [1, -1] }
+  },
+  {
+    id: "workcube", col: 3, row: 2, cs: 1, rs: 2, color: "#1DA1D4",
+    name: "Workcube", label: "Workcube", logo: logoWorkcube,
+    edges: { top: [-1], right: [1, -1], bottom: [1], left: [-1, 1] }
+  },
+  {
     id: "google", col: 4, row: 2, cs: 1, rs: 1, color: "#4285F4",
     name: "Google", label: "Google", logo: logoGoogle,
     edges: { top: [1], right: [0], bottom: [1], left: [-1] }
-  },
-  {
-    id: "univera", col: 2, row: 2, cs: 2, rs: 2, color: "#4D008C",
-    name: "Univera", label: "Univera", logo: logoUnivera,
-    edges: { top: [1, -1], right: [1, -1], bottom: [-1, 1], left: [1, -1] }
   },
   {
     id: "kredim", col: 0, row: 3, cs: 2, rs: 1, color: "#26D07C",
@@ -76,24 +76,24 @@ export const pieces: PuzzlePiece[] = [
     edges: { top: [1, -1], right: [1], bottom: [-1, 1], left: [0] }
   },
   {
-    id: "nebim", col: 4, row: 3, cs: 1, rs: 2, color: "#00A2E1",
+    id: "nebim", col: 4, row: 3, cs: 1, rs: 3, color: "#00A2E1",
     name: "Nebim", label: "Nebim", logo: logoNebim,
-    edges: { top: [-1], right: [0, 0], bottom: [0], left: [1, -1] }
+    edges: { top: [-1], right: [0, 0, 0], bottom: [0], left: [1, -1, 1] }
   },
   {
     id: "finrota", col: 0, row: 4, cs: 2, rs: 1, color: "#FF671D",
     name: "Finrota", label: "Finrota", logo: logoFinrotaNew,
-    edges: { top: [1, -1], right: [-1], bottom: [0, 0], left: [0] }
+    edges: { top: [1, -1], right: [-1], bottom: [-1, 1], left: [0] }
   },
   {
-    id: "ticimax", col: 2, row: 4, cs: 2, rs: 1, color: "#6366F1",
+    id: "univera", col: 2, row: 4, cs: 2, rs: 2, color: "#4D008C",
+    name: "Univera", label: "Univera", logo: logoUnivera,
+    edges: { top: [1, -1], right: [1, -1], bottom: [0, 0], left: [1, -1] }
+  },
+  {
+    id: "ticimax", col: 0, row: 5, cs: 2, rs: 1, color: "#6366F1",
     name: "Ticimax", label: "Ticimax", logo: logoTicimax,
-    edges: { top: [1, -1], right: [1], bottom: [0, -1], left: [1] }
-  },
-  {
-    id: "paramtech", col: 0, row: 5, cs: 2, rs: 2, color: "#1a1a2e",
-    name: "ParamTech", label: "ParamTech", logo: logoParamtech, darkBg: true,
-    edges: { top: [1, -1], right: [1, -1], bottom: [0, 0], left: [0, 0] }
+    edges: { top: [1, -1], right: [1], bottom: [0, 0], left: [0] }
   }
 ];
 
