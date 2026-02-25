@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone } from "lucide-react";
-import heroIllustration from "@/assets/hero-illustration.png";
+import heroIllustration from "@/assets/hero-illustration-new.png";
 
 const containerVariants = {
   hidden: {},
@@ -27,7 +27,7 @@ const HeroSection = () => {
           src={heroIllustration}
           alt=""
           className="w-full h-full object-cover"
-          style={{ objectPosition: "center center" }}
+          style={{ objectPosition: "left top" }}
           aria-hidden="true"
         />
       </div>
