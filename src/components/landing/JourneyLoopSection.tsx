@@ -122,7 +122,7 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
 const ChevronTrackSVG = () => {
   const W = 1200;
   const H = 820;
-  const T = 80; // uniform thickness on all sides
+  const T = 110; // uniform thickness on all sides
   const r = 48; // corner radius
   const chev = 36; // chevron arrow depth
 
