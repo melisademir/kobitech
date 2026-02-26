@@ -351,25 +351,7 @@ const JourneyLoopSection = () => {
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="relative z-10 flex flex-col items-center px-8 md:px-14 py-8 w-full max-w-3xl mx-auto"
                 >
-                  {/* Image — top */}
-                  <div className="w-full mb-6">
-                    <div
-                      className="rounded-[20px] overflow-hidden mx-auto"
-                      style={{
-                        border: "1px solid rgba(0,0,0,0.06)",
-                        boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
-                        background: "white",
-                        maxWidth: "480px",
-                      }}
-                    >
-                      <img
-                        src={current.image}
-                        alt={current.title}
-                        className="w-full object-cover"
-                        style={{ height: "220px" }}
-                      />
-                    </div>
-                  </div>
+
 
                   {/* Title */}
                   <h3
