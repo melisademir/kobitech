@@ -14,13 +14,13 @@ const cardBase =
   "rounded-3xl border border-border/60 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-md hover:border-[#541F8F]/40 overflow-hidden relative group";
 
 const BentoGridSection = () => (
-  <section className="py-24 md:py-32 bg-white">
+  <section className="py-24 md:py-32 bg-white relative z-10">
     <div className="max-w-7xl mx-auto px-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         className="text-center mb-16"
       >
@@ -44,7 +44,7 @@ const BentoGridSection = () => (
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-50px" }}
         transition={{ duration: 0.6, delay: 0.15 }}
         className="grid grid-cols-1 md:grid-cols-4 gap-5 auto-rows-[200px] md:auto-rows-[220px]"
       >
