@@ -291,7 +291,7 @@ const TagBadge = ({ tag }: { tag: string }) => {
           src={logoSrc}
           alt={tag}
           className="object-contain mix-blend-multiply"
-          style={{ height: "28px", maxWidth: "120px" }}
+          style={{ height: "40px", maxWidth: "160px" }}
         />
       </span>
     );
