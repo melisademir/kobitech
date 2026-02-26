@@ -12,6 +12,7 @@ import {
   Users,
   ArrowRight,
   MapPin,
+  ClipboardCheck,
 } from "lucide-react";
 import tabEticaret from "@/assets/tab-eticaret-ai.png";
 import tabOdeme from "@/assets/tab-odeme-ai.png";
@@ -88,6 +89,15 @@ const categories = [
     icon: MapPin,
     image: tabSaha,
     accent: "#F59E0B",
+  },
+  {
+    label: "İş Akışını Takip Et",
+    description:
+      "Sipariş girişinden teslimata kadar tüm iş süreçlerinizi adım adım izleyin, darboğazları anında tespit edin. Görev atama, süre takibi ve otomatik bildirimlerle ekibinizin verimliliğini artırın. Tüm departmanlar arasındaki iş akışlarını tek bir panelden yöneterek operasyonel mükemmelliğe ulaşın.",
+    tags: ["Nebim V3", "Workcube HR", "Univera EnRoute"],
+    icon: ClipboardCheck,
+    image: tabStok,
+    accent: "#6366F1",
   },
   {
     label: "Teşviklerden Yararlan",
