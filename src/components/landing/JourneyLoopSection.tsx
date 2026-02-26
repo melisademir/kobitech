@@ -99,9 +99,9 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
         letterSpacing: "0.01em",
         transform: isActive ? "scale(1.1)" : "scale(1)",
         background: isActive
-          ? "rgba(255,255,255,1)"
+          ? "hsl(268,72%,38%)"
           : "rgba(255,255,255,0.88)",
-        color: isActive ? "hsl(268,72%,38%)" : "#111",
+        color: isActive ? "#fff" : "#111",
         border: isActive
           ? "3px solid rgba(255,255,255,1)"
           : "3px solid rgba(255,255,255,0.85)",
