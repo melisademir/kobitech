@@ -119,8 +119,8 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
         <div className="flex flex-col gap-3 md:gap-4">
           {d.features.map((f) => (
             <div key={f} className="flex items-center gap-2.5">
-              <Check style={{ width: 15, height: 15, color: BRAND, strokeWidth: 2.8, flexShrink: 0 }} />
-              <span className="text-slate-700 text-sm md:text-[15px]" style={{ fontWeight: 500 }}>{f}</span>
+              <Check className="text-purple-600" style={{ width: 15, height: 15, strokeWidth: 2.8, flexShrink: 0 }} />
+              <span className="text-slate-700 text-sm md:text-[15px] font-medium">{f}</span>
             </div>
           ))}
         </div>
@@ -146,7 +146,7 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
       <motion.div variants={item} className="mt-8">
         <Link to="/kobi/urunler" className="block">
           <button
-            className="inline-flex items-center justify-center gap-2 w-full font-bold text-white transition-all duration-300 text-sm md:text-base rounded-full hover:-translate-y-0.5"
+            className="inline-flex items-center justify-center gap-2 w-full font-bold text-white transition-all duration-300 text-sm md:text-base rounded-full hover:-translate-y-1 hover:shadow-xl"
             style={{
               height: "50px",
               padding: "0 28px",

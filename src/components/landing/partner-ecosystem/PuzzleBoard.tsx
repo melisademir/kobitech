@@ -135,47 +135,37 @@ export default function PuzzleBoard({
         return (
           <motion.g
             key={piece.id}
-            initial={{ opacity: 0 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={visible ? {
-              opacity: isSel ? 1 : isHov ? 1 : 0.6,
+              opacity: 1,
+              scale: isSel ? 1.08 : isHov ? 1.02 : 1,
               filter: isSel
-                ? "drop-shadow(0 0 20px rgba(107,33,168,0.3)) drop-shadow(0 4px 12px rgba(107,33,168,0.2))"
+                ? "drop-shadow(0 20px 30px rgba(107,33,168,0.3)) drop-shadow(0 4px 10px rgba(0,0,0,0.1))"
                 : isHov
-                  ? "drop-shadow(0 4px 10px rgba(107,33,168,0.15))"
-                  : "drop-shadow(0 1px 2px rgba(0,0,0,0.06))",
-              scale: isSel ? 1.05 : 1,
-            } : { opacity: 0 }}
-            transition={{
-              opacity: { duration: 0.3, delay: 0.04 + i * 0.035 },
-              filter: { duration: 0.25, ease: "easeOut" },
-              scale: { duration: 0.25, ease: "easeOut" }
-            }}
+                  ? "drop-shadow(0 8px 15px rgba(107,33,168,0.15))"
+                  : "drop-shadow(0 2px 4px rgba(0,0,0,0.06))"
+            } : { opacity: 0, scale: 0.9 }}
+            transition={{ type: "spring", stiffness: 350, damping: 25 }}
+            whileTap={{ scale: 0.95 }}
             style={{ cursor: "pointer", transformOrigin: `${cx}px ${cy}px` }}
             onClick={() => onSelect(piece.id)}
             onMouseEnter={() => setHovered(piece.id)}
             onMouseLeave={() => setHovered(null)}
           >
-            <g style={{ filter: isSel ? "saturate(1)" : isHov ? "saturate(1)" : "saturate(0.5)" }}>
+            <g>
               {/* Base fill */}
               <path d={pathD} fill={isSel ? "url(#selected-fill)" : "#FFFFFF"} />
               <path d={pathD} fill={`url(#bevel-${piece.id})`} />
 
-              {/* Ring effect for selected */}
+              {/* Border with crisp glow for selected */}
+              <path
+                d={pathD}
+                fill="none"
+                stroke={isSel ? "#a855f7" : isHov ? "hsl(268,72%,38%,0.35)" : "hsl(260,30%,14%,0.12)"}
+                strokeWidth={isSel ? 2.5 : isHov ? 2 : 1.5}
+              />
               {isSel && (
-                <>
-                  <path d={pathD} fill="none" stroke="hsl(268,72%,38%)" strokeWidth={3} />
-                  <path d={pathD} fill="none" stroke="hsl(268,72%,38%,0.15)" strokeWidth={8} />
-                </>
-              )}
-
-              {/* Border for non-selected */}
-              {!isSel && (
-                <path
-                  d={pathD}
-                  fill="none"
-                  stroke={isHov ? "hsl(268,72%,38%,0.45)" : "hsl(260,30%,14%,0.14)"}
-                  strokeWidth={isHov ? 2.5 : 1.5}
-                />
+                <path d={pathD} fill="none" stroke="rgba(168,85,247,0.12)" strokeWidth={8} />
               )}
 
               <clipPath id={`clip-${piece.id}`}>

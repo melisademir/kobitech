@@ -111,23 +111,24 @@ const PartnerEcosystemSection = () => {
               <motion.div
                 className="flex-1 rounded-[2.5rem] p-6 md:p-10 flex flex-col justify-start relative overflow-hidden"
                 style={{
-                  background: "rgba(255,255,255,0.95)",
+                  background: "rgba(255,255,255,0.9)",
                   backdropFilter: "blur(24px)",
                   WebkitBackdropFilter: "blur(24px)",
-                  border: "1px solid hsla(268,60%,80%,0.3)",
-                  borderLeft: selectedPiece ? `3px solid ${PRIMARY_HEX}50` : "1px solid hsla(268,60%,80%,0.3)",
-                  boxShadow: "0 20px 50px -12px rgba(0,0,0,0.08)",
+                  border: "1px solid rgba(255,255,255,0.6)",
+                  borderLeft: selectedPiece ? `3px solid ${PRIMARY_HEX}50` : "1px solid rgba(255,255,255,0.6)",
+                  boxShadow: "0 20px 60px -15px rgba(107,33,168,0.1)",
                   transition: "border-left-color 0.4s ease"
                 }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                 transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               >
-                {/* Abstract decoration blob */}
+                {/* Premium mesh gradient blob */}
                 <div
-                  className="absolute -top-20 -right-20 w-80 h-80 rounded-full pointer-events-none"
+                  className="absolute -top-32 -right-32 w-64 h-64 rounded-full pointer-events-none -z-10"
                   style={{
-                    background: "radial-gradient(circle, hsla(268,72%,60%,0.03) 0%, transparent 70%)",
+                    background: "linear-gradient(to bottom right, hsla(268,60%,85%,0.5), transparent)",
+                    filter: "blur(60px)",
                   }}
                 />
                 {selectedPiece && (
