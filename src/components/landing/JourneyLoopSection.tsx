@@ -13,6 +13,7 @@ import {
   BadgePercent,
   Globe2,
   ArrowRight,
+  Rocket,
 } from "lucide-react";
 
 /* ── Logo imports ── */
@@ -63,17 +64,15 @@ const journeySteps = [
   { id: 10, title: "Globale Açıl", description: "TÜSİAD, MÜSİAD, TOBB, İTO, HİB ve KAGİDER gibi Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu; Ticimax'ın e-ticaret altyapısını, Mükellef'in global şirketleşme gücünü ve profesyonel hukuki danışmanlık desteğini arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Ticimax", "Mükellef"], icon: Globe2 },
 ];
 
-/* Edges: Top 1-2-3, Right 4-5, Bottom 8-7-6, Left 10-9 */
-const topItems = journeySteps.slice(0, 3);
-const rightItems = journeySteps.slice(3, 5);
-const bottomItems = journeySteps.slice(5, 8).reverse();
-const leftItems = journeySteps.slice(8, 10).reverse();
+/* Top 5 and Bottom 5 */
+const topItems = journeySteps.slice(0, 5);
+const bottomItems = journeySteps.slice(5, 10);
 
 /* Which color segment does each step belong to? */
-const getSegment = (id: number): "purple-light" | "teal" | "purple-deep" => {
-  if (id <= 3) return "purple-light";
-  if (id <= 7) return "teal";
-  return "purple-deep";
+const getSegmentColor = (id: number): string => {
+  if (id <= 3) return "hsl(268,55%,75%)";
+  if (id <= 7) return "hsl(174,52%,55%)";
+  return "hsl(268,76%,35%)";
 };
 
 /* ── Step Chip ── */
@@ -85,6 +84,7 @@ interface StepChipProps {
 
 const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   const Icon = step.icon;
+  const segColor = getSegmentColor(step.id);
 
   return (
     <button
@@ -104,7 +104,7 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
           ? "3px solid rgba(255,255,255,1)"
           : "3px solid rgba(255,255,255,0.9)",
         boxShadow: isActive
-          ? "0 8px 32px -4px rgba(109,40,217,0.45), 0 0 48px -8px rgba(109,40,217,0.25)"
+          ? `0 8px 32px -4px rgba(109,40,217,0.45), 0 0 48px -8px rgba(109,40,217,0.25)`
           : "0 4px 12px rgba(0,0,0,0.08)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
@@ -117,101 +117,137 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   );
 };
 
-/* ── SVG Track ── */
+/* ── SVG Track — U-shape: top → right → bottom, with 3 color segments ── */
 const LoopTrackSVG = () => {
-  const t = 96;
-  const r = 64;
-  const arrow = 56;
-  const x1 = 0, y1 = 0, x2 = 1000, y2 = 700;
+  /* Dimensions */
+  const W = 1200;
+  const H = 520;
+  const T = 56; /* track thickness */
+  const R = 48; /* corner radius */
+  const arrowW = 36; /* chevron arrow width */
 
-  const purpleLight1 = "hsl(268,55%,82%)";
-  const purpleLight2 = "hsl(275,50%,72%)";
-  const teal1 = "hsl(174,52%,65%)";
-  const teal2 = "hsl(168,48%,50%)";
-  const purpleDeep1 = "hsl(268,76%,30%)";
-  const purpleDeep2 = "hsl(280,68%,48%)";
+  /* Color definitions */
+  const purple1 = "hsl(268,55%,78%)";
+  const purple2 = "hsl(275,50%,68%)";
+  const teal1 = "hsl(174,52%,60%)";
+  const teal2 = "hsl(168,48%,45%)";
+  const deep1 = "hsl(268,76%,32%)";
+  const deep2 = "hsl(280,68%,50%)";
+
+  /* Segment boundaries on the top edge (x positions) */
+  const seg1End = W * 0.38; /* end of Phase 1 (3 tabs) */
+  const seg2End = W * 0.78; /* end of Phase 2 (4 tabs) */
 
   return (
     <svg
       className="absolute inset-0 w-full h-full pointer-events-none"
-      viewBox={`${x1 - 10} ${y1 - 10} ${x2 - x1 + 20} ${y2 - y1 + 20}`}
+      viewBox={`0 0 ${W} ${H}`}
       preserveAspectRatio="none"
       fill="none"
     >
       <defs>
-        <linearGradient id="jl-grad1" x1="0%" y1="0%" x2="100%" y2="50%">
-          <stop offset="0%" stopColor={purpleLight1} />
-          <stop offset="100%" stopColor={purpleLight2} />
+        <linearGradient id="jl-g1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stopColor={purple1} />
+          <stop offset="100%" stopColor={purple2} />
         </linearGradient>
-        <linearGradient id="jl-grad2" x1="100%" y1="0%" x2="0%" y2="100%">
+        <linearGradient id="jl-g2" x1="0%" y1="0%" x2="100%" y2="50%">
           <stop offset="0%" stopColor={teal1} />
           <stop offset="100%" stopColor={teal2} />
         </linearGradient>
-        <linearGradient id="jl-grad3" x1="0%" y1="100%" x2="50%" y2="0%">
-          <stop offset="0%" stopColor={purpleDeep1} />
-          <stop offset="100%" stopColor={purpleDeep2} />
+        <linearGradient id="jl-g3" x1="100%" y1="100%" x2="0%" y2="0%">
+          <stop offset="0%" stopColor={deep1} />
+          <stop offset="100%" stopColor={deep2} />
         </linearGradient>
       </defs>
 
-      {/* Segment 1 — Light Purple */}
+      {/* Phase 1 — Light Purple: top-left to seg1End, including left side going down partially */}
       <path
         d={`
-          M ${x1 + r},${y1}
-          L ${x2 - r},${y1}
-          Q ${x2},${y1} ${x2},${y1 + r}
-          L ${x2},${y2 * 0.35}
-          L ${x2 - arrow},${y2 * 0.35 + arrow}
-          L ${x2 - t},${y2 * 0.35}
-          L ${x2 - t},${y1 + r}
-          Q ${x2 - t},${y1 + t} ${x2 - r},${y1 + t}
-          L ${x1 + r},${y1 + t}
-          Q ${x1 + t},${y1 + t} ${x1 + t},${y1 + r}
-          L ${x1 + t},${y1}
-          Q ${x1},${y1} ${x1},${y1}
+          M ${R},0
+          L ${seg1End},0
+          L ${seg1End - arrowW},${T / 2}
+          L ${seg1End},${T}
+          L ${R},${T}
+          Q 0,${T} 0,${T + R}
+          L 0,${H - T - R}
+          Q 0,${H - T} ${R},${H - T}
+          L ${W * 0.22},${H - T}
+          L ${W * 0.22},${H}
+          L ${R},${H}
+          Q 0,${H} 0,${H - R}
+          L 0,${R}
+          Q 0,0 ${R},0
           Z
         `}
-        fill="url(#jl-grad1)"
-        opacity="0.9"
+        fill="url(#jl-g1)"
+        opacity="0.92"
       />
 
-      {/* Segment 2 — Teal */}
+      {/* Phase 2 — Teal: from seg1End across top-right, down right side, back along bottom to middle */}
       <path
         d={`
-          M ${x2},${y2 * 0.35}
-          L ${x2},${y2 - r}
-          Q ${x2},${y2} ${x2 - r},${y2}
-          L ${x1 + r},${y2}
-          Q ${x1},${y2} ${x1},${y2 - r}
-          L ${x1},${y2 * 0.65}
-          L ${x1 + arrow},${y2 * 0.65 - arrow}
-          L ${x1 + t},${y2 * 0.65}
-          L ${x1 + t},${y2 - r}
-          Q ${x1 + t},${y2 - t} ${x1 + r},${y2 - t}
-          L ${x2 - r},${y2 - t}
-          Q ${x2 - t},${y2 - t} ${x2 - t},${y2 - r}
-          L ${x2 - t},${y2 * 0.35 + arrow}
-          L ${x2 - arrow},${y2 * 0.35 + arrow}
+          M ${seg1End},0
+          L ${seg2End},0
+          L ${seg2End - arrowW},${T / 2}
+          L ${seg2End},${T}
+          L ${seg1End},${T}
+          L ${seg1End - arrowW},${T / 2}
           Z
         `}
-        fill="url(#jl-grad2)"
-        opacity="0.9"
+        fill="url(#jl-g2)"
+        opacity="0.92"
+      />
+      {/* Teal right side + bottom portion */}
+      <path
+        d={`
+          M ${seg2End},0
+          L ${W - R},0
+          Q ${W},0 ${W},${R}
+          L ${W},${H - R}
+          Q ${W},${H} ${W - R},${H}
+          L ${W * 0.22},${H}
+          L ${W * 0.22},${H - T}
+          L ${W - R},${H - T}
+          Q ${W - T},${H - T} ${W - T},${H - T - R}
+          L ${W - T},${T + R}
+          Q ${W - T},${T} ${W - R},${T}
+          L ${seg2End},${T}
+          L ${seg2End - arrowW},${T / 2}
+          Z
+        `}
+        fill="url(#jl-g2)"
+        opacity="0.92"
       />
 
-      {/* Segment 3 — Deep Purple */}
+      {/* Phase 3 — Deep Purple: bottom portion from W*0.22 leftward (already covered by phase 1 left side) */}
+      {/* Actually Phase 3 is the bottom bar from right side going left */}
       <path
         d={`
-          M ${x1},${y2 * 0.65}
-          L ${x1},${y1 + r}
-          Q ${x1},${y1} ${x1 + r},${y1}
-          L ${x1 + t},${y1}
-          Q ${x1 + t},${y1 + t} ${x1 + r},${y1 + t}
-          L ${x1 + t},${y1 + t}
-          L ${x1 + t},${y2 * 0.65 - arrow}
-          L ${x1 + arrow},${y2 * 0.65 - arrow}
+          M ${W * 0.22},${H - T}
+          L ${W * 0.22 + arrowW},${H - T / 2}
+          L ${W * 0.22},${H}
+          L ${R},${H}
+          Q 0,${H} 0,${H - R}
+          L 0,${H - T - R}
+          Q 0,${H - T} ${R},${H - T}
           Z
         `}
-        fill="url(#jl-grad3)"
+        fill="url(#jl-g3)"
         opacity="0.95"
+      />
+
+      {/* Directional arrow inside track — bottom-right corner pointing to rocket */}
+      <path
+        d={`
+          M ${W - T - 30},${H - T / 2 - 10}
+          L ${W - T - 10},${H - T / 2}
+          L ${W - T - 30},${H - T / 2 + 10}
+        `}
+        stroke="rgba(255,255,255,0.7)"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        fill="none"
       />
     </svg>
   );
@@ -289,15 +325,15 @@ const JourneyLoopSection = () => {
           </p>
         </motion.div>
 
-        {/* The Loop layout */}
+        {/* The Loop layout — Top & Bottom only */}
         <div className="relative max-w-6xl mx-auto">
           {/* ── Thick 3-color track ── */}
-          <div className="absolute inset-0 pointer-events-none" style={{ margin: "-20px -32px" }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ margin: "-12px -40px" }}>
             <LoopTrackSVG />
           </div>
 
-          {/* ── Top edge ── */}
-          <div className="relative z-10 flex justify-center gap-16 mb-8 py-6">
+          {/* ── Top edge — 5 tabs ── */}
+          <div className="relative z-10 flex justify-center gap-10 md:gap-14 mb-4 py-7 flex-wrap">
             {topItems.map((s) => (
               <StepChip
                 key={s.id}
@@ -308,24 +344,12 @@ const JourneyLoopSection = () => {
             ))}
           </div>
 
-          <div className="flex relative z-10">
-            {/* ── Left edge ── */}
-            <div className="flex flex-col justify-center gap-20 px-6 py-2" style={{ minWidth: "230px" }}>
-              {leftItems.map((s) => (
-                <StepChip
-                  key={s.id}
-                  step={s}
-                  isActive={activeStep === s.id - 1}
-                  onClick={() => setActiveStep(s.id - 1)}
-                />
-              ))}
-            </div>
-
-            {/* ── Central display ── */}
+          {/* ── Central display ── */}
+          <div className="relative z-10 mx-8 md:mx-16">
             <div
-              className="flex-1 relative overflow-hidden flex items-center justify-center"
+              className="relative overflow-hidden flex items-center justify-center"
               style={{
-                minHeight: "480px",
+                minHeight: "420px",
                 borderRadius: "28px",
                 border: "2px solid rgba(109,40,217,0.1)",
                 background: "rgba(255,255,255,0.9)",
@@ -396,22 +420,10 @@ const JourneyLoopSection = () => {
                 </motion.div>
               </AnimatePresence>
             </div>
-
-            {/* ── Right edge ── */}
-            <div className="flex flex-col justify-center gap-20 px-6 py-2" style={{ minWidth: "230px" }}>
-              {rightItems.map((s) => (
-                <StepChip
-                  key={s.id}
-                  step={s}
-                  isActive={activeStep === s.id - 1}
-                  onClick={() => setActiveStep(s.id - 1)}
-                />
-              ))}
-            </div>
           </div>
 
-          {/* ── Bottom edge ── */}
-          <div className="relative z-10 flex justify-center gap-16 mt-8 py-6">
+          {/* ── Bottom edge — 5 tabs ── */}
+          <div className="relative z-10 flex justify-center gap-10 md:gap-14 mt-4 py-7 flex-wrap">
             {bottomItems.map((s) => (
               <StepChip
                 key={s.id}
@@ -420,6 +432,31 @@ const JourneyLoopSection = () => {
                 onClick={() => setActiveStep(s.id - 1)}
               />
             ))}
+          </div>
+
+          {/* ── Rocket — bottom-right corner ── */}
+          <div
+            className="absolute z-20 flex items-center justify-center"
+            style={{
+              bottom: "-8px",
+              right: "-48px",
+              width: "80px",
+              height: "80px",
+              borderRadius: "50%",
+              background: "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,50%) 100%)",
+              boxShadow: "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 60px -10px rgba(109,40,217,0.3)",
+              border: "3px solid rgba(255,255,255,0.9)",
+            }}
+          >
+            <Rocket
+              className="text-white"
+              style={{
+                width: "32px",
+                height: "32px",
+                transform: "rotate(-45deg)",
+                filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.2))",
+              }}
+            />
           </div>
         </div>
       </div>
