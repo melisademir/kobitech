@@ -406,16 +406,16 @@ const JourneyLoopSection = () => {
             <div
               className="absolute z-20 flex items-center justify-center"
               style={{
-                bottom: "-28px",
-                right: "-28px",
-                width: "72px",
-                height: "72px",
+                bottom: "-40px",
+                right: "-40px",
+                width: "100px",
+                height: "100px",
                 borderRadius: "50%",
                 background: "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
-                boxShadow: "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 0 4px rgba(255,255,255,0.9)",
+                boxShadow: "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 0 5px rgba(255,255,255,0.9)",
               }}
             >
-              <Rocket className="w-8 h-8 text-white" style={{ transform: "rotate(-45deg)" }} />
+              <Rocket className="w-12 h-12 text-white" style={{ transform: "rotate(-45deg)" }} />
             </div>
           </div>
 
