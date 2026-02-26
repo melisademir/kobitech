@@ -94,14 +94,14 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
       style={{
         padding: isActive ? "16px 32px" : "14px 26px",
         borderRadius: "20px",
-        fontSize: isActive ? "15px" : "14px",
-        fontWeight: 800,
+        fontSize: isActive ? "13px" : "12px",
+        fontWeight: 700,
         letterSpacing: "0.01em",
         transform: isActive ? "scale(1.1)" : "scale(1)",
         background: isActive
           ? "rgba(255,255,255,1)"
           : "rgba(255,255,255,0.88)",
-        color: isActive ? "hsl(268,72%,38%)" : "white",
+        color: isActive ? "hsl(268,72%,38%)" : "#111",
         border: isActive
           ? "3px solid rgba(255,255,255,1)"
           : "3px solid rgba(255,255,255,0.85)",
@@ -110,7 +110,7 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
           : "0 4px 16px rgba(0,0,0,0.12)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        textShadow: isActive ? "none" : "0 1px 4px rgba(0,0,0,0.35)",
+        textShadow: "none",
       }}
     >
       <Icon className="w-4 h-4 flex-shrink-0" />
