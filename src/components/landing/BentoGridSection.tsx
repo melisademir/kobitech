@@ -1,39 +1,36 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { CreditCard, Wallet, Users, Globe, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+
+import bentoSales from "@/assets/bento-sales.png";
+import bentoCashflow from "@/assets/bento-cashflow.png";
+import bentoOperations from "@/assets/bento-operations.png";
+import bentoGlobal from "@/assets/bento-global.png";
 
 /* ── Badge presets ── */
 const badgeStyles = {
-  indigo: "bg-[hsl(226,76%,96%)]/50 text-[hsl(226,60%,42%)] border-[hsl(226,60%,90%)]",
-  emerald: "bg-[hsl(152,68%,95%)]/50 text-[hsl(152,60%,30%)] border-[hsl(152,60%,88%)]",
-  blue: "bg-[hsl(210,80%,96%)]/50 text-[hsl(210,70%,38%)] border-[hsl(210,60%,88%)]",
-  purple: "bg-[hsl(268,60%,96%)]/50 text-[hsl(268,60%,38%)] border-[hsl(268,50%,88%)]",
+  indigo: "bg-[hsl(226,76%,96%)]/50 text-[hsl(226,60%,42%)] border-[hsl(226,60%,85%)]",
+  emerald: "bg-[hsl(152,68%,95%)]/50 text-[hsl(152,60%,30%)] border-[hsl(152,60%,82%)]",
+  blue: "bg-[hsl(210,80%,96%)]/50 text-[hsl(210,70%,38%)] border-[hsl(210,60%,82%)]",
+  purple: "bg-[hsl(268,60%,96%)]/50 text-[hsl(268,60%,38%)] border-[hsl(268,50%,82%)]",
 } as const;
 
 type ColorKey = keyof typeof badgeStyles;
 
 const Badge = ({ label, color }: { label: string; color: ColorKey }) => (
-  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${badgeStyles[color]}`}>
+  <span className={`px-4 py-2 rounded-full text-sm font-bold border-2 ${badgeStyles[color]}`}>
     {label}
   </span>
 );
 
-/* ── Icon container presets ── */
-const iconBg = {
-  indigo: "bg-[hsl(226,76%,96%)]",
-  emerald: "bg-[hsl(152,68%,95%)]",
-  blue: "bg-[hsl(210,80%,96%)]",
-  purple: "bg-[hsl(268,60%,96%)]",
-} as const;
-
 /* ── Card base ── */
 const cardBase =
-  "rounded-[2rem] p-8 sm:p-10 border border-border/60 shadow-sm shadow-muted/50 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col gap-4";
+  "rounded-[2rem] p-8 sm:p-10 border border-border/60 shadow-sm shadow-muted/50 relative overflow-hidden group hover:shadow-xl transition-all duration-300";
 
 /* ── Card data ── */
 const cards: {
   span: string;
-  icon: React.ReactNode;
+  image: string;
   title: string;
   desc: string;
   badges: string[];
@@ -42,7 +39,7 @@ const cards: {
 }[] = [
   {
     span: "lg:col-span-8",
-    icon: <CreditCard className="w-8 h-8" style={{ color: "hsl(226,60%,42%)" }} />,
+    image: bentoSales,
     title: "360° Satış & Tahsilat",
     desc: "İster mağazada ister dijitalde ticaretinize güç katın. Tahsilat süreçlerinizi tek platformda birleştirin, online satışlarınızı ve kargo operasyonlarınızı hızlandırın.",
     badges: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS", "Ticimax", "İkas", "T-Soft", "Aras Kargo"],
@@ -51,7 +48,7 @@ const cards: {
   },
   {
     span: "lg:col-span-4",
-    icon: <Wallet className="w-8 h-8" style={{ color: "hsl(152,60%,30%)" }} />,
+    image: bentoCashflow,
     title: "Nakit Akışını Yönetin",
     desc: "Tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına anında ulaşarak ticaretinize güç katın.",
     badges: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"],
@@ -59,7 +56,7 @@ const cards: {
   },
   {
     span: "lg:col-span-5",
-    icon: <Users className="w-8 h-8" style={{ color: "hsl(210,70%,38%)" }} />,
+    image: bentoOperations,
     title: "Kusursuz Operasyon ve Ekip",
     desc: "Depo yönetiminden saha satış rotalarına, e-Dönüşüm işlemlerinden personel bordrolarına kadar tüm operasyonel iş yükünüzü tek merkezden optimize edin.",
     badges: ["Univera Stokbar", "Nebim V3", "Univera EnRoute", "Uni-Dox", "Paramtech Flows", "Workcube HR"],
@@ -67,7 +64,7 @@ const cards: {
   },
   {
     span: "lg:col-span-7",
-    icon: <Globe className="w-8 h-8" style={{ color: "hsl(268,60%,38%)" }} />,
+    image: bentoGlobal,
     title: "Sınırları Aşan Büyüme",
     desc: "Hibe programlarıyla devlet teşviklerinden yararlanın. En güçlü iş dünyası kuruluşlarının vizyonuyla ve doğru stratejiyle globale açılın.",
     badges: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı", "TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Mükellef"],
@@ -117,19 +114,32 @@ const BentoGridSection = () => (
                 : "bg-white"
             }`}
           >
-            {/* Icon container */}
-            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${iconBg[card.color]}`}>
-              {card.icon}
-            </div>
+            {/* Split layout: text left, image right on wide; stacked on narrow */}
+            <div className={`flex ${card.wide ? "flex-col lg:flex-row lg:items-center lg:justify-between gap-8" : "flex-col gap-6"}`}>
+              {/* Text side */}
+              <div className={card.wide ? "flex-1 lg:max-w-[60%] flex flex-col gap-4" : "flex flex-col gap-4"}>
+                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
+                  {card.title}
+                </h3>
+                <p className="text-lg text-muted-foreground leading-relaxed font-medium">
+                  {card.desc}
+                </p>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {card.badges.map((b) => (
+                    <Badge key={b} label={b} color={card.color} />
+                  ))}
+                </div>
+              </div>
 
-            <h3 className="text-2xl font-bold tracking-tight text-foreground">{card.title}</h3>
-            <p className="text-sm text-muted-foreground/80 leading-relaxed">{card.desc}</p>
-
-            {/* Badges pinned to bottom */}
-            <div className="flex flex-wrap gap-2 mt-auto pt-6">
-              {card.badges.map((b) => (
-                <Badge key={b} label={b} color={card.color} />
-              ))}
+              {/* Image side */}
+              <div className={`${card.wide ? "flex-1" : ""} h-64 lg:h-auto rounded-3xl overflow-hidden relative`}>
+                <img
+                  src={card.image}
+                  alt={card.title}
+                  className="w-full h-full object-cover rounded-3xl group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
         ))}
