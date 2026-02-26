@@ -89,7 +89,7 @@ const PartnerEcosystemSection = () => {
               >
                 <div
                   className="w-full max-w-[280px] md:max-w-[360px] lg:max-w-none mx-auto"
-                  style={{ transform: "rotateY(-12deg) rotateX(4deg)", transformStyle: "preserve-3d" }}
+                  style={{ transform: "rotateY(12deg) rotateX(4deg)", transformStyle: "preserve-3d" }}
                 >
                   <PuzzleBoard selectedId={selectedId} onSelect={setSelectedId} visible={visible} />
                 </div>
