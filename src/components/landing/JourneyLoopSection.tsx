@@ -15,6 +15,41 @@ import {
   ArrowRight,
 } from "lucide-react";
 
+/* ── Logo imports ── */
+import logoParam from "@/assets/logo-param.png";
+import logoParamtech from "@/assets/logo-paramtech.svg";
+import logoFinrota from "@/assets/logo-finrota-new.svg";
+import logoKredim from "@/assets/logo-kredim.svg";
+import logoIkas from "@/assets/logo-ikas.png";
+import logoTsoft from "@/assets/logo-tsoft.svg";
+import logoTicimax from "@/assets/logo-ticimax.png";
+import logoUnivera from "@/assets/logo-univera.svg";
+import logoNebim from "@/assets/logo-nebim.svg";
+import logoAras from "@/assets/logo-aras.png";
+import logoWorkcube from "@/assets/logo-workcube.png";
+import logoMukellef from "@/assets/logo-mukellef.png";
+
+/* ── Tag → Logo mapping ── */
+const TAG_LOGO_MAP: Record<string, string> = {
+  "Param Fiziki POS": logoParam,
+  "Param Sanal POS": logoParam,
+  "Param Cep POS": logoParam,
+  "Ticimax": logoTicimax,
+  "İkas": logoIkas,
+  "T-Soft": logoTsoft,
+  "Netahsilat": logoFinrota,
+  "Netekstre": logoFinrota,
+  "Kredim Business": logoKredim,
+  "Univera Stokbar": logoUnivera,
+  "Nebim V3": logoNebim,
+  "Aras Kargo": logoAras,
+  "Workcube HR": logoWorkcube,
+  "Univera EnRoute": logoUnivera,
+  "Uni-Dox": logoUnivera,
+  "Paramtech Flows": logoParamtech,
+  "Mükellef": logoMukellef,
+};
+
 const journeySteps = [
   { id: 1, title: "Ödeme Al", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], icon: CreditCard },
   { id: 2, title: "E-Ticarete Açıl", description: "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin. Online mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin keyfini sürün.", tags: ["Ticimax", "İkas", "T-Soft"], icon: ShoppingCart },
@@ -41,6 +76,7 @@ const getSegment = (id: number): "purple-light" | "teal" | "purple-deep" => {
   return "purple-deep";
 };
 
+/* ── Step Chip ── */
 interface StepChipProps {
   step: (typeof journeySteps)[0];
   isActive: boolean;
@@ -49,49 +85,30 @@ interface StepChipProps {
 
 const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   const Icon = step.icon;
-  const seg = getSegment(step.id);
-
-  const activeGlow: Record<string, string> = {
-    "purple-light": "0 4px 24px -4px rgba(168,85,247,0.55), 0 0 40px -8px rgba(168,85,247,0.3)",
-    teal: "0 4px 24px -4px rgba(20,184,166,0.55), 0 0 40px -8px rgba(20,184,166,0.3)",
-    "purple-deep": "0 4px 24px -4px rgba(107,33,168,0.6), 0 0 40px -8px rgba(107,33,168,0.35)",
-  };
-
-  const activeBg: Record<string, string> = {
-    "purple-light": "linear-gradient(135deg, hsl(268,60%,72%), hsl(280,65%,62%))",
-    teal: "linear-gradient(135deg, hsl(174,60%,42%), hsl(168,55%,38%))",
-    "purple-deep": "linear-gradient(135deg, hsl(268,76%,33%), hsl(280,72%,42%))",
-  };
-
-  const activeBorder: Record<string, string> = {
-    "purple-light": "hsl(268,60%,72%)",
-    teal: "hsl(174,55%,42%)",
-    "purple-deep": "hsl(268,76%,33%)",
-  };
 
   return (
     <button
       onClick={onClick}
-      className="relative flex items-center gap-2 cursor-pointer transition-all duration-300 whitespace-nowrap"
+      className="relative flex items-center gap-2.5 cursor-pointer transition-all duration-300 whitespace-nowrap"
       style={{
-        padding: isActive ? "12px 24px" : "10px 18px",
-        borderRadius: "16px",
-        fontSize: isActive ? "14px" : "13px",
-        fontWeight: isActive ? 700 : 600,
-        transform: isActive ? "scale(1.08)" : "scale(1)",
+        padding: isActive ? "14px 28px" : "12px 22px",
+        borderRadius: "18px",
+        fontSize: isActive ? "15px" : "14px",
+        fontWeight: 800,
+        transform: isActive ? "scale(1.12)" : "scale(1)",
         background: isActive
-          ? activeBg[seg]
-          : "rgba(255,255,255,0.3)",
-        color: "white",
+          ? "rgba(255,255,255,0.95)"
+          : "rgba(255,255,255,0.6)",
+        color: isActive ? "hsl(268,72%,38%)" : "white",
         border: isActive
-          ? `2px solid ${activeBorder[seg]}`
-          : "2px solid rgba(255,255,255,0.35)",
+          ? "3px solid rgba(255,255,255,1)"
+          : "3px solid rgba(255,255,255,0.9)",
         boxShadow: isActive
-          ? activeGlow[seg]
-          : "0 2px 8px rgba(0,0,0,0.06)",
-        backdropFilter: "blur(12px)",
-        WebkitBackdropFilter: "blur(12px)",
-        textShadow: isActive ? "0 1px 4px rgba(0,0,0,0.2)" : "0 1px 3px rgba(0,0,0,0.15)",
+          ? "0 8px 32px -4px rgba(109,40,217,0.45), 0 0 48px -8px rgba(109,40,217,0.25)"
+          : "0 4px 12px rgba(0,0,0,0.08)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        textShadow: isActive ? "none" : "0 1px 3px rgba(0,0,0,0.2)",
       }}
     >
       <Icon className="w-4 h-4 flex-shrink-0" />
@@ -100,23 +117,19 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   );
 };
 
-/* ── SVG Track: thick 3-color interlocking arrow loop ── */
+/* ── SVG Track ── */
 const LoopTrackSVG = () => {
-  // Track parameters
-  const t = 48; // track thickness
-  const r = 40; // corner radius
-  const arrow = 32; // arrow point size
+  const t = 72;
+  const r = 52;
+  const arrow = 44;
+  const x1 = 0, y1 = 0, x2 = 1000, y2 = 580;
 
-  // Outer bounds of the track rectangle
-  const x1 = 0, y1 = 0, x2 = 1000, y2 = 520;
-
-  // Colors
-  const purpleLight1 = "hsl(268,55%,85%)";
-  const purpleLight2 = "hsl(275,50%,78%)";
-  const teal1 = "hsl(174,52%,72%)";
-  const teal2 = "hsl(168,48%,58%)";
-  const purpleDeep1 = "hsl(268,76%,33%)";
-  const purpleDeep2 = "hsl(280,68%,52%)";
+  const purpleLight1 = "hsl(268,55%,82%)";
+  const purpleLight2 = "hsl(275,50%,72%)";
+  const teal1 = "hsl(174,52%,65%)";
+  const teal2 = "hsl(168,48%,50%)";
+  const purpleDeep1 = "hsl(268,76%,30%)";
+  const purpleDeep2 = "hsl(280,68%,48%)";
 
   return (
     <svg
@@ -140,8 +153,7 @@ const LoopTrackSVG = () => {
         </linearGradient>
       </defs>
 
-      {/* Segment 1 — Light Purple: Top edge + top-right corner 
-          Covers steps 1,2,3. Goes from top-left → across top → down to ~40% of right side */}
+      {/* Segment 1 — Light Purple */}
       <path
         d={`
           M ${x1 + r},${y1}
@@ -159,11 +171,10 @@ const LoopTrackSVG = () => {
           Z
         `}
         fill="url(#jl-grad1)"
-        opacity="0.85"
+        opacity="0.9"
       />
 
-      {/* Segment 2 — Teal: Rest of right side + bottom-right corner + bottom edge
-          Covers steps 4,5,6,7. From ~40% right → down → across bottom → up to ~60% of left */}
+      {/* Segment 2 — Teal */}
       <path
         d={`
           M ${x2},${y2 * 0.35}
@@ -183,11 +194,10 @@ const LoopTrackSVG = () => {
           Z
         `}
         fill="url(#jl-grad2)"
-        opacity="0.85"
+        opacity="0.9"
       />
 
-      {/* Segment 3 — Deep Purple: Left side going up
-          Covers steps 8,9,10. From ~60% left → up → connects back to top-left */}
+      {/* Segment 3 — Deep Purple */}
       <path
         d={`
           M ${x1},${y2 * 0.65}
@@ -201,12 +211,56 @@ const LoopTrackSVG = () => {
           Z
         `}
         fill="url(#jl-grad3)"
-        opacity="0.9"
+        opacity="0.95"
       />
     </svg>
   );
 };
 
+/* ── Tag Badge (logo or text) ── */
+const TagBadge = ({ tag }: { tag: string }) => {
+  const logoSrc = TAG_LOGO_MAP[tag];
+
+  if (logoSrc) {
+    return (
+      <span
+        className="inline-flex items-center justify-center"
+        style={{
+          padding: "8px 20px",
+          borderRadius: "24px",
+          border: "2px solid rgba(109,40,217,0.15)",
+          background: "rgba(255,255,255,0.95)",
+        }}
+      >
+        <img
+          src={logoSrc}
+          alt={tag}
+          className="object-contain mix-blend-multiply"
+          style={{ height: "28px", maxWidth: "120px" }}
+        />
+      </span>
+    );
+  }
+
+  return (
+    <span
+      className="inline-block"
+      style={{
+        padding: "10px 22px",
+        borderRadius: "24px",
+        fontSize: "13px",
+        fontWeight: 700,
+        background: "rgba(109,40,217,0.06)",
+        color: "hsl(268,72%,38%)",
+        border: "2px solid rgba(109,40,217,0.15)",
+      }}
+    >
+      {tag}
+    </span>
+  );
+};
+
+/* ── Main Section ── */
 const JourneyLoopSection = () => {
   const [activeStep, setActiveStep] = useState(0);
   const current = journeySteps[activeStep];
@@ -238,12 +292,12 @@ const JourneyLoopSection = () => {
         {/* The Loop layout */}
         <div className="relative max-w-6xl mx-auto">
           {/* ── Thick 3-color track ── */}
-          <div className="absolute inset-0 pointer-events-none" style={{ margin: "-8px -16px" }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ margin: "-12px -24px" }}>
             <LoopTrackSVG />
           </div>
 
           {/* ── Top edge ── */}
-          <div className="relative z-10 flex justify-center gap-3 mb-4 py-3">
+          <div className="relative z-10 flex justify-center gap-16 mb-6 py-4">
             {topItems.map((s) => (
               <StepChip
                 key={s.id}
@@ -256,7 +310,7 @@ const JourneyLoopSection = () => {
 
           <div className="flex relative z-10">
             {/* ── Left edge ── */}
-            <div className="flex flex-col justify-center gap-3 px-3 py-2" style={{ minWidth: "180px" }}>
+            <div className="flex flex-col justify-center gap-16 px-4 py-2" style={{ minWidth: "210px" }}>
               {leftItems.map((s) => (
                 <StepChip
                   key={s.id}
@@ -271,24 +325,24 @@ const JourneyLoopSection = () => {
             <div
               className="flex-1 relative overflow-hidden flex items-center justify-center"
               style={{
-                minHeight: "380px",
-                borderRadius: "24px",
-                border: "1.5px solid rgba(109,40,217,0.1)",
-                background: "rgba(255,255,255,0.85)",
-                backdropFilter: "blur(20px)",
+                minHeight: "420px",
+                borderRadius: "28px",
+                border: "2px solid rgba(109,40,217,0.1)",
+                background: "rgba(255,255,255,0.9)",
+                backdropFilter: "blur(24px)",
               }}
             >
               {/* Glow blob */}
               <div
                 className="absolute pointer-events-none"
                 style={{
-                  width: "400px",
-                  height: "400px",
+                  width: "500px",
+                  height: "500px",
                   top: "50%",
                   left: "50%",
                   transform: "translate(-50%, -50%)",
                   borderRadius: "50%",
-                  background: "radial-gradient(circle, rgba(109,40,217,0.06) 0%, transparent 70%)",
+                  background: "radial-gradient(circle, rgba(109,40,217,0.07) 0%, transparent 70%)",
                 }}
               />
 
@@ -313,23 +367,9 @@ const JourneyLoopSection = () => {
                   >
                     {current.description}
                   </p>
-                  <div className="flex flex-wrap justify-center gap-2.5 mb-8">
+                  <div className="flex flex-wrap justify-center gap-3 mb-8">
                     {current.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="inline-block"
-                        style={{
-                          padding: "8px 20px",
-                          borderRadius: "24px",
-                          fontSize: "13px",
-                          fontWeight: 600,
-                          background: "rgba(109,40,217,0.06)",
-                          color: "hsl(268,72%,38%)",
-                          border: "1.5px solid rgba(109,40,217,0.12)",
-                        }}
-                      >
-                        {tag}
-                      </span>
+                      <TagBadge key={tag} tag={tag} />
                     ))}
                   </div>
                   <Link to="/kobi/step-1" className="inline-block">
@@ -358,7 +398,7 @@ const JourneyLoopSection = () => {
             </div>
 
             {/* ── Right edge ── */}
-            <div className="flex flex-col justify-center gap-3 px-3 py-2" style={{ minWidth: "180px" }}>
+            <div className="flex flex-col justify-center gap-16 px-4 py-2" style={{ minWidth: "210px" }}>
               {rightItems.map((s) => (
                 <StepChip
                   key={s.id}
@@ -371,7 +411,7 @@ const JourneyLoopSection = () => {
           </div>
 
           {/* ── Bottom edge ── */}
-          <div className="relative z-10 flex justify-center gap-3 mt-4 py-3">
+          <div className="relative z-10 flex justify-center gap-16 mt-6 py-4">
             {bottomItems.map((s) => (
               <StepChip
                 key={s.id}
