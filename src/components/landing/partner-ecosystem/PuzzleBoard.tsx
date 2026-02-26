@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { pieces, partnerDetails } from "./partner-data";
 import { puzzlePath, CW, CH, COLS, GAP } from "./puzzle-geometry";
@@ -88,23 +88,38 @@ export default function PuzzleBoard({
     >
       <defs>
         {pieces.map((p) => {
-          const gx = p.col * CW;
-          const gy = p.row * CH;
+          const gx = p.col * CW + p.col * GAP;
+          const gy = p.row * CH + p.row * GAP;
           const gw = p.cs * CW;
           const gh = p.rs * CH;
           return (
-            <linearGradient key={`grad-${p.id}`} id={`bevel-${p.id}`}
-              x1={gx} y1={gy} x2={gx + gw} y2={gy + gh} gradientUnits="userSpaceOnUse">
-              <stop offset="0%" stopColor="rgba(255,255,255,0.22)" />
-              <stop offset="45%" stopColor="rgba(255,255,255,0.04)" />
-              <stop offset="100%" stopColor="rgba(0,0,0,0.12)" />
-            </linearGradient>
+            <React.Fragment key={`defs-${p.id}`}>
+              {/* Main bevel: top-left light → bottom-right dark */}
+              <linearGradient id={`bevel-${p.id}`}
+                x1={gx} y1={gy} x2={gx + gw} y2={gy + gh} gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="rgba(255,255,255,0.35)" />
+                <stop offset="40%" stopColor="rgba(255,255,255,0.05)" />
+                <stop offset="100%" stopColor="rgba(0,0,0,0.18)" />
+              </linearGradient>
+              {/* Top highlight strip */}
+              <linearGradient id={`top-light-${p.id}`}
+                x1={gx} y1={gy} x2={gx} y2={gy + gh * 0.35} gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="rgba(255,255,255,0.5)" />
+                <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+              </linearGradient>
+              {/* Bottom shadow strip */}
+              <linearGradient id={`bot-shadow-${p.id}`}
+                x1={gx} y1={gy + gh * 0.7} x2={gx} y2={gy + gh} gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="rgba(0,0,0,0)" />
+                <stop offset="100%" stopColor="rgba(0,0,0,0.08)" />
+              </linearGradient>
+            </React.Fragment>
           );
         })}
         {/* Selected piece purple gradient */}
         <linearGradient id="selected-fill" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="hsl(268,60%,97%)" />
-          <stop offset="100%" stopColor="hsl(268,50%,94%)" />
+          <stop offset="100%" stopColor="hsl(268,50%,93%)" />
         </linearGradient>
         {/* Background radial gradient */}
         <radialGradient id="puzzle-bg-glow" cx="50%" cy="45%" r="55%">
@@ -112,8 +127,20 @@ export default function PuzzleBoard({
           <stop offset="60%" stopColor="hsl(38,30%,97%)" stopOpacity="0.2" />
           <stop offset="100%" stopColor="hsl(38,30%,97%)" stopOpacity="0" />
         </radialGradient>
-        <filter id="shadow-selected" x="-10%" y="-10%" width="120%" height="130%">
-          <feDropShadow dx="0" dy="2" stdDeviation="3" floodColor="hsl(268,72%,26%,0.25)" />
+        {/* Inner shadow filter for depth */}
+        <filter id="inner-shadow" x="-5%" y="-5%" width="110%" height="115%">
+          <feComponentTransfer in="SourceAlpha">
+            <feFuncA type="table" tableValues="1 0" />
+          </feComponentTransfer>
+          <feGaussianBlur stdDeviation="2.5" />
+          <feOffset dx="0" dy="2" result="offsetblur" />
+          <feFlood floodColor="rgba(0,0,0,0.12)" result="color" />
+          <feComposite in2="offsetblur" operator="in" />
+          <feComposite in2="SourceAlpha" operator="in" />
+          <feMerge>
+            <feMergeNode in="SourceGraphic" />
+            <feMergeNode />
+          </feMerge>
         </filter>
       </defs>
 
@@ -155,7 +182,12 @@ export default function PuzzleBoard({
             <g>
               {/* Base fill */}
               <path d={pathD} fill={isSel ? "url(#selected-fill)" : "#FFFFFF"} />
+              {/* 3D bevel overlay */}
               <path d={pathD} fill={`url(#bevel-${piece.id})`} />
+              {/* Top light wash — simulates light from above */}
+              <path d={pathD} fill={`url(#top-light-${piece.id})`} />
+              {/* Bottom shadow wash — simulates shadow underneath */}
+              <path d={pathD} fill={`url(#bot-shadow-${piece.id})`} />
 
               {/* Border with crisp glow for selected */}
               <path
@@ -172,9 +204,14 @@ export default function PuzzleBoard({
                 <path d={pathD} />
               </clipPath>
 
-              {/* Top/left bevel highlights */}
-              <rect x={px} y={py} width={pw} height={6} fill="rgba(255,255,255,0.18)" clipPath={`url(#clip-${piece.id})`} />
-              <rect x={px} y={py} width={6} height={ph} fill="rgba(255,255,255,0.12)" clipPath={`url(#clip-${piece.id})`} />
+              {/* Top edge highlight — crisp 3D lip */}
+              <rect x={px} y={py} width={pw} height={8} fill="rgba(255,255,255,0.3)" clipPath={`url(#clip-${piece.id})`} />
+              {/* Left edge highlight */}
+              <rect x={px} y={py} width={8} height={ph} fill="rgba(255,255,255,0.2)" clipPath={`url(#clip-${piece.id})`} />
+              {/* Bottom edge shadow */}
+              <rect x={px} y={py + ph - 6} width={pw} height={6} fill="rgba(0,0,0,0.06)" clipPath={`url(#clip-${piece.id})`} />
+              {/* Right edge shadow */}
+              <rect x={px + pw - 4} y={py} width={4} height={ph} fill="rgba(0,0,0,0.04)" clipPath={`url(#clip-${piece.id})`} />
 
               <LogoText piece={piece} cx={cx} cy={cy} />
             </g>
