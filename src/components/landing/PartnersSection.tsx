@@ -93,8 +93,8 @@ const categories = [
   {
     label: "İş Akışını Takip Et",
     description:
-      "Sipariş girişinden teslimata kadar tüm iş süreçlerinizi adım adım izleyin, darboğazları anında tespit edin. Görev atama, süre takibi ve otomatik bildirimlerle ekibinizin verimliliğini artırın. Tüm departmanlar arasındaki iş akışlarını tek bir panelden yöneterek operasyonel mükemmelliğe ulaşın.",
-    tags: ["Nebim V3", "Workcube HR", "Univera EnRoute"],
+      "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin; e-Arşiv, e-Fatura ve mutabakat işlemlerinizi yasal güvenceyle tek merkezde birleştirin. Paramtech Flows'un yapay zeka destekli akıllı altyapısıyla görev atama, süre takibi ve otomatik bildirimler üzerinden ekibinizin verimliliğini artırın. Tüm departmanlar arasındaki iş akışlarını tek bir panelden yöneterek operasyonel mükemmelliğe ulaşın.",
+    tags: ["Uni-Dox", "Paramtech Flows"],
     icon: ClipboardCheck,
     image: tabStok,
     accent: "#6366F1",
