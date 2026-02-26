@@ -11,6 +11,7 @@ import TestimonialsSection from "@/components/landing/TestimonialsSection";
 
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
 import BentoGridSection from "@/components/landing/BentoGridSection";
+import JourneyLoopSection from "@/components/landing/JourneyLoopSection";
 
 /* Shared section divider — horizontal gradient line */
 const SectionDivider = () => (
@@ -43,6 +44,11 @@ const Landing = () => (
     {/* 2 — PARTNERS / SOLUTIONS */}
     <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
       <PartnersSection />
+    </div>
+
+    {/* 2b — JOURNEY LOOP */}
+    <div style={{ background: "linear-gradient(180deg, hsl(38,50%,97%) 0%, hsl(265,35%,96%) 50%, hsl(38,50%,97%) 100%)" }}>
+      <JourneyLoopSection />
     </div>
 
     <SectionDivider />
