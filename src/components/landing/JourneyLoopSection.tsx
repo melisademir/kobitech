@@ -119,10 +119,10 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
 
 /* ── SVG Track ── */
 const LoopTrackSVG = () => {
-  const t = 72;
-  const r = 52;
-  const arrow = 44;
-  const x1 = 0, y1 = 0, x2 = 1000, y2 = 580;
+  const t = 96;
+  const r = 64;
+  const arrow = 56;
+  const x1 = 0, y1 = 0, x2 = 1000, y2 = 700;
 
   const purpleLight1 = "hsl(268,55%,82%)";
   const purpleLight2 = "hsl(275,50%,72%)";
@@ -292,12 +292,12 @@ const JourneyLoopSection = () => {
         {/* The Loop layout */}
         <div className="relative max-w-6xl mx-auto">
           {/* ── Thick 3-color track ── */}
-          <div className="absolute inset-0 pointer-events-none" style={{ margin: "-12px -24px" }}>
+          <div className="absolute inset-0 pointer-events-none" style={{ margin: "-20px -32px" }}>
             <LoopTrackSVG />
           </div>
 
           {/* ── Top edge ── */}
-          <div className="relative z-10 flex justify-center gap-16 mb-6 py-4">
+          <div className="relative z-10 flex justify-center gap-16 mb-8 py-6">
             {topItems.map((s) => (
               <StepChip
                 key={s.id}
@@ -310,7 +310,7 @@ const JourneyLoopSection = () => {
 
           <div className="flex relative z-10">
             {/* ── Left edge ── */}
-            <div className="flex flex-col justify-center gap-16 px-4 py-2" style={{ minWidth: "210px" }}>
+            <div className="flex flex-col justify-center gap-20 px-6 py-2" style={{ minWidth: "230px" }}>
               {leftItems.map((s) => (
                 <StepChip
                   key={s.id}
@@ -325,7 +325,7 @@ const JourneyLoopSection = () => {
             <div
               className="flex-1 relative overflow-hidden flex items-center justify-center"
               style={{
-                minHeight: "420px",
+                minHeight: "480px",
                 borderRadius: "28px",
                 border: "2px solid rgba(109,40,217,0.1)",
                 background: "rgba(255,255,255,0.9)",
@@ -398,7 +398,7 @@ const JourneyLoopSection = () => {
             </div>
 
             {/* ── Right edge ── */}
-            <div className="flex flex-col justify-center gap-16 px-4 py-2" style={{ minWidth: "210px" }}>
+            <div className="flex flex-col justify-center gap-20 px-6 py-2" style={{ minWidth: "230px" }}>
               {rightItems.map((s) => (
                 <StepChip
                   key={s.id}
@@ -411,7 +411,7 @@ const JourneyLoopSection = () => {
           </div>
 
           {/* ── Bottom edge ── */}
-          <div className="relative z-10 flex justify-center gap-16 mt-6 py-4">
+          <div className="relative z-10 flex justify-center gap-16 mt-8 py-6">
             {bottomItems.map((s) => (
               <StepChip
                 key={s.id}
