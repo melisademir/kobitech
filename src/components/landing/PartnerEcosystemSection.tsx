@@ -22,7 +22,7 @@ const PartnerEcosystemSection = () => {
     <section
       id="partner-ecosystem"
       className="py-12 md:py-20 lg:py-28 overflow-hidden relative"
-      style={{ background: "hsl(210,40%,98%)" }}
+      style={{ background: "#F8F8FA" }}
     >
       {/* Subtle purple radial glow */}
       <div

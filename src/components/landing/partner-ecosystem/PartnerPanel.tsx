@@ -45,25 +45,18 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
       </motion.div>
 
       {/* Partner logo */}
-      <motion.div variants={item} className="flex justify-center mb-3 md:mb-5 relative">
-        <div className="absolute inset-0 flex items-center justify-center" style={{ pointerEvents: "none" }}>
-          <div style={{
-            width: 100, height: 50, borderRadius: "50%",
-            background: `radial-gradient(ellipse, ${BRAND_HEX}18 0%, transparent 70%)`,
-            filter: "blur(8px)"
-          }} />
-        </div>
+      <motion.div variants={item} className="flex justify-start mb-3 md:mb-5 relative">
         <div
           className="relative flex items-center justify-center overflow-hidden"
           style={{
-            width: 200, height: 100,
-            padding: "12px 20px"
+            width: 160, height: 80,
+            padding: "8px 16px"
           }}
         >
           {piece.logo ? (
             <img src={piece.logo} alt={piece.name} style={{ width: "100%", height: "100%", objectFit: "contain" }} />
           ) : (
-            <span className="font-black text-center" style={{ color: BRAND, fontSize: "14px", letterSpacing: "-0.02em" }}>
+            <span className="font-black" style={{ color: BRAND, fontSize: "14px", letterSpacing: "-0.02em" }}>
               {piece.name}
             </span>
           )}
@@ -71,7 +64,7 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
       </motion.div>
 
       {/* Headline */}
-      <motion.div variants={item} className="text-center mb-1">
+      <motion.div variants={item} className="text-left mb-1">
         <h3
           className="font-black text-foreground"
           style={{ fontSize: "clamp(1.2rem, 2.8vw, 2.4rem)", lineHeight: 1.05, letterSpacing: "-0.03em" }}
@@ -81,10 +74,10 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
       </motion.div>
 
       {/* Gold accent band */}
-      <motion.div variants={item} className="flex justify-center mb-4 md:mb-6">
+      <motion.div variants={item} className="flex justify-start mb-4 md:mb-6">
         <div style={{
           width: 60, height: 3, borderRadius: 2,
-          background: "linear-gradient(90deg, transparent, hsl(43,65%,52%), transparent)",
+          background: "linear-gradient(90deg, hsl(43,65%,52%), transparent)",
           opacity: 0.7
         }} />
       </motion.div>
@@ -116,10 +109,10 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
         <p className="uppercase tracking-widest font-semibold mb-2 md:mb-3 text-muted-foreground" style={{ fontSize: "10px" }}>
           Özellikler
         </p>
-        <div className="flex flex-col gap-3 md:gap-4">
+        <div className="flex flex-col space-y-4">
           {d.features.map((f) => (
-            <div key={f} className="flex items-center gap-2.5">
-              <Check className="text-purple-600" style={{ width: 15, height: 15, strokeWidth: 2.8, flexShrink: 0 }} />
+            <div key={f} className="flex items-start gap-3">
+              <Check className="text-purple-600 shrink-0 mt-0.5" style={{ width: 15, height: 15, strokeWidth: 2.8 }} />
               <span className="text-slate-700 text-sm md:text-[15px] font-medium">{f}</span>
             </div>
           ))}
