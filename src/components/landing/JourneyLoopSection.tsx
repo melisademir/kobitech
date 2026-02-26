@@ -433,9 +433,15 @@ const JourneyLoopSection = () => {
                     {current.description}
                   </p>
                   <div className="flex flex-wrap justify-center gap-3 mb-6">
-                    {current.tags.map((tag) => (
-                      <TagBadge key={tag} tag={tag} />
-                    ))}
+                    {current.tags
+                      .filter((tag, i, arr) => {
+                        const logo = TAG_LOGO_MAP[tag];
+                        if (!logo) return true;
+                        return arr.findIndex((t) => TAG_LOGO_MAP[t] === logo) === i;
+                      })
+                      .map((tag) => (
+                        <TagBadge key={tag} tag={tag} />
+                      ))}
                   </div>
                   <Link to="/kobi/step-1" className="inline-block">
                     <button
