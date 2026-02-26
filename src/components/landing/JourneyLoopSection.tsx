@@ -30,6 +30,17 @@ import logoAras from "@/assets/logo-aras.png";
 import logoWorkcube from "@/assets/logo-workcube.png";
 import logoMukellef from "@/assets/logo-mukellef.png";
 
+/* ── Tab image imports ── */
+import tabOdeme from "@/assets/tab-odeme-ai.png";
+import tabEticaret from "@/assets/tab-eticaret-ai.png";
+import tabPara from "@/assets/tab-para-ai.png";
+import tabStok from "@/assets/tab-stok-ai.png";
+import tabKargo from "@/assets/tab-kargo-ai.png";
+import tabEkip from "@/assets/tab-ekip-ai.png";
+import tabSaha from "@/assets/tab-saha-ai.png";
+import tabTesvik from "@/assets/tab-tesvik-ai.png";
+import tabGlobal from "@/assets/tab-global-ai.png";
+
 /* ── Tag → Logo mapping ── */
 const TAG_LOGO_MAP: Record<string, string> = {
   "Param Fiziki POS": logoParam,
@@ -52,16 +63,16 @@ const TAG_LOGO_MAP: Record<string, string> = {
 };
 
 const journeySteps = [
-  { id: 1, title: "Ödeme Al", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], icon: CreditCard },
-  { id: 2, title: "E-Ticarete Açıl", description: "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin. Online mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin keyfini sürün.", tags: ["Ticimax", "İkas", "T-Soft"], icon: ShoppingCart },
-  { id: 3, title: "Paranı Yönet", description: "Finrota'nın sunduğu Netahsilat, Netekstre, Nap360 ve Posrapor çözümleriyle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına ulaşarak ticaretinize güç katın. İşletmenize özel dijital çözümlerle finansal süreçlerinizde kontrolü her an elinizde tutun.", tags: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"], icon: Wallet },
-  { id: 4, title: "Stoğunu Kontrol Et", description: "Univera Stokbar ve Nebim V3 çözümleriyle depo yönetiminizi modernleştirin, ürün giriş çıkışlarını anlık verilerle izleyin. Akıllı stok planlama yöntemleriyle depo seviyelerinizi en ideal noktada tutun, fazla veya eksik stok riskini ortadan kaldırın. Tüm tedarik zincirinizi iyileştirerek operasyonel hataları ve fireleri en aza indirin; işletmenize özel dijital çözümlerle kârlılığınızı koruyun.", tags: ["Univera Stokbar", "Nebim V3"], icon: Package },
-  { id: 5, title: "Ürünlerini Gönder", description: "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her yerine hızlıca ulaştırın. E-ticaret entegrasyonu ile siparişlerinizi anında kargoya hazırlayın ve operasyonel iş yükünüzü hafifletin. Kurumsal indirimlerle gönderim maliyetlerinizi düşürürken, anlık takip sistemiyle müşterilerinize her adımda güven verin.", tags: ["Aras Kargo"], icon: Truck },
-  { id: 6, title: "Ekibine Yön Ver", description: "Çalışanlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Özlük bilgilerini; maaş planlarını, izinlerini, mesailerini ve bordro hesaplarını Workcube HR ile güvenle yönetin.", tags: ["Workcube HR"], icon: Users },
-  { id: 7, title: "Sahayı Yönet", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. Univera EnRoute ile sahadan gelen verileri anında analiz ederek ekibinizin verimliliğini artırın.", tags: ["Univera EnRoute"], icon: MapPin },
-  { id: 8, title: "İş Akışını Takip Et", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin; e-Arşiv, e-Fatura ve mutabakat işlemlerinizi yasal güvenceyle tek merkezde birleştirin. Paramtech Flows'un yapay zeka destekli akıllı altyapısıyla görev atama, süre takibi ve otomatik bildirimler üzerinden ekibinizin verimliliğini artırın. Tüm departmanlar arasındaki iş akışlarını tek bir panelden yöneterek operasyonel mükemmelliğe ulaşın.", tags: ["Uni-Dox", "Paramtech Flows"], icon: ClipboardCheck },
-  { id: 9, title: "Teşviklerden Yararlan", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], icon: BadgePercent },
-  { id: 10, title: "Globale Açıl", description: "TÜSİAD, MÜSİAD, TOBB, İTO, HİB ve KAGİDER gibi Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu; Ticimax'ın e-ticaret altyapısını, Mükellef'in global şirketleşme gücünü ve profesyonel hukuki danışmanlık desteğini arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Ticimax", "Mükellef"], icon: Globe2 },
+  { id: 1, title: "Ödeme Al", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], icon: CreditCard, image: tabOdeme },
+  { id: 2, title: "E-Ticarete Açıl", description: "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin. Online mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin keyfini sürün.", tags: ["Ticimax", "İkas", "T-Soft"], icon: ShoppingCart, image: tabEticaret },
+  { id: 3, title: "Paranı Yönet", description: "Finrota'nın sunduğu Netahsilat, Netekstre, Nap360 ve Posrapor çözümleriyle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına ulaşarak ticaretinize güç katın. İşletmenize özel dijital çözümlerle finansal süreçlerinizde kontrolü her an elinizde tutun.", tags: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"], icon: Wallet, image: tabPara },
+  { id: 4, title: "Stoğunu Kontrol Et", description: "Univera Stokbar ve Nebim V3 çözümleriyle depo yönetiminizi modernleştirin, ürün giriş çıkışlarını anlık verilerle izleyin. Akıllı stok planlama yöntemleriyle depo seviyelerinizi en ideal noktada tutun, fazla veya eksik stok riskini ortadan kaldırın. Tüm tedarik zincirinizi iyileştirerek operasyonel hataları ve fireleri en aza indirin; işletmenize özel dijital çözümlerle kârlılığınızı koruyun.", tags: ["Univera Stokbar", "Nebim V3"], icon: Package, image: tabStok },
+  { id: 5, title: "Ürünlerini Gönder", description: "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her yerine hızlıca ulaştırın. E-ticaret entegrasyonu ile siparişlerinizi anında kargoya hazırlayın ve operasyonel iş yükünüzü hafifletin. Kurumsal indirimlerle gönderim maliyetlerinizi düşürürken, anlık takip sistemiyle müşterilerinize her adımda güven verin.", tags: ["Aras Kargo"], icon: Truck, image: tabKargo },
+  { id: 6, title: "Ekibine Yön Ver", description: "Çalışanlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Özlük bilgilerini; maaş planlarını, izinlerini, mesailerini ve bordro hesaplarını Workcube HR ile güvenle yönetin.", tags: ["Workcube HR"], icon: Users, image: tabEkip },
+  { id: 7, title: "Sahayı Yönet", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. Univera EnRoute ile sahadan gelen verileri anında analiz ederek ekibinizin verimliliğini artırın.", tags: ["Univera EnRoute"], icon: MapPin, image: tabSaha },
+  { id: 8, title: "İş Akışını Takip Et", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin; e-Arşiv, e-Fatura ve mutabakat işlemlerinizi yasal güvenceyle tek merkezde birleştirin. Paramtech Flows'un yapay zeka destekli akıllı altyapısıyla görev atama, süre takibi ve otomatik bildirimler üzerinden ekibinizin verimliliğini artırın. Tüm departmanlar arasındaki iş akışlarını tek bir panelden yöneterek operasyonel mükemmelliğe ulaşın.", tags: ["Uni-Dox", "Paramtech Flows"], icon: ClipboardCheck, image: tabStok },
+  { id: 9, title: "Teşviklerden Yararlan", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], icon: BadgePercent, image: tabTesvik },
+  { id: 10, title: "Globale Açıl", description: "TÜSİAD, MÜSİAD, TOBB, İTO, HİB ve KAGİDER gibi Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu; Ticimax'ın e-ticaret altyapısını, Mükellef'in global şirketleşme gücünü ve profesyonel hukuki danışmanlık desteğini arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Ticimax", "Mükellef"], icon: Globe2, image: tabGlobal },
 ];
 
 const topSteps = journeySteps.slice(0, 5);
@@ -376,46 +387,68 @@ const JourneyLoopSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative z-10 px-8 md:px-14 py-10 text-center max-w-3xl mx-auto"
+                  className="relative z-10 flex flex-col md:flex-row items-center gap-8 px-8 md:px-12 py-10 w-full"
                 >
-                  <h3
-                    className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
-                    style={{ letterSpacing: "-0.02em" }}
-                  >
-                    {current.title}
-                  </h3>
-                  <p
-                    className="text-muted-foreground leading-relaxed mb-8"
-                    style={{ fontSize: "17px", lineHeight: 1.75 }}
-                  >
-                    {current.description}
-                  </p>
-                  <div className="flex flex-wrap justify-center gap-3 mb-8">
-                    {current.tags.map((tag) => (
-                      <TagBadge key={tag} tag={tag} />
-                    ))}
+                  {/* Left — Text */}
+                  <div className="flex-1 text-left">
+                    <h3
+                      className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
+                      style={{ letterSpacing: "-0.02em" }}
+                    >
+                      {current.title}
+                    </h3>
+                    <p
+                      className="text-muted-foreground leading-relaxed mb-6"
+                      style={{ fontSize: "16px", lineHeight: 1.75 }}
+                    >
+                      {current.description}
+                    </p>
+                    <div className="flex flex-wrap gap-3 mb-6">
+                      {current.tags.map((tag) => (
+                        <TagBadge key={tag} tag={tag} />
+                      ))}
+                    </div>
+                    <Link to="/kobi/step-1" className="inline-block">
+                      <button
+                        className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer"
+                        style={{
+                          height: "50px",
+                          padding: "0 36px",
+                          borderRadius: "24px",
+                          fontSize: "15px",
+                          background: "hsl(268,72%,38%)",
+                          boxShadow: "0 4px 16px -4px rgba(109,40,217,0.35)",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.background = "hsl(268,72%,32%)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.background = "hsl(268,72%,38%)";
+                        }}
+                      >
+                        Çözümleri Keşfet <ArrowRight className="w-4 h-4" />
+                      </button>
+                    </Link>
                   </div>
-                  <Link to="/kobi/step-1" className="inline-block">
-                    <button
-                      className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer"
+
+                  {/* Right — Image */}
+                  <div className="flex-shrink-0 w-full md:w-[320px]">
+                    <div
+                      className="rounded-[20px] overflow-hidden"
                       style={{
-                        height: "50px",
-                        padding: "0 36px",
-                        borderRadius: "24px",
-                        fontSize: "15px",
-                        background: "hsl(268,72%,38%)",
-                        boxShadow: "0 4px 16px -4px rgba(109,40,217,0.35)",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background = "hsl(268,72%,32%)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background = "hsl(268,72%,38%)";
+                        border: "1px solid rgba(0,0,0,0.06)",
+                        boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
+                        background: "white",
                       }}
                     >
-                      Çözümleri Keşfet <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </Link>
+                      <img
+                        src={current.image}
+                        alt={current.title}
+                        className="w-full h-full object-cover"
+                        style={{ minHeight: "220px", maxHeight: "320px" }}
+                      />
+                    </div>
+                  </div>
                 </motion.div>
               </AnimatePresence>
             </div>
