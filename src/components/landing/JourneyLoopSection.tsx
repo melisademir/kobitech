@@ -343,7 +343,7 @@ const JourneyLoopSection = () => {
           </div>
 
           {/* ── Top Edge: Steps 1-5 ── */}
-          <div className="relative z-10 flex justify-center items-center gap-12 py-5" style={{ minHeight: "80px" }}>
+          <div className="relative z-10 flex flex-wrap justify-center items-center gap-4 md:gap-8 py-5" style={{ minHeight: "80px" }}>
             {topSteps.map((s) => (
               <StepChip
                 key={s.id}
@@ -471,7 +471,7 @@ const JourneyLoopSection = () => {
           </div>
 
           {/* ── Bottom Edge: Steps 6-10 ── */}
-          <div className="relative z-10 flex justify-center items-center gap-12 py-5" style={{ minHeight: "80px" }}>
+          <div className="relative z-10 flex flex-wrap justify-center items-center gap-4 md:gap-8 py-5" style={{ minHeight: "80px" }}>
             {bottomSteps.map((s) => (
               <StepChip
                 key={s.id}
