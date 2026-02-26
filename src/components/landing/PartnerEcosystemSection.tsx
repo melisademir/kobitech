@@ -83,8 +83,14 @@ const PartnerEcosystemSection = () => {
               animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: -20 }}
               transition={{ duration: 0.6, ease: "easeOut" }}
             >
-              <div className="flex-1 flex items-center justify-center lg:mt-[-92px]">
-                <div className="w-full max-w-[280px] md:max-w-[360px] lg:max-w-none mx-auto">
+              <div
+                className="flex-1 flex items-center justify-center lg:mt-[-92px]"
+                style={{ perspective: "800px" }}
+              >
+                <div
+                  className="w-full max-w-[280px] md:max-w-[360px] lg:max-w-none mx-auto"
+                  style={{ transform: "rotateY(-12deg) rotateX(4deg)", transformStyle: "preserve-3d" }}
+                >
                   <PuzzleBoard selectedId={selectedId} onSelect={setSelectedId} visible={visible} />
                 </div>
               </div>
