@@ -181,12 +181,12 @@ export default function PuzzleBoard({
           >
             <g>
               {/* 3D thickness — selected gets more layers for extra depth */}
-              {(isSel ? [8, 7, 6, 5, 4, 3, 2, 1] : [4, 3, 2, 1]).map((offset) => (
+              {(isSel ? [12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1] : [4, 3, 2, 1]).map((offset) => (
                 <path
                   key={`depth-${offset}`}
                   d={pathD}
-                  fill={isSel ? `rgba(107,33,168,${0.03 + offset * 0.012})` : `rgba(0,0,0,${0.03 + offset * 0.015})`}
-                  transform={`translate(0, ${offset * 1.2})`}
+                  fill={isSel ? `rgba(107,33,168,${0.025 + offset * 0.01})` : `rgba(0,0,0,${0.03 + offset * 0.015})`}
+                  transform={`translate(0, ${offset * 1.3})`}
                 />
               ))}
 
