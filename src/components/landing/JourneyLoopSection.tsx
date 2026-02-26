@@ -92,27 +92,28 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
       onClick={onClick}
       className="relative flex items-center gap-2.5 cursor-pointer transition-all duration-300 whitespace-nowrap"
       style={{
-        padding: isActive ? "14px 28px" : "12px 22px",
-        borderRadius: "18px",
-        fontSize: isActive ? "15px" : "14px",
+        padding: isActive ? "16px 32px" : "14px 26px",
+        borderRadius: "20px",
+        fontSize: isActive ? "16px" : "15px",
         fontWeight: 800,
+        letterSpacing: "0.01em",
         transform: isActive ? "scale(1.1)" : "scale(1)",
         background: isActive
           ? "rgba(255,255,255,1)"
-          : "rgba(255,255,255,0.6)",
+          : "rgba(255,255,255,0.75)",
         color: isActive ? "hsl(268,72%,38%)" : "white",
         border: isActive
-          ? "2.5px solid rgba(255,255,255,1)"
-          : "2.5px solid rgba(255,255,255,0.8)",
+          ? "3px solid rgba(255,255,255,1)"
+          : "3px solid rgba(255,255,255,0.85)",
         boxShadow: isActive
           ? "0 8px 32px -4px rgba(109,40,217,0.4), 0 0 48px -8px rgba(109,40,217,0.2)"
-          : "0 4px 12px rgba(0,0,0,0.08)",
+          : "0 4px 16px rgba(0,0,0,0.12)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
-        textShadow: isActive ? "none" : "0 1px 3px rgba(0,0,0,0.2)",
+        textShadow: isActive ? "none" : "0 1px 4px rgba(0,0,0,0.35)",
       }}
     >
-      <Icon className="w-4 h-4 flex-shrink-0" />
+      <Icon className="w-5 h-5 flex-shrink-0" />
       <span>{step.title}</span>
     </button>
   );
