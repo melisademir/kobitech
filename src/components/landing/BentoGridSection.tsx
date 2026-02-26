@@ -2,74 +2,40 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 
-import bentoSales from "@/assets/bento-sales.png";
-import bentoCashflow from "@/assets/bento-cashflow.png";
-import bentoOperations from "@/assets/bento-operations.png";
-import bentoGlobal from "@/assets/bento-global.png";
-
-/* ── Badge presets ── */
-const badgeStyles = {
-  indigo: "bg-[hsl(226,76%,96%)]/50 text-[hsl(226,60%,42%)] border-[hsl(226,60%,85%)]",
-  emerald: "bg-[hsl(152,68%,95%)]/50 text-[hsl(152,60%,30%)] border-[hsl(152,60%,82%)]",
-  blue: "bg-[hsl(210,80%,96%)]/50 text-[hsl(210,70%,38%)] border-[hsl(210,60%,82%)]",
-  purple: "bg-[hsl(268,60%,96%)]/50 text-[hsl(268,60%,38%)] border-[hsl(268,50%,82%)]",
-} as const;
-
-type ColorKey = keyof typeof badgeStyles;
-
-const Badge = ({ label, color }: { label: string; color: ColorKey }) => (
-  <span className={`px-4 py-2 rounded-full text-sm font-bold border-2 ${badgeStyles[color]}`}>
-    {label}
-  </span>
-);
-
-/* ── Card base ── */
-const cardBase =
-  "rounded-[2rem] p-8 sm:p-10 border border-border/60 shadow-sm shadow-muted/50 relative overflow-hidden group hover:shadow-xl transition-all duration-300";
+import bentoDarkSales from "@/assets/bento-dark-sales.png";
+import bentoDarkCashflow from "@/assets/bento-dark-cashflow.png";
+import bentoDarkOperations from "@/assets/bento-dark-operations.png";
+import bentoDarkGlobal from "@/assets/bento-dark-global.png";
 
 /* ── Card data ── */
-const cards: {
-  span: string;
-  image: string;
-  title: string;
-  desc: string;
-  badges: string[];
-  color: ColorKey;
-  wide?: boolean;
-}[] = [
+const cards = [
   {
     span: "lg:col-span-8",
-    image: bentoSales,
+    image: bentoDarkSales,
     title: "360° Satış & Tahsilat",
     desc: "İster mağazada ister dijitalde ticaretinize güç katın. Tahsilat süreçlerinizi tek platformda birleştirin, online satışlarınızı ve kargo operasyonlarınızı hızlandırın.",
-    badges: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS", "Ticimax", "İkas", "T-Soft", "Aras Kargo"],
-    color: "indigo",
-    wide: true,
+    highlight: "Fiziki, Sanal ve Cep POS ile Tüm Ödemeler Tek Ekranda!",
   },
   {
     span: "lg:col-span-4",
-    image: bentoCashflow,
+    image: bentoDarkCashflow,
     title: "Nakit Akışını Yönetin",
     desc: "Tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına anında ulaşarak ticaretinize güç katın.",
-    badges: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"],
-    color: "emerald",
+    highlight: "Tüm Banka Hesaplarınız ve Nakit Akışınız Kontrol Altında!",
   },
   {
     span: "lg:col-span-5",
-    image: bentoOperations,
+    image: bentoDarkOperations,
     title: "Kusursuz Operasyon ve Ekip",
     desc: "Depo yönetiminden saha satış rotalarına, e-Dönüşüm işlemlerinden personel bordrolarına kadar tüm operasyonel iş yükünüzü tek merkezden optimize edin.",
-    badges: ["Univera Stokbar", "Nebim V3", "Univera EnRoute", "Uni-Dox", "Paramtech Flows", "Workcube HR"],
-    color: "blue",
+    highlight: "Depo, Saha ve İK Süreçleriniz İçin Uçtan Uca Otomasyon!",
   },
   {
     span: "lg:col-span-7",
-    image: bentoGlobal,
+    image: bentoDarkGlobal,
     title: "Sınırları Aşan Büyüme",
     desc: "Hibe programlarıyla devlet teşviklerinden yararlanın. En güçlü iş dünyası kuruluşlarının vizyonuyla ve doğru stratejiyle globale açılın.",
-    badges: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı", "TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Mükellef"],
-    color: "purple",
-    wide: true,
+    highlight: "Devlet Teşvikleri ve Global İş Ağlarıyla Sınırları Kaldırın!",
   },
 ];
 
@@ -108,38 +74,44 @@ const BentoGridSection = () => (
         {cards.map((card) => (
           <div
             key={card.title}
-            className={`${cardBase} ${card.span} ${
-              card.wide
-                ? "bg-gradient-to-br from-white to-muted/80"
-                : "bg-white"
-            }`}
+            className={`relative overflow-hidden rounded-[2rem] min-h-[400px] group ${card.span}`}
           >
-            {/* Split layout: text left, image right on wide; stacked on narrow */}
-            <div className={`flex ${card.wide ? "flex-col lg:flex-row lg:items-center lg:justify-between gap-8" : "flex-col gap-6"}`}>
-              {/* Text side */}
-              <div className={card.wide ? "flex-1 lg:max-w-[60%] flex flex-col gap-4" : "flex flex-col gap-4"}>
-                <h3 className="text-3xl md:text-4xl font-extrabold tracking-tight text-foreground leading-tight">
+            {/* Background image */}
+            <img
+              src={card.image}
+              alt={card.title}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+              loading="lazy"
+            />
+
+            {/* Dark gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[hsl(222,47%,11%)]/95 via-[hsl(222,47%,11%)]/60 to-[hsl(222,47%,11%)]/20" />
+
+            {/* Content */}
+            <div className="relative z-10 h-full p-8 sm:p-10 flex flex-col justify-between">
+              {/* Top — text */}
+              <div>
+                <h3 className="text-white text-2xl md:text-3xl font-extrabold tracking-tight leading-tight drop-shadow-lg mb-3">
                   {card.title}
                 </h3>
-                <p className="text-lg text-muted-foreground leading-relaxed font-medium">
+                <p className="text-[hsl(214,32%,80%)] text-sm md:text-base font-medium leading-relaxed drop-shadow">
                   {card.desc}
                 </p>
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {card.badges.map((b) => (
-                    <Badge key={b} label={b} color={card.color} />
-                  ))}
+
+                {/* Glassmorphism highlight box */}
+                <div className="bg-white/95 backdrop-blur-sm text-foreground rounded-xl px-5 py-3 text-sm font-bold shadow-xl w-fit mt-6">
+                  {card.highlight}
                 </div>
               </div>
 
-              {/* Image side */}
-              <div className={`${card.wide ? "flex-1" : ""} h-64 lg:h-auto rounded-3xl overflow-hidden relative`}>
-                <img
-                  src={card.image}
-                  alt={card.title}
-                  className="w-full h-full object-cover rounded-3xl group-hover:scale-105 transition-transform duration-500"
-                  loading="lazy"
-                />
-              </div>
+              {/* Bottom — CTA */}
+              <Link
+                to="/kobi/step-1"
+                className="bg-[hsl(268,68%,60%)] hover:bg-[hsl(268,68%,50%)] text-white rounded-full py-3 px-6 text-sm font-bold inline-flex items-center gap-2 transition-all hover:scale-105 shadow-md w-fit mt-8"
+              >
+                Hemen Başla
+                <ArrowRight className="w-4 h-4" />
+              </Link>
             </div>
           </div>
         ))}
