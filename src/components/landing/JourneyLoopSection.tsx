@@ -121,7 +121,7 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
 /* ── Interlocking Chevron Track SVG ── */
 const ChevronTrackSVG = () => {
   const W = 1200;
-  const H = 640;
+  const H = 820;
   const T = 80; // uniform thickness on all sides
   const r = 48; // corner radius
   const chev = 36; // chevron arrow depth
@@ -358,7 +358,7 @@ const JourneyLoopSection = () => {
             <div
               className="relative overflow-hidden flex items-center justify-center"
               style={{
-                minHeight: "440px",
+                minHeight: "580px",
                 borderRadius: "2.5rem",
                 border: "2px solid rgba(109,40,217,0.1)",
                 background: "rgba(255,255,255,0.92)",
@@ -387,68 +387,67 @@ const JourneyLoopSection = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -12 }}
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative z-10 flex flex-col md:flex-row items-center gap-8 px-8 md:px-12 py-10 w-full"
+                  className="relative z-10 flex flex-col items-center px-8 md:px-14 py-8 w-full max-w-3xl mx-auto"
                 >
-                  {/* Left — Text */}
-                  <div className="flex-1 text-left">
-                    <h3
-                      className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
-                      style={{ letterSpacing: "-0.02em" }}
-                    >
-                      {current.title}
-                    </h3>
-                    <p
-                      className="text-muted-foreground leading-relaxed mb-6"
-                      style={{ fontSize: "16px", lineHeight: 1.75 }}
-                    >
-                      {current.description}
-                    </p>
-                    <div className="flex flex-wrap gap-3 mb-6">
-                      {current.tags.map((tag) => (
-                        <TagBadge key={tag} tag={tag} />
-                      ))}
-                    </div>
-                    <Link to="/kobi/step-1" className="inline-block">
-                      <button
-                        className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer"
-                        style={{
-                          height: "50px",
-                          padding: "0 36px",
-                          borderRadius: "24px",
-                          fontSize: "15px",
-                          background: "hsl(268,72%,38%)",
-                          boxShadow: "0 4px 16px -4px rgba(109,40,217,0.35)",
-                        }}
-                        onMouseEnter={(e) => {
-                          e.currentTarget.style.background = "hsl(268,72%,32%)";
-                        }}
-                        onMouseLeave={(e) => {
-                          e.currentTarget.style.background = "hsl(268,72%,38%)";
-                        }}
-                      >
-                        Çözümleri Keşfet <ArrowRight className="w-4 h-4" />
-                      </button>
-                    </Link>
-                  </div>
-
-                  {/* Right — Image */}
-                  <div className="flex-shrink-0 w-full md:w-[320px]">
+                  {/* Image — top */}
+                  <div className="w-full mb-6">
                     <div
-                      className="rounded-[20px] overflow-hidden"
+                      className="rounded-[20px] overflow-hidden mx-auto"
                       style={{
                         border: "1px solid rgba(0,0,0,0.06)",
                         boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
                         background: "white",
+                        maxWidth: "480px",
                       }}
                     >
                       <img
                         src={current.image}
                         alt={current.title}
-                        className="w-full h-full object-cover"
-                        style={{ minHeight: "220px", maxHeight: "320px" }}
+                        className="w-full object-cover"
+                        style={{ height: "220px" }}
                       />
                     </div>
                   </div>
+
+                  {/* Title */}
+                  <h3
+                    className="text-3xl md:text-4xl font-extrabold text-foreground mb-3 text-center"
+                    style={{ letterSpacing: "-0.02em" }}
+                  >
+                    {current.title}
+                  </h3>
+                  <p
+                    className="text-muted-foreground leading-relaxed mb-6 text-center"
+                    style={{ fontSize: "16px", lineHeight: 1.75 }}
+                  >
+                    {current.description}
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-3 mb-6">
+                    {current.tags.map((tag) => (
+                      <TagBadge key={tag} tag={tag} />
+                    ))}
+                  </div>
+                  <Link to="/kobi/step-1" className="inline-block">
+                    <button
+                      className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200 cursor-pointer"
+                      style={{
+                        height: "50px",
+                        padding: "0 36px",
+                        borderRadius: "24px",
+                        fontSize: "15px",
+                        background: "hsl(268,72%,38%)",
+                        boxShadow: "0 4px 16px -4px rgba(109,40,217,0.35)",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = "hsl(268,72%,32%)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = "hsl(268,72%,38%)";
+                      }}
+                    >
+                      Çözümleri Keşfet <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
                 </motion.div>
               </AnimatePresence>
             </div>
