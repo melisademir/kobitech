@@ -4,23 +4,31 @@ import { CreditCard, Wallet, Users, Globe, ArrowRight } from "lucide-react";
 
 /* ── Badge presets ── */
 const badgeStyles = {
-  indigo: "bg-[hsl(226,76%,96%)] text-[hsl(226,60%,42%)] border-[hsl(226,60%,90%)]",
-  emerald: "bg-[hsl(152,68%,95%)] text-[hsl(152,60%,30%)] border-[hsl(152,60%,88%)]",
-  blue: "bg-[hsl(210,80%,96%)] text-[hsl(210,70%,38%)] border-[hsl(210,60%,88%)]",
-  purple: "bg-[hsl(268,60%,96%)] text-[hsl(268,60%,38%)] border-[hsl(268,50%,88%)]",
+  indigo: "bg-[hsl(226,76%,96%)]/50 text-[hsl(226,60%,42%)] border-[hsl(226,60%,90%)]",
+  emerald: "bg-[hsl(152,68%,95%)]/50 text-[hsl(152,60%,30%)] border-[hsl(152,60%,88%)]",
+  blue: "bg-[hsl(210,80%,96%)]/50 text-[hsl(210,70%,38%)] border-[hsl(210,60%,88%)]",
+  purple: "bg-[hsl(268,60%,96%)]/50 text-[hsl(268,60%,38%)] border-[hsl(268,50%,88%)]",
 } as const;
 
 type ColorKey = keyof typeof badgeStyles;
 
 const Badge = ({ label, color }: { label: string; color: ColorKey }) => (
-  <span className={`px-3 py-1.5 rounded-full text-xs font-bold border ${badgeStyles[color]}`}>
+  <span className={`px-3 py-1 rounded-full text-xs font-semibold border ${badgeStyles[color]}`}>
     {label}
   </span>
 );
 
+/* ── Icon container presets ── */
+const iconBg = {
+  indigo: "bg-[hsl(226,76%,96%)]",
+  emerald: "bg-[hsl(152,68%,95%)]",
+  blue: "bg-[hsl(210,80%,96%)]",
+  purple: "bg-[hsl(268,60%,96%)]",
+} as const;
+
 /* ── Card base ── */
 const cardBase =
-  "bg-white rounded-[2rem] p-8 sm:p-10 border border-border shadow-sm relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col gap-4";
+  "rounded-[2rem] p-8 sm:p-10 border border-border/60 shadow-sm shadow-muted/50 relative overflow-hidden group hover:shadow-xl transition-all duration-300 flex flex-col gap-4";
 
 /* ── Card data ── */
 const cards: {
@@ -30,6 +38,7 @@ const cards: {
   desc: string;
   badges: string[];
   color: ColorKey;
+  wide?: boolean;
 }[] = [
   {
     span: "lg:col-span-8",
@@ -38,6 +47,7 @@ const cards: {
     desc: "İster mağazada ister dijitalde ticaretinize güç katın. Tahsilat süreçlerinizi tek platformda birleştirin, online satışlarınızı ve kargo operasyonlarınızı hızlandırın.",
     badges: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS", "Ticimax", "İkas", "T-Soft", "Aras Kargo"],
     color: "indigo",
+    wide: true,
   },
   {
     span: "lg:col-span-4",
@@ -62,6 +72,7 @@ const cards: {
     desc: "Hibe programlarıyla devlet teşviklerinden yararlanın. En güçlü iş dünyası kuruluşlarının vizyonuyla ve doğru stratejiyle globale açılın.",
     badges: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı", "TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Mükellef"],
     color: "purple",
+    wide: true,
   },
 ];
 
@@ -98,11 +109,24 @@ const BentoGridSection = () => (
         className="grid grid-cols-1 lg:grid-cols-12 gap-6"
       >
         {cards.map((card) => (
-          <div key={card.title} className={`${cardBase} ${card.span}`}>
-            {card.icon}
-            <h3 className="text-xl font-bold text-foreground">{card.title}</h3>
-            <p className="text-sm text-muted-foreground leading-relaxed">{card.desc}</p>
-            <div className="flex flex-wrap gap-2 mt-4">
+          <div
+            key={card.title}
+            className={`${cardBase} ${card.span} ${
+              card.wide
+                ? "bg-gradient-to-br from-white to-muted/80"
+                : "bg-white"
+            }`}
+          >
+            {/* Icon container */}
+            <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-6 ${iconBg[card.color]}`}>
+              {card.icon}
+            </div>
+
+            <h3 className="text-2xl font-bold tracking-tight text-foreground">{card.title}</h3>
+            <p className="text-sm text-muted-foreground/80 leading-relaxed">{card.desc}</p>
+
+            {/* Badges pinned to bottom */}
+            <div className="flex flex-wrap gap-2 mt-auto pt-6">
               {card.badges.map((b) => (
                 <Badge key={b} label={b} color={card.color} />
               ))}
