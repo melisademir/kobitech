@@ -111,20 +111,25 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
 const ChevronTrackSVG = () => {
   const W = 1200;
   const H = 640;
-  const trackH = 80;
-  const chevronW = 40;
-  const r = 48;
+  const T = 80; // uniform thickness on all sides
+  const r = 48; // corner radius
+  const chev = 36; // chevron arrow depth
 
-  /* Colors */
   const purpleLight = "hsl(268,55%,78%)";
   const teal = "hsl(174,52%,55%)";
   const purpleDeep = "hsl(268,72%,32%)";
 
-  /* Y positions */
-  const topY = 0;
-  const botY = H - trackH;
-  const midTopInner = topY + trackH;
-  const midBotInner = botY;
+  // Outer rect corners
+  const ox1 = 0, oy1 = 0, ox2 = W, oy2 = H;
+  // Inner rect corners
+  const ix1 = T, iy1 = T, ix2 = W - T, iy2 = H - T;
+
+  // Phase break points on the top edge (chevron positions)
+  const topChev1X = W * 0.37;
+  const topChev2X = W * 0.72;
+  // Phase break points on the bottom edge
+  const botChev1X = W * 0.63;
+  const botChev2X = W * 0.33;
 
   return (
     <svg
@@ -133,99 +138,84 @@ const ChevronTrackSVG = () => {
       preserveAspectRatio="none"
       fill="none"
     >
-      {/* ── Phase 1: Light Purple — top-left to ~40%, down right side, bottom back to ~60% ── */}
+      {/* ── Phase 1: Light Purple — Top-left segment + left side + bottom-right portion ── */}
       <path
         d={`
-          M ${r},${topY}
-          L ${W * 0.38},${topY}
-          L ${W * 0.38 + chevronW},${topY + trackH / 2}
-          L ${W * 0.38},${topY + trackH}
-          L ${r},${topY + trackH}
-          Q 0,${topY + trackH} 0,${topY + trackH + r}
-          L 0,${botY - r}
-          Q 0,${botY} ${r},${botY}
-          L ${r},${botY + trackH}
-          Q 0,${botY + trackH} 0,${botY + trackH - r}
-          L 0,${topY + trackH + r}
-          Q 0,${topY + trackH} ${r},${topY + trackH}
-          L ${r},${topY}
-          Q 0,${topY} 0,${topY + r}
-          L 0,${botY - r}
-          Q 0,${botY} ${r},${botY}
-          L ${W * 0.62},${botY}
-          L ${W * 0.62 - chevronW},${botY + trackH / 2}
-          L ${W * 0.62},${botY + trackH}
-          L ${r},${botY + trackH}
-          Q 0,${botY + trackH} 0,${botY + trackH - r}
-          L 0,${topY + r}
-          Q 0,${topY} ${r},${topY}
+          M ${r},${oy1}
+          L ${topChev1X},${oy1}
+          L ${topChev1X + chev},${oy1 + T / 2}
+          L ${topChev1X},${oy1 + T}
+          L ${r},${iy1}
+          Q ${ix1},${iy1} ${ix1},${iy1 + r}
+          L ${ix1},${iy2 - r}
+          Q ${ix1},${iy2} ${ix1 + r},${iy2}
+          L ${botChev1X},${iy2}
+          L ${botChev1X + chev},${iy2 + T / 2}
+          L ${botChev1X},${oy2}
+          L ${r},${oy2}
+          Q ${ox1},${oy2} ${ox1},${oy2 - r}
+          L ${ox1},${oy1 + r}
+          Q ${ox1},${oy1} ${r},${oy1}
           Z
         `}
         fill={purpleLight}
         opacity="0.92"
       />
 
-      {/* ── Phase 2: Teal — top ~38% to ~72%, right side connector, bottom ~62% to ~35% ── */}
+      {/* ── Phase 2: Teal — Top-middle + right side + bottom-middle ── */}
       <path
         d={`
-          M ${W * 0.38},${topY}
-          L ${W * 0.38 + chevronW},${topY + trackH / 2}
-          L ${W * 0.38},${topY + trackH}
-          L ${W * 0.72},${topY + trackH}
-          L ${W * 0.72 + chevronW},${topY + trackH / 2}
-          L ${W * 0.72},${topY}
+          M ${topChev1X},${oy1}
+          L ${topChev1X + chev},${oy1 + T / 2}
+          L ${topChev1X},${iy1}
+          L ${topChev2X},${iy1}
+          L ${topChev2X + chev},${oy1 + T / 2}
+          L ${topChev2X},${oy1}
           Z
         `}
         fill={teal}
         opacity="0.92"
       />
-      {/* Right side connector */}
+      {/* Right side */}
       <path
         d={`
-          M ${W - r},${topY}
-          L ${W},${topY}
-          Q ${W},${topY} ${W},${topY + r}
-          L ${W},${botY - r}
-          Q ${W},${botY} ${W - r},${botY}
-          L ${W},${botY}
-          Q ${W},${botY} ${W},${botY + r}
-          L ${W},${botY + trackH - r}
-          Q ${W},${botY + trackH} ${W - r},${botY + trackH}
-          L ${W - r},${botY}
-          Q ${W},${botY} ${W},${botY - r}
-          L ${W},${topY + trackH + r}
-          Q ${W},${topY + trackH} ${W - r},${topY + trackH}
-          L ${W - r},${topY}
+          M ${ox2 - r},${oy1}
+          Q ${ox2},${oy1} ${ox2},${oy1 + r}
+          L ${ox2},${oy2 - r}
+          Q ${ox2},${oy2} ${ox2 - r},${oy2}
+          L ${ox2 - r},${iy2}
+          Q ${ix2},${iy2} ${ix2},${iy2 - r}
+          L ${ix2},${iy1 + r}
+          Q ${ix2},${iy1} ${ix2 - r},${iy1}
           Z
         `}
         fill={teal}
         opacity="0.92"
       />
-      {/* Bottom teal segment */}
+      {/* Bottom middle teal */}
       <path
         d={`
-          M ${W * 0.62},${botY}
-          L ${W * 0.62 - chevronW},${botY + trackH / 2}
-          L ${W * 0.62},${botY + trackH}
-          L ${W * 0.35},${botY + trackH}
-          L ${W * 0.35 - chevronW},${botY + trackH / 2}
-          L ${W * 0.35},${botY}
+          M ${botChev1X},${iy2}
+          L ${botChev1X + chev},${iy2 + T / 2}
+          L ${botChev1X},${oy2}
+          L ${botChev2X},${oy2}
+          L ${botChev2X - chev},${iy2 + T / 2}
+          L ${botChev2X},${iy2}
           Z
         `}
         fill={teal}
         opacity="0.92"
       />
 
-      {/* ── Phase 3: Deep Purple — top ~72% to right, bottom ~35% to left-side ── */}
+      {/* ── Phase 3: Deep Purple — Top-right portion + bottom-left portion ── */}
       <path
         d={`
-          M ${W * 0.72},${topY}
-          L ${W * 0.72 + chevronW},${topY + trackH / 2}
-          L ${W * 0.72},${topY + trackH}
-          L ${W - r},${topY + trackH}
-          Q ${W},${topY + trackH} ${W},${topY + trackH + r}
-          L ${W},${topY + r}
-          Q ${W},${topY} ${W - r},${topY}
+          M ${topChev2X},${oy1}
+          L ${topChev2X + chev},${oy1 + T / 2}
+          L ${topChev2X},${iy1}
+          L ${ix2 - r},${iy1}
+          Q ${ix2},${iy1} ${ix2},${iy1 + r}
+          L ${ox2 - r},${oy1}
           Z
         `}
         fill={purpleDeep}
@@ -233,29 +223,25 @@ const ChevronTrackSVG = () => {
       />
       <path
         d={`
-          M ${W * 0.35},${botY}
-          L ${W * 0.35 - chevronW},${botY + trackH / 2}
-          L ${W * 0.35},${botY + trackH}
-          L ${r},${botY + trackH}
-          Q 0,${botY + trackH} 0,${botY + trackH - r}
-          L 0,${botY - r}
-          Q 0,${botY} ${r},${botY}
+          M ${botChev2X},${iy2}
+          L ${botChev2X - chev},${iy2 + T / 2}
+          L ${botChev2X},${oy2}
+          L ${r},${oy2}
+          Q ${ox1},${oy2} ${ox1},${oy2 - r}
+          L ${ix1},${iy2 - r}
+          Q ${ix1},${iy2} ${ix1 + r},${iy2}
           Z
         `}
         fill={purpleDeep}
         opacity="0.95"
       />
-      {/* Right side deep purple connector */}
+      {/* Right-side deep purple bottom connector */}
       <path
         d={`
-          M ${W - r},${botY}
-          Q ${W},${botY} ${W},${botY - r}
-          L ${W},${botY + r}
-          Q ${W},${botY} ${W - r},${botY}
-          L ${W - r},${botY + trackH}
-          Q ${W},${botY + trackH} ${W},${botY + trackH - r}
-          L ${W},${botY + r}
-          Q ${W},${botY} ${W - r},${botY}
+          M ${ix2},${iy2 - r}
+          Q ${ix2},${iy2} ${ix2 - r},${iy2}
+          L ${ox2 - r},${oy2}
+          Q ${ox2},${oy2} ${ox2},${oy2 - r}
           Z
         `}
         fill={purpleDeep}
