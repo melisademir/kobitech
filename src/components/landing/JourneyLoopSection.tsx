@@ -119,7 +119,7 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
 
 /* ── SVG Track ── */
 const LoopTrackSVG = () => {
-  const t = 220;
+  const t = 96;
   const r = 64;
   const arrow = 56;
   const x1 = 0, y1 = 0, x2 = 1000, y2 = 700;
