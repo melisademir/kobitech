@@ -243,28 +243,13 @@ const TagBadge = ({ tag }: { tag: string }) => {
           src={logoSrc}
           alt={tag}
           className="object-contain mix-blend-multiply"
-          style={{ height: "40px", maxWidth: "160px" }}
+          style={{ height: "52px", maxWidth: "180px" }}
         />
       </span>
     );
   }
 
-  return (
-    <span
-      className="inline-block"
-      style={{
-        padding: "10px 22px",
-        borderRadius: "24px",
-        fontSize: "13px",
-        fontWeight: 700,
-        background: "rgba(109,40,217,0.06)",
-        color: "hsl(268,72%,38%)",
-        border: "2px solid rgba(109,40,217,0.15)",
-      }}
-    >
-      {tag}
-    </span>
-  );
+  return null;
 };
 
 /* ── Main Section ── */
