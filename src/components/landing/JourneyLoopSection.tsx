@@ -164,14 +164,14 @@ const ChevronTrackSVG = () => {
         d={`
           M ${r},${oy1}
           L ${topChev1X},${oy1}
-          L ${topChev1X + chev},${oy1 + T / 2}
+          L ${topChev1X - chev},${oy1 + T / 2}
           L ${topChev1X},${oy1 + T}
           L ${r},${iy1}
           Q ${ix1},${iy1} ${ix1},${iy1 + r}
           L ${ix1},${iy2 - r}
           Q ${ix1},${iy2} ${ix1 + r},${iy2}
           L ${botChev1X},${iy2}
-          L ${botChev1X + chev},${iy2 + T / 2}
+          L ${botChev1X - chev},${iy2 + T / 2}
           L ${botChev1X},${oy2}
           L ${r},${oy2}
           Q ${ox1},${oy2} ${ox1},${oy2 - r}
@@ -187,10 +187,10 @@ const ChevronTrackSVG = () => {
       <path
         d={`
           M ${topChev1X},${oy1}
-          L ${topChev1X + chev},${oy1 + T / 2}
+          L ${topChev1X - chev},${oy1 + T / 2}
           L ${topChev1X},${iy1}
           L ${topChev2X},${iy1}
-          L ${topChev2X + chev},${oy1 + T / 2}
+          L ${topChev2X - chev},${oy1 + T / 2}
           L ${topChev2X},${oy1}
           Z
         `}
@@ -217,10 +217,10 @@ const ChevronTrackSVG = () => {
       <path
         d={`
           M ${botChev1X},${iy2}
-          L ${botChev1X + chev},${iy2 + T / 2}
+          L ${botChev1X - chev},${iy2 + T / 2}
           L ${botChev1X},${oy2}
           L ${botChev2X},${oy2}
-          L ${botChev2X - chev},${iy2 + T / 2}
+          L ${botChev2X + chev},${iy2 + T / 2}
           L ${botChev2X},${iy2}
           Z
         `}
@@ -232,7 +232,7 @@ const ChevronTrackSVG = () => {
       <path
         d={`
           M ${topChev2X},${oy1}
-          L ${topChev2X + chev},${oy1 + T / 2}
+          L ${topChev2X - chev},${oy1 + T / 2}
           L ${topChev2X},${iy1}
           L ${ix2 - r},${iy1}
           Q ${ix2},${iy1} ${ix2},${iy1 + r}
@@ -245,7 +245,7 @@ const ChevronTrackSVG = () => {
       <path
         d={`
           M ${botChev2X},${iy2}
-          L ${botChev2X - chev},${iy2 + T / 2}
+          L ${botChev2X + chev},${iy2 + T / 2}
           L ${botChev2X},${oy2}
           L ${r},${oy2}
           Q ${ox1},${oy2} ${ox1},${oy2 - r}
