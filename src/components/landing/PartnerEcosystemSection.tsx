@@ -21,9 +21,16 @@ const PartnerEcosystemSection = () => {
   return (
     <section
       id="partner-ecosystem"
-      className="py-12 md:py-20 lg:py-28 overflow-hidden"
-      style={{ background: "hsl(38,30%,97%)" }}
+      className="py-12 md:py-20 lg:py-28 overflow-hidden relative"
+      style={{ background: "hsl(210,40%,98%)" }}
     >
+      {/* Subtle purple radial glow */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at top right, hsla(268,72%,90%,0.4) 0%, transparent 50%), radial-gradient(ellipse at bottom left, hsla(268,72%,92%,0.2) 0%, transparent 40%)"
+        }}
+      />
       <div className="max-w-[1340px] mx-auto px-4 md:px-6">
         {/* Section header */}
         <motion.div
@@ -102,17 +109,27 @@ const PartnerEcosystemSection = () => {
             {/* RIGHT: Dynamic content panel */}
             <div className="w-full lg:flex-1 flex flex-col mt-2 md:mt-3 lg:mt-0">
               <motion.div
-                className="flex-1 rounded-xl md:rounded-2xl p-4 md:p-7 flex flex-col justify-start relative overflow-hidden"
+                className="flex-1 rounded-[2.5rem] p-6 md:p-10 flex flex-col justify-start relative overflow-hidden"
                 style={{
-                  background: "linear-gradient(145deg, hsl(0,0%,100%) 0%, hsl(252,60%,98%) 100%)",
-                  border: "1px solid hsl(38,30%,88%)",
-                  borderLeft: selectedPiece ? `3px solid ${PRIMARY_HEX}50` : "1px solid hsl(38,30%,88%)",
+                  background: "rgba(255,255,255,0.95)",
+                  backdropFilter: "blur(24px)",
+                  WebkitBackdropFilter: "blur(24px)",
+                  border: "1px solid hsla(268,60%,80%,0.3)",
+                  borderLeft: selectedPiece ? `3px solid ${PRIMARY_HEX}50` : "1px solid hsla(268,60%,80%,0.3)",
+                  boxShadow: "0 20px 50px -12px rgba(0,0,0,0.08)",
                   transition: "border-left-color 0.4s ease"
                 }}
                 initial={{ opacity: 0, x: 20 }}
                 animate={visible ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
                 transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
               >
+                {/* Abstract decoration blob */}
+                <div
+                  className="absolute -top-20 -right-20 w-80 h-80 rounded-full pointer-events-none"
+                  style={{
+                    background: "radial-gradient(circle, hsla(268,72%,60%,0.03) 0%, transparent 70%)",
+                  }}
+                />
                 {selectedPiece && (
                   <motion.div
                     key={`glow-${selectedPiece.id}`}
