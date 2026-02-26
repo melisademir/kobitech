@@ -16,12 +16,13 @@ function LogoText({ piece, cx, cy }: { piece: PuzzlePiece; cx: number; cy: numbe
     const padding = isSmall ? Math.min(pieceW, pieceH) * 0.06 : Math.min(pieceW, pieceH) * 0.12;
     return (
       <g clipPath={`url(#clip-${piece.id})`} style={{ pointerEvents: "none" }}>
-        <rect x={px} y={py} width={pieceW} height={pieceH} fill={piece.darkBg ? piece.color : "#FFFFFF"} />
+        <rect x={px} y={py} width={pieceW} height={pieceH} fill="#FFFFFF" />
         <image
           href={piece.logo}
           x={px + padding} y={py + padding}
           width={pieceW - padding * 2} height={pieceH - padding * 2}
           preserveAspectRatio="xMidYMid meet"
+          style={{ mixBlendMode: "multiply" }}
         />
       </g>
     );
@@ -119,7 +120,7 @@ export default function PuzzleBoard({
       {/* Subtle background glow behind puzzle */}
       <rect x="-12" y="-12" width={SVG_W + 24} height={SVG_H + 24} fill="url(#puzzle-bg-glow)" rx="16" />
 
-      {pieces.map((piece, i) => {
+        {pieces.map((piece, i) => {
         const px = piece.col * CW + piece.col * GAP;
         const py = piece.row * CH + piece.row * GAP;
         const pw = piece.cs * CW;
@@ -136,44 +137,44 @@ export default function PuzzleBoard({
             key={piece.id}
             initial={{ opacity: 0 }}
             animate={visible ? {
-              opacity: 1,
+              opacity: isSel ? 1 : isHov ? 1 : 0.6,
               filter: isSel
-                ? "drop-shadow(0 4px 12px hsl(268,72%,26%,0.32)) drop-shadow(0 1px 3px hsl(268,72%,38%,0.18))"
+                ? "drop-shadow(0 0 20px rgba(107,33,168,0.3)) drop-shadow(0 4px 12px rgba(107,33,168,0.2))"
                 : isHov
-                  ? "drop-shadow(0 3px 8px hsl(268,72%,26%,0.18)) drop-shadow(0 1px 2px hsl(260,30%,14%,0.06))"
-                  : "drop-shadow(0 1px 3px hsl(260,30%,14%,0.08))"
+                  ? "drop-shadow(0 4px 10px rgba(107,33,168,0.15))"
+                  : "drop-shadow(0 1px 2px rgba(0,0,0,0.06))",
+              scale: isSel ? 1.05 : 1,
             } : { opacity: 0 }}
             transition={{
-              opacity: { duration: 0.4, delay: 0.04 + i * 0.035 },
-              filter: { duration: 0.25, ease: "easeOut" }
+              opacity: { duration: 0.3, delay: 0.04 + i * 0.035 },
+              filter: { duration: 0.25, ease: "easeOut" },
+              scale: { duration: 0.25, ease: "easeOut" }
             }}
             style={{ cursor: "pointer", transformOrigin: `${cx}px ${cy}px` }}
             onClick={() => onSelect(piece.id)}
             onMouseEnter={() => setHovered(piece.id)}
             onMouseLeave={() => setHovered(null)}
           >
-            <g>
-              {/* Base fill — selected gets purple gradient */}
+            <g style={{ filter: isSel ? "saturate(1)" : isHov ? "saturate(1)" : "saturate(0.5)" }}>
+              {/* Base fill */}
               <path d={pathD} fill={isSel ? "url(#selected-fill)" : "#FFFFFF"} />
               <path d={pathD} fill={`url(#bevel-${piece.id})`} />
 
-              {/* Border — transitions between states */}
-              <path
-                d={pathD}
-                fill="none"
-                stroke={
-                  isSel ? "hsl(268,72%,38%)"
-                    : isHov ? "hsl(268,72%,38%,0.45)"
-                    : "hsl(260,30%,14%,0.18)"
-                }
-                strokeWidth={isSel ? 4 : isHov ? 2.5 : 1.5}
-              />
-
-              {/* Inner glow for selected state */}
+              {/* Ring effect for selected */}
               {isSel && (
+                <>
+                  <path d={pathD} fill="none" stroke="hsl(268,72%,38%)" strokeWidth={3} />
+                  <path d={pathD} fill="none" stroke="hsl(268,72%,38%,0.15)" strokeWidth={8} />
+                </>
+              )}
+
+              {/* Border for non-selected */}
+              {!isSel && (
                 <path
                   d={pathD}
-                  fill="hsl(268,72%,38%,0.04)"
+                  fill="none"
+                  stroke={isHov ? "hsl(268,72%,38%,0.45)" : "hsl(260,30%,14%,0.14)"}
+                  strokeWidth={isHov ? 2.5 : 1.5}
                 />
               )}
 

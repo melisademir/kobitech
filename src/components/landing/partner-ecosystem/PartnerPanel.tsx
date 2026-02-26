@@ -6,6 +6,7 @@ import { partnerDetails } from "./partner-data";
 
 const BRAND = "hsl(268,72%,38%)";
 const BRAND_HEX = "#6B21A8";
+const BRAND_GRADIENT = "linear-gradient(135deg, #6B21A8, #9333EA)";
 
 const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
   const d = partnerDetails[piece.id];
@@ -30,12 +31,12 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
       {/* Category badge */}
       <motion.div variants={item} className="mb-3 md:mb-5">
         <span
-          className="inline-flex items-center px-3 md:px-4 py-1 md:py-1.5 rounded-full font-semibold tracking-widest uppercase"
+          className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-wide uppercase backdrop-blur-sm shadow-sm"
           style={{
-            fontSize: "10px",
-            background: `${BRAND_HEX}12`,
+            fontSize: "11px",
+            background: "hsla(268,60%,96%,0.8)",
             color: BRAND,
-            border: `1.5px solid ${BRAND_HEX}30`,
+            border: `1px solid hsla(268,72%,60%,0.2)`,
             letterSpacing: "0.1em"
           }}
         >
@@ -115,11 +116,11 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
         <p className="uppercase tracking-widest font-semibold mb-2 md:mb-3 text-muted-foreground" style={{ fontSize: "10px" }}>
           Özellikler
         </p>
-        <div className="flex flex-col gap-1.5 md:gap-2.5">
+        <div className="flex flex-col gap-3 md:gap-4">
           {d.features.map((f) => (
-            <div key={f} className="flex items-center gap-2">
-              <Check style={{ width: 14, height: 14, color: BRAND, strokeWidth: 2.8, flexShrink: 0 }} />
-              <span className="text-foreground text-sm md:text-[15px]" style={{ fontWeight: 500 }}>{f}</span>
+            <div key={f} className="flex items-center gap-2.5">
+              <Check style={{ width: 15, height: 15, color: BRAND, strokeWidth: 2.8, flexShrink: 0 }} />
+              <span className="text-slate-700 text-sm md:text-[15px]" style={{ fontWeight: 500 }}>{f}</span>
             </div>
           ))}
         </div>
@@ -142,25 +143,22 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
       )}
 
       {/* CTA button */}
-      <motion.div variants={item}>
+      <motion.div variants={item} className="mt-8">
         <Link to="/kobi/urunler" className="block">
           <button
-            className="inline-flex items-center justify-center gap-2 w-full font-bold text-white transition-all duration-200 text-sm md:text-base"
+            className="inline-flex items-center justify-center gap-2 w-full font-bold text-white transition-all duration-300 text-sm md:text-base rounded-full hover:-translate-y-0.5"
             style={{
-              height: "46px",
-              padding: "0 24px",
-              borderRadius: "20px",
+              height: "50px",
+              padding: "0 28px",
               letterSpacing: "0.01em",
-              background: BRAND,
-              boxShadow: `0 4px 16px ${BRAND_HEX}40`,
+              background: BRAND_GRADIENT,
+              boxShadow: `0 4px 16px rgba(107,33,168,0.25)`,
             }}
             onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = `0 6px 24px ${BRAND_HEX}55`;
-              e.currentTarget.style.filter = "brightness(0.9)";
+              e.currentTarget.style.boxShadow = `0 8px 24px rgba(107,33,168,0.35)`;
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = `0 4px 16px ${BRAND_HEX}40`;
-              e.currentTarget.style.filter = "brightness(1)";
+              e.currentTarget.style.boxShadow = `0 4px 16px rgba(107,33,168,0.25)`;
             }}
           >
             {piece.name} Çözümünü İncele
