@@ -88,34 +88,43 @@ interface StepChipProps {
 const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   const Icon = step.icon;
   return (
-    <button
+    <motion.button
       onClick={onClick}
-      className="relative flex items-center gap-2.5 cursor-pointer transition-all duration-300 whitespace-nowrap"
+      animate={isActive ? { scale: 1.18 } : { scale: 1 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className="relative flex items-center gap-2.5 cursor-pointer whitespace-nowrap"
       style={{
-        padding: isActive ? "16px 32px" : "14px 26px",
+        padding: isActive ? "16px 36px" : "14px 26px",
         borderRadius: "20px",
-        fontSize: isActive ? "13px" : "12px",
-        fontWeight: 700,
+        fontSize: isActive ? "14px" : "12px",
+        fontWeight: isActive ? 800 : 700,
         letterSpacing: "0.01em",
-        transform: isActive ? "scale(1.1)" : "scale(1)",
         background: isActive
           ? "hsl(268,72%,38%)"
           : "rgba(255,255,255,0.88)",
         color: isActive ? "#fff" : "#111",
         border: isActive
-          ? "3px solid rgba(255,255,255,1)"
+          ? "3px solid hsl(268,72%,48%)"
           : "3px solid rgba(255,255,255,0.85)",
         boxShadow: isActive
-          ? "0 8px 32px -4px rgba(109,40,217,0.4), 0 0 48px -8px rgba(109,40,217,0.2)"
+          ? "0 0 20px 4px rgba(109,40,217,0.45), 0 0 48px 8px rgba(109,40,217,0.18)"
           : "0 4px 16px rgba(0,0,0,0.12)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
         textShadow: "none",
       }}
     >
+      {isActive && (
+        <motion.span
+          className="absolute inset-0 rounded-[20px]"
+          animate={{ boxShadow: ["0 0 12px 2px rgba(109,40,217,0.4)", "0 0 24px 6px rgba(109,40,217,0.15)", "0 0 12px 2px rgba(109,40,217,0.4)"] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+          style={{ pointerEvents: "none" }}
+        />
+      )}
       <Icon className="w-4 h-4 flex-shrink-0" />
       <span>{step.title}</span>
-    </button>
+    </motion.button>
   );
 };
 
