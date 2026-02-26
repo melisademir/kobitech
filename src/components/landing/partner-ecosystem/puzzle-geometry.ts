@@ -3,7 +3,7 @@ export const CW = 90; // cell width px
 export const CH = 75; // cell height px
 export const T = 12;  // tab radius px
 export const COLS = 5;
-export const GAP = 3;
+export const GAP = 5;
 const R = 8; // corner radius for rounded corners
 
 /**
