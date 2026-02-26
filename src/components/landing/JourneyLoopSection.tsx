@@ -13,6 +13,7 @@ import {
   BadgePercent,
   Globe2,
   ArrowRight,
+  Rocket,
 } from "lucide-react";
 
 /* ── Logo imports ── */
@@ -63,18 +64,8 @@ const journeySteps = [
   { id: 10, title: "Globale Açıl", description: "TÜSİAD, MÜSİAD, TOBB, İTO, HİB ve KAGİDER gibi Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu; Ticimax'ın e-ticaret altyapısını, Mükellef'in global şirketleşme gücünü ve profesyonel hukuki danışmanlık desteğini arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Ticimax", "Mükellef"], icon: Globe2 },
 ];
 
-/* Edges: Top 1-2-3, Right 4-5, Bottom 8-7-6, Left 10-9 */
-const topItems = journeySteps.slice(0, 3);
-const rightItems = journeySteps.slice(3, 5);
-const bottomItems = journeySteps.slice(5, 8).reverse();
-const leftItems = journeySteps.slice(8, 10).reverse();
-
-/* Which color segment does each step belong to? */
-const getSegment = (id: number): "purple-light" | "teal" | "purple-deep" => {
-  if (id <= 3) return "purple-light";
-  if (id <= 7) return "teal";
-  return "purple-deep";
-};
+const topSteps = journeySteps.slice(0, 5);
+const bottomSteps = journeySteps.slice(5, 10);
 
 /* ── Step Chip ── */
 interface StepChipProps {
@@ -85,7 +76,6 @@ interface StepChipProps {
 
 const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   const Icon = step.icon;
-
   return (
     <button
       onClick={onClick}
@@ -95,16 +85,16 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
         borderRadius: "18px",
         fontSize: isActive ? "15px" : "14px",
         fontWeight: 800,
-        transform: isActive ? "scale(1.12)" : "scale(1)",
+        transform: isActive ? "scale(1.1)" : "scale(1)",
         background: isActive
-          ? "rgba(255,255,255,0.95)"
+          ? "rgba(255,255,255,1)"
           : "rgba(255,255,255,0.6)",
         color: isActive ? "hsl(268,72%,38%)" : "white",
         border: isActive
-          ? "3px solid rgba(255,255,255,1)"
-          : "3px solid rgba(255,255,255,0.9)",
+          ? "2.5px solid rgba(255,255,255,1)"
+          : "2.5px solid rgba(255,255,255,0.8)",
         boxShadow: isActive
-          ? "0 8px 32px -4px rgba(109,40,217,0.45), 0 0 48px -8px rgba(109,40,217,0.25)"
+          ? "0 8px 32px -4px rgba(109,40,217,0.4), 0 0 48px -8px rgba(109,40,217,0.2)"
           : "0 4px 12px rgba(0,0,0,0.08)",
         backdropFilter: "blur(20px)",
         WebkitBackdropFilter: "blur(20px)",
@@ -117,100 +107,158 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   );
 };
 
-/* ── SVG Track ── */
-const LoopTrackSVG = () => {
-  const t = 96;
-  const r = 64;
-  const arrow = 56;
-  const x1 = 0, y1 = 0, x2 = 1000, y2 = 700;
+/* ── Interlocking Chevron Track SVG ── */
+const ChevronTrackSVG = () => {
+  const W = 1200;
+  const H = 640;
+  const trackH = 80;
+  const chevronW = 40;
+  const r = 48;
 
-  const purpleLight1 = "hsl(268,55%,82%)";
-  const purpleLight2 = "hsl(275,50%,72%)";
-  const teal1 = "hsl(174,52%,65%)";
-  const teal2 = "hsl(168,48%,50%)";
-  const purpleDeep1 = "hsl(268,76%,30%)";
-  const purpleDeep2 = "hsl(280,68%,48%)";
+  /* Colors */
+  const purpleLight = "hsl(268,55%,78%)";
+  const teal = "hsl(174,52%,55%)";
+  const purpleDeep = "hsl(268,72%,32%)";
+
+  /* Y positions */
+  const topY = 0;
+  const botY = H - trackH;
+  const midTopInner = topY + trackH;
+  const midBotInner = botY;
 
   return (
     <svg
       className="absolute inset-0 w-full h-full pointer-events-none"
-      viewBox={`${x1 - 10} ${y1 - 10} ${x2 - x1 + 20} ${y2 - y1 + 20}`}
+      viewBox={`0 0 ${W} ${H}`}
       preserveAspectRatio="none"
       fill="none"
     >
-      <defs>
-        <linearGradient id="jl-grad1" x1="0%" y1="0%" x2="100%" y2="50%">
-          <stop offset="0%" stopColor={purpleLight1} />
-          <stop offset="100%" stopColor={purpleLight2} />
-        </linearGradient>
-        <linearGradient id="jl-grad2" x1="100%" y1="0%" x2="0%" y2="100%">
-          <stop offset="0%" stopColor={teal1} />
-          <stop offset="100%" stopColor={teal2} />
-        </linearGradient>
-        <linearGradient id="jl-grad3" x1="0%" y1="100%" x2="50%" y2="0%">
-          <stop offset="0%" stopColor={purpleDeep1} />
-          <stop offset="100%" stopColor={purpleDeep2} />
-        </linearGradient>
-      </defs>
-
-      {/* Segment 1 — Light Purple */}
+      {/* ── Phase 1: Light Purple — top-left to ~40%, down right side, bottom back to ~60% ── */}
       <path
         d={`
-          M ${x1 + r},${y1}
-          L ${x2 - r},${y1}
-          Q ${x2},${y1} ${x2},${y1 + r}
-          L ${x2},${y2 * 0.35}
-          L ${x2 - arrow},${y2 * 0.35 + arrow}
-          L ${x2 - t},${y2 * 0.35}
-          L ${x2 - t},${y1 + r}
-          Q ${x2 - t},${y1 + t} ${x2 - r},${y1 + t}
-          L ${x1 + r},${y1 + t}
-          Q ${x1 + t},${y1 + t} ${x1 + t},${y1 + r}
-          L ${x1 + t},${y1}
-          Q ${x1},${y1} ${x1},${y1}
+          M ${r},${topY}
+          L ${W * 0.38},${topY}
+          L ${W * 0.38 + chevronW},${topY + trackH / 2}
+          L ${W * 0.38},${topY + trackH}
+          L ${r},${topY + trackH}
+          Q 0,${topY + trackH} 0,${topY + trackH + r}
+          L 0,${botY - r}
+          Q 0,${botY} ${r},${botY}
+          L ${r},${botY + trackH}
+          Q 0,${botY + trackH} 0,${botY + trackH - r}
+          L 0,${topY + trackH + r}
+          Q 0,${topY + trackH} ${r},${topY + trackH}
+          L ${r},${topY}
+          Q 0,${topY} 0,${topY + r}
+          L 0,${botY - r}
+          Q 0,${botY} ${r},${botY}
+          L ${W * 0.62},${botY}
+          L ${W * 0.62 - chevronW},${botY + trackH / 2}
+          L ${W * 0.62},${botY + trackH}
+          L ${r},${botY + trackH}
+          Q 0,${botY + trackH} 0,${botY + trackH - r}
+          L 0,${topY + r}
+          Q 0,${topY} ${r},${topY}
           Z
         `}
-        fill="url(#jl-grad1)"
-        opacity="0.9"
+        fill={purpleLight}
+        opacity="0.92"
       />
 
-      {/* Segment 2 — Teal */}
+      {/* ── Phase 2: Teal — top ~38% to ~72%, right side connector, bottom ~62% to ~35% ── */}
       <path
         d={`
-          M ${x2},${y2 * 0.35}
-          L ${x2},${y2 - r}
-          Q ${x2},${y2} ${x2 - r},${y2}
-          L ${x1 + r},${y2}
-          Q ${x1},${y2} ${x1},${y2 - r}
-          L ${x1},${y2 * 0.65}
-          L ${x1 + arrow},${y2 * 0.65 - arrow}
-          L ${x1 + t},${y2 * 0.65}
-          L ${x1 + t},${y2 - r}
-          Q ${x1 + t},${y2 - t} ${x1 + r},${y2 - t}
-          L ${x2 - r},${y2 - t}
-          Q ${x2 - t},${y2 - t} ${x2 - t},${y2 - r}
-          L ${x2 - t},${y2 * 0.35 + arrow}
-          L ${x2 - arrow},${y2 * 0.35 + arrow}
+          M ${W * 0.38},${topY}
+          L ${W * 0.38 + chevronW},${topY + trackH / 2}
+          L ${W * 0.38},${topY + trackH}
+          L ${W * 0.72},${topY + trackH}
+          L ${W * 0.72 + chevronW},${topY + trackH / 2}
+          L ${W * 0.72},${topY}
           Z
         `}
-        fill="url(#jl-grad2)"
-        opacity="0.9"
+        fill={teal}
+        opacity="0.92"
+      />
+      {/* Right side connector */}
+      <path
+        d={`
+          M ${W - r},${topY}
+          L ${W},${topY}
+          Q ${W},${topY} ${W},${topY + r}
+          L ${W},${botY - r}
+          Q ${W},${botY} ${W - r},${botY}
+          L ${W},${botY}
+          Q ${W},${botY} ${W},${botY + r}
+          L ${W},${botY + trackH - r}
+          Q ${W},${botY + trackH} ${W - r},${botY + trackH}
+          L ${W - r},${botY}
+          Q ${W},${botY} ${W},${botY - r}
+          L ${W},${topY + trackH + r}
+          Q ${W},${topY + trackH} ${W - r},${topY + trackH}
+          L ${W - r},${topY}
+          Z
+        `}
+        fill={teal}
+        opacity="0.92"
+      />
+      {/* Bottom teal segment */}
+      <path
+        d={`
+          M ${W * 0.62},${botY}
+          L ${W * 0.62 - chevronW},${botY + trackH / 2}
+          L ${W * 0.62},${botY + trackH}
+          L ${W * 0.35},${botY + trackH}
+          L ${W * 0.35 - chevronW},${botY + trackH / 2}
+          L ${W * 0.35},${botY}
+          Z
+        `}
+        fill={teal}
+        opacity="0.92"
       />
 
-      {/* Segment 3 — Deep Purple */}
+      {/* ── Phase 3: Deep Purple — top ~72% to right, bottom ~35% to left-side ── */}
       <path
         d={`
-          M ${x1},${y2 * 0.65}
-          L ${x1},${y1 + r}
-          Q ${x1},${y1} ${x1 + r},${y1}
-          L ${x1 + t},${y1}
-          Q ${x1 + t},${y1 + t} ${x1 + r},${y1 + t}
-          L ${x1 + t},${y1 + t}
-          L ${x1 + t},${y2 * 0.65 - arrow}
-          L ${x1 + arrow},${y2 * 0.65 - arrow}
+          M ${W * 0.72},${topY}
+          L ${W * 0.72 + chevronW},${topY + trackH / 2}
+          L ${W * 0.72},${topY + trackH}
+          L ${W - r},${topY + trackH}
+          Q ${W},${topY + trackH} ${W},${topY + trackH + r}
+          L ${W},${topY + r}
+          Q ${W},${topY} ${W - r},${topY}
           Z
         `}
-        fill="url(#jl-grad3)"
+        fill={purpleDeep}
+        opacity="0.95"
+      />
+      <path
+        d={`
+          M ${W * 0.35},${botY}
+          L ${W * 0.35 - chevronW},${botY + trackH / 2}
+          L ${W * 0.35},${botY + trackH}
+          L ${r},${botY + trackH}
+          Q 0,${botY + trackH} 0,${botY + trackH - r}
+          L 0,${botY - r}
+          Q 0,${botY} ${r},${botY}
+          Z
+        `}
+        fill={purpleDeep}
+        opacity="0.95"
+      />
+      {/* Right side deep purple connector */}
+      <path
+        d={`
+          M ${W - r},${botY}
+          Q ${W},${botY} ${W},${botY - r}
+          L ${W},${botY + r}
+          Q ${W},${botY} ${W - r},${botY}
+          L ${W - r},${botY + trackH}
+          Q ${W},${botY + trackH} ${W},${botY + trackH - r}
+          L ${W},${botY + r}
+          Q ${W},${botY} ${W - r},${botY}
+          Z
+        `}
+        fill={purpleDeep}
         opacity="0.95"
       />
     </svg>
@@ -289,16 +337,16 @@ const JourneyLoopSection = () => {
           </p>
         </motion.div>
 
-        {/* The Loop layout */}
+        {/* Track Layout */}
         <div className="relative max-w-6xl mx-auto">
-          {/* ── Thick 3-color track ── */}
-          <div className="absolute inset-0 pointer-events-none" style={{ margin: "-20px -32px" }}>
-            <LoopTrackSVG />
+          {/* SVG Track */}
+          <div className="absolute inset-0 pointer-events-none" style={{ margin: "-10px -24px" }}>
+            <ChevronTrackSVG />
           </div>
 
-          {/* ── Top edge ── */}
-          <div className="relative z-10 flex justify-center gap-16 mb-8 py-6">
-            {topItems.map((s) => (
+          {/* ── Top Edge: Steps 1-5 ── */}
+          <div className="relative z-10 flex justify-center items-center gap-12 py-5" style={{ minHeight: "80px" }}>
+            {topSteps.map((s) => (
               <StepChip
                 key={s.id}
                 step={s}
@@ -308,28 +356,17 @@ const JourneyLoopSection = () => {
             ))}
           </div>
 
-          <div className="flex relative z-10">
-            {/* ── Left edge ── */}
-            <div className="flex flex-col justify-center gap-20 px-6 py-2" style={{ minWidth: "230px" }}>
-              {leftItems.map((s) => (
-                <StepChip
-                  key={s.id}
-                  step={s}
-                  isActive={activeStep === s.id - 1}
-                  onClick={() => setActiveStep(s.id - 1)}
-                />
-              ))}
-            </div>
-
-            {/* ── Central display ── */}
+          {/* ── Central Display ── */}
+          <div className="relative z-10 mx-16 my-4">
             <div
-              className="flex-1 relative overflow-hidden flex items-center justify-center"
+              className="relative overflow-hidden flex items-center justify-center"
               style={{
-                minHeight: "480px",
-                borderRadius: "28px",
+                minHeight: "440px",
+                borderRadius: "2.5rem",
                 border: "2px solid rgba(109,40,217,0.1)",
-                background: "rgba(255,255,255,0.9)",
+                background: "rgba(255,255,255,0.92)",
                 backdropFilter: "blur(24px)",
+                WebkitBackdropFilter: "blur(24px)",
               }}
             >
               {/* Glow blob */}
@@ -397,22 +434,26 @@ const JourneyLoopSection = () => {
               </AnimatePresence>
             </div>
 
-            {/* ── Right edge ── */}
-            <div className="flex flex-col justify-center gap-20 px-6 py-2" style={{ minWidth: "230px" }}>
-              {rightItems.map((s) => (
-                <StepChip
-                  key={s.id}
-                  step={s}
-                  isActive={activeStep === s.id - 1}
-                  onClick={() => setActiveStep(s.id - 1)}
-                />
-              ))}
+            {/* Rocket icon — bottom right */}
+            <div
+              className="absolute z-20 flex items-center justify-center"
+              style={{
+                bottom: "-28px",
+                right: "-28px",
+                width: "72px",
+                height: "72px",
+                borderRadius: "50%",
+                background: "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
+                boxShadow: "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 0 4px rgba(255,255,255,0.9)",
+              }}
+            >
+              <Rocket className="w-8 h-8 text-white" style={{ transform: "rotate(-45deg)" }} />
             </div>
           </div>
 
-          {/* ── Bottom edge ── */}
-          <div className="relative z-10 flex justify-center gap-16 mt-8 py-6">
-            {bottomItems.map((s) => (
+          {/* ── Bottom Edge: Steps 6-10 ── */}
+          <div className="relative z-10 flex justify-center items-center gap-12 py-5" style={{ minHeight: "80px" }}>
+            {bottomSteps.map((s) => (
               <StepChip
                 key={s.id}
                 step={s}
