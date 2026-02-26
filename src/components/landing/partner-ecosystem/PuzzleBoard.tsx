@@ -180,6 +180,16 @@ export default function PuzzleBoard({
             onMouseLeave={() => setHovered(null)}
           >
             <g>
+              {/* 3D thickness — stacked offset layers simulate side face */}
+              {[4, 3, 2, 1].map((offset) => (
+                <path
+                  key={`depth-${offset}`}
+                  d={pathD}
+                  fill={`rgba(0,0,0,${0.03 + offset * 0.015})`}
+                  transform={`translate(0, ${offset * 1.2})`}
+                />
+              ))}
+
               {/* Base fill */}
               <path d={pathD} fill={isSel ? "url(#selected-fill)" : "#FFFFFF"} />
               {/* 3D bevel overlay */}
