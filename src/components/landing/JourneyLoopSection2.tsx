@@ -245,7 +245,7 @@ const JourneyLoopSection2 = () => {
                     )}
 
                     {/* Rocket CTA — bottom right inside card */}
-                    <div className="flex w-full justify-end mt-2">
+                    <div className="absolute bottom-6 right-6">
                       <Link to="/kobi/urunler">
                         <motion.div
                           className="flex items-center gap-3 cursor-pointer"
