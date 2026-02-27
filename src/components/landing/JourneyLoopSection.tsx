@@ -269,61 +269,43 @@ const JourneyLoopSection = () => {
                         <TagBadge key={tag} tag={tag} />
                       ))}
                   </div>
-                  <Link to="/kobi/step-1" className="inline-block">
-                    <button
-                      className="inline-flex items-center gap-2 text-white font-bold transition-colors duration-200 cursor-pointer"
-                      style={{
-                        height: "54px",
-                        padding: "0 40px",
-                        borderRadius: "20px",
-                        fontSize: "15px",
-                        background: "hsl(268,72%,38%)",
-                        boxShadow:
-                          "0 4px 20px -4px rgba(109,40,217,0.35)",
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.background =
-                          "hsl(268,72%,30%)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.background =
-                          "hsl(268,72%,38%)";
-                      }}
-                    >
-                      Çözümleri Keşfet{" "}
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
-                  </Link>
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Rocket icon — bottom right, floating animation */}
-            <motion.div
-              className="absolute z-20 flex items-center justify-center"
-              animate={{ y: [0, -5, 0] }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              style={{
-                bottom: "-40px",
-                right: "-40px",
-                width: "100px",
-                height: "100px",
-                borderRadius: "50%",
-                background:
-                  "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
-                boxShadow:
-                  "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 0 5px rgba(255,255,255,0.9)",
-              }}
-            >
-              <Rocket
-                className="w-12 h-12 text-white"
-                style={{ transform: "rotate(-45deg)" }}
-              />
-            </motion.div>
+            {/* Rocket CTA — bottom right */}
+            <Link to="/kobi/step-1">
+              <motion.div
+                className="absolute z-20 flex items-center gap-3 cursor-pointer"
+                animate={{ y: [0, -5, 0] }}
+                whileHover={{ scale: 1.06 }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+                style={{
+                  bottom: "-28px",
+                  right: "-20px",
+                  height: "60px",
+                  padding: "0 28px 0 22px",
+                  borderRadius: "2rem",
+                  background:
+                    "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
+                  boxShadow:
+                    "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 0 4px rgba(255,255,255,0.9)",
+                }}
+              >
+                <Rocket
+                  className="w-5 h-5 text-white"
+                  style={{ transform: "rotate(-45deg)" }}
+                />
+                <span className="text-white font-bold text-sm whitespace-nowrap">
+                  Çözümleri Keşfet
+                </span>
+                <ArrowRight className="w-4 h-4 text-white/80" />
+              </motion.div>
+            </Link>
           </div>
 
           {/* ── Bottom Edge: Steps 6-10 + directional arrow ── */}
