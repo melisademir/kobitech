@@ -28,16 +28,6 @@ const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
     className="relative flex items-center justify-center cursor-pointer"
     style={{
       padding: isActive ? "10px 24px" : "8px 20px",
-      borderRadius: "2rem",
-      background: isActive ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.50)",
-      border: isActive
-        ? `2.5px solid ${BRAND_HEX}30`
-        : "2.5px solid rgba(255,255,255,0.80)",
-      boxShadow: isActive
-        ? "0 8px 32px -4px rgba(107,33,168,0.28), 0 2px 8px rgba(0,0,0,0.06)"
-        : "0 2px 12px rgba(0,0,0,0.06)",
-      backdropFilter: "blur(24px)",
-      WebkitBackdropFilter: "blur(24px)",
     }}
   >
     <img
