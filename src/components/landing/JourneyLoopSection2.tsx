@@ -1,149 +1,63 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
-import {
-  CreditCard,
-  ShoppingCart,
-  Wallet,
-  Package,
-  Truck,
-  Users,
-  MapPin,
-  ClipboardCheck,
-  BadgePercent,
-  Globe2,
-  ArrowRight,
-  Rocket,
-} from "lucide-react";
+import { ArrowRight, Rocket, Check } from "lucide-react";
+import { pieces, partnerDetails } from "./partner-ecosystem/partner-data";
+import type { PuzzlePiece } from "./partner-ecosystem/partner-data";
 
-/* ── Logo imports ── */
-import logoParam from "@/assets/logo-param.png";
-import logoParamtech from "@/assets/logo-paramtech.svg";
-import logoFinrota from "@/assets/logo-finrota-new.svg";
-import logoKredim from "@/assets/logo-kredim.svg";
-import logoIkas from "@/assets/logo-ikas.png";
-import logoTsoft from "@/assets/logo-tsoft.svg";
-import logoTicimax from "@/assets/logo-ticimax.png";
-import logoUnivera from "@/assets/logo-univera.svg";
-import logoNebim from "@/assets/logo-nebim.svg";
-import logoAras from "@/assets/logo-aras.png";
-import logoWorkcube from "@/assets/logo-workcube.png";
-import logoMukellef from "@/assets/logo-mukellef.png";
+const BRAND = "hsl(268,72%,38%)";
+const BRAND_HEX = "#6B21A8";
 
-/* ── Tag → Logo mapping ── */
-const TAG_LOGO_MAP: Record<string, string> = {
-  "Param Fiziki POS": logoParam,
-  "Param Sanal POS": logoParam,
-  "Param Cep POS": logoParam,
-  Ticimax: logoTicimax,
-  İkas: logoIkas,
-  "T-Soft": logoTsoft,
-  Netahsilat: logoFinrota,
-  Netekstre: logoFinrota,
-  "Kredim Business": logoKredim,
-  "Univera Stokbar": logoUnivera,
-  "Nebim V3": logoNebim,
-  "Aras Kargo": logoAras,
-  "Workcube HR": logoWorkcube,
-  "Univera EnRoute": logoUnivera,
-  "Uni-Dox": logoUnivera,
-  "Paramtech Flows": logoParamtech,
-  Mükellef: logoMukellef,
-};
+/* Partner list for track — use pieces order */
+const partners = pieces;
+const topPartners = partners.slice(0, 7);
+const bottomPartners = partners.slice(7);
 
-const journeySteps = [
-  { id: 1, title: "Ödeme Al", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], icon: CreditCard },
-  { id: 2, title: "E-Ticarete Açıl", description: "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin.", tags: ["Ticimax", "İkas", "T-Soft"], icon: ShoppingCart },
-  { id: 3, title: "Paranı Yönet", description: "Finrota'nın sunduğu Netahsilat, Netekstre, Nap360 ve Posrapor çözümleriyle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına ulaşın.", tags: ["Netahsilat", "Netekstre", "Kredim Business"], icon: Wallet },
-  { id: 4, title: "Stoğunu Kontrol Et", description: "Univera Stokbar ve Nebim V3 çözümleriyle depo yönetiminizi modernleştirin, ürün giriş çıkışlarını anlık verilerle izleyin. Akıllı stok planlama yöntemleriyle depo seviyelerinizi en ideal noktada tutun.", tags: ["Univera Stokbar", "Nebim V3"], icon: Package },
-  { id: 5, title: "Ürünlerini Gönder", description: "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her yerine hızlıca ulaştırın. E-ticaret entegrasyonu ile siparişlerinizi anında kargoya hazırlayın.", tags: ["Aras Kargo"], icon: Truck },
-  { id: 6, title: "Ekibine Yön Ver", description: "Çalışanlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Workcube HR ile güvenle yönetin.", tags: ["Workcube HR"], icon: Users },
-  { id: 7, title: "Sahayı Yönet", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. Univera EnRoute ile ekibinizin verimliliğini artırın.", tags: ["Univera EnRoute"], icon: MapPin },
-  { id: 8, title: "İş Akışını Takip Et", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin. Paramtech Flows'un yapay zeka destekli akıllı altyapısıyla verimliliğinizi artırın.", tags: ["Uni-Dox", "Paramtech Flows"], icon: ClipboardCheck },
-  { id: 9, title: "Teşviklerden Yararlan", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], icon: BadgePercent },
-  { id: 10, title: "Globale Açıl", description: "Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["Ticimax", "Mükellef"], icon: Globe2 },
-];
-
-const topSteps = journeySteps.slice(0, 5);
-const bottomSteps = journeySteps.slice(5, 10);
-
-/* ── Step Chip (Glass Pill) ── */
-interface StepChipProps {
-  step: (typeof journeySteps)[0];
+/* ── Logo Chip ── */
+interface LogoChipProps {
+  piece: PuzzlePiece;
   isActive: boolean;
   onClick: () => void;
 }
 
-const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
-  const Icon = step.icon;
-  return (
-    <motion.button
-      onClick={onClick}
-      animate={isActive ? { scale: 1.12 } : { scale: 1 }}
-      transition={{ type: "spring", stiffness: 300, damping: 22 }}
-      className="relative flex items-center gap-2.5 cursor-pointer whitespace-nowrap"
-      style={{
-        padding: isActive ? "14px 32px" : "12px 24px",
-        borderRadius: "2rem",
-        fontSize: isActive ? "14px" : "12px",
-        fontWeight: isActive ? 800 : 600,
-        letterSpacing: "0.01em",
-        background: isActive
-          ? "rgba(255,255,255,0.97)"
-          : "rgba(255,255,255,0.50)",
-        color: isActive ? "hsl(268,72%,38%)" : "hsl(0,0%,25%)",
-        border: isActive
-          ? "2.5px solid rgba(255,255,255,0.95)"
-          : "2.5px solid rgba(255,255,255,0.80)",
-        boxShadow: isActive
-          ? "0 8px 32px -4px rgba(107,33,168,0.28), 0 2px 8px rgba(0,0,0,0.06)"
-          : "0 2px 12px rgba(0,0,0,0.06)",
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
-      }}
-    >
-      <Icon className="w-4 h-4 flex-shrink-0" style={{ opacity: isActive ? 1 : 0.7 }} />
-      <span>{step.title}</span>
-    </motion.button>
-  );
-};
-
-
-/* ── Tag Badge (logo only) ── */
-const TagBadge = ({ tag }: { tag: string }) => {
-  const logoSrc = TAG_LOGO_MAP[tag];
-  if (!logoSrc) return null;
-
-  const isLarge = logoSrc === logoTicimax;
-  const isParam = logoSrc === logoParam;
-
-  if (isParam) {
-    return (
-      <div className="overflow-hidden" style={{ height: "50px", width: "400px" }}>
-        <img
-          src={logoSrc}
-          alt={tag}
-          className="object-contain mix-blend-multiply"
-          style={{ height: "136px", width: "400px", marginTop: "-43px" }}
-        />
-      </div>
-    );
-  }
-
-  return (
+const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
+  <motion.button
+    onClick={onClick}
+    animate={isActive ? { scale: 1.12 } : { scale: 1 }}
+    transition={{ type: "spring", stiffness: 300, damping: 22 }}
+    className="relative flex items-center justify-center cursor-pointer"
+    style={{
+      padding: isActive ? "10px 24px" : "8px 20px",
+      borderRadius: "2rem",
+      background: isActive ? "rgba(255,255,255,0.97)" : "rgba(255,255,255,0.50)",
+      border: isActive
+        ? `2.5px solid ${BRAND_HEX}30`
+        : "2.5px solid rgba(255,255,255,0.80)",
+      boxShadow: isActive
+        ? "0 8px 32px -4px rgba(107,33,168,0.28), 0 2px 8px rgba(0,0,0,0.06)"
+        : "0 2px 12px rgba(0,0,0,0.06)",
+      backdropFilter: "blur(24px)",
+      WebkitBackdropFilter: "blur(24px)",
+    }}
+  >
     <img
-      src={logoSrc}
-      alt={tag}
+      src={piece.logo}
+      alt={piece.name}
       className="object-contain mix-blend-multiply"
-      style={{ height: isLarge ? "56px" : "44px", width: isLarge ? "170px" : "140px" }}
+      style={{
+        height: isActive ? "32px" : "26px",
+        maxWidth: isActive ? "100px" : "80px",
+        transition: "all 0.2s ease",
+      }}
     />
-  );
-};
+  </motion.button>
+);
 
 /* ── Main Section ── */
 const JourneyLoopSection2 = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const current = journeySteps[activeStep];
+  const [activeIdx, setActiveIdx] = useState(0);
+  const currentPiece = partners[activeIdx];
+  const detail = partnerDetails[currentPiece.id];
 
   return (
     <section className="py-24 md:py-32">
@@ -160,15 +74,15 @@ const JourneyLoopSection2 = () => {
             className="text-4xl md:text-6xl font-extrabold text-foreground"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
-            İşletme Yolculuğun
+            Güçlü Partner
             <br />
-            <span className="text-gradient-primary">Tek Platformda</span>
+            <span className="text-gradient-primary">Ekosistemi</span>
           </h2>
           <p
             className="text-muted-foreground mt-4 max-w-2xl mx-auto"
             style={{ fontSize: "18px", lineHeight: 1.7 }}
           >
-            Adım adım büyüme döngüsüyle tüm ihtiyaçlarınızı karşılayın.
+            Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
         </motion.div>
 
@@ -192,24 +106,26 @@ const JourneyLoopSection2 = () => {
               margin: "-10px -24px",
               borderRadius: "calc(2rem + 90px)",
               border: "90px solid transparent",
-              background: "linear-gradient(135deg, hsl(268,60%,82%), hsl(174,55%,52%), hsl(268,72%,30%)) border-box",
-              WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+              background:
+                "linear-gradient(135deg, hsl(268,60%,82%), hsl(174,55%,52%), hsl(268,72%,30%)) border-box",
+              WebkitMask:
+                "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
               WebkitMaskComposite: "xor",
               maskComposite: "exclude",
             }}
           />
 
-          {/* ── Top Edge: Steps 1-5 ── */}
+          {/* ── Top Edge: first 7 partners ── */}
           <div
-            className="relative z-10 flex justify-center items-center py-5"
-            style={{ minHeight: "80px", gap: "48px" }}
+            className="relative z-10 flex justify-center items-center py-5 flex-wrap"
+            style={{ minHeight: "80px", gap: "20px" }}
           >
-            {topSteps.map((s) => (
-              <StepChip
-                key={s.id}
-                step={s}
-                isActive={activeStep === s.id - 1}
-                onClick={() => setActiveStep(s.id - 1)}
+            {topPartners.map((p, i) => (
+              <LogoChip
+                key={p.id}
+                piece={p}
+                isActive={activeIdx === i}
+                onClick={() => setActiveIdx(i)}
               />
             ))}
           </div>
@@ -245,52 +161,105 @@ const JourneyLoopSection2 = () => {
               />
 
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeStep}
-                  initial={{ opacity: 0, y: 16 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{
-                    duration: 0.35,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="relative z-10 flex flex-col items-center px-8 md:px-14 py-8 w-full max-w-3xl mx-auto"
-                >
-                  <h3
-                    className="text-3xl md:text-4xl font-extrabold text-foreground mb-4 text-center w-full"
-                    style={{ letterSpacing: "-0.02em" }}
+                {detail && (
+                  <motion.div
+                    key={currentPiece.id}
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -12 }}
+                    transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                    className="relative z-10 flex flex-col items-start px-8 md:px-14 py-10 w-full max-w-3xl mx-auto"
                   >
-                    {current.title}
-                  </h3>
-                  <p
-                    className="text-muted-foreground mb-8 text-left w-full"
-                    style={{
-                      fontSize: "16px",
-                      lineHeight: 1.85,
-                      maxWidth: "600px",
-                    }}
-                  >
-                    {current.description}
-                  </p>
-                  <div className="flex flex-wrap items-center justify-center gap-5 mb-8 w-full">
-                    {current.tags
-                      .filter((tag, i, arr) => {
-                        const logo = TAG_LOGO_MAP[tag];
-                        if (!logo) return true;
-                        return (
-                          arr.findIndex((t) => TAG_LOGO_MAP[t] === logo) === i
-                        );
-                      })
-                      .map((tag) => (
-                        <TagBadge key={tag} tag={tag} />
+                    {/* Category badge */}
+                    <span
+                      className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-wide uppercase backdrop-blur-sm shadow-sm mb-4"
+                      style={{
+                        fontSize: "11px",
+                        background: "hsla(268,60%,96%,0.8)",
+                        color: BRAND,
+                        border: "1px solid hsla(268,72%,60%,0.2)",
+                        letterSpacing: "0.1em",
+                      }}
+                    >
+                      {detail.category}
+                    </span>
+
+                    {/* Partner logo */}
+                    <div className="flex items-center justify-start mb-4">
+                      <img
+                        src={currentPiece.logo}
+                        alt={currentPiece.name}
+                        className="object-contain mix-blend-multiply"
+                        style={{ height: "60px", maxWidth: "180px" }}
+                      />
+                    </div>
+
+                    {/* Headline */}
+                    <h3
+                      className="text-2xl md:text-3xl font-black text-foreground mb-2"
+                      style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
+                    >
+                      {detail.headline}
+                    </h3>
+
+                    {/* Leadership */}
+                    <div
+                      className="mb-4 rounded-xl w-full"
+                      style={{
+                        background: `${BRAND_HEX}08`,
+                        borderLeft: `4px solid ${BRAND}`,
+                        padding: "10px 14px",
+                      }}
+                    >
+                      <p
+                        className="font-semibold"
+                        style={{ fontSize: "14px", lineHeight: 1.4, color: BRAND }}
+                      >
+                        {detail.leadership}
+                      </p>
+                    </div>
+
+                    {/* Description */}
+                    <p
+                      className="text-muted-foreground mb-5"
+                      style={{ fontSize: "15px", lineHeight: 1.75, maxWidth: "560px" }}
+                    >
+                      {detail.description}
+                    </p>
+
+                    {/* Features */}
+                    <div className="flex flex-col gap-3 mb-5">
+                      {detail.features.slice(0, 4).map((f) => (
+                        <div key={f} className="flex items-start gap-3">
+                          <Check
+                            className="text-purple-600 shrink-0 mt-0.5"
+                            style={{ width: 15, height: 15, strokeWidth: 2.8 }}
+                          />
+                          <span className="text-slate-700 text-sm font-medium">{f}</span>
+                        </div>
                       ))}
-                  </div>
-                </motion.div>
+                    </div>
+
+                    {/* Badge */}
+                    {detail.badge && (
+                      <span
+                        className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold text-xs"
+                        style={{
+                          background: `${BRAND_HEX}10`,
+                          color: BRAND,
+                          border: `1px solid ${BRAND_HEX}20`,
+                        }}
+                      >
+                        {detail.badge}
+                      </span>
+                    )}
+                  </motion.div>
+                )}
               </AnimatePresence>
             </div>
 
             {/* Rocket CTA — bottom right */}
-            <Link to="/kobi/step-1">
+            <Link to="/kobi/urunler">
               <motion.div
                 className="absolute z-20 flex items-center gap-3 cursor-pointer"
                 animate={{ y: [0, -5, 0] }}
@@ -317,24 +286,24 @@ const JourneyLoopSection2 = () => {
                   style={{ transform: "rotate(-45deg)" }}
                 />
                 <span className="text-white font-bold text-sm whitespace-nowrap">
-                  Çözümleri Keşfet
+                  Çözümleri İncele
                 </span>
                 <ArrowRight className="w-4 h-4 text-white/80" />
               </motion.div>
             </Link>
           </div>
 
-          {/* ── Bottom Edge: Steps 6-10 + directional arrow ── */}
+          {/* ── Bottom Edge: remaining partners ── */}
           <div
-            className="relative z-10 flex justify-center items-center py-5"
-            style={{ minHeight: "80px", gap: "48px" }}
+            className="relative z-10 flex justify-center items-center py-5 flex-wrap"
+            style={{ minHeight: "80px", gap: "20px" }}
           >
-            {bottomSteps.map((s) => (
-              <StepChip
-                key={s.id}
-                step={s}
-                isActive={activeStep === s.id - 1}
-                onClick={() => setActiveStep(s.id - 1)}
+            {bottomPartners.map((p, i) => (
+              <LogoChip
+                key={p.id}
+                piece={p}
+                isActive={activeIdx === topPartners.length + i}
+                onClick={() => setActiveIdx(topPartners.length + i)}
               />
             ))}
           </div>
