@@ -372,13 +372,13 @@ const JourneyLoopSection = () => {
                   className="relative z-10 flex flex-col items-center px-8 md:px-14 py-8 w-full max-w-3xl mx-auto"
                 >
                   <h3
-                    className="text-3xl md:text-4xl font-extrabold text-foreground mb-3 text-center"
+                    className="text-3xl md:text-4xl font-extrabold text-foreground mb-4 text-center w-full"
                     style={{ letterSpacing: "-0.02em" }}
                   >
                     {current.title}
                   </h3>
                   <p
-                    className="text-muted-foreground mb-6 text-center"
+                    className="text-muted-foreground mb-8 text-left w-full"
                     style={{
                       fontSize: "16px",
                       lineHeight: 1.85,
@@ -387,7 +387,7 @@ const JourneyLoopSection = () => {
                   >
                     {current.description}
                   </p>
-                  <div className="flex flex-wrap justify-center gap-3 mb-6">
+                  <div className="flex flex-wrap items-center justify-start gap-5 mb-8 w-full">
                     {current.tags
                       .filter((tag, i, arr) => {
                         const logo = TAG_LOGO_MAP[tag];
