@@ -122,7 +122,7 @@ const TagBadge = ({ tag }: { tag: string }) => {
       src={logoSrc}
       alt={tag}
       className="object-contain mix-blend-multiply"
-      style={{ height: isParam ? "68px" : isLarge ? "56px" : "44px", width: isParam ? "200px" : isLarge ? "170px" : "140px" }}
+      style={{ height: isParam ? "136px" : isLarge ? "56px" : "44px", width: isParam ? "400px" : isLarge ? "170px" : "140px" }}
     />
   );
 };
