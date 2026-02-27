@@ -115,14 +115,12 @@ const TagBadge = ({ tag }: { tag: string }) => {
   if (!logoSrc) return null;
 
   return (
-    <span className="inline-flex items-center justify-center px-2">
-        <img
-          src={logoSrc}
-          alt={tag}
-          className="h-10 object-contain mix-blend-multiply"
-          style={{ maxWidth: "160px" }}
-        />
-    </span>
+    <img
+      src={logoSrc}
+      alt={tag}
+      className="object-contain mix-blend-multiply"
+      style={{ height: "48px", maxWidth: "160px" }}
+    />
   );
 };
 
