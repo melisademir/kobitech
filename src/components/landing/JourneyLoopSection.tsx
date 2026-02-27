@@ -119,7 +119,7 @@ const TagBadge = ({ tag }: { tag: string }) => {
       src={logoSrc}
       alt={tag}
       className="object-contain mix-blend-multiply"
-      style={{ height: "48px", maxWidth: "160px" }}
+      style={{ height: "36px", width: "120px" }}
     />
   );
 };
@@ -203,7 +203,7 @@ const JourneyLoopSection = () => {
             <div
               className="relative overflow-hidden flex items-center justify-center"
               style={{
-                minHeight: "580px",
+                minHeight: "420px",
                 borderRadius: "3rem",
                 border: "1.5px solid rgba(255,255,255,0.6)",
                 background: "rgba(255,255,255,0.88)",
