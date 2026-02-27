@@ -14,7 +14,6 @@ import {
   Globe2,
   ArrowRight,
   Rocket,
-  MoveUpRight,
 } from "lucide-react";
 
 /* ── Logo imports ── */
@@ -109,24 +108,12 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   );
 };
 
-/* ── Chevron-Interlocking Mesh-Gradient Track SVG ── */
-const ChevronTrackSVG = () => {
+/* ── Seamless Mesh-Flow Track SVG ── */
+const MeshFlowTrackSVG = () => {
   const W = 1200;
   const H = 820;
-  const T = 140;
-  const r = 48;
-  const chev = 40;
-
-  const topMid = T / 2;
-  const botMid = H - T / 2;
-
-  const ox1 = 0, oy1 = 0, ox2 = W, oy2 = H;
-  const ix1 = T, iy1 = T, ix2 = W - T, iy2 = H - T;
-
-  const topSplit1 = W * 0.38;
-  const topSplit2 = W * 0.68;
-  const botSplit1 = W * 0.62;
-  const botSplit2 = W * 0.32;
+  const T = 54; // uniform track thickness
+  const r = 40; // corner radius
 
   return (
     <svg
@@ -136,101 +123,44 @@ const ChevronTrackSVG = () => {
       fill="none"
     >
       <defs>
-        {/* Mesh gradient for Segment 1: Light Purple */}
-        <linearGradient id="meshPurpleLight" x1="0%" y1="0%" x2="100%" y2="100%">
+        {/* Seamless liquid-flow mesh gradient along the track */}
+        <linearGradient id="meshFlow" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" stopColor="hsl(268,60%,82%)" />
-          <stop offset="40%" stopColor="hsl(275,55%,78%)" />
-          <stop offset="70%" stopColor="hsl(260,50%,85%)" />
-          <stop offset="100%" stopColor="hsl(280,45%,80%)" />
-        </linearGradient>
-        {/* Mesh gradient for Segment 2: Teal */}
-        <linearGradient id="meshTeal" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(174,55%,52%)" />
-          <stop offset="50%" stopColor="hsl(180,48%,58%)" />
-          <stop offset="100%" stopColor="hsl(168,50%,50%)" />
-        </linearGradient>
-        {/* Mesh gradient for Segment 3: Deep Purple */}
-        <linearGradient id="meshPurpleDeep" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(268,72%,30%)" />
-          <stop offset="45%" stopColor="hsl(275,68%,35%)" />
-          <stop offset="100%" stopColor="hsl(258,65%,28%)" />
+          <stop offset="25%" stopColor="hsl(275,52%,76%)" />
+          <stop offset="45%" stopColor="hsl(180,48%,58%)" />
+          <stop offset="60%" stopColor="hsl(174,55%,52%)" />
+          <stop offset="78%" stopColor="hsl(268,65%,40%)" />
+          <stop offset="100%" stopColor="hsl(258,68%,28%)" />
         </linearGradient>
       </defs>
 
-      {/* Segment 1: Light Purple */}
+      {/* Single unified track path — outer rounded rect minus inner rounded rect */}
       <path
         d={`
-          M ${r},${oy1}
-          L ${topSplit1},${oy1}
-          L ${topSplit1 + chev},${topMid}
-          L ${topSplit1},${iy1}
-          L ${r},${iy1}
-          Q ${ix1},${iy1} ${ix1},${iy1 + r}
-          L ${ix1},${iy2 - r}
-          Q ${ix1},${iy2} ${ix1 + r},${iy2}
-          L ${botSplit1},${iy2}
-          L ${botSplit1 + chev},${botMid}
-          L ${botSplit1},${oy2}
-          L ${r},${oy2}
-          Q ${ox1},${oy2} ${ox1},${oy2 - r}
-          L ${ox1},${oy1 + r}
-          Q ${ox1},${oy1} ${r},${oy1}
+          M ${r},0
+          L ${W - r},0
+          Q ${W},0 ${W},${r}
+          L ${W},${H - r}
+          Q ${W},${H} ${W - r},${H}
+          L ${r},${H}
+          Q 0,${H} 0,${H - r}
+          L 0,${r}
+          Q 0,0 ${r},0
+          Z
+          M ${T + r},${T}
+          L ${T},${T + r}
+          L ${T},${H - T - r}
+          Q ${T},${H - T} ${T + r},${H - T}
+          L ${W - T - r},${H - T}
+          Q ${W - T},${H - T} ${W - T},${H - T - r}
+          L ${W - T},${T + r}
+          Q ${W - T},${T} ${W - T - r},${T}
+          L ${T + r},${T}
           Z
         `}
-        fill="url(#meshPurpleLight)"
+        fill="url(#meshFlow)"
+        fillRule="evenodd"
         opacity="0.92"
-      />
-
-      {/* Segment 2: Teal top */}
-      <path
-        d={`
-          M ${topSplit1},${oy1}
-          L ${topSplit2},${oy1}
-          L ${topSplit2 + chev},${topMid}
-          L ${topSplit2},${iy1}
-          L ${topSplit1},${iy1}
-          L ${topSplit1 + chev},${topMid}
-          Z
-        `}
-        fill="url(#meshTeal)"
-        opacity="0.92"
-      />
-      {/* Segment 2: Teal bottom */}
-      <path
-        d={`
-          M ${botSplit1},${iy2}
-          L ${botSplit1 + chev},${botMid}
-          L ${botSplit1},${oy2}
-          L ${botSplit2},${oy2}
-          L ${botSplit2 - chev},${botMid}
-          L ${botSplit2},${iy2}
-          Z
-        `}
-        fill="url(#meshTeal)"
-        opacity="0.92"
-      />
-
-      {/* Segment 3: Deep Purple */}
-      <path
-        d={`
-          M ${topSplit2},${oy1}
-          L ${ox2 - r},${oy1}
-          Q ${ox2},${oy1} ${ox2},${oy1 + r}
-          L ${ox2},${oy2 - r}
-          Q ${ox2},${oy2} ${ox2 - r},${oy2}
-          L ${botSplit2},${oy2}
-          L ${botSplit2 - chev},${botMid}
-          L ${botSplit2},${iy2}
-          L ${ix2 - r},${iy2}
-          Q ${ix2},${iy2} ${ix2},${iy2 - r}
-          L ${ix2},${iy1 + r}
-          Q ${ix2},${iy1} ${ix2 - r},${iy1}
-          L ${topSplit2},${iy1}
-          L ${topSplit2 + chev},${topMid}
-          Z
-        `}
-        fill="url(#meshPurpleDeep)"
-        opacity="0.95"
       />
     </svg>
   );
@@ -251,12 +181,12 @@ const TagBadge = ({ tag }: { tag: string }) => {
         background: "rgba(255,255,255,0.95)",
       }}
     >
-      <img
-        src={logoSrc}
-        alt={tag}
-        className="object-contain mix-blend-multiply"
-        style={{ height: "52px", maxWidth: "180px" }}
-      />
+        <img
+          src={logoSrc}
+          alt={tag}
+          className="h-10 object-contain mix-blend-multiply"
+          style={{ maxWidth: "160px" }}
+        />
     </span>
   );
 };
@@ -311,7 +241,7 @@ const JourneyLoopSection = () => {
             className="absolute inset-0 pointer-events-none"
             style={{ margin: "-10px -24px" }}
           >
-            <ChevronTrackSVG />
+            <MeshFlowTrackSVG />
           </div>
 
           {/* ── Top Edge: Steps 1-5 ── */}
