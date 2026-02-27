@@ -114,12 +114,14 @@ const TagBadge = ({ tag }: { tag: string }) => {
   const logoSrc = TAG_LOGO_MAP[tag];
   if (!logoSrc) return null;
 
+  const isParam = logoSrc === logoParam;
+
   return (
     <img
       src={logoSrc}
       alt={tag}
       className="object-contain mix-blend-multiply"
-      style={{ height: "44px", width: "140px" }}
+      style={{ height: isParam ? "56px" : "44px", width: isParam ? "170px" : "140px" }}
     />
   );
 };
