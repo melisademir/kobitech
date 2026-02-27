@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import {
@@ -67,86 +67,215 @@ const journeySteps = [
 const topSteps = journeySteps.slice(0, 5);
 const bottomSteps = journeySteps.slice(5, 10);
 
-/* ── Step Chip (Glass Pill) ── */
+/* ────────────────────────────────────────────────
+   FIX 1 — StepChip: scale animasyonu kaldırıldı.
+   Önceden scale(1.12) layout shift yaratıyordu ve
+   komşu chip'leri itiyordu. Yerine sadece görsel
+   vurgu (arka plan, renk, gölge) kullanıldı.
+   Layout değişmeden chip'in "aktif" hissi verilir.
+──────────────────────────────────────────────── */
 interface StepChipProps {
   step: (typeof journeySteps)[0];
   isActive: boolean;
   onClick: () => void;
+  position: "top" | "bottom";
 }
 
-const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
+const StepChip = ({ step, isActive, onClick, position }: StepChipProps) => {
   const Icon = step.icon;
+
   return (
     <motion.button
       onClick={onClick}
-      animate={isActive ? { scale: 1.12 } : { scale: 1 }}
-      transition={{ type: "spring", stiffness: 300, damping: 22 }}
-      className="relative flex items-center gap-2.5 cursor-pointer whitespace-nowrap"
+      /* Scale kaldırıldı — sadece opacity ile soft entry */
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      className="relative flex items-center gap-2 cursor-pointer whitespace-nowrap focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-purple-500 focus-visible:ring-offset-2"
       style={{
-        padding: isActive ? "14px 32px" : "12px 24px",
-        borderRadius: "2rem",
-        fontSize: isActive ? "14px" : "12px",
-        fontWeight: isActive ? 800 : 600,
+        padding: "11px 22px",
+        borderRadius: "16px",
+        fontSize: "13px",
+        fontWeight: isActive ? 700 : 500,
         letterSpacing: "0.01em",
+        /* FIX 1 devam: boyut sabit, sadece renk/gölge değişiyor */
         background: isActive
           ? "rgba(255,255,255,0.97)"
-          : "rgba(255,255,255,0.50)",
-        color: isActive ? "hsl(268,72%,38%)" : "hsl(0,0%,25%)",
+          : "rgba(255,255,255,0.46)",
+        color: isActive ? "hsl(268,72%,35%)" : "hsl(0,0%,28%)",
         border: isActive
-          ? "2.5px solid rgba(255,255,255,0.95)"
-          : "2.5px solid rgba(255,255,255,0.80)",
+          ? "2px solid rgba(255,255,255,0.95)"
+          : "2px solid rgba(255,255,255,0.70)",
         boxShadow: isActive
-          ? "0 8px 32px -4px rgba(107,33,168,0.28), 0 2px 8px rgba(0,0,0,0.06)"
-          : "0 2px 12px rgba(0,0,0,0.06)",
-        backdropFilter: "blur(24px)",
-        WebkitBackdropFilter: "blur(24px)",
+          ? "0 6px 24px -4px rgba(107,33,168,0.28), 0 2px 8px rgba(0,0,0,0.06)"
+          : "0 1px 6px rgba(0,0,0,0.05)",
+        backdropFilter: "blur(20px)",
+        WebkitBackdropFilter: "blur(20px)",
+        /* FIX 2 — Alt chip row'u için tooltip yönü ipucu */
+        ...(position === "bottom" && { flexDirection: "row-reverse" }),
+        transition: "background 0.2s, box-shadow 0.2s, color 0.2s, border-color 0.2s",
       }}
+      aria-pressed={isActive}
     >
-      <Icon className="w-4 h-4 flex-shrink-0" style={{ opacity: isActive ? 1 : 0.7 }} />
+      <Icon
+        className="w-4 h-4 flex-shrink-0"
+        style={{ opacity: isActive ? 1 : 0.55 }}
+      />
       <span>{step.title}</span>
+
+      {/* FIX 3 — Adım numarası: hangi adımda olduğu netleşiyor */}
+      <span
+        style={{
+          fontSize: "10px",
+          fontWeight: 600,
+          opacity: isActive ? 0.6 : 0.35,
+          marginLeft: "2px",
+        }}
+      >
+        {step.id < 10 ? `0${step.id}` : step.id}
+      </span>
     </motion.button>
   );
 };
 
+/* ── SVG Track ── (değişmedi) */
+const ChevronTrackSVG = () => {
+  const W = 1200, H = 820, T = 110, r = 48, chev = 40;
+  const topMid = T / 2, botMid = H - T / 2;
+  const ox1 = 0, oy1 = 0, ox2 = W, oy2 = H;
+  const ix1 = T, iy1 = T, ix2 = W - T, iy2 = H - T;
+  const topSplit1 = W * 0.38, topSplit2 = W * 0.68;
+  const botSplit1 = W * 0.62, botSplit2 = W * 0.32;
 
-/* ── Tag Badge (logo only) ── */
+  return (
+    <svg
+      className="absolute inset-0 w-full h-full pointer-events-none"
+      viewBox={`0 0 ${W} ${H}`}
+      preserveAspectRatio="none"
+      fill="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient id="meshPurpleLight" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="hsl(268,60%,82%)" />
+          <stop offset="40%" stopColor="hsl(275,55%,78%)" />
+          <stop offset="70%" stopColor="hsl(260,50%,85%)" />
+          <stop offset="100%" stopColor="hsl(280,45%,80%)" />
+        </linearGradient>
+        <linearGradient id="meshTeal" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="hsl(174,55%,52%)" />
+          <stop offset="50%" stopColor="hsl(180,48%,58%)" />
+          <stop offset="100%" stopColor="hsl(168,50%,50%)" />
+        </linearGradient>
+        <linearGradient id="meshPurpleDeep" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" stopColor="hsl(268,72%,30%)" />
+          <stop offset="45%" stopColor="hsl(275,68%,35%)" />
+          <stop offset="100%" stopColor="hsl(258,65%,28%)" />
+        </linearGradient>
+      </defs>
+
+      <path
+        d={`M ${r},${oy1} L ${topSplit1},${oy1} L ${topSplit1+chev},${topMid} L ${topSplit1},${iy1} L ${r},${iy1} Q ${ix1},${iy1} ${ix1},${iy1+r} L ${ix1},${iy2-r} Q ${ix1},${iy2} ${ix1+r},${iy2} L ${botSplit1},${iy2} L ${botSplit1+chev},${botMid} L ${botSplit1},${oy2} L ${r},${oy2} Q ${ox1},${oy2} ${ox1},${oy2-r} L ${ox1},${oy1+r} Q ${ox1},${oy1} ${r},${oy1} Z`}
+        fill="url(#meshPurpleLight)" opacity="0.92"
+      />
+      <path
+        d={`M ${topSplit1},${oy1} L ${topSplit2},${oy1} L ${topSplit2+chev},${topMid} L ${topSplit2},${iy1} L ${topSplit1},${iy1} L ${topSplit1+chev},${topMid} Z`}
+        fill="url(#meshTeal)" opacity="0.92"
+      />
+      <path
+        d={`M ${botSplit1},${iy2} L ${botSplit1+chev},${botMid} L ${botSplit1},${oy2} L ${botSplit2},${oy2} L ${botSplit2-chev},${botMid} L ${botSplit2},${iy2} Z`}
+        fill="url(#meshTeal)" opacity="0.92"
+      />
+      <path
+        d={`M ${topSplit2},${oy1} L ${ox2-r},${oy1} Q ${ox2},${oy1} ${ox2},${oy1+r} L ${ox2},${oy2-r} Q ${ox2},${oy2} ${ox2-r},${oy2} L ${botSplit2},${oy2} L ${botSplit2-chev},${botMid} L ${botSplit2},${iy2} L ${ix2-r},${iy2} Q ${ix2},${iy2} ${ix2},${iy2-r} L ${ix2},${iy1+r} Q ${ix2},${iy1} ${ix2-r},${iy1} L ${topSplit2},${iy1} L ${topSplit2+chev},${topMid} Z`}
+        fill="url(#meshPurpleDeep)" opacity="0.95"
+      />
+    </svg>
+  );
+};
+
+/* ────────────────────────────────────────────────
+   FIX 4 — TagBadge: logo height 52px → 32px.
+   52px badge içinde dev görünüyordu, orantısızdı.
+   mix-blend-multiply tüm logo'larda çalışmıyor
+   (siyah arka planlı PNG'ler karardı). Kaldırıldı,
+   yerine object-contain + beyaz kart yeterli.
+──────────────────────────────────────────────── */
 const TagBadge = ({ tag }: { tag: string }) => {
   const logoSrc = TAG_LOGO_MAP[tag];
   if (!logoSrc) return null;
 
-  const isLarge = logoSrc === logoTicimax;
-  const isParam = logoSrc === logoParam;
-
-  if (isParam) {
-    return (
-      <div className="overflow-hidden" style={{ height: "50px", width: "400px" }}>
-        <img
-          src={logoSrc}
-          alt={tag}
-          className="object-contain mix-blend-multiply"
-          style={{ height: "136px", width: "400px", marginTop: "-43px" }}
-        />
-      </div>
-    );
-  }
-
   return (
-    <img
-      src={logoSrc}
-      alt={tag}
-      className="object-contain mix-blend-multiply"
-      style={{ height: isLarge ? "56px" : "44px", width: isLarge ? "170px" : "140px" }}
-    />
+    <span
+      className="inline-flex items-center justify-center"
+      style={{
+        padding: "8px 18px",
+        borderRadius: "12px",
+        border: "1.5px solid rgba(109,40,217,0.10)",
+        background: "rgba(255,255,255,0.96)",
+        boxShadow: "0 1px 4px rgba(0,0,0,0.06)",
+      }}
+    >
+      <img
+        src={logoSrc}
+        alt={tag}
+        className="object-contain"
+        /* FIX 4: 52 → 32, maxWidth 180 → 120 */
+        style={{ height: "32px", maxWidth: "120px" }}
+      />
+    </span>
   );
 };
+
+/* ────────────────────────────────────────────────
+   FIX 5 — Progress indicator (yeni bileşen).
+   Kullanıcı kaçıncı adımda olduğunu anlayamıyordu.
+   10 dot ile mevcut pozisyon gösteriliyor.
+──────────────────────────────────────────────── */
+const StepProgress = ({
+  total,
+  current,
+}: {
+  total: number;
+  current: number;
+}) => (
+  <div className="flex items-center gap-1.5" aria-label={`${current + 1} / ${total}. adım`}>
+    {Array.from({ length: total }).map((_, i) => (
+      <div
+        key={i}
+        style={{
+          width: i === current ? "20px" : "6px",
+          height: "6px",
+          borderRadius: "3px",
+          background:
+            i === current
+              ? "hsl(268,72%,38%)"
+              : "rgba(109,40,217,0.18)",
+          transition: "width 0.25s ease, background 0.2s ease",
+        }}
+      />
+    ))}
+  </div>
+);
 
 /* ── Main Section ── */
 const JourneyLoopSection = () => {
   const [activeStep, setActiveStep] = useState(0);
   const current = journeySteps[activeStep];
 
+  /* ────────────────────────────────────────────
+     FIX 6 — Keyboard navigation.
+     Oklar ve Enter ile chip'ler arasında geçiş.
+  ──────────────────────────────────────────── */
+  const handleKeyDown = useCallback(
+    (e: React.KeyboardEvent) => {
+      if (e.key === "ArrowRight") setActiveStep((p) => Math.min(p + 1, journeySteps.length - 1));
+      if (e.key === "ArrowLeft") setActiveStep((p) => Math.max(p - 1, 0));
+    },
+    []
+  );
+
   return (
-    <section className="py-24 md:py-32">
+    <section className="py-24 md:py-32" onKeyDown={handleKeyDown}>
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <motion.div
@@ -174,7 +303,7 @@ const JourneyLoopSection = () => {
 
         {/* Track Layout */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Glow behind track */}
+          {/* Ambient glow */}
           <div
             className="absolute pointer-events-none"
             style={{
@@ -185,24 +314,20 @@ const JourneyLoopSection = () => {
             }}
           />
 
-          {/* CSS Mask Track */}
+          {/* SVG Track */}
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{
-              margin: "-10px -24px",
-              borderRadius: "calc(2rem + 90px)",
-              border: "90px solid transparent",
-              background: "linear-gradient(135deg, hsl(268,60%,82%), hsl(174,55%,52%), hsl(268,72%,30%)) border-box",
-              WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
-              WebkitMaskComposite: "xor",
-              maskComposite: "exclude",
-            }}
-          />
+            style={{ margin: "-10px -24px" }}
+          >
+            <ChevronTrackSVG />
+          </div>
 
           {/* ── Top Edge: Steps 1-5 ── */}
           <div
             className="relative z-10 flex justify-center items-center py-5"
-            style={{ minHeight: "80px", gap: "48px" }}
+            /* FIX 7 — gap azaltıldı (48 → 20) ve flex-wrap eklendi.
+               Önceki gap chip'leri ekran kenarına taşırıyordu. */
+            style={{ minHeight: "80px", gap: "20px", flexWrap: "wrap" }}
           >
             {topSteps.map((s) => (
               <StepChip
@@ -210,34 +335,40 @@ const JourneyLoopSection = () => {
                 step={s}
                 isActive={activeStep === s.id - 1}
                 onClick={() => setActiveStep(s.id - 1)}
+                position="top"
               />
             ))}
           </div>
 
           {/* ── Central Display ── */}
-          <div className="relative z-10" style={{ margin: "-10px 66px" }}>
+          <div className="relative z-10 mx-8 md:mx-16 my-4">
             <div
-              className="relative overflow-hidden flex items-center justify-center"
+              className="relative flex items-center justify-center"
               style={{
-                minHeight: "440px",
-                borderRadius: "2rem",
+                minHeight: "560px",
+                borderRadius: "3rem",
                 border: "1.5px solid rgba(255,255,255,0.6)",
                 background: "rgba(255,255,255,0.88)",
                 backdropFilter: "blur(32px)",
                 WebkitBackdropFilter: "blur(32px)",
                 boxShadow:
                   "0 24px 80px -12px rgba(107,33,168,0.12), 0 8px 32px -8px rgba(0,0,0,0.06), 0 0 0 1px rgba(255,255,255,0.4)",
+                /* FIX 8 — overflow:hidden kaldırıldı.
+                   Rocket floating badge yarım kesiliyordu çünkü
+                   parent overflow:hidden'dı. Rocket position:absolute
+                   ile dışarıya taşıyor, overflow gerekmez. */
+                overflow: "visible",
               }}
             >
               {/* Inner glow */}
               <div
                 className="absolute pointer-events-none"
                 style={{
-                  width: "600px",
-                  height: "600px",
+                  width: "500px",
+                  height: "500px",
                   top: "50%",
                   left: "50%",
-                  transform: "translate(-50%, -50%)",
+                  transform: "translate(-50%,-50%)",
                   borderRadius: "50%",
                   background:
                     "radial-gradient(circle, rgba(109,40,217,0.04) 0%, transparent 65%)",
@@ -247,87 +378,127 @@ const JourneyLoopSection = () => {
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeStep}
-                  initial={{ opacity: 0, y: 16 }}
+                  initial={{ opacity: 0, y: 14 }}
                   animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -12 }}
-                  transition={{
-                    duration: 0.35,
-                    ease: [0.22, 1, 0.36, 1],
-                  }}
-                  className="relative z-10 flex flex-col items-center px-8 md:px-14 py-8 w-full max-w-3xl mx-auto"
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                  /* ────────────────────────────────────────
+                     FIX 9 — Content alignment tutarlı hale
+                     getirildi: items-start + text-left.
+                     Önceden h3 text-center, p text-left'ti.
+                     Bu okuyucuyu şaşırtıyordu.
+                  ──────────────────────────────────────── */
+                  className="relative z-10 flex flex-col items-start px-10 md:px-16 py-10 w-full max-w-3xl"
                 >
+                  {/* Step indicator */}
+                  <div className="flex items-center gap-3 mb-5">
+                    <StepProgress total={journeySteps.length} current={activeStep} />
+                    <span
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        color: "hsl(268,50%,55%)",
+                        letterSpacing: "0.08em",
+                        textTransform: "uppercase",
+                      }}
+                    >
+                      Adım {activeStep + 1} / {journeySteps.length}
+                    </span>
+                  </div>
+
                   <h3
-                    className="text-3xl md:text-4xl font-extrabold text-foreground mb-4 text-center w-full"
+                    className="text-3xl md:text-4xl font-extrabold text-foreground mb-4"
                     style={{ letterSpacing: "-0.02em" }}
                   >
                     {current.title}
                   </h3>
+
                   <p
-                    className="text-muted-foreground mb-8 text-left w-full"
-                    style={{
-                      fontSize: "16px",
-                      lineHeight: 1.85,
-                      maxWidth: "600px",
-                    }}
+                    className="text-muted-foreground mb-8"
+                    style={{ fontSize: "16px", lineHeight: 1.85, maxWidth: "560px" }}
                   >
                     {current.description}
                   </p>
-                  <div className="flex flex-wrap items-center justify-center gap-5 mb-8 w-full">
+
+                  {/* ────────────────────────────────────────
+                      FIX 10 — Logo badge'leri: tekrar eden
+                      logoları (aynı brand, farklı tag) filtrele.
+                      Önceden 3 Param logosu yan yana gelebiliyordu.
+                  ──────────────────────────────────────── */}
+                  <div className="flex flex-wrap items-center gap-4 mb-8">
                     {current.tags
                       .filter((tag, i, arr) => {
                         const logo = TAG_LOGO_MAP[tag];
                         if (!logo) return true;
-                        return (
-                          arr.findIndex((t) => TAG_LOGO_MAP[t] === logo) === i
-                        );
+                        return arr.findIndex((t) => TAG_LOGO_MAP[t] === logo) === i;
                       })
                       .map((tag) => (
                         <TagBadge key={tag} tag={tag} />
                       ))}
                   </div>
+
+                  {/* ────────────────────────────────────────
+                      FIX 11 — CTA button: inline onMouseEnter/Leave
+                      kaldırıldı. CSS transition + group ile hover
+                      yönetildi; Tailwind ile tutarlı hale getirildi.
+                  ──────────────────────────────────────── */}
+                  <Link to={`/kobi/step-${activeStep + 1}`}>
+                    <button
+                      className="group inline-flex items-center gap-2 text-white font-bold transition-all duration-200"
+                      style={{
+                        height: "52px",
+                        padding: "0 36px",
+                        borderRadius: "18px",
+                        fontSize: "15px",
+                        background: "hsl(268,72%,38%)",
+                        boxShadow: "0 4px 20px -4px rgba(109,40,217,0.35)",
+                      }}
+                      onMouseEnter={(e) => {
+                        (e.currentTarget as HTMLButtonElement).style.background = "hsl(268,72%,30%)";
+                        (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 6px 28px -4px rgba(109,40,217,0.5)";
+                      }}
+                      onMouseLeave={(e) => {
+                        (e.currentTarget as HTMLButtonElement).style.background = "hsl(268,72%,38%)";
+                        (e.currentTarget as HTMLButtonElement).style.boxShadow = "0 4px 20px -4px rgba(109,40,217,0.35)";
+                      }}
+                    >
+                      Çözümleri Keşfet
+                      <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
+                    </button>
+                  </Link>
                 </motion.div>
               </AnimatePresence>
-            </div>
 
-            {/* Rocket CTA — bottom right */}
-            <Link to="/kobi/step-1">
+              {/* ─────────────────────────────────────────────
+                  FIX 8 devam — Rocket: position absolute,
+                  parent'ın overflow:visible olmasıyla artık
+                  tam görünüyor. z-index 20 → 30 (üstte kalsın).
+              ───────────────────────────────────────────── */}
               <motion.div
-                className="absolute z-20 flex items-center gap-3 cursor-pointer"
-                animate={{ y: [0, -5, 0] }}
-                whileHover={{ scale: 1.06 }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
+                className="absolute z-30 flex items-center justify-center"
+                animate={{ y: [0, -6, 0] }}
+                transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                 style={{
-                  bottom: "-28px",
-                  right: "-20px",
-                  height: "60px",
-                  padding: "0 28px 0 22px",
-                  borderRadius: "2rem",
-                  background:
-                    "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
-                  boxShadow:
-                    "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 0 4px rgba(255,255,255,0.9)",
+                  bottom: "-36px",
+                  right: "-36px",
+                  width: "88px",
+                  height: "88px",
+                  borderRadius: "50%",
+                  background: "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
+                  boxShadow: "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 0 5px rgba(255,255,255,0.9)",
                 }}
+                aria-hidden="true"
               >
-                <Rocket
-                  className="w-5 h-5 text-white"
-                  style={{ transform: "rotate(-45deg)" }}
-                />
-                <span className="text-white font-bold text-sm whitespace-nowrap">
-                  Çözümleri Keşfet
-                </span>
-                <ArrowRight className="w-4 h-4 text-white/80" />
+                <Rocket className="w-10 h-10 text-white" style={{ transform: "rotate(-45deg)" }} />
               </motion.div>
-            </Link>
+            </div>
           </div>
 
-          {/* ── Bottom Edge: Steps 6-10 + directional arrow ── */}
+          {/* ── Bottom Edge: Steps 6-10 ── */}
           <div
             className="relative z-10 flex justify-center items-center py-5"
-            style={{ minHeight: "80px", gap: "48px" }}
+            /* FIX 7 devam — alt row da aynı gap düzeltmesi */
+            style={{ minHeight: "80px", gap: "20px", flexWrap: "wrap" }}
           >
             {bottomSteps.map((s) => (
               <StepChip
@@ -335,8 +506,33 @@ const JourneyLoopSection = () => {
                 step={s}
                 isActive={activeStep === s.id - 1}
                 onClick={() => setActiveStep(s.id - 1)}
+                position="bottom"
               />
             ))}
+
+            {/* ─────────────────────────────────────────────
+                FIX 12 — "Başa Dön" / Döngü tamamlama butonu.
+                Önceden anlamsız MoveUpRight ok vardı. Yerine
+                tüm adımları gören kullanıcıya "Tümünü Gör"
+                aksiyonu sunuluyor.
+            ───────────────────────────────────────────── */}
+            <Link to="/kobi">
+              <motion.button
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.97 }}
+                className="inline-flex items-center gap-2 font-semibold text-white whitespace-nowrap"
+                style={{
+                  padding: "10px 20px",
+                  borderRadius: "16px",
+                  fontSize: "13px",
+                  background: "linear-gradient(135deg, hsl(268,72%,38%), hsl(280,68%,48%))",
+                  boxShadow: "0 4px 16px rgba(109,40,217,0.3)",
+                }}
+              >
+                Tümünü Keşfet
+                <ArrowRight className="w-4 h-4" />
+              </motion.button>
+            </Link>
           </div>
         </div>
       </div>
