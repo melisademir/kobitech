@@ -256,7 +256,7 @@ const JourneyLoopSection = () => {
                   >
                     {current.description}
                   </p>
-                  <div className="flex flex-wrap items-center justify-start gap-5 mb-8 w-full">
+                  <div className="flex flex-wrap items-center justify-center gap-5 mb-8 w-full">
                     {current.tags
                       .filter((tag, i, arr) => {
                         const logo = TAG_LOGO_MAP[tag];
