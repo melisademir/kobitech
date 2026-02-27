@@ -121,7 +121,7 @@ const JourneyLoopSection2 = () => {
           </div>
 
           {/* ── Central Display ── */}
-          <div className="relative z-10" style={{ margin: "-10px 66px" }}>
+            <div className="relative z-10" style={{ margin: "-10px 66px" }}> 
             <div
               className="relative overflow-hidden flex items-center justify-center"
               style={{
@@ -243,44 +243,39 @@ const JourneyLoopSection2 = () => {
                         {detail.badge}
                       </span>
                     )}
+
+                    {/* Rocket CTA — bottom right inside card */}
+                    <div className="flex w-full justify-end mt-2">
+                      <Link to="/kobi/urunler">
+                        <motion.div
+                          className="flex items-center gap-3 cursor-pointer"
+                          whileHover={{ scale: 1.06 }}
+                          transition={{ type: "spring", stiffness: 300, damping: 22 }}
+                          style={{
+                            height: "48px",
+                            padding: "0 24px 0 18px",
+                            borderRadius: "2rem",
+                            background:
+                              "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
+                            boxShadow:
+                              "0 8px 32px -4px rgba(109,40,217,0.4)",
+                          }}
+                        >
+                          <Rocket
+                            className="w-4 h-4 text-white"
+                            style={{ transform: "rotate(-45deg)" }}
+                          />
+                          <span className="text-white font-bold text-sm whitespace-nowrap">
+                            Çözümleri İncele
+                          </span>
+                          <ArrowRight className="w-4 h-4 text-white/80" />
+                        </motion.div>
+                      </Link>
+                    </div>
                   </motion.div>
                 )}
               </AnimatePresence>
             </div>
-
-            {/* Rocket CTA — bottom right */}
-            <Link to="/kobi/urunler">
-              <motion.div
-                className="absolute z-20 flex items-center gap-3 cursor-pointer"
-                animate={{ y: [0, -5, 0] }}
-                whileHover={{ scale: 1.06 }}
-                transition={{
-                  duration: 3,
-                  repeat: Infinity,
-                  ease: "easeInOut",
-                }}
-                style={{
-                  bottom: "-28px",
-                  right: "-20px",
-                  height: "60px",
-                  padding: "0 28px 0 22px",
-                  borderRadius: "2rem",
-                  background:
-                    "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
-                  boxShadow:
-                    "0 8px 32px -4px rgba(109,40,217,0.5), 0 0 0 4px rgba(255,255,255,0.9)",
-                }}
-              >
-                <Rocket
-                  className="w-5 h-5 text-white"
-                  style={{ transform: "rotate(-45deg)" }}
-                />
-                <span className="text-white font-bold text-sm whitespace-nowrap">
-                  Çözümleri İncele
-                </span>
-                <ArrowRight className="w-4 h-4 text-white/80" />
-              </motion.div>
-            </Link>
           </div>
 
           {/* ── Bottom Edge: remaining partners ── */}
