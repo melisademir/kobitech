@@ -113,7 +113,7 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
 const ChevronTrackSVG = () => {
   const W = 1200;
   const H = 820;
-  const T = 110;
+  const T = 140;
   const r = 48;
   const chev = 40;
 
