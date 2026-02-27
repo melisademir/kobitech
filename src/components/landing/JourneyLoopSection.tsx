@@ -199,7 +199,7 @@ const JourneyLoopSection = () => {
           </div>
 
           {/* ── Central Display ── */}
-          <div className="relative z-10" style={{ margin: "0 72px" }}>
+          <div className="relative z-10" style={{ margin: "-10px 72px" }}>
             <div
               className="relative overflow-hidden flex items-center justify-center"
               style={{
