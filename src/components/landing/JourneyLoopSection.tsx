@@ -84,7 +84,7 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
       className="relative flex items-center gap-2.5 cursor-pointer whitespace-nowrap"
       style={{
         padding: isActive ? "14px 32px" : "12px 24px",
-        borderRadius: "18px",
+        borderRadius: "2rem",
         fontSize: isActive ? "14px" : "12px",
         fontWeight: isActive ? 800 : 600,
         letterSpacing: "0.01em",
@@ -174,7 +174,7 @@ const JourneyLoopSection = () => {
             className="absolute inset-0 pointer-events-none"
             style={{
               margin: "-10px -24px",
-              borderRadius: "6rem",
+              borderRadius: "calc(2rem + 90px)",
               border: "90px solid transparent",
               background: "linear-gradient(135deg, hsl(268,60%,82%), hsl(174,55%,52%), hsl(268,72%,30%)) border-box",
               WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
@@ -204,7 +204,7 @@ const JourneyLoopSection = () => {
               className="relative overflow-hidden flex items-center justify-center"
               style={{
                 minHeight: "380px",
-                borderRadius: "3rem",
+                borderRadius: "2rem",
                 border: "1.5px solid rgba(255,255,255,0.6)",
                 background: "rgba(255,255,255,0.88)",
                 backdropFilter: "blur(32px)",
