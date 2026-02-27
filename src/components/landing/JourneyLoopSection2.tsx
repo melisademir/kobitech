@@ -49,12 +49,11 @@ const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
     <img
       src={piece.logo}
       alt={piece.name}
-      className="relative z-10 object-contain mix-blend-multiply"
+      className="relative z-10 object-contain"
       style={{
-        height: isActive ? "32px" : "26px",
+        height: isActive ? "34px" : "28px",
         maxWidth: isActive ? "100px" : "80px",
         transition: "all 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
-        filter: isActive ? "none" : "grayscale(0.3) opacity(0.75)",
       }}
     />
   </motion.button>
@@ -164,8 +163,8 @@ const JourneyLoopSection2 = () => {
                       <img
                         src={currentPiece.logo}
                         alt={currentPiece.name}
-                        className="object-contain mix-blend-multiply"
-                        style={{ height: "60px", maxWidth: "180px" }}
+                        className="object-contain"
+                        style={{ height: "40px", maxWidth: "180px" }}
                       />
                     </div>
 
