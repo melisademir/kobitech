@@ -46,11 +46,6 @@ const Landing = () => (
       <PartnersSection />
     </div>
 
-    {/* 2b — JOURNEY LOOP */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,50%,97%) 0%, hsl(265,35%,96%) 50%, hsl(38,50%,97%) 100%)" }}>
-      <JourneyLoopSection />
-    </div>
-
     <SectionDivider />
 
     {/* 3 — PARTNER ECOSYSTEM */}
@@ -86,6 +81,11 @@ const Landing = () => (
 
     {/* 8 — BENTO GRID */}
     <BentoGridSection />
+
+    {/* JOURNEY LOOP */}
+    <div style={{ background: "linear-gradient(180deg, hsl(38,50%,97%) 0%, hsl(265,35%,96%) 50%, hsl(38,50%,97%) 100%)" }}>
+      <JourneyLoopSection />
+    </div>
 
     <FooterSection />
   </div>
