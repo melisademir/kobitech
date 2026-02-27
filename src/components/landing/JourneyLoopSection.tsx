@@ -174,7 +174,7 @@ const JourneyLoopSection = () => {
             className="absolute inset-0 pointer-events-none"
             style={{
               margin: "-10px -24px",
-              borderRadius: "4.5rem",
+              borderRadius: "6rem",
               border: "90px solid transparent",
               background: "linear-gradient(135deg, hsl(268,60%,82%), hsl(174,55%,52%), hsl(268,72%,30%)) border-box",
               WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
