@@ -14,6 +14,7 @@ import {
   Globe2,
   ArrowRight,
   Rocket,
+  MoveUpRight,
 } from "lucide-react";
 
 /* ── Logo imports ── */
@@ -29,17 +30,6 @@ import logoNebim from "@/assets/logo-nebim.svg";
 import logoAras from "@/assets/logo-aras.png";
 import logoWorkcube from "@/assets/logo-workcube.png";
 import logoMukellef from "@/assets/logo-mukellef.png";
-
-/* ── Tab image imports ── */
-import tabOdeme from "@/assets/tab-odeme-ai.png";
-import tabEticaret from "@/assets/tab-eticaret-ai.png";
-import tabPara from "@/assets/tab-para-ai.png";
-import tabStok from "@/assets/tab-stok-ai.png";
-import tabKargo from "@/assets/tab-kargo-ai.png";
-import tabEkip from "@/assets/tab-ekip-ai.png";
-import tabSaha from "@/assets/tab-saha-ai.png";
-import tabTesvik from "@/assets/tab-tesvik-ai.png";
-import tabGlobal from "@/assets/tab-global-ai.png";
 
 /* ── Tag → Logo mapping ── */
 const TAG_LOGO_MAP: Record<string, string> = {
@@ -63,16 +53,16 @@ const TAG_LOGO_MAP: Record<string, string> = {
 };
 
 const journeySteps = [
-  { id: 1, title: "Ödeme Al", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], icon: CreditCard, image: tabOdeme },
-  { id: 2, title: "E-Ticarete Açıl", description: "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin. Online mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin keyfini sürün.", tags: ["Ticimax", "İkas", "T-Soft"], icon: ShoppingCart, image: tabEticaret },
-  { id: 3, title: "Paranı Yönet", description: "Finrota'nın sunduğu Netahsilat, Netekstre, Nap360 ve Posrapor çözümleriyle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına ulaşarak ticaretinize güç katın. İşletmenize özel dijital çözümlerle finansal süreçlerinizde kontrolü her an elinizde tutun.", tags: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"], icon: Wallet, image: tabPara },
-  { id: 4, title: "Stoğunu Kontrol Et", description: "Univera Stokbar ve Nebim V3 çözümleriyle depo yönetiminizi modernleştirin, ürün giriş çıkışlarını anlık verilerle izleyin. Akıllı stok planlama yöntemleriyle depo seviyelerinizi en ideal noktada tutun, fazla veya eksik stok riskini ortadan kaldırın. Tüm tedarik zincirinizi iyileştirerek operasyonel hataları ve fireleri en aza indirin; işletmenize özel dijital çözümlerle kârlılığınızı koruyun.", tags: ["Univera Stokbar", "Nebim V3"], icon: Package, image: tabStok },
-  { id: 5, title: "Ürünlerini Gönder", description: "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her yerine hızlıca ulaştırın. E-ticaret entegrasyonu ile siparişlerinizi anında kargoya hazırlayın ve operasyonel iş yükünüzü hafifletin. Kurumsal indirimlerle gönderim maliyetlerinizi düşürürken, anlık takip sistemiyle müşterilerinize her adımda güven verin.", tags: ["Aras Kargo"], icon: Truck, image: tabKargo },
-  { id: 6, title: "Ekibine Yön Ver", description: "Çalışanlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Özlük bilgilerini; maaş planlarını, izinlerini, mesailerini ve bordro hesaplarını Workcube HR ile güvenle yönetin.", tags: ["Workcube HR"], icon: Users, image: tabEkip },
-  { id: 7, title: "Sahayı Yönet", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. Univera EnRoute ile sahadan gelen verileri anında analiz ederek ekibinizin verimliliğini artırın.", tags: ["Univera EnRoute"], icon: MapPin, image: tabSaha },
-  { id: 8, title: "İş Akışını Takip Et", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin; e-Arşiv, e-Fatura ve mutabakat işlemlerinizi yasal güvenceyle tek merkezde birleştirin. Paramtech Flows'un yapay zeka destekli akıllı altyapısıyla görev atama, süre takibi ve otomatik bildirimler üzerinden ekibinizin verimliliğini artırın. Tüm departmanlar arasındaki iş akışlarını tek bir panelden yöneterek operasyonel mükemmelliğe ulaşın.", tags: ["Uni-Dox", "Paramtech Flows"], icon: ClipboardCheck, image: tabStok },
-  { id: 9, title: "Teşviklerden Yararlan", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz. Böylece sunulan imkanlardan tam kapasiteyle faydalanın; ticaretinizi size özel hibe ve vergi avantajlarıyla büyütün.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], icon: BadgePercent, image: tabTesvik },
-  { id: 10, title: "Globale Açıl", description: "TÜSİAD, MÜSİAD, TOBB, İTO, HİB ve KAGİDER gibi Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu; Ticimax'ın e-ticaret altyapısını, Mükellef'in global şirketleşme gücünü ve profesyonel hukuki danışmanlık desteğini arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Ticimax", "Mükellef"], icon: Globe2, image: tabGlobal },
+  { id: 1, title: "Ödeme Al", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin. Siz sadece işinizi büyütmeye odaklanın, ödemeleriniz Param güvencesiyle tıkır tıkır hesabınıza gelsin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], icon: CreditCard },
+  { id: 2, title: "E-Ticarete Açıl", description: "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin. Online mağazanızı hızla kurarak satışa başlayın; çoklu kanal satış imkanlarıyla dijital dünyada büyümenin keyfini sürün.", tags: ["Ticimax", "İkas", "T-Soft"], icon: ShoppingCart },
+  { id: 3, title: "Paranı Yönet", description: "Finrota'nın sunduğu Netahsilat, Netekstre, Nap360 ve Posrapor çözümleriyle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına ulaşarak ticaretinize güç katın.", tags: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"], icon: Wallet },
+  { id: 4, title: "Stoğunu Kontrol Et", description: "Univera Stokbar ve Nebim V3 çözümleriyle depo yönetiminizi modernleştirin, ürün giriş çıkışlarını anlık verilerle izleyin. Akıllı stok planlama yöntemleriyle depo seviyelerinizi en ideal noktada tutun.", tags: ["Univera Stokbar", "Nebim V3"], icon: Package },
+  { id: 5, title: "Ürünlerini Gönder", description: "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her yerine hızlıca ulaştırın. E-ticaret entegrasyonu ile siparişlerinizi anında kargoya hazırlayın ve operasyonel iş yükünüzü hafifletin.", tags: ["Aras Kargo"], icon: Truck },
+  { id: 6, title: "Ekibine Yön Ver", description: "Çalışanlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Özlük bilgilerini; maaş planlarını, izinlerini, mesailerini ve bordro hesaplarını Workcube HR ile güvenle yönetin.", tags: ["Workcube HR"], icon: Users },
+  { id: 7, title: "Sahayı Yönet", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. Univera EnRoute ile sahadan gelen verileri anında analiz ederek ekibinizin verimliliğini artırın.", tags: ["Univera EnRoute"], icon: MapPin },
+  { id: 8, title: "İş Akışını Takip Et", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin. Paramtech Flows'un yapay zeka destekli akıllı altyapısıyla görev atama, süre takibi ve otomatik bildirimler üzerinden ekibinizin verimliliğini artırın.", tags: ["Uni-Dox", "Paramtech Flows"], icon: ClipboardCheck },
+  { id: 9, title: "Teşviklerden Yararlan", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Sizi karmaşık başvuru dosyalarıyla uğraştırmıyor, her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], icon: BadgePercent },
+  { id: 10, title: "Globale Açıl", description: "TÜSİAD, MÜSİAD, TOBB, İTO, HİB ve KAGİDER gibi Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "İTO", "HİB", "KAGİDER", "Ticimax", "Mükellef"], icon: Globe2 },
 ];
 
 const topSteps = journeySteps.slice(0, 5);
@@ -128,24 +118,32 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   );
 };
 
-/* ── 3-Segment Track SVG ── */
+/* ── Chevron-Interlocking Track SVG ── */
 const ChevronTrackSVG = () => {
   const W = 1200;
   const H = 820;
-  const T = 110;
-  const r = 48;
+  const T = 110; // track thickness
+  const r = 48;  // corner radius
+  const chev = 40; // chevron depth
 
   const purpleLight = "hsl(268,55%,78%)";
   const teal = "hsl(174,52%,55%)";
   const purpleDeep = "hsl(268,72%,32%)";
 
+  // Outer bounds
   const ox1 = 0, oy1 = 0, ox2 = W, oy2 = H;
+  // Inner bounds
   const ix1 = T, iy1 = T, ix2 = W - T, iy2 = H - T;
 
+  // Split points on top and bottom edges for 3 segments
   const topSplit1 = W * 0.38;
   const topSplit2 = W * 0.68;
   const botSplit1 = W * 0.62;
   const botSplit2 = W * 0.32;
+
+  // Chevron midpoints (vertical center of track thickness)
+  const topMid = T / 2;
+  const botMid = H - T / 2;
 
   return (
     <svg
@@ -154,17 +152,19 @@ const ChevronTrackSVG = () => {
       preserveAspectRatio="none"
       fill="none"
     >
-      {/* Segment 1: Light Purple — Top-left + Left side + Bottom-right */}
+      {/* Segment 1: Light Purple — Top-left → chevron + Left side + Bottom-right ← chevron */}
       <path
         d={`
           M ${r},${oy1}
           L ${topSplit1},${oy1}
+          L ${topSplit1 + chev},${topMid}
           L ${topSplit1},${iy1}
           L ${r},${iy1}
           Q ${ix1},${iy1} ${ix1},${iy1 + r}
           L ${ix1},${iy2 - r}
           Q ${ix1},${iy2} ${ix1 + r},${iy2}
           L ${botSplit1},${iy2}
+          L ${botSplit1 + chev},${botMid}
           L ${botSplit1},${oy2}
           L ${r},${oy2}
           Q ${ox1},${oy2} ${ox1},${oy2 - r}
@@ -176,31 +176,36 @@ const ChevronTrackSVG = () => {
         opacity="0.92"
       />
 
-      {/* Segment 2: Teal — Top-middle + Bottom-middle */}
+      {/* Segment 2: Teal — Top-middle chevron ←→ chevron */}
       <path
         d={`
           M ${topSplit1},${oy1}
           L ${topSplit2},${oy1}
+          L ${topSplit2 + chev},${topMid}
           L ${topSplit2},${iy1}
           L ${topSplit1},${iy1}
+          L ${topSplit1 + chev},${topMid}
           Z
         `}
         fill={teal}
         opacity="0.92"
       />
+      {/* Segment 2: Teal — Bottom-middle chevron ←→ chevron */}
       <path
         d={`
           M ${botSplit1},${iy2}
-          L ${botSplit2},${iy2}
-          L ${botSplit2},${oy2}
+          L ${botSplit1 + chev},${botMid}
           L ${botSplit1},${oy2}
+          L ${botSplit2},${oy2}
+          L ${botSplit2 - chev},${botMid}
+          L ${botSplit2},${iy2}
           Z
         `}
         fill={teal}
         opacity="0.92"
       />
 
-      {/* Segment 3: Deep Purple — Top-right + Right side + Bottom-left */}
+      {/* Segment 3: Deep Purple — Top-right from chevron + Right side + Bottom-left to chevron */}
       <path
         d={`
           M ${topSplit2},${oy1}
@@ -209,12 +214,14 @@ const ChevronTrackSVG = () => {
           L ${ox2},${oy2 - r}
           Q ${ox2},${oy2} ${ox2 - r},${oy2}
           L ${botSplit2},${oy2}
+          L ${botSplit2 - chev},${botMid}
           L ${botSplit2},${iy2}
           L ${ix2 - r},${iy2}
           Q ${ix2},${iy2} ${ix2},${iy2 - r}
           L ${ix2},${iy1 + r}
           Q ${ix2},${iy1} ${ix2 - r},${iy1}
           L ${topSplit2},${iy1}
+          L ${topSplit2 + chev},${topMid}
           Z
         `}
         fill={purpleDeep}
@@ -224,32 +231,29 @@ const ChevronTrackSVG = () => {
   );
 };
 
-/* ── Tag Badge (logo or text) ── */
+/* ── Tag Badge (logo only) ── */
 const TagBadge = ({ tag }: { tag: string }) => {
   const logoSrc = TAG_LOGO_MAP[tag];
+  if (!logoSrc) return null;
 
-  if (logoSrc) {
-    return (
-      <span
-        className="inline-flex items-center justify-center"
-        style={{
-          padding: "8px 20px",
-          borderRadius: "24px",
-          border: "2px solid rgba(109,40,217,0.15)",
-          background: "rgba(255,255,255,0.95)",
-        }}
-      >
-        <img
-          src={logoSrc}
-          alt={tag}
-          className="object-contain mix-blend-multiply"
-          style={{ height: "52px", maxWidth: "180px" }}
-        />
-      </span>
-    );
-  }
-
-  return null;
+  return (
+    <span
+      className="inline-flex items-center justify-center"
+      style={{
+        padding: "8px 20px",
+        borderRadius: "24px",
+        border: "2px solid rgba(109,40,217,0.15)",
+        background: "rgba(255,255,255,0.95)",
+      }}
+    >
+      <img
+        src={logoSrc}
+        alt={tag}
+        className="object-contain mix-blend-multiply"
+        style={{ height: "52px", maxWidth: "180px" }}
+      />
+    </span>
+  );
 };
 
 /* ── Main Section ── */
@@ -336,9 +340,6 @@ const JourneyLoopSection = () => {
                   transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                   className="relative z-10 flex flex-col items-center px-8 md:px-14 py-8 w-full max-w-3xl mx-auto"
                 >
-
-
-                  {/* Title */}
                   <h3
                     className="text-3xl md:text-4xl font-extrabold text-foreground mb-3 text-center"
                     style={{ letterSpacing: "-0.02em" }}
@@ -404,7 +405,7 @@ const JourneyLoopSection = () => {
             </div>
           </div>
 
-          {/* ── Bottom Edge: Steps 6-10 ── */}
+          {/* ── Bottom Edge: Steps 6-10 + directional arrow ── */}
           <div className="relative z-10 flex justify-center items-center gap-12 py-5" style={{ minHeight: "80px" }}>
             {bottomSteps.map((s) => (
               <StepChip
@@ -414,6 +415,21 @@ const JourneyLoopSection = () => {
                 onClick={() => setActiveStep(s.id - 1)}
               />
             ))}
+            {/* Directional arrow pointing toward Rocket */}
+            <motion.div
+              animate={{ x: [0, 6, 0], y: [0, -6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+              className="flex items-center justify-center"
+              style={{
+                width: "44px",
+                height: "44px",
+                borderRadius: "50%",
+                background: "linear-gradient(135deg, hsl(268,72%,38%), hsl(280,68%,48%))",
+                boxShadow: "0 4px 16px rgba(109,40,217,0.3)",
+              }}
+            >
+              <MoveUpRight className="w-5 h-5 text-white" />
+            </motion.div>
           </div>
         </div>
       </div>
