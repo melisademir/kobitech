@@ -470,26 +470,6 @@ const JourneyLoopSection = () => {
                 onClick={() => setActiveStep(s.id - 1)}
               />
             ))}
-            {/* Directional arrow pointing toward Rocket */}
-            <motion.div
-              animate={{ x: [0, 6, 0], y: [0, -6, 0] }}
-              transition={{
-                duration: 1.5,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="flex items-center justify-center"
-              style={{
-                width: "44px",
-                height: "44px",
-                borderRadius: "50%",
-                background:
-                  "linear-gradient(135deg, hsl(268,72%,38%), hsl(280,68%,48%))",
-                boxShadow: "0 4px 16px rgba(109,40,217,0.3)",
-              }}
-            >
-              <MoveUpRight className="w-5 h-5 text-white" />
-            </motion.div>
           </div>
         </div>
       </div>
