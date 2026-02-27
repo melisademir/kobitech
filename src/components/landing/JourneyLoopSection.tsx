@@ -108,63 +108,6 @@ const StepChip = ({ step, isActive, onClick }: StepChipProps) => {
   );
 };
 
-/* ── Seamless Mesh-Flow Track SVG ── */
-const MeshFlowTrackSVG = () => {
-  const W = 1200;
-  const H = 820;
-  const T = 54; // uniform track thickness
-  const r = 40; // corner radius
-
-  return (
-    <svg
-      className="absolute inset-0 w-full h-full pointer-events-none"
-      viewBox={`0 0 ${W} ${H}`}
-      preserveAspectRatio="none"
-      fill="none"
-    >
-      <defs>
-        {/* Seamless liquid-flow mesh gradient along the track */}
-        <linearGradient id="meshFlow" x1="0%" y1="0%" x2="100%" y2="100%">
-          <stop offset="0%" stopColor="hsl(268,60%,82%)" />
-          <stop offset="25%" stopColor="hsl(275,52%,76%)" />
-          <stop offset="45%" stopColor="hsl(180,48%,58%)" />
-          <stop offset="60%" stopColor="hsl(174,55%,52%)" />
-          <stop offset="78%" stopColor="hsl(268,65%,40%)" />
-          <stop offset="100%" stopColor="hsl(258,68%,28%)" />
-        </linearGradient>
-      </defs>
-
-      {/* Single unified track path — outer rounded rect minus inner rounded rect */}
-      <path
-        d={`
-          M ${r},0
-          L ${W - r},0
-          Q ${W},0 ${W},${r}
-          L ${W},${H - r}
-          Q ${W},${H} ${W - r},${H}
-          L ${r},${H}
-          Q 0,${H} 0,${H - r}
-          L 0,${r}
-          Q 0,0 ${r},0
-          Z
-          M ${T + r},${T}
-          L ${T},${T + r}
-          L ${T},${H - T - r}
-          Q ${T},${H - T} ${T + r},${H - T}
-          L ${W - T - r},${H - T}
-          Q ${W - T},${H - T} ${W - T},${H - T - r}
-          L ${W - T},${T + r}
-          Q ${W - T},${T} ${W - T - r},${T}
-          L ${T + r},${T}
-          Z
-        `}
-        fill="url(#meshFlow)"
-        fillRule="evenodd"
-        opacity="0.92"
-      />
-    </svg>
-  );
-};
 
 /* ── Tag Badge (logo only) ── */
 const TagBadge = ({ tag }: { tag: string }) => {
@@ -172,15 +115,7 @@ const TagBadge = ({ tag }: { tag: string }) => {
   if (!logoSrc) return null;
 
   return (
-    <span
-      className="inline-flex items-center justify-center"
-      style={{
-        padding: "8px 20px",
-        borderRadius: "24px",
-        border: "2px solid rgba(109,40,217,0.12)",
-        background: "rgba(255,255,255,0.95)",
-      }}
-    >
+    <span className="inline-flex items-center justify-center px-2">
         <img
           src={logoSrc}
           alt={tag}
@@ -236,13 +171,19 @@ const JourneyLoopSection = () => {
             }}
           />
 
-          {/* SVG Track */}
+          {/* CSS Mask Track */}
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{ margin: "-10px -24px" }}
-          >
-            <MeshFlowTrackSVG />
-          </div>
+            style={{
+              margin: "-10px -24px",
+              borderRadius: "4.5rem",
+              border: "90px solid transparent",
+              background: "linear-gradient(135deg, hsl(268,60%,82%), hsl(174,55%,52%), hsl(268,72%,30%)) border-box",
+              WebkitMask: "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
+              WebkitMaskComposite: "xor",
+              maskComposite: "exclude",
+            }}
+          />
 
           {/* ── Top Edge: Steps 1-5 ── */}
           <div
