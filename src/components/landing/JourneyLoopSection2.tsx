@@ -5,9 +5,6 @@ import { ArrowRight, Rocket, Check } from "lucide-react";
 import { pieces, partnerDetails } from "./partner-ecosystem/partner-data";
 import type { PuzzlePiece } from "./partner-ecosystem/partner-data";
 
-const BRAND = "hsl(268,72%,38%)";
-const BRAND_HEX = "#6B21A8";
-
 /* Partner list for track — use pieces order */
 const partners = pieces;
 const topPartners = partners.slice(0, 7);
@@ -24,20 +21,40 @@ const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
   <motion.button
     onClick={onClick}
     animate={isActive ? { scale: 1.12 } : { scale: 1 }}
+    whileHover={!isActive ? { scale: 1.06 } : undefined}
+    whileTap={{ scale: 0.96 }}
     transition={{ type: "spring", stiffness: 300, damping: 22 }}
-    className="relative flex items-center justify-center cursor-pointer"
+    className={`
+      relative flex items-center justify-center cursor-pointer rounded-2xl transition-all duration-300
+      ${isActive
+        ? "bg-primary/[0.06] ring-2 ring-primary/20 shadow-md"
+        : "hover:bg-muted/60"
+      }
+    `}
     style={{
       padding: isActive ? "10px 24px" : "8px 20px",
     }}
   >
+    {/* Active glow */}
+    {isActive && (
+      <motion.div
+        layoutId="chip-glow"
+        className="absolute inset-0 rounded-2xl pointer-events-none"
+        style={{
+          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08), transparent 70%)",
+        }}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+      />
+    )}
     <img
       src={piece.logo}
       alt={piece.name}
-      className="object-contain mix-blend-multiply"
+      className="relative z-10 object-contain mix-blend-multiply"
       style={{
         height: isActive ? "32px" : "26px",
         maxWidth: isActive ? "100px" : "80px",
-        transition: "all 0.2s ease",
+        transition: "all 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
+        filter: isActive ? "none" : "grayscale(0.3) opacity(0.75)",
       }}
     />
   </motion.button>
@@ -50,7 +67,7 @@ const JourneyLoopSection2 = () => {
   const detail = partnerDetails[currentPiece.id];
 
   return (
-    <section className="py-24 md:py-32">
+    <section className="section-gap">
       <div className="max-w-7xl mx-auto px-6">
         {/* Section header */}
         <motion.div
@@ -68,10 +85,7 @@ const JourneyLoopSection2 = () => {
             <br />
             <span className="text-gradient-primary">Ekosistemi</span>
           </h2>
-          <p
-            className="text-muted-foreground mt-4 max-w-2xl mx-auto"
-            style={{ fontSize: "18px", lineHeight: 1.7 }}
-          >
+          <p className="text-muted-foreground mt-4 max-w-2xl mx-auto text-lg leading-relaxed">
             Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
         </motion.div>
@@ -84,7 +98,7 @@ const JourneyLoopSection2 = () => {
             style={{
               inset: "-60px -80px",
               background:
-                "radial-gradient(ellipse 60% 40% at 25% 50%, hsla(268,55%,78%,0.25) 0%, transparent 70%), radial-gradient(ellipse 30% 30% at 50% 20%, hsla(174,52%,55%,0.18) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 60%, hsla(268,72%,32%,0.2) 0%, transparent 70%)",
+                "radial-gradient(ellipse 60% 40% at 25% 50%, hsl(var(--primary) / 0.15) 0%, transparent 70%), radial-gradient(ellipse 30% 30% at 50% 20%, hsl(var(--accent) / 0.12) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 60%, hsl(var(--primary) / 0.1) 0%, transparent 70%)",
               filter: "blur(60px)",
             }}
           />
@@ -97,7 +111,7 @@ const JourneyLoopSection2 = () => {
               borderRadius: "calc(2rem + 90px)",
               border: "90px solid transparent",
               background:
-                "linear-gradient(135deg, hsl(268,60%,82%), hsl(174,55%,52%), hsl(268,72%,30%)) border-box",
+                "linear-gradient(135deg, hsl(268 60% 82%), hsl(168 76% 52%), hsl(268 72% 30%)) border-box",
               WebkitMask:
                 "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
               WebkitMaskComposite: "xor",
@@ -106,10 +120,7 @@ const JourneyLoopSection2 = () => {
           />
 
           {/* ── Top Edge: first 7 partners ── */}
-          <div
-            className="relative z-10 flex justify-center items-center py-5 flex-wrap"
-            style={{ minHeight: "80px", gap: "20px" }}
-          >
+          <div className="relative z-10 flex justify-center items-center py-5 flex-wrap gap-5" style={{ minHeight: "80px" }}>
             {topPartners.map((p, i) => (
               <LogoChip
                 key={p.id}
@@ -121,32 +132,15 @@ const JourneyLoopSection2 = () => {
           </div>
 
           {/* ── Central Display ── */}
-            <div className="relative z-10" style={{ margin: "-10px 66px" }}> 
-            <div
-              className="relative overflow-hidden flex items-center justify-center"
-              style={{
-                minHeight: "440px",
-                borderRadius: "2rem",
-                border: "1.5px solid rgba(255,255,255,0.6)",
-                background: "rgba(255,255,255,0.88)",
-                backdropFilter: "blur(32px)",
-                WebkitBackdropFilter: "blur(32px)",
-                boxShadow:
-                  "0 24px 80px -12px rgba(107,33,168,0.12), 0 8px 32px -8px rgba(0,0,0,0.06), 0 0 0 1px rgba(255,255,255,0.4)",
-              }}
+          <div className="relative z-10" style={{ margin: "-10px 66px" }}>
+            <div className="relative overflow-hidden flex items-center justify-center glass-card rounded-[2rem] shadow-card"
+              style={{ minHeight: "440px" }}
             >
               {/* Inner glow */}
               <div
-                className="absolute pointer-events-none"
+                className="absolute inset-0 pointer-events-none"
                 style={{
-                  width: "600px",
-                  height: "600px",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                  borderRadius: "50%",
-                  background:
-                    "radial-gradient(circle, rgba(109,40,217,0.04) 0%, transparent 65%)",
+                  background: "radial-gradient(ellipse 50% 50% at 50% 50%, hsl(var(--primary) / 0.04), transparent 65%)",
                 }}
               />
 
@@ -161,16 +155,7 @@ const JourneyLoopSection2 = () => {
                     className="relative z-10 flex flex-col items-start px-8 md:px-14 py-10 w-full max-w-3xl mx-auto"
                   >
                     {/* Category badge */}
-                    <span
-                      className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-wide uppercase backdrop-blur-sm shadow-sm mb-4"
-                      style={{
-                        fontSize: "11px",
-                        background: "hsla(268,60%,96%,0.8)",
-                        color: BRAND,
-                        border: "1px solid hsla(268,72%,60%,0.2)",
-                        letterSpacing: "0.1em",
-                      }}
-                    >
+                    <span className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-widest uppercase text-[11px] mb-4 bg-primary/[0.06] text-primary border border-primary/10 backdrop-blur-sm shadow-sm">
                       {detail.category}
                     </span>
 
@@ -185,35 +170,19 @@ const JourneyLoopSection2 = () => {
                     </div>
 
                     {/* Headline */}
-                    <h3
-                      className="text-2xl md:text-3xl font-black text-foreground mb-2"
-                      style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}
-                    >
+                    <h3 className="text-2xl md:text-3xl font-black text-foreground mb-2" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
                       {detail.headline}
                     </h3>
 
                     {/* Leadership */}
-                    <div
-                      className="mb-4 rounded-xl w-full"
-                      style={{
-                        background: `${BRAND_HEX}08`,
-                        borderLeft: `4px solid ${BRAND}`,
-                        padding: "10px 14px",
-                      }}
-                    >
-                      <p
-                        className="font-semibold"
-                        style={{ fontSize: "14px", lineHeight: 1.4, color: BRAND }}
-                      >
+                    <div className="mb-4 rounded-xl w-full bg-primary/[0.04] border-l-4 border-primary px-4 py-3">
+                      <p className="font-semibold text-sm leading-snug text-primary">
                         {detail.leadership}
                       </p>
                     </div>
 
                     {/* Description */}
-                    <p
-                      className="text-muted-foreground mb-5"
-                      style={{ fontSize: "15px", lineHeight: 1.75, maxWidth: "560px" }}
-                    >
+                    <p className="text-muted-foreground mb-5 text-[15px] leading-relaxed max-w-[560px]">
                       {detail.description}
                     </p>
 
@@ -221,25 +190,15 @@ const JourneyLoopSection2 = () => {
                     <div className="flex flex-col gap-3 mb-5">
                       {detail.features.slice(0, 4).map((f) => (
                         <div key={f} className="flex items-start gap-3">
-                          <Check
-                            className="text-purple-600 shrink-0 mt-0.5"
-                            style={{ width: 15, height: 15, strokeWidth: 2.8 }}
-                          />
-                          <span className="text-slate-700 text-sm font-medium">{f}</span>
+                          <Check className="text-primary shrink-0 mt-0.5 w-[15px] h-[15px]" strokeWidth={2.8} />
+                          <span className="text-foreground/80 text-sm font-medium">{f}</span>
                         </div>
                       ))}
                     </div>
 
                     {/* Badge */}
                     {detail.badge && (
-                      <span
-                        className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold text-xs"
-                        style={{
-                          background: `${BRAND_HEX}10`,
-                          color: BRAND,
-                          border: `1px solid ${BRAND_HEX}20`,
-                        }}
-                      >
+                      <span className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold text-xs bg-primary/[0.06] text-primary border border-primary/10">
                         {detail.badge}
                       </span>
                     )}
@@ -248,27 +207,19 @@ const JourneyLoopSection2 = () => {
                     <div className="absolute bottom-6 right-6">
                       <Link to="/kobi/urunler">
                         <motion.div
-                          className="flex items-center gap-3 cursor-pointer"
+                          className="flex items-center gap-3 cursor-pointer rounded-full text-primary-foreground font-bold text-sm shadow-premium"
                           whileHover={{ scale: 1.06 }}
+                          whileTap={{ scale: 0.97 }}
                           transition={{ type: "spring", stiffness: 300, damping: 22 }}
                           style={{
                             height: "48px",
                             padding: "0 24px 0 18px",
-                            borderRadius: "2rem",
-                            background:
-                              "linear-gradient(135deg, hsl(268,72%,38%) 0%, hsl(280,68%,48%) 100%)",
-                            boxShadow:
-                              "0 8px 32px -4px rgba(109,40,217,0.4)",
+                            background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
                           }}
                         >
-                          <Rocket
-                            className="w-4 h-4 text-white"
-                            style={{ transform: "rotate(-45deg)" }}
-                          />
-                          <span className="text-white font-bold text-sm whitespace-nowrap">
-                            Çözümleri İncele
-                          </span>
-                          <ArrowRight className="w-4 h-4 text-white/80" />
+                          <Rocket className="w-4 h-4" style={{ transform: "rotate(-45deg)" }} />
+                          <span className="whitespace-nowrap">Çözümleri İncele</span>
+                          <ArrowRight className="w-4 h-4 opacity-80" />
                         </motion.div>
                       </Link>
                     </div>
@@ -279,10 +230,7 @@ const JourneyLoopSection2 = () => {
           </div>
 
           {/* ── Bottom Edge: remaining partners ── */}
-          <div
-            className="relative z-10 flex justify-center items-center py-5 flex-wrap"
-            style={{ minHeight: "80px", gap: "20px" }}
-          >
+          <div className="relative z-10 flex justify-center items-center py-5 flex-wrap gap-5" style={{ minHeight: "80px" }}>
             {bottomPartners.map((p, i) => (
               <LogoChip
                 key={p.id}
