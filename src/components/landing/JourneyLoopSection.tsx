@@ -114,7 +114,7 @@ const TagBadge = ({ tag }: { tag: string }) => {
   const logoSrc = TAG_LOGO_MAP[tag];
   if (!logoSrc) return null;
 
-  const isParam = logoSrc === logoParam;
+  const isParam = logoSrc === logoParam || logoSrc === logoTicimax;
 
   return (
     <img
