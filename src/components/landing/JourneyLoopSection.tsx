@@ -173,7 +173,7 @@ const JourneyLoopSection = () => {
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
-              margin: "-6px -20px",
+              margin: "-10px -24px",
               borderRadius: "6rem",
               border: "90px solid transparent",
               background: "linear-gradient(135deg, hsl(268,60%,82%), hsl(174,55%,52%), hsl(268,72%,30%)) border-box",
@@ -185,8 +185,8 @@ const JourneyLoopSection = () => {
 
           {/* ── Top Edge: Steps 1-5 ── */}
           <div
-            className="relative z-10 flex justify-center items-center"
-            style={{ minHeight: "70px", padding: "8px 0", gap: "48px" }}
+            className="relative z-10 flex justify-center items-center py-5"
+            style={{ minHeight: "80px", gap: "48px" }}
           >
             {topSteps.map((s) => (
               <StepChip
@@ -328,8 +328,8 @@ const JourneyLoopSection = () => {
 
           {/* ── Bottom Edge: Steps 6-10 + directional arrow ── */}
           <div
-            className="relative z-10 flex justify-center items-center"
-            style={{ minHeight: "70px", padding: "8px 0", gap: "48px" }}
+            className="relative z-10 flex justify-center items-center py-5"
+            style={{ minHeight: "80px", gap: "48px" }}
           >
             {bottomSteps.map((s) => (
               <StepChip
