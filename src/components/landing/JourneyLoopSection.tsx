@@ -114,6 +114,7 @@ const ChevronTrackSVG = () => {
   const W = 1200;
   const H = 820;
   const T = 140;
+  const S = 200; // side (left/right) thickness
   const r = 48;
   const chev = 40;
 
@@ -121,7 +122,7 @@ const ChevronTrackSVG = () => {
   const botMid = H - T / 2;
 
   const ox1 = 0, oy1 = 0, ox2 = W, oy2 = H;
-  const ix1 = T, iy1 = T, ix2 = W - T, iy2 = H - T;
+  const ix1 = S, iy1 = T, ix2 = W - S, iy2 = H - T;
 
   const topSplit1 = W * 0.38;
   const topSplit2 = W * 0.68;
