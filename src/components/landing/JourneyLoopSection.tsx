@@ -117,18 +117,26 @@ const TagBadge = ({ tag }: { tag: string }) => {
   const isLarge = logoSrc === logoTicimax;
   const isParam = logoSrc === logoParam;
 
+  if (isParam) {
+    return (
+      <div className="overflow-hidden" style={{ height: "50px", width: "400px" }}>
+        <img
+          src={logoSrc}
+          alt={tag}
+          className="object-contain mix-blend-multiply"
+          style={{ height: "136px", width: "400px", marginTop: "-43px" }}
+        />
+      </div>
+    );
+  }
+
   return (
-    <div
-      className="overflow-hidden"
-      style={{ height: isParam ? "50px" : isLarge ? "56px" : "44px", width: isParam ? "400px" : isLarge ? "170px" : "140px" }}
-    >
-      <img
-        src={logoSrc}
-        alt={tag}
-        className="object-contain mix-blend-multiply"
-        style={{ height: "136px", width: "400px", marginTop: isParam ? "-43px" : "0" }}
-      />
-    </div>
+    <img
+      src={logoSrc}
+      alt={tag}
+      className="object-contain mix-blend-multiply"
+      style={{ height: isLarge ? "56px" : "44px", width: isLarge ? "170px" : "140px" }}
+    />
   );
 };
 
