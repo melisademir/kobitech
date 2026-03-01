@@ -37,13 +37,15 @@ interface LogoChipProps {
 const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
   <button
     onClick={onClick}
-    className="relative flex items-center justify-center cursor-pointer rounded-2xl transition-all duration-300"
+    className="relative flex items-center justify-center cursor-pointer rounded-2xl"
     style={{
       padding: "8px 18px",
       backdropFilter: "blur(12px)",
       background: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.70)",
       border: isActive ? "2px solid rgba(109,40,217,0.25)" : "2px solid rgba(255,255,255,0.60)",
       boxShadow: isActive ? "0 4px 16px rgba(109,40,217,0.15)" : "none",
+      transform: isActive ? "scale(1.08)" : "scale(1)",
+      transition: "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
     }}
   >
     <img
