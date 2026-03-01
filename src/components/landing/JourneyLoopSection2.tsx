@@ -18,16 +18,12 @@ interface LogoChipProps {
 }
 
 const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
-  <motion.button
+  <button
     onClick={onClick}
-    animate={isActive ? { scale: 1.12 } : { scale: 1 }}
-    whileHover={!isActive ? { scale: 1.06 } : undefined}
-    whileTap={{ scale: 0.96 }}
-    transition={{ type: "spring", stiffness: 300, damping: 22 }}
     className={`
       relative flex items-center justify-center cursor-pointer rounded-2xl transition-all duration-300
       ${isActive
-        ? "bg-primary/[0.06] ring-2 ring-primary/20 shadow-md"
+        ? "ring-2 ring-primary/30 bg-primary/[0.06]"
         : "hover:bg-muted/60"
       }
     `}
@@ -54,9 +50,11 @@ const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
         height: isActive ? "34px" : "28px",
         maxWidth: isActive ? "100px" : "80px",
         transition: "all 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
+        filter: isActive ? "none" : "grayscale(1)",
+        opacity: isActive ? 1 : 0.45,
       }}
     />
-  </motion.button>
+  </button>
 );
 
 /* ── Main Section ── */
@@ -132,7 +130,7 @@ const JourneyLoopSection2 = () => {
 
           {/* ── Central Display ── */}
           <div className="relative z-10" style={{ margin: "-10px 66px" }}>
-            <div className="relative overflow-hidden flex items-center justify-center glass-card rounded-[2rem] shadow-card"
+            <div className="relative overflow-hidden glass-card rounded-[2rem] shadow-card"
               style={{ minHeight: "440px" }}
             >
               {/* Inner glow */}
@@ -151,59 +149,43 @@ const JourneyLoopSection2 = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative z-10 flex flex-col items-start px-8 md:px-14 py-10 w-full max-w-3xl mx-auto"
+                    className="relative z-10 flex flex-col md:flex-row w-full h-full"
                   >
-                    {/* Category badge */}
-                    <span className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-widest uppercase text-[11px] mb-4 bg-primary/[0.06] text-primary border border-primary/10 backdrop-blur-sm shadow-sm">
-                      {detail.category}
-                    </span>
-
-                    {/* Partner logo */}
-                    <div className="flex items-center justify-start mb-4">
-                      <img
-                        src={currentPiece.logo}
-                        alt={currentPiece.name}
-                        className="object-contain"
-                        style={{ height: "40px", maxWidth: "180px" }}
-                      />
-                    </div>
-
-                    {/* Headline */}
-                    <h3 className="text-2xl md:text-3xl font-black text-foreground mb-2" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
-                      {detail.headline}
-                    </h3>
-
-                    {/* Leadership */}
-                    <div className="mb-4 rounded-xl w-full bg-primary/[0.04] border-l-4 border-primary px-4 py-3">
-                      <p className="font-semibold text-sm leading-snug text-primary">
-                        {detail.leadership}
-                      </p>
-                    </div>
-
-                    {/* Description */}
-                    <p className="text-muted-foreground mb-5 text-[15px] leading-relaxed max-w-[560px]">
-                      {detail.description}
-                    </p>
-
-                    {/* Features */}
-                    <div className="flex flex-col gap-3 mb-5">
-                      {detail.features.slice(0, 4).map((f) => (
-                        <div key={f} className="flex items-start gap-3">
-                          <Check className="text-primary shrink-0 mt-0.5 w-[15px] h-[15px]" strokeWidth={2.8} />
-                          <span className="text-foreground/80 text-sm font-medium">{f}</span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Badge */}
-                    {detail.badge && (
-                      <span className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold text-xs bg-primary/[0.06] text-primary border border-primary/10">
-                        {detail.badge}
+                    {/* Left column — 55% */}
+                    <div className="flex flex-col items-start px-8 md:px-14 py-10 md:w-[55%]">
+                      {/* Category badge */}
+                      <span className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-widest uppercase text-[11px] mb-4 bg-primary/[0.06] text-primary border border-primary/10 backdrop-blur-sm shadow-sm">
+                        {detail.category}
                       </span>
-                    )}
 
-                    {/* Rocket CTA — bottom right inside card */}
-                    <div className="absolute bottom-6 right-6">
+                      {/* Headline */}
+                      <h3 className="text-2xl md:text-3xl font-black text-foreground mb-2" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+                        {detail.headline}
+                      </h3>
+
+                      {/* Leadership */}
+                      <div className="mb-4 rounded-xl w-full bg-primary/[0.04] border-l-4 border-primary px-4 py-3">
+                        <p className="font-semibold text-sm leading-snug text-primary">
+                          {detail.leadership}
+                        </p>
+                      </div>
+
+                      {/* Description */}
+                      <p className="text-muted-foreground mb-5 text-[15px] leading-relaxed max-w-[560px]">
+                        {detail.description}
+                      </p>
+
+                      {/* Features */}
+                      <div className="flex flex-col gap-3 mb-6">
+                        {detail.features.slice(0, 4).map((f) => (
+                          <div key={f} className="flex items-start gap-3">
+                            <Check className="text-emerald-500 shrink-0 mt-0.5 w-5 h-5" strokeWidth={2.8} />
+                            <span className="text-foreground/80 text-sm font-medium">{f}</span>
+                          </div>
+                        ))}
+                      </div>
+
+                      {/* CTA Button */}
                       <Link to="/kobi/urunler">
                         <motion.div
                           className="flex items-center gap-3 cursor-pointer rounded-full text-primary-foreground font-bold text-sm shadow-premium"
@@ -221,6 +203,28 @@ const JourneyLoopSection2 = () => {
                           <ArrowRight className="w-4 h-4 opacity-80" />
                         </motion.div>
                       </Link>
+                    </div>
+
+                    {/* Right column — 45% stats panel */}
+                    <div className="hidden md:flex md:w-[45%] items-center justify-center p-8">
+                      <div className="bg-primary/[0.03] rounded-2xl p-8 w-full flex flex-col items-center justify-center gap-6">
+                        {/* Primary stat */}
+                        <div className="text-center">
+                          <span className="text-primary font-black" style={{ fontSize: "72px", lineHeight: 1 }}>
+                            {detail.sectors[0]?.pct}%
+                          </span>
+                          <p className="text-muted-foreground text-sm mt-2">{detail.sectors[0]?.name}</p>
+                        </div>
+                        {/* Secondary stat */}
+                        {detail.sectors[1] && (
+                          <div className="text-center">
+                            <span className="text-primary/70 font-black" style={{ fontSize: "48px", lineHeight: 1 }}>
+                              {detail.sectors[1].pct}%
+                            </span>
+                            <p className="text-muted-foreground text-sm mt-2">{detail.sectors[1].name}</p>
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </motion.div>
                 )}
