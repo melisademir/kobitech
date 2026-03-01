@@ -7,7 +7,7 @@ import logoFinrotaNew from "@/assets/logo-finrota-new.svg";
 import logoKredim from "@/assets/logo-kredim.svg";
 import logoAras from "@/assets/logo-aras.svg";
 import logoTicimax from "@/assets/logo-ticimax.png";
-import logoGoogle from "@/assets/logo-google.png";
+import logoGoogle from "@/assets/logo-google.svg";
 import logoIkas from "@/assets/logo-ikas.png";
 import logoWorkcube from "@/assets/logo-workcube.png";
 import logoMukellef from "@/assets/logo-mukellef.svg";
