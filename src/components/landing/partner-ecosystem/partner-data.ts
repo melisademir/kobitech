@@ -10,7 +10,7 @@ import logoTicimax from "@/assets/logo-ticimax.png";
 import logoGoogle from "@/assets/logo-google.png";
 import logoIkas from "@/assets/logo-ikas.png";
 import logoWorkcube from "@/assets/logo-workcube.png";
-import logoMukellef from "@/assets/logo-mukellef.png";
+import logoMukellef from "@/assets/logo-mukellef.svg";
 import logoParamtech from "@/assets/logo-paramtech.png";
 
 // ─── Piece type ───────────────────────────────────────────────────────────────
