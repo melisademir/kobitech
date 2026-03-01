@@ -42,8 +42,8 @@ const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
       padding: "8px 18px",
       backdropFilter: "blur(12px)",
       background: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.70)",
-      border: isActive ? "2px solid hsl(var(--primary) / 0.25)" : "2px solid rgba(255,255,255,0.60)",
-      boxShadow: isActive ? "0 4px 16px hsl(var(--primary) / 0.15)" : "none",
+      border: isActive ? "2px solid rgba(109,40,217,0.25)" : "2px solid rgba(255,255,255,0.60)",
+      boxShadow: isActive ? "0 4px 16px rgba(109,40,217,0.15)" : "none",
       transform: isActive ? "scale(1.08)" : "scale(1)",
       transition: "transform 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
     }}
@@ -136,8 +136,8 @@ const JourneyLoopSection2 = () => {
 
           {/* ── Central Display ── */}
           <div className="relative z-10" style={{ margin: "-10px 66px" }}>
-            <div className="relative overflow-hidden rounded-[2rem] shadow-card"
-              style={{ minHeight: "440px", background: "rgba(255,255,255,0.92)", backdropFilter: "blur(24px)", WebkitBackdropFilter: "blur(24px)", border: "1.5px solid rgba(255,255,255,0.7)" }}
+            <div className="relative overflow-hidden glass-card rounded-[2rem] shadow-card"
+              style={{ minHeight: "440px" }}
             >
               {/* Inner glow */}
               <div
@@ -156,10 +156,10 @@ const JourneyLoopSection2 = () => {
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
                     className="flex flex-row gap-6 w-full"
-                    style={{ alignItems: "stretch", minHeight: "340px" }}
+                    style={{ alignItems: "stretch", minHeight: "320px" }}
                   >
                     {/* Left column */}
-                    <div className="flex flex-col justify-between" style={{ flex: "0 0 50%", padding: "2.5rem 2rem 2.5rem 2.5rem" }}>
+                    <div className="flex flex-col justify-between" style={{ flex: "0 0 50%", padding: "2rem 1.5rem 2rem 2.5rem" }}>
                       {/* Headline */}
                       <h3 className="text-xl md:text-2xl font-black text-foreground mb-3" style={{ letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                         {detail.headline}
@@ -203,13 +203,14 @@ const JourneyLoopSection2 = () => {
 
                     {/* Right column — image panel */}
                     <div className="hidden md:flex items-stretch" style={{ flex: "1", padding: "1.5rem 1.5rem 1.5rem 0" }}>
-                      <div className="relative" style={{ borderRadius: "1rem", overflow: "hidden", flex: "1", minHeight: "100%" }}>
+                      <div className="relative rounded-2xl overflow-hidden" style={{ flex: "1", minHeight: "100%", maxHeight: "320px" }}>
                         <img
                           src={partnerImages[currentPiece.id] ?? partnerImages.paramtech}
                           alt={currentPiece.name}
-                          style={{ borderRadius: "1rem", width: "100%", height: "100%", objectFit: "cover", display: "block" }}
+                          className="w-full h-full object-cover"
+                          style={{ borderRadius: "1rem", display: "block" }}
                         />
-                        <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: "1rem", background: "linear-gradient(135deg, hsla(268,72%,38%,0.18) 0%, hsla(174,55%,52%,0.12) 100%)", mixBlendMode: "multiply" }} />
+                        <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: "1rem", background: "linear-gradient(135deg, hsla(268,72%,38%,0.15) 0%, hsla(174,55%,52%,0.1) 100%)" }} />
                       </div>
                     </div>
                   </motion.div>
