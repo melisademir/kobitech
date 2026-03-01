@@ -10,6 +10,23 @@ const partners = pieces;
 const topPartners = partners.slice(0, 7);
 const bottomPartners = partners.slice(7);
 
+/* Partner images map */
+const partnerImages: Record<string, string> = {
+  paramtech: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&q=80",
+  param: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80",
+  aras: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?w=500&q=80",
+  ikas: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=500&q=80",
+  tsoft: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80",
+  mukellef: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&q=80",
+  workcube: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=500&q=80",
+  google: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&q=80",
+  kredim: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=500&q=80",
+  nebim: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=500&q=80",
+  finrota: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&q=80",
+  univera: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=500&q=80",
+  ticimax: "https://images.unsplash.com/photo-1472851294608-062f824d29cc?w=500&q=80",
+};
+
 /* ── Logo Chip ── */
 interface LogoChipProps {
   piece: PuzzlePiece;
@@ -20,38 +37,25 @@ interface LogoChipProps {
 const LogoChip = ({ piece, isActive, onClick }: LogoChipProps) => (
   <button
     onClick={onClick}
-    className={`
-      relative flex items-center justify-center cursor-pointer rounded-2xl transition-all duration-300
-      ${isActive
-        ? "ring-2 ring-primary/30 bg-primary/[0.06]"
-        : "hover:bg-muted/60"
-      }
-    `}
+    className="relative flex items-center justify-center cursor-pointer rounded-2xl transition-all duration-300"
     style={{
-      padding: isActive ? "10px 24px" : "8px 20px",
+      padding: "8px 18px",
+      backdropFilter: "blur(12px)",
+      background: isActive ? "rgba(255,255,255,0.95)" : "rgba(255,255,255,0.70)",
+      border: isActive ? "2px solid rgba(109,40,217,0.25)" : "2px solid rgba(255,255,255,0.60)",
+      boxShadow: isActive ? "0 4px 16px rgba(109,40,217,0.15)" : "none",
     }}
   >
-    {/* Active glow */}
-    {isActive && (
-      <motion.div
-        layoutId="chip-glow"
-        className="absolute inset-0 rounded-2xl pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at center, hsl(var(--primary) / 0.08), transparent 70%)",
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-      />
-    )}
     <img
       src={piece.logo}
       alt={piece.name}
       className="relative z-10 object-contain"
       style={{
-        height: isActive ? "34px" : "28px",
-        maxWidth: isActive ? "100px" : "80px",
+        height: isActive ? "32px" : "28px",
+        maxWidth: isActive ? "100px" : "90px",
         transition: "all 0.25s cubic-bezier(0.22, 1, 0.36, 1)",
-        filter: isActive ? "none" : "grayscale(1)",
-        opacity: isActive ? 1 : 0.45,
+        filter: isActive ? "none" : "grayscale(0.2)",
+        opacity: 1,
       }}
     />
   </button>
@@ -205,26 +209,14 @@ const JourneyLoopSection2 = () => {
                       </Link>
                     </div>
 
-                    {/* Right column — 45% stats panel */}
-                    <div className="hidden md:flex md:w-[45%] items-center justify-center p-8">
-                      <div className="bg-primary/[0.03] rounded-2xl p-8 w-full flex flex-col items-center justify-center gap-6">
-                        {/* Primary stat */}
-                        <div className="text-center">
-                          <span className="text-primary font-black" style={{ fontSize: "72px", lineHeight: 1 }}>
-                            {detail.sectors[0]?.pct}%
-                          </span>
-                          <p className="text-muted-foreground text-sm mt-2">{detail.sectors[0]?.name}</p>
-                        </div>
-                        {/* Secondary stat */}
-                        {detail.sectors[1] && (
-                          <div className="text-center">
-                            <span className="text-primary/70 font-black" style={{ fontSize: "48px", lineHeight: 1 }}>
-                              {detail.sectors[1].pct}%
-                            </span>
-                            <p className="text-muted-foreground text-sm mt-2">{detail.sectors[1].name}</p>
-                          </div>
-                        )}
-                      </div>
+                    {/* Right column — 45% image panel */}
+                    <div className="hidden md:flex md:w-[45%] items-center justify-center p-4">
+                      <img
+                        src={partnerImages[currentPiece.id] ?? partnerImages.paramtech}
+                        alt={currentPiece.name}
+                        className="w-full h-full object-cover rounded-2xl"
+                        style={{ maxHeight: "320px", minHeight: "200px" }}
+                      />
                     </div>
                   </motion.div>
                 )}
