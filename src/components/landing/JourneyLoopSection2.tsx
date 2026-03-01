@@ -155,17 +155,13 @@ const JourneyLoopSection2 = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative z-10 flex flex-row items-stretch gap-8 px-8 md:px-12 py-10 w-full"
+                    className="flex flex-row gap-6 w-full"
+                    style={{ alignItems: "stretch", minHeight: "320px" }}
                   >
                     {/* Left column */}
-                    <div className="flex flex-col justify-between" style={{ flex: "0 0 52%" }}>
-                      {/* Category badge */}
-                      <span className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-widest uppercase text-[11px] mb-4 bg-primary/[0.06] text-primary border border-primary/10 backdrop-blur-sm shadow-sm">
-                        {detail.category}
-                      </span>
-
+                    <div className="flex flex-col justify-between" style={{ flex: "0 0 50%", padding: "2rem 1.5rem 2rem 2.5rem" }}>
                       {/* Headline */}
-                      <h3 className="text-xl md:text-2xl font-black text-foreground mb-2" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+                      <h3 className="text-xl md:text-2xl font-black text-foreground mb-3" style={{ letterSpacing: "-0.02em", lineHeight: 1.2 }}>
                         {detail.headline}
                       </h3>
 
@@ -193,7 +189,8 @@ const JourneyLoopSection2 = () => {
                           transition={{ type: "spring", stiffness: 300, damping: 22 }}
                           style={{
                             height: "48px",
-                            padding: "0 24px 0 18px",
+                            padding: "0 28px 0 20px",
+                            width: "fit-content",
                             background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
                           }}
                         >
@@ -205,14 +202,15 @@ const JourneyLoopSection2 = () => {
                     </div>
 
                     {/* Right column — image panel */}
-                    <div className="hidden md:flex items-center" style={{ flex: "1" }}>
-                      <div className="relative w-full h-full rounded-2xl overflow-hidden" style={{ minHeight: "260px", maxHeight: "300px" }}>
+                    <div className="hidden md:flex items-stretch" style={{ flex: "1", padding: "1.5rem 1.5rem 1.5rem 0" }}>
+                      <div className="relative rounded-2xl overflow-hidden" style={{ flex: "1", minHeight: "100%", maxHeight: "320px" }}>
                         <img
                           src={partnerImages[currentPiece.id] ?? partnerImages.paramtech}
                           alt={currentPiece.name}
-                          className="w-full h-full object-cover rounded-2xl"
+                          className="w-full h-full object-cover"
+                          style={{ borderRadius: "1rem", display: "block" }}
                         />
-                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" style={{ borderRadius: "1rem" }} />
                       </div>
                     </div>
                   </motion.div>
