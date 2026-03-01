@@ -210,7 +210,7 @@ const JourneyLoopSection2 = () => {
                           className="w-full h-full object-cover"
                           style={{ borderRadius: "1rem", display: "block" }}
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent pointer-events-none" style={{ borderRadius: "1rem" }} />
+                        <div className="absolute inset-0 pointer-events-none" style={{ borderRadius: "1rem", background: "linear-gradient(135deg, hsla(268,72%,38%,0.15) 0%, hsla(174,55%,52%,0.1) 100%)" }} />
                       </div>
                     </div>
                   </motion.div>
