@@ -155,26 +155,19 @@ const JourneyLoopSection2 = () => {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -12 }}
                     transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    className="relative z-10 flex flex-col md:flex-row w-full h-full"
+                    className="relative z-10 flex flex-row items-stretch gap-8 px-8 md:px-12 py-10 w-full"
                   >
-                    {/* Left column — 55% */}
-                    <div className="flex flex-col items-start px-8 md:px-14 py-10 md:w-[55%]">
+                    {/* Left column */}
+                    <div className="flex flex-col justify-between" style={{ flex: "0 0 52%" }}>
                       {/* Category badge */}
                       <span className="inline-flex items-center px-4 py-1.5 rounded-full font-semibold tracking-widest uppercase text-[11px] mb-4 bg-primary/[0.06] text-primary border border-primary/10 backdrop-blur-sm shadow-sm">
                         {detail.category}
                       </span>
 
                       {/* Headline */}
-                      <h3 className="text-2xl md:text-3xl font-black text-foreground mb-2" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+                      <h3 className="text-xl md:text-2xl font-black text-foreground mb-2" style={{ letterSpacing: "-0.03em", lineHeight: 1.1 }}>
                         {detail.headline}
                       </h3>
-
-                      {/* Leadership */}
-                      <div className="mb-4 rounded-xl w-full bg-primary/[0.04] border-l-4 border-primary px-4 py-3">
-                        <p className="font-semibold text-sm leading-snug text-primary">
-                          {detail.leadership}
-                        </p>
-                      </div>
 
                       {/* Description */}
                       <p className="text-muted-foreground mb-5 text-[15px] leading-relaxed max-w-[560px]">
@@ -211,14 +204,16 @@ const JourneyLoopSection2 = () => {
                       </Link>
                     </div>
 
-                    {/* Right column — 45% image panel */}
-                    <div className="hidden md:flex md:w-[45%] items-center justify-center p-4">
-                      <img
-                        src={partnerImages[currentPiece.id] ?? partnerImages.paramtech}
-                        alt={currentPiece.name}
-                        className="w-full h-full object-cover rounded-2xl"
-                        style={{ maxHeight: "320px", minHeight: "200px" }}
-                      />
+                    {/* Right column — image panel */}
+                    <div className="hidden md:flex items-center" style={{ flex: "1" }}>
+                      <div className="relative w-full h-full rounded-2xl overflow-hidden" style={{ minHeight: "260px", maxHeight: "300px" }}>
+                        <img
+                          src={partnerImages[currentPiece.id] ?? partnerImages.paramtech}
+                          alt={currentPiece.name}
+                          className="w-full h-full object-cover rounded-2xl"
+                        />
+                        <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
+                      </div>
                     </div>
                   </motion.div>
                 )}
