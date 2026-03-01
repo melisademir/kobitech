@@ -5,7 +5,7 @@ import logoNebim from "@/assets/logo-nebim.svg";
 import logoUnivera from "@/assets/logo-univera.svg";
 import logoFinrotaNew from "@/assets/logo-finrota-new.svg";
 import logoKredim from "@/assets/logo-kredim.svg";
-import logoAras from "@/assets/logo-aras.png";
+import logoAras from "@/assets/logo-aras.svg";
 import logoTicimax from "@/assets/logo-ticimax.png";
 import logoGoogle from "@/assets/logo-google.png";
 import logoIkas from "@/assets/logo-ikas.png";
