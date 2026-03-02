@@ -1,6 +1,23 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useTransform, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
 
+// Logo imports
+import logoAras from "@/assets/logo-aras.png";
+import logoGoogle from "@/assets/logo-google.png";
+import logoIkas from "@/assets/logo-ikas.png";
+import logoKariyer from "@/assets/logo-kariyer.png";
+import logoKobitech from "@/assets/logo-kobitech.png";
+import logoMukellef from "@/assets/logo-mukellef.png";
+import logoParam from "@/assets/logo-param.png";
+import logoParamtech from "@/assets/logo-paramtech.png";
+import logoTicimax from "@/assets/logo-ticimax.png";
+import logoTsoft from "@/assets/logo-tsoft.png";
+import logoWorkcube from "@/assets/logo-workcube.png";
+import logoFinrota from "@/assets/logo-finrota-new.svg";
+import logoKredim from "@/assets/logo-kredim.svg";
+import logoNebim from "@/assets/logo-nebim.svg";
+import logoUnivera from "@/assets/logo-univera.svg";
+
 // --- Types ---
 export type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
 
@@ -50,20 +67,20 @@ function FlipCard({ src, index, total, phase, target }: FlipCardProps) {
       >
         {/* Front Face */}
         <div
-          className="absolute inset-0 rounded-lg overflow-hidden"
-          style={{ backfaceVisibility: "hidden" }}
+          className="absolute inset-0 rounded-lg overflow-hidden flex items-center justify-center"
+          style={{
+            backfaceVisibility: "hidden",
+            background: "white",
+            border: "1px solid hsl(var(--border))",
+            padding: "10px",
+          }}
         >
           <img
             src={src}
-            alt={`Card ${index + 1}`}
-            className="w-full h-full object-cover"
+            alt={`Logo ${index + 1}`}
+            className="w-full h-full object-contain"
+            style={{ mixBlendMode: "multiply" }}
             loading="lazy"
-          />
-          <div
-            className="absolute inset-0"
-            style={{
-              background: "linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.4) 100%)",
-            }}
           />
         </div>
 
@@ -87,30 +104,25 @@ function FlipCard({ src, index, total, phase, target }: FlipCardProps) {
 }
 
 // --- Main Hero Component ---
-const TOTAL_IMAGES = 20;
+const TOTAL_IMAGES = 15;
 const MAX_SCROLL = 3000;
 
 const IMAGES = [
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=300&q=80",
-  "https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=300&q=80",
-  "https://images.unsplash.com/photo-1497366216548-37526070297c?w=300&q=80",
-  "https://images.unsplash.com/photo-1506744038136-46273834b3fb?w=300&q=80",
-  "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=300&q=80",
-  "https://images.unsplash.com/photo-1506765515384-028b60a970df?w=300&q=80",
-  "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=300&q=80",
-  "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?w=300&q=80",
-  "https://images.unsplash.com/photo-1500485035595-cbe6f645feb1?w=300&q=80",
-  "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=300&q=80",
-  "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=300&q=80",
-  "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?w=300&q=80",
-  "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=300&q=80",
-  "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?w=300&q=80",
-  "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?w=300&q=80",
-  "https://images.unsplash.com/photo-1494438639946-1ebd1d20bf85?w=300&q=80",
-  "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=300&q=80",
-  "https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?w=300&q=80",
-  "https://images.unsplash.com/photo-1523961131990-5ea7c61b2107?w=300&q=80",
-  "https://images.unsplash.com/photo-1496568816309-51d7c20e3b21?w=300&q=80",
+  logoParamtech,
+  logoParam,
+  logoAras,
+  logoGoogle,
+  logoIkas,
+  logoKariyer,
+  logoKobitech,
+  logoMukellef,
+  logoTicimax,
+  logoTsoft,
+  logoWorkcube,
+  logoFinrota,
+  logoKredim,
+  logoNebim,
+  logoUnivera,
 ];
 
 const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * t;
