@@ -137,7 +137,7 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
 
       {/* CTA button */}
       <motion.div variants={item} className="mt-8">
-        <Link to="/digitalhub/urunler" className="block">
+        <Link to="/digitalhub/products" className="block">
           <button
             className="inline-flex items-center justify-center gap-2 w-full font-bold text-white transition-all duration-300 text-sm md:text-base rounded-full hover:-translate-y-1 hover:shadow-xl"
             style={{

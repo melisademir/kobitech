@@ -35,16 +35,14 @@
       { "path": "/digitalhub/onboarding3", "page": "Step3.tsx", "desc": "Ürün önerileri" }
     ],
     "kobiDashboard": [
-      { "path": "/kobi/dashboard", "page": "KobiDashboard.tsx" },
-      { "path": "/kobi/products", "page": "KobiProducts.tsx" },
-      { "path": "/kobi/tekliflerim", "page": "KobiTekliflerim.tsx" },
-      { "path": "/kobi/teklif-talebi", "page": "TeklifTalebi.tsx" },
-      { "path": "/kobi/teklif/:id", "page": "KobiTeklifDetay.tsx" },
-      { "path": "/kobi/planlarim", "page": "Planlarim.tsx" },
-      { "path": "/kobi/harita", "page": "Harita.tsx" },
-      { "path": "/kobi/bildirimler", "page": "KobiBildirimler.tsx" },
-      { "path": "/kobi/profil", "page": "KobiProfile.tsx" },
-      { "path": "/kobi/gorusmeler", "page": "KobiGorusmeler.tsx" }
+      { "path": "/digitalhub/products", "page": "KobiProducts.tsx" },
+      { "path": "/digitalhub/my-quotes", "page": "KobiTekliflerim.tsx" },
+      { "path": "/digitalhub/quote-request", "page": "TeklifTalebi.tsx" },
+      { "path": "/digitalhub/my-quotes/:id", "page": "KobiTeklifDetay.tsx" },
+      { "path": "/digitalhub/my-plans", "page": "Planlarim.tsx" },
+      { "path": "/digitalhub/map", "page": "Harita.tsx" },
+      { "path": "/digitalhub/notifications", "page": "KobiBildirimler.tsx" },
+      { "path": "/digitalhub/profile", "page": "KobiProfile.tsx" }
     ]
   },
 
