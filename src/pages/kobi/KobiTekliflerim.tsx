@@ -7,21 +7,19 @@ import { Button } from "@/components/ui/button";
 
 const mockQuotes = [
   { id: "TT-12345", products: ["Param POS", "Univera Stokbar"], status: "pending" as const, date: "2026-02-18", sender: "" },
-  { id: "TT-12340", products: ["Param Kart", "Finrota Netahsilat 2.0"], status: "invited" as const, date: "2026-02-15", sender: "Ahmet Yılmaz (Bayi)", price: "2.400₺/ay" },
+  { id: "TT-12340", products: ["Param Kart", "Finrota Netahsilat 2.0"], status: "pending" as const, date: "2026-02-15", sender: "Ahmet Yılmaz (Bayi)", price: "2.400₺/ay" },
   { id: "TT-12338", products: ["Nebim Winner"], status: "approved" as const, date: "2026-02-10", sender: "Admin", price: "4.200₺/ay" },
 ];
 
 const tabs = [
   { id: "all", label: "Tümü" },
   { id: "pending", label: "Bekleyen" },
-  { id: "invited", label: "Teklif Alındı" },
   { id: "approved", label: "Onaylandı" },
   { id: "rejected", label: "Reddedildi" },
 ];
 
 const statusConfig: Record<string, { label: string; variant: "outline" | "default" | "destructive"; color: string }> = {
   pending: { label: "Bekleyen", variant: "outline", color: "text-warning" },
-  invited: { label: "Teklif Alındı", variant: "default", color: "text-info" },
   approved: { label: "Onaylandı", variant: "default", color: "text-success" },
   rejected: { label: "Reddedildi", variant: "destructive", color: "text-destructive" },
 };
@@ -64,7 +62,7 @@ const KobiTekliflerim = () => {
                     </div>
                     <div className="flex gap-2 shrink-0">
                       <Button variant="outline" size="sm" onClick={() => navigate(`/kobi/tekliflerim/${q.id}`)}>Detay</Button>
-                      {q.status === "invited" && (
+                      {q.status === "pending" && (
                         <>
                           <Button variant="outline" size="sm">Soru Sor</Button>
                           <Button variant="hero" size="sm">Onayla</Button>
