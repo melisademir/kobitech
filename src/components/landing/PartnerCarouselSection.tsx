@@ -220,7 +220,7 @@ const PartnerCarouselSection = () => {
                   key={p.id}
                   onClick={() => setCurrentIndex(i)}
                   className={cn(
-                    "flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 border-2",
+                    "flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center transition-all duration-200 border-2",
                     i === currentIndex
                       ? "border-primary scale-110 shadow-md"
                       : "border-transparent opacity-50 hover:opacity-80"
@@ -231,7 +231,7 @@ const PartnerCarouselSection = () => {
                   <img
                     src={p.logo}
                     alt={p.name}
-                    className="w-7 h-7 object-contain mix-blend-multiply"
+                    className="w-10 h-10 object-contain mix-blend-multiply"
                   />
                 </button>
               ))}
