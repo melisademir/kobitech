@@ -218,9 +218,9 @@ export default function TicaretiniBuyutCember() {
   const contentOpacity = useTransform(smoothMorph, [0.8, 1], [0, 1]);
   const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
 
-  // Title animation: center → top
-  const titleTop = useTransform(smoothMorph, [0, 0.8], [45, 4]); // percent
-  const titleScale = useTransform(smoothMorph, [0, 0.8], [1, 1]);
+  // Title animation: center → top, small → large
+  const titleTop = useTransform(smoothMorph, [0, 0.8], [50, 4]); // percent
+  const titleScaleValue = useTransform(smoothMorph, [0, 0.8], [0.45, 1]);
   const subtitleOpacity = useTransform(smoothMorph, [0.6, 0.9], [0, 1]);
 
   const selected = selectedCategory ? CATEGORIES.find((c) => c.id === selectedCategory) : null;
@@ -231,7 +231,7 @@ export default function TicaretiniBuyutCember() {
         {/* Title: starts centered in circle, moves to top on scroll */}
         <motion.div
           className="absolute inset-x-0 z-20 flex flex-col items-center text-center px-4 pointer-events-none"
-          style={{ top: useTransform(titleTop, (v) => `${v}%`), transform: "translateY(-50%)" }}
+          style={{ top: useTransform(titleTop, (v) => `${v}%`), transform: "translateY(-50%)", scale: titleScaleValue }}
         >
           <motion.h3
             className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground"
