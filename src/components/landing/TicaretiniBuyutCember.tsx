@@ -219,7 +219,7 @@ export default function TicaretiniBuyutCember() {
   const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
 
   // Title animation: center → top, small → large
-  const titleTop = useTransform(smoothMorph, [0, 0.8], [50, 4]); // percent
+  const titleTop = useTransform(smoothMorph, [0, 0.8], [50, 4]); // starts at true center
   const titleScaleValue = useTransform(smoothMorph, [0, 0.8], [0.45, 1]);
   const subtitleOpacity = useTransform(smoothMorph, [0.6, 0.9], [0, 1]);
 
@@ -237,8 +237,8 @@ export default function TicaretiniBuyutCember() {
             className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: introPhase === "scatter" ? 0 : 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
+            animate={{ opacity: introPhase !== "scatter" ? 1 : 0, y: 0 }}
+            transition={{ delay: introPhase === "line" ? 0.3 : 0, duration: 0.6 }}
           >
             Ticaretini Büyüt
             <br />
