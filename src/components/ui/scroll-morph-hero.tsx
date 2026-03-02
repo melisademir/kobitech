@@ -315,7 +315,7 @@ export default function IntroAnimation() {
 
         {/* Arc Active Content (Fades in) — title + inline detail */}
         <motion.div
-          className="absolute inset-x-0 top-[6%] z-20 flex flex-col items-center text-center px-4"
+          className="absolute inset-x-0 top-[12%] z-20 flex flex-col items-center text-center px-4"
           style={{ opacity: contentOpacity, y: contentY }}
         >
           <h3 className="text-2xl md:text-4xl font-bold text-foreground">
@@ -326,7 +326,7 @@ export default function IntroAnimation() {
           </p>
 
           {/* Inline Partner Detail */}
-          <div className="mt-5 min-h-[120px]">
+          <div className="mt-8 min-h-[160px]">
             <AnimatePresence mode="wait">
               {selected && selectedDetail ? (
                 <motion.div
@@ -335,11 +335,11 @@ export default function IntroAnimation() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -8 }}
                   transition={{ type: "spring", stiffness: 300, damping: 28 }}
-                  className="flex flex-col items-center text-center max-w-md mx-auto"
+                  className="flex flex-col items-center text-center max-w-xl mx-auto"
                 >
-                  <div className="flex items-center gap-2.5 mb-2">
+                  <div className="flex items-center gap-3 mb-3">
                     <div
-                      className="w-9 h-9 rounded-lg flex items-center justify-center p-1.5"
+                      className="w-12 h-12 rounded-xl flex items-center justify-center p-2"
                       style={{ background: "hsl(var(--muted))" }}
                     >
                       <img
@@ -350,18 +350,18 @@ export default function IntroAnimation() {
                       />
                     </div>
                     <div className="text-left">
-                      <h4 className="text-sm font-bold text-foreground leading-tight">{selected.name}</h4>
-                      <span className="text-[10px] text-muted-foreground">{selectedDetail.category}</span>
+                      <h4 className="text-base font-bold text-foreground leading-tight">{selected.name}</h4>
+                      <span className="text-xs text-muted-foreground">{selectedDetail.category}</span>
                     </div>
                   </div>
-                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                  <p className="text-base text-muted-foreground leading-relaxed mb-4 max-w-md">
                     {selectedDetail.description}
                   </p>
-                  <div className="flex flex-wrap justify-center gap-2">
+                  <div className="flex flex-wrap justify-center gap-2.5">
                     {selectedDetail.features.slice(0, 4).map((f, idx) => (
                       <span
                         key={idx}
-                        className="text-[11px] px-3 py-1 rounded-full text-foreground/70"
+                        className="text-xs px-4 py-1.5 rounded-full text-foreground/70"
                         style={{
                           background: "hsl(var(--muted))",
                         }}
@@ -377,7 +377,7 @@ export default function IntroAnimation() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="text-sm text-muted-foreground/60 italic"
+                  className="text-base text-muted-foreground/60 italic"
                 >
                   Bir partner seçin
                 </motion.p>
