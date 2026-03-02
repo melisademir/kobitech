@@ -96,9 +96,10 @@ const PartnerCarouselSection = () => {
                       className="relative rounded-2xl overflow-hidden"
                       style={{
                         background: isActive
-                          ? `linear-gradient(145deg, ${p.color}18, ${p.color}08)`
+                          ? `linear-gradient(145deg, ${p.color}30, hsl(var(--card)))`
                           : `linear-gradient(145deg, ${p.color}25, ${p.color}10)`,
                         border: "1px solid hsl(var(--border))",
+                        ...(isActive ? { opacity: 1 } : {}),
                       }}
                     >
                       {isActive && (
