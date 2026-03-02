@@ -13,6 +13,7 @@ import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSectio
 import BentoGridSection from "@/components/landing/BentoGridSection";
 import JourneyLoopSection from "@/components/landing/JourneyLoopSection";
 import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
+import IntroAnimation from "@/components/ui/scroll-morph-hero";
 
 /* Shared section divider — horizontal gradient line */
 const SectionDivider = () => (
@@ -92,6 +93,9 @@ const Landing = () => (
     <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
       <JourneyLoopSection2 />
     </div>
+
+    {/* SCROLL MORPH HERO */}
+    <IntroAnimation />
 
     <FooterSection />
   </div>
