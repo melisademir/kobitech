@@ -29,7 +29,7 @@ const LandingNav = () => {
     >
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center">
+        <Link to="/homepage" className="flex items-center">
           <span
             className="text-2xl font-extrabold tracking-tight"
             style={{ color: "hsl(260, 30%, 12%)" }}
