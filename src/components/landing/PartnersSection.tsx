@@ -251,7 +251,7 @@ const PartnersSection = () => {
                 </div>
 
                 {/* CTA — large corporate button */}
-                <Link to="/digitalhub/step-1" className="inline-block mt-3">
+                <Link to="/digitalhub/onboarding1" className="inline-block mt-3">
                   <button
                     className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200"
                     style={{

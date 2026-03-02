@@ -82,9 +82,9 @@ const App = () => (
 
             {/* KOBİ onboarding */}
             
-            <Route path="/digitalhub/step-1" element={<Step1 />} />
-            <Route path="/digitalhub/step-2" element={<Step2 />} />
-            <Route path="/digitalhub/step-3" element={<Step3 />} />
+            <Route path="/digitalhub/onboarding1" element={<Step1 />} />
+            <Route path="/digitalhub/onboarding2" element={<Step2 />} />
+            <Route path="/digitalhub/onboarding3" element={<Step3 />} />
 
             {/* KOBİ main */}
             <Route path="/digitalhub/dashboard" element={<KobiDashboard />} />

@@ -142,7 +142,7 @@ const HeroSection = () => {
                   }}
                 />
               </div>
-              <Link to="/digitalhub/step-1">
+              <Link to="/digitalhub/onboarding1">
                 <button
                   className="h-[44px] px-8 rounded-[20px] font-bold text-[14px] text-white whitespace-nowrap shrink-0 flex items-center gap-2 w-full sm:w-auto justify-center transition-colors duration-200"
                   style={{
