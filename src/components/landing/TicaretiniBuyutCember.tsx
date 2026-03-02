@@ -346,11 +346,11 @@ export default function TicaretiniBuyutCember() {
               const circleRad = (circleAngle * Math.PI) / 180;
               const circlePos = { x: Math.cos(circleRad) * circleRadius, y: Math.sin(circleRad) * circleRadius, rotation: circleAngle + 90 };
 
-              const baseRadius = Math.min(containerSize.width, containerSize.height * 1.5);
-              const arcRadius = baseRadius * (isMobile ? 1.4 : 1.1);
-              const arcApexY = containerSize.height * (isMobile ? 0.35 : 0.25);
+              const baseRadius = Math.min(containerSize.width * 0.6, containerSize.height * 0.9);
+              const arcRadius = baseRadius * (isMobile ? 1.0 : 0.85);
+              const arcApexY = containerSize.height * (isMobile ? 0.3 : 0.2);
               const arcCenterY = arcApexY + arcRadius;
-              const spreadAngle = isMobile ? 80 : 100;
+              const spreadAngle = isMobile ? 120 : 140;
               const startAngle = -90 - spreadAngle / 2;
               const step = spreadAngle / (TOTAL_IMAGES - 1);
 
