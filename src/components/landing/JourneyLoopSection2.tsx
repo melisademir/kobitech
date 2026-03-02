@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Rocket, Check } from "lucide-react";
 import { pieces, partnerDetails } from "./partner-ecosystem/partner-data";
 import type { PuzzlePiece } from "./partner-ecosystem/partner-data";
+import partnerCloudImg from "@/assets/partner-cloud.png";
 
 /* Partner list for track — use pieces order */
 const partners = pieces;
@@ -12,7 +13,7 @@ const bottomPartners = partners.slice(7);
 
 /* Partner images map */
 const partnerImages: Record<string, string> = {
-  paramtech: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80",   // dijital dünya / bulut altyapı
+  paramtech: partnerCloudImg,
   param: "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=600&q=80",          // temassız ödeme / POS
   aras: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80",           // lojistik depo / kargo
   ikas: "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600&q=80",        // e-ticaret paketleri
