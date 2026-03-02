@@ -15,7 +15,7 @@ interface Proposal {
   products: string[];
   total: number;
   
-  status: "pending" | "approved" | "rejected" | "viewed" | "invited";
+  status: "pending" | "approved" | "rejected" | "invited";
   date: string;
   period: string;
   assignedDealer?: string | null;
@@ -35,7 +35,7 @@ const CURRENT_DEALER = "d1"; // Ahmet Yılmaz
 const initialProposals: Proposal[] = [
   { id: "PROP-001", customer: "ABC Tekstil Ltd.", sector: "Tekstil", products: ["Nebim Era", "Univera Stokbar", "Finrota Netahsilat"], total: 8200, status: "approved", date: "15 Şub 2026", period: "Aylık", assignedDealer: "d1", assignedAt: "12 Şub 2026" },
   { id: "PROP-002", customer: "XYZ Market", sector: "Perakende", products: ["Param POS", "Univera Stokbar"], total: 4000, status: "pending", date: "14 Şub 2026", period: "Aylık", assignedDealer: "d1", assignedAt: "13 Şub 2026" },
-  { id: "PROP-003", customer: "DEF Gıda A.Ş.", sector: "Gıda", products: ["Univera Stokbar", "Finrota Netahsilat", "Param POS"], total: 5500, status: "viewed", date: "13 Şub 2026", period: "Yıllık", assignedDealer: "d2", assignedAt: "11 Şub 2026" },
+  { id: "PROP-003", customer: "DEF Gıda A.Ş.", sector: "Gıda", products: ["Univera Stokbar", "Finrota Netahsilat", "Param POS"], total: 5500, status: "pending", date: "13 Şub 2026", period: "Yıllık", assignedDealer: "d2", assignedAt: "11 Şub 2026" },
   { id: "PROP-004", customer: "GHI Lojistik", sector: "Lojistik", products: ["Univera Enroute", "Param Mobil"], total: 3750, status: "rejected", date: "10 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
   { id: "PROP-005", customer: "JKL İnşaat", sector: "İnşaat", products: ["Univera Quest", "Kredim Business"], total: 4000, status: "invited", date: "12 Şub 2026", period: "Aylık", assignedDealer: "d3", assignedAt: "10 Şub 2026" },
   { id: "PROP-006", customer: "MNO E-ticaret", sector: "E-ticaret", products: ["Web Plus", "Param Kart", "Param Mobil"], total: 4150, status: "approved", date: "8 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
@@ -46,13 +46,11 @@ const statusMap: Record<string, { label: string; className: string }> = {
   pending: { label: "Bekleyen", className: "bg-warning/20 text-warning border-warning/30" },
   approved: { label: "Onaylandı", className: "bg-success/20 text-success border-success/30" },
   rejected: { label: "Reddedildi", className: "bg-destructive/20 text-destructive border-destructive/30" },
-  viewed: { label: "Görüntülendi", className: "bg-info/20 text-info border-info/30" },
-  
   invited: { label: "Davet Gönderildi", className: "bg-info/20 text-info border-info/30" },
 };
 
 // Ordered status flow for advancing/reverting
-const statusFlow: Proposal["status"][] = ["pending", "viewed", "invited", "approved"];
+const statusFlow: Proposal["status"][] = ["pending", "invited", "approved"];
 
 const assignmentFilterOptions = [
   { id: "all", label: "Tümü" },
@@ -69,7 +67,7 @@ const StatusChangePopover = ({
   onStatusChange: (newStatus: Proposal["status"]) => void;
 }) => {
   const [open, setOpen] = useState(false);
-  const allStatuses: Proposal["status"][] = ["pending", "viewed", "invited", "approved", "rejected"];
+  const allStatuses: Proposal["status"][] = ["pending", "invited", "approved", "rejected"];
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -190,7 +188,7 @@ const Proposals = () => {
       ]
     : [
         { label: "Tekliflerim", value: visible.length, color: "text-foreground" },
-        { label: "Bekleyen", value: visible.filter(p => ["pending", "viewed", "invited"].includes(p.status)).length, color: "text-warning" },
+        { label: "Bekleyen", value: visible.filter(p => ["pending", "invited"].includes(p.status)).length, color: "text-warning" },
         { label: "Onaylanan", value: visible.filter(p => p.status === "approved").length, color: "text-success" },
         
       ];
@@ -198,7 +196,6 @@ const Proposals = () => {
   const statusTabs = [
     { id: "all", label: "Tümü" },
     { id: "pending", label: "Bekleyen" },
-    { id: "viewed", label: "Görüntülendi" },
     { id: "approved", label: "Onaylandı" },
     { id: "rejected", label: "Reddedildi" },
     
