@@ -320,7 +320,7 @@ export default function TicaretiniBuyutCember() {
 
               const baseRadius = Math.min(containerSize.width * 0.6, containerSize.height * 0.9);
               const arcRadius = baseRadius * (isMobile ? 1.0 : 0.85);
-              const arcApexY = containerSize.height * (isMobile ? 0.4 : 0.32);
+              const arcApexY = containerSize.height * (isMobile ? 0.35 : 0.24);
               const arcCenterY = arcApexY + arcRadius;
               const spreadAngle = isMobile ? 120 : 140;
               const startAngle = -90 - spreadAngle / 2;
