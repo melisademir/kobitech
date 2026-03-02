@@ -33,12 +33,9 @@ const mockNotifications: Notification[] = [
 
 const Notifications = () => {
   const [items, setItems] = useState(mockNotifications);
-  const [filter, setFilter] = useState("all");
-
   const markAllRead = () => setItems(prev => prev.map(n => ({ ...n, read: true })));
   const deleteItem = (id: string) => setItems(prev => prev.filter(n => n.id !== id));
 
-  const filtered = filter === "all" ? items : items.filter(n => n.type === filter);
   const unreadCount = items.filter(n => !n.read).length;
 
   return (
@@ -56,24 +53,9 @@ const Notifications = () => {
           )}
         </div>
 
-        {/* Filter */}
-        <div className="flex gap-2 overflow-x-auto pb-1">
-          {[
-            { id: "all", label: "Tümü" },
-            { id: "proposal", label: "Teklif Durumu" },
-            { id: "approval", label: "Onay" },
-            { id: "customer", label: "Müşteri" },
-            { id: "system", label: "Sistem" },
-          ].map(f => (
-            <button key={f.id} onClick={() => setFilter(f.id)} className={`px-4 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-all ${filter === f.id ? "bg-primary text-primary-foreground" : "bg-card text-muted-foreground border border-border hover:border-primary"}`}>
-              {f.label}
-            </button>
-          ))}
-        </div>
-
         {/* List */}
         <div className="space-y-2">
-          {filtered.map(n => {
+          {items.map(n => {
             const config = typeConfig[n.type];
             return (
               <div
@@ -98,7 +80,7 @@ const Notifications = () => {
             );
           })}
 
-          {filtered.length === 0 && (
+          {items.length === 0 && (
             <div className="text-center py-16">
               <span className="text-6xl block mb-3">🔔</span>
               <p className="text-muted-foreground font-medium">Henüz bildiriminiz yok</p>
