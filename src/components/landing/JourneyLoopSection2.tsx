@@ -12,19 +12,19 @@ const bottomPartners = partners.slice(7);
 
 /* Partner images map */
 const partnerImages: Record<string, string> = {
-  paramtech: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=500&q=80",   // sunucu odası / bulut altyapı
-  param: "https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=500&q=80",       // POS terminali / ödeme
-  aras: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=500&q=80",      // kargo kutuları / lojistik depo
-  ikas: "https://images.unsplash.com/photo-1556742111-a301076d9d18?w=500&q=80",         // online mağaza / e-ticaret
-  tsoft: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&q=80",     // dashboard / e-ticaret analitik
-  mukellef: "https://images.unsplash.com/photo-1524749292158-7540c2494485?w=500&q=80",  // dünya haritası / globalleşme
-  workcube: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=500&q=80",  // ofis ekibi / İK yönetimi
-  google: "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=500&q=80",    // bulut işbirliği
-  kredim: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=500&q=80",       // finans / hesap makinesi
-  nebim: "https://images.unsplash.com/photo-1441986300917-64674571698d?w=500&q=80",     // perakende mağaza / ERP
-  finrota: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=500&q=80",  // finans grafikleri / nakit yönetimi
-  univera: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=500&q=80",  // üretim hattı / iş yönetimi
-  ticimax: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=500&q=80",     // online alışveriş / e-ticaret
+  paramtech: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=600&q=80",   // dijital dünya / bulut altyapı
+  param: "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=600&q=80",          // temassız ödeme / POS
+  aras: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80",           // lojistik depo / kargo
+  ikas: "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600&q=80",        // e-ticaret paketleri
+  tsoft: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",          // analitik dashboard
+  mukellef: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=600&q=80",    // global iş dünyası
+  workcube: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",    // modern ofis ekibi
+  google: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&q=80",     // bulut teknoloji
+  kredim: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&q=80",     // finans / büyüme
+  nebim: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80",      // perakende mağaza
+  finrota: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",    // finans grafikleri
+  univera: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?w=600&q=80",    // üretim hattı
+  ticimax: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80",       // online alışveriş
 };
 
 /* ── Logo Chip ── */
