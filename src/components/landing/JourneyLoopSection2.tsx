@@ -5,6 +5,18 @@ import { ArrowRight, Rocket, Check } from "lucide-react";
 import { pieces, partnerDetails } from "./partner-ecosystem/partner-data";
 import type { PuzzlePiece } from "./partner-ecosystem/partner-data";
 import partnerCloudImg from "@/assets/partner-cloud.png";
+import partnerParamImg from "@/assets/partner-param.png";
+import partnerArasImg from "@/assets/partner-aras.png";
+import partnerIkasImg from "@/assets/partner-ikas.png";
+import partnerTsoftImg from "@/assets/partner-tsoft.png";
+import partnerMukellefImg from "@/assets/partner-mukellef.png";
+import partnerWorkcubeImg from "@/assets/partner-workcube.png";
+import partnerGoogleImg from "@/assets/partner-google.png";
+import partnerKredimImg from "@/assets/partner-kredim.png";
+import partnerNebimImg from "@/assets/partner-nebim.png";
+import partnerFinrotaImg from "@/assets/partner-finrota.png";
+import partnerUniveraImg from "@/assets/partner-univera.png";
+import partnerTicimaxImg from "@/assets/partner-ticimax.png";
 
 /* Partner list for track — use pieces order */
 const partners = pieces;
@@ -14,18 +26,18 @@ const bottomPartners = partners.slice(7);
 /* Partner images map */
 const partnerImages: Record<string, string> = {
   paramtech: partnerCloudImg,
-  param: "https://images.unsplash.com/photo-1556742393-d75f468bfcb0?w=600&q=80",          // temassız ödeme / POS
-  aras: "https://images.unsplash.com/photo-1553413077-190dd305871c?w=600&q=80",           // lojistik depo / kargo
-  ikas: "https://images.unsplash.com/photo-1607082349566-187342175e2f?w=600&q=80",        // e-ticaret paketleri
-  tsoft: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80",          // analitik dashboard
-  mukellef: "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e?w=600&q=80",    // global iş dünyası
-  workcube: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80",    // modern ofis ekibi
-  google: "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?w=600&q=80",     // bulut teknoloji
-  kredim: "https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=600&q=80",     // finans / büyüme
-  nebim: "https://images.unsplash.com/photo-1604719312566-8912e9227c6a?w=600&q=80",      // perakende mağaza
-  finrota: "https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&q=80",    // finans grafikleri
-  univera: "https://images.unsplash.com/photo-1565106430482-8f6e74349ca1?w=600&q=80",    // üretim hattı
-  ticimax: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=600&q=80",       // online alışveriş
+  param: partnerParamImg,
+  aras: partnerArasImg,
+  ikas: partnerIkasImg,
+  tsoft: partnerTsoftImg,
+  mukellef: partnerMukellefImg,
+  workcube: partnerWorkcubeImg,
+  google: partnerGoogleImg,
+  kredim: partnerKredimImg,
+  nebim: partnerNebimImg,
+  finrota: partnerFinrotaImg,
+  univera: partnerUniveraImg,
+  ticimax: partnerTicimaxImg,
 };
 
 /* ── Logo Chip ── */
