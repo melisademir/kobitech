@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useTransform, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
+import { X } from "lucide-react";
 
 // Logo imports
 import logoAras from "@/assets/logo-aras.png";
@@ -18,25 +19,36 @@ import logoKredim from "@/assets/logo-kredim.svg";
 import logoNebim from "@/assets/logo-nebim.svg";
 import logoUnivera from "@/assets/logo-univera.svg";
 
+// Partner data
+import { partnerDetails, type PartnerDetail } from "@/components/landing/partner-ecosystem/partner-data";
+
 // --- Types ---
 export type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
 
+interface PartnerInfo {
+  id: string;
+  name: string;
+  logo: string;
+}
+
 interface FlipCardProps {
-  src: string;
+  partner: PartnerInfo;
   index: number;
   total: number;
   phase: AnimationPhase;
   target: { x: number; y: number; rotation: number; scale: number; opacity: number };
+  isSelected: boolean;
+  onClick: () => void;
 }
 
 // --- FlipCard Component ---
 const IMG_WIDTH = 60;
 const IMG_HEIGHT = 85;
 
-function FlipCard({ src, index, total, phase, target }: FlipCardProps) {
+function FlipCard({ partner, index, total, phase, target, isSelected, onClick }: FlipCardProps) {
   return (
     <motion.div
-      className="absolute"
+      className="absolute cursor-pointer"
       style={{
         width: IMG_WIDTH,
         height: IMG_HEIGHT,
@@ -45,13 +57,13 @@ function FlipCard({ src, index, total, phase, target }: FlipCardProps) {
         marginLeft: -IMG_WIDTH / 2,
         marginTop: -IMG_HEIGHT / 2,
         perspective: 800,
-        zIndex: total - index,
+        zIndex: isSelected ? 100 : total - index,
       }}
       animate={{
         x: target.x,
         y: target.y,
         rotate: target.rotation,
-        scale: target.scale,
+        scale: isSelected ? target.scale * 1.3 : target.scale,
         opacity: target.opacity,
       }}
       transition={{
@@ -60,6 +72,9 @@ function FlipCard({ src, index, total, phase, target }: FlipCardProps) {
         damping: 18,
         mass: 1,
       }}
+      onClick={onClick}
+      whileHover={{ scale: target.scale * 1.15 }}
+      whileTap={{ scale: target.scale * 0.95 }}
     >
       <motion.div
         className="relative w-full h-full"
@@ -71,13 +86,18 @@ function FlipCard({ src, index, total, phase, target }: FlipCardProps) {
           style={{
             backfaceVisibility: "hidden",
             background: "white",
-            border: "1px solid hsl(var(--border))",
+            border: isSelected
+              ? "2px solid hsl(var(--primary))"
+              : "1px solid hsl(var(--border))",
             padding: "10px",
+            boxShadow: isSelected
+              ? "0 0 20px hsl(var(--primary) / 0.3)"
+              : "0 2px 8px rgba(0,0,0,0.06)",
           }}
         >
           <img
-            src={src}
-            alt={`Logo ${index + 1}`}
+            src={partner.logo}
+            alt={partner.name}
             className="w-full h-full object-contain"
             style={{ mixBlendMode: "multiply" }}
             loading="lazy"
@@ -94,8 +114,7 @@ function FlipCard({ src, index, total, phase, target }: FlipCardProps) {
           }}
         >
           <div className="text-center px-1">
-            <p className="text-[8px] font-semibold text-primary-foreground">View</p>
-            <p className="text-[6px] text-primary-foreground/70">Details</p>
+            <p className="text-[8px] font-semibold text-primary-foreground">{partner.name}</p>
           </div>
         </div>
       </motion.div>
@@ -103,33 +122,151 @@ function FlipCard({ src, index, total, phase, target }: FlipCardProps) {
   );
 }
 
-// --- Main Hero Component ---
-const TOTAL_IMAGES = 15;
-const MAX_SCROLL = 3000;
+// --- Partner Detail Panel ---
+function PartnerDetailPanel({
+  partner,
+  detail,
+  onClose,
+}: {
+  partner: PartnerInfo;
+  detail: PartnerDetail;
+  onClose: () => void;
+}) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30, scale: 0.95 }}
+      animate={{ opacity: 1, y: 0, scale: 1 }}
+      exit={{ opacity: 0, y: 20, scale: 0.95 }}
+      transition={{ type: "spring", stiffness: 300, damping: 25 }}
+      className="absolute z-30 left-1/2 top-[10%] w-[90%] max-w-md"
+      style={{ transform: "translateX(-50%)" }}
+    >
+      <div
+        className="rounded-2xl overflow-hidden"
+        style={{
+          background: "rgba(255,255,255,0.96)",
+          border: "1px solid hsl(var(--border))",
+          boxShadow:
+            "0 24px 80px -12px hsl(var(--primary) / 0.18), 0 4px 24px rgba(0,0,0,0.08)",
+          backdropFilter: "blur(20px)",
+        }}
+      >
+        {/* Header */}
+        <div
+          className="flex items-center gap-3 p-4 border-b"
+          style={{ borderColor: "hsl(var(--border))" }}
+        >
+          <div
+            className="w-12 h-12 rounded-xl flex items-center justify-center p-2 flex-shrink-0"
+            style={{
+              background: "hsl(var(--muted))",
+            }}
+          >
+            <img
+              src={partner.logo}
+              alt={partner.name}
+              className="w-full h-full object-contain"
+              style={{ mixBlendMode: "multiply" }}
+            />
+          </div>
+          <div className="flex-1 min-w-0">
+            <h4 className="text-sm font-bold text-foreground">{partner.name}</h4>
+            <span
+              className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+              style={{
+                background: "hsl(var(--primary) / 0.1)",
+                color: "hsl(var(--primary))",
+              }}
+            >
+              {detail.category}
+            </span>
+          </div>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+            className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-muted transition-colors"
+          >
+            <X className="w-4 h-4 text-muted-foreground" />
+          </button>
+        </div>
 
-const IMAGES = [
-  logoParamtech,
-  logoParam,
-  logoAras,
-  logoGoogle,
-  logoIkas,
-  logoKariyer,
-  logoKobitech,
-  logoMukellef,
-  logoTicimax,
-  logoTsoft,
-  logoWorkcube,
-  logoFinrota,
-  logoKredim,
-  logoNebim,
-  logoUnivera,
+        {/* Body */}
+        <div className="p-4 space-y-3">
+          <p className="text-xs font-semibold text-foreground leading-snug">
+            {detail.headline}
+          </p>
+          <p className="text-[11px] text-muted-foreground leading-relaxed">
+            {detail.description}
+          </p>
+
+          {/* Features */}
+          <div className="space-y-1.5">
+            {detail.features.slice(0, 4).map((f, i) => (
+              <div key={i} className="flex items-start gap-2">
+                <div
+                  className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                  style={{
+                    background: "hsl(160 84% 39% / 0.12)",
+                    color: "hsl(160 84% 39%)",
+                  }}
+                >
+                  <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
+                    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                  </svg>
+                </div>
+                <span className="text-[11px] text-foreground/80">{f}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Badge */}
+          {detail.badge && (
+            <div
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold"
+              style={{
+                background: "linear-gradient(135deg, hsl(var(--primary) / 0.08), hsl(var(--accent) / 0.08))",
+                color: "hsl(var(--primary))",
+              }}
+            >
+              ✦ {detail.badge}
+            </div>
+          )}
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+// --- Partners Config ---
+const PARTNERS: PartnerInfo[] = [
+  { id: "paramtech", name: "ParamTech", logo: logoParamtech },
+  { id: "param", name: "Param", logo: logoParam },
+  { id: "aras", name: "Aras", logo: logoAras },
+  { id: "google", name: "Google", logo: logoGoogle },
+  { id: "ikas", name: "ikas", logo: logoIkas },
+  { id: "kredim", name: "Kredim", logo: logoKredim },
+  { id: "mukellef", name: "Mükellef", logo: logoMukellef },
+  { id: "ticimax", name: "Ticimax", logo: logoTicimax },
+  { id: "tsoft", name: "T-SOFT", logo: logoTsoft },
+  { id: "workcube", name: "Workcube", logo: logoWorkcube },
+  { id: "finrota", name: "Finrota", logo: logoFinrota },
+  { id: "nebim", name: "Nebim", logo: logoNebim },
+  { id: "univera", name: "Univera", logo: logoUnivera },
+  { id: "kobitech", name: "Kobitech", logo: logoKobitech },
+  { id: "kariyer", name: "Kariyer", logo: logoKariyer },
 ];
+
+const TOTAL_IMAGES = PARTNERS.length;
+const MAX_SCROLL = 3000;
 
 const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * t;
 
 export default function IntroAnimation() {
   const [introPhase, setIntroPhase] = useState<AnimationPhase>("scatter");
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const [selectedPartner, setSelectedPartner] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // --- Container Size ---
@@ -226,7 +363,7 @@ export default function IntroAnimation() {
 
   // --- Random Scatter Positions ---
   const scatterPositions = useMemo(() => {
-    return IMAGES.map(() => ({
+    return PARTNERS.map(() => ({
       x: (Math.random() - 0.5) * 1500,
       y: (Math.random() - 0.5) * 1000,
       rotation: (Math.random() - 0.5) * 180,
@@ -254,6 +391,11 @@ export default function IntroAnimation() {
   const contentOpacity = useTransform(smoothMorph, [0.8, 1], [0, 1]);
   const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
 
+  const selected = selectedPartner
+    ? PARTNERS.find((p) => p.id === selectedPartner)
+    : null;
+  const selectedDetail = selectedPartner ? partnerDetails[selectedPartner] : null;
+
   return (
     <section className="relative w-full" style={{ height: "100vh" }}>
       <div
@@ -275,7 +417,7 @@ export default function IntroAnimation() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            The future is built on AI.
+            Güçlü Partner Ekosistemi
           </motion.h2>
           <motion.p
             className="mt-4 text-sm text-muted-foreground tracking-widest uppercase"
@@ -283,27 +425,38 @@ export default function IntroAnimation() {
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2, duration: 0.6 }}
           >
-            SCROLL TO EXPLORE
+            KAYDIRARAK KEŞFEDİN
           </motion.p>
         </motion.div>
 
         {/* Arc Active Content (Fades in) */}
         <motion.div
-          className="absolute inset-x-0 top-[10%] z-20 flex flex-col items-center text-center pointer-events-none px-4"
+          className="absolute inset-x-0 top-[6%] z-20 flex flex-col items-center text-center pointer-events-none px-4"
           style={{ opacity: contentOpacity, y: contentY }}
         >
           <h3 className="text-2xl md:text-4xl font-bold text-foreground">
-            Explore Our Vision
+            Güçlü Partner Ekosistemi
           </h3>
           <p className="mt-3 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed">
-            Discover a world where technology meets creativity.{" "}
-            Scroll through our curated collection of innovations designed to shape the future.
+            İşletmenizin ihtiyacına uygun çözüm ortaklarını keşfedin.
+            Logolara tıklayarak detaylı bilgi alın.
           </p>
         </motion.div>
 
+        {/* Partner Detail Panel */}
+        <AnimatePresence>
+          {selected && selectedDetail && (
+            <PartnerDetailPanel
+              partner={selected}
+              detail={selectedDetail}
+              onClose={() => setSelectedPartner(null)}
+            />
+          )}
+        </AnimatePresence>
+
         {/* Cards Container */}
         <div className="absolute inset-0 z-10">
-          {IMAGES.slice(0, TOTAL_IMAGES).map((src, i) => {
+          {PARTNERS.map((partner, i) => {
             let target = { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1 };
 
             if (introPhase === "scatter") {
@@ -359,12 +512,18 @@ export default function IntroAnimation() {
 
             return (
               <FlipCard
-                key={i}
-                src={src}
+                key={partner.id}
+                partner={partner}
                 index={i}
                 total={TOTAL_IMAGES}
                 phase={introPhase}
                 target={target}
+                isSelected={selectedPartner === partner.id}
+                onClick={() =>
+                  setSelectedPartner((prev) =>
+                    prev === partner.id ? null : partner.id
+                  )
+                }
               />
             );
           })}
