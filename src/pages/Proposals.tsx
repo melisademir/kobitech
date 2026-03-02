@@ -14,7 +14,7 @@ interface Proposal {
   products: string[];
   total: number;
   commission: number;
-  status: "pending" | "approved" | "rejected" | "viewed" | "manual" | "invited";
+  status: "pending" | "approved" | "rejected" | "viewed" | "invited";
   date: string;
   period: string;
   assignedDealer?: string | null;
@@ -37,7 +37,7 @@ const initialProposals: Proposal[] = [
   { id: "PROP-003", customer: "DEF Gıda A.Ş.", sector: "Gıda", products: ["Univera Stokbar", "Finrota Netahsilat", "Param POS"], total: 5500, commission: 880, status: "viewed", date: "13 Şub 2026", period: "Yıllık", assignedDealer: "d2", assignedAt: "11 Şub 2026" },
   { id: "PROP-004", customer: "GHI Lojistik", sector: "Lojistik", products: ["Univera Enroute", "Param Mobil"], total: 3750, commission: 637, status: "rejected", date: "10 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
   { id: "PROP-005", customer: "JKL İnşaat", sector: "İnşaat", products: ["Univera Quest", "Kredim Business"], total: 4000, commission: 640, status: "invited", date: "12 Şub 2026", period: "Aylık", assignedDealer: "d3", assignedAt: "10 Şub 2026" },
-  { id: "PROP-006", customer: "MNO E-ticaret", sector: "E-ticaret", products: ["Web Plus", "Param Kart", "Param Mobil"], total: 4150, commission: 747, status: "manual", date: "8 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
+  { id: "PROP-006", customer: "MNO E-ticaret", sector: "E-ticaret", products: ["Web Plus", "Param Kart", "Param Mobil"], total: 4150, commission: 747, status: "approved", date: "8 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
   { id: "PROP-007", customer: "PQR Danışmanlık", sector: "Danışmanlık", products: ["Param DMS", "Param Çağrı Merkezi"], total: 3200, commission: 480, status: "approved", date: "5 Şub 2026", period: "Yıllık", assignedDealer: "d1", assignedAt: "4 Şub 2026" },
 ];
 
@@ -46,7 +46,7 @@ const statusMap: Record<string, { label: string; className: string }> = {
   approved: { label: "Onaylandı", className: "bg-success/20 text-success border-success/30" },
   rejected: { label: "Reddedildi", className: "bg-destructive/20 text-destructive border-destructive/30" },
   viewed: { label: "Görüntülendi", className: "bg-info/20 text-info border-info/30" },
-  manual: { label: "Manuel Onaylandı", className: "bg-primary/20 text-primary border-primary/30" },
+  
   invited: { label: "Davet Gönderildi", className: "bg-info/20 text-info border-info/30" },
 };
 
@@ -133,14 +133,14 @@ const Proposals = () => {
     ? [
         { label: "Toplam Teklif", value: proposals.length, color: "text-foreground" },
         { label: "Atanmamış", value: proposals.filter(p => !p.assignedDealer).length, color: "text-warning" },
-        { label: "Onaylanan", value: proposals.filter(p => ["approved", "manual"].includes(p.status)).length, color: "text-success" },
-        { label: "Toplam Komisyon", value: `${proposals.filter(p => ["approved", "manual"].includes(p.status)).reduce((s, p) => s + p.commission, 0).toLocaleString("tr-TR")}₺`, color: "text-accent" },
+        { label: "Onaylanan", value: proposals.filter(p => p.status === "approved").length, color: "text-success" },
+        { label: "Toplam Komisyon", value: `${proposals.filter(p => p.status === "approved").reduce((s, p) => s + p.commission, 0).toLocaleString("tr-TR")}₺`, color: "text-accent" },
       ]
     : [
         { label: "Tekliflerim", value: visible.length, color: "text-foreground" },
         { label: "Bekleyen", value: visible.filter(p => ["pending", "viewed", "invited"].includes(p.status)).length, color: "text-warning" },
-        { label: "Onaylanan", value: visible.filter(p => ["approved", "manual"].includes(p.status)).length, color: "text-success" },
-        { label: "Toplam Komisyon", value: `${visible.filter(p => ["approved", "manual"].includes(p.status)).reduce((s, p) => s + p.commission, 0).toLocaleString("tr-TR")}₺`, color: "text-accent" },
+        { label: "Onaylanan", value: visible.filter(p => p.status === "approved").length, color: "text-success" },
+        { label: "Toplam Komisyon", value: `${visible.filter(p => p.status === "approved").reduce((s, p) => s + p.commission, 0).toLocaleString("tr-TR")}₺`, color: "text-accent" },
       ];
 
   const statusTabs = [
@@ -149,7 +149,7 @@ const Proposals = () => {
     { id: "viewed", label: "Görüntülendi" },
     { id: "approved", label: "Onaylandı" },
     { id: "rejected", label: "Reddedildi" },
-    { id: "manual", label: "Manuel" },
+    
   ];
 
   return (
