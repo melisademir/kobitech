@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Target, Package, FileText, TrendingUp, Settings,
-  Search, Bell, ChevronDown, LogOut, User, DollarSign, Menu, X, MessageCircle,
+  Search, Bell, ChevronDown, LogOut, User, Menu, X, MessageCircle,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
@@ -57,7 +57,7 @@ const DashboardLayout = ({ children }: Props) => {
               {profileOpen && (
                 <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }} className="absolute right-0 top-full mt-2 w-48 bg-card rounded-xl shadow-premium border border-border overflow-hidden z-50">
                   <Link to="/settings" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors"><User className="h-4 w-4" /> Profilim</Link>
-                  <Link to="/commissions" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors"><DollarSign className="h-4 w-4" /> Komisyonlarım</Link>
+                  
                   <div className="border-t border-border" />
                   <button className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-destructive/5 text-muted-foreground hover:text-destructive transition-colors w-full"><LogOut className="h-4 w-4" /> Çıkış Yap</button>
                 </motion.div>
