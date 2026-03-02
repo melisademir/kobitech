@@ -14,6 +14,7 @@ import BentoGridSection from "@/components/landing/BentoGridSection";
 import JourneyLoopSection from "@/components/landing/JourneyLoopSection";
 import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
 import IntroAnimation from "@/components/ui/scroll-morph-hero";
+import TicaretiniBuyutCember from "@/components/landing/TicaretiniBuyutCember";
 
 /* Shared section divider — horizontal gradient line */
 const SectionDivider = () => (
@@ -42,6 +43,9 @@ const Landing = () => (
         <HeroSection />
       </div>
     </div>
+
+    {/* TICARETINI BÜYÜT ÇEMBER */}
+    <TicaretiniBuyutCember />
 
     {/* 2 — PARTNERS / SOLUTIONS */}
     <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
