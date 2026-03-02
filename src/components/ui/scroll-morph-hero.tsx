@@ -323,7 +323,6 @@ export default function IntroAnimation() {
           </h3>
           <p className="mt-3 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed">
             İşletmenizin ihtiyacına uygun çözüm ortaklarını keşfedin.
-            Logolara tıklayarak detaylı bilgi alın.
           </p>
 
           {/* Inline Partner Detail */}
