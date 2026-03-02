@@ -3,13 +3,14 @@ import PartnerCarouselSection from "@/components/landing/PartnerCarouselSection"
 import HeroSection from "@/components/landing/HeroSection";
 
 import FeaturesSection from "@/components/landing/FeaturesSection";
+import PartnersSection from "@/components/landing/PartnersSection";
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import CtaSection from "@/components/landing/CtaSection";
 import FooterSection from "@/components/landing/FooterSection";
 import PromotionsSection from "@/components/landing/PromotionsSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 
-
+import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
 import BentoGridSection from "@/components/landing/BentoGridSection";
 import JourneyLoopSection from "@/components/landing/JourneyLoopSection";
 import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
@@ -47,6 +48,17 @@ const Landing = () => (
     {/* TICARETINI BÜYÜT ÇEMBER */}
     <TicaretiniBuyutCember />
 
+    {/* 2 — PARTNERS / SOLUTIONS */}
+    <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
+      <PartnersSection />
+    </div>
+
+    <SectionDivider />
+
+    {/* 3 — PARTNER ECOSYSTEM */}
+    <div style={{ background: "linear-gradient(180deg, hsl(38,30%,97%) 0%, hsl(252,30%,97%) 100%)" }}>
+      <PartnerEcosystemSection />
+    </div>
 
     <SectionDivider />
 
