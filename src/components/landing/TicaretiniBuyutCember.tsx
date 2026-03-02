@@ -249,7 +249,7 @@ export default function TicaretiniBuyutCember() {
 
         {/* Arc Content */}
         <motion.div
-          className="absolute inset-x-0 top-[8%] z-20 flex flex-col items-center text-center px-4"
+          className="absolute inset-x-0 top-[4%] z-20 flex flex-col items-center text-center px-4"
           style={{ opacity: contentOpacity, y: contentY }}
         >
           <h3
