@@ -14,6 +14,7 @@ import CustomerAnalysis from "./pages/CustomerAnalysis";
 import Products from "./pages/Products";
 import ProposalBuilder from "./pages/ProposalBuilder";
 import Proposals from "./pages/Proposals";
+import ProposalDetail from "./pages/ProposalDetail";
 import Performance from "./pages/Performance";
 
 import SettingsPage from "./pages/Settings";
@@ -67,6 +68,7 @@ const App = () => (
             <Route path="/products" element={<Products />} />
             <Route path="/proposal-builder" element={<ProposalBuilder />} />
             <Route path="/proposals" element={<Proposals />} />
+            <Route path="/proposals/:id" element={<ProposalDetail />} />
             <Route path="/performance" element={<Performance />} />
             
             <Route path="/settings" element={<SettingsPage />} />
