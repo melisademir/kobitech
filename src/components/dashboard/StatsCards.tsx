@@ -1,4 +1,4 @@
-import { Users, FileText, CheckCircle, Coins, TrendingUp } from "lucide-react";
+import { Users, FileText, CheckCircle, TrendingUp } from "lucide-react";
 import { motion } from "framer-motion";
 
 const stats = [
@@ -31,16 +31,6 @@ const stats = [
     iconBg: "bg-success/10",
     iconColor: "text-success",
     borderColor: "border-t-success",
-  },
-  {
-    icon: Coins,
-    label: "Bu Ay Komisyon",
-    value: "₺8.450",
-    trend: "+%15 geçen aya göre",
-    trendUp: true,
-    iconBg: "bg-accent/20",
-    iconColor: "text-accent",
-    borderColor: "border-t-accent",
   },
 ];
 

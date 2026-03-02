@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Check, X, FileText, CheckCircle, DollarSign, Users, Bell as BellIcon } from "lucide-react";
+import { Check, X, FileText, CheckCircle, Users, Bell as BellIcon } from "lucide-react";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
 interface Notification {
   id: string;
-  type: "proposal" | "approval" | "commission" | "customer" | "system";
+  type: "proposal" | "approval" | "customer" | "system";
   title: string;
   description: string;
   time: string;
@@ -15,19 +15,19 @@ interface Notification {
 const typeConfig: Record<string, { icon: React.ReactNode; bg: string }> = {
   proposal: { icon: <FileText className="h-5 w-5" />, bg: "bg-primary/10 text-primary" },
   approval: { icon: <CheckCircle className="h-5 w-5" />, bg: "bg-success/10 text-success" },
-  commission: { icon: <DollarSign className="h-5 w-5" />, bg: "bg-accent/10 text-accent" },
+  
   customer: { icon: <Users className="h-5 w-5" />, bg: "bg-info/10 text-info" },
   system: { icon: <BellIcon className="h-5 w-5" />, bg: "bg-muted text-muted-foreground" },
 };
 
 const mockNotifications: Notification[] = [
-  { id: "1", type: "approval", title: "Teklif onaylandı ve ödendi!", description: "ABC Tekstil - Nebim Era + 2 ürün. Komisyonunuz: 2.475₺", time: "2 saat önce", read: false, highlight: "success" },
+  { id: "1", type: "approval", title: "Teklif onaylandı!", description: "ABC Tekstil - Nebim Era + 2 ürün", time: "2 saat önce", read: false, highlight: "success" },
   { id: "2", type: "customer", title: "Müşteri dijital adım tamamladı", description: "XYZ Market E-ticaret adımını tamamladı. Param Kart önerebilirsiniz", time: "5 saat önce", read: false, highlight: "info" },
-  { id: "3", type: "commission", title: "Komisyon ödendi", description: "8.400₺ hesabınıza yatırıldı", time: "Dün", read: false, highlight: "accent" },
+  { id: "3", type: "system", title: "Sistem güncellemesi", description: "Yeni özellikler eklendi", time: "Dün", read: false, highlight: "accent" },
   { id: "4", type: "proposal", title: "Teklif görüntülendi", description: "DEF Gıda teklifinizi açtı", time: "Dün", read: true },
   { id: "5", type: "customer", title: "Yeni müşteri kaydoldu", description: "GHI Ltd. Dijital Esnaf'a katıldı", time: "2 gün önce", read: true },
   { id: "6", type: "system", title: "Yeni Param ürünü eklendi", description: "Param Analytics artık katalogda! Keşfedin.", time: "3 gün önce", read: true },
-  { id: "7", type: "approval", title: "Teklif onaylandı", description: "PQR Danışmanlık - Param DMS + Çağrı Merkezi. Komisyon: 480₺", time: "5 gün önce", read: true },
+  { id: "7", type: "approval", title: "Teklif onaylandı", description: "PQR Danışmanlık - Param DMS + Çağrı Merkezi", time: "5 gün önce", read: true },
   { id: "8", type: "proposal", title: "Teklif süresi dolmak üzere", description: "JKL İnşaat teklifiniz 3 gün sonra geçerliliğini yitirecek", time: "1 hafta önce", read: true },
 ];
 
@@ -61,7 +61,7 @@ const Notifications = () => {
           {[
             { id: "all", label: "Tümü" },
             { id: "proposal", label: "Teklif Durumu" },
-            { id: "commission", label: "Komisyon" },
+            { id: "approval", label: "Onay" },
             { id: "customer", label: "Müşteri" },
             { id: "system", label: "Sistem" },
           ].map(f => (

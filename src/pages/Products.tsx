@@ -86,7 +86,7 @@ const Products = () => {
               {profileOpen && (
                 <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }} className="absolute right-0 top-full mt-2 w-48 bg-card rounded-xl shadow-premium border border-border overflow-hidden z-50">
                   <Link to="/settings" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors"><User className="h-4 w-4" /> Profilim</Link>
-                  <Link to="/commissions" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors"><DollarSign className="h-4 w-4" /> Komisyonlarım</Link>
+                  
                   <div className="border-t border-border" />
                   <button onClick={() => navigate("/kobi/login")} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-destructive/5 text-muted-foreground hover:text-destructive transition-colors w-full"><LogOut className="h-4 w-4" /> Çıkış Yap</button>
                 </motion.div>

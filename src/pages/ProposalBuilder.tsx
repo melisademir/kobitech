@@ -88,12 +88,6 @@ const ProposalBuilder = () => {
   const total = subtotal - totalDiscount + serviceCost;
   const savingsPercent = subtotal > 0 ? Math.round((totalDiscount / subtotal) * 100) : 0;
 
-  const estimatedCommission = useMemo(() => {
-    return items.reduce((s, it) => {
-      const price = it.yearly ? it.product.priceYearly : it.product.priceMonthly;
-      return s + price * it.quantity * 0.17;
-    }, 0);
-  }, [items]);
 
   const isMonthly = items.some(it => !it.yearly);
   const priceSuffix = isMonthly ? "/ay" : "/yıl";
@@ -447,13 +441,6 @@ const ProposalBuilder = () => {
                   </div>
                 )}
 
-                {/* Commission */}
-                <div className="gradient-primary rounded-xl p-5 mt-4 text-center">
-                  <span className="text-2xl">💰</span>
-                  <p className="text-primary-foreground/80 text-[10px] uppercase tracking-widest font-bold mt-1">TAHMİNİ KOMİSYONUNUZ</p>
-                  <p className="text-primary-foreground text-3xl font-bold mt-1">{Math.round(estimatedCommission).toLocaleString("tr-TR")}₺</p>
-                  <p className="text-primary-foreground/60 text-[10px] mt-1">%15-20 ortalama komisyon oranı</p>
-                </div>
 
                 {/* Actions */}
                 <div className="space-y-3 mt-6">

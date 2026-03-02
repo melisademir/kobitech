@@ -13,7 +13,7 @@ interface Proposal {
   sector: string;
   products: string[];
   total: number;
-  commission: number;
+  
   status: "pending" | "approved" | "rejected" | "viewed" | "invited";
   date: string;
   period: string;
@@ -32,13 +32,13 @@ const dealers = [
 const CURRENT_DEALER = "d1"; // Ahmet Yılmaz
 
 const initialProposals: Proposal[] = [
-  { id: "PROP-001", customer: "ABC Tekstil Ltd.", sector: "Tekstil", products: ["Nebim Era", "Univera Stokbar", "Finrota Netahsilat"], total: 8200, commission: 1394, status: "approved", date: "15 Şub 2026", period: "Aylık", assignedDealer: "d1", assignedAt: "12 Şub 2026" },
-  { id: "PROP-002", customer: "XYZ Market", sector: "Perakende", products: ["Param POS", "Univera Stokbar"], total: 4000, commission: 700, status: "pending", date: "14 Şub 2026", period: "Aylık", assignedDealer: "d1", assignedAt: "13 Şub 2026" },
-  { id: "PROP-003", customer: "DEF Gıda A.Ş.", sector: "Gıda", products: ["Univera Stokbar", "Finrota Netahsilat", "Param POS"], total: 5500, commission: 880, status: "viewed", date: "13 Şub 2026", period: "Yıllık", assignedDealer: "d2", assignedAt: "11 Şub 2026" },
-  { id: "PROP-004", customer: "GHI Lojistik", sector: "Lojistik", products: ["Univera Enroute", "Param Mobil"], total: 3750, commission: 637, status: "rejected", date: "10 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
-  { id: "PROP-005", customer: "JKL İnşaat", sector: "İnşaat", products: ["Univera Quest", "Kredim Business"], total: 4000, commission: 640, status: "invited", date: "12 Şub 2026", period: "Aylık", assignedDealer: "d3", assignedAt: "10 Şub 2026" },
-  { id: "PROP-006", customer: "MNO E-ticaret", sector: "E-ticaret", products: ["Web Plus", "Param Kart", "Param Mobil"], total: 4150, commission: 747, status: "approved", date: "8 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
-  { id: "PROP-007", customer: "PQR Danışmanlık", sector: "Danışmanlık", products: ["Param DMS", "Param Çağrı Merkezi"], total: 3200, commission: 480, status: "approved", date: "5 Şub 2026", period: "Yıllık", assignedDealer: "d1", assignedAt: "4 Şub 2026" },
+  { id: "PROP-001", customer: "ABC Tekstil Ltd.", sector: "Tekstil", products: ["Nebim Era", "Univera Stokbar", "Finrota Netahsilat"], total: 8200, status: "approved", date: "15 Şub 2026", period: "Aylık", assignedDealer: "d1", assignedAt: "12 Şub 2026" },
+  { id: "PROP-002", customer: "XYZ Market", sector: "Perakende", products: ["Param POS", "Univera Stokbar"], total: 4000, status: "pending", date: "14 Şub 2026", period: "Aylık", assignedDealer: "d1", assignedAt: "13 Şub 2026" },
+  { id: "PROP-003", customer: "DEF Gıda A.Ş.", sector: "Gıda", products: ["Univera Stokbar", "Finrota Netahsilat", "Param POS"], total: 5500, status: "viewed", date: "13 Şub 2026", period: "Yıllık", assignedDealer: "d2", assignedAt: "11 Şub 2026" },
+  { id: "PROP-004", customer: "GHI Lojistik", sector: "Lojistik", products: ["Univera Enroute", "Param Mobil"], total: 3750, status: "rejected", date: "10 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
+  { id: "PROP-005", customer: "JKL İnşaat", sector: "İnşaat", products: ["Univera Quest", "Kredim Business"], total: 4000, status: "invited", date: "12 Şub 2026", period: "Aylık", assignedDealer: "d3", assignedAt: "10 Şub 2026" },
+  { id: "PROP-006", customer: "MNO E-ticaret", sector: "E-ticaret", products: ["Web Plus", "Param Kart", "Param Mobil"], total: 4150, status: "approved", date: "8 Şub 2026", period: "Aylık", assignedDealer: null, assignedAt: null },
+  { id: "PROP-007", customer: "PQR Danışmanlık", sector: "Danışmanlık", products: ["Param DMS", "Param Çağrı Merkezi"], total: 3200, status: "approved", date: "5 Şub 2026", period: "Yıllık", assignedDealer: "d1", assignedAt: "4 Şub 2026" },
 ];
 
 const statusMap: Record<string, { label: string; className: string }> = {
@@ -134,13 +134,13 @@ const Proposals = () => {
         { label: "Toplam Teklif", value: proposals.length, color: "text-foreground" },
         { label: "Atanmamış", value: proposals.filter(p => !p.assignedDealer).length, color: "text-warning" },
         { label: "Onaylanan", value: proposals.filter(p => p.status === "approved").length, color: "text-success" },
-        { label: "Toplam Komisyon", value: `${proposals.filter(p => p.status === "approved").reduce((s, p) => s + p.commission, 0).toLocaleString("tr-TR")}₺`, color: "text-accent" },
+        
       ]
     : [
         { label: "Tekliflerim", value: visible.length, color: "text-foreground" },
         { label: "Bekleyen", value: visible.filter(p => ["pending", "viewed", "invited"].includes(p.status)).length, color: "text-warning" },
         { label: "Onaylanan", value: visible.filter(p => p.status === "approved").length, color: "text-success" },
-        { label: "Toplam Komisyon", value: `${visible.filter(p => p.status === "approved").reduce((s, p) => s + p.commission, 0).toLocaleString("tr-TR")}₺`, color: "text-accent" },
+        
       ];
 
   const statusTabs = [
@@ -229,7 +229,7 @@ const Proposals = () => {
                   <th className="text-left px-4 py-3 font-medium text-muted-foreground">Müşteri</th>
                   <th className="text-left px-4 py-3 font-medium text-muted-foreground hidden md:table-cell">Ürünler</th>
                   <th className="text-left px-4 py-3 font-medium text-muted-foreground">Tutar</th>
-                  <th className="text-left px-4 py-3 font-medium text-muted-foreground hidden sm:table-cell">Komisyon</th>
+                  
                   <th className="text-left px-4 py-3 font-medium text-muted-foreground">Durum</th>
                   {isAdmin && <th className="text-left px-4 py-3 font-medium text-muted-foreground hidden lg:table-cell">Atanan Bayi</th>}
                   <th className="text-left px-4 py-3 font-medium text-muted-foreground hidden lg:table-cell">Tarih</th>
@@ -254,7 +254,7 @@ const Proposals = () => {
                         {p.total.toLocaleString("tr-TR")}₺
                         <span className="text-[10px] font-normal text-muted-foreground">/{p.period === "Aylık" ? "ay" : "yıl"}</span>
                       </td>
-                      <td className="px-4 py-4 hidden sm:table-cell font-bold text-accent">{p.commission.toLocaleString("tr-TR")}₺</td>
+                      
                       <td className="px-4 py-4">
                         <Badge variant="outline" className={`text-[10px] ${st.className}`}>{st.label}</Badge>
                       </td>
