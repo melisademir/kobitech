@@ -315,7 +315,7 @@ export default function IntroAnimation() {
 
         {/* Arc Active Content (Fades in) — title + inline detail */}
         <motion.div
-          className="absolute inset-x-0 top-[12%] z-20 flex flex-col items-center text-center px-4"
+          className="absolute inset-x-0 top-[25%] z-20 flex flex-col items-center text-center px-4"
           style={{ opacity: contentOpacity, y: contentY }}
         >
           <h3 className="text-2xl md:text-4xl font-bold text-foreground">
