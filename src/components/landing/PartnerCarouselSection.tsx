@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { pieces, partnerDetails } from "./partner-ecosystem/partner-data";
@@ -10,9 +10,7 @@ interface PartnerSlide {
   logo: string;
   color: string;
   category: string;
-  headline: string;
   description: string;
-  badge: string;
   features: string[];
 }
 
@@ -24,38 +22,31 @@ const partners: PartnerSlide[] = pieces.map((p) => {
     logo: p.logo,
     color: p.color,
     category: detail?.category ?? "",
-    headline: detail?.headline ?? p.name,
     description: detail?.description ?? "",
-    badge: detail?.badge ?? "",
     features: detail?.features ?? [],
   };
 });
 
-/** Returns indices for the visible stack: [behind-2, behind-1, active, front+1, front+2] */
 const getStackIndices = (current: number, total: number) => {
   const wrap = (i: number) => ((i % total) + total) % total;
   return [wrap(current - 2), wrap(current - 1), current, wrap(current + 1), wrap(current + 2)];
 };
 
+const stackPositions = [
+  { y: 24, scale: 0.88, opacity: 0.3, z: 1 },
+  { y: 12, scale: 0.94, opacity: 0.5, z: 2 },
+  { y: 0, scale: 1, opacity: 1, z: 5 },
+  { y: 12, scale: 0.94, opacity: 0.5, z: 2 },
+  { y: 24, scale: 0.88, opacity: 0.3, z: 1 },
+];
+
 const PartnerCarouselSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handleNext = () =>
-    setCurrentIndex((i) => (i + 1) % partners.length);
-  const handlePrevious = () =>
-    setCurrentIndex((i) => (i - 1 + partners.length) % partners.length);
+  const handleNext = () => setCurrentIndex((i) => (i + 1) % partners.length);
+  const handlePrevious = () => setCurrentIndex((i) => (i - 1 + partners.length) % partners.length);
 
-  const current = partners[currentIndex];
   const stackIndices = getStackIndices(currentIndex, partners.length);
-
-  // Stack offsets: [position] => { y, scale, opacity, zIndex }
-  const stackPositions: Record<number, { y: number; scale: number; opacity: number; z: number }> = {
-    0: { y: 24, scale: 0.88, opacity: 0, z: 1 },
-    1: { y: 12, scale: 0.94, opacity: 0, z: 2 },
-    2: { y: 0, scale: 1, opacity: 1, z: 5 },
-    3: { y: 12, scale: 0.94, opacity: 0, z: 2 },
-    4: { y: 24, scale: 0.88, opacity: 0, z: 1 },
-  };
 
   return (
     <section className="py-24 md:py-32">
@@ -84,9 +75,7 @@ const PartnerCarouselSection = () => {
           </p>
         </motion.div>
 
-        {/* Carousel */}
         <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto">
-
           {/* Desktop stacked cards */}
           <div className="hidden md:block w-full relative" style={{ minHeight: "400px" }}>
             {stackIndices.map((partnerIdx, posIdx) => {
@@ -96,33 +85,27 @@ const PartnerCarouselSection = () => {
               return (
                 <motion.div
                   key={p.id}
-                  className="absolute inset-x-0 mx-auto"
-                  style={{ zIndex: pos.z, width: "100%" }}
-                  animate={{
-                    y: pos.y,
-                    scale: pos.scale,
-                    opacity: pos.opacity,
-                  }}
+                  className="absolute inset-x-0 mx-auto w-full"
+                  style={{ zIndex: pos.z }}
+                  animate={{ y: pos.y, scale: pos.scale, opacity: pos.opacity }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
-                  <div
-                    className="grid w-full"
-                    style={{ gridTemplateColumns: "380px 1fr", minHeight: "360px" }}
-                  >
+                  <div className="grid w-full" style={{ gridTemplateColumns: "380px 1fr", minHeight: "360px" }}>
                     {/* Logo panel */}
-                    <div className="relative rounded-2xl overflow-hidden"
+                    <div
+                      className="relative rounded-2xl overflow-hidden"
                       style={{
-                        background: `linear-gradient(145deg, ${p.color}18, ${p.color}08)`,
+                        background: isActive
+                          ? `linear-gradient(145deg, ${p.color}18, ${p.color}08)`
+                          : "hsl(var(--muted) / 0.5)",
                         border: "1px solid hsl(var(--border))",
                       }}
                     >
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <img
-                          src={p.logo}
-                          alt={p.name}
-                          className="w-64 h-64 object-contain mix-blend-multiply"
-                        />
-                      </div>
+                      {isActive && (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <img src={p.logo} alt={p.name} className="w-64 h-64 object-contain mix-blend-multiply" />
+                        </div>
+                      )}
                     </div>
 
                     {/* Content card */}
@@ -132,37 +115,31 @@ const PartnerCarouselSection = () => {
                         style={{
                           background: "hsl(var(--card))",
                           border: "1px solid hsl(var(--border))",
-                          boxShadow: isActive
-                            ? "0 8px 40px rgba(0,0,0,0.10)"
-                            : "0 4px 20px rgba(0,0,0,0.05)",
+                          boxShadow: isActive ? "0 8px 40px rgba(0,0,0,0.10)" : "0 2px 12px rgba(0,0,0,0.04)",
                         }}
                       >
-                        <h3
-                          className="text-2xl font-extrabold text-foreground mb-1"
-                          style={{ letterSpacing: "-0.02em" }}
-                        >
-                          {p.name}
-                        </h3>
-                        <p className="text-sm text-muted-foreground italic mb-4">
-                          {p.category}
-                        </p>
-                        <p className="text-foreground/80 text-base leading-relaxed mb-5">
-                          {p.description}
-                        </p>
-                        <div className="flex flex-wrap gap-2">
-                          {p.features.slice(0, 4).map((f) => (
-                            <span
-                              key={f}
-                              className="text-xs px-3 py-1.5 rounded-full font-medium"
-                              style={{
-                                background: "hsl(var(--muted))",
-                                color: "hsl(var(--muted-foreground))",
-                              }}
-                            >
-                              {f}
-                            </span>
-                          ))}
-                        </div>
+                        {isActive ? (
+                          <>
+                            <h3 className="text-2xl font-extrabold text-foreground mb-1" style={{ letterSpacing: "-0.02em" }}>
+                              {p.name}
+                            </h3>
+                            <p className="text-sm text-muted-foreground italic mb-4">{p.category}</p>
+                            <p className="text-foreground/80 text-base leading-relaxed mb-5">{p.description}</p>
+                            <div className="flex flex-wrap gap-2">
+                              {p.features.slice(0, 4).map((f) => (
+                                <span
+                                  key={f}
+                                  className="text-xs px-3 py-1.5 rounded-full font-medium"
+                                  style={{ background: "hsl(var(--muted))", color: "hsl(var(--muted-foreground))" }}
+                                >
+                                  {f}
+                                </span>
+                              ))}
+                            </div>
+                          </>
+                        ) : (
+                          <div style={{ minHeight: "200px" }} />
+                        )}
                       </div>
                     </div>
                   </div>
@@ -176,16 +153,13 @@ const PartnerCarouselSection = () => {
             {stackIndices.map((partnerIdx, posIdx) => {
               const p = partners[partnerIdx];
               const pos = stackPositions[posIdx];
+              const isActive = posIdx === 2;
               return (
                 <motion.div
                   key={p.id}
                   className="absolute inset-x-0 mx-auto w-full"
                   style={{ zIndex: pos.z }}
-                  animate={{
-                    y: pos.y,
-                    scale: pos.scale,
-                    opacity: pos.opacity,
-                  }}
+                  animate={{ y: pos.y, scale: pos.scale, opacity: pos.opacity }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
                   <div className="flex flex-col">
@@ -193,16 +167,16 @@ const PartnerCarouselSection = () => {
                       className="w-full rounded-2xl rounded-b-none flex items-center justify-center"
                       style={{
                         height: "200px",
-                        background: `linear-gradient(145deg, ${p.color}18, ${p.color}08)`,
+                        background: isActive
+                          ? `linear-gradient(145deg, ${p.color}18, ${p.color}08)`
+                          : "hsl(var(--muted) / 0.5)",
                         border: "1px solid hsl(var(--border))",
                         borderBottom: "none",
                       }}
                     >
-                      <img
-                        src={p.logo}
-                        alt={p.name}
-                        className="w-44 h-44 object-contain mix-blend-multiply"
-                      />
+                      {isActive && (
+                        <img src={p.logo} alt={p.name} className="w-44 h-44 object-contain mix-blend-multiply" />
+                      )}
                     </div>
                     <div
                       className="rounded-2xl rounded-t-none p-6 w-full"
@@ -213,11 +187,15 @@ const PartnerCarouselSection = () => {
                         boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
                       }}
                     >
-                      <h3 className="text-lg font-extrabold text-foreground mb-1">{p.name}</h3>
-                      <p className="text-xs text-muted-foreground italic mb-3">{p.category}</p>
-                      <p className="text-foreground/80 text-sm leading-relaxed">
-                        {p.description}
-                      </p>
+                      {isActive ? (
+                        <>
+                          <h3 className="text-lg font-extrabold text-foreground mb-1">{p.name}</h3>
+                          <p className="text-xs text-muted-foreground italic mb-3">{p.category}</p>
+                          <p className="text-foreground/80 text-sm leading-relaxed">{p.description}</p>
+                        </>
+                      ) : (
+                        <div style={{ minHeight: "120px" }} />
+                      )}
                     </div>
                   </div>
                 </motion.div>
@@ -230,10 +208,7 @@ const PartnerCarouselSection = () => {
             <button
               onClick={handlePrevious}
               className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              style={{
-                background: "hsl(var(--muted))",
-                color: "hsl(var(--foreground))",
-              }}
+              style={{ background: "hsl(var(--muted))", color: "hsl(var(--foreground))" }}
               aria-label="Önceki partner"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -246,9 +221,7 @@ const PartnerCarouselSection = () => {
                   onClick={() => setCurrentIndex(i)}
                   className={cn(
                     "w-2.5 h-2.5 rounded-full transition-colors",
-                    i === currentIndex
-                      ? "bg-foreground"
-                      : "bg-muted-foreground/30"
+                    i === currentIndex ? "bg-foreground" : "bg-muted-foreground/30"
                   )}
                   aria-label={`Partner ${i + 1}`}
                 />
@@ -258,10 +231,7 @@ const PartnerCarouselSection = () => {
             <button
               onClick={handleNext}
               className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              style={{
-                background: "hsl(var(--muted))",
-                color: "hsl(var(--foreground))",
-              }}
+              style={{ background: "hsl(var(--muted))", color: "hsl(var(--foreground))" }}
               aria-label="Sonraki partner"
             >
               <ChevronRight className="w-5 h-5" />
