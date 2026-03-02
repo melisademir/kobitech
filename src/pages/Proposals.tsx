@@ -1,10 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { Plus, UserPlus, Pencil, ChevronDown, Check } from "lucide-react";
+import { Plus, UserPlus, Pencil, ChevronDown, Check, ChevronRight, ChevronLeft } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import DashboardLayout from "@/components/layout/DashboardLayout";
+import { toast } from "sonner";
 
 /* ───── Types ───── */
 interface Proposal {
@@ -50,11 +51,52 @@ const statusMap: Record<string, { label: string; className: string }> = {
   invited: { label: "Davet Gönderildi", className: "bg-info/20 text-info border-info/30" },
 };
 
+// Ordered status flow for advancing/reverting
+const statusFlow: Proposal["status"][] = ["pending", "viewed", "invited", "approved"];
+
 const assignmentFilterOptions = [
   { id: "all", label: "Tümü" },
   { id: "unassigned", label: "Atanmamış" },
   { id: "assigned", label: "Atanmış" },
 ];
+
+/* ───── Status Change Popover ───── */
+const StatusChangePopover = ({
+  currentStatus,
+  onStatusChange,
+}: {
+  currentStatus: Proposal["status"];
+  onStatusChange: (newStatus: Proposal["status"]) => void;
+}) => {
+  const [open, setOpen] = useState(false);
+  const allStatuses: Proposal["status"][] = ["pending", "viewed", "invited", "approved", "rejected"];
+
+  return (
+    <Popover open={open} onOpenChange={setOpen}>
+      <PopoverTrigger asChild>
+        <Button variant="outline" size="sm" className="gap-1.5">
+          <ChevronDown className="h-3 w-3" /> Statü
+        </Button>
+      </PopoverTrigger>
+      <PopoverContent className="w-48 p-2" align="end">
+        <p className="text-xs font-medium text-muted-foreground px-2 py-1.5 mb-1">Statü Güncelle</p>
+        {allStatuses.map(s => {
+          const config = statusMap[s];
+          return (
+            <button
+              key={s}
+              onClick={() => { onStatusChange(s); setOpen(false); }}
+              className="w-full flex items-center gap-2 px-2 py-2 text-sm rounded-md hover:bg-muted transition-colors text-foreground"
+            >
+              {s === currentStatus && <Check className="h-3.5 w-3.5 text-primary shrink-0" />}
+              <Badge variant="outline" className={`text-[10px] ${config.className}`}>{config.label}</Badge>
+            </button>
+          );
+        })}
+      </PopoverContent>
+    </Popover>
+  );
+};
 
 /* ───── Dealer Assignment Popover ───── */
 const DealerAssignPopover = ({
@@ -113,6 +155,16 @@ const Proposals = () => {
           : p,
       ),
     );
+  };
+
+  const handleStatusChange = (proposalId: string, newStatus: Proposal["status"]) => {
+    setProposals(prev =>
+      prev.map(p =>
+        p.id === proposalId ? { ...p, status: newStatus } : p,
+      ),
+    );
+    const label = statusMap[newStatus].label;
+    toast.success(`Teklif statüsü "${label}" olarak güncellendi`);
   };
 
   // Filter logic
@@ -276,6 +328,10 @@ const Proposals = () => {
                           <Button variant="outline" size="sm" asChild>
                             <Link to={`/proposals/${p.id}`}>Detay</Link>
                           </Button>
+                          <StatusChangePopover
+                            currentStatus={p.status}
+                            onStatusChange={(newStatus) => handleStatusChange(p.id, newStatus)}
+                          />
                           {isAdmin && (
                             <DealerAssignPopover
                               currentDealer={p.assignedDealer}

@@ -8,7 +8,7 @@ import { ArrowLeft, MessageCircle, Check, X } from "lucide-react";
 const mockQuotes: Record<string, {
   id: string;
   products: { name: string; price: string }[];
-  status: "waiting" | "received" | "approved" | "rejected";
+  status: "pending" | "viewed" | "invited" | "approved" | "rejected";
   date: string;
   sender: string;
   totalPrice: string;
@@ -20,7 +20,7 @@ const mockQuotes: Record<string, {
       { name: "Param POS", price: "800₺/ay" },
       { name: "Univera Stokbar", price: "1.200₺/ay" },
     ],
-    status: "waiting",
+    status: "pending",
     date: "2026-02-18",
     sender: "",
     totalPrice: "",
@@ -32,7 +32,7 @@ const mockQuotes: Record<string, {
       { name: "Param Kart", price: "900₺/ay" },
       { name: "Finrota Netahsilat 2.0", price: "1.500₺/ay" },
     ],
-    status: "received",
+    status: "invited",
     date: "2026-02-15",
     sender: "Ahmet Yılmaz (Bayi)",
     totalPrice: "2.400₺/ay",
@@ -51,11 +51,12 @@ const mockQuotes: Record<string, {
   },
 };
 
-const statusConfig = {
-  waiting: { label: "Teklif Bekleniyor", variant: "outline" as const, color: "text-warning bg-warning/10" },
-  received: { label: "Teklif Alındı", variant: "default" as const, color: "text-info bg-info/10" },
-  approved: { label: "Onaylandı", variant: "default" as const, color: "text-success bg-success/10" },
-  rejected: { label: "Reddedildi", variant: "destructive" as const, color: "text-destructive bg-destructive/10" },
+const statusConfig: Record<string, { label: string; variant: "outline" | "default" | "destructive"; color: string }> = {
+  pending: { label: "Bekleyen", variant: "outline", color: "text-warning bg-warning/10" },
+  viewed: { label: "Görüntülendi", variant: "outline", color: "text-info bg-info/10" },
+  invited: { label: "Teklif Alındı", variant: "default", color: "text-info bg-info/10" },
+  approved: { label: "Onaylandı", variant: "default", color: "text-success bg-success/10" },
+  rejected: { label: "Reddedildi", variant: "destructive", color: "text-destructive bg-destructive/10" },
 };
 
 const KobiTeklifDetay = () => {
@@ -141,7 +142,7 @@ const KobiTeklifDetay = () => {
 
         {/* Actions */}
         <div className="flex flex-wrap gap-3">
-          {quote.status === "received" && (
+          {quote.status === "invited" && (
             <>
               <Button variant="outline" className="gap-2">
                 <MessageCircle className="w-4 h-4" /> Soru Sor

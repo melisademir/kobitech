@@ -6,24 +6,26 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const mockQuotes = [
-  { id: "TT-12345", products: ["Param POS", "Univera Stokbar"], status: "waiting" as const, date: "2026-02-18", sender: "" },
-  { id: "TT-12340", products: ["Param Kart", "Finrota Netahsilat 2.0"], status: "received" as const, date: "2026-02-15", sender: "Ahmet Yılmaz (Bayi)", price: "2.400₺/ay" },
+  { id: "TT-12345", products: ["Param POS", "Univera Stokbar"], status: "pending" as const, date: "2026-02-18", sender: "" },
+  { id: "TT-12340", products: ["Param Kart", "Finrota Netahsilat 2.0"], status: "invited" as const, date: "2026-02-15", sender: "Ahmet Yılmaz (Bayi)", price: "2.400₺/ay" },
   { id: "TT-12338", products: ["Nebim Winner"], status: "approved" as const, date: "2026-02-10", sender: "Admin", price: "4.200₺/ay" },
 ];
 
 const tabs = [
   { id: "all", label: "Tümü" },
-  { id: "waiting", label: "Bekleyen" },
-  { id: "received", label: "Teklif Alındı" },
+  { id: "pending", label: "Bekleyen" },
+  { id: "viewed", label: "Görüntülendi" },
+  { id: "invited", label: "Teklif Alındı" },
   { id: "approved", label: "Onaylandı" },
   { id: "rejected", label: "Reddedildi" },
 ];
 
-const statusConfig = {
-  waiting: { label: "Teklif Bekleniyor", variant: "outline" as const, color: "text-warning" },
-  received: { label: "Teklif Alındı", variant: "default" as const, color: "text-info" },
-  approved: { label: "Onaylandı", variant: "default" as const, color: "text-success" },
-  rejected: { label: "Reddedildi", variant: "destructive" as const, color: "text-destructive" },
+const statusConfig: Record<string, { label: string; variant: "outline" | "default" | "destructive"; color: string }> = {
+  pending: { label: "Bekleyen", variant: "outline", color: "text-warning" },
+  viewed: { label: "Görüntülendi", variant: "outline", color: "text-info" },
+  invited: { label: "Teklif Alındı", variant: "default", color: "text-info" },
+  approved: { label: "Onaylandı", variant: "default", color: "text-success" },
+  rejected: { label: "Reddedildi", variant: "destructive", color: "text-destructive" },
 };
 
 const KobiTekliflerim = () => {
@@ -64,7 +66,7 @@ const KobiTekliflerim = () => {
                     </div>
                     <div className="flex gap-2 shrink-0">
                       <Button variant="outline" size="sm" onClick={() => navigate(`/kobi/tekliflerim/${q.id}`)}>Detay</Button>
-                      {q.status === "received" && (
+                      {q.status === "invited" && (
                         <>
                           <Button variant="outline" size="sm">Soru Sor</Button>
                           <Button variant="hero" size="sm">Onayla</Button>
