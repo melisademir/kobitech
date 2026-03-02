@@ -122,122 +122,6 @@ function FlipCard({ partner, index, total, phase, target, isSelected, onClick }:
   );
 }
 
-// --- Partner Detail Panel ---
-function PartnerDetailPanel({
-  partner,
-  detail,
-  onClose,
-}: {
-  partner: PartnerInfo;
-  detail: PartnerDetail;
-  onClose: () => void;
-}) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30, scale: 0.95 }}
-      animate={{ opacity: 1, y: 0, scale: 1 }}
-      exit={{ opacity: 0, y: 20, scale: 0.95 }}
-      transition={{ type: "spring", stiffness: 300, damping: 25 }}
-      className="absolute z-30 left-1/2 top-[10%] w-[90%] max-w-md"
-      style={{ transform: "translateX(-50%)" }}
-    >
-      <div
-        className="rounded-2xl overflow-hidden"
-        style={{
-          background: "rgba(255,255,255,0.96)",
-          border: "1px solid hsl(var(--border))",
-          boxShadow:
-            "0 24px 80px -12px hsl(var(--primary) / 0.18), 0 4px 24px rgba(0,0,0,0.08)",
-          backdropFilter: "blur(20px)",
-        }}
-      >
-        {/* Header */}
-        <div
-          className="flex items-center gap-3 p-4 border-b"
-          style={{ borderColor: "hsl(var(--border))" }}
-        >
-          <div
-            className="w-12 h-12 rounded-xl flex items-center justify-center p-2 flex-shrink-0"
-            style={{
-              background: "hsl(var(--muted))",
-            }}
-          >
-            <img
-              src={partner.logo}
-              alt={partner.name}
-              className="w-full h-full object-contain"
-              style={{ mixBlendMode: "multiply" }}
-            />
-          </div>
-          <div className="flex-1 min-w-0">
-            <h4 className="text-sm font-bold text-foreground">{partner.name}</h4>
-            <span
-              className="text-[10px] font-medium px-2 py-0.5 rounded-full"
-              style={{
-                background: "hsl(var(--primary) / 0.1)",
-                color: "hsl(var(--primary))",
-              }}
-            >
-              {detail.category}
-            </span>
-          </div>
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              onClose();
-            }}
-            className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-muted transition-colors"
-          >
-            <X className="w-4 h-4 text-muted-foreground" />
-          </button>
-        </div>
-
-        {/* Body */}
-        <div className="p-4 space-y-3">
-          <p className="text-xs font-semibold text-foreground leading-snug">
-            {detail.headline}
-          </p>
-          <p className="text-[11px] text-muted-foreground leading-relaxed">
-            {detail.description}
-          </p>
-
-          {/* Features */}
-          <div className="space-y-1.5">
-            {detail.features.slice(0, 4).map((f, i) => (
-              <div key={i} className="flex items-start gap-2">
-                <div
-                  className="w-4 h-4 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                  style={{
-                    background: "hsl(160 84% 39% / 0.12)",
-                    color: "hsl(160 84% 39%)",
-                  }}
-                >
-                  <svg width="8" height="8" viewBox="0 0 12 12" fill="none">
-                    <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                </div>
-                <span className="text-[11px] text-foreground/80">{f}</span>
-              </div>
-            ))}
-          </div>
-
-          {/* Badge */}
-          {detail.badge && (
-            <div
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-[10px] font-semibold"
-              style={{
-                background: "linear-gradient(135deg, hsl(var(--primary) / 0.08), hsl(var(--accent) / 0.08))",
-                color: "hsl(var(--primary))",
-              }}
-            >
-              ✦ {detail.badge}
-            </div>
-          )}
-        </div>
-      </div>
-    </motion.div>
-  );
-}
 
 // --- Partners Config ---
 const PARTNERS: PartnerInfo[] = [
@@ -429,9 +313,9 @@ export default function IntroAnimation() {
           </motion.p>
         </motion.div>
 
-        {/* Arc Active Content (Fades in) */}
+        {/* Arc Active Content (Fades in) — title + inline detail */}
         <motion.div
-          className="absolute inset-x-0 top-[6%] z-20 flex flex-col items-center text-center pointer-events-none px-4"
+          className="absolute inset-x-0 top-[6%] z-20 flex flex-col items-center text-center px-4"
           style={{ opacity: contentOpacity, y: contentY }}
         >
           <h3 className="text-2xl md:text-4xl font-bold text-foreground">
@@ -441,18 +325,100 @@ export default function IntroAnimation() {
             İşletmenizin ihtiyacına uygun çözüm ortaklarını keşfedin.
             Logolara tıklayarak detaylı bilgi alın.
           </p>
-        </motion.div>
 
-        {/* Partner Detail Panel */}
-        <AnimatePresence>
-          {selected && selectedDetail && (
-            <PartnerDetailPanel
-              partner={selected}
-              detail={selectedDetail}
-              onClose={() => setSelectedPartner(null)}
-            />
-          )}
-        </AnimatePresence>
+          {/* Inline Partner Detail */}
+          <AnimatePresence mode="wait">
+            {selected && selectedDetail && (
+              <motion.div
+                key={selected.id}
+                initial={{ opacity: 0, y: 16, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                className="mt-6 w-full max-w-lg"
+              >
+                <div
+                  className="rounded-2xl overflow-hidden text-left"
+                  style={{
+                    background: "rgba(255,255,255,0.96)",
+                    border: "1px solid hsl(var(--border))",
+                    boxShadow: "0 12px 48px -8px hsl(var(--primary) / 0.12), 0 2px 12px rgba(0,0,0,0.05)",
+                    backdropFilter: "blur(20px)",
+                  }}
+                >
+                  {/* Header */}
+                  <div className="flex items-center gap-3 p-4 border-b" style={{ borderColor: "hsl(var(--border))" }}>
+                    <div
+                      className="w-11 h-11 rounded-xl flex items-center justify-center p-2 flex-shrink-0"
+                      style={{ background: "hsl(var(--muted))" }}
+                    >
+                      <img
+                        src={selected.logo}
+                        alt={selected.name}
+                        className="w-full h-full object-contain"
+                        style={{ mixBlendMode: "multiply" }}
+                      />
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-bold text-foreground">{selected.name}</h4>
+                      <span
+                        className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                        style={{
+                          background: "hsl(var(--primary) / 0.1)",
+                          color: "hsl(var(--primary))",
+                        }}
+                      >
+                        {selectedDetail.category}
+                      </span>
+                    </div>
+                    <button
+                      onClick={() => setSelectedPartner(null)}
+                      className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-muted transition-colors"
+                    >
+                      <X className="w-4 h-4 text-muted-foreground" />
+                    </button>
+                  </div>
+
+                  {/* Body */}
+                  <div className="p-4 space-y-2.5">
+                    <p className="text-xs font-semibold text-foreground leading-snug">
+                      {selectedDetail.headline}
+                    </p>
+                    <p className="text-[11px] text-muted-foreground leading-relaxed">
+                      {selectedDetail.description}
+                    </p>
+                    <div className="grid grid-cols-2 gap-1.5">
+                      {selectedDetail.features.slice(0, 4).map((f, idx) => (
+                        <div key={idx} className="flex items-start gap-1.5">
+                          <div
+                            className="w-3.5 h-3.5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
+                            style={{ background: "hsl(160 84% 39% / 0.12)", color: "hsl(160 84% 39%)" }}
+                          >
+                            <svg width="7" height="7" viewBox="0 0 12 12" fill="none">
+                              <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </div>
+                          <span className="text-[10px] text-foreground/80">{f}</span>
+                        </div>
+                      ))}
+                    </div>
+                    {selectedDetail.badge && (
+                      <div
+                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold"
+                        style={{
+                          background: "linear-gradient(135deg, hsl(var(--primary) / 0.08), hsl(var(--accent) / 0.08))",
+                          color: "hsl(var(--primary))",
+                        }}
+                      >
+                        ✦ {selectedDetail.badge}
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
 
         {/* Cards Container */}
         <div className="absolute inset-0 z-10">
