@@ -1,4 +1,5 @@
 import LandingNav from "@/components/landing/LandingNav";
+import PartnerCarouselSection from "@/components/landing/PartnerCarouselSection";
 import HeroSection from "@/components/landing/HeroSection";
 
 import FeaturesSection from "@/components/landing/FeaturesSection";
@@ -101,7 +102,10 @@ const Landing = () => (
       <JourneyLoopSection2 />
     </div>
 
-
+    {/* PARTNER CAROUSEL */}
+    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+      <PartnerCarouselSection />
+    </div>
 
 
     <FooterSection />
