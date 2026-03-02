@@ -63,19 +63,19 @@ const cardData = [
     title: "50+ Dijital Çözüm",
     description: "Ödeme, e-ticaret, stok, kargo ve daha fazlası tek platformda.",
     imageUrl: promoPayment,
-    href: "/kobi/urunler",
+    href: "/digitalhub/urunler",
   },
   {
     title: "30+ Çözüm Ortağı",
     description: "Sektör lideri sağlayıcılarla güçlü bir ekosistem.",
     imageUrl: promoCloud,
-    href: "/kobi/urunler",
+    href: "/digitalhub/urunler",
   },
   {
     title: "Yapay Zeka Desteği",
     description: "AI destekli analizlerle işletmenizi bir adım öne taşıyın.",
     imageUrl: promoAiAgent,
-    href: "/kobi/step-1",
+    href: "/digitalhub/step-1",
   },
 ];
 
@@ -118,7 +118,7 @@ const CtaSection = () => (
 
         {/* CTA Button */}
         <div className="text-center">
-          <Link to="/kobi/step-1">
+          <Link to="/digitalhub/step-1">
             <button
               className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200"
               style={{

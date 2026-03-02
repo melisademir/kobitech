@@ -124,7 +124,7 @@ const BentoGridSection = () => (
       {/* CTA */}
       <div className="mt-16 flex justify-center w-full">
         <Link
-          to="/kobi/step-1"
+          to="/digitalhub/step-1"
           className="bg-primary hover:brightness-90 text-primary-foreground px-8 py-4 rounded-full font-bold text-lg inline-flex items-center gap-2 transition-transform hover:scale-105 shadow-lg shadow-primary/20 cursor-pointer"
         >
           50+ Çözümü Hemen Keşfet

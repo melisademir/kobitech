@@ -19,7 +19,7 @@ const steps = [
 const KobiSignup = () => {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
-  const redirect = searchParams.get("redirect") || "/kobi/step-1";
+  const redirect = searchParams.get("redirect") || "/digitalhub/step-1";
   const { data: onboardingData } = useOnboarding();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -105,7 +105,7 @@ const KobiSignup = () => {
             {error && <div className="flex items-center gap-2 text-destructive text-sm bg-destructive/10 p-3 rounded-lg"><span>✗</span> {error}</div>}
             <Button type="submit" size="lg" className="w-full" disabled={loading}>{loading ? "Kayıt yapılıyor..." : "Kayıt Ol"}</Button>
           </form>
-          <p className="text-center text-muted-foreground text-sm">Zaten hesabınız var mı? <Link to={`/digitalhub/login${redirect !== "/kobi/step-1" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`} className="text-primary font-bold hover:underline">Giriş Yap</Link></p>
+          <p className="text-center text-muted-foreground text-sm">Zaten hesabınız var mı? <Link to={`/digitalhub/login${redirect !== "/digitalhub/step-1" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`} className="text-primary font-bold hover:underline">Giriş Yap</Link></p>
         </motion.div>
       </div>
     </div>

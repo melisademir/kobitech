@@ -65,7 +65,7 @@ const LandingNav = () => {
           className="flex items-center gap-4"
         >
           <Link
-            to="/kobi/signup"
+            to="/digitalhub/signup"
             className="text-sm font-semibold hidden sm:block transition-colors"
             style={{ color: "hsl(260, 15%, 44%)" }}
             onMouseEnter={e => (e.currentTarget.style.color = "#6D28D9")}

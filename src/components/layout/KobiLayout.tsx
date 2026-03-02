@@ -8,11 +8,11 @@ import { useOnboarding } from "@/contexts/OnboardingContext";
 import AiAssistantWidget from "@/components/kobi/AiAssistantWidget";
 import kobiLogo from "@/assets/logo-kobitech.png";
 const navItems = [
-  { icon: Map, label: "Harita", path: "/kobi/harita" },
-  { icon: ClipboardList, label: "Planlarım", path: "/kobi/planlarim" },
-  { icon: Package, label: "Çözümler", path: "/kobi/urunler" },
-  { icon: FileText, label: "Tekliflerim", path: "/kobi/tekliflerim" },
-  { icon: User, label: "Profilim", path: "/kobi/profile" },
+  { icon: Map, label: "Harita", path: "/digitalhub/harita" },
+  { icon: ClipboardList, label: "Planlarım", path: "/digitalhub/planlarim" },
+  { icon: Package, label: "Çözümler", path: "/digitalhub/urunler" },
+  { icon: FileText, label: "Tekliflerim", path: "/digitalhub/tekliflerim" },
+  { icon: User, label: "Profilim", path: "/digitalhub/profile" },
 ];
 
 interface Props { children: ReactNode; }
@@ -32,7 +32,7 @@ const KobiLayout = ({ children }: Props) => {
         <button className="lg:hidden mr-4 text-foreground" onClick={() => setSidebarOpen(true)}>
           <Menu className="h-6 w-6" />
         </button>
-        <Link to="/kobi/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
+        <Link to="/digitalhub/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
           <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
           <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>
@@ -41,11 +41,11 @@ const KobiLayout = ({ children }: Props) => {
           <input placeholder="Çözüm ara..." className="w-full h-10 pl-10 pr-4 rounded-full bg-background border-2 border-border text-sm focus:border-primary focus:outline-none transition-colors" />
         </div>
         <div className="flex items-center gap-4 ml-auto">
-          <Link to="/kobi/notifications" className="relative text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/digitalhub/notifications" className="relative text-muted-foreground hover:text-primary transition-colors">
             <Bell className="h-5 w-5" />
             <span className="absolute -top-1 -right-1 w-4 h-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
           </Link>
-          <Link to="/kobi/urunler" className="relative text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/digitalhub/urunler" className="relative text-muted-foreground hover:text-primary transition-colors">
             <ShoppingCart className="h-5 w-5" />
             {count > 0 && <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-accent-foreground text-[10px] font-bold rounded-full flex items-center justify-center">{count}</span>}
           </Link>
@@ -58,7 +58,7 @@ const KobiLayout = ({ children }: Props) => {
             <AnimatePresence>
               {profileOpen && (
                 <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }} className="absolute right-0 top-full mt-2 w-48 bg-card rounded-xl shadow-premium border border-border overflow-hidden z-50">
-                  <Link to="/kobi/profile" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors"><User className="h-4 w-4" /> Profilim</Link>
+                  <Link to="/digitalhub/profile" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors"><User className="h-4 w-4" /> Profilim</Link>
                   <div className="border-t border-border" />
                   <Link to="/" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-destructive/5 text-muted-foreground hover:text-destructive transition-colors w-full"><LogOut className="h-4 w-4" /> Çıkış Yap</Link>
                 </motion.div>

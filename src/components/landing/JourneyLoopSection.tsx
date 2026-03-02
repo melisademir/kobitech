@@ -290,7 +290,7 @@ const JourneyLoopSection = () => {
             </div>
 
             {/* Rocket CTA — bottom right */}
-            <Link to="/kobi/step-1">
+            <Link to="/digitalhub/step-1">
               <motion.div
                 className="absolute z-20 flex items-center gap-3 cursor-pointer"
                 animate={{ y: [0, -5, 0] }}

@@ -19,9 +19,9 @@ const KobiDashboard = () => {
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
           {[
-            { icon: Map, label: "Harita", desc: "Yolculuğunuzu görün", path: "/kobi/harita", color: "text-primary" },
-            { icon: ShoppingCart, label: "Çözümler", desc: "21+ ürün keşfedin", path: "/kobi/urunler", color: "text-accent" },
-            { icon: FileText, label: "Tekliflerim", desc: "Teklif durumları", path: "/kobi/tekliflerim", color: "text-warning" },
+            { icon: Map, label: "Harita", desc: "Yolculuğunuzu görün", path: "/digitalhub/harita", color: "text-primary" },
+            { icon: ShoppingCart, label: "Çözümler", desc: "21+ ürün keşfedin", path: "/digitalhub/urunler", color: "text-accent" },
+            { icon: FileText, label: "Tekliflerim", desc: "Teklif durumları", path: "/digitalhub/tekliflerim", color: "text-warning" },
           ].map(s => (
             <Link key={s.label} to={s.path}>
               <Card className="hover:shadow-card-hover transition-shadow cursor-pointer">
@@ -45,7 +45,7 @@ const KobiDashboard = () => {
             <div className="text-center py-8 text-muted-foreground">
               <p>Henüz aktif projeniz yok.</p>
               <Button asChild variant="hero" size="sm" className="mt-4">
-                <Link to="/kobi/urunler">Çözümleri Keşfet</Link>
+                <Link to="/digitalhub/urunler">Çözümleri Keşfet</Link>
               </Button>
             </div>
           </CardContent>

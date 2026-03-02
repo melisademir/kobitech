@@ -56,7 +56,7 @@ const Planlarim = () => {
                   <span className="text-sm font-medium text-muted-foreground">{done}/{total}</span>
                 </div>
               </div>
-              <Link to="/kobi/harita" className="text-primary hover:underline text-sm font-bold flex items-center gap-1 shrink-0">
+              <Link to="/digitalhub/harita" className="text-primary hover:underline text-sm font-bold flex items-center gap-1 shrink-0">
                 Detay <ChevronRight className="h-4 w-4" />
               </Link>
             </div>
@@ -79,7 +79,7 @@ const Planlarim = () => {
             <div className="text-5xl mb-4">📋</div>
             <h2 className="text-lg font-bold text-foreground mb-2">Henüz planınız yok</h2>
             <p className="text-muted-foreground mb-4">Harita sayfasından hedeflerinizi seçerek planlarınızı oluşturun</p>
-            <Button asChild variant="hero"><Link to="/kobi/harita">Haritaya Git <ArrowRight className="h-4 w-4 ml-1" /></Link></Button>
+            <Button asChild variant="hero"><Link to="/digitalhub/harita">Haritaya Git <ArrowRight className="h-4 w-4 ml-1" /></Link></Button>
           </div>
         ) : (
           <Tabs defaultValue={activeTab}>

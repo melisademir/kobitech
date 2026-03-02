@@ -145,7 +145,7 @@ const PromotionsSection = () => (
 
               {/* Bottom section: CTA */}
               <div>
-                <Link to="/kobi/step-1">
+                <Link to="/digitalhub/step-1">
                   <button
                     className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold transition-all duration-200 shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:shadow-[0_0_30px_rgba(124,58,237,0.7)]"
                     style={{

@@ -28,10 +28,10 @@ const newsBySector: Record<string, { title: string; snippet: string; time: strin
 };
 
 const suggestionTemplates = [
-  { icon: "⚠️", title: "Fire oranınız yüksek görünüyor", desc: "Sektörünüzde ortalama fire %18. Univera Stokbar ile fire takibi yaparak 6 ayda %45 azaltabilirsiniz.", cta: "Çözüme Bak →", path: "/kobi/urunler" },
-  { icon: "🛒", title: "Sektörünüzde %78 işletme e-ticaret kullanıyor", desc: "Rakiplerinizin çoğu online satış yapıyor. E-ticaret kanalı açmayı değerlendirin.", cta: "E-ticaret Çözümleri →", path: "/kobi/urunler" },
-  { icon: "📈", title: "Global Readiness seviyeniz artıyor! +5 puan", desc: "Tebrikler, bu hafta %45'e ulaştınız. Bir sonraki seviye (Silver) için %50 hedefleyin.", cta: "Raporumu Gör →", path: "/kobi/harita" },
-  { icon: "🎯", title: "Hedeflerinize %40 yaklaştınız", desc: "Planınızda 2/5 adım tamamlandı. Sıradaki adımı inceleyin.", cta: "Planıma Git →", path: "/kobi/planlarim" },
+  { icon: "⚠️", title: "Fire oranınız yüksek görünüyor", desc: "Sektörünüzde ortalama fire %18. Univera Stokbar ile fire takibi yaparak 6 ayda %45 azaltabilirsiniz.", cta: "Çözüme Bak →", path: "/digitalhub/urunler" },
+  { icon: "🛒", title: "Sektörünüzde %78 işletme e-ticaret kullanıyor", desc: "Rakiplerinizin çoğu online satış yapıyor. E-ticaret kanalı açmayı değerlendirin.", cta: "E-ticaret Çözümleri →", path: "/digitalhub/urunler" },
+  { icon: "📈", title: "Global Readiness seviyeniz artıyor! +5 puan", desc: "Tebrikler, bu hafta %45'e ulaştınız. Bir sonraki seviye (Silver) için %50 hedefleyin.", cta: "Raporumu Gör →", path: "/digitalhub/harita" },
+  { icon: "🎯", title: "Hedeflerinize %40 yaklaştınız", desc: "Planınızda 2/5 adım tamamlandı. Sıradaki adımı inceleyin.", cta: "Planıma Git →", path: "/digitalhub/planlarim" },
 ];
 
 const quickReplies = [
