@@ -33,7 +33,7 @@ import KobiResetPassword from "./pages/kobi/KobiResetPassword";
 import Step1 from "./pages/kobi/Step1";
 import Step2 from "./pages/kobi/Step2";
 import Step3 from "./pages/kobi/Step3";
-import KobiDashboard from "./pages/kobi/KobiDashboard";
+
 import Harita from "./pages/kobi/Harita";
 import Planlarim from "./pages/kobi/Planlarim";
 import KobiProducts from "./pages/kobi/KobiProducts";
@@ -87,7 +87,7 @@ const App = () => (
             <Route path="/digitalhub/onboarding3" element={<Step3 />} />
 
             {/* KOBİ main */}
-            <Route path="/digitalhub/dashboard" element={<KobiDashboard />} />
+            
             <Route path="/digitalhub/harita" element={<Harita />} />
             <Route path="/digitalhub/planlarim" element={<Planlarim />} />
             <Route path="/digitalhub/urunler" element={<KobiProducts />} />
