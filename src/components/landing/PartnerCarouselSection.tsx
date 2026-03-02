@@ -70,34 +70,34 @@ const PartnerCarouselSection = () => {
 
         {/* Carousel */}
         <div className="flex flex-col items-center gap-8">
-          {/* Desktop layout */}
-          <div className="hidden md:flex items-center gap-8 w-full max-w-3xl">
-            {/* Logo */}
-            <div className="flex-shrink-0">
+          {/* Desktop layout — large logo left, card right */}
+          <div className="hidden md:flex items-stretch gap-0 w-full max-w-4xl">
+            {/* Logo area — large square like reference */}
+            <div className="flex-shrink-0 relative" style={{ width: "340px" }}>
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
-                  initial={{ opacity: 0, scale: 0.9 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
                   transition={{ duration: 0.3 }}
-                  className="w-28 h-28 rounded-full flex items-center justify-center shadow-lg"
+                  className="absolute inset-0 rounded-2xl flex items-center justify-center"
                   style={{
-                    background: "white",
-                    border: "2px solid hsl(var(--border))",
+                    background: "linear-gradient(145deg, hsl(var(--muted)), hsl(265,30%,95%))",
+                    border: "1px solid hsl(var(--border))",
                   }}
                 >
                   <img
                     src={current.logo}
                     alt={current.name}
-                    className="w-16 h-16 object-contain mix-blend-multiply"
+                    className="w-32 h-32 object-contain mix-blend-multiply"
                   />
                 </motion.div>
               </AnimatePresence>
             </div>
 
-            {/* Card */}
-            <div className="flex-1">
+            {/* Card — overlapping slightly */}
+            <div className="flex-1 -ml-6 z-10 flex items-center">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={current.id}
@@ -105,32 +105,20 @@ const PartnerCarouselSection = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="rounded-2xl p-8"
+                  className="rounded-2xl p-8 w-full"
                   style={{
                     background: "hsl(var(--card))",
                     border: "1px solid hsl(var(--border))",
                     boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
                   }}
                 >
-                  <h3 className="text-xl font-extrabold text-foreground mb-1">
+                  <h3 className="text-2xl font-extrabold text-foreground mb-1" style={{ letterSpacing: "-0.02em" }}>
                     {current.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground mb-1">
+                  <p className="text-sm text-muted-foreground italic mb-4">
                     {current.category}
                   </p>
-                  {current.badge && (
-                    <span
-                      className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase mb-4"
-                      style={{
-                        background: "rgba(124,58,237,0.1)",
-                        border: "1px solid rgba(124,58,237,0.25)",
-                        color: "hsl(var(--primary))",
-                      }}
-                    >
-                      {current.badge}
-                    </span>
-                  )}
-                  <p className="text-foreground/80 text-sm leading-relaxed mb-4">
+                  <p className="text-foreground/80 text-base leading-relaxed mb-5">
                     {current.description}
                   </p>
                   <ul className="flex flex-wrap gap-2">
@@ -153,25 +141,27 @@ const PartnerCarouselSection = () => {
           </div>
 
           {/* Mobile layout */}
-          <div className="md:hidden w-full flex flex-col items-center gap-4">
+          <div className="md:hidden w-full flex flex-col items-center gap-0">
             {/* Logo */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={current.id}
-                initial={{ opacity: 0, scale: 0.9 }}
+                key={`mob-logo-${current.id}`}
+                initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
+                exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="w-20 h-20 rounded-full flex items-center justify-center shadow-lg"
+                className="w-full rounded-2xl rounded-b-none flex items-center justify-center"
                 style={{
-                  background: "white",
-                  border: "2px solid hsl(var(--border))",
+                  height: "200px",
+                  background: "linear-gradient(145deg, hsl(var(--muted)), hsl(265,30%,95%))",
+                  border: "1px solid hsl(var(--border))",
+                  borderBottom: "none",
                 }}
               >
                 <img
                   src={current.logo}
                   alt={current.name}
-                  className="w-12 h-12 object-contain mix-blend-multiply"
+                  className="w-24 h-24 object-contain mix-blend-multiply"
                 />
               </motion.div>
             </AnimatePresence>
@@ -179,32 +169,21 @@ const PartnerCarouselSection = () => {
             {/* Card */}
             <AnimatePresence mode="wait">
               <motion.div
-                key={current.id}
+                key={`mob-card-${current.id}`}
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="rounded-2xl p-6 w-full"
+                className="rounded-2xl rounded-t-none p-6 w-full"
                 style={{
                   background: "hsl(var(--card))",
                   border: "1px solid hsl(var(--border))",
+                  borderTop: "none",
                   boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
                 }}
               >
                 <h3 className="text-lg font-extrabold text-foreground mb-1">{current.name}</h3>
-                <p className="text-xs text-muted-foreground mb-1">{current.category}</p>
-                {current.badge && (
-                  <span
-                    className="inline-block px-3 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase mb-3"
-                    style={{
-                      background: "rgba(124,58,237,0.1)",
-                      border: "1px solid rgba(124,58,237,0.25)",
-                      color: "hsl(var(--primary))",
-                    }}
-                  >
-                    {current.badge}
-                  </span>
-                )}
+                <p className="text-xs text-muted-foreground italic mb-3">{current.category}</p>
                 <p className="text-foreground/80 text-sm leading-relaxed">
                   {current.description}
                 </p>
