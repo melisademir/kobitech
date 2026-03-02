@@ -1,0 +1,263 @@
+"use client";
+
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { pieces, partnerDetails } from "./partner-ecosystem/partner-data";
+
+interface PartnerSlide {
+  id: string;
+  name: string;
+  logo: string;
+  category: string;
+  headline: string;
+  description: string;
+  badge: string;
+  features: string[];
+}
+
+const partners: PartnerSlide[] = pieces.map((p) => {
+  const detail = partnerDetails[p.id];
+  return {
+    id: p.id,
+    name: p.name,
+    logo: p.logo,
+    category: detail?.category ?? "",
+    headline: detail?.headline ?? p.name,
+    description: detail?.description ?? "",
+    badge: detail?.badge ?? "",
+    features: detail?.features ?? [],
+  };
+});
+
+const PartnerCarouselSection = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () =>
+    setCurrentIndex((i) => (i + 1) % partners.length);
+  const handlePrevious = () =>
+    setCurrentIndex((i) => (i - 1 + partners.length) % partners.length);
+
+  const current = partners[currentIndex];
+
+  return (
+    <section className="py-24 md:py-32">
+      <div className="max-w-5xl mx-auto px-6">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+          className="text-center mb-14"
+        >
+          <h2
+            className="text-3xl md:text-5xl font-extrabold text-foreground"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
+          >
+            Güçlü Partner
+            <br />
+            <span className="text-gradient-primary">Ekosistemi</span>
+          </h2>
+          <p
+            className="text-muted-foreground mt-3 mx-auto text-sm md:text-base"
+            style={{ lineHeight: 1.7, maxWidth: "480px" }}
+          >
+            Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
+          </p>
+        </motion.div>
+
+        {/* Carousel */}
+        <div className="flex flex-col items-center gap-8">
+          {/* Desktop layout */}
+          <div className="hidden md:flex items-center gap-8 w-full max-w-3xl">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.9 }}
+                  transition={{ duration: 0.3 }}
+                  className="w-28 h-28 rounded-full flex items-center justify-center shadow-lg"
+                  style={{
+                    background: "white",
+                    border: "2px solid hsl(var(--border))",
+                  }}
+                >
+                  <img
+                    src={current.logo}
+                    alt={current.name}
+                    className="w-16 h-16 object-contain mix-blend-multiply"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Card */}
+            <div className="flex-1">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={current.id}
+                  initial={{ opacity: 0, x: 20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: -20 }}
+                  transition={{ duration: 0.3 }}
+                  className="rounded-2xl p-8"
+                  style={{
+                    background: "hsl(var(--card))",
+                    border: "1px solid hsl(var(--border))",
+                    boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+                  }}
+                >
+                  <h3 className="text-xl font-extrabold text-foreground mb-1">
+                    {current.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-1">
+                    {current.category}
+                  </p>
+                  {current.badge && (
+                    <span
+                      className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase mb-4"
+                      style={{
+                        background: "rgba(124,58,237,0.1)",
+                        border: "1px solid rgba(124,58,237,0.25)",
+                        color: "hsl(var(--primary))",
+                      }}
+                    >
+                      {current.badge}
+                    </span>
+                  )}
+                  <p className="text-foreground/80 text-sm leading-relaxed mb-4">
+                    {current.description}
+                  </p>
+                  <ul className="flex flex-wrap gap-2">
+                    {current.features.slice(0, 4).map((f) => (
+                      <li
+                        key={f}
+                        className="text-xs px-3 py-1.5 rounded-full font-medium"
+                        style={{
+                          background: "hsl(var(--muted))",
+                          color: "hsl(var(--muted-foreground))",
+                        }}
+                      >
+                        {f}
+                      </li>
+                    ))}
+                  </ul>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Mobile layout */}
+          <div className="md:hidden w-full flex flex-col items-center gap-4">
+            {/* Logo */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.3 }}
+                className="w-20 h-20 rounded-full flex items-center justify-center shadow-lg"
+                style={{
+                  background: "white",
+                  border: "2px solid hsl(var(--border))",
+                }}
+              >
+                <img
+                  src={current.logo}
+                  alt={current.name}
+                  className="w-12 h-12 object-contain mix-blend-multiply"
+                />
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Card */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
+                className="rounded-2xl p-6 w-full"
+                style={{
+                  background: "hsl(var(--card))",
+                  border: "1px solid hsl(var(--border))",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+                }}
+              >
+                <h3 className="text-lg font-extrabold text-foreground mb-1">{current.name}</h3>
+                <p className="text-xs text-muted-foreground mb-1">{current.category}</p>
+                {current.badge && (
+                  <span
+                    className="inline-block px-3 py-1 rounded-full text-[10px] font-semibold tracking-wide uppercase mb-3"
+                    style={{
+                      background: "rgba(124,58,237,0.1)",
+                      border: "1px solid rgba(124,58,237,0.25)",
+                      color: "hsl(var(--primary))",
+                    }}
+                  >
+                    {current.badge}
+                  </span>
+                )}
+                <p className="text-foreground/80 text-sm leading-relaxed">
+                  {current.description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Navigation */}
+          <div className="flex items-center gap-4">
+            <button
+              onClick={handlePrevious}
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
+              style={{
+                background: "hsl(var(--muted))",
+                color: "hsl(var(--foreground))",
+              }}
+              aria-label="Önceki partner"
+            >
+              <ChevronLeft className="w-5 h-5" />
+            </button>
+
+            <div className="flex items-center gap-2">
+              {partners.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={() => setCurrentIndex(i)}
+                  className={cn(
+                    "w-2.5 h-2.5 rounded-full transition-colors",
+                    i === currentIndex
+                      ? "bg-primary"
+                      : "bg-muted-foreground/30"
+                  )}
+                  aria-label={`Partner ${i + 1}`}
+                />
+              ))}
+            </div>
+
+            <button
+              onClick={handleNext}
+              className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
+              style={{
+                background: "hsl(var(--muted))",
+                color: "hsl(var(--foreground))",
+              }}
+              aria-label="Sonraki partner"
+            >
+              <ChevronRight className="w-5 h-5" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default PartnerCarouselSection;
