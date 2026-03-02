@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useTransform, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+
 
 // Logo imports
 import logoAras from "@/assets/logo-aras.png";
@@ -327,29 +327,20 @@ export default function IntroAnimation() {
           </p>
 
           {/* Inline Partner Detail */}
-          <AnimatePresence mode="wait">
-            {selected && selectedDetail && (
-              <motion.div
-                key={selected.id}
-                initial={{ opacity: 0, y: 16, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -10, scale: 0.97 }}
-                transition={{ type: "spring", stiffness: 300, damping: 25 }}
-                className="mt-6 w-full max-w-lg"
-              >
-                <div
-                  className="rounded-2xl overflow-hidden text-left"
-                  style={{
-                    background: "rgba(255,255,255,0.96)",
-                    border: "1px solid hsl(var(--border))",
-                    boxShadow: "0 12px 48px -8px hsl(var(--primary) / 0.12), 0 2px 12px rgba(0,0,0,0.05)",
-                    backdropFilter: "blur(20px)",
-                  }}
+          <div className="mt-5 min-h-[120px]">
+            <AnimatePresence mode="wait">
+              {selected && selectedDetail ? (
+                <motion.div
+                  key={selected.id}
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                  className="flex flex-col items-center text-center max-w-md mx-auto"
                 >
-                  {/* Header */}
-                  <div className="flex items-center gap-3 p-4 border-b" style={{ borderColor: "hsl(var(--border))" }}>
+                  <div className="flex items-center gap-2.5 mb-2">
                     <div
-                      className="w-11 h-11 rounded-xl flex items-center justify-center p-2 flex-shrink-0"
+                      className="w-9 h-9 rounded-lg flex items-center justify-center p-1.5"
                       style={{ background: "hsl(var(--muted))" }}
                     >
                       <img
@@ -359,65 +350,41 @@ export default function IntroAnimation() {
                         style={{ mixBlendMode: "multiply" }}
                       />
                     </div>
-                    <div className="flex-1 min-w-0">
-                      <h4 className="text-sm font-bold text-foreground">{selected.name}</h4>
+                    <div className="text-left">
+                      <h4 className="text-sm font-bold text-foreground leading-tight">{selected.name}</h4>
+                      <span className="text-[10px] text-muted-foreground">{selectedDetail.category}</span>
+                    </div>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-3">
+                    {selectedDetail.description}
+                  </p>
+                  <div className="flex flex-wrap justify-center gap-2">
+                    {selectedDetail.features.slice(0, 4).map((f, idx) => (
                       <span
-                        className="text-[10px] font-medium px-2 py-0.5 rounded-full"
+                        key={idx}
+                        className="text-[11px] px-3 py-1 rounded-full text-foreground/70"
                         style={{
-                          background: "hsl(var(--primary) / 0.1)",
-                          color: "hsl(var(--primary))",
+                          background: "hsl(var(--muted))",
                         }}
                       >
-                        {selectedDetail.category}
+                        {f}
                       </span>
-                    </div>
-                    <button
-                      onClick={() => setSelectedPartner(null)}
-                      className="w-7 h-7 rounded-full flex items-center justify-center hover:bg-muted transition-colors"
-                    >
-                      <X className="w-4 h-4 text-muted-foreground" />
-                    </button>
+                    ))}
                   </div>
-
-                  {/* Body */}
-                  <div className="p-4 space-y-2.5">
-                    <p className="text-xs font-semibold text-foreground leading-snug">
-                      {selectedDetail.headline}
-                    </p>
-                    <p className="text-[11px] text-muted-foreground leading-relaxed">
-                      {selectedDetail.description}
-                    </p>
-                    <div className="grid grid-cols-2 gap-1.5">
-                      {selectedDetail.features.slice(0, 4).map((f, idx) => (
-                        <div key={idx} className="flex items-start gap-1.5">
-                          <div
-                            className="w-3.5 h-3.5 rounded-full flex items-center justify-center flex-shrink-0 mt-0.5"
-                            style={{ background: "hsl(160 84% 39% / 0.12)", color: "hsl(160 84% 39%)" }}
-                          >
-                            <svg width="7" height="7" viewBox="0 0 12 12" fill="none">
-                              <path d="M2 6l3 3 5-5" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                          </div>
-                          <span className="text-[10px] text-foreground/80">{f}</span>
-                        </div>
-                      ))}
-                    </div>
-                    {selectedDetail.badge && (
-                      <div
-                        className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-semibold"
-                        style={{
-                          background: "linear-gradient(135deg, hsl(var(--primary) / 0.08), hsl(var(--accent) / 0.08))",
-                          color: "hsl(var(--primary))",
-                        }}
-                      >
-                        ✦ {selectedDetail.badge}
-                      </div>
-                    )}
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+                </motion.div>
+              ) : (
+                <motion.p
+                  key="default"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  className="text-sm text-muted-foreground/60 italic"
+                >
+                  Bir partner seçin
+                </motion.p>
+              )}
+            </AnimatePresence>
+          </div>
         </motion.div>
 
         {/* Cards Container */}
@@ -485,11 +452,7 @@ export default function IntroAnimation() {
                 phase={introPhase}
                 target={target}
                 isSelected={selectedPartner === partner.id}
-                onClick={() =>
-                  setSelectedPartner((prev) =>
-                    prev === partner.id ? null : partner.id
-                  )
-                }
+                onClick={() => setSelectedPartner(partner.id)}
               />
             );
           })}
