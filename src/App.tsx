@@ -35,7 +35,7 @@ import Step2 from "./pages/kobi/Step2";
 import Step3 from "./pages/kobi/Step3";
 
 import Harita from "./pages/kobi/Harita";
-import Planlarim from "./pages/kobi/Planlarim";
+
 import KobiProducts from "./pages/kobi/KobiProducts";
 import TeklifTalebi from "./pages/kobi/TeklifTalebi";
 import KobiTekliflerim from "./pages/kobi/KobiTekliflerim";
@@ -89,7 +89,7 @@ const App = () => (
             {/* KOBİ main */}
             
             <Route path="/digitalhub/map" element={<Harita />} />
-            <Route path="/digitalhub/my-plans" element={<Planlarim />} />
+            
             <Route path="/digitalhub/products" element={<KobiProducts />} />
             <Route path="/digitalhub/quote-request" element={<TeklifTalebi />} />
             <Route path="/digitalhub/my-quotes" element={<KobiTekliflerim />} />

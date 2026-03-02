@@ -1,6 +1,6 @@
 import { useState, type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Map, Package, ShoppingCart, FileText, User, Search, Bell, Menu, X, LogOut, ChevronDown, ClipboardList } from "lucide-react";
+import { Map, Package, ShoppingCart, FileText, User, Search, Bell, Menu, X, LogOut, ChevronDown } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
 import { useCart } from "@/contexts/CartContext";
@@ -9,7 +9,7 @@ import AiAssistantWidget from "@/components/kobi/AiAssistantWidget";
 import kobiLogo from "@/assets/logo-kobitech.png";
 const navItems = [
   { icon: Map, label: "Harita", path: "/digitalhub/map" },
-  { icon: ClipboardList, label: "Planlarım", path: "/digitalhub/my-plans" },
+  
   { icon: Package, label: "Çözümler", path: "/digitalhub/products" },
   { icon: FileText, label: "Tekliflerim", path: "/digitalhub/my-quotes" },
   { icon: User, label: "Profilim", path: "/digitalhub/profile" },
