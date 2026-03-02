@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Target, Package, FileText, TrendingUp, Settings,
-  Search, Bell, ChevronDown, LogOut, User, DollarSign, Menu, X,
+  Search, Bell, ChevronDown, LogOut, User, Menu, X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -74,9 +74,6 @@ const Dashboard = () => {
                 >
                   <Link to="/settings" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors">
                     <User className="h-4 w-4" /> Profilim
-                  </Link>
-                  <Link to="/commissions" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors">
-                    <DollarSign className="h-4 w-4" /> Komisyonlarım
                   </Link>
                   <div className="border-t border-border" />
                   <button className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-destructive/5 text-muted-foreground hover:text-destructive transition-colors w-full">
