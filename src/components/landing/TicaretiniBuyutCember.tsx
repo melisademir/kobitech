@@ -310,7 +310,7 @@ export default function TicaretiniBuyutCember() {
             } else {
               const isMobile = containerSize.width < 768;
               const minDimension = Math.min(containerSize.width, containerSize.height);
-              const circleRadius = Math.min(minDimension * 0.35, 350);
+              const circleRadius = Math.min(minDimension * 0.28, 280);
               const circleAngle = (i / TOTAL_IMAGES) * 360;
               const circleRad = (circleAngle * Math.PI) / 180;
               const circlePos = { x: Math.cos(circleRad) * circleRadius, y: Math.sin(circleRad) * circleRadius, rotation: circleAngle + 90 };
