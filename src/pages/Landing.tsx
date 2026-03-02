@@ -1,5 +1,5 @@
 import LandingNav from "@/components/landing/LandingNav";
-
+import PartnerCarouselSection from "@/components/landing/PartnerCarouselSection";
 import HeroSection from "@/components/landing/HeroSection";
 
 import FeaturesSection from "@/components/landing/FeaturesSection";
@@ -13,7 +13,7 @@ import TestimonialsSection from "@/components/landing/TestimonialsSection";
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
 import BentoGridSection from "@/components/landing/BentoGridSection";
 
-
+import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
 import IntroAnimation from "@/components/ui/scroll-morph-hero";
 import TicaretiniBuyutCember from "@/components/landing/TicaretiniBuyutCember";
 
@@ -93,6 +93,15 @@ const Landing = () => (
     <BentoGridSection />
 
 
+    {/* PARTNER LOOP */}
+    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+      <JourneyLoopSection2 />
+    </div>
+
+    {/* PARTNER CAROUSEL */}
+    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+      <PartnerCarouselSection />
+    </div>
 
 
     <FooterSection />
