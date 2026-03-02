@@ -6,13 +6,11 @@ import { motion, useTransform, useSpring, useMotionValue, AnimatePresence } from
 import logoAras from "@/assets/logo-aras.png";
 import logoGoogle from "@/assets/logo-google.png";
 import logoIkas from "@/assets/logo-ikas.png";
-import logoKariyer from "@/assets/logo-kariyer.png";
-import logoKobitech from "@/assets/logo-kobitech.png";
 import logoMukellef from "@/assets/logo-mukellef.png";
 import logoParam from "@/assets/logo-param.png";
 import logoParamtech from "@/assets/logo-paramtech.png";
 import logoTicimax from "@/assets/logo-ticimax.png";
-import logoTsoft from "@/assets/logo-tsoft.png";
+import logoTsoft from "@/assets/logo-tsoft.svg";
 import logoWorkcube from "@/assets/logo-workcube.png";
 import logoFinrota from "@/assets/logo-finrota-new.svg";
 import logoKredim from "@/assets/logo-kredim.svg";
@@ -138,8 +136,6 @@ const PARTNERS: PartnerInfo[] = [
   { id: "finrota", name: "Finrota", logo: logoFinrota },
   { id: "nebim", name: "Nebim", logo: logoNebim },
   { id: "univera", name: "Univera", logo: logoUnivera },
-  { id: "kobitech", name: "Kobitech", logo: logoKobitech },
-  { id: "kariyer", name: "Kariyer", logo: logoKariyer },
 ];
 
 const TOTAL_IMAGES = PARTNERS.length;
