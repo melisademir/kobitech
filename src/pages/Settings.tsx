@@ -4,7 +4,7 @@ import { Switch } from "@/components/ui/switch";
 import { toast } from "@/hooks/use-toast";
 import DashboardLayout from "@/components/layout/DashboardLayout";
 
-const tabs = ["Profil Bilgileri", "Hesap Güvenliği", "Bildirim Tercihleri", "Komisyon Bilgileri"];
+const tabs = ["Profil Bilgileri", "Hesap Güvenliği", "Bildirim Tercihleri"];
 
 const SettingsPage = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -15,10 +15,9 @@ const SettingsPage = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [notifications, setNotifications] = useState({
     proposalApproved: true, proposalViewed: true, customerStep: true, newProduct: true,
-    commissionPaid: true, weeklyReport: true, marketing: false,
-    smsProposal: true, smsCommission: true, pushProposal: true, pushCustomer: true,
+    weeklyReport: true, marketing: false,
+    pushProposal: true, pushCustomer: true,
   });
-  const [bankInfo, setBankInfo] = useState({ bank: "Ziraat Bankası", branch: "Kadıköy Şubesi", iban: "TR12 3456 7890 1234 5678 9012 34", holder: "Ahmet Yılmaz" });
 
   const handleSave = (section: string) => {
     toast({ title: `${section} güncellendi ✓`, duration: 2000 });
@@ -159,7 +158,6 @@ const SettingsPage = () => {
                   { key: "proposalViewed", label: "Teklif görüntülendiğinde", desc: "Müşteri PDF'i açtığında bilgi" },
                   { key: "customerStep", label: "Müşteri dijital adım tamamladığında", desc: "Upsell fırsatı bildirimi" },
                   { key: "newProduct", label: "Yeni Param ürünü eklendiğinde", desc: "Katalog güncellemeleri" },
-                  { key: "commissionPaid", label: "Komisyon ödendiğinde", desc: "Ödeme onay bildirimi" },
                   { key: "weeklyReport", label: "Haftalık performans özeti", desc: "Her Pazartesi rapor" },
                   { key: "marketing", label: "Pazarlama ve kampanyalar", desc: "Promosyonlar, duyurular" },
                 ].map(n => (
@@ -174,53 +172,8 @@ const SettingsPage = () => {
               </div>
             </div>
 
-            <div className="border-t border-border pt-6">
-              <h2 className="text-lg font-bold text-foreground mb-4">SMS Bildirimleri</h2>
-              <div className="space-y-4">
-                {[
-                  { key: "smsProposal", label: "Teklif onaylandığında (SMS)" },
-                  { key: "smsCommission", label: "Komisyon ödendiğinde (SMS)" },
-                ].map(n => (
-                  <div key={n.key} className="flex items-center justify-between py-2">
-                    <p className="text-sm font-medium text-foreground">{n.label}</p>
-                    <Switch checked={(notifications as any)[n.key]} onCheckedChange={v => setNotifications(prev => ({ ...prev, [n.key]: v }))} />
-                  </div>
-                ))}
-              </div>
-            </div>
-
             <button onClick={() => handleSave("Bildirim tercihleri")} className="px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-bold text-sm hover:opacity-90">
               Tercihleri Kaydet
-            </button>
-          </div>
-        )}
-
-        {activeTab === 3 && (
-          <div className="bg-card rounded-xl shadow-card p-6 space-y-4">
-            <h2 className="text-lg font-bold text-foreground">Komisyon Ödeme Bilgileri</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              {[
-                { label: "Banka Adı", key: "bank" },
-                { label: "Şube", key: "branch" },
-                { label: "IBAN", key: "iban" },
-                { label: "Hesap Sahibi", key: "holder" },
-              ].map(f => (
-                <div key={f.key}>
-                  <label className="text-xs font-medium text-muted-foreground">{f.label}</label>
-                  <input
-                    value={(bankInfo as any)[f.key]}
-                    onChange={e => setBankInfo(prev => ({ ...prev, [f.key]: e.target.value }))}
-                    className="w-full mt-1 px-3 py-2.5 border border-input rounded-lg text-sm bg-background text-foreground focus:outline-none focus:border-primary"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="bg-primary/5 border-l-4 border-primary rounded-r-lg p-4 mt-4">
-              <p className="text-sm text-foreground"><strong>Komisyon Ödeme Takvimi:</strong> Her ayın 15'inde bekleyen komisyonlarınız hesabınıza yatırılır.</p>
-              <p className="text-xs text-muted-foreground mt-1">Minimum ödeme tutarı: 500₺ (altındaki tutarlar sonraki aya aktarılır)</p>
-            </div>
-            <button onClick={() => handleSave("Banka bilgileri")} className="px-6 py-2.5 rounded-lg bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 flex items-center gap-2">
-              <Save className="h-4 w-4" /> Bilgileri Güncelle
             </button>
           </div>
         )}
