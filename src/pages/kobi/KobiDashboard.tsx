@@ -1,6 +1,6 @@
 import KobiLayout from "@/components/layout/KobiLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { FileText, ShoppingCart, MessageCircle, Map } from "lucide-react";
+import { FileText, ShoppingCart, Map } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useOnboarding } from "@/contexts/OnboardingContext";
@@ -22,7 +22,6 @@ const KobiDashboard = () => {
             { icon: Map, label: "Harita", desc: "Yolculuğunuzu görün", path: "/kobi/harita", color: "text-primary" },
             { icon: ShoppingCart, label: "Çözümler", desc: "21+ ürün keşfedin", path: "/kobi/urunler", color: "text-accent" },
             { icon: FileText, label: "Tekliflerim", desc: "Teklif durumları", path: "/kobi/tekliflerim", color: "text-warning" },
-            { icon: MessageCircle, label: "Görüşmeler", desc: "Mesajlarınız", path: "/kobi/gorusmeler", color: "text-info" },
           ].map(s => (
             <Link key={s.label} to={s.path}>
               <Card className="hover:shadow-card-hover transition-shadow cursor-pointer">

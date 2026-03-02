@@ -2,7 +2,7 @@ import { useState, type ReactNode } from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
   LayoutDashboard, Target, Package, FileText, TrendingUp, Settings,
-  Search, Bell, ChevronDown, LogOut, User, Menu, X, MessageCircle,
+  Search, Bell, ChevronDown, LogOut, User, Menu, X,
 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { motion, AnimatePresence } from "framer-motion";
@@ -12,7 +12,6 @@ const navItems = [
   { icon: Target, label: "Müşteri Analizi", path: "/customer-analysis" },
   { icon: Package, label: "Param Ürünleri", path: "/products", badge: "21" },
   { icon: FileText, label: "Tekliflerim", path: "/proposals", badgeCount: 3 },
-  { icon: MessageCircle, label: "Görüşmeler", path: "/bayi/gorusmeler", badgeCount: 2 },
   { icon: TrendingUp, label: "Performansım", path: "/performance" },
   { icon: Bell, label: "Bildirimler", path: "/notifications", badgeCount: 5 },
   { icon: Settings, label: "Ayarlar", path: "/settings" },
