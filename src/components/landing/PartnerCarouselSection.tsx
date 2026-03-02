@@ -214,17 +214,26 @@ const PartnerCarouselSection = () => {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-2">
-              {partners.map((_, i) => (
+            <div className="flex items-center gap-1.5 overflow-x-auto max-w-[70vw] md:max-w-none py-1">
+              {partners.map((p, i) => (
                 <button
-                  key={i}
+                  key={p.id}
                   onClick={() => setCurrentIndex(i)}
                   className={cn(
-                    "w-2.5 h-2.5 rounded-full transition-colors",
-                    i === currentIndex ? "bg-foreground" : "bg-muted-foreground/30"
+                    "flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 border-2",
+                    i === currentIndex
+                      ? "border-primary scale-110 shadow-md"
+                      : "border-transparent opacity-50 hover:opacity-80"
                   )}
-                  aria-label={`Partner ${i + 1}`}
-                />
+                  style={{ background: "hsl(var(--card))" }}
+                  aria-label={p.name}
+                >
+                  <img
+                    src={p.logo}
+                    alt={p.name}
+                    className="w-6 h-6 object-contain mix-blend-multiply"
+                  />
+                </button>
               ))}
             </div>
 
