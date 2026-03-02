@@ -28,7 +28,7 @@ const Step3 = () => {
   const handleNext = () => {
     if (selected.length) {
       setData({ goals: selected });
-      navigate("/kobi/dashboard");
+      navigate("/digitalhub/dashboard");
     }
   };
 
@@ -56,7 +56,7 @@ const Step3 = () => {
         </div>
         <div className="flex gap-4">
           <Button asChild variant="outline" className="flex-1">
-            <Link to="/kobi/step-2"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
+            <Link to="/digitalhub/step-2"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
           </Button>
           <Button onClick={handleNext} disabled={!selected.length} variant="hero" className="flex-1">Planımı Oluştur 🚀</Button>
         </div>

@@ -166,7 +166,7 @@ const HowItWorksSection = () => (
         transition={{ duration: 0.5, delay: 0.35 }}
         className="text-center mt-16"
       >
-        <Link to="/kobi/step-1">
+        <Link to="/digitalhub/step-1">
           <button
             className="inline-flex items-center gap-3 text-white font-bold transition-all duration-200"
             style={{

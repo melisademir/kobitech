@@ -28,7 +28,7 @@ const TeklifTalebi = () => {
           <h1 className="text-3xl font-bold text-foreground">Talebiniz Alındı!</h1>
           <p className="text-muted-foreground">Talep No: <span className="font-bold text-primary">#{requestId}</span></p>
           <p className="text-muted-foreground">24 saat içinde sizinle iletişime geçeceğiz.</p>
-          <Button variant="hero" onClick={() => navigate("/kobi/tekliflerim")}>Tekliflerimi Gör</Button>
+          <Button variant="hero" onClick={() => navigate("/digitalhub/tekliflerim")}>Tekliflerimi Gör</Button>
         </div>
       </KobiLayout>
     );

@@ -61,7 +61,7 @@ const KobiTekliflerim = () => {
                       {q.price && <p className="text-lg font-bold text-primary">{q.price}</p>}
                     </div>
                     <div className="flex gap-2 shrink-0">
-                      <Button variant="outline" size="sm" onClick={() => navigate(`/kobi/tekliflerim/${q.id}`)}>Detay</Button>
+                      <Button variant="outline" size="sm" onClick={() => navigate(`/digitalhub/tekliflerim/${q.id}`)}>Detay</Button>
                       {q.status === "pending" && (
                         <>
                           <Button variant="outline" size="sm">Soru Sor</Button>

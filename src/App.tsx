@@ -77,26 +77,26 @@ const App = () => (
 
             {/* KOBİ auth */}
             <Route path="/digitalhub/login" element={<KobiLogin />} />
-            <Route path="/kobi/signup" element={<KobiSignup />} />
-            <Route path="/kobi/reset-password" element={<KobiResetPassword />} />
+            <Route path="/digitalhub/signup" element={<KobiSignup />} />
+            <Route path="/digitalhub/reset-password" element={<KobiResetPassword />} />
 
             {/* KOBİ onboarding */}
             
-            <Route path="/kobi/step-1" element={<Step1 />} />
-            <Route path="/kobi/step-2" element={<Step2 />} />
-            <Route path="/kobi/step-3" element={<Step3 />} />
+            <Route path="/digitalhub/step-1" element={<Step1 />} />
+            <Route path="/digitalhub/step-2" element={<Step2 />} />
+            <Route path="/digitalhub/step-3" element={<Step3 />} />
 
             {/* KOBİ main */}
-            <Route path="/kobi/dashboard" element={<KobiDashboard />} />
-            <Route path="/kobi/harita" element={<Harita />} />
-            <Route path="/kobi/planlarim" element={<Planlarim />} />
-            <Route path="/kobi/urunler" element={<KobiProducts />} />
-            <Route path="/kobi/teklif-talebi" element={<TeklifTalebi />} />
-            <Route path="/kobi/tekliflerim" element={<KobiTekliflerim />} />
-            <Route path="/kobi/tekliflerim/:id" element={<KobiTeklifDetay />} />
+            <Route path="/digitalhub/dashboard" element={<KobiDashboard />} />
+            <Route path="/digitalhub/harita" element={<Harita />} />
+            <Route path="/digitalhub/planlarim" element={<Planlarim />} />
+            <Route path="/digitalhub/urunler" element={<KobiProducts />} />
+            <Route path="/digitalhub/teklif-talebi" element={<TeklifTalebi />} />
+            <Route path="/digitalhub/tekliflerim" element={<KobiTekliflerim />} />
+            <Route path="/digitalhub/tekliflerim/:id" element={<KobiTeklifDetay />} />
             
-            <Route path="/kobi/profile" element={<KobiProfile />} />
-            <Route path="/kobi/notifications" element={<KobiBildirimler />} />
+            <Route path="/digitalhub/profile" element={<KobiProfile />} />
+            <Route path="/digitalhub/notifications" element={<KobiBildirimler />} />
 
             <Route path="*" element={<NotFound />} />
           </Routes>
