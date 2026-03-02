@@ -50,11 +50,11 @@ const PartnerCarouselSection = () => {
 
   // Stack offsets: [position] => { y, scale, opacity, zIndex }
   const stackPositions: Record<number, { y: number; scale: number; opacity: number; z: number }> = {
-    0: { y: 24, scale: 0.88, opacity: 0.08, z: 1 },
-    1: { y: 12, scale: 0.94, opacity: 0.25, z: 2 },
+    0: { y: 24, scale: 0.88, opacity: 0, z: 1 },
+    1: { y: 12, scale: 0.94, opacity: 0, z: 2 },
     2: { y: 0, scale: 1, opacity: 1, z: 5 },
-    3: { y: 12, scale: 0.94, opacity: 0.25, z: 2 },
-    4: { y: 24, scale: 0.88, opacity: 0.08, z: 1 },
+    3: { y: 12, scale: 0.94, opacity: 0, z: 2 },
+    4: { y: 24, scale: 0.88, opacity: 0, z: 1 },
   };
 
   return (
