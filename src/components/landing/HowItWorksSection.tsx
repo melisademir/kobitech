@@ -31,6 +31,15 @@ const containerVariants = {
   visible: { transition: { staggerChildren: 0.15 } },
 };
 
+const cardVariants = {
+  initial: { scale: 1, y: 0 },
+  hover: {
+    scale: 1.03,
+    y: -5,
+    transition: { type: "spring" as const, stiffness: 300, damping: 15 },
+  },
+};
+
 const stepVariants = {
   hidden: { opacity: 0, y: 28 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] as any } },
@@ -85,82 +94,66 @@ const HowItWorksSection = () => (
           <motion.div
             key={s.num}
             variants={stepVariants}
-            className="group flex flex-col"
           >
-            {/* Image Container */}
-            <div
-              className="relative overflow-hidden w-full"
-              style={{
-                borderRadius: "20px 20px 0 0",
-                aspectRatio: "16/10",
-                background: "#0F172A",
-                border: "1px solid rgba(255,255,255,0.08)",
-                borderBottom: "none",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.5)",
-              }}
-            >
-              <img
-                src={s.image}
-                alt={s.title}
-                className="w-full h-full object-cover"
-              />
-            </div>
-
-            {/* Card body */}
-            <div
-              className="flex-1 flex flex-col transition-colors duration-200"
+            <motion.div
+              className="flex flex-col rounded-[20px] overflow-hidden cursor-default h-full"
               style={{
                 background: "rgba(255,255,255,0.04)",
-                borderRadius: "0 0 20px 20px",
                 border: "1px solid rgba(255,255,255,0.08)",
-                borderTop: "1px solid rgba(124,58,237,0.2)",
-                padding: "1.5rem 1.75rem 1.75rem",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.06)";
-                e.currentTarget.style.borderColor = "rgba(124,58,237,0.35)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "rgba(255,255,255,0.04)";
-                e.currentTarget.style.borderColor = "rgba(255,255,255,0.08)";
-              }}
+              variants={cardVariants}
+              initial="initial"
+              whileHover="hover"
             >
-              {/* Number icon */}
-              <div className="flex items-center gap-2 mb-3">
-                <span
-                  className="inline-flex items-center justify-center rounded-full font-extrabold text-white"
-                  style={{
-                    width: "32px",
-                    height: "32px",
-                    fontSize: "14px",
-                    background: "linear-gradient(135deg, #6D28D9, #8B5CF6)",
-                    boxShadow: "0 2px 8px rgba(124,58,237,0.35)",
-                  }}
-                >
-                  {s.num}
-                </span>
-                {s.badges.map((b) => (
+              {/* Image */}
+              <div className="relative overflow-hidden" style={{ aspectRatio: "16/10" }}>
+                <motion.img
+                  src={s.image}
+                  alt={s.title}
+                  className="w-full h-full object-cover"
+                  whileHover={{ scale: 1.05 }}
+                  transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+                />
+              </div>
+
+              {/* Content */}
+              <div className="p-5 flex-1 flex flex-col">
+                {/* Number + Badge */}
+                <div className="flex items-center gap-2 mb-3">
                   <span
-                    key={b}
-                    className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase"
+                    className="inline-flex items-center justify-center rounded-full font-extrabold text-white"
                     style={{
-                      background: "rgba(124,58,237,0.15)",
-                      border: "1px solid rgba(124,58,237,0.3)",
-                      color: "#A78BFA",
+                      width: "32px",
+                      height: "32px",
+                      fontSize: "14px",
+                      background: "linear-gradient(135deg, #6D28D9, #8B5CF6)",
+                      boxShadow: "0 2px 8px rgba(124,58,237,0.35)",
                     }}
                   >
-                    {b}
+                    {s.num}
                   </span>
-                ))}
+                  {s.badges.map((b) => (
+                    <span
+                      key={b}
+                      className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase"
+                      style={{
+                        background: "rgba(124,58,237,0.15)",
+                        border: "1px solid rgba(124,58,237,0.3)",
+                        color: "#A78BFA",
+                      }}
+                    >
+                      {b}
+                    </span>
+                  ))}
+                </div>
+                <h3
+                  className="text-white font-bold leading-snug"
+                  style={{ fontSize: "clamp(17px, 2vw, 21px)", letterSpacing: "-0.015em" }}
+                >
+                  {s.title}
+                </h3>
               </div>
-              <h3
-                className="text-white font-bold mb-3 leading-snug"
-                style={{ fontSize: "clamp(17px, 2vw, 21px)", letterSpacing: "-0.015em" }}
-              >
-                {s.title}
-              </h3>
-            </div>
+            </motion.div>
           </motion.div>
         ))}
       </motion.div>
