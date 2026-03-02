@@ -91,7 +91,7 @@ const PartnerCarouselSection = () => {
                   <img
                     src={current.logo}
                     alt={current.name}
-                    className="w-36 h-36 object-contain mix-blend-multiply"
+                    className="w-48 h-48 object-contain mix-blend-multiply"
                   />
                 </motion.div>
               </AnimatePresence>
@@ -167,7 +167,7 @@ const PartnerCarouselSection = () => {
                 <img
                   src={current.logo}
                   alt={current.name}
-                  className="w-24 h-24 object-contain mix-blend-multiply"
+                  className="w-32 h-32 object-contain mix-blend-multiply"
                 />
               </motion.div>
             </AnimatePresence>
