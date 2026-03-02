@@ -275,7 +275,7 @@ export default function TicaretiniBuyutCember() {
                         <selected.icon size={24} style={{ color: selected.accent }} />
                       </div>
                       <div className="text-left">
-                        <h4 className="text-base font-bold text-foreground leading-tight">{selected.label}</h4>
+                        <h4 className="text-xl md:text-2xl font-extrabold text-foreground leading-tight" style={{ letterSpacing: "-0.02em" }}>{selected.label}</h4>
                       </div>
                     </div>
                     <p className="text-base text-muted-foreground leading-relaxed mb-4 max-w-md">{selected.description}</p>
