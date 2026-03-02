@@ -96,7 +96,7 @@ const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * 
 export default function TicaretiniBuyutCember() {
   const [introPhase, setIntroPhase] = useState<AnimationPhase>("scatter");
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>("odeme");
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
