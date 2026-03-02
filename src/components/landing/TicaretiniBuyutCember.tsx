@@ -1,34 +1,24 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useTransform, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
-
-// Logo imports
-import logoAras from "@/assets/logo-aras.png";
-import logoGoogle from "@/assets/logo-google.png";
-import logoIkas from "@/assets/logo-ikas.png";
-import logoMukellef from "@/assets/logo-mukellef.png";
-import logoParam from "@/assets/logo-param.png";
-import logoParamtech from "@/assets/logo-paramtech.png";
-import logoTicimax from "@/assets/logo-ticimax.png";
-import logoTsoft from "@/assets/logo-tsoft.svg";
-import logoWorkcube from "@/assets/logo-workcube.png";
-import logoFinrota from "@/assets/logo-finrota-new.svg";
-import logoKredim from "@/assets/logo-kredim.svg";
-import logoNebim from "@/assets/logo-nebim.svg";
-import logoUnivera from "@/assets/logo-univera.svg";
-
-import { partnerDetails } from "@/components/landing/partner-ecosystem/partner-data";
+import {
+  CreditCard, ShoppingCart, Wallet, Package, Truck, Users, MapPin,
+  ClipboardCheck, BadgePercent, Globe2, type LucideIcon,
+} from "lucide-react";
 
 // --- Types ---
 type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
 
-interface PartnerInfo {
+interface CategoryInfo {
   id: string;
-  name: string;
-  logo: string;
+  label: string;
+  description: string;
+  tags: string[];
+  icon: LucideIcon;
+  accent: string;
 }
 
 interface FlipCardProps {
-  partner: PartnerInfo;
+  category: CategoryInfo;
   index: number;
   total: number;
   phase: AnimationPhase;
@@ -37,10 +27,24 @@ interface FlipCardProps {
   onClick: () => void;
 }
 
-const IMG_WIDTH = 60;
+const IMG_WIDTH = 72;
 const IMG_HEIGHT = 85;
 
-function FlipCard({ partner, index, total, phase, target, isSelected, onClick }: FlipCardProps) {
+const CATEGORIES: CategoryInfo[] = [
+  { id: "odeme", label: "Ödeme Al", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], icon: CreditCard, accent: "#059669" },
+  { id: "eticaret", label: "E-Ticarete Açıl", description: "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin.", tags: ["Ticimax", "İkas", "T-Soft"], icon: ShoppingCart, accent: "#2563EB" },
+  { id: "para", label: "Paranı Yönet", description: "Finrota'nın sunduğu Netahsilat, Netekstre, Nap360 ve Posrapor çözümleriyle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına ulaşın.", tags: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"], icon: Wallet, accent: "#D97706" },
+  { id: "stok", label: "Stoğunu Kontrol Et", description: "Univera Stokbar ve Nebim V3 çözümleriyle depo yönetiminizi modernleştirin, ürün giriş çıkışlarını anlık verilerle izleyin. Akıllı stok planlama yöntemleriyle depo seviyelerinizi en ideal noktada tutun.", tags: ["Univera Stokbar", "Nebim V3"], icon: Package, accent: "#0891B2" },
+  { id: "kargo", label: "Ürünlerini Gönder", description: "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her yerine hızlıca ulaştırın. E-ticaret entegrasyonu ile siparişlerinizi anında kargoya hazırlayın.", tags: ["Aras Kargo"], icon: Truck, accent: "#10B981" },
+  { id: "ekip", label: "Ekibine Yön Ver", description: "Çalışanlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Workcube HR ile güvenle yönetin.", tags: ["Workcube HR"], icon: Users, accent: "#DB2777" },
+  { id: "saha", label: "Sahayı Yönet", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin.", tags: ["Univera EnRoute"], icon: MapPin, accent: "#F59E0B" },
+  { id: "akis", label: "İş Akışını Takip Et", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin. Paramtech Flows ile ekibinizin verimliliğini artırın.", tags: ["Uni-Dox", "Paramtech Flows"], icon: ClipboardCheck, accent: "#6366F1" },
+  { id: "tesvik", label: "Teşviklerden Yararlan", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Doğrudan ilgili kurumlarla bir araya getiriyoruz.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], icon: BadgePercent, accent: "#7C3AED" },
+  { id: "global", label: "Globale Açıl", description: "Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonuyla ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "Ticimax", "Mükellef"], icon: Globe2, accent: "#7C3AED" },
+];
+
+function FlipCard({ category, index, total, phase, target, isSelected, onClick }: FlipCardProps) {
+  const Icon = category.icon;
   return (
     <motion.div
       className="absolute cursor-pointer"
@@ -68,52 +72,31 @@ function FlipCard({ partner, index, total, phase, target, isSelected, onClick }:
     >
       <motion.div className="relative w-full h-full" style={{ transformStyle: "preserve-3d" }}>
         <div
-          className="absolute inset-0 rounded-lg overflow-hidden flex items-center justify-center"
+          className="absolute inset-0 rounded-lg overflow-hidden flex flex-col items-center justify-center gap-1"
           style={{
             backfaceVisibility: "hidden",
             background: "white",
-            border: isSelected ? "2px solid hsl(var(--primary))" : "1px solid hsl(var(--border))",
-            padding: "10px",
-            boxShadow: isSelected ? "0 0 20px hsl(var(--primary) / 0.3)" : "0 2px 8px rgba(0,0,0,0.06)",
+            border: isSelected ? `2px solid ${category.accent}` : "1px solid hsl(var(--border))",
+            padding: "6px 4px",
+            boxShadow: isSelected ? `0 0 20px ${category.accent}40` : "0 2px 8px rgba(0,0,0,0.06)",
           }}
         >
-          <img src={partner.logo} alt={partner.name} className="w-full h-full object-contain" style={{ mixBlendMode: "multiply" }} loading="lazy" />
-        </div>
-        <div
-          className="absolute inset-0 rounded-lg flex items-center justify-center"
-          style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)", background: "hsl(var(--primary))" }}
-        >
-          <p className="text-[8px] font-semibold text-primary-foreground">{partner.name}</p>
+          <Icon size={20} style={{ color: category.accent }} strokeWidth={2} />
+          <span className="text-[8px] font-bold text-foreground text-center leading-tight px-1">{category.label}</span>
         </div>
       </motion.div>
     </motion.div>
   );
 }
 
-const PARTNERS: PartnerInfo[] = [
-  { id: "paramtech", name: "ParamTech", logo: logoParamtech },
-  { id: "param", name: "Param", logo: logoParam },
-  { id: "aras", name: "Aras", logo: logoAras },
-  { id: "google", name: "Google", logo: logoGoogle },
-  { id: "ikas", name: "ikas", logo: logoIkas },
-  { id: "kredim", name: "Kredim", logo: logoKredim },
-  { id: "mukellef", name: "Mükellef", logo: logoMukellef },
-  { id: "ticimax", name: "Ticimax", logo: logoTicimax },
-  { id: "tsoft", name: "T-SOFT", logo: logoTsoft },
-  { id: "workcube", name: "Workcube", logo: logoWorkcube },
-  { id: "finrota", name: "Finrota", logo: logoFinrota },
-  { id: "nebim", name: "Nebim", logo: logoNebim },
-  { id: "univera", name: "Univera", logo: logoUnivera },
-];
-
-const TOTAL_IMAGES = PARTNERS.length;
+const TOTAL_IMAGES = CATEGORIES.length;
 const MAX_SCROLL = 3000;
 const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * t;
 
 export default function TicaretiniBuyutCember() {
   const [introPhase, setIntroPhase] = useState<AnimationPhase>("scatter");
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
-  const [selectedPartner, setSelectedPartner] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -197,7 +180,7 @@ export default function TicaretiniBuyutCember() {
   }, []);
 
   const scatterPositions = useMemo(() => {
-    return PARTNERS.map(() => ({
+    return CATEGORIES.map(() => ({
       x: (Math.random() - 0.5) * 1500,
       y: (Math.random() - 0.5) * 1000,
       rotation: (Math.random() - 0.5) * 180,
@@ -220,8 +203,7 @@ export default function TicaretiniBuyutCember() {
   const contentOpacity = useTransform(smoothMorph, [0.8, 1], [0, 1]);
   const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
 
-  const selected = selectedPartner ? PARTNERS.find((p) => p.id === selectedPartner) : null;
-  const selectedDetail = selectedPartner ? partnerDetails[selectedPartner] : null;
+  const selected = selectedCategory ? CATEGORIES.find((c) => c.id === selectedCategory) : null;
 
   return (
     <section className="relative w-full" style={{ height: "100vh" }}>
@@ -238,7 +220,7 @@ export default function TicaretiniBuyutCember() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            Güçlü Partner Ekosistemi
+            Ticaretini Büyüt
           </motion.h2>
           <motion.p
             className="mt-4 text-sm text-muted-foreground tracking-widest uppercase"
@@ -255,13 +237,17 @@ export default function TicaretiniBuyutCember() {
           className="absolute inset-x-0 top-[25%] z-20 flex flex-col items-center text-center px-4"
           style={{ opacity: contentOpacity, y: contentY }}
         >
-          <h3 className="text-2xl md:text-4xl font-bold text-foreground">Güçlü Partner Ekosistemi</h3>
+          <h3 className="text-2xl md:text-4xl font-bold text-foreground">
+            Ticaretini Büyüt
+            <br />
+            <span className="text-gradient-primary">Maliyetlerini Düşür</span>
+          </h3>
           <p className="mt-3 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed">
-            İşletmenizin ihtiyacına uygun çözüm ortaklarını keşfedin.
+            İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
           </p>
           <div className="mt-8 min-h-[160px]">
             <AnimatePresence mode="wait">
-              {selected && selectedDetail ? (
+              {selected ? (
                 <motion.div
                   key={selected.id}
                   initial={{ opacity: 0, y: 12 }}
@@ -271,24 +257,23 @@ export default function TicaretiniBuyutCember() {
                   className="flex flex-col items-center text-center max-w-xl mx-auto"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center p-2" style={{ background: "hsl(var(--muted))" }}>
-                      <img src={selected.logo} alt={selected.name} className="w-full h-full object-contain" style={{ mixBlendMode: "multiply" }} />
+                    <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${selected.accent}15` }}>
+                      <selected.icon size={24} style={{ color: selected.accent }} />
                     </div>
                     <div className="text-left">
-                      <h4 className="text-base font-bold text-foreground leading-tight">{selected.name}</h4>
-                      <span className="text-xs text-muted-foreground">{selectedDetail.category}</span>
+                      <h4 className="text-base font-bold text-foreground leading-tight">{selected.label}</h4>
                     </div>
                   </div>
-                  <p className="text-base text-muted-foreground leading-relaxed mb-4 max-w-md">{selectedDetail.description}</p>
+                  <p className="text-base text-muted-foreground leading-relaxed mb-4 max-w-md">{selected.description}</p>
                   <div className="flex flex-wrap justify-center gap-2.5">
-                    {selectedDetail.features.slice(0, 4).map((f, idx) => (
-                      <span key={idx} className="text-xs px-4 py-1.5 rounded-full text-foreground/70" style={{ background: "hsl(var(--muted))" }}>{f}</span>
+                    {selected.tags.map((tag, idx) => (
+                      <span key={idx} className="text-xs px-4 py-1.5 rounded-full text-foreground/70" style={{ background: "hsl(var(--muted))" }}>{tag}</span>
                     ))}
                   </div>
                 </motion.div>
               ) : (
                 <motion.p key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-base text-muted-foreground/60 italic">
-                  Bir partner seçin
+                  Bir çözüm seçin
                 </motion.p>
               )}
             </AnimatePresence>
@@ -297,13 +282,13 @@ export default function TicaretiniBuyutCember() {
 
         {/* Cards */}
         <div className="absolute inset-0 z-10">
-          {PARTNERS.map((partner, i) => {
+          {CATEGORIES.map((category, i) => {
             let target = { x: 0, y: 0, rotation: 0, scale: 1, opacity: 1 };
 
             if (introPhase === "scatter") {
               target = scatterPositions[i];
             } else if (introPhase === "line") {
-              const lineSpacing = 70;
+              const lineSpacing = 80;
               const lineTotalWidth = TOTAL_IMAGES * lineSpacing;
               const lineX = i * lineSpacing - lineTotalWidth / 2;
               target = { x: lineX, y: 0, rotation: 0, scale: 1, opacity: 1 };
@@ -348,14 +333,14 @@ export default function TicaretiniBuyutCember() {
 
             return (
               <FlipCard
-                key={partner.id}
-                partner={partner}
+                key={category.id}
+                category={category}
                 index={i}
                 total={TOTAL_IMAGES}
                 phase={introPhase}
                 target={target}
-                isSelected={selectedPartner === partner.id}
-                onClick={() => setSelectedPartner(partner.id)}
+                isSelected={selectedCategory === category.id}
+                onClick={() => setSelectedCategory(category.id)}
               />
             );
           })}
