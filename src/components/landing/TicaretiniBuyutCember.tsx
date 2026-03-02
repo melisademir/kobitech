@@ -114,7 +114,7 @@ function FlipCard({ category, index, total, phase, target, isSelected, onClick }
           <div
             className="absolute inset-0"
             style={{
-              background: `linear-gradient(180deg, ${category.accent}33 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.75) 100%)`,
+              background: `linear-gradient(180deg, ${category.accent}55 0%, rgba(0,0,0,0.72) 40%, rgba(0,0,0,0.88) 100%)`,
             }}
           />
           {/* Label */}
