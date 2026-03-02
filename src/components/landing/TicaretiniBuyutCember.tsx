@@ -115,11 +115,25 @@ export default function TicaretiniBuyutCember() {
   const virtualScroll = useMotionValue(0);
   const scrollRef = useRef(0);
 
+  const isVisibleRef = useRef(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting && entry.intersectionRatio > 0.5; },
+      { threshold: 0.5 }
+    );
+    obs.observe(container);
+    return () => obs.disconnect();
+  }, []);
+
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
     const handleWheel = (e: WheelEvent) => {
+      if (!isVisibleRef.current) return;
       if (scrollRef.current >= MAX_SCROLL && e.deltaY > 0) return;
       if (scrollRef.current <= 0 && e.deltaY < 0) return;
       e.preventDefault();
@@ -131,6 +145,7 @@ export default function TicaretiniBuyutCember() {
     let touchStartY = 0;
     const handleTouchStart = (e: TouchEvent) => { touchStartY = e.touches[0].clientY; };
     const handleTouchMove = (e: TouchEvent) => {
+      if (!isVisibleRef.current) return;
       const touchY = e.touches[0].clientY;
       const deltaY = touchStartY - touchY;
       touchStartY = touchY;
