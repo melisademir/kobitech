@@ -5,6 +5,30 @@ import {
   ClipboardCheck, BadgePercent, Globe2, type LucideIcon,
 } from "lucide-react";
 
+import tabOdeme from "@/assets/tab-odeme-corp.png";
+import tabEticaret from "@/assets/tab-eticaret-corp.png";
+import tabPara from "@/assets/tab-para-corp.png";
+import tabStok from "@/assets/tab-stok-corp.png";
+import tabKargo from "@/assets/tab-kargo-ai.png";
+import tabEkip from "@/assets/tab-ekip-corp.png";
+import tabSaha from "@/assets/tab-saha-ai.png";
+import tabAkis from "@/assets/tab-uretim-corp.png";
+import tabTesvik from "@/assets/tab-tesvik-corp.png";
+import tabGlobal from "@/assets/tab-global-corp.png";
+
+const CARD_IMAGES: Record<string, string> = {
+  odeme: tabOdeme,
+  eticaret: tabEticaret,
+  para: tabPara,
+  stok: tabStok,
+  kargo: tabKargo,
+  ekip: tabEkip,
+  saha: tabSaha,
+  akis: tabAkis,
+  tesvik: tabTesvik,
+  global: tabGlobal,
+};
+
 // --- Types ---
 type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
 
@@ -44,7 +68,7 @@ const CATEGORIES: CategoryInfo[] = [
 ];
 
 function FlipCard({ category, index, total, phase, target, isSelected, onClick }: FlipCardProps) {
-  const Icon = category.icon;
+  const bgImage = CARD_IMAGES[category.id];
   return (
     <motion.div
       className="absolute cursor-pointer"
@@ -72,23 +96,41 @@ function FlipCard({ category, index, total, phase, target, isSelected, onClick }
     >
       <motion.div className="relative w-full h-full" style={{ transformStyle: "preserve-3d" }}>
         <div
-          className="absolute inset-0 rounded-lg overflow-hidden flex flex-col items-center justify-center gap-1"
+          className="absolute inset-0 rounded-lg overflow-hidden"
           style={{
             backfaceVisibility: "hidden",
-            background: "white",
-            border: isSelected ? `2px solid ${category.accent}` : "1px solid hsl(var(--border))",
-            padding: "6px 4px",
-            boxShadow: isSelected ? `0 0 20px ${category.accent}40` : "0 2px 8px rgba(0,0,0,0.06)",
+            border: isSelected ? `2px solid ${category.accent}` : "1px solid rgba(0,0,0,0.08)",
+            boxShadow: isSelected ? `0 0 20px ${category.accent}40` : "0 2px 8px rgba(0,0,0,0.10)",
           }}
         >
-          <Icon size={20} style={{ color: category.accent }} strokeWidth={2} />
-          <span className="text-[8px] font-bold text-foreground text-center leading-tight px-1">{category.label}</span>
+          {/* Background image */}
+          <img
+            src={bgImage}
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover"
+            aria-hidden="true"
+          />
+          {/* Dark overlay */}
+          <div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(180deg, ${category.accent}33 0%, rgba(0,0,0,0.55) 50%, rgba(0,0,0,0.75) 100%)`,
+            }}
+          />
+          {/* Label */}
+          <div className="absolute inset-0 flex items-end justify-center pb-2 px-1">
+            <span
+              className="text-[8px] font-extrabold text-white text-center leading-tight drop-shadow-md"
+              style={{ textShadow: "0 1px 4px rgba(0,0,0,0.6)" }}
+            >
+              {category.label}
+            </span>
+          </div>
         </div>
       </motion.div>
     </motion.div>
   );
 }
-
 const TOTAL_IMAGES = CATEGORIES.length;
 const MAX_SCROLL = 3000;
 const lerp = (start: number, end: number, t: number) => start * (1 - t) + end * t;
