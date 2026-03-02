@@ -108,7 +108,7 @@ const ProposalBuilder = () => {
 
   const handleSaveDraft = () => {
     toast({ title: "Taslak kaydedildi ✓", duration: 2000 });
-    navigate("/dashboard");
+    navigate("/sales/dashboard");
   };
 
   return (
@@ -117,7 +117,7 @@ const ProposalBuilder = () => {
       <header className="bg-card border-b border-border px-6 py-5">
         <div className="max-w-7xl mx-auto">
           <div className="text-xs text-muted-foreground mb-2">
-            <Link to="/customer-analysis" className="text-primary hover:underline">Müşteri Analizi</Link>
+            <Link to="/sales/customer-analysis" className="text-primary hover:underline">Müşteri Analizi</Link>
             <span className="mx-2">&gt;</span>
             <span>Teklif Oluştur</span>
           </div>
@@ -470,7 +470,7 @@ const ProposalBuilder = () => {
                     💾 Taslak Olarak Kaydet
                   </button>
                   <button
-                    onClick={() => navigate("/customer-analysis")}
+                    onClick={() => navigate("/sales/customer-analysis")}
                     className="w-full text-center text-xs text-muted-foreground hover:underline"
                   >
                     İptal

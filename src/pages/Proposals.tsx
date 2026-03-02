@@ -222,7 +222,7 @@ const Proposals = () => {
               {isAdmin ? "👤 Bayi Görünümü" : "🛡️ Admin Görünümü"}
             </button>
             <Link
-              to="/customer-analysis"
+              to="/sales/customer-analysis"
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-primary text-primary-foreground font-bold text-sm hover:opacity-90 transition-opacity"
             >
               <Plus className="h-4 w-4" /> Yeni Teklif

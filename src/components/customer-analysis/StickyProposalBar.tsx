@@ -39,7 +39,7 @@ const StickyProposalBar = ({ products: proposalProducts, onClear, visible, onClo
 
           <div className="flex items-center gap-3">
             <Button asChild className="bg-card text-primary hover:bg-card/90 font-bold shadow-premium h-11 px-6" onClick={saveAndNavigate}>
-              <Link to="/proposal-builder">
+              <Link to="/sales/proposal-builder">
                 Teklif Oluştur <ArrowRight className="h-4 w-4 ml-1" />
               </Link>
             </Button>

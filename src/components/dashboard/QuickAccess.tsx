@@ -16,7 +16,7 @@ const QuickAccess = () => (
           <p className="text-primary-foreground/80 text-sm">Müşterinize özel ürün önerileri alın</p>
         </div>
         <Button asChild variant="secondary" className="w-fit bg-card/95 text-primary hover:bg-card font-bold">
-          <Link to="/customer-analysis">Analiz Başlat</Link>
+          <Link to="/sales/customer-analysis">Analiz Başlat</Link>
         </Button>
       </motion.div>
 
@@ -31,7 +31,7 @@ const QuickAccess = () => (
           <p className="text-sm text-muted-foreground">21 ürün kataloğu ve sektörel uyumlar</p>
         </div>
         <Button asChild variant="outline" className="w-fit">
-          <Link to="/products">Kataloğu Gör</Link>
+          <Link to="/sales/products">Kataloğu Gör</Link>
         </Button>
       </div>
 
@@ -46,7 +46,7 @@ const QuickAccess = () => (
           <p className="text-sm text-accent font-medium">3 teklif bekliyor</p>
         </div>
         <Button asChild variant="outline" className="w-fit">
-          <Link to="/proposals">Teklifleri Gör</Link>
+          <Link to="/sales/proposals">Teklifleri Gör</Link>
         </Button>
       </div>
     </div>

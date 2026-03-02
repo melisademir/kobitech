@@ -107,7 +107,7 @@ const KobiLogin = () => {
           <div className="text-center space-y-2">
             <Link to="/digitalhub/reset-password" className="text-primary font-medium text-sm hover:underline">Şifremi Unuttum</Link>
             <p className="text-muted-foreground text-sm">Hesabınız yok mu? <Link to={`/digitalhub/signup${redirect !== "/digitalhub/urunler" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`} className="text-primary font-bold hover:underline">Ücretsiz Kayıt</Link></p>
-          <p className="text-muted-foreground text-sm">Bayi misiniz? <Link to="/login" className="text-accent font-bold hover:underline">Buradan giriş →</Link></p>
+          <p className="text-muted-foreground text-sm">Bayi misiniz? <Link to="/sales/login" className="text-accent font-bold hover:underline">Buradan giriş →</Link></p>
           </div>
         </motion.div>
       </div>

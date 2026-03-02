@@ -59,20 +59,20 @@ const App = () => (
             <Route path="/homepage" element={<Landing />} />
 
             {/* Bayi auth */}
-            <Route path="/login" element={<Login />} />
-            <Route path="/reset-password" element={<ResetPassword />} />
+            <Route path="/sales/login" element={<Login />} />
+            <Route path="/sales/reset-password" element={<ResetPassword />} />
 
             {/* Bayi pages */}
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/customer-analysis" element={<CustomerAnalysis />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/proposal-builder" element={<ProposalBuilder />} />
-            <Route path="/proposals" element={<Proposals />} />
-            <Route path="/proposals/:id" element={<ProposalDetail />} />
-            <Route path="/performance" element={<Performance />} />
+            <Route path="/sales/dashboard" element={<Dashboard />} />
+            <Route path="/sales/customer-analysis" element={<CustomerAnalysis />} />
+            <Route path="/sales/products" element={<Products />} />
+            <Route path="/sales/proposal-builder" element={<ProposalBuilder />} />
+            <Route path="/sales/proposals" element={<Proposals />} />
+            <Route path="/sales/proposals/:id" element={<ProposalDetail />} />
+            <Route path="/sales/performance" element={<Performance />} />
             
-            <Route path="/settings" element={<SettingsPage />} />
-            <Route path="/notifications" element={<Notifications />} />
+            <Route path="/sales/settings" element={<SettingsPage />} />
+            <Route path="/sales/notifications" element={<Notifications />} />
             
 
             {/* KOBİ auth */}
