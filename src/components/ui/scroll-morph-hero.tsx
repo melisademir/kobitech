@@ -182,6 +182,11 @@ export default function IntroAnimation() {
     if (!container) return;
 
     const handleWheel = (e: WheelEvent) => {
+      // At max scroll and scrolling down → let page scroll naturally
+      if (scrollRef.current >= MAX_SCROLL && e.deltaY > 0) return;
+      // At 0 and scrolling up → let page scroll naturally
+      if (scrollRef.current <= 0 && e.deltaY < 0) return;
+
       e.preventDefault();
       const newScroll = Math.min(Math.max(scrollRef.current + e.deltaY, 0), MAX_SCROLL);
       scrollRef.current = newScroll;
@@ -196,6 +201,11 @@ export default function IntroAnimation() {
       const touchY = e.touches[0].clientY;
       const deltaY = touchStartY - touchY;
       touchStartY = touchY;
+
+      if (scrollRef.current >= MAX_SCROLL && deltaY > 0) return;
+      if (scrollRef.current <= 0 && deltaY < 0) return;
+
+      e.preventDefault();
       const newScroll = Math.min(Math.max(scrollRef.current + deltaY, 0), MAX_SCROLL);
       scrollRef.current = newScroll;
       virtualScroll.set(newScroll);
