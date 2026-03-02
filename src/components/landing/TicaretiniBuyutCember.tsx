@@ -237,7 +237,10 @@ export default function TicaretiniBuyutCember() {
           className="absolute inset-x-0 top-[25%] z-20 flex flex-col items-center text-center px-4"
           style={{ opacity: contentOpacity, y: contentY }}
         >
-          <h3 className="text-2xl md:text-4xl font-bold text-foreground">
+          <h3
+            className="text-5xl md:text-7xl font-extrabold text-foreground"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
+          >
             Ticaretini Büyüt
             <br />
             <span className="text-gradient-primary">Maliyetlerini Düşür</span>
