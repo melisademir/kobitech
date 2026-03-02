@@ -31,6 +31,12 @@ const partners: PartnerSlide[] = pieces.map((p) => {
   };
 });
 
+/** Returns indices for the visible stack: [behind-2, behind-1, active, front+1, front+2] */
+const getStackIndices = (current: number, total: number) => {
+  const wrap = (i: number) => ((i % total) + total) % total;
+  return [wrap(current - 2), wrap(current - 1), current, wrap(current + 1), wrap(current + 2)];
+};
+
 const PartnerCarouselSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -40,6 +46,16 @@ const PartnerCarouselSection = () => {
     setCurrentIndex((i) => (i - 1 + partners.length) % partners.length);
 
   const current = partners[currentIndex];
+  const stackIndices = getStackIndices(currentIndex, partners.length);
+
+  // Stack offsets: [position] => { y, scale, opacity, zIndex }
+  const stackPositions: Record<number, { y: number; scale: number; opacity: number; z: number }> = {
+    0: { y: 16, scale: 0.88, opacity: 0.15, z: 1 },  // behind-2
+    1: { y: 8, scale: 0.94, opacity: 0.4, z: 2 },    // behind-1
+    2: { y: 0, scale: 1, opacity: 1, z: 3 },           // active
+    3: { y: 8, scale: 0.94, opacity: 0.4, z: 2 },     // front+1
+    4: { y: 16, scale: 0.88, opacity: 0.15, z: 1 },   // front+2
+  };
 
   return (
     <section className="py-24 md:py-32">
@@ -71,129 +87,142 @@ const PartnerCarouselSection = () => {
         {/* Carousel */}
         <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto">
 
-          {/* Desktop layout */}
-          <div className="hidden md:grid w-full" style={{ gridTemplateColumns: "380px 1fr", minHeight: "380px" }}>
-            {/* Left — full-height logo panel */}
-            <div className="relative" style={{ gridRow: "1", gridColumn: "1" }}>
-              <AnimatePresence mode="wait">
+          {/* Desktop stacked cards */}
+          <div className="hidden md:block w-full relative" style={{ minHeight: "400px" }}>
+            {stackIndices.map((partnerIdx, posIdx) => {
+              const p = partners[partnerIdx];
+              const pos = stackPositions[posIdx];
+              const isActive = posIdx === 2;
+              return (
                 <motion.div
-                  key={current.id}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.35 }}
-                  className="absolute inset-0 rounded-2xl flex items-center justify-center overflow-hidden"
-                  style={{
-                    background: `linear-gradient(145deg, ${current.color}18, ${current.color}08)`,
-                    border: "1px solid hsl(var(--border))",
+                  key={p.id}
+                  className="absolute inset-x-0 mx-auto"
+                  style={{ zIndex: pos.z, width: "100%" }}
+                  animate={{
+                    y: pos.y,
+                    scale: pos.scale,
+                    opacity: pos.opacity,
                   }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
-                  <img
-                    src={current.logo}
-                    alt={current.name}
-                    className="w-64 h-64 object-contain mix-blend-multiply"
-                  />
-                </motion.div>
-              </AnimatePresence>
-            </div>
-
-            {/* Right — card overlapping the logo panel */}
-            <div
-              className="relative z-10 flex items-center"
-              style={{ gridRow: "1", gridColumn: "2", marginLeft: "-32px" }}
-            >
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={current.id}
-                  initial={{ opacity: 0, x: 24 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -24 }}
-                  transition={{ duration: 0.35 }}
-                  className="rounded-2xl p-8 lg:p-10 w-full"
-                  style={{
-                    background: "hsl(var(--card))",
-                    border: "1px solid hsl(var(--border))",
-                    boxShadow: "0 4px 32px rgba(0,0,0,0.07)",
-                  }}
-                >
-                  <h3
-                    className="text-2xl font-extrabold text-foreground mb-1"
-                    style={{ letterSpacing: "-0.02em" }}
+                  <div
+                    className="grid w-full"
+                    style={{ gridTemplateColumns: "380px 1fr", minHeight: "360px" }}
                   >
-                    {current.name}
-                  </h3>
-                  <p className="text-sm text-muted-foreground italic mb-4">
-                    {current.category}
-                  </p>
-                  <p className="text-foreground/80 text-base leading-relaxed mb-5">
-                    {current.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {current.features.slice(0, 4).map((f) => (
-                      <span
-                        key={f}
-                        className="text-xs px-3 py-1.5 rounded-full font-medium"
+                    {/* Logo panel */}
+                    <div className="relative rounded-2xl overflow-hidden"
+                      style={{
+                        background: `linear-gradient(145deg, ${p.color}18, ${p.color}08)`,
+                        border: "1px solid hsl(var(--border))",
+                      }}
+                    >
+                      <div className="absolute inset-0 flex items-center justify-center">
+                        <img
+                          src={p.logo}
+                          alt={p.name}
+                          className="w-64 h-64 object-contain mix-blend-multiply"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Content card */}
+                    <div className="flex items-center" style={{ marginLeft: "-32px", zIndex: 10 }}>
+                      <div
+                        className="rounded-2xl p-8 lg:p-10 w-full"
                         style={{
-                          background: "hsl(var(--muted))",
-                          color: "hsl(var(--muted-foreground))",
+                          background: "hsl(var(--card))",
+                          border: "1px solid hsl(var(--border))",
+                          boxShadow: isActive
+                            ? "0 8px 40px rgba(0,0,0,0.10)"
+                            : "0 4px 20px rgba(0,0,0,0.05)",
                         }}
                       >
-                        {f}
-                      </span>
-                    ))}
+                        <h3
+                          className="text-2xl font-extrabold text-foreground mb-1"
+                          style={{ letterSpacing: "-0.02em" }}
+                        >
+                          {p.name}
+                        </h3>
+                        <p className="text-sm text-muted-foreground italic mb-4">
+                          {p.category}
+                        </p>
+                        <p className="text-foreground/80 text-base leading-relaxed mb-5">
+                          {p.description}
+                        </p>
+                        <div className="flex flex-wrap gap-2">
+                          {p.features.slice(0, 4).map((f) => (
+                            <span
+                              key={f}
+                              className="text-xs px-3 py-1.5 rounded-full font-medium"
+                              style={{
+                                background: "hsl(var(--muted))",
+                                color: "hsl(var(--muted-foreground))",
+                              }}
+                            >
+                              {f}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
                 </motion.div>
-              </AnimatePresence>
-            </div>
+              );
+            })}
           </div>
 
-          {/* Mobile layout */}
-          <div className="md:hidden w-full flex flex-col items-center gap-0">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`mob-logo-${current.id}`}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.3 }}
-                className="w-full rounded-2xl rounded-b-none flex items-center justify-center"
-                style={{
-                  height: "220px",
-                  background: `linear-gradient(145deg, ${current.color}18, ${current.color}08)`,
-                  border: "1px solid hsl(var(--border))",
-                  borderBottom: "none",
-                }}
-              >
-                <img
-                  src={current.logo}
-                  alt={current.name}
-                  className="w-44 h-44 object-contain mix-blend-multiply"
-                />
-              </motion.div>
-            </AnimatePresence>
-
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={`mob-card-${current.id}`}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.3 }}
-                className="rounded-2xl rounded-t-none p-6 w-full"
-                style={{
-                  background: "hsl(var(--card))",
-                  border: "1px solid hsl(var(--border))",
-                  borderTop: "none",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
-                }}
-              >
-                <h3 className="text-lg font-extrabold text-foreground mb-1">{current.name}</h3>
-                <p className="text-xs text-muted-foreground italic mb-3">{current.category}</p>
-                <p className="text-foreground/80 text-sm leading-relaxed">
-                  {current.description}
-                </p>
-              </motion.div>
-            </AnimatePresence>
+          {/* Mobile stacked cards */}
+          <div className="md:hidden w-full relative" style={{ minHeight: "420px" }}>
+            {stackIndices.map((partnerIdx, posIdx) => {
+              const p = partners[partnerIdx];
+              const pos = stackPositions[posIdx];
+              return (
+                <motion.div
+                  key={p.id}
+                  className="absolute inset-x-0 mx-auto w-full"
+                  style={{ zIndex: pos.z }}
+                  animate={{
+                    y: pos.y,
+                    scale: pos.scale,
+                    opacity: pos.opacity,
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 25 }}
+                >
+                  <div className="flex flex-col">
+                    <div
+                      className="w-full rounded-2xl rounded-b-none flex items-center justify-center"
+                      style={{
+                        height: "200px",
+                        background: `linear-gradient(145deg, ${p.color}18, ${p.color}08)`,
+                        border: "1px solid hsl(var(--border))",
+                        borderBottom: "none",
+                      }}
+                    >
+                      <img
+                        src={p.logo}
+                        alt={p.name}
+                        className="w-44 h-44 object-contain mix-blend-multiply"
+                      />
+                    </div>
+                    <div
+                      className="rounded-2xl rounded-t-none p-6 w-full"
+                      style={{
+                        background: "hsl(var(--card))",
+                        border: "1px solid hsl(var(--border))",
+                        borderTop: "none",
+                        boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+                      }}
+                    >
+                      <h3 className="text-lg font-extrabold text-foreground mb-1">{p.name}</h3>
+                      <p className="text-xs text-muted-foreground italic mb-3">{p.category}</p>
+                      <p className="text-foreground/80 text-sm leading-relaxed">
+                        {p.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
 
           {/* Navigation */}
