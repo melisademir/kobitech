@@ -20,7 +20,7 @@ import Performance from "./pages/Performance";
 import SettingsPage from "./pages/Settings";
 import Notifications from "./pages/Notifications";
 import NotFound from "./pages/NotFound";
-import BayiGorusmeler from "./pages/bayi/BayiGorusmeler";
+
 
 // Landing
 import Landing from "./pages/Landing";
@@ -40,7 +40,7 @@ import KobiProducts from "./pages/kobi/KobiProducts";
 import TeklifTalebi from "./pages/kobi/TeklifTalebi";
 import KobiTekliflerim from "./pages/kobi/KobiTekliflerim";
 import KobiTeklifDetay from "./pages/kobi/KobiTeklifDetay";
-import KobiGorusmeler from "./pages/kobi/KobiGorusmeler";
+
 import KobiProfile from "./pages/kobi/KobiProfile";
 import KobiBildirimler from "./pages/kobi/KobiBildirimler";
 
@@ -73,7 +73,7 @@ const App = () => (
             
             <Route path="/settings" element={<SettingsPage />} />
             <Route path="/notifications" element={<Notifications />} />
-            <Route path="/bayi/gorusmeler" element={<BayiGorusmeler />} />
+            
 
             {/* KOBİ auth */}
             <Route path="/kobi/login" element={<KobiLogin />} />
@@ -94,7 +94,7 @@ const App = () => (
             <Route path="/kobi/teklif-talebi" element={<TeklifTalebi />} />
             <Route path="/kobi/tekliflerim" element={<KobiTekliflerim />} />
             <Route path="/kobi/tekliflerim/:id" element={<KobiTeklifDetay />} />
-            <Route path="/kobi/gorusmeler" element={<KobiGorusmeler />} />
+            
             <Route path="/kobi/profile" element={<KobiProfile />} />
             <Route path="/kobi/notifications" element={<KobiBildirimler />} />
 
