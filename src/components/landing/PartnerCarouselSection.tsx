@@ -97,7 +97,7 @@ const PartnerCarouselSection = () => {
                       style={{
                         background: isActive
                           ? `linear-gradient(145deg, ${p.color}18, ${p.color}08)`
-                          : "hsl(var(--muted) / 0.5)",
+                          : `linear-gradient(145deg, ${p.color}25, ${p.color}10)`,
                         border: "1px solid hsl(var(--border))",
                       }}
                     >
@@ -169,7 +169,7 @@ const PartnerCarouselSection = () => {
                         height: "200px",
                         background: isActive
                           ? `linear-gradient(145deg, ${p.color}18, ${p.color}08)`
-                          : "hsl(var(--muted) / 0.5)",
+                          : `linear-gradient(145deg, ${p.color}25, ${p.color}10)`,
                         border: "1px solid hsl(var(--border))",
                         borderBottom: "none",
                       }}
