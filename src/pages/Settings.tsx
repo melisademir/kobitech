@@ -109,18 +109,6 @@ const SettingsPage = () => {
               </div>
             </div>
 
-            <div className="bg-card rounded-xl shadow-card p-6">
-              <div className="flex items-center justify-between">
-                <div>
-                  <h2 className="text-lg font-bold text-foreground">İki Faktörlü Doğrulama (2FA)</h2>
-                  <p className="text-xs text-muted-foreground mt-1">Hesabınıza ekstra güvenlik katmanı ekleyin</p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="text-xs px-2 py-1 rounded-full bg-muted text-muted-foreground">Pasif</span>
-                  <button className="px-4 py-2 rounded-lg border-2 border-primary text-primary text-sm font-medium hover:bg-primary/5">Etkinleştir</button>
-                </div>
-              </div>
-            </div>
 
             <div className="bg-card rounded-xl shadow-card p-6">
               <h2 className="text-lg font-bold text-foreground mb-4">Giriş Geçmişi</h2>
