@@ -249,7 +249,7 @@ export default function TicaretiniBuyutCember() {
 
         {/* Arc Content */}
         <motion.div
-          className="absolute inset-x-0 top-[25%] z-20 flex flex-col items-center text-center px-4"
+          className="absolute inset-x-0 top-[8%] z-20 flex flex-col items-center text-center px-4"
           style={{ opacity: contentOpacity, y: contentY }}
         >
           <h3
@@ -320,7 +320,7 @@ export default function TicaretiniBuyutCember() {
 
               const baseRadius = Math.min(containerSize.width * 0.6, containerSize.height * 0.9);
               const arcRadius = baseRadius * (isMobile ? 1.0 : 0.85);
-              const arcApexY = containerSize.height * (isMobile ? 0.3 : 0.2);
+              const arcApexY = containerSize.height * (isMobile ? 0.45 : 0.4);
               const arcCenterY = arcApexY + arcRadius;
               const spreadAngle = isMobile ? 120 : 140;
               const startAngle = -90 - spreadAngle / 2;
