@@ -14,7 +14,6 @@ const mockQuotes = [
 const tabs = [
   { id: "all", label: "Tümü" },
   { id: "pending", label: "Bekleyen" },
-  { id: "viewed", label: "Görüntülendi" },
   { id: "invited", label: "Teklif Alındı" },
   { id: "approved", label: "Onaylandı" },
   { id: "rejected", label: "Reddedildi" },
@@ -22,7 +21,6 @@ const tabs = [
 
 const statusConfig: Record<string, { label: string; variant: "outline" | "default" | "destructive"; color: string }> = {
   pending: { label: "Bekleyen", variant: "outline", color: "text-warning" },
-  viewed: { label: "Görüntülendi", variant: "outline", color: "text-info" },
   invited: { label: "Teklif Alındı", variant: "default", color: "text-info" },
   approved: { label: "Onaylandı", variant: "default", color: "text-success" },
   rejected: { label: "Reddedildi", variant: "destructive", color: "text-destructive" },
