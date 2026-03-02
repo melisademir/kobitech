@@ -327,7 +327,7 @@ export default function TicaretiniBuyutCember() {
               const step = spreadAngle / (TOTAL_IMAGES - 1);
 
               const scrollProgress = Math.min(Math.max(rotateValue / 360, 0), 1);
-              const maxRotation = spreadAngle * 0.8;
+              const maxRotation = spreadAngle * 1.6;
               const boundedRotation = -scrollProgress * maxRotation;
 
               const currentArcAngle = startAngle + i * step + boundedRotation;
