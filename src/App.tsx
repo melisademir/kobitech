@@ -56,7 +56,7 @@ const App = () => (
         <BrowserRouter>
           <Routes>
             {/* Landing */}
-            <Route path="/" element={<Landing />} />
+            <Route path="/homepage" element={<Landing />} />
 
             {/* Bayi auth */}
             <Route path="/login" element={<Login />} />
