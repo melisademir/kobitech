@@ -50,7 +50,7 @@ const PartnerCarouselSection = () => {
 
   return (
     <section className="py-24 md:py-32">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -77,7 +77,7 @@ const PartnerCarouselSection = () => {
 
         <div className="flex flex-col items-center gap-8 max-w-4xl mx-auto">
           {/* Desktop stacked cards */}
-          <div className="hidden md:block w-full relative" style={{ minHeight: "400px" }}>
+          <div className="hidden md:block w-full relative" style={{ minHeight: "460px" }}>
             {stackIndices.map((partnerIdx, posIdx) => {
               const p = partners[partnerIdx];
               const pos = stackPositions[posIdx];
@@ -90,7 +90,7 @@ const PartnerCarouselSection = () => {
                   animate={{ y: pos.y, scale: pos.scale, opacity: pos.opacity }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
-                  <div className="grid w-full" style={{ gridTemplateColumns: "380px 1fr", minHeight: "360px" }}>
+                  <div className="grid w-full" style={{ gridTemplateColumns: "440px 1fr", minHeight: "420px" }}>
                     {/* Logo panel */}
                     <div
                       className="relative rounded-2xl overflow-hidden"
@@ -103,7 +103,7 @@ const PartnerCarouselSection = () => {
                     >
                       {isActive && (
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <img src={p.logo} alt={p.name} className="w-64 h-64 object-contain mix-blend-multiply" />
+                          <img src={p.logo} alt={p.name} className="w-72 h-72 object-contain mix-blend-multiply" />
                         </div>
                       )}
                     </div>
@@ -214,13 +214,13 @@ const PartnerCarouselSection = () => {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-1.5 overflow-x-auto max-w-[70vw] md:max-w-none py-1">
+            <div className="flex items-center gap-2 overflow-x-auto max-w-[70vw] md:max-w-none py-1">
               {partners.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => setCurrentIndex(i)}
                   className={cn(
-                    "flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center transition-all duration-200 border-2",
+                    "flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 border-2",
                     i === currentIndex
                       ? "border-primary scale-110 shadow-md"
                       : "border-transparent opacity-50 hover:opacity-80"
@@ -231,7 +231,7 @@ const PartnerCarouselSection = () => {
                   <img
                     src={p.logo}
                     alt={p.name}
-                    className="w-6 h-6 object-contain mix-blend-multiply"
+                    className="w-7 h-7 object-contain mix-blend-multiply"
                   />
                 </button>
               ))}
