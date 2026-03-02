@@ -218,84 +218,81 @@ export default function TicaretiniBuyutCember() {
   const contentOpacity = useTransform(smoothMorph, [0.8, 1], [0, 1]);
   const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
 
+  // Title animation: center → top
+  const titleTop = useTransform(smoothMorph, [0, 0.8], [45, 4]); // percent
+  const titleScale = useTransform(smoothMorph, [0, 0.8], [1, 1]);
+  const subtitleOpacity = useTransform(smoothMorph, [0.6, 0.9], [0, 1]);
+
   const selected = selectedCategory ? CATEGORIES.find((c) => c.id === selectedCategory) : null;
 
   return (
     <section className="relative w-full" style={{ height: "100vh" }}>
       <div ref={containerRef} className="relative w-full h-full overflow-hidden" style={{ background: "hsl(var(--background))" }}>
-        {/* Intro Text */}
+        {/* Title: starts centered in circle, moves to top on scroll */}
         <motion.div
-          className="absolute inset-0 flex flex-col items-center justify-center z-20 pointer-events-none"
-          animate={{ opacity: introPhase === "circle" ? 0 : 1 }}
-          transition={{ duration: 0.8 }}
+          className="absolute inset-x-0 z-20 flex flex-col items-center text-center px-4 pointer-events-none"
+          style={{ top: useTransform(titleTop, (v) => `${v}%`), transform: "translateY(-50%)" }}
         >
-          <motion.h2
-            className="text-3xl md:text-5xl font-bold text-foreground text-center"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3, duration: 0.6 }}
-          >
-            Ticaretini Büyüt
-          </motion.h2>
-          <motion.p
-            className="mt-4 text-sm text-muted-foreground tracking-widest uppercase"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2, duration: 0.6 }}
-          >
-            KAYDIRARAK KEŞFEDİN
-          </motion.p>
-        </motion.div>
-
-        {/* Arc Content */}
-        <motion.div
-          className="absolute inset-x-0 top-[4%] z-20 flex flex-col items-center text-center px-4"
-          style={{ opacity: contentOpacity, y: contentY }}
-        >
-          <h3
-            className="text-5xl md:text-7xl font-extrabold text-foreground"
+          <motion.h3
+            className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: introPhase === "scatter" ? 0 : 1, y: 0 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
           >
             Ticaretini Büyüt
             <br />
             <span className="text-gradient-primary">Maliyetlerini Düşür</span>
-          </h3>
-          <p className="mt-3 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed">
-            İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
-          </p>
-          <div className="mt-8 min-h-[160px]">
-            <AnimatePresence mode="wait">
-              {selected ? (
-                <motion.div
-                  key={selected.id}
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 28 }}
-                  className="flex flex-col items-center text-center max-w-xl mx-auto"
-                >
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${selected.accent}15` }}>
-                      <selected.icon size={24} style={{ color: selected.accent }} />
+          </motion.h3>
+
+          {/* Subtitle - appears during circle phase before scroll */}
+          <motion.p
+            className="mt-4 text-sm text-muted-foreground tracking-widest uppercase"
+            animate={{ opacity: introPhase === "circle" && morphValue < 0.3 ? 1 : 0 }}
+            transition={{ duration: 0.5 }}
+          >
+            KAYDIRARAK KEŞFEDİN
+          </motion.p>
+
+          {/* Description + selected category - fades in on scroll */}
+          <motion.div style={{ opacity: subtitleOpacity }} className="pointer-events-auto">
+            <p className="mt-3 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed mx-auto">
+              İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
+            </p>
+            <div className="mt-8 min-h-[160px]">
+              <AnimatePresence mode="wait">
+                {selected ? (
+                  <motion.div
+                    key={selected.id}
+                    initial={{ opacity: 0, y: 12 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -8 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 28 }}
+                    className="flex flex-col items-center text-center max-w-xl mx-auto"
+                  >
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${selected.accent}15` }}>
+                        <selected.icon size={24} style={{ color: selected.accent }} />
+                      </div>
+                      <div className="text-left">
+                        <h4 className="text-base font-bold text-foreground leading-tight">{selected.label}</h4>
+                      </div>
                     </div>
-                    <div className="text-left">
-                      <h4 className="text-base font-bold text-foreground leading-tight">{selected.label}</h4>
+                    <p className="text-base text-muted-foreground leading-relaxed mb-4 max-w-md">{selected.description}</p>
+                    <div className="flex flex-wrap justify-center gap-2.5">
+                      {selected.tags.map((tag, idx) => (
+                        <span key={idx} className="text-xs px-4 py-1.5 rounded-full text-foreground/70" style={{ background: "hsl(var(--muted))" }}>{tag}</span>
+                      ))}
                     </div>
-                  </div>
-                  <p className="text-base text-muted-foreground leading-relaxed mb-4 max-w-md">{selected.description}</p>
-                  <div className="flex flex-wrap justify-center gap-2.5">
-                    {selected.tags.map((tag, idx) => (
-                      <span key={idx} className="text-xs px-4 py-1.5 rounded-full text-foreground/70" style={{ background: "hsl(var(--muted))" }}>{tag}</span>
-                    ))}
-                  </div>
-                </motion.div>
-              ) : (
-                <motion.p key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-base text-muted-foreground/60 italic">
-                  Bir çözüm seçin
-                </motion.p>
-              )}
-            </AnimatePresence>
-          </div>
+                  </motion.div>
+                ) : (
+                  <motion.p key="default" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="text-base text-muted-foreground/60 italic">
+                    Bir çözüm seçin
+                  </motion.p>
+                )}
+              </AnimatePresence>
+            </div>
+          </motion.div>
         </motion.div>
 
         {/* Cards */}
