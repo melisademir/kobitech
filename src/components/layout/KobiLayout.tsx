@@ -8,10 +8,10 @@ import { useOnboarding } from "@/contexts/OnboardingContext";
 import AiAssistantWidget from "@/components/kobi/AiAssistantWidget";
 import kobiLogo from "@/assets/logo-kobitech.png";
 const navItems = [
-  { icon: Map, label: "Harita", path: "/digitalhub/harita" },
-  { icon: ClipboardList, label: "Planlarım", path: "/digitalhub/planlarim" },
-  { icon: Package, label: "Çözümler", path: "/digitalhub/urunler" },
-  { icon: FileText, label: "Tekliflerim", path: "/digitalhub/tekliflerim" },
+  { icon: Map, label: "Harita", path: "/digitalhub/map" },
+  { icon: ClipboardList, label: "Planlarım", path: "/digitalhub/my-plans" },
+  { icon: Package, label: "Çözümler", path: "/digitalhub/products" },
+  { icon: FileText, label: "Tekliflerim", path: "/digitalhub/my-quotes" },
   { icon: User, label: "Profilim", path: "/digitalhub/profile" },
 ];
 
@@ -32,7 +32,7 @@ const KobiLayout = ({ children }: Props) => {
         <button className="lg:hidden mr-4 text-foreground" onClick={() => setSidebarOpen(true)}>
           <Menu className="h-6 w-6" />
         </button>
-        <Link to="/digitalhub/harita" className="flex items-center gap-2 mr-8 shrink-0">
+        <Link to="/digitalhub/map" className="flex items-center gap-2 mr-8 shrink-0">
           <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
           <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>
@@ -45,7 +45,7 @@ const KobiLayout = ({ children }: Props) => {
             <Bell className="h-5 w-5" />
             <span className="absolute -top-1 -right-1 w-4 h-4 bg-destructive text-destructive-foreground text-[10px] font-bold rounded-full flex items-center justify-center">2</span>
           </Link>
-          <Link to="/digitalhub/urunler" className="relative text-muted-foreground hover:text-primary transition-colors">
+          <Link to="/digitalhub/products" className="relative text-muted-foreground hover:text-primary transition-colors">
             <ShoppingCart className="h-5 w-5" />
             {count > 0 && <span className="absolute -top-1 -right-1 w-4 h-4 bg-accent text-accent-foreground text-[10px] font-bold rounded-full flex items-center justify-center">{count}</span>}
           </Link>

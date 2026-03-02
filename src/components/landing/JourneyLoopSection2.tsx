@@ -181,7 +181,7 @@ const JourneyLoopSection2 = () => {
                       </div>
 
                       {/* CTA Button */}
-                      <Link to="/digitalhub/urunler">
+                      <Link to="/digitalhub/products">
                         <motion.div
                           className="flex items-center gap-3 cursor-pointer rounded-full text-primary-foreground font-bold text-sm shadow-premium"
                           whileHover={{ scale: 1.06 }}

@@ -29,9 +29,9 @@ export const goalPlans: GoalPlan[] = [
       { id: "ihracat-5", text: "İhracat finansmanı temin et", helper: "Tahmini süre: 2 hafta" },
     ],
     solutions: [
-      { name: "Global Kurulum Çözümü", link: "/digitalhub/urunler" },
-      { name: "Uluslararası Lojistik", link: "/digitalhub/urunler" },
-      { name: "Multi-currency Ödeme", link: "/digitalhub/urunler" },
+      { name: "Global Kurulum Çözümü", link: "/digitalhub/products" },
+      { name: "Uluslararası Lojistik", link: "/digitalhub/products" },
+      { name: "Multi-currency Ödeme", link: "/digitalhub/products" },
     ],
   },
   {
@@ -48,9 +48,9 @@ export const goalPlans: GoalPlan[] = [
       { id: "maliyet-5", text: "Operasyonel verimlilik analizi yap", helper: "Tahmini süre: 1 hafta" },
     ],
     solutions: [
-      { name: "Muhasebe Otomasyon Çözümü", link: "/digitalhub/urunler" },
-      { name: "Teşvik Danışmanlığı", link: "/digitalhub/urunler" },
-      { name: "Verimlilik Analiz Aracı", link: "/digitalhub/urunler" },
+      { name: "Muhasebe Otomasyon Çözümü", link: "/digitalhub/products" },
+      { name: "Teşvik Danışmanlığı", link: "/digitalhub/products" },
+      { name: "Verimlilik Analiz Aracı", link: "/digitalhub/products" },
     ],
   },
   {
@@ -68,9 +68,9 @@ export const goalPlans: GoalPlan[] = [
       { id: "satis-6", text: "Satış ekibini güçlendir", helper: "Tahmini süre: 1 hafta" },
     ],
     solutions: [
-      { name: "E-ticaret Platformu", link: "/digitalhub/urunler" },
-      { name: "CRM Çözümü", link: "/digitalhub/urunler" },
-      { name: "Dijital Pazarlama Aracı", link: "/digitalhub/urunler" },
+      { name: "E-ticaret Platformu", link: "/digitalhub/products" },
+      { name: "CRM Çözümü", link: "/digitalhub/products" },
+      { name: "Dijital Pazarlama Aracı", link: "/digitalhub/products" },
     ],
   },
   {
@@ -89,10 +89,10 @@ export const goalPlans: GoalPlan[] = [
       { id: "eticaret-7", text: "Sosyal medya satış kanallarını aktive et", helper: "Tahmini süre: 3 gün" },
     ],
     solutions: [
-      { name: "E-ticaret Altyapısı", link: "/digitalhub/urunler" },
-      { name: "Online Ödeme Sistemi", link: "/digitalhub/urunler" },
-      { name: "Kargo Entegrasyonu", link: "/digitalhub/urunler" },
-      { name: "SEO Aracı", link: "/digitalhub/urunler" },
+      { name: "E-ticaret Altyapısı", link: "/digitalhub/products" },
+      { name: "Online Ödeme Sistemi", link: "/digitalhub/products" },
+      { name: "Kargo Entegrasyonu", link: "/digitalhub/products" },
+      { name: "SEO Aracı", link: "/digitalhub/products" },
     ],
   },
   {
@@ -111,9 +111,9 @@ export const goalPlans: GoalPlan[] = [
       { id: "otomasyon-7", text: "Raporlama dashboard'larını oluştur", helper: "Tahmini süre: 1 hafta" },
     ],
     solutions: [
-      { name: "ERP Çözümü", link: "/digitalhub/urunler" },
-      { name: "Fatura Otomasyon Sistemi", link: "/digitalhub/urunler" },
-      { name: "Raporlama Aracı", link: "/digitalhub/urunler" },
+      { name: "ERP Çözümü", link: "/digitalhub/products" },
+      { name: "Fatura Otomasyon Sistemi", link: "/digitalhub/products" },
+      { name: "Raporlama Aracı", link: "/digitalhub/products" },
     ],
   },
   {
@@ -131,9 +131,9 @@ export const goalPlans: GoalPlan[] = [
       { id: "ekip-6", text: "Organizasyon şemasını netleştir", helper: "Tahmini süre: 3 gün" },
     ],
     solutions: [
-      { name: "İK Yönetim Platformu", link: "/digitalhub/urunler" },
-      { name: "Eğitim Portalı", link: "/digitalhub/urunler" },
-      { name: "Performans Takip Aracı", link: "/digitalhub/urunler" },
+      { name: "İK Yönetim Platformu", link: "/digitalhub/products" },
+      { name: "Eğitim Portalı", link: "/digitalhub/products" },
+      { name: "Performans Takip Aracı", link: "/digitalhub/products" },
     ],
   },
   {
@@ -151,9 +151,9 @@ export const goalPlans: GoalPlan[] = [
       { id: "odeme-6", text: "Ödeme raporlama sistemini kur", helper: "Tahmini süre: 1 hafta" },
     ],
     solutions: [
-      { name: "POS Çözümü", link: "/digitalhub/urunler" },
-      { name: "Online Ödeme Altyapısı", link: "/digitalhub/urunler" },
-      { name: "Mobil Ödeme Sistemi", link: "/digitalhub/urunler" },
+      { name: "POS Çözümü", link: "/digitalhub/products" },
+      { name: "Online Ödeme Altyapısı", link: "/digitalhub/products" },
+      { name: "Mobil Ödeme Sistemi", link: "/digitalhub/products" },
     ],
   },
   {
@@ -172,9 +172,9 @@ export const goalPlans: GoalPlan[] = [
       { id: "stok-7", text: "Fire analizi ve raporlama başlat", helper: "Tahmini süre: 1 hafta" },
     ],
     solutions: [
-      { name: "Stok Yönetim Sistemi", link: "/digitalhub/urunler" },
-      { name: "Depo Yönetim Çözümü", link: "/digitalhub/urunler" },
-      { name: "Lojistik Optimizasyon Aracı", link: "/digitalhub/urunler" },
+      { name: "Stok Yönetim Sistemi", link: "/digitalhub/products" },
+      { name: "Depo Yönetim Çözümü", link: "/digitalhub/products" },
+      { name: "Lojistik Optimizasyon Aracı", link: "/digitalhub/products" },
     ],
   },
   {
@@ -190,8 +190,8 @@ export const goalPlans: GoalPlan[] = [
       { id: "diger-4", text: "Pilot proje seç ve başla", helper: "Tahmini süre: 1 hafta" },
     ],
     solutions: [
-      { name: "Dijital Olgunluk Analizi", link: "/digitalhub/urunler" },
-      { name: "Danışmanlık Hizmeti", link: "/digitalhub/urunler" },
+      { name: "Dijital Olgunluk Analizi", link: "/digitalhub/products" },
+      { name: "Danışmanlık Hizmeti", link: "/digitalhub/products" },
     ],
   },
 ];

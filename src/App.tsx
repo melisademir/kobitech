@@ -88,12 +88,12 @@ const App = () => (
 
             {/* KOBİ main */}
             
-            <Route path="/digitalhub/harita" element={<Harita />} />
-            <Route path="/digitalhub/planlarim" element={<Planlarim />} />
-            <Route path="/digitalhub/urunler" element={<KobiProducts />} />
-            <Route path="/digitalhub/teklif-talebi" element={<TeklifTalebi />} />
-            <Route path="/digitalhub/tekliflerim" element={<KobiTekliflerim />} />
-            <Route path="/digitalhub/tekliflerim/:id" element={<KobiTeklifDetay />} />
+            <Route path="/digitalhub/map" element={<Harita />} />
+            <Route path="/digitalhub/my-plans" element={<Planlarim />} />
+            <Route path="/digitalhub/products" element={<KobiProducts />} />
+            <Route path="/digitalhub/quote-request" element={<TeklifTalebi />} />
+            <Route path="/digitalhub/my-quotes" element={<KobiTekliflerim />} />
+            <Route path="/digitalhub/my-quotes/:id" element={<KobiTeklifDetay />} />
             
             <Route path="/digitalhub/profile" element={<KobiProfile />} />
             <Route path="/digitalhub/notifications" element={<KobiBildirimler />} />

@@ -61,7 +61,7 @@ const KobiProducts = () => {
   const handleLoginSignup = () => {
     setAuthPromptOpen(false);
     // Navigate to signup with redirect back to teklif-talebi
-    navigate("/digitalhub/signup?redirect=/digitalhub/teklif-talebi");
+    navigate("/digitalhub/signup?redirect=/digitalhub/quote-request");
   };
 
   const handleSendToEmail = () => {
@@ -73,7 +73,7 @@ const KobiProducts = () => {
       });
     } else {
       // If no email in context, go to teklif-talebi form
-      navigate("/digitalhub/teklif-talebi");
+      navigate("/digitalhub/quote-request");
     }
   };
 

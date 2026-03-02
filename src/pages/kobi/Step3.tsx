@@ -28,7 +28,7 @@ const Step3 = () => {
   const handleNext = () => {
     if (selected.length) {
       setData({ goals: selected });
-      navigate("/digitalhub/harita");
+      navigate("/digitalhub/map");
     }
   };
 

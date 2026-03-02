@@ -63,13 +63,13 @@ const cardData = [
     title: "50+ Dijital Çözüm",
     description: "Ödeme, e-ticaret, stok, kargo ve daha fazlası tek platformda.",
     imageUrl: promoPayment,
-    href: "/digitalhub/urunler",
+    href: "/digitalhub/products",
   },
   {
     title: "30+ Çözüm Ortağı",
     description: "Sektör lideri sağlayıcılarla güçlü bir ekosistem.",
     imageUrl: promoCloud,
-    href: "/digitalhub/urunler",
+    href: "/digitalhub/products",
   },
   {
     title: "Yapay Zeka Desteği",

@@ -167,7 +167,7 @@ const Harita = () => {
                         </Link>
                       ))}
                     </div>
-                    <Link to="/digitalhub/urunler" className="inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline mt-3">
+                    <Link to="/digitalhub/products" className="inline-flex items-center gap-1 text-sm font-bold text-primary hover:underline mt-3">
                       Bu hedefe özel tüm çözümleri gör <ArrowRight className="h-4 w-4" />
                     </Link>
                   </div>
@@ -183,7 +183,7 @@ const Harita = () => {
         <div className="max-w-7xl mx-auto px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-sm text-muted-foreground text-center sm:text-left">Hedeflerinize ulaşmak için gerekli çözümleri keşfedin</p>
           <Button asChild variant="hero" size="lg" className="w-full sm:w-auto">
-            <Link to="/digitalhub/urunler">Çözümleri Keşfet <ArrowRight className="h-5 w-5 ml-1" /></Link>
+            <Link to="/digitalhub/products">Çözümleri Keşfet <ArrowRight className="h-5 w-5 ml-1" /></Link>
           </Button>
         </div>
       </div>
