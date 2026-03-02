@@ -32,7 +32,7 @@ const KobiLayout = ({ children }: Props) => {
         <button className="lg:hidden mr-4 text-foreground" onClick={() => setSidebarOpen(true)}>
           <Menu className="h-6 w-6" />
         </button>
-        <Link to="/digitalhub/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
+        <Link to="/digitalhub/harita" className="flex items-center gap-2 mr-8 shrink-0">
           <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
           <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>

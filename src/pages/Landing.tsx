@@ -11,7 +11,7 @@ import PromotionsSection from "@/components/landing/PromotionsSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
 
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
-import BentoGridSection from "@/components/landing/BentoGridSection";
+
 
 import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
 import IntroAnimation from "@/components/ui/scroll-morph-hero";
@@ -89,8 +89,6 @@ const Landing = () => (
       <TestimonialsSection />
     </div>
 
-    {/* 8 — BENTO GRID */}
-    <BentoGridSection />
 
 
     {/* PARTNER LOOP */}
