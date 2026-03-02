@@ -291,7 +291,7 @@ export default function TicaretiniBuyutCember() {
             if (introPhase === "scatter") {
               target = scatterPositions[i];
             } else if (introPhase === "line") {
-              const lineSpacing = 80;
+              const lineSpacing = 58;
               const lineTotalWidth = TOTAL_IMAGES * lineSpacing;
               const lineX = i * lineSpacing - lineTotalWidth / 2;
               target = { x: lineX, y: 0, rotation: 0, scale: 1, opacity: 1 };
@@ -307,7 +307,7 @@ export default function TicaretiniBuyutCember() {
               const arcRadius = baseRadius * (isMobile ? 1.4 : 1.1);
               const arcApexY = containerSize.height * (isMobile ? 0.35 : 0.25);
               const arcCenterY = arcApexY + arcRadius;
-              const spreadAngle = isMobile ? 100 : 130;
+              const spreadAngle = isMobile ? 80 : 100;
               const startAngle = -90 - spreadAngle / 2;
               const step = spreadAngle / (TOTAL_IMAGES - 1);
 
