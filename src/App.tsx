@@ -76,7 +76,7 @@ const App = () => (
             
 
             {/* KOBİ auth */}
-            <Route path="/kobi/login" element={<KobiLogin />} />
+            <Route path="/digitalhub/login" element={<KobiLogin />} />
             <Route path="/kobi/signup" element={<KobiSignup />} />
             <Route path="/kobi/reset-password" element={<KobiResetPassword />} />
 
