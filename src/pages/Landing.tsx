@@ -62,6 +62,9 @@ const Landing = () => (
       <HowItWorksSection />
     </div>
 
+    {/* SCROLL MORPH HERO — Partner Ecosystem Animation */}
+    <IntroAnimation />
+
     {/* 5b — PROMOTIONS */}
     <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,25%,97%) 100%)" }}>
       <PromotionsSection />
@@ -94,8 +97,8 @@ const Landing = () => (
       <JourneyLoopSection2 />
     </div>
 
-    {/* SCROLL MORPH HERO */}
-    <IntroAnimation />
+
+
 
     <FooterSection />
   </div>
