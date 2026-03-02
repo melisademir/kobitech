@@ -64,7 +64,7 @@ const ResetPassword = () => {
           </div>
         )}
 
-        <Link to="/login" className="flex items-center justify-center gap-2 text-primary text-sm font-medium hover:underline">
+        <Link to="/sales/login" className="flex items-center justify-center gap-2 text-primary text-sm font-medium hover:underline">
           <ArrowLeft className="h-4 w-4" /> Giriş sayfasına dön
         </Link>
       </motion.div>

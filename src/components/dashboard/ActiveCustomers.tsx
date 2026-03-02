@@ -52,7 +52,7 @@ const ActiveCustomers = () => (
                 <td className="p-4 text-sm text-muted-foreground">{c.lastActivity}</td>
                 <td className="p-4 text-right">
                   <Button asChild variant="outline" size="sm" className="rounded-full">
-                    <Link to="/customer-analysis">Teklif Hazırla</Link>
+                    <Link to="/sales/customer-analysis">Teklif Hazırla</Link>
                   </Button>
                 </td>
               </tr>
@@ -75,7 +75,7 @@ const ActiveCustomers = () => (
             <div className="flex items-center justify-between">
               <span className="text-sm text-muted-foreground">{c.lastActivity}</span>
               <Button asChild variant="outline" size="sm" className="rounded-full">
-                <Link to="/customer-analysis">Teklif Hazırla</Link>
+                <Link to="/sales/customer-analysis">Teklif Hazırla</Link>
               </Button>
             </div>
           </div>

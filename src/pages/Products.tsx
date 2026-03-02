@@ -14,12 +14,12 @@ import SectorExamplesModal from "@/components/products/SectorExamplesModal";
 import kobiLogo from "@/assets/logo-kobitech.png";
 
 const navItems = [
-  { icon: LayoutDashboard, label: "Dashboard", path: "/dashboard" },
-  { icon: Target, label: "Müşteri Analizi", path: "/customer-analysis" },
-  { icon: Package, label: "Param Ürünleri", path: "/products", badge: String(catalogProducts.length) },
-  { icon: FileText, label: "Tekliflerim", path: "/proposals", badgeCount: 3 },
-  { icon: TrendingUp, label: "Performansım", path: "/performance" },
-  { icon: Settings, label: "Ayarlar", path: "/settings" },
+  { icon: LayoutDashboard, label: "Dashboard", path: "/sales/dashboard" },
+  { icon: Target, label: "Müşteri Analizi", path: "/sales/customer-analysis" },
+  { icon: Package, label: "Param Ürünleri", path: "/sales/products", badge: String(catalogProducts.length) },
+  { icon: FileText, label: "Tekliflerim", path: "/sales/proposals", badgeCount: 3 },
+  { icon: TrendingUp, label: "Performansım", path: "/sales/performance" },
+  { icon: Settings, label: "Ayarlar", path: "/sales/settings" },
 ];
 
 const Products = () => {
@@ -60,7 +60,7 @@ const Products = () => {
         <button className="lg:hidden mr-4 text-foreground" onClick={() => setSidebarOpen(true)}>
           <Menu className="h-6 w-6" />
         </button>
-        <Link to="/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
+        <Link to="/sales/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
           <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
           <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
         </Link>
@@ -85,7 +85,7 @@ const Products = () => {
             <AnimatePresence>
               {profileOpen && (
                 <motion.div initial={{ opacity: 0, y: 5 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: 5 }} className="absolute right-0 top-full mt-2 w-48 bg-card rounded-xl shadow-premium border border-border overflow-hidden z-50">
-                  <Link to="/settings" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors"><User className="h-4 w-4" /> Profilim</Link>
+                  <Link to="/sales/settings" onClick={() => setProfileOpen(false)} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-primary/5 text-foreground hover:text-primary transition-colors"><User className="h-4 w-4" /> Profilim</Link>
                   
                   <div className="border-t border-border" />
                   <button onClick={() => navigate("/digitalhub/login")} className="flex items-center gap-2 px-4 py-3 text-sm hover:bg-destructive/5 text-muted-foreground hover:text-destructive transition-colors w-full"><LogOut className="h-4 w-4" /> Çıkış Yap</button>

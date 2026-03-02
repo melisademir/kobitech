@@ -216,7 +216,7 @@ const ProposalDetailPage = () => {
         <div className="text-center py-16 space-y-4">
           <p className="text-5xl">📄</p>
           <p className="text-muted-foreground text-lg">Teklif bulunamadı.</p>
-          <Button variant="outline" onClick={() => navigate("/proposals")}>
+          <Button variant="outline" onClick={() => navigate("/sales/proposals")}>
             <ArrowLeft className="w-4 h-4 mr-2" /> Tekliflere Dön
           </Button>
         </div>
@@ -232,7 +232,7 @@ const ProposalDetailPage = () => {
       <div className="max-w-4xl mx-auto space-y-6">
         {/* Header */}
         <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" onClick={() => navigate("/proposals")}>
+          <Button variant="ghost" size="icon" onClick={() => navigate("/sales/proposals")}>
             <ArrowLeft className="w-5 h-5" />
           </Button>
           <div className="flex-1 min-w-0">
@@ -243,7 +243,7 @@ const ProposalDetailPage = () => {
             <p className="text-sm text-muted-foreground mt-0.5">{proposal.date}</p>
           </div>
           <Button variant="outline" size="sm" asChild>
-            <Link to="/proposals">Tüm Teklifler</Link>
+            <Link to="/sales/proposals">Tüm Teklifler</Link>
           </Button>
         </div>
 

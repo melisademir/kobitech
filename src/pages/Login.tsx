@@ -27,7 +27,7 @@ const Login = () => {
     setLoading(true);
     setTimeout(() => {
       setLoading(false);
-      navigate("/dashboard");
+      navigate("/sales/dashboard");
     }, 800);
   };
 
@@ -109,7 +109,7 @@ const Login = () => {
                 />
                 <label htmlFor="remember" className="text-sm text-muted-foreground cursor-pointer">Beni Hatırla</label>
               </div>
-              <Link to="/reset-password" className="text-sm text-primary hover:underline font-medium">
+              <Link to="/sales/reset-password" className="text-sm text-primary hover:underline font-medium">
                 Şifrenizi mi unuttunuz?
               </Link>
             </div>
@@ -127,7 +127,7 @@ const Login = () => {
 
           <div className="text-center">
             <p className="text-muted-foreground text-sm">Şifrenizi mi unuttunuz?</p>
-            <Link to="/reset-password" className="text-primary font-bold text-sm hover:underline inline-flex items-center gap-1 mt-1">
+            <Link to="/sales/reset-password" className="text-primary font-bold text-sm hover:underline inline-flex items-center gap-1 mt-1">
               Şifre Sıfırla →
             </Link>
           </div>
