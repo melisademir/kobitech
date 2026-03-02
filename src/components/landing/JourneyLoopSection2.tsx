@@ -108,18 +108,7 @@ const JourneyLoopSection2 = () => {
 
         {/* Track Layout */}
         <div className="relative max-w-6xl mx-auto">
-          {/* Glow behind track */}
-          <div
-            className="absolute pointer-events-none"
-            style={{
-              inset: "-60px -80px",
-              background:
-                "radial-gradient(ellipse 60% 40% at 25% 50%, hsl(var(--primary) / 0.15) 0%, transparent 70%), radial-gradient(ellipse 30% 30% at 50% 20%, hsl(var(--accent) / 0.12) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 80% 60%, hsl(var(--primary) / 0.1) 0%, transparent 70%)",
-              filter: "blur(60px)",
-            }}
-          />
-
-          {/* CSS Mask Track */}
+          {/* CSS Mask Track — clean purple-to-teal */}
           <div
             className="absolute inset-0 pointer-events-none"
             style={{
@@ -127,7 +116,7 @@ const JourneyLoopSection2 = () => {
               borderRadius: "calc(2rem + 90px)",
               border: "90px solid transparent",
               background:
-                "linear-gradient(135deg, hsl(268 60% 82%), hsl(168 76% 52%), hsl(268 72% 30%)) border-box",
+                "linear-gradient(to right, hsl(271 76% 53%), hsl(271 60% 72%), hsl(168 76% 52%)) border-box",
               WebkitMask:
                 "linear-gradient(#fff 0 0) padding-box, linear-gradient(#fff 0 0)",
               WebkitMaskComposite: "xor",
@@ -149,16 +138,14 @@ const JourneyLoopSection2 = () => {
 
           {/* ── Central Display ── */}
           <div className="relative z-10" style={{ margin: "-10px 66px" }}>
-            <div className="relative overflow-hidden glass-card rounded-[2rem] shadow-card"
-              style={{ minHeight: "440px" }}
+            <div className="relative overflow-hidden rounded-[2rem]"
+              style={{
+                minHeight: "440px",
+                background: "rgba(255,255,255,0.95)",
+                border: "1px solid rgba(0,0,0,0.06)",
+                boxShadow: "0 4px 32px -8px rgba(0,0,0,0.08)",
+              }}
             >
-              {/* Inner glow */}
-              <div
-                className="absolute inset-0 pointer-events-none"
-                style={{
-                  background: "radial-gradient(ellipse 50% 50% at 50% 50%, hsl(var(--primary) / 0.04), transparent 65%)",
-                }}
-              />
 
               <AnimatePresence mode="wait">
                 {detail && (
