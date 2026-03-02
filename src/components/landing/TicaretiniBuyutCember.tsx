@@ -157,41 +157,13 @@ export default function TicaretiniBuyutCember() {
       virtualScroll.set(newScroll);
     };
 
-    // Mouse drag
-    let isDragging = false;
-    let dragStartX = 0;
-    const handleMouseDown = (e: MouseEvent) => {
-      isDragging = true;
-      dragStartX = e.clientX;
-      container.style.cursor = "grabbing";
-    };
-    const handleMouseMove2 = (e: MouseEvent) => {
-      if (!isDragging || !isVisibleRef.current) return;
-      const deltaX = dragStartX - e.clientX;
-      dragStartX = e.clientX;
-      const newScroll = Math.min(Math.max(scrollRef.current + deltaX * 3, 0), MAX_SCROLL);
-      scrollRef.current = newScroll;
-      virtualScroll.set(newScroll);
-    };
-    const handleMouseUp = () => {
-      isDragging = false;
-      container.style.cursor = "grab";
-    };
-
-    container.style.cursor = "grab";
     container.addEventListener("wheel", handleWheel, { passive: false });
     container.addEventListener("touchstart", handleTouchStart, { passive: false });
     container.addEventListener("touchmove", handleTouchMove, { passive: false });
-    container.addEventListener("mousedown", handleMouseDown);
-    window.addEventListener("mousemove", handleMouseMove2);
-    window.addEventListener("mouseup", handleMouseUp);
     return () => {
       container.removeEventListener("wheel", handleWheel);
       container.removeEventListener("touchstart", handleTouchStart);
       container.removeEventListener("touchmove", handleTouchMove);
-      container.removeEventListener("mousedown", handleMouseDown);
-      window.removeEventListener("mousemove", handleMouseMove2);
-      window.removeEventListener("mouseup", handleMouseUp);
     };
   }, [virtualScroll]);
 
