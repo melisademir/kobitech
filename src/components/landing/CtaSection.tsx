@@ -75,7 +75,7 @@ const cardData = [
     title: "Yapay Zeka Desteği",
     description: "AI destekli analizlerle işletmenizi bir adım öne taşıyın.",
     imageUrl: promoAiAgent,
-    href: "/digitalhub/step-1",
+    href: "/digitalhub/onboarding1",
   },
 ];
 
@@ -118,7 +118,7 @@ const CtaSection = () => (
 
         {/* CTA Button */}
         <div className="text-center">
-          <Link to="/digitalhub/step-1">
+          <Link to="/digitalhub/onboarding1">
             <button
               className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200"
               style={{

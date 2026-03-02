@@ -30,9 +30,9 @@
       { "path": "/kobi/reset-password", "page": "KobiResetPassword.tsx" }
     ],
     "kobiOnboarding": [
-      { "path": "/kobi/step-1", "page": "Step1.tsx", "desc": "Sektör & çalışan seçimi" },
-      { "path": "/kobi/step-2", "page": "Step2.tsx", "desc": "Hedef belirleme" },
-      { "path": "/kobi/step-3", "page": "Step3.tsx", "desc": "Ürün önerileri" }
+      { "path": "/digitalhub/onboarding1", "page": "Step1.tsx", "desc": "Sektör & çalışan seçimi" },
+      { "path": "/digitalhub/onboarding2", "page": "Step2.tsx", "desc": "Hedef belirleme" },
+      { "path": "/digitalhub/onboarding3", "page": "Step3.tsx", "desc": "Ürün önerileri" }
     ],
     "kobiDashboard": [
       { "path": "/kobi/dashboard", "page": "KobiDashboard.tsx" },

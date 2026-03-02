@@ -25,7 +25,7 @@ const Step1 = () => {
   const handleNext = () => {
     if (name && email && phone && city) {
       setData({ businessName: name, email, phone, city });
-      navigate("/digitalhub/step-2");
+      navigate("/digitalhub/onboarding2");
     }
   };
 

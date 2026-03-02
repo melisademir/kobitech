@@ -43,9 +43,9 @@ const Step2 = () => {
         </div>
         <div className="flex gap-4">
           <Button asChild variant="outline" className="flex-1">
-            <Link to="/digitalhub/step-1"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
+            <Link to="/digitalhub/onboarding1"><ArrowLeft className="h-4 w-4 mr-1" /> Geri</Link>
           </Button>
-          <Button onClick={() => { if (selected) navigate("/digitalhub/step-3"); }} disabled={!selected} variant="hero" className="flex-1">İleri</Button>
+          <Button onClick={() => { if (selected) navigate("/digitalhub/onboarding3"); }} disabled={!selected} variant="hero" className="flex-1">İleri</Button>
         </div>
       </motion.div>
     </div>
