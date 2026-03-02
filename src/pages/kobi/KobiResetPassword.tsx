@@ -17,7 +17,7 @@ const KobiResetPassword = () => {
   return (
     <div className="min-h-screen bg-card flex items-center justify-center p-8">
       <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="w-full max-w-[420px] space-y-8">
-        <Link to="/kobi/login" className="inline-flex items-center gap-1 text-sm text-primary hover:underline"><ArrowLeft className="h-4 w-4" /> Giriş sayfasına dön</Link>
+        <Link to="/digitalhub/login" className="inline-flex items-center gap-1 text-sm text-primary hover:underline"><ArrowLeft className="h-4 w-4" /> Giriş sayfasına dön</Link>
         <div>
           <h1 className="text-3xl font-bold text-foreground">Şifre Sıfırlama</h1>
           <p className="text-muted-foreground mt-2">E-posta adresinize sıfırlama linki gönderilecek</p>

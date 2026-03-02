@@ -73,7 +73,7 @@ const LandingNav = () => {
           >
             Kayıt Ol
           </Link>
-          <Link to="/kobi/login">
+          <Link to="/digitalhub/login">
             <motion.button
               whileHover={{ scale: 1.04, boxShadow: "0 6px 24px -4px rgba(124,58,237,0.40)" }}
               whileTap={{ scale: 0.97 }}
