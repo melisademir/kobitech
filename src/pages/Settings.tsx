@@ -108,31 +108,6 @@ const SettingsPage = () => {
                 </button>
               </div>
             </div>
-
-
-            <div className="bg-card rounded-xl shadow-card p-6">
-              <h2 className="text-lg font-bold text-foreground mb-4">Giriş Geçmişi</h2>
-              <div className="space-y-2">
-                {[
-                  { device: "Chrome - Windows", location: "İstanbul, TR", time: "Bugün, 09:45", success: true },
-                  { device: "Safari - iPhone", location: "İstanbul, TR", time: "Dün, 18:30", success: true },
-                  { device: "Chrome - MacOS", location: "Ankara, TR", time: "14 Şub, 11:20", success: false },
-                ].map((entry, i) => (
-                  <div key={i} className="flex items-center justify-between py-3 border-b border-border last:border-0">
-                    <div className="flex items-center gap-3">
-                      <Shield className={`h-5 w-5 ${entry.success ? "text-success" : "text-destructive"}`} />
-                      <div>
-                        <p className="text-sm font-medium text-foreground">{entry.device}</p>
-                        <p className="text-[10px] text-muted-foreground">{entry.location} • {entry.time}</p>
-                      </div>
-                    </div>
-                    <span className={`text-[10px] px-2 py-1 rounded-full ${entry.success ? "bg-success/20 text-success" : "bg-destructive/20 text-destructive"}`}>
-                      {entry.success ? "Başarılı" : "Başarısız"}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
           </div>
         )}
 
