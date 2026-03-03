@@ -14,7 +14,7 @@ import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSectio
 
 import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
 
-import TicaretiniBuyutCember from "@/components/landing/TicaretiniBuyutCember";
+
 import SolutionsGallerySection from "@/components/landing/SolutionsGallerySection";
 
 /* Shared section divider — horizontal gradient line */
@@ -48,8 +48,6 @@ const Landing = () => (
     {/* SOLUTIONS GALLERY */}
     <SolutionsGallerySection />
 
-    {/* TICARETINI BÜYÜT ÇEMBER */}
-    <TicaretiniBuyutCember />
 
     {/* PARTNER CAROUSEL */}
     <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)", marginTop: "-120px", position: "relative", zIndex: 10 }}>
