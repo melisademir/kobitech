@@ -36,7 +36,7 @@ const Landing = () => (
     <div
       className="relative"
       style={{
-        background: "linear-gradient(145deg, hsl(38,60%,98%) 0%, hsl(265,50%,96%) 55%, hsl(38,50%,97%) 100%)",
+        background: "linear-gradient(180deg, hsl(38,55%,98%) 0%, hsl(260,30%,96%) 55%, hsl(38,55%,97%) 100%)",
       }}
     >
       <div className="relative z-10">
@@ -50,7 +50,7 @@ const Landing = () => (
 
 
     {/* PARTNER CAROUSEL */}
-    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+    <div style={{ background: "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
       <PartnerCarouselSection />
     </div>
 
@@ -58,27 +58,27 @@ const Landing = () => (
     <SectionDivider />
 
     {/* 4 — HOW IT WORKS */}
-    <div style={{ background: "hsl(258, 45%, 10%)" }}>
+    <div style={{ background: "hsl(260, 45%, 10%)" }}>
       <HowItWorksSection />
     </div>
 
 
     {/* 5b — PROMOTIONS */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,25%,97%) 100%)" }}>
+    <div style={{ background: "linear-gradient(180deg, hsl(38,55%,98%) 0%, hsl(260,30%,96%) 100%)" }}>
       <PromotionsSection />
     </div>
 
     {/* 5 — FEATURES */}
-    <div style={{ background: "linear-gradient(180deg, hsl(252,25%,97%) 0%, hsl(38,50%,97%) 100%)" }}>
+    <div style={{ background: "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
       <FeaturesSection />
     </div>
     {/* 6 — CTA */}
-    <div style={{ background: "linear-gradient(160deg, hsl(265,40%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
+    <div style={{ background: "linear-gradient(180deg, hsl(38,55%,97%) 0%, hsl(260,30%,96%) 100%)" }}>
       <CtaSection />
     </div>
 
     {/* 7 — TESTIMONIALS */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,20%,97%) 100%)" }}>
+    <div style={{ background: "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
       <TestimonialsSection />
     </div>
 

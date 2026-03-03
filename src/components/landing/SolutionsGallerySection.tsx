@@ -25,7 +25,7 @@ const galleryItems: GalleryItem[] = [
 ];
 
 const SolutionsGallerySection = () => (
-  <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+  <div style={{ background: "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
     <div className="flex flex-col items-center text-center pt-24 md:pt-32 pb-4 px-4">
       <h2
         className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground"

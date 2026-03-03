@@ -91,7 +91,7 @@ const CtaSection = () =>
       className="rounded-[24px]"
       style={{
         padding: "56px 40px",
-        background: "linear-gradient(145deg, hsl(258,45%,10%) 0%, hsl(268,50%,18%) 100%)",
+        background: "linear-gradient(180deg, hsl(260,45%,10%) 0%, hsl(260,50%,18%) 100%)",
         boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 16px 48px rgba(72,11,135,0.18)"
       }}>
       
