@@ -1,25 +1,109 @@
-import CircularGallery from "@/components/ui/circular-gallery";
+import { CircularGallery, GalleryItem } from '@/components/ui/circular-gallery';
 
-const galleryItems = [
-  { image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&auto=format&fit=crop&q=80", text: "E-Ticaret" },
-  { image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80", text: "Analitik" },
-  { image: "https://images.unsplash.com/photo-1553729459-uj80b4gta56d?w=800&auto=format&fit=crop&q=80", text: "Finans" },
-  { image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&auto=format&fit=crop&q=80", text: "Dashboard" },
-  { image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=800&auto=format&fit=crop&q=80", text: "Ödeme" },
-  { image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=800&auto=format&fit=crop&q=80", text: "Lojistik" },
-  { image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=800&auto=format&fit=crop&q=80", text: "Ekip" },
-  { image: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=800&auto=format&fit=crop&q=80", text: "Stok Yönetimi" },
+const galleryData: GalleryItem[] = [
+  {
+    common: 'Lion',
+    binomial: 'Panthera leo',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1583499871880-de841d1ace2a?w=900&auto=format&fit=crop&q=80',
+      text: 'lion couple kissing on a brown rock',
+      pos: '47% 35%',
+      by: 'Clément Roy'
+    }
+  },
+  {
+    common: 'Asiatic elephant',
+    binomial: 'Elephas maximus',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1571406761758-9a3eed5338ef?w=900&auto=format&fit=crop&q=80',
+      text: 'herd of Sri Lankan elephants walking away from a river',
+      pos: '75% 65%',
+      by: 'Alex Azabache'
+    }
+  },
+  {
+    common: 'Red-tailed black cockatoo',
+    binomial: 'Calyptorhynchus banksii',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1619664208054-41eefeab29e9?w=900&auto=format&fit=crop&q=80',
+      text: 'close-up of a black cockatoo',
+      pos: '53% 43%',
+      by: 'David Clode'
+    }
+  },
+  {
+    common: 'Dromedary',
+    binomial: 'Camelus dromedarius',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1662841238473-f4b137e123cb?w=900&auto=format&fit=crop&q=80',
+      text: 'camel and her new born calf walking in the Sahara desert',
+      pos: '65% 65%',
+      by: 'Moaz Tobok'
+    }
+  },
+  {
+    common: 'Polar bear',
+    binomial: 'Ursus maritimus',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1589648751789-c8ecb7a88bd5?w=900&auto=format&fit=crop&q=80',
+      text: 'polar bear on the snow',
+      pos: '50% 25%',
+      by: 'Hans-Jurgen Mager'
+    }
+  },
+  {
+    common: 'Giant panda',
+    binomial: 'Ailuropoda melanoleuca',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1659540181281-1d89d6112832?w=900&auto=format&fit=crop&q=80',
+      text: 'giant panda hanging from a tree branch',
+      pos: '47%',
+      by: 'Jiachen Lin'
+    }
+  },
+  {
+    common: "Grévy's zebra",
+    binomial: 'Equus grevyi',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1526095179574-86e545346ae6?w=900&auto=format&fit=crop&q=80',
+      text: 'zebra standing on wheat field',
+      pos: '65% 35%',
+      by: 'Jeff Griffith'
+    }
+  },
+  {
+    common: 'Cheetah',
+    binomial: 'Acinonyx jubatus',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1541707519942-08fd2f6480ba?w=900&auto=format&fit=crop&q=80',
+      text: 'cheetah sitting in the grass under a blue sky',
+      by: 'Mike Bird'
+    }
+  },
+  {
+    common: 'King penguin',
+    binomial: 'Aptenodytes patagonicus',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1595792419466-23cec2476fa6?w=900&auto=format&fit=crop&q=80',
+      text: 'king penguin with a fluffy brown chick',
+      pos: '35%',
+      by: 'Martin Wettstein'
+    }
+  },
+  {
+    common: 'Red panda',
+    binomial: 'Ailurus fulgens',
+    photo: {
+      url: 'https://images.unsplash.com/photo-1689799513565-44d2bc09d75b?w=900&auto=format&fit=crop&q=80',
+      text: 'a red panda in a tree',
+      by: 'Niels Baars'
+    }
+  },
 ];
 
 const HeroGallerySection = () => (
-  <section className="relative w-full" style={{ height: "600px", background: "hsl(258, 45%, 10%)" }}>
-    <CircularGallery
-      items={galleryItems}
-      bend={3}
-      textColor="#ffffff"
-      borderRadius={0.05}
-      font="bold 24px sans-serif"
-    />
+  <section style={{ background: "hsl(258, 45%, 10%)" }}>
+    <CircularGallery items={galleryData} radius={600} autoRotateSpeed={0.02} />
   </section>
 );
 
