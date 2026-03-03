@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import useEmblaCarousel from "embla-carousel-react";
-import { useIsMobile } from "@/hooks/use-mobile";
+
 import { cn } from "@/lib/utils";
 
 const testimonials = [
@@ -120,9 +120,9 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
 );
 
 const TestimonialsSection = () => {
-  const isMobile = useIsMobile();
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: false, dragFree: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
   const onSelect = useCallback(() => {
     if (!emblaApi) return;
@@ -132,8 +132,13 @@ const TestimonialsSection = () => {
   useEffect(() => {
     if (!emblaApi) return;
     onSelect();
+    setScrollSnaps(emblaApi.scrollSnapList());
     emblaApi.on("select", onSelect);
-    return () => { emblaApi.off("select", onSelect); };
+    emblaApi.on("reInit", onSelect);
+    return () => {
+      emblaApi.off("select", onSelect);
+      emblaApi.off("reInit", onSelect);
+    };
   }, [emblaApi, onSelect]);
 
   return (
@@ -169,50 +174,33 @@ const TestimonialsSection = () => {
           </p>
         </motion.div>
 
-        {/* Mobile: Swipeable carousel */}
-        {isMobile ? (
-          <div>
-            <div className="overflow-hidden" ref={emblaRef}>
-              <div className="flex gap-3" style={{ touchAction: "pan-y pinch-zoom" }}>
-                {testimonials.map((t, i) => (
-                  <div key={t.name} className="flex-shrink-0" style={{ width: "75%" }}>
-                    <TestimonialCard t={t} />
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="flex justify-center gap-2 mt-4">
-              {testimonials.map((_, i) => (
-                <button
-                  key={i}
-                  className="w-2 h-2 rounded-full transition-all duration-300"
-                  style={{
-                    background: i === selectedIndex ? "hsl(var(--primary))" : "hsl(var(--primary) / 0.2)",
-                    transform: i === selectedIndex ? "scale(1.3)" : "scale(1)",
-                  }}
-                  onClick={() => emblaApi?.scrollTo(i)}
-                />
+        {/* Swipeable single-row carousel for all screen sizes */}
+        <div>
+          <div className="overflow-hidden" ref={emblaRef}>
+            <div className="flex gap-4 md:gap-6" style={{ touchAction: "pan-y pinch-zoom" }}>
+              {testimonials.map((t) => (
+                <div key={t.name} className="flex-shrink-0 w-[75%] md:w-[38%] lg:w-[30%]">
+                  <TestimonialCard t={t} />
+                </div>
               ))}
             </div>
           </div>
-        ) : (
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            variants={containerVariants}
-            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {testimonials.map((t) => (
-              <motion.div key={t.name} variants={cardVariants}>
-                <TestimonialCard t={t} />
-              </motion.div>
+          <div className="flex justify-center gap-2 mt-6">
+            {scrollSnaps.map((_, i) => (
+              <button
+                key={i}
+                className="w-2 h-2 rounded-full transition-all duration-300"
+                style={{
+                  background: i === selectedIndex ? "hsl(var(--primary))" : "hsl(var(--primary) / 0.2)",
+                  transform: i === selectedIndex ? "scale(1.3)" : "scale(1)",
+                }}
+                onClick={() => emblaApi?.scrollTo(i)}
+              />
             ))}
-          </motion.div>
-        )}
+          </div>
+        </div>
       </div>
     </section>
   );
 };
-
 export default TestimonialsSection;
