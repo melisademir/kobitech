@@ -352,9 +352,10 @@ export default function TicaretiniBuyutCember() {
             } else {
               const isMobile = containerSize.width < 768;
               const minDimension = Math.min(containerSize.width, containerSize.height);
-              const circleRadius = Math.min(minDimension * 0.28, 280);
+              const circleRadius = Math.min(minDimension * 0.35, 340);
               const circleAngle = (i / TOTAL_IMAGES) * 360;
               const circleRad = (circleAngle * Math.PI) / 180;
+              const circleScale = 1.6;
               const circlePos = { x: Math.cos(circleRad) * circleRadius, y: Math.sin(circleRad) * circleRadius - 160, rotation: circleAngle + 90 };
 
               const baseRadius = Math.min(containerSize.width * 0.6, containerSize.height * 0.9);
@@ -383,7 +384,7 @@ export default function TicaretiniBuyutCember() {
                 x: lerp(circlePos.x, arcPos.x, morphValue),
                 y: lerp(circlePos.y, arcPos.y, morphValue),
                 rotation: lerp(circlePos.rotation, arcPos.rotation, morphValue),
-                scale: lerp(1, arcPos.scale, morphValue),
+                scale: lerp(circleScale, arcPos.scale, morphValue),
                 opacity: 1,
               };
             }
