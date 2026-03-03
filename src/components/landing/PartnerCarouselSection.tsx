@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -42,14 +42,26 @@ const stackPositions = [
 
 const PartnerCarouselSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  const handleNext = () => setCurrentIndex((i) => (i + 1) % partners.length);
+  const handleNext = useCallback(() => setCurrentIndex((i) => (i + 1) % partners.length), []);
   const handlePrevious = () => setCurrentIndex((i) => (i - 1 + partners.length) % partners.length);
+
+  // Auto-slide every 4 seconds
+  useEffect(() => {
+    if (isPaused) return;
+    intervalRef.current = setInterval(handleNext, 4000);
+    return () => { if (intervalRef.current) clearInterval(intervalRef.current); };
+  }, [isPaused, handleNext]);
+
+  const pauseAutoSlide = () => setIsPaused(true);
+  const resumeAutoSlide = () => setIsPaused(false);
 
   const stackIndices = getStackIndices(currentIndex, partners.length);
 
   return (
-    <section className="pt-4 md:pt-6 pb-16 md:pb-20">
+    <section className="pt-4 md:pt-6 pb-16 md:pb-20" onMouseEnter={pauseAutoSlide} onMouseLeave={resumeAutoSlide}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
