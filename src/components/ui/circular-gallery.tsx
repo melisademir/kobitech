@@ -4,6 +4,8 @@ import { cn } from '@/lib/utils';
 export interface GalleryItem {
   common: string;
   binomial: string;
+  description?: string;
+  tags?: string[];
   photo: {
     url: string;
     text: string;
@@ -28,38 +30,27 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
     useEffect(() => {
       const handleScroll = () => {
         setIsScrolling(true);
-        if (scrollTimeoutRef.current) {
-          clearTimeout(scrollTimeoutRef.current);
-        }
+        if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
         const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
         const scrollProgress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
-        const scrollRotation = scrollProgress * 360;
-        setRotation(scrollRotation);
-        scrollTimeoutRef.current = setTimeout(() => {
-          setIsScrolling(false);
-        }, 150);
+        setRotation(scrollProgress * 360);
+        scrollTimeoutRef.current = setTimeout(() => setIsScrolling(false), 150);
       };
       window.addEventListener('scroll', handleScroll, { passive: true });
       return () => {
         window.removeEventListener('scroll', handleScroll);
-        if (scrollTimeoutRef.current) {
-          clearTimeout(scrollTimeoutRef.current);
-        }
+        if (scrollTimeoutRef.current) clearTimeout(scrollTimeoutRef.current);
       };
     }, []);
 
     useEffect(() => {
       const autoRotate = () => {
-        if (!isScrolling) {
-          setRotation(prev => prev + autoRotateSpeed);
-        }
+        if (!isScrolling) setRotation(prev => prev + autoRotateSpeed);
         animationFrameRef.current = requestAnimationFrame(autoRotate);
       };
       animationFrameRef.current = requestAnimationFrame(autoRotate);
       return () => {
-        if (animationFrameRef.current) {
-          cancelAnimationFrame(animationFrameRef.current);
-        }
+        if (animationFrameRef.current) cancelAnimationFrame(animationFrameRef.current);
       };
     }, [isScrolling, autoRotateSpeed]);
 
@@ -87,34 +78,54 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
             const relativeAngle = (itemAngle + totalRotation + 360) % 360;
             const normalizedAngle = Math.abs(relativeAngle > 180 ? 360 - relativeAngle : relativeAngle);
             const opacity = Math.max(0.3, 1 - (normalizedAngle / 180));
+            const isFront = normalizedAngle < 40;
 
             return (
               <div
-                key={item.photo.url}
+                key={item.common}
                 role="group"
                 aria-label={item.common}
-                className="absolute w-[300px] h-[400px]"
+                className="absolute w-[240px] sm:w-[280px] md:w-[320px] h-[340px] sm:h-[380px] md:h-[420px]"
                 style={{
                   transform: `rotateY(${itemAngle}deg) translateZ(${radius}px)`,
                   left: '50%',
                   top: '50%',
-                  marginLeft: '-150px',
+                  marginLeft: '-140px',
                   marginTop: '-200px',
-                  opacity: opacity,
-                  transition: 'opacity 0.3s linear'
+                  opacity,
+                  transition: 'opacity 0.3s linear',
                 }}
               >
-                <div className="relative w-full h-full rounded-lg shadow-2xl overflow-hidden group border border-border bg-card/70 dark:bg-card/30 backdrop-blur-lg">
+                <div className="relative w-full h-full rounded-xl shadow-2xl overflow-hidden border border-border/30 bg-card/70 backdrop-blur-lg">
                   <img
                     src={item.photo.url}
                     alt={item.photo.text}
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{ objectPosition: item.photo.pos || 'center' }}
                   />
-                  <div className="absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/80 to-transparent text-white">
-                    <h2 className="text-xl font-bold">{item.common}</h2>
-                    <em className="text-sm italic opacity-80">{item.binomial}</em>
-                    <p className="text-xs mt-2 opacity-70">Photo by: {item.photo.by}</p>
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 w-full p-4 text-white flex flex-col gap-1.5">
+                    <h2 className="text-lg md:text-xl font-extrabold leading-tight">{item.common}</h2>
+                    <em className="text-xs italic opacity-70">{item.binomial}</em>
+                    {isFront && item.description && (
+                      <p className="text-[11px] leading-relaxed opacity-80 mt-1 line-clamp-3">
+                        {item.description}
+                      </p>
+                    )}
+                    {isFront && item.tags && item.tags.length > 0 && (
+                      <div className="flex flex-wrap gap-1 mt-1.5">
+                        {item.tags.map((tag, idx) => (
+                          <span
+                            key={idx}
+                            className="text-[9px] px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-sm"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

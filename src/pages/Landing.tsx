@@ -29,16 +29,16 @@ import tabTesvik from "@/assets/tab-tesvik-corp.png";
 import tabGlobal from "@/assets/tab-global-corp.png";
 
 const galleryItems: GalleryItem[] = [
-  { common: "Ödeme Al", binomial: "Param POS Çözümleri", photo: { url: tabOdeme, text: "Ödeme çözümleri", by: "Param" } },
-  { common: "E-Ticarete Açıl", binomial: "Online Satış Altyapısı", photo: { url: tabEticaret, text: "E-ticaret çözümleri", by: "Ticimax / İkas / T-Soft" } },
-  { common: "Paranı Yönet", binomial: "Nakit Akış Yönetimi", photo: { url: tabPara, text: "Para yönetimi", by: "Finrota" } },
-  { common: "Stoğunu Kontrol Et", binomial: "Depo & Stok Yönetimi", photo: { url: tabStok, text: "Stok yönetimi", by: "Univera / Nebim" } },
-  { common: "Ürünlerini Gönder", binomial: "Lojistik & Kargo", photo: { url: tabKargo, text: "Kargo çözümleri", by: "Aras Kargo" } },
-  { common: "Ekibine Yön Ver", binomial: "İnsan Kaynakları", photo: { url: tabEkip, text: "HR çözümleri", by: "Workcube" } },
-  { common: "Sahayı Yönet", binomial: "Saha Satış Yönetimi", photo: { url: tabSaha, text: "Saha yönetimi", by: "Univera" } },
-  { common: "İş Akışını Takip Et", binomial: "Süreç Otomasyonu", photo: { url: tabAkis, text: "İş akışı", by: "Paramtech" } },
-  { common: "Teşviklerden Yararlan", binomial: "Hibe & Destek", photo: { url: tabTesvik, text: "Teşvikler", by: "KOSGEB / TÜBİTAK" } },
-  { common: "Globale Açıl", binomial: "Uluslararası Ticaret", photo: { url: tabGlobal, text: "Global ticaret", by: "KobiTech" } },
+  { common: "Ödeme Al", binomial: "Param POS Çözümleri", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], photo: { url: tabOdeme, text: "Ödeme çözümleri", by: "Param" } },
+  { common: "E-Ticarete Açıl", binomial: "Online Satış Altyapısı", description: "Online satışın gücüyle dükkanınızın sınırlarını aşın ve satışlarınızı artırın. Türkiye'nin önde gelen e-ticaret altyapı sağlayıcıları T-Soft, Ticimax ve İkas'ın sunduğu en uygun paketleri keşfedin.", tags: ["Ticimax", "İkas", "T-Soft"], photo: { url: tabEticaret, text: "E-ticaret çözümleri", by: "Ticimax / İkas / T-Soft" } },
+  { common: "Paranı Yönet", binomial: "Nakit Akış Yönetimi", description: "Finrota'nın sunduğu Netahsilat, Netekstre, Nap360 ve Posrapor çözümleriyle nakit akışınızı düzenleyin, tüm para trafiğinizi güvenle yönetin. Kredim Business ile işletmenize uygun finansman imkanlarına ulaşın.", tags: ["Netahsilat", "Netekstre", "Nap360", "Posrapor", "Kredim Business"], photo: { url: tabPara, text: "Para yönetimi", by: "Finrota" } },
+  { common: "Stoğunu Kontrol Et", binomial: "Depo & Stok Yönetimi", description: "Univera Stokbar ve Nebim V3 çözümleriyle depo yönetiminizi modernleştirin, ürün giriş çıkışlarını anlık verilerle izleyin. Akıllı stok planlama yöntemleriyle depo seviyelerinizi en ideal noktada tutun.", tags: ["Univera Stokbar", "Nebim V3"], photo: { url: tabStok, text: "Stok yönetimi", by: "Univera / Nebim" } },
+  { common: "Ürünlerini Gönder", binomial: "Lojistik & Kargo", description: "Aras Kargo'nun geniş lojistik ağıyla ürünlerinizi Türkiye'nin her yerine hızlıca ulaştırın. E-ticaret entegrasyonu ile siparişlerinizi anında kargoya hazırlayın.", tags: ["Aras Kargo"], photo: { url: tabKargo, text: "Kargo çözümleri", by: "Aras Kargo" } },
+  { common: "Ekibine Yön Ver", binomial: "İnsan Kaynakları", description: "Çalışanlarınızın işe başladığı günden emekli olacağı güne kadar tüm süreçlerini tek bir çatı altında toplayın. Workcube HR ile güvenle yönetin.", tags: ["Workcube HR"], photo: { url: tabEkip, text: "HR çözümleri", by: "Workcube" } },
+  { common: "Sahayı Yönet", binomial: "Saha Satış Yönetimi", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin.", tags: ["Univera EnRoute"], photo: { url: tabSaha, text: "Saha yönetimi", by: "Univera" } },
+  { common: "İş Akışını Takip Et", binomial: "Süreç Otomasyonu", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin. Paramtech Flows ile ekibinizin verimliliğini artırın.", tags: ["Uni-Dox", "Paramtech Flows"], photo: { url: tabAkis, text: "İş akışı", by: "Paramtech" } },
+  { common: "Teşviklerden Yararlan", binomial: "Hibe & Destek", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Doğrudan ilgili kurumlarla bir araya getiriyoruz.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], photo: { url: tabTesvik, text: "Teşvikler", by: "KOSGEB / TÜBİTAK" } },
+  { common: "Globale Açıl", binomial: "Uluslararası Ticaret", description: "Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonuyla ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "Ticimax", "Mükellef"], photo: { url: tabGlobal, text: "Global ticaret", by: "KobiTech" } },
 ];
 
 /* Shared section divider — horizontal gradient line */
@@ -66,6 +66,13 @@ const Landing = () => (
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
+      </div>
+    </div>
+
+    {/* CIRCULAR GALLERY — top of Ticaretini Büyüt */}
+    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+      <div className="overflow-hidden" style={{ height: "600px" }}>
+        <CircularGallery items={galleryItems} radius={350} autoRotateSpeed={0.15} />
       </div>
     </div>
 
@@ -120,12 +127,6 @@ const Landing = () => (
       <PartnersSection />
     </div>
 
-    {/* CIRCULAR GALLERY */}
-    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
-      <div className="py-20 overflow-hidden" style={{ height: "700px" }}>
-        <CircularGallery items={galleryItems} radius={450} autoRotateSpeed={0.15} />
-      </div>
-    </div>
 
     <FooterSection />
   </div>
