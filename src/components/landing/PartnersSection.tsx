@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { ButtonColorful } from "@/components/ui/button-colorful";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -252,28 +253,7 @@ const PartnersSection = () => {
 
                 {/* CTA — large corporate button */}
                 <Link to="/digitalhub/onboarding1" className="inline-block mt-3">
-                  <button
-                    className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200"
-                    style={{
-                      height: "54px",
-                      padding: "0 40px",
-                      borderRadius: "24px",
-                      fontSize: "15px",
-                      background: "hsl(268,72%,38%)",
-                      boxShadow: "0 4px 16px -4px rgba(109,40,217,0.35)",
-                      minWidth: "220px",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.background = "hsl(268,72%,32%)";
-                      e.currentTarget.style.boxShadow = "0 6px 24px -4px rgba(109,40,217,0.50)";
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.background = "hsl(268,72%,38%)";
-                      e.currentTarget.style.boxShadow = "0 4px 16px -4px rgba(109,40,217,0.35)";
-                    }}
-                  >
-                    Çözümleri Keşfet <ArrowRight className="w-4 h-4" />
-                  </button>
+                  <ButtonColorful label="Çözümleri Keşfet" className="min-w-[220px]" />
                 </Link>
               </div>
 

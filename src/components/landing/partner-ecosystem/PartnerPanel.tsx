@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
+import { ButtonColorful } from "@/components/ui/button-colorful";
 import type { PuzzlePiece } from "./partner-data";
 import { partnerDetails } from "./partner-data";
 
@@ -138,25 +139,7 @@ const PartnerPanel = ({ piece }: { piece: PuzzlePiece }) => {
       {/* CTA button */}
       <motion.div variants={item} className="mt-8">
         <Link to="/digitalhub/products" className="block">
-          <button
-            className="inline-flex items-center justify-center gap-2 w-full font-bold text-white transition-all duration-300 text-sm md:text-base rounded-full hover:-translate-y-1 hover:shadow-xl"
-            style={{
-              height: "50px",
-              padding: "0 28px",
-              letterSpacing: "0.01em",
-              background: BRAND_GRADIENT,
-              boxShadow: `0 4px 16px rgba(107,33,168,0.25)`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = `0 8px 24px rgba(107,33,168,0.35)`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = `0 4px 16px rgba(107,33,168,0.25)`;
-            }}
-          >
-            {piece.name} Çözümünü İncele
-            <ArrowRight style={{ width: 16, height: 16 }} />
-          </button>
+          <ButtonColorful label={`${piece.name} Çözümünü İncele`} className="w-full" />
         </Link>
       </motion.div>
     </motion.div>

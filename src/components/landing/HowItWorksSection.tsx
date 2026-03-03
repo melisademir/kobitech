@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { ButtonColorful } from "@/components/ui/button-colorful";
 import stepHedef from "@/assets/step-hedef-corp.png";
 import stepTeklif from "@/assets/step-teklif-corp.png";
 import stepBuyume from "@/assets/step-buyume-corp.png";
@@ -167,28 +168,7 @@ const HowItWorksSection = () => (
         className="text-center mt-16"
       >
         <Link to="/digitalhub/onboarding1">
-          <button
-            className="inline-flex items-center gap-3 text-white font-bold transition-all duration-200"
-            style={{
-              height: "54px",
-              padding: "0 48px",
-              borderRadius: "24px",
-              fontSize: "16px",
-              background: "linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #8B5CF6 100%)",
-              boxShadow: "0 4px 16px rgba(107,33,168,0.35)",
-              minWidth: "260px",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, #5B21B6 0%, #6D28D9 50%, #7C3AED 100%)";
-              e.currentTarget.style.boxShadow = "0 6px 24px rgba(107,33,168,0.50)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, #6D28D9 0%, #7C3AED 50%, #8B5CF6 100%)";
-              e.currentTarget.style.boxShadow = "0 4px 16px rgba(107,33,168,0.35)";
-            }}
-          >
-            Hemen Başla <ArrowRight className="h-4 w-4" strokeWidth={2.5} />
-          </button>
+          <ButtonColorful label="Hemen Başla" className="min-w-[260px]" />
         </Link>
       </motion.div>
     </div>

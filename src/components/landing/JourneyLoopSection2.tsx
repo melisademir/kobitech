@@ -2,6 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Rocket, Check } from "lucide-react";
+import { ButtonColorful } from "@/components/ui/button-colorful";
 import { pieces, partnerDetails } from "./partner-ecosystem/partner-data";
 import type { PuzzlePiece } from "./partner-ecosystem/partner-data";
 import partnerCloudImg from "@/assets/partner-cloud.png";
@@ -182,22 +183,7 @@ const JourneyLoopSection2 = () => {
 
                       {/* CTA Button */}
                       <Link to="/digitalhub/products">
-                        <motion.div
-                          className="flex items-center gap-3 cursor-pointer rounded-full text-primary-foreground font-bold text-sm shadow-premium"
-                          whileHover={{ scale: 1.06 }}
-                          whileTap={{ scale: 0.97 }}
-                          transition={{ type: "spring", stiffness: 300, damping: 22 }}
-                          style={{
-                            height: "48px",
-                            padding: "0 28px 0 20px",
-                            width: "fit-content",
-                            background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)))",
-                          }}
-                        >
-                          <Rocket className="w-4 h-4" style={{ transform: "rotate(-45deg)" }} />
-                          <span className="whitespace-nowrap">Çözümleri İncele</span>
-                          <ArrowRight className="w-4 h-4 opacity-80" />
-                        </motion.div>
+                        <ButtonColorful label="Çözümleri İncele" />
                       </Link>
                     </div>
 
