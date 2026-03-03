@@ -71,6 +71,19 @@ const Landing = () => (
 
     {/* CIRCULAR GALLERY — top of Ticaretini Büyüt */}
     <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+      <div className="flex flex-col items-center text-center pt-16 pb-2 px-4">
+        <h3
+          className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground leading-none"
+          style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
+        >
+          Ticaretini Büyüt
+          <br />
+          <span className="text-gradient-primary">Maliyetlerini Düşür</span>
+        </h3>
+        <p className="mt-4 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed">
+          İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
+        </p>
+      </div>
       <div className="overflow-hidden" style={{ height: "600px" }}>
         <CircularGallery items={galleryItems} radius={550} autoRotateSpeed={0.003} />
       </div>
