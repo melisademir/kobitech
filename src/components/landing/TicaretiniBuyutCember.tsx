@@ -356,7 +356,7 @@ export default function TicaretiniBuyutCember() {
               const circleAngle = (i / TOTAL_IMAGES) * 360;
               const circleRad = (circleAngle * Math.PI) / 180;
               const circleScale = 1.6;
-              const circlePos = { x: Math.cos(circleRad) * circleRadius, y: Math.sin(circleRad) * circleRadius - 160, rotation: circleAngle + 90 };
+              const circlePos = { x: Math.cos(circleRad) * circleRadius, y: Math.sin(circleRad) * circleRadius - 100, rotation: circleAngle + 90 };
 
               const baseRadius = Math.min(containerSize.width * 0.6, containerSize.height * 0.9);
               const arcRadius = baseRadius * (isMobile ? 1.0 : 0.85);
