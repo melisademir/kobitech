@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Mail, Phone } from "lucide-react";
+import { ButtonColorful } from "@/components/ui/button-colorful";
 import heroIllustration from "@/assets/hero-illustration-new.png";
 
 
@@ -143,24 +144,7 @@ const HeroSection = () => {
                 />
               </div>
               <Link to="/digitalhub/onboarding1">
-                <button
-                  className="h-[44px] px-8 rounded-[20px] font-bold text-[14px] text-white whitespace-nowrap shrink-0 flex items-center gap-2 w-full sm:w-auto justify-center transition-colors duration-200"
-                  style={{
-                    background: "linear-gradient(135deg, #6D28D9, #7C3AED)",
-                    boxShadow: "0 4px 16px -4px rgba(109,40,217,0.45)",
-                    minWidth: "170px",
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = "linear-gradient(135deg, #5B21B6, #6D28D9)";
-                    e.currentTarget.style.boxShadow = "0 6px 24px -4px rgba(109,40,217,0.55)";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "linear-gradient(135deg, #6D28D9, #7C3AED)";
-                    e.currentTarget.style.boxShadow = "0 4px 16px -4px rgba(109,40,217,0.45)";
-                  }}
-                >
-                  Hemen Başla <ArrowRight className="w-4 h-4" />
-                </button>
+                <ButtonColorful label="Hemen Başla" className="w-full sm:w-auto min-w-[170px]" />
               </Link>
             </div>
             <p className="text-xs mt-3" style={{ color: "rgba(196,181,253,0.55)" }}>

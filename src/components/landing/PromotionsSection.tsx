@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, MessageSquare, Cloud, FileText, CreditCard } from "lucide-react";
+import { ButtonColorful } from "@/components/ui/button-colorful";
 import { Link } from "react-router-dom";
 import useEmblaCarousel from "embla-carousel-react";
 import { useCallback, useEffect, useState } from "react";
@@ -133,15 +134,7 @@ const PromoCard = ({ card, i }: { card: typeof cards[number]; i: number }) => (
       </motion.div>
       <div>
         <Link to="/digitalhub/onboarding1">
-          <button
-            className="inline-flex items-center gap-2 px-7 py-3 rounded-full text-sm font-semibold transition-all duration-200 shadow-[0_0_20px_rgba(124,58,237,0.5)] hover:shadow-[0_0_30px_rgba(124,58,237,0.7)]"
-            style={{
-              background: "linear-gradient(135deg, hsl(265,80%,55%) 0%, hsl(280,85%,50%) 100%)",
-              color: "#FFFFFF",
-            }}
-          >
-            Hemen Başla <ArrowRight className="w-4 h-4" />
-          </button>
+          <ButtonColorful label="Hemen Başla" />
         </Link>
       </div>
     </div>

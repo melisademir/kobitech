@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { ButtonColorful } from "@/components/ui/button-colorful";
 import promoPayment from "@/assets/promo-payment.jpg";
 import promoCloud from "@/assets/promo-cloud.jpg";
 import promoAiAgent from "@/assets/promo-ai-agent.jpg";
@@ -119,28 +120,7 @@ const CtaSection = () =>
         {/* CTA Button */}
         <div className="text-center">
           <Link to="/digitalhub/onboarding1">
-            <button
-            className="inline-flex items-center gap-2 text-white font-bold transition-all duration-200"
-            style={{
-              height: "56px",
-              padding: "0 48px",
-              borderRadius: "24px",
-              fontSize: "16px",
-              background: "linear-gradient(135deg, #7C3AED, #8B5CF6)",
-              boxShadow: "0 4px 16px rgba(124,58,237,0.45)",
-              minWidth: "260px"
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, #6D28D9, #7C3AED)";
-              e.currentTarget.style.boxShadow = "0 6px 24px rgba(124,58,237,0.60)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "linear-gradient(135deg, #7C3AED, #8B5CF6)";
-              e.currentTarget.style.boxShadow = "0 4px 16px rgba(124,58,237,0.45)";
-            }}>
-            
-              Hemen Başla <ArrowRight className="w-5 h-5" />
-            </button>
+            <ButtonColorful label="Hemen Başla" className="min-w-[260px]" />
           </Link>
         </div>
       </motion.div>
