@@ -98,6 +98,7 @@ const App = () => (
             <Route path="/digitalhub/profile" element={<KobiProfile />} />
             <Route path="/digitalhub/notifications" element={<KobiBildirimler />} />
 
+            <Route path="/" element={<Navigate to="/homepage" replace />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
