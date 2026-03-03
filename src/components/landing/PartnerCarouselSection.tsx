@@ -49,7 +49,7 @@ const PartnerCarouselSection = () => {
   const stackIndices = getStackIndices(currentIndex, partners.length);
 
   return (
-    <section className="py-16 md:py-20">
+    <section className="pt-4 md:pt-6 pb-16 md:pb-20">
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
