@@ -301,7 +301,7 @@ export default function TicaretiniBuyutCember() {
             <p className="mt-3 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed mx-auto">
               İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
             </p>
-            <div className="mt-8 min-h-[160px]">
+            <div className="mt-4 min-h-[140px]">
               <AnimatePresence mode="wait">
                 {selected ? (
                   <motion.div
