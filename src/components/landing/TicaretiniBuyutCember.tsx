@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useTransform, useSpring, useMotionValue, AnimatePresence } from "framer-motion";
 import {
   CreditCard, ShoppingCart, Wallet, Package, Truck, Users, MapPin,
   ClipboardCheck, BadgePercent, Globe2, type LucideIcon,
@@ -30,7 +30,7 @@ const CARD_IMAGES: Record<string, string> = {
 };
 
 // --- Types ---
-type AnimationPhase = "scatter" | "line" | "circle" | "fan";
+type AnimationPhase = "scatter" | "line" | "circle" | "bottom-strip";
 
 interface CategoryInfo {
   id: string;
@@ -154,28 +154,87 @@ export default function TicaretiniBuyutCember() {
     return () => observer.disconnect();
   }, []);
 
-  // Phase transitions: scatter → line → circle → fan (auto on visibility)
+  const virtualScroll = useMotionValue(0);
+  const scrollRef = useRef(0);
+
+  const isVisibleRef = useRef(false);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { isVisibleRef.current = entry.isIntersecting && entry.intersectionRatio > 0.5; },
+      { threshold: 0.5 }
+    );
+    obs.observe(container);
+    return () => obs.disconnect();
+  }, []);
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
+    const handleWheel = (e: WheelEvent) => {
+      if (!isVisibleRef.current) return;
+      if (scrollRef.current >= MAX_SCROLL && e.deltaY > 0) return;
+      if (scrollRef.current <= 0 && e.deltaY < 0) return;
+      e.preventDefault();
+      const newScroll = Math.min(Math.max(scrollRef.current + e.deltaY, 0), MAX_SCROLL);
+      scrollRef.current = newScroll;
+      virtualScroll.set(newScroll);
+    };
+
+    let touchStartY = 0;
+    const handleTouchStart = (e: TouchEvent) => { touchStartY = e.touches[0].clientY; };
+    const handleTouchMove = (e: TouchEvent) => {
+      if (!isVisibleRef.current) return;
+      const touchY = e.touches[0].clientY;
+      const deltaY = touchStartY - touchY;
+      touchStartY = touchY;
+      if (scrollRef.current >= MAX_SCROLL && deltaY > 0) return;
+      if (scrollRef.current <= 0 && deltaY < 0) return;
+      e.preventDefault();
+      const newScroll = Math.min(Math.max(scrollRef.current + deltaY, 0), MAX_SCROLL);
+      scrollRef.current = newScroll;
+      virtualScroll.set(newScroll);
+    };
+
+    container.addEventListener("wheel", handleWheel, { passive: false });
+    container.addEventListener("touchstart", handleTouchStart, { passive: false });
+    container.addEventListener("touchmove", handleTouchMove, { passive: false });
+    return () => {
+      container.removeEventListener("wheel", handleWheel);
+      container.removeEventListener("touchstart", handleTouchStart);
+      container.removeEventListener("touchmove", handleTouchMove);
+    };
+  }, [virtualScroll]);
+
+  const morphProgress = useTransform(virtualScroll, [0, 600], [0, 1]);
+  const smoothMorph = useSpring(morphProgress, { stiffness: 50, damping: 30 });
+  const scrollRotate = useTransform(virtualScroll, [600, 3000], [0, 360]);
+  const smoothScrollRotate = useSpring(scrollRotate, { stiffness: 50, damping: 30 });
+
+  const mouseX = useMotionValue(0);
+  const smoothMouseX = useSpring(mouseX, { stiffness: 40, damping: 30 });
+
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+    const handleMouseMove = (e: MouseEvent) => {
+      const rect = container.getBoundingClientRect();
+      const relativeX = e.clientX - rect.left;
+      const normalizedX = (relativeX / rect.width) * 2 - 1;
+      mouseX.set(normalizedX * 100);
+    };
+    container.addEventListener("mousemove", handleMouseMove);
+    return () => container.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX]);
+
   useEffect(() => {
     const timer1 = setTimeout(() => setIntroPhase("line"), 500);
     const timer2 = setTimeout(() => setIntroPhase("circle"), 2500);
     return () => { clearTimeout(timer1); clearTimeout(timer2); };
   }, []);
-
-  // Auto-morph to fan when section becomes visible
-  useEffect(() => {
-    const container = containerRef.current;
-    if (!container) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && entry.intersectionRatio > 0.3 && introPhase === "circle") {
-          setTimeout(() => setIntroPhase("fan"), 400);
-        }
-      },
-      { threshold: 0.3 }
-    );
-    obs.observe(container);
-    return () => obs.disconnect();
-  }, [introPhase]);
 
   const scatterPositions = useMemo(() => {
     return CATEGORIES.map(() => ({
@@ -187,20 +246,34 @@ export default function TicaretiniBuyutCember() {
     }));
   }, []);
 
+  const [morphValue, setMorphValue] = useState(0);
+  const [rotateValue, setRotateValue] = useState(0);
+  const [parallaxValue, setParallaxValue] = useState(0);
+
+  useEffect(() => {
+    const u1 = smoothMorph.on("change", setMorphValue);
+    const u2 = smoothScrollRotate.on("change", setRotateValue);
+    const u3 = smoothMouseX.on("change", setParallaxValue);
+    return () => { u1(); u2(); u3(); };
+  }, [smoothMorph, smoothScrollRotate, smoothMouseX]);
+
+  const contentOpacity = useTransform(smoothMorph, [0.8, 1], [0, 1]);
+  const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
+
+  // Title animation: center → top, small → large
+  const titleTop = useTransform(smoothMorph, [0, 0.8], [50, 4]);
+  const titleScaleValue = useTransform(smoothMorph, [0, 0.8], [0.7, 1]);
+  const subtitleOpacity = useTransform(smoothMorph, [0.6, 0.9], [0, 1]);
+
   const selected = selectedCategory ? CATEGORIES.find((c) => c.id === selectedCategory) : null;
 
   return (
-    <section className="relative w-full">
-      <div ref={containerRef} className="relative w-full overflow-hidden" style={{ height: "100vh", minHeight: 700 }}>
-        {/* Title */}
+    <section className="relative w-full" style={{ height: "100vh" }}>
+      <div ref={containerRef} className="relative w-full h-full overflow-hidden" style={{ background: "hsl(var(--background))" }}>
+        {/* Title: starts centered in circle, moves to top on scroll */}
         <motion.div
           className="absolute inset-x-0 z-20 flex flex-col items-center text-center px-4 pointer-events-none"
-          style={{ top: introPhase === "fan" ? "4%" : "50%", transform: "translateY(-50%)" }}
-          animate={{
-            top: introPhase === "fan" ? "4%" : "50%",
-            scale: introPhase === "fan" ? 1 : 0.7,
-          }}
-          transition={{ type: "spring", stiffness: 50, damping: 30 }}
+          style={{ top: useTransform(titleTop, (v) => `${v}%`), transform: "translateY(-50%)", scale: titleScaleValue }}
         >
           <motion.h3
             className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground leading-none"
@@ -216,22 +289,18 @@ export default function TicaretiniBuyutCember() {
 
           <motion.p
             className="mt-1 text-sm text-muted-foreground tracking-widest uppercase"
-            animate={{ opacity: introPhase === "circle" ? 1 : 0 }}
+            animate={{ opacity: introPhase === "circle" && morphValue < 0.3 ? 1 : 0 }}
             transition={{ duration: 0.5 }}
           >
             KAYDIRARAK KEŞFEDİN
           </motion.p>
 
-          {/* Description + selected category */}
-          <motion.div
-            animate={{ opacity: introPhase === "fan" ? 1 : 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="pointer-events-auto"
-          >
+          {/* Description + selected category - fades in on scroll */}
+          <motion.div style={{ opacity: subtitleOpacity }} className="pointer-events-auto">
             <p className="mt-0 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed mx-auto">
               İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
             </p>
-            <div className="mt-8 min-h-[140px]">
+            <div className="mt-16 min-h-[140px]">
               <AnimatePresence mode="wait">
                 {selected ? (
                   <motion.div
@@ -272,34 +341,42 @@ export default function TicaretiniBuyutCember() {
               const lineTotalWidth = TOTAL_IMAGES * lineSpacing;
               const lineX = i * lineSpacing - lineTotalWidth / 2;
               target = { x: lineX, y: 0, rotation: 0, scale: 1, opacity: 1 };
-            } else if (introPhase === "circle") {
+            } else {
+              const isMobile = containerSize.width < 768;
               const minDimension = Math.min(containerSize.width, containerSize.height);
               const circleRadius = Math.min(minDimension * 0.35, 340);
               const circleAngle = (i / TOTAL_IMAGES) * 360;
               const circleRad = (circleAngle * Math.PI) / 180;
-              target = {
-                x: Math.cos(circleRad) * circleRadius,
-                y: Math.sin(circleRad) * circleRadius + 40,
-                rotation: circleAngle + 90,
-                scale: 1.6,
-                opacity: 1,
+              const circleScale = 1.6;
+              const circlePos = { x: Math.cos(circleRad) * circleRadius, y: Math.sin(circleRad) * circleRadius + 40, rotation: circleAngle + 90 };
+
+              const baseRadius = Math.min(containerSize.width * 0.6, containerSize.height * 0.9);
+              const arcRadius = baseRadius * (isMobile ? 1.0 : 0.85);
+              const arcApexY = containerSize.height * (isMobile ? 0.32 : 0.08);
+              const arcCenterY = arcApexY + arcRadius;
+              const spreadAngle = isMobile ? 120 : 140;
+              const startAngle = -90 - spreadAngle / 2;
+              const step = spreadAngle / (TOTAL_IMAGES - 1);
+
+              const scrollProgress = Math.min(Math.max(rotateValue / 360, 0), 1);
+              const maxRotation = spreadAngle * 2.4;
+              const boundedRotation = (0.5 - scrollProgress) * maxRotation;
+
+              const currentArcAngle = startAngle + i * step + boundedRotation;
+              const arcRad = (currentArcAngle * Math.PI) / 180;
+
+              const arcPos = {
+                x: Math.cos(arcRad) * arcRadius + parallaxValue * 0.3,
+                y: Math.sin(arcRad) * arcRadius + arcCenterY,
+                rotation: currentArcAngle + 90,
+                scale: isMobile ? 1.4 : 1.8,
               };
-            } else {
-              // Fan strip at bottom
-              const isMobile = containerSize.width < 768;
-              const totalCards = TOTAL_IMAGES;
-              const cardSpacing = isMobile ? 70 : 130;
-              const totalWidth = (totalCards - 1) * cardSpacing;
-              const baseX = i * cardSpacing - totalWidth / 2;
-              const baseY = containerSize.height * (isMobile ? 0.30 : 0.36);
-              const centerOffset = (i - (totalCards - 1) / 2) / ((totalCards - 1) / 2);
-              const arcCurve = centerOffset * centerOffset * (isMobile ? 30 : 50);
-              const fanRotation = centerOffset * (isMobile ? 8 : 12);
+
               target = {
-                x: baseX,
-                y: baseY + arcCurve,
-                rotation: fanRotation,
-                scale: isMobile ? 1.6 : 2.0,
+                x: lerp(circlePos.x, arcPos.x, morphValue),
+                y: lerp(circlePos.y, arcPos.y, morphValue),
+                rotation: lerp(circlePos.rotation, arcPos.rotation, morphValue),
+                scale: lerp(circleScale, arcPos.scale, morphValue),
                 opacity: 1,
               };
             }
