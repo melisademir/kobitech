@@ -1,7 +1,6 @@
 import LandingNav from "@/components/landing/LandingNav";
 import PartnerCarouselSection from "@/components/landing/PartnerCarouselSection";
 import HeroSection from "@/components/landing/HeroSection";
-import HeroGallerySection from "@/components/landing/HeroGallerySection";
 
 import FeaturesSection from "@/components/landing/FeaturesSection";
 import PartnersSection from "@/components/landing/PartnersSection";
@@ -45,9 +44,6 @@ const Landing = () => (
         <HeroSection />
       </div>
     </div>
-
-    {/* 2 — HERO GALLERY */}
-    <HeroGallerySection />
 
     {/* TICARETINI BÜYÜT ÇEMBER */}
     <TicaretiniBuyutCember />
