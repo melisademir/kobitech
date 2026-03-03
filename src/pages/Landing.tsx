@@ -14,7 +14,7 @@ import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSectio
 
 
 import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
-import IntroAnimation from "@/components/ui/scroll-morph-hero";
+
 import TicaretiniBuyutCember from "@/components/landing/TicaretiniBuyutCember";
 
 /* Shared section divider — horizontal gradient line */
@@ -61,8 +61,6 @@ const Landing = () => (
       <HowItWorksSection />
     </div>
 
-    {/* SCROLL MORPH HERO — Partner Ecosystem Animation */}
-    <IntroAnimation />
 
     {/* 5b — PROMOTIONS */}
     <div style={{ background: "linear-gradient(180deg, hsl(38,60%,98%) 0%, hsl(252,25%,97%) 100%)" }}>
