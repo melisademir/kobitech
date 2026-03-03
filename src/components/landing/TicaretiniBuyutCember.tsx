@@ -312,14 +312,7 @@ export default function TicaretiniBuyutCember() {
                     transition={{ type: "spring", stiffness: 300, damping: 28 }}
                     className="flex flex-col items-center text-center max-w-xl mx-auto"
                   >
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: `${selected.accent}15` }}>
-                        <selected.icon size={24} style={{ color: selected.accent }} />
-                      </div>
-                      <div className="text-left">
-                        <h4 className="text-xl md:text-2xl font-extrabold text-foreground leading-tight" style={{ letterSpacing: "-0.02em" }}>{selected.label}</h4>
-                      </div>
-                    </div>
+                    <h4 className="text-xl md:text-2xl font-extrabold text-foreground leading-tight mb-3" style={{ letterSpacing: "-0.02em" }}>{selected.label}</h4>
                     <p className="text-base text-muted-foreground leading-relaxed mb-4 max-w-md">{selected.description}</p>
                     <div className="flex flex-wrap justify-center gap-2.5">
                       {selected.tags.map((tag, idx) => (
