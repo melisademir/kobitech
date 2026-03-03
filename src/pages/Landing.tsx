@@ -3,7 +3,7 @@ import PartnerCarouselSection from "@/components/landing/PartnerCarouselSection"
 import HeroSection from "@/components/landing/HeroSection";
 
 import FeaturesSection from "@/components/landing/FeaturesSection";
-import PartnersSection from "@/components/landing/PartnersSection";
+
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import CtaSection from "@/components/landing/CtaSection";
 import FooterSection from "@/components/landing/FooterSection";
@@ -88,10 +88,6 @@ const Landing = () => (
       <PartnerEcosystemSection />
     </div>
 
-    {/* PARTNERS / SOLUTIONS */}
-    <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
-      <PartnersSection />
-    </div>
 
 
     <FooterSection />
