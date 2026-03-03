@@ -77,7 +77,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
             const totalRotation = rotation % 360;
             const relativeAngle = (itemAngle + totalRotation + 360) % 360;
             const normalizedAngle = Math.abs(relativeAngle > 180 ? 360 - relativeAngle : relativeAngle);
-            const opacity = Math.max(0.3, 1 - (normalizedAngle / 180));
+            const opacity = Math.max(0.6, 1 - (normalizedAngle / 270));
             const isFront = normalizedAngle < 40;
 
             return (
