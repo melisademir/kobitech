@@ -83,10 +83,11 @@ const Landing = () => (
     </div>
 
 
-    {/* PARTNER ECOSYSTEM */}
+    {/* PARTNER ECOSYSTEM — temporarily hidden
     <div className="py-16 md:py-24" style={{ background: "linear-gradient(180deg, hsl(38,30%,97%) 0%, hsl(252,30%,97%) 100%)" }}>
       <PartnerEcosystemSection />
     </div>
+    */}
 
 
 
