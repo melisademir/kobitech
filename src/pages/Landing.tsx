@@ -72,7 +72,7 @@ const Landing = () => (
     {/* CIRCULAR GALLERY — top of Ticaretini Büyüt */}
     <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
       <div className="overflow-hidden" style={{ height: "600px" }}>
-        <CircularGallery items={galleryItems} radius={350} autoRotateSpeed={0.15} />
+        <CircularGallery items={galleryItems} radius={550} autoRotateSpeed={0.15} />
       </div>
     </div>
 
