@@ -77,8 +77,8 @@ const HeroSection = () => {
           {/* H1 */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-5xl lg:text-6xl font-black leading-[1.08] mb-5"
-            style={{ letterSpacing: "-0.03em", color: "#FFFFFF", textShadow: "0 2px 24px rgba(0,0,0,0.5)" }}
+            className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-5"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#FFFFFF", textShadow: "0 2px 24px rgba(0,0,0,0.5)" }}
           >
             İşletmenizin tüm dijital
             <br />
@@ -95,8 +95,8 @@ const HeroSection = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="max-w-lg mx-auto font-medium mb-8"
-            style={{ fontSize: "19px", lineHeight: "1.75", color: "rgba(243,232,255,0.92)", textShadow: "0 1px 12px rgba(0,0,0,0.4)" }}
+            className="max-w-lg mx-auto font-medium text-base md:text-lg mb-8"
+            style={{ lineHeight: "1.75", color: "rgba(243,232,255,0.92)", textShadow: "0 1px 12px rgba(0,0,0,0.4)" }}
           >
             Dijitalleşin, verimli çalışın, dünyaya açılın.
             <br />

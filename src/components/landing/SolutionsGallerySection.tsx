@@ -27,15 +27,15 @@ const galleryItems: GalleryItem[] = [
 const SolutionsGallerySection = () => (
   <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
     <div className="flex flex-col items-center text-center pt-24 md:pt-32 pb-4 px-4">
-      <h3
-        className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground leading-none"
+      <h2
+        className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground"
         style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
       >
         Ticaretini Büyüt
         <br />
         <span className="text-gradient-primary">Maliyetlerini Düşür</span>
-      </h3>
-      <p className="mt-4 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed">
+      </h2>
+      <p className="mt-4 max-w-lg text-muted-foreground text-base md:text-lg" style={{ lineHeight: 1.7 }}>
         İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
       </p>
     </div>

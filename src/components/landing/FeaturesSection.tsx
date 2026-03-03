@@ -188,7 +188,7 @@ const FeaturesSection = () => (
           <span className="text-gradient-primary">Tek Platformdan Ulaşın</span>
         </h2>
 
-        <p className="text-muted-foreground text-sm md:text-lg whitespace-nowrap" style={{ lineHeight: 1.7, margin: "0 auto" }}>
+        <p className="text-muted-foreground text-base md:text-lg whitespace-nowrap" style={{ lineHeight: 1.7, margin: "0 auto" }}>
           KOBİ'lerin dijital dönüşümünü kolaylaştıran, tek çatı altında eksiksiz bir ekosistem.
         </p>
       </motion.div>
