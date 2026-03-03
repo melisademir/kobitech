@@ -169,7 +169,7 @@ const TestimonialsSection = () => {
           >
             İşletmelerden <span className="text-gradient-primary">Geri Bildirimler</span>
           </h2>
-          <p className="text-muted-foreground max-w-md mx-auto text-sm md:text-lg" style={{ lineHeight: "1.7" }}>
+          <p className="text-muted-foreground max-w-md mx-auto text-base md:text-lg" style={{ lineHeight: "1.7" }}>
             DigitalHub ile dönüşen işletme sahiplerinin deneyimleri
           </p>
         </motion.div>

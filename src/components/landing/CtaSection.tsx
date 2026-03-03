@@ -105,7 +105,7 @@ const CtaSection = () =>
             <br />
             <span className="text-gradient-primary">Hazır mısınız?</span>
           </h2>
-          <p style={{ fontSize: "18px", lineHeight: 1.7, color: "rgba(196,181,253,0.8)", maxWidth: "480px", margin: "0 auto" }}>
+          <p className="text-base md:text-lg" style={{ lineHeight: 1.7, color: "rgba(196,181,253,0.8)", maxWidth: "480px", margin: "0 auto" }}>
             50+ dijital çözüm, 30+ çözüm ortağı. Tek platformda tüm ihtiyaçlarınıza yanıt bulun.
           </p>
         </div>

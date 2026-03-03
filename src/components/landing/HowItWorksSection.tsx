@@ -76,8 +76,8 @@ const HowItWorksSection = () => (
           <span className="text-gradient-primary">Başlayın</span>
         </h2>
         <p
-          className="mt-5 mx-auto md:whitespace-nowrap"
-          style={{ fontSize: "17px", color: "rgba(156,163,175,0.9)", lineHeight: "1.7" }}
+          className="mt-5 mx-auto text-base md:text-lg md:whitespace-nowrap"
+          style={{ color: "rgba(156,163,175,0.9)", lineHeight: "1.7" }}
         >
           Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.
         </p>
