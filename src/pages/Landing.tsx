@@ -12,7 +12,7 @@ import TestimonialsSection from "@/components/landing/TestimonialsSection";
 
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
 
-import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
+
 
 
 import SolutionsGallerySection from "@/components/landing/SolutionsGallerySection";
@@ -82,13 +82,9 @@ const Landing = () => (
       <TestimonialsSection />
     </div>
 
-    {/* PARTNER LOOP */}
-    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
-      <JourneyLoopSection2 />
-    </div>
 
     {/* PARTNER ECOSYSTEM */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,30%,97%) 0%, hsl(252,30%,97%) 100%)" }}>
+    <div className="py-16 md:py-24" style={{ background: "linear-gradient(180deg, hsl(38,30%,97%) 0%, hsl(252,30%,97%) 100%)" }}>
       <PartnerEcosystemSection />
     </div>
 
