@@ -55,13 +55,6 @@ const Landing = () => (
 
     <SectionDivider />
 
-    {/* 3 — PARTNER ECOSYSTEM */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,30%,97%) 0%, hsl(252,30%,97%) 100%)" }}>
-      <PartnerEcosystemSection />
-    </div>
-
-    <SectionDivider />
-
     {/* 4 — HOW IT WORKS */}
     <div style={{ background: "hsl(258, 45%, 10%)" }}>
       <HowItWorksSection />
@@ -101,6 +94,10 @@ const Landing = () => (
       <PartnerCarouselSection />
     </div>
 
+    {/* PARTNER ECOSYSTEM */}
+    <div style={{ background: "linear-gradient(180deg, hsl(38,30%,97%) 0%, hsl(252,30%,97%) 100%)" }}>
+      <PartnerEcosystemSection />
+    </div>
 
     <FooterSection />
   </div>
