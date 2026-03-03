@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Store, ShoppingCart, BadgeDollarSign, MessageCircle, ClipboardList, FileText } from "lucide-react";
 
 const features = [
@@ -102,6 +102,67 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
   );
 };
 
+const MobileFeatureCarousel = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0 && currentIndex < features.length - 1) {
+        setCurrentIndex(currentIndex + 1);
+      } else if (diff < 0 && currentIndex > 0) {
+        setCurrentIndex(currentIndex - 1);
+      }
+    }
+  };
+
+  return (
+    <div className="md:hidden">
+      <div
+        className="overflow-hidden"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
+        <motion.div
+          className="flex"
+          animate={{ x: `-${currentIndex * 100}%` }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        >
+          {features.map((f, i) => (
+            <div key={f.title} className="w-full flex-shrink-0 px-2">
+              <FeatureCard f={f} index={i} />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+      <div className="flex justify-center gap-2 mt-4">
+        {features.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrentIndex(i)}
+            className="w-2 h-2 rounded-full transition-all duration-300"
+            style={{
+              background: i === currentIndex ? "hsl(268,72%,38%)" : "hsl(268,72%,38%,0.2)",
+              transform: i === currentIndex ? "scale(1.3)" : "scale(1)",
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+};
+
 const FeaturesSection = () => (
   <section
     id="features"
@@ -130,12 +191,15 @@ const FeaturesSection = () => (
         </p>
       </motion.div>
 
-      {/* Card Grid — 2 cols mobile, 3 cols desktop */}
-      <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
+      {/* Card Grid — swipeable on mobile, 3 cols desktop */}
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
         {features.map((f, i) => (
           <FeatureCard key={f.title} f={f} index={i} />
         ))}
       </div>
+
+      {/* Mobile swipeable carousel */}
+      <MobileFeatureCarousel />
     </div>
   </section>
 );
