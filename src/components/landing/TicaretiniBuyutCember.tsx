@@ -89,10 +89,10 @@ function FlipCard({ category, index, total, phase, target, isSelected, onClick }
         scale: isSelected ? target.scale * 1.3 : target.scale,
         opacity: target.opacity,
       }}
-      transition={{ type: "spring", stiffness: 40, damping: 18, mass: 1 }}
+      transition={{ type: "spring", stiffness: 50, damping: 30, mass: 1.2 }}
       onClick={onClick}
-      whileHover={{ scale: target.scale * 1.15 }}
-      whileTap={{ scale: target.scale * 0.95 }}
+      whileHover={{ scale: target.scale * 1.06 }}
+      whileTap={{ scale: target.scale * 0.97 }}
     >
       <motion.div className="relative w-full h-full" style={{ transformStyle: "preserve-3d" }}>
         <div
@@ -210,12 +210,12 @@ export default function TicaretiniBuyutCember() {
   }, [virtualScroll]);
 
   const morphProgress = useTransform(virtualScroll, [0, 600], [0, 1]);
-  const smoothMorph = useSpring(morphProgress, { stiffness: 40, damping: 20 });
+  const smoothMorph = useSpring(morphProgress, { stiffness: 50, damping: 30 });
   const scrollRotate = useTransform(virtualScroll, [600, 3000], [0, 360]);
-  const smoothScrollRotate = useSpring(scrollRotate, { stiffness: 40, damping: 20 });
+  const smoothScrollRotate = useSpring(scrollRotate, { stiffness: 50, damping: 30 });
 
   const mouseX = useMotionValue(0);
-  const smoothMouseX = useSpring(mouseX, { stiffness: 30, damping: 20 });
+  const smoothMouseX = useSpring(mouseX, { stiffness: 40, damping: 30 });
 
   useEffect(() => {
     const container = containerRef.current;
@@ -366,7 +366,7 @@ export default function TicaretiniBuyutCember() {
               const arcRad = (currentArcAngle * Math.PI) / 180;
 
               const arcPos = {
-                x: Math.cos(arcRad) * arcRadius + parallaxValue,
+                x: Math.cos(arcRad) * arcRadius + parallaxValue * 0.3,
                 y: Math.sin(arcRad) * arcRadius + arcCenterY,
                 rotation: currentArcAngle + 90,
                 scale: isMobile ? 1.4 : 1.8,
