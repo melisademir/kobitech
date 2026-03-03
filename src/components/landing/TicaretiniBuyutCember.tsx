@@ -51,8 +51,8 @@ interface FlipCardProps {
   onClick: () => void;
 }
 
-const IMG_WIDTH = 72;
-const IMG_HEIGHT = 85;
+const IMG_WIDTH = 90;
+const IMG_HEIGHT = 106;
 
 const CATEGORIES: CategoryInfo[] = [
   { id: "odeme", label: "Ödeme Al", description: "Türkiye'nin lider finansal teknoloji ekosistemi Param ile tanışın; ticaretinize güç katın. İster mağazanızda ister dijital kanallarda; Param Fiziki POS, Param Sanal POS ve Param Cep POS çözümlerimizle tüm tahsilat süreçlerinizi tek platformda birleştirin.", tags: ["Param Fiziki POS", "Param Sanal POS", "Param Cep POS"], icon: CreditCard, accent: "#059669" },
