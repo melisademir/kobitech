@@ -149,17 +149,17 @@ const HeroSection = () => {
                 <ButtonColorful label="Hemen Başla" className="w-full sm:w-auto min-w-[170px]" />
               </Link>
             </div>
-            <p className="text-xs mt-3 flex items-center justify-center gap-2" style={{ color: "rgba(196,181,253,0.55)" }}>
+            <div className="flex items-center gap-2 mt-3" style={{ color: "rgba(196,181,253,0.55)" }}>
               <Checkbox
                 id="kvkk-hero"
                 checked={kvkkAccepted}
                 onCheckedChange={(checked) => setKvkkAccepted(checked === true)}
-                className="border-violet-400/40 data-[state=checked]:bg-violet-500 data-[state=checked]:border-violet-500 h-3.5 w-3.5"
+                className="border-violet-400/40 data-[state=checked]:bg-violet-500 data-[state=checked]:border-violet-500 h-4 w-4 rounded-[3px]"
               />
-              <label htmlFor="kvkk-hero" className="cursor-pointer">
+              <label htmlFor="kvkk-hero" className="text-xs cursor-pointer">
                 <a href="#" className="underline hover:opacity-70 transition-opacity">KVKK Aydınlatma Metni</a>'ni kabul ediyorum.
               </label>
-            </p>
+            </div>
           </motion.div>
 
         </motion.div>
