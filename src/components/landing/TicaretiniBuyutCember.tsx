@@ -297,10 +297,10 @@ export default function TicaretiniBuyutCember() {
 
           {/* Description + selected category - fades in on scroll */}
           <motion.div style={{ opacity: subtitleOpacity }} className="pointer-events-auto">
-            <p className="mt-1 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed mx-auto">
+            <p className="mt-0 max-w-lg text-muted-foreground text-sm md:text-base leading-relaxed mx-auto">
               İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
             </p>
-            <div className="mt-4 min-h-[140px]">
+            <div className="mt-16 min-h-[140px]">
               <AnimatePresence mode="wait">
                 {selected ? (
                   <motion.div
