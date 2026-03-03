@@ -243,7 +243,7 @@ const PartnerCarouselSection = () => {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-4 md:gap-5 overflow-x-auto max-w-[70vw] md:max-w-none py-1">
+            <div className="flex items-center gap-4 md:gap-5 overflow-x-auto max-w-[70vw] md:max-w-none py-1 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {partners.map((p, i) => (
                 <button
                   key={p.id}
