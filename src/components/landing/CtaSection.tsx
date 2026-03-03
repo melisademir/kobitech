@@ -110,7 +110,7 @@ const CtaSection = () =>
         </div>
 
         {/* Cards grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           {cardData.map((card) =>
         <LinkCard key={card.title} {...card} />
         )}
