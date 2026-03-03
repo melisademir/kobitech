@@ -48,6 +48,11 @@ const Landing = () => (
     {/* TICARETINI BÜYÜT ÇEMBER */}
     <TicaretiniBuyutCember />
 
+    {/* PARTNER CAROUSEL */}
+    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+      <PartnerCarouselSection />
+    </div>
+
     {/* 2 — PARTNERS / SOLUTIONS */}
     <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
       <PartnersSection />
@@ -87,11 +92,6 @@ const Landing = () => (
     {/* PARTNER LOOP */}
     <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
       <JourneyLoopSection2 />
-    </div>
-
-    {/* PARTNER CAROUSEL */}
-    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
-      <PartnerCarouselSection />
     </div>
 
     {/* PARTNER ECOSYSTEM */}
