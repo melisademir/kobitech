@@ -276,8 +276,8 @@ export default function TicaretiniBuyutCember() {
           style={{ top: useTransform(titleTop, (v) => `${v}%`), transform: "translateY(-50%)", scale: titleScaleValue }}
         >
           <motion.h3
-            className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground"
-            style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
+            className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground leading-none"
+            style={{ letterSpacing: "-0.04em" }}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: introPhase !== "scatter" ? 1 : 0, y: 0 }}
             transition={{ delay: introPhase === "line" ? 0.3 : 0, duration: 0.6 }}
@@ -287,9 +287,8 @@ export default function TicaretiniBuyutCember() {
             <span className="text-gradient-primary">Maliyetlerini Düşür</span>
           </motion.h3>
 
-          {/* Subtitle - appears during circle phase before scroll */}
           <motion.p
-            className="mt-4 text-sm text-muted-foreground tracking-widest uppercase"
+            className="mt-1 text-sm text-muted-foreground tracking-widest uppercase"
             animate={{ opacity: introPhase === "circle" && morphValue < 0.3 ? 1 : 0 }}
             transition={{ duration: 0.5 }}
           >
