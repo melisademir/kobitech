@@ -18,7 +18,7 @@ export function ButtonColorful({
         className
       )}
       style={{
-        background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)), hsl(var(--primary)))",
+        background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))",
       }}
       {...props}
     >
@@ -26,7 +26,7 @@ export function ButtonColorful({
       <span
         className="absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 blur-sm"
         style={{
-          background: "linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--primary-glow) / 0.8), hsl(var(--primary) / 0.8))",
+          background: "linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--accent) / 0.8))",
         }}
       />
 
