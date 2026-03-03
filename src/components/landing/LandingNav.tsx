@@ -34,7 +34,7 @@ const LandingNav = () => {
             className="text-2xl font-extrabold tracking-tight"
             style={{ color: "hsl(260, 30%, 12%)" }}
           >
-            Kobi<span style={{ color: "#7C3AED" }}>TECH</span>
+            Digital<span style={{ color: "#7C3AED" }}>Hub</span>
           </span>
         </Link>
 

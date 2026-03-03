@@ -103,7 +103,7 @@ const FooterSection = () => (
         transition={{ duration: 0.6, delay: 0.3 }}
         className="border-t border-secondary-foreground/10 mt-10 pt-8 text-center text-xs text-secondary-foreground/40 origin-left"
       >
-        © 2026 KobiTECH. Tüm hakları saklıdır.
+        © 2026 DigitalHub. Tüm hakları saklıdır.
       </motion.div>
     </motion.div>
   </footer>

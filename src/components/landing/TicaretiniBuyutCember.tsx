@@ -64,7 +64,7 @@ const CATEGORIES: CategoryInfo[] = [
   { id: "saha", label: "Sahayı Yönet", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin.", tags: ["Univera EnRoute"], icon: MapPin, accent: "#F59E0B" },
   { id: "akis", label: "İş Akışını Takip Et", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin. Paramtech Flows ile ekibinizin verimliliğini artırın.", tags: ["Uni-Dox", "Paramtech Flows"], icon: ClipboardCheck, accent: "#6366F1" },
   { id: "tesvik", label: "Teşviklerden Yararlan", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Doğrudan ilgili kurumlarla bir araya getiriyoruz.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], icon: BadgePercent, accent: "#7C3AED" },
-  { id: "global", label: "Globale Açıl", description: "Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonuyla ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "Ticimax", "Mükellef"], icon: Globe2, accent: "#7C3AED" },
+  { id: "global", label: "Globale Açıl", description: "Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonuyla ticaretinizi sınırların ötesine taşıyın. DigitalHub ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["TÜSİAD", "MÜSİAD", "TOBB", "Ticimax", "Mükellef"], icon: Globe2, accent: "#7C3AED" },
 ];
 
 function FlipCard({ category, index, total, phase, target, isSelected, onClick }: FlipCardProps) {

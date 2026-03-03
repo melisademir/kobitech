@@ -33,8 +33,8 @@ const KobiLayout = ({ children }: Props) => {
           <Menu className="h-6 w-6" />
         </button>
         <Link to="/digitalhub/map" className="flex items-center gap-2 mr-8 shrink-0">
-          <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
-          <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
+          <img src={kobiLogo} alt="DigitalHub" className="h-[30px] w-auto" />
+          <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">DigitalHub</span>
         </Link>
         <div className="hidden md:flex flex-1 max-w-md mx-auto relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
@@ -90,8 +90,8 @@ const KobiLayout = ({ children }: Props) => {
               <motion.aside initial={{ x: -260 }} animate={{ x: 0 }} exit={{ x: -260 }} className="fixed left-0 top-0 bottom-0 w-[260px] bg-card z-50 lg:hidden shadow-premium-hover">
                 <div className="flex items-center justify-between p-4 border-b border-border">
                   <div className="flex items-center gap-2">
-                    <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
-                    <span className="font-extrabold text-primary">KobiTECH</span>
+                    <img src={kobiLogo} alt="DigitalHub" className="h-[30px] w-auto" />
+                    <span className="font-extrabold text-primary">DigitalHub</span>
                   </div>
                   <button onClick={() => setSidebarOpen(false)}><X className="h-5 w-5" /></button>
                 </div>

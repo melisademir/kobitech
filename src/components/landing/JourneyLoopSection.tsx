@@ -61,7 +61,7 @@ const journeySteps = [
   { id: 7, title: "Sahayı Yönet", description: "Saha satış ekiplerinizin rotalarını optimize edin, ziyaret planlarını oluşturun ve mobil operasyonlarınızı anlık verilerle yönetin. Univera EnRoute ile ekibinizin verimliliğini artırın.", tags: ["Univera EnRoute"], icon: MapPin },
   { id: 8, title: "İş Akışını Takip Et", description: "Sipariş girişinden teslimata kadar tüm süreci Univera Uni-Dox'un e-Dönüşüm ekosistemiyle yönetin. Paramtech Flows'un yapay zeka destekli akıllı altyapısıyla verimliliğinizi artırın.", tags: ["Uni-Dox", "Paramtech Flows"], icon: ClipboardCheck },
   { id: 9, title: "Teşviklerden Yararlan", description: "İşletmenize en uygun hibe ve teşvik programlarını uzman danışmanlarımızla birlikte saptayın. Her adımda profesyonel rehberlik sunarak doğrudan ilgili kurumlarla bir araya getiriyoruz.", tags: ["KOSGEB", "TÜBİTAK", "Ticaret Bakanlığı"], icon: BadgePercent },
-  { id: 10, title: "Globale Açıl", description: "Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu arkanıza alarak ticaretinizi sınırların ötesine taşıyın. KobiTech ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["Ticimax", "Mükellef"], icon: Globe2 },
+  { id: 10, title: "Globale Açıl", description: "Türkiye'nin en güçlü iş dünyası kuruluşlarının vizyonunu arkanıza alarak ticaretinizi sınırların ötesine taşıyın. DigitalHub ile doğru pazara, doğru strateji ve tam dijital bir ekosistemle adım atın.", tags: ["Ticimax", "Mükellef"], icon: Globe2 },
 ];
 
 const topSteps = journeySteps.slice(0, 5);
