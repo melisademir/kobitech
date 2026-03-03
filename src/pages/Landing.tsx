@@ -50,7 +50,7 @@ const Landing = () => (
 
 
     {/* PARTNER CAROUSEL */}
-    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)", marginTop: "-120px", position: "relative", zIndex: 10 }}>
+    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
       <PartnerCarouselSection />
     </div>
 
