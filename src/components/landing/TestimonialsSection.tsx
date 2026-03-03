@@ -107,7 +107,7 @@ const TestimonialsSection = () => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: false, dragFree: true });
 
   return (
-    <section className="py-14 md:py-24 lg:py-32">
+    <section className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div

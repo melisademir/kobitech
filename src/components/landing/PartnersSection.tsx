@@ -124,7 +124,7 @@ const PartnersSection = () => {
   const cat = categories[activeIndex];
 
   return (
-    <section id="solutions" className="py-24 md:py-32">
+    <section id="solutions" className="py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-6">
         {/* Header */}
         <motion.div
