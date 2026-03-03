@@ -213,13 +213,13 @@ const PartnerCarouselSection = () => {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-2 overflow-x-auto max-w-[70vw] md:max-w-none py-1">
+            <div className="flex items-center gap-4 md:gap-5 overflow-x-auto max-w-[70vw] md:max-w-none py-1">
               {partners.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => setCurrentIndex(i)}
                   className={cn(
-                    "flex-shrink-0 w-[72px] h-[72px] rounded-full flex items-center justify-center transition-all duration-200 border-2",
+                    "flex-shrink-0 w-[80px] h-[80px] rounded-full flex items-center justify-center transition-all duration-200 border-2",
                     i === currentIndex
                       ? "border-primary scale-110 shadow-md"
                       : "border-transparent opacity-50 hover:opacity-80"
@@ -230,7 +230,7 @@ const PartnerCarouselSection = () => {
                   <img
                     src={p.logo}
                     alt={p.name}
-                    className="w-12 h-12 object-contain mix-blend-multiply"
+                    className="w-14 h-14 object-contain mix-blend-multiply"
                   />
                 </button>
               ))}
