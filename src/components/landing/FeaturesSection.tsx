@@ -1,40 +1,46 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Store, ShoppingCart, BadgeDollarSign, MessageCircle, ClipboardList, FileText } from "lucide-react";
+
+import iconPlatform from "@/assets/icon-platform.png";
+import iconCart from "@/assets/icon-cart.png";
+import iconOffer from "@/assets/icon-offer.png";
+import iconChat from "@/assets/icon-chat.png";
+import iconTracking from "@/assets/icon-tracking.png";
+import iconDocuments from "@/assets/icon-documents.png";
 
 const features = [
   {
-    icon: Store,
+    image: iconPlatform,
     title: "Tüm Çözümlere Tek Platformdan Ulaşın",
     desc: "Muhasebeden e-ticarete, ödemeden İK'ya kadar tüm ihtiyaçlarınız için çözüm ortaklarını tek yerden bulun, karşılaştırın.",
     labels: ["Muhasebe", "E-Ticaret", "İK", "Ödeme"],
   },
   {
-    icon: ShoppingCart,
+    image: iconCart,
     title: "Sepet ile Hızlı Planlama",
     desc: "İhtiyacınız olan çözümleri sepete ekleyin, tek seferde teklif alın. Zaman kaybetmeyin.",
     labels: ["Toplu Teklif", "Hızlı Başvuru", "Karşılaştırma"],
   },
   {
-    icon: BadgeDollarSign,
+    image: iconOffer,
     title: "Size Özel Teklif Sistemi",
     desc: "İhtiyaçlarınıza göre özel fiyatlandırma alın. Uzman ekibimiz veya bayilerimiz sizinle görüşerek en uygun paketi oluşturur.",
     labels: ["Özel Fiyat", "Uzman Destek", "Paket Oluşturma"],
   },
   {
-    icon: MessageCircle,
+    image: iconChat,
     title: "Anlık Görüşme & Destek",
     desc: "Bayiniz veya destek ekibimizle chat üzerinden anında görüşün. Sorularınız hemen yanıtlansın.",
     labels: ["Canlı Chat", "Bayi Görüşme"],
   },
   {
-    icon: ClipboardList,
+    image: iconTracking,
     title: "Kolay Proje Takibi",
     desc: "Aldığınız hizmetleri tek ekrandan takip edin. Hangi aşamada, ne zaman tamamlanacak — hep bilgileriniz olsun.",
     labels: ["Durum Takibi", "Zaman Çizelgesi", "Tek Ekran"],
   },
   {
-    icon: FileText,
+    image: iconDocuments,
     title: "Dijital Döküman Merkezi",
     desc: "Tüm sözleşme, fatura ve belgeleriniz güvenle saklanır. 5 yıl boyunca istediğiniz zaman erişin, paylaşın.",
     labels: ["Sözleşmeler", "Faturalar", "5 Yıl Arşiv"],
@@ -84,16 +90,12 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
         {/* Icon — bottom right, large */}
         <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
           <div
-            className="flex items-center justify-center w-16 h-16 md:w-24 md:h-24 transition-transform duration-300 group-hover:scale-110"
-            style={{
-              borderRadius: "16px",
-              background: "linear-gradient(135deg, hsl(268 72% 60% / 0.12), hsl(268 72% 38% / 0.08))",
-            }}
+            className="flex items-center justify-center w-20 h-20 md:w-28 md:h-28 transition-transform duration-300 group-hover:scale-110"
           >
-            <f.icon
-              className="w-8 h-8 md:w-12 md:h-12"
-              style={{ color: "hsl(268,72%,38%)" }}
-              strokeWidth={1.5}
+            <img
+              src={f.image}
+              alt={f.title}
+              className="w-full h-full object-contain"
             />
           </div>
         </div>
