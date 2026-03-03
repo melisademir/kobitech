@@ -44,9 +44,27 @@ const PartnerCarouselSection = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const intervalRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const [isPaused, setIsPaused] = useState(false);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const handleNext = useCallback(() => setCurrentIndex((i) => (i + 1) % partners.length), []);
   const handlePrevious = () => setCurrentIndex((i) => (i - 1 + partners.length) % partners.length);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+    pauseAutoSlide();
+  };
+  const handleTouchMove = (e: React.TouchEvent) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = () => {
+    const diff = touchStartX.current - touchEndX.current;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) handleNext();
+      else handlePrevious();
+    }
+    resumeAutoSlide();
+  };
 
   // Auto-slide every 4 seconds
   useEffect(() => {
@@ -160,7 +178,7 @@ const PartnerCarouselSection = () => {
           </div>
 
           {/* Mobile stacked cards */}
-          <div className="md:hidden w-full relative" style={{ minHeight: "420px" }}>
+          <div className="md:hidden w-full relative" style={{ minHeight: "420px" }} onTouchStart={handleTouchStart} onTouchMove={handleTouchMove} onTouchEnd={handleTouchEnd}>
             {stackIndices.map((partnerIdx, posIdx) => {
               const p = partners[partnerIdx];
               const pos = stackPositions[posIdx];
