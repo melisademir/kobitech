@@ -12,10 +12,34 @@ import TestimonialsSection from "@/components/landing/TestimonialsSection";
 
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
 
-
 import JourneyLoopSection2 from "@/components/landing/JourneyLoopSection2";
 
 import TicaretiniBuyutCember from "@/components/landing/TicaretiniBuyutCember";
+import { CircularGallery, type GalleryItem } from "@/components/ui/circular-gallery";
+
+import tabOdeme from "@/assets/tab-odeme-corp.png";
+import tabEticaret from "@/assets/tab-eticaret-corp.png";
+import tabPara from "@/assets/tab-para-corp.png";
+import tabStok from "@/assets/tab-stok-corp.png";
+import tabKargo from "@/assets/tab-kargo-ai.png";
+import tabEkip from "@/assets/tab-ekip-corp.png";
+import tabSaha from "@/assets/tab-saha-ai.png";
+import tabAkis from "@/assets/tab-uretim-corp.png";
+import tabTesvik from "@/assets/tab-tesvik-corp.png";
+import tabGlobal from "@/assets/tab-global-corp.png";
+
+const galleryItems: GalleryItem[] = [
+  { common: "Ödeme Al", binomial: "Param POS Çözümleri", photo: { url: tabOdeme, text: "Ödeme çözümleri", by: "Param" } },
+  { common: "E-Ticarete Açıl", binomial: "Online Satış Altyapısı", photo: { url: tabEticaret, text: "E-ticaret çözümleri", by: "Ticimax / İkas / T-Soft" } },
+  { common: "Paranı Yönet", binomial: "Nakit Akış Yönetimi", photo: { url: tabPara, text: "Para yönetimi", by: "Finrota" } },
+  { common: "Stoğunu Kontrol Et", binomial: "Depo & Stok Yönetimi", photo: { url: tabStok, text: "Stok yönetimi", by: "Univera / Nebim" } },
+  { common: "Ürünlerini Gönder", binomial: "Lojistik & Kargo", photo: { url: tabKargo, text: "Kargo çözümleri", by: "Aras Kargo" } },
+  { common: "Ekibine Yön Ver", binomial: "İnsan Kaynakları", photo: { url: tabEkip, text: "HR çözümleri", by: "Workcube" } },
+  { common: "Sahayı Yönet", binomial: "Saha Satış Yönetimi", photo: { url: tabSaha, text: "Saha yönetimi", by: "Univera" } },
+  { common: "İş Akışını Takip Et", binomial: "Süreç Otomasyonu", photo: { url: tabAkis, text: "İş akışı", by: "Paramtech" } },
+  { common: "Teşviklerden Yararlan", binomial: "Hibe & Destek", photo: { url: tabTesvik, text: "Teşvikler", by: "KOSGEB / TÜBİTAK" } },
+  { common: "Globale Açıl", binomial: "Uluslararası Ticaret", photo: { url: tabGlobal, text: "Global ticaret", by: "KobiTech" } },
+];
 
 /* Shared section divider — horizontal gradient line */
 const SectionDivider = () => (
@@ -94,6 +118,13 @@ const Landing = () => (
     {/* PARTNERS / SOLUTIONS */}
     <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
       <PartnersSection />
+    </div>
+
+    {/* CIRCULAR GALLERY */}
+    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
+      <div className="py-20 overflow-hidden" style={{ height: "700px" }}>
+        <CircularGallery items={galleryItems} radius={450} autoRotateSpeed={0.15} />
+      </div>
     </div>
 
     <FooterSection />
