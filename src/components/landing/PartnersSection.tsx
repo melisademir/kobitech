@@ -148,63 +148,7 @@ const PartnersSection = () => {
           </p>
         </motion.div>
 
-        {/* Category Pills — corporate, no bounce */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="flex justify-center flex-wrap gap-2 mb-16"
-        >
-          {categories.map((c, i) => {
-            const isActive = activeIndex === i;
-            return (
-              <button
-                key={c.label}
-                onClick={() => setActiveIndex(i)}
-                className="relative transition-all duration-250 cursor-pointer whitespace-nowrap flex-shrink-0"
-                style={{
-                  padding: isActive ? "10px 22px" : "8px 16px",
-                  borderRadius: "24px",
-                  fontSize: isActive ? "13.5px" : "12.5px",
-                  fontWeight: isActive ? 700 : 500,
-                  letterSpacing: isActive ? "0.04em" : "0.01em",
-                  border: isActive ? "2px solid hsl(268,72%,34%)" : "2px solid rgba(109,40,217,0.15)",
-                  background: isActive
-                    ? "linear-gradient(135deg, hsl(268,72%,34%), hsl(268,80%,42%))"
-                    : "white",
-                  color: isActive ? "white" : "hsl(260,12%,48%)",
-                  boxShadow: isActive
-                    ? "0 4px 16px -4px rgba(109,40,217,0.45), 0 2px 6px rgba(72,11,135,0.15)"
-                    : "none",
-                }}
-                onMouseEnter={(e) => {
-                  if (!isActive) {
-                    e.currentTarget.style.borderColor = "rgba(109,40,217,0.4)";
-                    e.currentTarget.style.color = "hsl(268,72%,38%)";
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isActive) {
-                    e.currentTarget.style.borderColor = "rgba(109,40,217,0.15)";
-                    e.currentTarget.style.color = "hsl(260,12%,48%)";
-                  }
-                }}
-              >
-                {c.label}
-                {/* Active indicator bar */}
-                {isActive && (
-                  <motion.span
-                    layoutId="active-tab-indicator"
-                    className="absolute bottom-[-2px] left-[20%] right-[20%] h-[4px] rounded-full"
-                    style={{ background: "hsl(268,80%,55%)" }}
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-              </button>
-            );
-          })}
-        </motion.div>
+
 
         {/* Content */}
         <div className="max-w-5xl mx-auto">
