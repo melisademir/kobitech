@@ -261,7 +261,7 @@ export default function TicaretiniBuyutCember() {
   const contentY = useTransform(smoothMorph, [0.8, 1], [20, 0]);
 
   // Title animation: center → top, small → large
-  const titleTop = useTransform(smoothMorph, [0, 0.8], [33, 4]);
+  const titleTop = useTransform(smoothMorph, [0, 0.8], [25, 4]);
   const titleScaleValue = useTransform(smoothMorph, [0, 0.8], [0.45, 1]);
   const subtitleOpacity = useTransform(smoothMorph, [0.6, 0.9], [0, 1]);
 
