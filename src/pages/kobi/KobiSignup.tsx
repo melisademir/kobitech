@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Checkbox } from "@/components/ui/checkbox";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Mail, Lock, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -27,12 +28,15 @@ const KobiSignup = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [kvkkAccepted, setKvkkAccepted] = useState(false);
+  const [showKvkk, setShowKvkk] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
     if (!email || !password) { setError("Tüm alanlar gereklidir"); return; }
     if (password.length < 6) { setError("Şifre en az 6 karakter olmalıdır"); return; }
+    if (!kvkkAccepted) { setError("KVKK Aydınlatma Metni'ni kabul etmeniz gerekmektedir"); return; }
     setLoading(true);
     setTimeout(() => { setLoading(false); navigate(redirect); }, 800);
   };
@@ -102,10 +106,44 @@ const KobiSignup = () => {
                 </button>
               </div>
             </div>
+            {/* KVKK Checkbox */}
+            <div className="flex items-start gap-3">
+              <Checkbox
+                id="kvkk"
+                checked={kvkkAccepted}
+                onCheckedChange={(checked) => setKvkkAccepted(checked === true)}
+                className="mt-0.5"
+              />
+              <label htmlFor="kvkk" className="text-sm text-muted-foreground leading-snug cursor-pointer">
+                <button type="button" onClick={() => setShowKvkk(true)} className="text-primary font-semibold hover:underline">KVKK Aydınlatma Metni</button>'ni okudum ve kabul ediyorum.
+              </label>
+            </div>
+
             {error && <div className="flex items-center gap-2 text-destructive text-sm bg-destructive/10 p-3 rounded-lg"><span>✗</span> {error}</div>}
-            <Button type="submit" size="lg" className="w-full" disabled={loading}>{loading ? "Kayıt yapılıyor..." : "Kayıt Ol"}</Button>
+            <Button type="submit" size="lg" className="w-full" disabled={loading || !kvkkAccepted}>{loading ? "Kayıt yapılıyor..." : "Kayıt Ol"}</Button>
           </form>
           <p className="text-center text-muted-foreground text-sm">Zaten hesabınız var mı? <Link to={`/digitalhub/login${redirect !== "/digitalhub/onboarding1" ? `?redirect=${encodeURIComponent(redirect)}` : ""}`} className="text-primary font-bold hover:underline">Giriş Yap</Link></p>
+
+          {/* KVKK Modal */}
+          {showKvkk && (
+            <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4" onClick={() => setShowKvkk(false)}>
+              <div className="bg-card rounded-2xl max-w-2xl w-full max-h-[80vh] overflow-y-auto p-8 shadow-2xl" onClick={e => e.stopPropagation()}>
+                <h2 className="text-xl font-bold text-foreground mb-4">KVKK Aydınlatma Metni</h2>
+                <div className="text-sm text-muted-foreground leading-relaxed space-y-3">
+                  <p>6698 sayılı Kişisel Verilerin Korunması Kanunu ("KVKK") uyarınca, DigitalHub olarak kişisel verilerinizin güvenliğine önem veriyoruz.</p>
+                  <p><strong>Veri Sorumlusu:</strong> DigitalHub Teknoloji A.Ş.</p>
+                  <p><strong>İşlenen Kişisel Veriler:</strong> Ad-soyad, e-posta adresi, telefon numarası, şirket bilgileri, sektör bilgisi ve platform üzerindeki kullanım verileri.</p>
+                  <p><strong>İşleme Amaçları:</strong> Hesap oluşturma ve yönetimi, hizmet sunumu, iletişim, yasal yükümlülüklerin yerine getirilmesi, pazarlama faaliyetleri (açık rıza ile).</p>
+                  <p><strong>Veri Aktarımı:</strong> Kişisel verileriniz, hizmet sağlayıcılar ve iş ortaklarımızla KVKK'nın öngördüğü güvenlik önlemleri çerçevesinde paylaşılabilir.</p>
+                  <p><strong>Haklarınız:</strong> KVKK'nın 11. maddesi kapsamında; verilerinize erişim, düzeltme, silme, işlemenin kısıtlanması ve veri taşınabilirliği haklarına sahipsiniz. Bu haklarınızı kullanmak için <span className="text-primary font-medium">kvkk@digitalhub.com.tr</span> adresine başvurabilirsiniz.</p>
+                  <p><strong>Saklama Süresi:</strong> Kişisel verileriniz, işleme amacının gerektirdiği süre boyunca ve yasal yükümlülükler çerçevesinde saklanır.</p>
+                </div>
+                <div className="mt-6 flex justify-end">
+                  <Button onClick={() => setShowKvkk(false)}>Kapat</Button>
+                </div>
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </div>
