@@ -1,55 +1,54 @@
-import { useState, useRef } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import { Star } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import useEmblaCarousel from "embla-carousel-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
     quote: "Dijital Esnaf sayesinde ilk kez yurt dışına satış yapmaya başladık. Platform bizi adım adım yönlendirdi.",
     name: "Ahmet Yılmaz",
     role: "Tekstil İhracatçısı",
+    company: "Yılmaz Tekstil",
     stars: 5,
   },
   {
     quote: "Muhasebe ve e-fatura entegrasyonu hayatımı kurtardı. Artık kağıt işleriyle uğraşmıyorum.",
     name: "Fatma Demir",
     role: "Gıda Üreticisi",
+    company: "Demir Gıda",
     stars: 5,
   },
   {
     quote: "E-ticaret mağazamı kurdum, siparişlerim %200 arttı. Tek platformda her şey var.",
     name: "Mehmet Kaya",
     role: "Mobilya Atölyesi",
+    company: "Kaya Mobilya",
     stars: 5,
   },
   {
     quote: "Sosyal medya yönetimi ve online satış kanallarını birlikte yürütebiliyorum artık.",
     name: "Zeynep Arslan",
     role: "Kozmetik Markası",
+    company: "Arslan Kozmetik",
     stars: 5,
   },
   {
     quote: "Stok takibi ve kargo entegrasyonu mükemmel çalışıyor. Zamandan büyük tasarruf.",
     name: "Can Öztürk",
     role: "Elektronik Perakende",
+    company: "Öztürk Elektronik",
     stars: 5,
   },
   {
     quote: "Global pazara açılmak istiyorduk, Dijital Esnaf tam da bunu sağladı.",
     name: "Elif Şahin",
     role: "El Sanatları İhracatı",
+    company: "Şahin Craft",
     stars: 5,
   },
-];
-
-const avatarGradients = [
-  "linear-gradient(135deg, #6D28D9, #7C3AED)",
-  "linear-gradient(135deg, #7C3AED, #8B5CF6)",
-  "linear-gradient(135deg, #8B5CF6, #A78BFA)",
-  "linear-gradient(135deg, #6D28D9, #8B5CF6)",
-  "linear-gradient(135deg, #7C3AED, #A78BFA)",
-  "linear-gradient(135deg, #5B21B6, #7C3AED)",
 ];
 
 const containerVariants = {
@@ -65,38 +64,56 @@ const cardVariants = {
   },
 };
 
-const TestimonialCard = ({ t, i }: { t: typeof testimonials[0]; i: number }) => (
+const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
   <div
-    className="rounded-[16px] flex flex-col relative overflow-hidden cursor-default transition-shadow duration-300 h-full"
-    style={{
-      background: "white",
-      border: "1px solid rgba(0,0,0,0.06)",
-      padding: "1.5rem",
-      boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
-    }}
+    className={cn(
+      "relative flex flex-col rounded-2xl border border-border/50 bg-card p-5 md:p-7 h-full",
+      "transition-shadow duration-300 hover:shadow-lg"
+    )}
   >
-    <Quote className="absolute top-4 right-4 w-6 h-6" style={{ color: "rgba(109,40,217,0.08)" }} />
-
-    <div className="flex gap-0.5 mb-3">
-      {Array.from({ length: 5 }).map((_, si) => (
-        <Star key={si} className="w-3.5 h-3.5 text-primary fill-primary" />
-      ))}
+    {/* Quote mark */}
+    <div
+      className="absolute top-4 right-5 text-4xl md:text-5xl font-serif leading-none select-none pointer-events-none"
+      style={{ color: "hsl(var(--primary) / 0.08)" }}
+    >
+      "
     </div>
 
-    <p className="text-foreground flex-1 text-sm" style={{ lineHeight: "1.7", opacity: 0.82 }}>
-      "{t.quote}"
+    {/* Stars */}
+    {t.stars > 0 && (
+      <div className="flex gap-0.5 mb-3">
+        {Array.from({ length: 5 }).map((_, i) => (
+          <Star
+            key={i}
+            className={cn(
+              "w-4 h-4",
+              i < t.stars ? "text-amber-400 fill-amber-400" : "text-muted-foreground/30"
+            )}
+          />
+        ))}
+      </div>
+    )}
+
+    {/* Testimonial text */}
+    <p className="text-muted-foreground flex-1 text-sm md:text-[15px] leading-relaxed mb-5">
+      {t.quote}
     </p>
 
-    <div className="flex items-center gap-2.5 mt-4 pt-3 border-t" style={{ borderColor: "hsl(38,30%,88%)" }}>
-      <div
-        className="w-8 h-8 rounded-full flex items-center justify-center text-white font-bold text-xs shrink-0"
-        style={{ background: avatarGradients[i] }}
-      >
-        {t.name.charAt(0)}
-      </div>
+    {/* Author */}
+    <div className="flex items-center gap-3 pt-4 border-t border-border/50">
+      <Avatar className="h-9 w-9">
+        <AvatarFallback
+          className="text-xs font-bold text-primary-foreground"
+          style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(268 72% 55%))" }}
+        >
+          {t.name[0]}
+        </AvatarFallback>
+      </Avatar>
       <div>
-        <p className="font-semibold text-foreground text-xs">{t.name}</p>
-        <p className="text-muted-foreground text-[11px] mt-0.5">{t.role}</p>
+        <p className="font-semibold text-foreground text-sm leading-tight">{t.name}</p>
+        <p className="text-muted-foreground text-xs mt-0.5">
+          {t.role}{t.company && ` @ ${t.company}`}
+        </p>
       </div>
     </div>
   </div>
@@ -105,6 +122,19 @@ const TestimonialCard = ({ t, i }: { t: typeof testimonials[0]; i: number }) => 
 const TestimonialsSection = () => {
   const isMobile = useIsMobile();
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: false, dragFree: true });
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+    return () => { emblaApi.off("select", onSelect); };
+  }, [emblaApi, onSelect]);
 
   return (
     <section className="py-16 md:py-24">
@@ -120,9 +150,9 @@ const TestimonialsSection = () => {
           <span
             className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-4 md:mb-6 tracking-widest uppercase cursor-default"
             style={{
-              background: "rgba(109,40,217,0.06)",
-              color: "hsl(268,72%,38%)",
-              border: "1.5px solid rgba(109,40,217,0.15)",
+              background: "hsl(var(--primary) / 0.06)",
+              color: "hsl(var(--primary))",
+              border: "1.5px solid hsl(var(--primary) / 0.15)",
             }}
           >
             <Star className="w-3 h-3 fill-current" />
@@ -143,28 +173,31 @@ const TestimonialsSection = () => {
 
         {/* Mobile: Swipeable carousel */}
         {isMobile ? (
-          <div className="overflow-hidden" ref={emblaRef}>
-            <div className="flex gap-3" style={{ touchAction: "pan-y pinch-zoom" }}>
-              {testimonials.map((t, i) => (
-                <div key={t.name} className="flex-shrink-0" style={{ width: "75%" }}>
-                  <TestimonialCard t={t} i={i} />
-                </div>
-              ))}
+          <div>
+            <div className="overflow-hidden" ref={emblaRef}>
+              <div className="flex gap-3" style={{ touchAction: "pan-y pinch-zoom" }}>
+                {testimonials.map((t, i) => (
+                  <div key={t.name} className="flex-shrink-0" style={{ width: "75%" }}>
+                    <TestimonialCard t={t} />
+                  </div>
+                ))}
+              </div>
             </div>
-            {/* Dots indicator */}
-            <div className="flex justify-center gap-1.5 mt-4">
+            <div className="flex justify-center gap-2 mt-4">
               {testimonials.map((_, i) => (
                 <button
                   key={i}
-                  className="w-1.5 h-1.5 rounded-full transition-colors"
-                  style={{ background: "hsl(268,72%,38%,0.2)" }}
+                  className="w-2 h-2 rounded-full transition-all duration-300"
+                  style={{
+                    background: i === selectedIndex ? "hsl(var(--primary))" : "hsl(var(--primary) / 0.2)",
+                    transform: i === selectedIndex ? "scale(1.3)" : "scale(1)",
+                  }}
                   onClick={() => emblaApi?.scrollTo(i)}
                 />
               ))}
             </div>
           </div>
         ) : (
-          /* Desktop: Grid */
           <motion.div
             initial="hidden"
             whileInView="visible"
@@ -172,9 +205,9 @@ const TestimonialsSection = () => {
             variants={containerVariants}
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-6"
           >
-            {testimonials.map((t, i) => (
+            {testimonials.map((t) => (
               <motion.div key={t.name} variants={cardVariants}>
-                <TestimonialCard t={t} i={i} />
+                <TestimonialCard t={t} />
               </motion.div>
             ))}
           </motion.div>
