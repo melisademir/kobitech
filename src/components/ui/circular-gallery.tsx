@@ -83,7 +83,6 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
             const relativeAngle = (itemAngle + totalRotation + 360) % 360;
             const normalizedAngle = Math.abs(relativeAngle > 180 ? 360 - relativeAngle : relativeAngle);
             const opacity = Math.max(0.6, 1 - (normalizedAngle / 270));
-            const isFront = normalizedAngle < 40;
 
             return (
               <div
@@ -108,23 +107,23 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{ objectPosition: item.photo.pos || 'center' }}
                   />
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+                  {/* Overlay — only behind text area */}
+                  <div className="absolute bottom-0 left-0 w-full h-3/5 bg-gradient-to-t from-black/95 via-black/70 to-transparent" />
                   {/* Content */}
                   <div className="absolute bottom-0 left-0 w-full p-4 text-white flex flex-col gap-1.5">
-                    <h2 className="text-lg md:text-xl font-extrabold leading-tight">{item.common}</h2>
-                    <em className="text-xs italic opacity-70">{item.binomial}</em>
-                    {isFront && item.description && (
-                      <p className="text-[11px] leading-relaxed opacity-80 mt-1 line-clamp-3">
+                    <h2 className="text-lg md:text-xl font-extrabold leading-tight drop-shadow-lg">{item.common}</h2>
+                    <em className="text-xs italic opacity-80 drop-shadow">{item.binomial}</em>
+                    {item.description && (
+                      <p className="text-[11px] leading-relaxed opacity-90 mt-1 line-clamp-3 drop-shadow">
                         {item.description}
                       </p>
                     )}
-                    {isFront && item.tags && item.tags.length > 0 && (
+                    {item.tags && item.tags.length > 0 && (
                       <div className="flex flex-wrap gap-1 mt-1.5">
                         {item.tags.map((tag, idx) => (
                           <span
                             key={idx}
-                            className="text-[9px] px-2 py-0.5 rounded-full bg-white/15 backdrop-blur-sm"
+                            className="text-[9px] px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-sm drop-shadow"
                           >
                             {tag}
                           </span>
