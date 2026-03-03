@@ -371,26 +371,27 @@ export default function TicaretiniBuyutCember() {
               const circleScale = 1.6;
               const circlePos = { x: Math.cos(circleRad) * circleRadius, y: Math.sin(circleRad) * circleRadius + 40, rotation: circleAngle + 90 };
 
-              const baseRadius = Math.min(containerSize.width * 0.6, containerSize.height * 0.9);
-              const arcRadius = baseRadius * (isMobile ? 1.0 : 0.85);
-              const arcApexY = containerSize.height * (isMobile ? 0.32 : 0.08);
-              const arcCenterY = arcApexY + arcRadius;
-              const spreadAngle = isMobile ? 120 : 140;
-              const startAngle = -90 - spreadAngle / 2;
-              const step = spreadAngle / (TOTAL_IMAGES - 1);
+              // Fan strip at bottom of viewport
+              const totalCards = TOTAL_IMAGES;
+              const cardSpacing = isMobile ? 70 : 130;
+              const totalWidth = (totalCards - 1) * cardSpacing;
+              const baseX = i * cardSpacing - totalWidth / 2;
+              const baseY = containerSize.height * (isMobile ? 0.32 : 0.38);
+              // Slight arc curve - cards in center are higher
+              const centerOffset = (i - (totalCards - 1) / 2) / ((totalCards - 1) / 2);
+              const arcCurve = centerOffset * centerOffset * (isMobile ? 30 : 50);
+              // Fan rotation - cards tilt outward from center
+              const fanRotation = centerOffset * (isMobile ? 8 : 12);
 
               const scrollProgress = Math.min(Math.max(rotateValue / 360, 0), 1);
-              const maxRotation = spreadAngle * 2.4;
-              const boundedRotation = (0.5 - scrollProgress) * maxRotation;
-
-              const currentArcAngle = startAngle + i * step + boundedRotation;
-              const arcRad = (currentArcAngle * Math.PI) / 180;
+              const maxShift = totalWidth * 1.2;
+              const boundedShift = (0.5 - scrollProgress) * maxShift;
 
               const arcPos = {
-                x: Math.cos(arcRad) * arcRadius + parallaxValue * 0.3,
-                y: Math.sin(arcRad) * arcRadius + arcCenterY,
-                rotation: currentArcAngle + 90,
-                scale: isMobile ? 1.4 : 1.8,
+                x: baseX + boundedShift + parallaxValue * 0.3,
+                y: baseY + arcCurve,
+                rotation: fanRotation,
+                scale: isMobile ? 1.6 : 2.0,
               };
 
               target = {
