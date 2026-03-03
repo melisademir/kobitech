@@ -45,10 +45,14 @@ const Landing = () => (
       </div>
     </div>
 
+    {/* TICARETINI BÜYÜT ÇEMBER */}
+    <TicaretiniBuyutCember />
+
     {/* PARTNER CAROUSEL */}
-    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)", marginTop: "-80px", position: "relative", zIndex: 10 }}>
+    <div style={{ background: "linear-gradient(180deg, hsl(265,35%,96%) 0%, hsl(38,50%,97%) 100%)" }}>
       <PartnerCarouselSection />
     </div>
+
 
     <SectionDivider />
 
@@ -93,9 +97,6 @@ const Landing = () => (
     <div style={{ background: "linear-gradient(160deg, hsl(38,55%,97%) 0%, hsl(265,40%,96%) 100%)" }}>
       <PartnersSection />
     </div>
-
-    {/* TICARETINI BÜYÜT ÇEMBER — en alt */}
-    <TicaretiniBuyutCember />
 
     <FooterSection />
   </div>
