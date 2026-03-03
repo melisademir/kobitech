@@ -158,17 +158,38 @@ export default function TicaretiniBuyutCember() {
   const scrollRef = useRef(0);
 
   const isVisibleRef = useRef(false);
+  const hasAutoMorphed = useRef(false);
 
   useEffect(() => {
     const container = containerRef.current;
     if (!container) return;
     const obs = new IntersectionObserver(
-      ([entry]) => { isVisibleRef.current = entry.isIntersecting && entry.intersectionRatio > 0.5; },
+      ([entry]) => {
+        isVisibleRef.current = entry.isIntersecting && entry.intersectionRatio > 0.5;
+        // Auto-morph: when first visible, animate virtualScroll to 600 (full morph)
+        if (isVisibleRef.current && !hasAutoMorphed.current && introPhase === "circle") {
+          hasAutoMorphed.current = true;
+          const start = scrollRef.current;
+          const end = 600;
+          const duration = 1200;
+          const startTime = performance.now();
+          const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
+          const tick = (now: number) => {
+            const elapsed = now - startTime;
+            const t = Math.min(elapsed / duration, 1);
+            const value = start + (end - start) * easeOut(t);
+            scrollRef.current = value;
+            virtualScroll.set(value);
+            if (t < 1) requestAnimationFrame(tick);
+          };
+          requestAnimationFrame(tick);
+        }
+      },
       { threshold: 0.5 }
     );
     obs.observe(container);
     return () => obs.disconnect();
-  }, []);
+  }, [introPhase, virtualScroll]);
 
   useEffect(() => {
     const container = containerRef.current;
