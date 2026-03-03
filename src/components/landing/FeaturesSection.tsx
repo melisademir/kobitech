@@ -51,68 +51,51 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
       initial={{ opacity: 0, y: 20 }}
       animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
-      className="group relative flex flex-col transition-shadow duration-300"
+      className="group relative flex flex-col overflow-hidden"
       style={{
-        background: "white",
-        borderRadius: "16px",
-        border: "1px solid rgba(0,0,0,0.06)",
-        boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)",
+        background: "hsl(var(--card))",
+        borderRadius: "20px",
+        border: "1.5px solid hsl(var(--border) / 0.5)",
+        minHeight: "320px",
       }}
-      onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = "0 2px 8px rgba(72,11,135,0.14), 0 12px 40px rgba(72,11,135,0.16)";
-      }}
-      onMouseLeave={(e) => {
-        e.currentTarget.style.boxShadow = "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.11)";
+      whileHover={{
+        scale: 1.03,
+        y: -5,
+        transition: { type: "spring", stiffness: 300, damping: 15 },
       }}
     >
-      <div className="p-3.5 md:p-8 flex flex-col flex-1">
-        {/* Icon + Title — stacked on mobile, row on md+ */}
-        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-4 mb-2.5 md:mb-4">
-          <div
-            className="flex-shrink-0 flex items-center justify-center w-9 h-9 md:w-[52px] md:h-[52px]"
-            style={{
-              borderRadius: "10px",
-              background: "linear-gradient(135deg, hsl(268,72%,60%), hsl(268,72%,38%))",
-              boxShadow: "0 4px 12px rgba(109,40,217,0.15)",
-            }}
-          >
-            <f.icon className="w-4 h-4 md:w-6 md:h-6 text-white" strokeWidth={1.75} />
-          </div>
+      <div className="p-5 md:p-8 flex flex-col flex-1 relative">
+        {/* Title */}
+        <h3
+          className="text-foreground font-bold leading-snug text-base md:text-[22px] mb-2 md:mb-3"
+          style={{ letterSpacing: "-0.02em", maxWidth: "75%" }}
+        >
+          {f.title}
+        </h3>
 
-          <h3
-            className="text-foreground font-bold leading-snug text-[13px] md:text-xl"
-            style={{ letterSpacing: "-0.02em" }}
-          >
-            {f.title}
-          </h3>
-        </div>
-
+        {/* Description */}
         <p
-          className="text-muted-foreground flex-1 text-[11px] md:text-base leading-relaxed"
-          style={{ marginBottom: "12px" }}
+          className="text-muted-foreground text-xs md:text-[15px] leading-relaxed"
+          style={{ maxWidth: "70%" }}
         >
           {f.desc}
         </p>
 
-        {/* Pills */}
-        <div className="flex flex-wrap gap-1 md:gap-2.5 pt-3 md:pt-5 border-t" style={{ borderColor: "hsl(38,30%,88%)" }}>
-          {f.labels.map((label) => (
-            <span
-              key={label}
-              className="cursor-default text-[10px] md:text-[13px]"
-              style={{
-                display: "inline-block",
-                padding: "4px 8px",
-                borderRadius: "16px",
-                background: "rgba(109,40,217,0.06)",
-                color: "hsl(268,72%,38%)",
-                fontWeight: 600,
-                border: "1.5px solid rgba(109,40,217,0.12)",
-              }}
-            >
-              {label}
-            </span>
-          ))}
+        {/* Icon — bottom right, large */}
+        <div className="absolute bottom-4 right-4 md:bottom-6 md:right-6">
+          <div
+            className="flex items-center justify-center w-16 h-16 md:w-24 md:h-24 transition-transform duration-300 group-hover:scale-110"
+            style={{
+              borderRadius: "16px",
+              background: "linear-gradient(135deg, hsl(268 72% 60% / 0.12), hsl(268 72% 38% / 0.08))",
+            }}
+          >
+            <f.icon
+              className="w-8 h-8 md:w-12 md:h-12"
+              style={{ color: "hsl(268,72%,38%)" }}
+              strokeWidth={1.5}
+            />
+          </div>
         </div>
       </div>
     </motion.div>
