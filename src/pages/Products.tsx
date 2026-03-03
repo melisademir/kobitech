@@ -61,8 +61,8 @@ const Products = () => {
           <Menu className="h-6 w-6" />
         </button>
         <Link to="/sales/dashboard" className="flex items-center gap-2 mr-8 shrink-0">
-          <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
-          <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">KobiTECH</span>
+          <img src={kobiLogo} alt="DigitalHub" className="h-[30px] w-auto" />
+          <span className="text-lg font-extrabold text-primary tracking-tight hidden sm:inline">DigitalHub</span>
         </Link>
         <div className="hidden md:flex flex-1 max-w-md mx-auto relative">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />

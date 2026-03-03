@@ -43,8 +43,8 @@ const KobiLogin = () => {
 
         <motion.div initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           <div className="flex items-center gap-3 mb-2">
-            <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
-            <span className="text-xl font-extrabold tracking-tight" style={{ color: "#E9D5FF" }}>KobiTECH</span>
+            <img src={kobiLogo} alt="DigitalHub" className="h-[30px] w-auto" />
+            <span className="text-xl font-extrabold tracking-tight" style={{ color: "#E9D5FF" }}>DigitalHub</span>
           </div>
         </motion.div>
 
@@ -76,8 +76,8 @@ const KobiLogin = () => {
       <div className="flex-1 flex items-center justify-center p-8 bg-card">
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="w-full max-w-[400px] space-y-8">
           <div className="lg:hidden flex items-center gap-2 mb-4">
-            <img src={kobiLogo} alt="KobiTECH" className="h-[30px] w-auto" />
-            <span className="text-xl font-extrabold text-primary">KobiTECH</span>
+            <img src={kobiLogo} alt="DigitalHub" className="h-[30px] w-auto" />
+            <span className="text-xl font-extrabold text-primary">DigitalHub</span>
           </div>
           <div>
             <h1 className="text-3xl font-bold text-foreground">KOBİ Girişi</h1>

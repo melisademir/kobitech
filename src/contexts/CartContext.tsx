@@ -12,7 +12,7 @@ interface CartContextType {
 
 const CartContext = createContext<CartContextType | null>(null);
 
-const CART_KEY = "kobitech-cart";
+const CART_KEY = "digitalhub-cart";
 
 const loadCart = (): CatalogProduct[] => {
   try {

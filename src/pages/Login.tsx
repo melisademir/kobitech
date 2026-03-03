@@ -39,8 +39,8 @@ const Login = () => {
       >
         <div className="absolute inset-0 opacity-20" style={{ backgroundImage: "radial-gradient(circle at 30% 50%, rgba(124,58,237,0.3) 0%, transparent 60%)" }} />
         <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="relative z-10 flex items-center gap-2">
-          <img src={kobiLogo} alt="KobiTECH" className="h-[28px] w-auto brightness-200" />
-          <span className="text-lg font-extrabold text-white tracking-tight">KobiTECH</span>
+          <img src={kobiLogo} alt="DigitalHub" className="h-[28px] w-auto brightness-200" />
+          <span className="text-lg font-extrabold text-white tracking-tight">DigitalHub</span>
         </motion.div>
         <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7, delay: 0.2 }} className="relative z-10 flex-1 flex flex-col items-center justify-center gap-6">
           <h2 className="text-3xl font-bold text-white leading-tight text-center whitespace-nowrap">KOBİ'lerin Dijital Partneri</h2>
@@ -54,8 +54,8 @@ const Login = () => {
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.5 }} className="w-full max-w-[400px] space-y-8">
           {/* Mobile logo */}
           <div className="lg:hidden flex items-center gap-2 mb-4">
-            <img src={kobiLogo} alt="KobiTECH" className="h-[28px] w-auto" />
-            <span className="text-xl font-extrabold text-primary">KobiTECH</span>
+            <img src={kobiLogo} alt="DigitalHub" className="h-[28px] w-auto" />
+            <span className="text-xl font-extrabold text-primary">DigitalHub</span>
           </div>
 
           <div>
