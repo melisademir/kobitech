@@ -89,7 +89,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                 key={item.common}
                 role="group"
                 aria-label={item.common}
-                className="absolute w-[200px] sm:w-[230px] md:w-[260px] h-[280px] sm:h-[310px] md:h-[340px]"
+                className="absolute w-[160px] sm:w-[185px] md:w-[210px] h-[225px] sm:h-[250px] md:h-[275px]"
                 style={{
                   transform: `rotateY(${itemAngle}deg) translateZ(${radius}px)`,
                   left: '50%',
