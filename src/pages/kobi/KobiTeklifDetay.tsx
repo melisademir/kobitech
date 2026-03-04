@@ -100,7 +100,7 @@ const KobiTeklifDetay = () => {
                   <span className="font-semibold text-foreground text-sm">{p.name}</span>
                   {p.productId && (
                     <Link
-                      to={`/digitalhub/products?highlight=${p.productId}`}
+                      to={`/digitalhub/products?product=${p.productId}`}
                       className="text-xs text-primary hover:text-primary/80 flex items-center gap-1 shrink-0 font-medium"
                     >
                       Ürün Detayı <ExternalLink className="w-3 h-3" />
