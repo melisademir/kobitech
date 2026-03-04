@@ -40,7 +40,7 @@ const SolutionsGallerySection = () => (
       </p>
     </div>
     <div className="overflow-hidden" style={{ height: "600px" }}>
-      <CircularGallery items={galleryItems} radius={550} autoRotateSpeed={0.02} />
+      <CircularGallery items={galleryItems} radius={400} autoRotateSpeed={0.02} />
     </div>
   </div>
 );
