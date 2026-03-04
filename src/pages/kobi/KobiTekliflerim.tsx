@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 
 const mockQuotes = [
   { id: "TT-12345", products: ["Param POS", "Univera Stokbar"], status: "pending" as const, date: "2026-02-18", sender: "" },
-  { id: "TT-12340", products: ["Param Kart", "Finrota Netahsilat 2.0"], status: "pending" as const, date: "2026-02-15", sender: "Ahmet Yılmaz (Bayi)", price: "2.400₺/ay" },
-  { id: "TT-12338", products: ["Nebim Winner"], status: "approved" as const, date: "2026-02-10", sender: "Admin", price: "4.200₺/ay" },
+  { id: "TT-12340", products: ["Param Kart", "Finrota Netahsilat 2.0"], status: "pending" as const, date: "2026-02-15", sender: "Ahmet Yılmaz (Bayi)" },
+  { id: "TT-12338", products: ["Nebim Winner"], status: "approved" as const, date: "2026-02-10", sender: "Admin" },
 ];
 
 const tabs = [
@@ -154,11 +154,8 @@ const KobiTekliflerim = () => {
                     </div>
                   </div>
 
-                  {/* Right: Price + Arrow */}
-                  <div className="flex items-center gap-3 shrink-0">
-                    {q.price && (
-                      <span className="text-lg font-bold text-primary">{q.price}</span>
-                    )}
+                  {/* Right: Arrow */}
+                  <div className="flex items-center shrink-0">
                     <ChevronRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors" />
                   </div>
                 </div>
