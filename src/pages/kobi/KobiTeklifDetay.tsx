@@ -7,46 +7,46 @@ import { ArrowLeft } from "lucide-react";
 
 const mockQuotes: Record<string, {
   id: string;
-  products: { name: string; price: string }[];
+  products: { name: string }[];
   status: "pending" | "approved" | "rejected";
   date: string;
   sender: string;
-  totalPrice: string;
+  
   note: string;
 }> = {
   "TT-12345": {
     id: "TT-12345",
     products: [
-      { name: "Param POS", price: "800₺/ay" },
-      { name: "Univera Stokbar", price: "1.200₺/ay" },
+      { name: "Param POS" },
+      { name: "Univera Stokbar" },
     ],
     status: "pending",
     date: "2026-02-18",
     sender: "",
-    totalPrice: "",
+    
     note: "Hızlı kurulum talep edildi.",
   },
   "TT-12340": {
     id: "TT-12340",
     products: [
-      { name: "Param Kart", price: "900₺/ay" },
-      { name: "Finrota Netahsilat 2.0", price: "1.500₺/ay" },
+      { name: "Param Kart" },
+      { name: "Finrota Netahsilat 2.0" },
     ],
     status: "pending",
     date: "2026-02-15",
     sender: "Ahmet Yılmaz (Bayi)",
-    totalPrice: "2.400₺/ay",
+    
     note: "12 ay taahhüt ile özel fiyat sunulmuştur.",
   },
   "TT-12338": {
     id: "TT-12338",
     products: [
-      { name: "Nebim Winner", price: "4.200₺/ay" },
+      { name: "Nebim Winner" },
     ],
     status: "approved",
     date: "2026-02-10",
     sender: "Admin",
-    totalPrice: "4.200₺/ay",
+    
     note: "Onaylanmış teklif. Kurulum süreci başlatıldı.",
   },
 };
@@ -99,17 +99,10 @@ const KobiTeklifDetay = () => {
           </CardHeader>
           <CardContent className="space-y-3">
             {quote.products.map((p, i) => (
-              <div key={i} className="flex items-center justify-between p-3 rounded-lg bg-background border border-border">
+              <div key={i} className="flex items-center p-3 rounded-lg bg-background border border-border">
                 <span className="font-medium text-foreground text-sm">{p.name}</span>
-                <span className="text-sm font-semibold text-primary">{p.price}</span>
               </div>
             ))}
-            {quote.totalPrice && (
-              <div className="flex items-center justify-between pt-3 border-t border-border">
-                <span className="font-bold text-foreground">Toplam</span>
-                <span className="text-lg font-bold text-primary">{quote.totalPrice}</span>
-              </div>
-            )}
           </CardContent>
         </Card>
 
