@@ -26,21 +26,21 @@ const galleryItems: GalleryItem[] = [
 
 const SolutionsGallerySection = () => (
   <div style={{ background: "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
-    <div className="flex flex-col items-center text-center pt-24 md:pt-32 pb-4 px-4">
+    <div className="flex flex-col items-center text-center pt-16 md:pt-20 pb-2 px-4">
       <h2
-        className="text-3xl md:text-5xl lg:text-7xl font-extrabold text-foreground"
+        className="text-2xl md:text-4xl lg:text-5xl font-extrabold text-foreground"
         style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
       >
         Ticaretini Büyüt
         <br />
         <span className="text-gradient-primary">Maliyetlerini Düşür</span>
       </h2>
-      <p className="mt-4 max-w-lg text-muted-foreground text-base md:text-lg" style={{ lineHeight: 1.7 }}>
+      <p className="mt-3 max-w-lg text-muted-foreground text-sm md:text-base" style={{ lineHeight: 1.7 }}>
         İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
       </p>
     </div>
-    <div className="overflow-hidden" style={{ height: "600px" }}>
-      <CircularGallery items={galleryItems} radius={550} autoRotateSpeed={0.02} />
+    <div className="overflow-hidden" style={{ height: "500px" }}>
+      <CircularGallery items={galleryItems} radius={480} autoRotateSpeed={0.02} />
     </div>
   </div>
 );
