@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ExternalLink, Clock, CheckCircle2, XCircle, Package, CalendarDays, User, StickyNote, Copy, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import salesRepImg from "@/assets/sales-rep-woman.png";
 
 const mockQuotes: Record<string, {
   id: string;
@@ -109,9 +110,7 @@ const KobiTeklifDetay = () => {
           className={`rounded-2xl border ${config.borderClass} ${config.bgClass} p-5`}
         >
           <div className="flex items-start gap-4">
-            <div className={`w-12 h-12 rounded-xl ${config.bgClass} border ${config.borderClass} flex items-center justify-center shrink-0`}>
-              <StatusIcon className={`w-6 h-6 ${config.textClass}`} />
-            </div>
+            <img src={salesRepImg} alt="Satış temsilcisi" className="w-12 h-12 rounded-xl object-cover shrink-0" />
             <div className="flex-1 min-w-0">
               <div className="flex items-center gap-3 flex-wrap">
                 <h1 className="text-xl font-bold text-foreground">#{quote.id}</h1>
