@@ -6,9 +6,17 @@ import { FileText, Clock, CheckCircle2, XCircle, ChevronRight, Package } from "l
 import { motion } from "framer-motion";
 
 const mockQuotes = [
-  { id: "TT-12345", products: ["Param POS", "Univera Stokbar"], status: "pending" as const, date: "2026-02-18", sender: "" },
-  { id: "TT-12340", products: ["Param Kart", "Finrota Netahsilat 2.0"], status: "pending" as const, date: "2026-02-15", sender: "Ahmet Yılmaz (Bayi)" },
-  { id: "TT-12338", products: ["Nebim Winner"], status: "approved" as const, date: "2026-02-10", sender: "Admin" },
+  { id: "TT-12345", products: [
+    { name: "Param POS", description: "Yeni nesil yazarkasa POS. Hızlı ödeme, kampanya, stok senkronizasyon." },
+    { name: "Univera Stokbar", description: "Gelişmiş stok ve depo yönetimi. Barkod, FIFO, parti takibi." },
+  ], status: "pending" as const, date: "2026-02-18", sender: "" },
+  { id: "TT-12340", products: [
+    { name: "Param Kart", description: "Sanal ve fiziksel kart çözümleri. Online ödeme entegrasyonu." },
+    { name: "Finrota Netahsilat 2.0", description: "Tahsilat ve ödeme yönetimi. Fatura, cari hesap, banka entegrasyonu." },
+  ], status: "pending" as const, date: "2026-02-15", sender: "Ahmet Yılmaz (Bayi)" },
+  { id: "TT-12338", products: [
+    { name: "Nebim Winner", description: "Kurumsal ERP çözümü. Üretim, stok, satış, finans modülleri entegre." },
+  ], status: "approved" as const, date: "2026-02-10", sender: "Admin" },
 ];
 
 const tabs = [
@@ -141,8 +149,17 @@ const KobiTekliflerim = () => {
                         <Package className="w-3.5 h-3.5 text-muted-foreground shrink-0" />
                         {q.products.map((p, i) => (
                           <span key={i} className="text-xs bg-muted text-muted-foreground rounded-lg px-2.5 py-1 font-medium">
-                            {p}
+                            {p.name}
                           </span>
+                        ))}
+                      </div>
+
+                      {/* Product descriptions */}
+                      <div className="space-y-1">
+                        {q.products.map((p, i) => (
+                          <p key={i} className="text-xs text-muted-foreground leading-relaxed">
+                            <span className="font-medium text-foreground/70">{p.name}:</span> {p.description}
+                          </p>
                         ))}
                       </div>
 

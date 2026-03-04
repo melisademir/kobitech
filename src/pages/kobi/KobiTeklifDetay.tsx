@@ -1,52 +1,48 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import KobiLayout from "@/components/layout/KobiLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, ExternalLink } from "lucide-react";
 
 const mockQuotes: Record<string, {
   id: string;
-  products: { name: string }[];
+  products: { name: string; description: string; productId?: string }[];
   status: "pending" | "approved" | "rejected";
   date: string;
   sender: string;
-  
   note: string;
 }> = {
   "TT-12345": {
     id: "TT-12345",
     products: [
-      { name: "Param POS" },
-      { name: "Univera Stokbar" },
+      { name: "Param POS", description: "Yeni nesil yazarkasa POS. Hızlı ödeme, kampanya, stok senkronizasyon.", productId: "param-fiziki-pos" },
+      { name: "Univera Stokbar", description: "Gelişmiş stok ve depo yönetimi. Barkod, FIFO, parti takibi.", productId: "univera-stokbar" },
     ],
     status: "pending",
     date: "2026-02-18",
     sender: "",
-    
     note: "Hızlı kurulum talep edildi.",
   },
   "TT-12340": {
     id: "TT-12340",
     products: [
-      { name: "Param Kart" },
-      { name: "Finrota Netahsilat 2.0" },
+      { name: "Param Kart", description: "Sanal ve fiziksel kart çözümleri. Online ödeme entegrasyonu.", productId: "param-kart" },
+      { name: "Finrota Netahsilat 2.0", description: "Tahsilat ve ödeme yönetimi. Fatura, cari hesap, banka entegrasyonu.", productId: "finrota-netahsilat" },
     ],
     status: "pending",
     date: "2026-02-15",
     sender: "Ahmet Yılmaz (Bayi)",
-    
     note: "12 ay taahhüt ile özel fiyat sunulmuştur.",
   },
   "TT-12338": {
     id: "TT-12338",
     products: [
-      { name: "Nebim Winner" },
+      { name: "Nebim Winner", description: "Kurumsal ERP çözümü. Üretim, stok, satış, finans modülleri entegre.", productId: "nebim-winner" },
     ],
     status: "approved",
     date: "2026-02-10",
     sender: "Admin",
-    
     note: "Onaylanmış teklif. Kurulum süreci başlatıldı.",
   },
 };
@@ -99,8 +95,19 @@ const KobiTeklifDetay = () => {
           </CardHeader>
           <CardContent className="space-y-3">
             {quote.products.map((p, i) => (
-              <div key={i} className="flex items-center p-3 rounded-lg bg-background border border-border">
-                <span className="font-medium text-foreground text-sm">{p.name}</span>
+              <div key={i} className="p-4 rounded-xl bg-background border border-border space-y-2">
+                <div className="flex items-center justify-between gap-3">
+                  <span className="font-semibold text-foreground text-sm">{p.name}</span>
+                  {p.productId && (
+                    <Link
+                      to={`/digitalhub/products?highlight=${p.productId}`}
+                      className="text-xs text-primary hover:text-primary/80 flex items-center gap-1 shrink-0 font-medium"
+                    >
+                      Ürün Detayı <ExternalLink className="w-3 h-3" />
+                    </Link>
+                  )}
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">{p.description}</p>
               </div>
             ))}
           </CardContent>
