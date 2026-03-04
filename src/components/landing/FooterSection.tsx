@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { motion } from "framer-motion";
 import { MapPin, Phone, Mail } from "lucide-react";
 
@@ -11,8 +12,8 @@ const colVariants = {
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" as const } },
 };
 
-const FooterSection = () => (
-  <footer id="contact" className="bg-secondary text-secondary-foreground py-14 mt-20">
+const FooterSection = forwardRef<HTMLElement>((_, ref) => (
+  <footer ref={ref} id="contact" className="bg-secondary text-secondary-foreground py-14 mt-20">
     <motion.div
       initial="hidden"
       whileInView="visible"
@@ -107,6 +108,6 @@ const FooterSection = () => (
       </motion.div>
     </motion.div>
   </footer>
-);
-
+));
+FooterSection.displayName = "FooterSection";
 export default FooterSection;

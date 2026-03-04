@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useCallback, useEffect, forwardRef } from "react";
 import { motion } from "framer-motion";
 import { Star } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -64,7 +64,7 @@ const cardVariants = {
   },
 };
 
-const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
+const TestimonialCard = forwardRef<HTMLDivElement, { t: typeof testimonials[0] }>(({ t }, ref) => (
   <div
     className={cn(
       "relative flex flex-col rounded-2xl border border-border/50 bg-card p-5 md:p-7 h-full",
@@ -117,9 +117,10 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
       </div>
     </div>
   </div>
-);
+));
+TestimonialCard.displayName = "TestimonialCard";
 
-const TestimonialsSection = () => {
+const TestimonialsSection = forwardRef<HTMLElement>((_, ref) => {
   const [emblaRef, emblaApi] = useEmblaCarousel({ align: "start", loop: false, dragFree: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -202,5 +203,6 @@ const TestimonialsSection = () => {
       </div>
     </section>
   );
-};
+});
+TestimonialsSection.displayName = "TestimonialsSection";
 export default TestimonialsSection;
