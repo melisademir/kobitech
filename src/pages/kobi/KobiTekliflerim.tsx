@@ -60,16 +60,7 @@ const KobiTekliflerim = () => {
                       <p className="text-xs text-muted-foreground">{q.date} {q.sender && `• Gönderen: ${q.sender}`}</p>
                       {q.price && <p className="text-lg font-bold text-primary">{q.price}</p>}
                     </div>
-                    <div className="flex gap-2 shrink-0">
-                      <Button variant="outline" size="sm" onClick={() => navigate(`/digitalhub/my-quotes/${q.id}`)}>Detay</Button>
-                      {q.status === "pending" && (
-                        <>
-                          <Button variant="outline" size="sm">Soru Sor</Button>
-                          <Button variant="hero" size="sm">Onayla</Button>
-                          <Button variant="destructive" size="sm">Reddet</Button>
-                        </>
-                      )}
-                    </div>
+                    <Button variant="outline" size="sm" onClick={() => navigate(`/digitalhub/my-quotes/${q.id}`)}>Detay</Button>
                   </div>
                 </CardContent>
               </Card>
