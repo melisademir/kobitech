@@ -24,7 +24,7 @@ const mockQuotes: Record<string, {
     status: "pending",
     date: "2026-02-18",
     sender: "",
-    note: "Hızlı kurulum talep edildi.",
+    note: "Hızlı kurulum talep ederiz",
   },
   "TT-12340": {
     id: "TT-12340",
