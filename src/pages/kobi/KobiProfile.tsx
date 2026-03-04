@@ -57,8 +57,6 @@ const KobiProfile = () => {
           <CardHeader><CardTitle>Görünürlük Ayarları</CardTitle></CardHeader>
           <CardContent className="space-y-4">
             {[
-              { label: "Profil herkese açık", desc: "Bayiler profilinizi görebilir" },
-              { label: "İletişim bilgileri görünsün", desc: "Telefon ve email paylaşılır" },
               { label: "Bildirim e-postaları", desc: "Yeni teklifler için email al" },
             ].map(s => (
               <div key={s.label} className="flex items-center justify-between p-4 bg-background rounded-xl border border-border">
