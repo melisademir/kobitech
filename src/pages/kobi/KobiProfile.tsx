@@ -29,43 +29,23 @@ const KobiProfile = () => {
         </div>
 
         {activeTab === 0 && (
-          <div className="grid md:grid-cols-2 gap-6">
-            <Card>
-              <CardHeader><CardTitle>İşletme Bilgileri</CardTitle></CardHeader>
-              <CardContent className="space-y-4">
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center text-primary-foreground text-2xl font-bold">{initials}</div>
-                  <div>
-                    <p className="font-bold text-foreground text-lg">{businessName}</p>
-                    <p className="text-sm text-muted-foreground">{onboardingData.sector || "Perakende"} • {onboardingData.city || "İstanbul"}</p>
-                  </div>
+          <Card>
+            <CardHeader><CardTitle>İşletme Bilgileri</CardTitle></CardHeader>
+            <CardContent className="space-y-4">
+              <div className="flex items-center gap-4">
+                <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center text-primary-foreground text-2xl font-bold">{initials}</div>
+                <div>
+                  <p className="font-bold text-foreground text-lg">{businessName}</p>
+                  <p className="text-sm text-muted-foreground">{onboardingData.sector || "Perakende"} • {onboardingData.city || "İstanbul"}</p>
                 </div>
-                <div className="flex items-center gap-2 bg-background p-3 rounded-lg border border-border">
-                  <span className="text-sm text-muted-foreground">Kullanıcı No:</span>
-                  <span className="font-mono font-bold text-foreground text-sm">{userId}</span>
-                  <button onClick={() => navigator.clipboard.writeText(userId)} className="ml-auto text-primary hover:text-primary/80"><Copy className="h-4 w-4" /></button>
-                </div>
-              </CardContent>
-            </Card>
-            <Card>
-              <CardHeader><CardTitle>İstatistikler</CardTitle></CardHeader>
-              <CardContent>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { label: "Aktif Projeler", value: "0" },
-                    { label: "Teklifler", value: "3" },
-                    { label: "Tamamlanan", value: "0" },
-                    { label: "Üyelik", value: "Yeni" },
-                  ].map(s => (
-                    <div key={s.label} className="bg-background p-4 rounded-xl border border-border text-center">
-                      <p className="text-2xl font-bold text-primary">{s.value}</p>
-                      <p className="text-xs text-muted-foreground mt-1">{s.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+              <div className="flex items-center gap-2 bg-background p-3 rounded-lg border border-border">
+                <span className="text-sm text-muted-foreground">Kullanıcı No:</span>
+                <span className="font-mono font-bold text-foreground text-sm">{userId}</span>
+                <button onClick={() => navigator.clipboard.writeText(userId)} className="ml-auto text-primary hover:text-primary/80"><Copy className="h-4 w-4" /></button>
+              </div>
+            </CardContent>
+          </Card>
         )}
 
         {activeTab === 1 && (
