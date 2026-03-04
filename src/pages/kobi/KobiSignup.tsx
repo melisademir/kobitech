@@ -85,7 +85,7 @@ const KobiSignup = () => {
       <div className="flex-1 flex items-center justify-center p-8 bg-card">
         <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} className="w-full max-w-[400px] space-y-8">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">KOBİ Kaydı</h1>
+            <h1 className="text-3xl font-bold text-foreground">İşletme Kayıt</h1>
             <p className="text-muted-foreground mt-2">Ücretsiz hesap oluşturun</p>
           </div>
           <form onSubmit={handleSubmit} className="space-y-5">
