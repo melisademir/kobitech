@@ -50,7 +50,7 @@ const mockQuotes: Record<string, {
 };
 
 const statusConfig: Record<string, { label: string; description: string; icon: typeof Clock; bgClass: string; textClass: string; borderClass: string }> = {
-  pending: { label: "Bekleyen", description: "Ekibimiz işletmenize en uygun teklifi sunmak için size mail veya telefon yoluyla ulaşacak.", icon: Clock, bgClass: "bg-warning/10", textClass: "text-warning", borderClass: "border-warning/20" },
+  pending: { label: "Teklif Talebi İletildi", description: "Ekibimiz işletmenize en uygun teklifi sunmak için size mail veya telefon yoluyla ulaşacak.", icon: Clock, bgClass: "bg-warning/10", textClass: "text-warning", borderClass: "border-warning/20" },
   approved: { label: "Onaylandı", description: "Teklifiniz onaylanmış durumda", icon: CheckCircle2, bgClass: "bg-success/10", textClass: "text-success", borderClass: "border-success/20" },
   rejected: { label: "Reddedildi", description: "Teklifiniz reddedildi", icon: XCircle, bgClass: "bg-destructive/10", textClass: "text-destructive", borderClass: "border-destructive/20" },
 };
