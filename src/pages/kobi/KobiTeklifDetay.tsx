@@ -1,9 +1,10 @@
 import { useParams, useNavigate, Link } from "react-router-dom";
 import KobiLayout from "@/components/layout/KobiLayout";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, ExternalLink } from "lucide-react";
+import { ArrowLeft, ExternalLink, Clock, CheckCircle2, XCircle, Package, CalendarDays, User, StickyNote, Copy, ChevronRight } from "lucide-react";
+import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 const mockQuotes: Record<string, {
   id: string;
@@ -47,10 +48,15 @@ const mockQuotes: Record<string, {
   },
 };
 
-const statusConfig: Record<string, { label: string; variant: "outline" | "default" | "destructive"; color: string }> = {
-  pending: { label: "Bekleyen", variant: "outline", color: "text-warning bg-warning/10" },
-  approved: { label: "Onaylandı", variant: "default", color: "text-success bg-success/10" },
-  rejected: { label: "Reddedildi", variant: "destructive", color: "text-destructive bg-destructive/10" },
+const statusConfig: Record<string, { label: string; description: string; icon: typeof Clock; bgClass: string; textClass: string; borderClass: string }> = {
+  pending: { label: "Bekleyen", description: "Teklifiniz değerlendirme aşamasında", icon: Clock, bgClass: "bg-warning/10", textClass: "text-warning", borderClass: "border-warning/20" },
+  approved: { label: "Onaylandı", description: "Teklifiniz onaylanmış durumda", icon: CheckCircle2, bgClass: "bg-success/10", textClass: "text-success", borderClass: "border-success/20" },
+  rejected: { label: "Reddedildi", description: "Teklifiniz reddedildi", icon: XCircle, bgClass: "bg-destructive/10", textClass: "text-destructive", borderClass: "border-destructive/20" },
+};
+
+const formatDate = (dateStr: string) => {
+  const d = new Date(dateStr);
+  return d.toLocaleDateString("tr-TR", { day: "numeric", month: "long", year: "numeric" });
 };
 
 const KobiTeklifDetay = () => {
@@ -61,10 +67,13 @@ const KobiTeklifDetay = () => {
   if (!quote) {
     return (
       <KobiLayout>
-        <div className="text-center py-16 space-y-4">
-          <p className="text-muted-foreground text-lg">Teklif bulunamadı.</p>
+        <div className="text-center py-20 space-y-4">
+          <div className="w-16 h-16 rounded-2xl bg-muted flex items-center justify-center mx-auto">
+            <Package className="w-8 h-8 text-muted-foreground" />
+          </div>
+          <p className="text-muted-foreground text-lg font-medium">Teklif bulunamadı.</p>
           <Button variant="outline" onClick={() => navigate("/digitalhub/my-quotes")}>
-            <ArrowLeft className="w-4 h-4 mr-2" /> Geri Dön
+            <ArrowLeft className="w-4 h-4 mr-2" /> Tekliflerime Dön
           </Button>
         </div>
       </KobiLayout>
@@ -72,72 +81,142 @@ const KobiTeklifDetay = () => {
   }
 
   const config = statusConfig[quote.status];
+  const StatusIcon = config.icon;
 
   return (
     <KobiLayout>
       <div className="max-w-3xl mx-auto space-y-6">
-        {/* Header */}
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" onClick={() => navigate("/digitalhub/my-quotes")}>
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
-          <div className="flex-1">
-            <h1 className="text-2xl font-bold text-foreground">Teklif #{quote.id}</h1>
-            <p className="text-sm text-muted-foreground">{quote.date}</p>
+        {/* Breadcrumb-style back nav */}
+        <motion.div
+          initial={{ opacity: 0, x: -10 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.2 }}
+        >
+          <button
+            onClick={() => navigate("/digitalhub/my-quotes")}
+            className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors group"
+          >
+            <ArrowLeft className="w-4 h-4 group-hover:-translate-x-0.5 transition-transform" />
+            Tekliflerime Dön
+          </button>
+        </motion.div>
+
+        {/* Status Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.05 }}
+          className={`rounded-2xl border ${config.borderClass} ${config.bgClass} p-5`}
+        >
+          <div className="flex items-start gap-4">
+            <div className={`w-12 h-12 rounded-xl ${config.bgClass} border ${config.borderClass} flex items-center justify-center shrink-0`}>
+              <StatusIcon className={`w-6 h-6 ${config.textClass}`} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <div className="flex items-center gap-3 flex-wrap">
+                <h1 className="text-xl font-bold text-foreground">#{quote.id}</h1>
+                <Badge className={`${config.bgClass} ${config.textClass} border-0 font-semibold text-xs`}>
+                  {config.label}
+                </Badge>
+              </div>
+              <p className="text-sm text-muted-foreground mt-1">{config.description}</p>
+            </div>
+            <button
+              onClick={() => {
+                navigator.clipboard.writeText(quote.id);
+                toast.success("Teklif numarası kopyalandı");
+              }}
+              className="shrink-0 p-2 rounded-lg hover:bg-background/60 text-muted-foreground hover:text-foreground transition-colors"
+              title="Teklif numarasını kopyala"
+            >
+              <Copy className="w-4 h-4" />
+            </button>
           </div>
-          <Badge className={config.color}>{config.label}</Badge>
-        </div>
+        </motion.div>
 
         {/* Products */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Ürünler</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
+          className="space-y-3"
+        >
+          <div className="flex items-center gap-2 px-1">
+            <Package className="w-4 h-4 text-muted-foreground" />
+            <h2 className="text-sm font-semibold text-foreground uppercase tracking-wide">
+              Teklif Edilen Ürünler
+            </h2>
+            <span className="text-xs text-muted-foreground">({quote.products.length})</span>
+          </div>
+
+          <div className="space-y-3">
             {quote.products.map((p, i) => (
-              <div key={i} className="p-4 rounded-xl bg-background border border-border space-y-2">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="font-semibold text-foreground text-sm">{p.name}</span>
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 8 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.15 + i * 0.05 }}
+                className="rounded-2xl border border-border bg-card p-5 hover:border-primary/20 hover:shadow-card-hover transition-all duration-200 group"
+              >
+                <div className="flex items-start justify-between gap-4">
+                  <div className="flex-1 min-w-0 space-y-2">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                        <Package className="w-4 h-4 text-primary" />
+                      </div>
+                      <span className="font-bold text-foreground">{p.name}</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed pl-10">
+                      {p.description}
+                    </p>
+                  </div>
                   {p.productId && (
                     <Link
                       to={`/digitalhub/products?product=${p.productId}`}
-                      className="text-xs text-primary hover:text-primary/80 flex items-center gap-1 shrink-0 font-medium"
+                      className="shrink-0 flex items-center gap-1.5 text-xs font-semibold text-primary hover:text-primary/80 bg-primary/5 hover:bg-primary/10 px-3 py-2 rounded-xl transition-all"
                     >
-                      Ürün Detayı <ExternalLink className="w-3 h-3" />
+                      Detay <ChevronRight className="w-3.5 h-3.5" />
                     </Link>
                   )}
                 </div>
-                <p className="text-xs text-muted-foreground leading-relaxed">{p.description}</p>
-              </div>
+              </motion.div>
             ))}
-          </CardContent>
-        </Card>
+          </div>
+        </motion.div>
 
-        {/* Details */}
-        <Card>
-          <CardHeader>
-            <CardTitle className="text-lg">Detaylar</CardTitle>
-          </CardHeader>
-          <CardContent className="space-y-3">
-            {quote.sender && (
-              <div className="flex justify-between text-sm">
-                <span className="text-muted-foreground">Gönderen</span>
-                <span className="font-medium text-foreground">{quote.sender}</span>
-              </div>
-            )}
-            <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Tarih</span>
-              <span className="font-medium text-foreground">{quote.date}</span>
+        {/* Meta Info */}
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="rounded-2xl border border-border bg-card divide-y divide-border"
+        >
+          <div className="flex items-center gap-3 px-5 py-4">
+            <CalendarDays className="w-4 h-4 text-muted-foreground shrink-0" />
+            <span className="text-sm text-muted-foreground">Tarih</span>
+            <span className="text-sm font-semibold text-foreground ml-auto">{formatDate(quote.date)}</span>
+          </div>
+
+          {quote.sender && (
+            <div className="flex items-center gap-3 px-5 py-4">
+              <User className="w-4 h-4 text-muted-foreground shrink-0" />
+              <span className="text-sm text-muted-foreground">Gönderen</span>
+              <span className="text-sm font-semibold text-foreground ml-auto">{quote.sender}</span>
             </div>
-            {quote.note && (
-              <div className="pt-3 border-t border-border">
-                <p className="text-sm text-muted-foreground mb-1">Not</p>
-                <p className="text-sm text-foreground">{quote.note}</p>
-              </div>
-            )}
-          </CardContent>
-        </Card>
+          )}
 
+          {quote.note && (
+            <div className="px-5 py-4 space-y-2">
+              <div className="flex items-center gap-2">
+                <StickyNote className="w-4 h-4 text-muted-foreground" />
+                <span className="text-sm text-muted-foreground">Not</span>
+              </div>
+              <p className="text-sm text-foreground leading-relaxed bg-muted/50 rounded-xl px-4 py-3">
+                {quote.note}
+              </p>
+            </div>
+          )}
+        </motion.div>
       </div>
     </KobiLayout>
   );
