@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowLeft, ExternalLink, Clock, CheckCircle2, XCircle, Package, CalendarDays, User, StickyNote, Copy, ChevronRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import salesRepImg from "@/assets/sales-rep-woman.png";
+import salesRepImg from "@/assets/sales-rep-illustration.png";
 
 const mockQuotes: Record<string, {
   id: string;
