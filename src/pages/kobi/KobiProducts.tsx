@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import KobiLayout from "@/components/layout/KobiLayout";
 import { catalogProducts, type CatalogProduct } from "@/data/catalog-products";
 import { Star, ShoppingCart, X, LogIn, Mail } from "lucide-react";
@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useCart } from "@/contexts/CartContext";
 import { useOnboarding } from "@/contexts/OnboardingContext";
 import { motion, AnimatePresence } from "framer-motion";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import ProductDetailModal from "@/components/products/ProductDetailModal";
 
@@ -48,6 +48,16 @@ const KobiProducts = () => {
   const { items, addItem, removeItem, isInCart, count } = useCart();
   const { data: onboardingData } = useOnboarding();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+
+  // Auto-open product detail from URL param
+  useEffect(() => {
+    const productId = searchParams.get("product");
+    if (productId) {
+      const found = catalogProducts.find(p => p.id === productId);
+      if (found) setDetailProduct(found);
+    }
+  }, [searchParams]);
 
   const filtered = activeTab === "all"
     ? catalogProducts
