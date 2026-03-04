@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Copy, FileText, Download } from "lucide-react";
 import { useOnboarding } from "@/contexts/OnboardingContext";
 
-const tabs = ["Genel Bakış", "Şirket Bilgileri", "Görünürlük Ayarları", "Sözleşmeler & Dökümanlar"];
+const tabs = ["Genel Bakış", "Görünürlük Ayarları", "Sözleşmeler & Dökümanlar"];
 
 const KobiProfile = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -29,47 +29,47 @@ const KobiProfile = () => {
         </div>
 
         {activeTab === 0 && (
-          <Card>
-            <CardHeader><CardTitle>İşletme Bilgileri</CardTitle></CardHeader>
-            <CardContent className="space-y-4">
-              <div className="flex items-center gap-4">
-                <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center text-primary-foreground text-2xl font-bold">{initials}</div>
-                <div>
-                  <p className="font-bold text-foreground text-lg">{businessName}</p>
-                  <p className="text-sm text-muted-foreground">{onboardingData.sector || "Perakende"} • {onboardingData.city || "İstanbul"}</p>
+          <div className="space-y-6">
+            <Card>
+              <CardHeader><CardTitle>İşletme Bilgileri</CardTitle></CardHeader>
+              <CardContent className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-16 h-16 rounded-2xl gradient-primary flex items-center justify-center text-primary-foreground text-2xl font-bold">{initials}</div>
+                  <div>
+                    <p className="font-bold text-foreground text-lg">{businessName}</p>
+                    <p className="text-sm text-muted-foreground">{onboardingData.sector || "Perakende"} • {onboardingData.city || "İstanbul"}</p>
+                  </div>
                 </div>
-              </div>
-              <div className="flex items-center gap-2 bg-background p-3 rounded-lg border border-border">
-                <span className="text-sm text-muted-foreground">Kullanıcı No:</span>
-                <span className="font-mono font-bold text-foreground text-sm">{userId}</span>
-                <button onClick={() => navigator.clipboard.writeText(userId)} className="ml-auto text-primary hover:text-primary/80"><Copy className="h-4 w-4" /></button>
-              </div>
-            </CardContent>
-          </Card>
+                <div className="flex items-center gap-2 bg-background p-3 rounded-lg border border-border">
+                  <span className="text-sm text-muted-foreground">Kullanıcı No:</span>
+                  <span className="font-mono font-bold text-foreground text-sm">{userId}</span>
+                  <button onClick={() => navigator.clipboard.writeText(userId)} className="ml-auto text-primary hover:text-primary/80"><Copy className="h-4 w-4" /></button>
+                </div>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader><CardTitle>Şirket Bilgileri</CardTitle></CardHeader>
+              <CardContent className="space-y-4 max-w-lg">
+                {[
+                  { label: "İşletme Adı", value: businessName },
+                  { label: "Sektör", value: onboardingData.sector || "" },
+                  { label: "Şehir", value: onboardingData.city || "" },
+                  { label: "Telefon", value: onboardingData.phone || "" },
+                  { label: "Web Sitesi", value: "" },
+                ].map(f => (
+                  <div key={f.label} className="space-y-1">
+                    <label className="text-sm font-medium text-foreground">{f.label}</label>
+                    <Input defaultValue={f.value} placeholder={f.label} className="h-11" />
+                  </div>
+                ))}
+                <Button variant="hero">Kaydet</Button>
+              </CardContent>
+            </Card>
+          </div>
         )}
 
         {activeTab === 1 && (
-          <Card>
-            <CardHeader><CardTitle>Şirket Bilgileri</CardTitle></CardHeader>
-            <CardContent className="space-y-4 max-w-lg">
-              {[
-                { label: "İşletme Adı", value: businessName },
-                { label: "Sektör", value: onboardingData.sector || "" },
-                { label: "Şehir", value: onboardingData.city || "" },
-                { label: "Telefon", value: onboardingData.phone || "" },
-                { label: "Web Sitesi", value: "" },
-              ].map(f => (
-                <div key={f.label} className="space-y-1">
-                  <label className="text-sm font-medium text-foreground">{f.label}</label>
-                  <Input defaultValue={f.value} placeholder={f.label} className="h-11" />
-                </div>
-              ))}
-              <Button variant="hero">Kaydet</Button>
-            </CardContent>
-          </Card>
-        )}
-
-        {activeTab === 2 && (
           <Card>
             <CardHeader><CardTitle>Görünürlük Ayarları</CardTitle></CardHeader>
             <CardContent className="space-y-4">
@@ -93,7 +93,7 @@ const KobiProfile = () => {
           </Card>
         )}
 
-        {activeTab === 3 && (
+        {activeTab === 2 && (
           <Card>
             <CardHeader><CardTitle>Sözleşmeler & Dökümanlar</CardTitle></CardHeader>
             <CardContent>
