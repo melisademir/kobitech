@@ -3,7 +3,7 @@ import KobiLayout from "@/components/layout/KobiLayout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, MessageCircle, Check, X } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 
 const mockQuotes: Record<string, {
   id: string;
@@ -138,22 +138,6 @@ const KobiTeklifDetay = () => {
           </CardContent>
         </Card>
 
-        {/* Actions */}
-        <div className="flex flex-wrap gap-3">
-          {quote.status === "pending" && (
-            <>
-              <Button variant="outline" className="gap-2">
-                <MessageCircle className="w-4 h-4" /> Soru Sor
-              </Button>
-              <Button variant="hero" className="gap-2">
-                <Check className="w-4 h-4" /> Onayla
-              </Button>
-              <Button variant="destructive" className="gap-2">
-                <X className="w-4 h-4" /> Reddet
-              </Button>
-            </>
-          )}
-        </div>
       </div>
     </KobiLayout>
   );
