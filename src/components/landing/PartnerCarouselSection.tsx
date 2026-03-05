@@ -79,7 +79,7 @@ const PartnerCarouselSection = () => {
   const stackIndices = getStackIndices(currentIndex, partners.length);
 
   return (
-    <section className="pt-16 md:pt-24 pb-16 md:pb-20" onMouseEnter={pauseAutoSlide} onMouseLeave={resumeAutoSlide}>
+    <section className="py-20 md:py-[120px]" onMouseEnter={pauseAutoSlide} onMouseLeave={resumeAutoSlide}>
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <motion.div
