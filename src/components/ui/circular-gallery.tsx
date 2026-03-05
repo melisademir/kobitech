@@ -107,7 +107,14 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                     className="absolute inset-0 w-full h-full object-cover"
                     style={{ objectPosition: item.photo.pos || 'right center' }}
                   />
-                  {/* Overlay — depth adapts to content length */}
+                  {/* Left-side dark gradient for text readability */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(to right, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.3) 60%, transparent 100%)",
+                    }}
+                  />
+                  {/* Bottom gradient — depth adapts to content length */}
                   <div
                     className="absolute bottom-0 left-0 w-full"
                     style={{
