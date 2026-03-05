@@ -1,81 +1,87 @@
 import LandingNav from "@/components/landing/LandingNav";
 import PartnerCarouselSection from "@/components/landing/PartnerCarouselSection";
 import HeroSection from "@/components/landing/HeroSection";
-
 import FeaturesSection from "@/components/landing/FeaturesSection";
-
 import HowItWorksSection from "@/components/landing/HowItWorksSection";
 import CtaSection from "@/components/landing/CtaSection";
 import FooterSection from "@/components/landing/FooterSection";
 import PromotionsSection from "@/components/landing/PromotionsSection";
 import TestimonialsSection from "@/components/landing/TestimonialsSection";
-
 import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSection";
-
-
-
-
 import SolutionsGallerySection from "@/components/landing/SolutionsGallerySection";
 
 /*
-  Background rhythm rule:
-  DARK → LIGHT → DARK → LIGHT → DARK → LIGHT → DARK
-  ───────────────────────────────────────────────────
-  1. Hero              → DARK  (image-based, dark overlay)
-  2. Solutions + Partners → LIGHT (krem→lavanta)
-  3. HowItWorks        → DARK  (koyu mor)
-  4. Promotions + Features → LIGHT (lavanta→krem→lavanta)
-  5. CTA               → DARK  (koyu mor)
-  6. Testimonials       → LIGHT (lavanta→krem)
-  7. Footer             → DARK  (bg-secondary)
+  Background rhythm:
+  1. Hero              → DARK  (#0A0F1E)
+  2. Solutions         → LIGHT (#F5F5F7)
+  3. Partners          → LIGHT (#F5F5F7) + border-bottom
+  4. HowItWorks        → DARK  (#0A0F1E)
+  5. Promotions        → LIGHT (#F5F5F7)
+  6. Features          → SOFT  (#EFEFEF)
+  7. CTA               → GRADIENT (violet)
+  8. Testimonials      → LIGHT (#F5F5F7)
+  9. Footer            → DARK  (#0A0F1E)
 */
 
-const LIGHT_A = "linear-gradient(180deg, hsl(220,20%,97%) 0%, hsl(220,14%,95%) 100%)";
-const LIGHT_B = "linear-gradient(180deg, hsl(220,14%,95%) 0%, hsl(220,20%,97%) 100%)";
-const DARK = "hsl(222, 47%, 11%)";
+const DARK = "#0A0F1E";
+const LIGHT = "#F5F5F7";
+const SOFT = "#EFEFEF";
 
 const Landing = () => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen" style={{ background: LIGHT }}>
 
-    {/* ██ DARK — Hero + Solutions ██ */}
+    {/* 1. DARK — Hero */}
     <div className="relative" style={{ background: DARK }}>
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
       </div>
+    </div>
+
+    {/* 2. LIGHT — Solutions */}
+    <div style={{ background: LIGHT }}>
       <SolutionsGallerySection />
     </div>
 
-    {/* ██ LIGHT — Partners ██ */}
-    <div style={{ background: LIGHT_A }}>
+    {/* 3. LIGHT — Partners (with border-bottom) */}
+    <div style={{ background: LIGHT, borderBottom: "1px solid rgba(124,58,237,0.12)" }}>
       <PartnerCarouselSection />
     </div>
 
-    {/* ██ DARK — How It Works ██ */}
+    {/* 4. DARK — How It Works */}
     <div style={{ background: DARK }}>
       <HowItWorksSection />
     </div>
 
-    {/* ██ LIGHT — Promotions + Features ██ */}
-    <div style={{ background: LIGHT_B }}>
+    {/* 5. LIGHT — Promotions */}
+    <div style={{ background: LIGHT }}>
       <PromotionsSection />
     </div>
-    <div style={{ background: LIGHT_A }}>
+
+    {/* 6. SOFT GRAY — Features */}
+    <div style={{ background: SOFT }}>
       <FeaturesSection />
     </div>
 
-    {/* ██ DARK — CTA ██ */}
-    <div style={{ background: DARK }}>
+    {/* 7. GRADIENT — CTA */}
+    <div
+      style={{
+        background: "linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)",
+        clipPath: "polygon(0 4%, 100% 0, 100% 100%, 0 100%)",
+      }}
+    >
       <CtaSection />
     </div>
 
-    {/* ██ LIGHT — Testimonials ██ */}
-    <div style={{ background: LIGHT_B }}>
+    {/* 8. LIGHT — Testimonials */}
+    <div style={{ background: LIGHT }}>
       <TestimonialsSection />
     </div>
 
-    {/* ██ DARK — Footer ██ */}
-    <FooterSection />
+    {/* 9. DARK — Footer */}
+    <div style={{ background: DARK }}>
+      <FooterSection />
+    </div>
   </div>
 );
 
