@@ -12,7 +12,7 @@ const colVariants = {
 };
 
 const FooterSection = () => (
-  <footer id="contact" className="py-16 md:py-24" style={{ color: "#F5F5F7" }}>
+  <footer id="contact" className="py-20 md:py-[120px]" style={{ color: "#F5F5F7" }}>
     <motion.div
       initial="hidden"
       whileInView="visible"
