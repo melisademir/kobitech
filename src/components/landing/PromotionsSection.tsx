@@ -165,9 +165,9 @@ const PromotionsSection = () => {
 
   if (!isMobile) {
     return (
-      <section className="py-20 md:py-[120px]">
+      <section className="py-28 md:py-[160px]">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-2 gap-8">
             {cards.map((card, i) => (
               <PromoCard key={i} card={card} i={i} />
             ))}
@@ -178,7 +178,7 @@ const PromotionsSection = () => {
   }
 
   return (
-    <section className="py-20 md:py-[120px]">
+    <section className="py-28 md:py-[160px]">
       <div className="px-4">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-4">

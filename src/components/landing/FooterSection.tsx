@@ -12,7 +12,7 @@ const colVariants = {
 };
 
 const FooterSection = () => (
-  <footer id="contact" className="bg-secondary text-secondary-foreground py-14 mt-20">
+  <footer id="contact" className="bg-secondary text-secondary-foreground py-20 mt-0">
     <motion.div
       initial="hidden"
       whileInView="visible"

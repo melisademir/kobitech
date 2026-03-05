@@ -81,7 +81,7 @@ const cardData = [
 
 
 const CtaSection = () =>
-<section className="py-20 md:py-[120px]">
+<section className="py-28 md:py-[160px]">
     <div className="max-w-7xl mx-auto px-6">
       <motion.div
       initial={{ opacity: 0, y: 24 }}

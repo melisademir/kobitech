@@ -38,9 +38,9 @@ const StatsSection = () =>
       variants={containerVariants}
       className="grid grid-cols-2 md:grid-cols-4 gap-px rounded-[20px] overflow-hidden"
       style={{
-        background: "hsl(38,30%,88%)",
-        border: "1px solid hsl(38,30%,88%)",
-        boxShadow: "0 2px 8px rgba(72,11,135,0.11), 0 8px 32px rgba(72,11,135,0.08)"
+        background: "hsl(220,13%,91%)",
+        border: "1px solid hsl(220,13%,91%)",
+        boxShadow: "0 2px 8px rgba(15,23,42,0.08), 0 8px 32px rgba(15,23,42,0.06)"
       }}>
 
         {stats.map((s) =>
