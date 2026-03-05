@@ -123,7 +123,8 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                         {item.tags.map((tag, idx) => (
                           <span
                             key={idx}
-                            className="text-[9px] px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-sm drop-shadow"
+                            className="text-[9px] px-2 py-0.5 rounded-full drop-shadow"
+                            style={{ background: "rgba(0,0,0,0.5)", backdropFilter: "blur(4px)", WebkitBackdropFilter: "blur(4px)", color: "white" }}
                           >
                             {tag}
                           </span>
