@@ -89,6 +89,17 @@ const PartnerCarouselSection = () => {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-6"
         >
+          <span
+            className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-7 tracking-widest uppercase"
+            style={{
+              background: "rgba(107,33,168,0.10)",
+              border: "1.5px solid rgba(107,33,168,0.25)",
+              color: "hsl(var(--foreground))",
+            }}
+          >
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#6B21A8" }} />
+            50+ Dijital Çözüm, 30+ Çözüm Ortağı
+          </span>
           <h2
             className="text-5xl md:text-7xl font-extrabold text-foreground"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
@@ -101,7 +112,7 @@ const PartnerCarouselSection = () => {
             className="text-muted-foreground mt-3 mx-auto text-base md:text-lg whitespace-nowrap"
             style={{ lineHeight: 1.7 }}
           >
-            50+ dijital çözüm, 30+ çözüm ortağı. Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
+            Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
         </motion.div>
 
