@@ -39,7 +39,7 @@ const SolutionsGallerySection = () => (
         İşletmenize özel 50+ dijital çözümü tek platformda keşfedin.
       </p>
     </div>
-    <div className="overflow-hidden" style={{ height: "580px" }}>
+    <div className="overflow-hidden" style={{ height: "500px" }}>
       <CircularGallery items={galleryItems} radius={480} autoRotateSpeed={0.02} />
     </div>
   </div>
