@@ -105,7 +105,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                     src={item.photo.url}
                     alt={item.photo.text}
                     className="absolute inset-0 w-full h-full object-cover"
-                    style={{ objectPosition: item.photo.pos || 'center' }}
+                    style={{ objectPosition: item.photo.pos || 'right center' }}
                   />
                   {/* Overlay — depth adapts to content length */}
                   <div
@@ -116,7 +116,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                     }}
                   />
                   {/* Content */}
-                  <div className="absolute bottom-0 left-0 w-full p-4 text-white flex flex-col gap-1.5">
+                  <div className="absolute bottom-0 left-0 w-full p-4 text-white flex flex-col gap-1.5 items-start text-left">
                     <h2 className="text-lg md:text-xl font-extrabold leading-tight drop-shadow-lg">{item.common}</h2>
                     <em className="text-xs italic opacity-80 drop-shadow">{item.binomial}</em>
                     {item.description && (
