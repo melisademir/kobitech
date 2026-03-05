@@ -118,26 +118,29 @@ const PartnerCarouselSection = () => {
                   animate={{ y: pos.y, scale: pos.scale, opacity: pos.opacity }}
                   transition={{ type: "spring", stiffness: 300, damping: 25 }}
                 >
-                  <div className="grid w-full" style={{ gridTemplateColumns: "30% 1fr", minHeight: "420px", gap: "16px" }}>
+                  <div className="grid w-full" style={{ gridTemplateColumns: "440px 1fr", minHeight: "420px" }}>
                     {/* Logo panel */}
                     <div
-                      className="relative rounded-2xl overflow-hidden flex items-center justify-center"
+                      className="relative rounded-2xl overflow-hidden"
                       style={{
                         background: isActive
                           ? `linear-gradient(145deg, ${p.color}30, hsl(var(--card)))`
                           : `linear-gradient(145deg, ${p.color}25, ${p.color}10)`,
                         border: "1px solid hsl(var(--border))",
+                        ...(isActive ? { opacity: 1 } : {}),
                       }}
                     >
                       {isActive && (
-                        <img src={p.logo} alt={p.name} className="w-40 h-40 object-contain mix-blend-multiply" />
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <img src={p.logo} alt={p.name} className="w-72 h-72 object-contain mix-blend-multiply" />
+                        </div>
                       )}
                     </div>
 
                     {/* Content card */}
-                    <div className="flex items-center">
+                    <div className="flex items-center" style={{ marginLeft: "-32px", zIndex: 10 }}>
                       <div
-                        className="rounded-2xl p-8 lg:p-10 w-full h-full flex flex-col justify-center"
+                        className="rounded-2xl p-8 lg:p-10 w-full"
                         style={{
                           background: "hsl(var(--card))",
                           border: "1px solid hsl(var(--border))",
@@ -151,7 +154,7 @@ const PartnerCarouselSection = () => {
                             </h3>
                             <p className="text-sm text-muted-foreground italic mb-4">{p.category}</p>
                             <p className="text-foreground/80 text-base leading-relaxed mb-5">{p.description}</p>
-                            <div className="flex flex-wrap gap-2 mb-6">
+                            <div className="flex flex-wrap gap-2">
                               {p.features.slice(0, 4).map((f) => (
                                 <span
                                   key={f}
@@ -162,13 +165,6 @@ const PartnerCarouselSection = () => {
                                 </span>
                               ))}
                             </div>
-                            <a
-                              href="/digitalhub/products"
-                              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                            >
-                              Entegrasyonu İncele
-                              <ChevronRight className="w-4 h-4" />
-                            </a>
                           </>
                         ) : (
                           <div style={{ minHeight: "200px" }} />
@@ -253,10 +249,10 @@ const PartnerCarouselSection = () => {
                   key={p.id}
                   onClick={() => setCurrentIndex(i)}
                   className={cn(
-                    "relative flex-shrink-0 w-[80px] h-[80px] rounded-full flex flex-col items-center justify-center transition-all duration-200 border-2",
+                    "flex-shrink-0 w-[80px] h-[80px] rounded-full flex items-center justify-center transition-all duration-200 border-2",
                     i === currentIndex
-                      ? "border-primary scale-110 shadow-md opacity-100"
-                      : "border-transparent opacity-70 hover:opacity-90"
+                      ? "border-primary scale-110 shadow-md"
+                      : "border-transparent opacity-50 hover:opacity-80"
                   )}
                   style={{ background: "hsl(var(--card))" }}
                   aria-label={p.name}
@@ -266,12 +262,6 @@ const PartnerCarouselSection = () => {
                     alt={p.name}
                     className="w-14 h-14 object-contain mix-blend-multiply"
                   />
-                  {i === currentIndex && (
-                    <span
-                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 rounded-full"
-                      style={{ width: 24, height: 3, background: "hsl(var(--primary))" }}
-                    />
-                  )}
                 </button>
               ))}
             </div>
