@@ -23,7 +23,7 @@ import SolutionsGallerySection from "@/components/landing/SolutionsGallerySectio
   9. Footer            → DARK  (#0A0F1E)
 */
 
-const DARK = "#0A0F1E";
+const DARK = "#1A0A4A";
 const LIGHT = "#F5F5F7";
 const SOFT = "#EFEFEF";
 
@@ -44,7 +44,7 @@ const Landing = () => (
     </div>
 
     {/* 3. LIGHT — Partners (with border-bottom) */}
-    <div style={{ background: LIGHT, borderBottom: "1px solid rgba(124,58,237,0.12)" }}>
+    <div style={{ background: LIGHT, borderBottom: "1px solid rgba(0,212,170,0.12)" }}>
       <PartnerCarouselSection />
     </div>
 
@@ -66,7 +66,7 @@ const Landing = () => (
     {/* 7. GRADIENT — CTA */}
     <div
       style={{
-        background: "linear-gradient(135deg, #7C3AED 0%, #4F46E5 100%)",
+        background: "linear-gradient(135deg, #2D1070 0%, #4A1DB5 100%)",
         clipPath: "polygon(0 4%, 100% 0, 100% 100%, 0 100%)",
       }}
     >

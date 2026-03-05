@@ -20,11 +20,11 @@ const LandingNav = () => {
       style={{
         background: scrolled
           ? "rgba(245,245,247,0.85)"
-          : "rgba(10,15,30,0.40)",
+          : "rgba(26,10,74,0.40)",
         backdropFilter: "blur(20px) saturate(1.4)",
         WebkitBackdropFilter: "blur(20px) saturate(1.4)",
         borderBottom: scrolled ? "1px solid #E2E8F0" : "1px solid rgba(255,255,255,0.08)",
-        boxShadow: scrolled ? "0 4px 24px -4px rgba(10,15,30,0.08)" : "none",
+        boxShadow: scrolled ? "0 4px 24px -4px rgba(26,10,74,0.08)" : "none",
       }}
     >
       <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
@@ -32,9 +32,9 @@ const LandingNav = () => {
         <Link to="/homepage" className="flex items-center">
           <span
             className="text-2xl font-extrabold tracking-tight transition-colors duration-500"
-            style={{ color: scrolled ? "#0A0F1E" : "#FFFFFF" }}
+            style={{ color: scrolled ? "#1A0A4A" : "#FFFFFF" }}
           >
-            Digital<span style={{ color: "#7C3AED" }}>Hub</span>
+            Digital<span style={{ color: "#4A1DB5" }}>Hub</span>
           </span>
         </Link>
 
@@ -53,14 +53,14 @@ const LandingNav = () => {
                 className="text-sm font-medium transition-colors"
                 style={{
                   color: scrolled
-                    ? (isActive ? "#7C3AED" : "#64748B")
+                    ? (isActive ? "#4A1DB5" : "#64748B")
                     : (isActive ? "#FFFFFF" : "#94A3B8"),
                   borderBottom: isActive ? "2px solid currentColor" : "2px solid transparent",
                   paddingBottom: "2px",
                 }}
-                onMouseEnter={e => (e.currentTarget.style.color = scrolled ? "#7C3AED" : "#FFFFFF")}
+                onMouseEnter={e => (e.currentTarget.style.color = scrolled ? "#4A1DB5" : "#FFFFFF")}
                 onMouseLeave={e => (e.currentTarget.style.color = scrolled
-                  ? (isActive ? "#7C3AED" : "#64748B")
+                  ? (isActive ? "#4A1DB5" : "#64748B")
                   : (isActive ? "#FFFFFF" : "#94A3B8")
                 )}
               >
@@ -81,20 +81,20 @@ const LandingNav = () => {
             to="/digitalhub/signup"
             className="text-sm font-semibold hidden sm:block transition-colors duration-500"
             style={{ color: scrolled ? "#64748B" : "#94A3B8" }}
-            onMouseEnter={e => (e.currentTarget.style.color = scrolled ? "#7C3AED" : "#FFFFFF")}
+            onMouseEnter={e => (e.currentTarget.style.color = scrolled ? "#4A1DB5" : "#FFFFFF")}
             onMouseLeave={e => (e.currentTarget.style.color = scrolled ? "#64748B" : "#94A3B8")}
           >
             Kayıt Ol
           </Link>
           <Link to="/digitalhub/login">
             <motion.button
-              whileHover={{ scale: 1.04, boxShadow: "0 6px 24px -4px rgba(124,58,237,0.40)" }}
+              whileHover={{ scale: 1.04, boxShadow: "0 6px 24px -4px rgba(74,29,181,0.40)" }}
               whileTap={{ scale: 0.97 }}
               transition={{ type: "spring", stiffness: 320, damping: 18 }}
               className="h-9 px-5 rounded-lg text-sm font-semibold text-white"
               style={{
-                background: "#7C3AED",
-                boxShadow: "0 4px 16px -4px rgba(124,58,237,0.35)",
+                background: "linear-gradient(90deg, #4A1DB5, #00D4AA)",
+                boxShadow: "0 4px 16px -4px rgba(74,29,181,0.35)",
               }}
             >
               Giriş Yap

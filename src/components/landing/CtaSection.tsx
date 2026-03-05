@@ -42,7 +42,7 @@ const LinkCard = ({ title, description, imageUrl, href }: LinkCardProps) => (
       <div className="p-5">
         <h3 className="text-white font-bold text-base mb-1" style={{ letterSpacing: "-0.02em" }}>{title}</h3>
         <p className="text-sm" style={{ color: "#94A3B8", lineHeight: 1.6 }}>{description}</p>
-        <span className="inline-flex items-center gap-1 mt-3 text-sm font-semibold" style={{ color: "#06B6D4" }}>
+        <span className="inline-flex items-center gap-1 mt-3 text-sm font-semibold" style={{ color: "#00D4AA" }}>
           Keşfet <ArrowRight className="w-3.5 h-3.5" />
         </span>
       </div>
@@ -82,7 +82,7 @@ const CtaSection = () => (
         >
           İşletmenizi Dijitalde Büyütmeye
           <br />
-          <span style={{ color: "#06B6D4" }}>Hazır mısınız?</span>
+          <span style={{ color: "#00D4AA" }}>Hazır mısınız?</span>
         </h2>
         <p className="text-base md:text-lg" style={{ lineHeight: 1.7, color: "#94A3B8", maxWidth: "480px", margin: "0 auto" }}>
           50+ dijital çözüm, 30+ çözüm ortağı. Tek platformda tüm ihtiyaçlarınıza yanıt bulun.

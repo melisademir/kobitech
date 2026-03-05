@@ -13,23 +13,23 @@ export function ButtonColorful({
 }: ButtonColorfulProps) {
   return (
     <Button
-      className={cn(
-        "group relative h-12 px-8 overflow-hidden rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
-        className
-      )}
-      style={{
-        background: "#7C3AED",
-        boxShadow: "0 4px 16px -4px rgba(124,58,237,0.35)",
-      }}
-      {...props}
-    >
-      {/* Glow effect on hover */}
-      <span
-        className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className={cn(
+          "group relative h-12 px-8 overflow-hidden rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
+          className
+        )}
         style={{
-          background: "#6D28D9",
+          background: "linear-gradient(90deg, #4A1DB5 0%, #00D4AA 100%)",
+          boxShadow: "0 4px 20px rgba(74,29,181,0.35)",
         }}
-      />
+        {...props}
+      >
+        {/* Glow effect on hover */}
+        <span
+          className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+          style={{
+            background: "linear-gradient(90deg, #3D1A8C 0%, #00B894 100%)",
+          }}
+        />
 
       {/* Content */}
       <span className="relative z-10 flex items-center gap-2 text-white">

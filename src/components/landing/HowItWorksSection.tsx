@@ -60,8 +60,8 @@ const HowItWorksSection = () => (
         <span
           className="inline-block px-5 py-2 rounded-full text-[11px] font-semibold mb-6 tracking-widest uppercase cursor-default"
           style={{
-            background: "rgba(124,58,237,0.15)",
-            border: "1.5px solid rgba(124,58,237,0.3)",
+            background: "rgba(74,29,181,0.15)",
+            border: "1.5px solid rgba(74,29,181,0.3)",
             color: "#A78BFA",
           }}
         >
@@ -128,8 +128,8 @@ const HowItWorksSection = () => (
                       width: "32px",
                       height: "32px",
                       fontSize: "14px",
-                      background: "linear-gradient(135deg, #6D28D9, #8B5CF6)",
-                      boxShadow: "0 2px 8px rgba(124,58,237,0.35)",
+                      background: "linear-gradient(90deg, #4A1DB5, #00D4AA)",
+                      boxShadow: "0 2px 8px rgba(74,29,181,0.35)",
                     }}
                   >
                     {s.num}
@@ -139,8 +139,8 @@ const HowItWorksSection = () => (
                       key={b}
                       className="inline-block px-3 py-1 rounded-full text-[11px] font-semibold tracking-wide uppercase"
                       style={{
-                        background: "rgba(124,58,237,0.15)",
-                        border: "1px solid rgba(124,58,237,0.3)",
+                        background: "rgba(74,29,181,0.15)",
+                        border: "1px solid rgba(74,29,181,0.3)",
                         color: "#A78BFA",
                       }}
                     >
