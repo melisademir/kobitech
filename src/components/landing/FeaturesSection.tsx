@@ -168,7 +168,7 @@ const MobileFeatureCarousel = () => {
 const FeaturesSection = () => (
   <section
     id="features"
-    className="relative overflow-hidden py-12 md:py-20"
+    className="relative overflow-hidden py-20 md:py-[120px]"
   >
     <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
       {/* Header */}

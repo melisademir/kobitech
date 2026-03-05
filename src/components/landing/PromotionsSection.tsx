@@ -160,7 +160,7 @@ const PromotionsSection = () => {
 
   if (!isMobile) {
     return (
-      <section className="py-16 md:py-24">
+      <section className="py-20 md:py-[120px]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-6">
             {cards.map((card, i) => (
@@ -173,7 +173,7 @@ const PromotionsSection = () => {
   }
 
   return (
-    <section className="py-16">
+    <section className="py-20 md:py-[120px]">
       <div className="px-4">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-4">

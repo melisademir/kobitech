@@ -162,10 +162,10 @@
       0 18px 48px -8px hsl(271, 76%, 32% / 0.16);
   }
 
-  /* Gold-tinted border glow */
+  /* Primary-tinted border glow — use sparingly on featured elements */
   .shadow-elegant {
     box-shadow:
-      0 0 0 1px hsl(43, 65%, 52% / 0.20),
+      0 0 0 1px hsl(271, 76%, 32% / 0.15),
       0 8px 32px -10px hsl(271, 76%, 32% / 0.14);
   }
 
@@ -176,12 +176,12 @@
     background-clip: text;
   }
 
-  /* Warm glassmorphism */
+  /* Warm glassmorphism — primary-tinted */
   .glass-card {
     background: rgba(253, 251, 247, 0.75);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(212, 175, 55, 0.18);
+    border: 1px solid hsl(271, 76%, 32% / 0.12);
   }
 
   .glass-card-dark {
@@ -196,8 +196,8 @@
   }
 
   .section-gap {
-    padding-top: clamp(64px, 10vh, 120px);
-    padding-bottom: clamp(64px, 10vh, 120px);
+    padding-top: clamp(80px, 10vh, 120px);
+    padding-bottom: clamp(80px, 10vh, 120px);
   }
 
   .fade-in-up {
