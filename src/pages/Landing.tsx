@@ -37,17 +37,17 @@ const DARK = "hsl(260, 45%, 10%)";
 const Landing = () => (
   <div className="min-h-screen bg-background">
 
-    {/* ██ DARK — Hero ██ */}
+    {/* ██ DARK — Hero + Solutions ██ */}
     <div className="relative" style={{ background: DARK }}>
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
       </div>
+      <SolutionsGallerySection />
     </div>
 
-    {/* ██ LIGHT — Solutions + Partners ██ */}
+    {/* ██ LIGHT — Partners ██ */}
     <div style={{ background: LIGHT_A }}>
-      <SolutionsGallerySection />
       <PartnerCarouselSection />
     </div>
 
