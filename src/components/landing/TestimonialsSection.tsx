@@ -8,6 +8,7 @@ import { cn } from "@/lib/utils";
 
 const testimonials = [
   {
+    headline: "Param TECH ile ilk 3 ayda online satışlarımız %60 arttı",
     quote: "Dijital Esnaf sayesinde ilk kez yurt dışına satış yapmaya başladık. Platform bizi adım adım yönlendirdi.",
     name: "Ahmet Yılmaz",
     role: "Tekstil İhracatçısı",
@@ -15,6 +16,7 @@ const testimonials = [
     stars: 5,
   },
   {
+    headline: "Param TECH ile ilk 3 ayda online satışlarımız %60 arttı",
     quote: "Muhasebe ve e-fatura entegrasyonu hayatımı kurtardı. Artık kağıt işleriyle uğraşmıyorum.",
     name: "Fatma Demir",
     role: "Gıda Üreticisi",
@@ -22,6 +24,7 @@ const testimonials = [
     stars: 5,
   },
   {
+    headline: "Param TECH ile ilk 3 ayda online satışlarımız %60 arttı",
     quote: "E-ticaret mağazamı kurdum, siparişlerim %200 arttı. Tek platformda her şey var.",
     name: "Mehmet Kaya",
     role: "Mobilya Atölyesi",
@@ -29,6 +32,7 @@ const testimonials = [
     stars: 5,
   },
   {
+    headline: "Param TECH ile ilk 3 ayda online satışlarımız %60 arttı",
     quote: "Sosyal medya yönetimi ve online satış kanallarını birlikte yürütebiliyorum artık.",
     name: "Zeynep Arslan",
     role: "Kozmetik Markası",
@@ -36,6 +40,7 @@ const testimonials = [
     stars: 5,
   },
   {
+    headline: "Param TECH ile ilk 3 ayda online satışlarımız %60 arttı",
     quote: "Stok takibi ve kargo entegrasyonu mükemmel çalışıyor. Zamandan büyük tasarruf.",
     name: "Can Öztürk",
     role: "Elektronik Perakende",
@@ -43,6 +48,7 @@ const testimonials = [
     stars: 5,
   },
   {
+    headline: "Param TECH ile ilk 3 ayda online satışlarımız %60 arttı",
     quote: "Global pazara açılmak istiyorduk, Dijital Esnaf tam da bunu sağladı.",
     name: "Elif Şahin",
     role: "El Sanatları İhracatı",
@@ -92,6 +98,13 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
           />
         ))}
       </div>
+    )}
+
+    {/* Headline */}
+    {t.headline && (
+      <h3 className="text-foreground font-bold text-sm md:text-base leading-snug mb-2">
+        "{t.headline}"
+      </h3>
     )}
 
     {/* Testimonial text */}
