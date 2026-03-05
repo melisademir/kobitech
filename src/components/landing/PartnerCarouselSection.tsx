@@ -169,7 +169,7 @@ const PartnerCarouselSection = () => {
                               href="/digitalhub/products"
                               className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline transition-colors"
                             >
-                              Entegrasyonu İncele
+                              Ürünleri Keşfet
                               <span aria-hidden="true">→</span>
                             </a>
                           </>
@@ -232,7 +232,7 @@ const PartnerCarouselSection = () => {
                             href="/digitalhub/products"
                             className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
                           >
-                            Entegrasyonu İncele <span aria-hidden="true">→</span>
+                            Ürünleri Keşfet <span aria-hidden="true">→</span>
                           </a>
                         </>
                       ) : (
