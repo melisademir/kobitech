@@ -96,6 +96,7 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
               src={f.image}
               alt={f.title}
               className="w-full h-full object-contain"
+              style={{ mixBlendMode: "multiply" }}
             />
           </div>
         </div>
