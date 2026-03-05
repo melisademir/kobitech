@@ -6,7 +6,6 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { ButtonColorful } from "@/components/ui/button-colorful";
 import heroIllustration from "@/assets/hero-illustration-new.png";
 
-
 const containerVariants = {
   hidden: {},
   visible: { transition: { staggerChildren: 0.12 } }
@@ -36,15 +35,15 @@ const HeroSection = () => {
         />
       </div>
 
-      {/* ── Organic vignette overlay ── */}
+      {/* ── Radial gradient overlay ── */}
       <div
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: [
-            "radial-gradient(ellipse 80% 90% at 50% 45%, rgba(10,4,24,0.68) 0%, rgba(10,4,24,0.52) 30%, rgba(10,4,24,0.28) 55%, rgba(10,4,24,0.10) 75%, transparent 90%)",
-            "radial-gradient(ellipse 100% 50% at 50% 100%, rgba(6,2,16,0.55) 0%, transparent 70%)",
-            "radial-gradient(ellipse 40% 100% at 0% 50%, rgba(6,2,16,0.38) 0%, transparent 70%)",
-            "radial-gradient(ellipse 40% 100% at 100% 50%, rgba(6,2,16,0.25) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 90% at 50% 45%, rgba(10,15,30,0.72) 0%, rgba(10,15,30,0.55) 30%, rgba(10,15,30,0.30) 55%, rgba(10,15,30,0.12) 75%, transparent 90%)",
+            "radial-gradient(ellipse 100% 50% at 50% 100%, rgba(10,15,30,0.60) 0%, transparent 70%)",
+            "radial-gradient(ellipse 40% 100% at 0% 50%, rgba(10,15,30,0.40) 0%, transparent 70%)",
+            "radial-gradient(ellipse 40% 100% at 100% 50%, rgba(10,15,30,0.28) 0%, transparent 70%)",
           ].join(", "),
         }}
       />
@@ -65,12 +64,12 @@ const HeroSection = () => {
             <span
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-7 tracking-widest uppercase"
               style={{
-                background: "rgba(167,139,250,0.15)",
-                border: "1.5px solid rgba(167,139,250,0.35)",
-                color: "#DDD6FE",
+                background: "rgba(6,182,212,0.12)",
+                border: "1.5px solid rgba(6,182,212,0.30)",
+                color: "#06B6D4",
               }}
             >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#A78BFA" }} />
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#06B6D4" }} />
               Türkiye'nin Dijitalleşme Platformu
             </span>
           </motion.div>
@@ -83,12 +82,7 @@ const HeroSection = () => {
           >
             İşletmenizin tüm dijital
             <br />
-            <span style={{
-              background: "linear-gradient(135deg, #E9D5FF 0%, #C4B5FD 55%, #F3E8FF 100%)",
-              WebkitBackgroundClip: "text",
-              WebkitTextFillColor: "transparent",
-              backgroundClip: "text",
-            }}>
+            <span style={{ color: "#06B6D4" }}>
               ihtiyaçları tek platformda!
             </span>
           </motion.h1>
@@ -97,7 +91,7 @@ const HeroSection = () => {
           <motion.p
             variants={itemVariants}
             className="max-w-lg mx-auto font-medium mb-8"
-            style={{ fontSize: "clamp(16px, 1.2vw, 20px)", lineHeight: "1.85", color: "rgba(243,232,255,0.92)", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}
+            style={{ fontSize: "clamp(16px, 1.2vw, 20px)", lineHeight: "1.85", color: "#94A3B8", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}
           >
             Dijitalleşin, verimli çalışın, dünyaya açılın.
             <br />
@@ -109,15 +103,15 @@ const HeroSection = () => {
             <div
               className="flex flex-col sm:flex-row gap-2 p-1.5 rounded-xl"
               style={{
-                background: "rgba(15,7,32,0.55)",
+                background: "rgba(10,15,30,0.60)",
                 backdropFilter: "blur(20px)",
                 WebkitBackdropFilter: "blur(20px)",
-                border: "1px solid rgba(167,139,250,0.22)",
-                boxShadow: "0 8px 40px -8px rgba(109,40,217,0.30)",
+                border: "1px solid rgba(255,255,255,0.10)",
+                boxShadow: "0 8px 40px -8px rgba(0,0,0,0.30)",
               }}
             >
               <div className="relative flex-1">
-                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "#A78BFA" }} />
+                <Mail className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "#94A3B8" }} />
                 <input
                   type="email"
                   value={email}
@@ -125,14 +119,14 @@ const HeroSection = () => {
                   placeholder="E-posta adresiniz"
                   className="hero-input w-full h-10 pl-10 pr-4 rounded-lg text-xs font-semibold outline-none"
                   style={{
-                    background: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(167,139,250,0.20)",
-                    color: "#F5F0FF",
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#FFFFFF",
                   }}
                 />
               </div>
               <div className="relative flex-1">
-                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "#A78BFA" }} />
+                <Phone className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4" style={{ color: "#94A3B8" }} />
                 <input
                   type="tel"
                   value={phone}
@@ -140,9 +134,9 @@ const HeroSection = () => {
                   placeholder="Telefon numaranız"
                   className="hero-input w-full h-10 pl-10 pr-4 rounded-lg text-xs font-semibold outline-none"
                   style={{
-                    background: "rgba(255,255,255,0.08)",
-                    border: "1px solid rgba(167,139,250,0.20)",
-                    color: "#F5F0FF",
+                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid rgba(255,255,255,0.12)",
+                    color: "#FFFFFF",
                   }}
                 />
               </div>
@@ -150,12 +144,12 @@ const HeroSection = () => {
                 <ButtonColorful label="Hemen Başla" className="w-full sm:w-auto min-w-[170px]" />
               </Link>
             </div>
-            <div className="flex items-center gap-2 mt-3" style={{ color: "rgba(196,181,253,0.55)" }}>
+            <div className="flex items-center gap-2 mt-3" style={{ color: "#94A3B8" }}>
               <Checkbox
                 id="kvkk-hero"
                 checked={kvkkAccepted}
                 onCheckedChange={(checked) => setKvkkAccepted(checked === true)}
-                className="border-violet-400/40 data-[state=checked]:bg-violet-500 data-[state=checked]:border-violet-500 h-4 w-4 rounded-[3px]"
+                className="border-slate-500/40 data-[state=checked]:bg-violet-600 data-[state=checked]:border-violet-600 h-4 w-4 rounded-[3px]"
               />
               <label htmlFor="kvkk-hero" className="text-xs cursor-pointer">
                 <a href="#" className="underline hover:opacity-70 transition-opacity">KVKK Aydınlatma Metni</a>'ni kabul ediyorum.
