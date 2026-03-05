@@ -47,7 +47,7 @@ const stepVariants = {
 };
 
 const HowItWorksSection = () => (
-  <section id="how" className="py-16 md:py-24">
+  <section id="how" className="py-20 md:py-[120px]">
     <div className="max-w-[1200px] mx-auto px-6">
       {/* Header */}
       <motion.div

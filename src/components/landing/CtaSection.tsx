@@ -72,7 +72,7 @@ const cardData = [
 ];
 
 const CtaSection = () => (
-  <section className="py-16 md:py-24" style={{ paddingTop: "calc(4% + 64px)" }}>
+  <section className="py-20 md:py-[120px]" style={{ paddingTop: "calc(4% + 80px)" }}>
     <div className="max-w-[1200px] mx-auto px-6">
       {/* Header */}
       <div className="text-center mb-10">

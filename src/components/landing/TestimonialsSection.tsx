@@ -161,7 +161,7 @@ const TestimonialsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-20 md:py-[120px]">
       <div className="max-w-[1200px] mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div
