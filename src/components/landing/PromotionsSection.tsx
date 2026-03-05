@@ -75,11 +75,15 @@ const PromoCard = ({ card, i }: { card: typeof cards[number]; i: number }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-60px" }}
     transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-    className="group relative rounded-2xl overflow-hidden min-h-[480px] flex flex-col"
+    className="group relative rounded-2xl overflow-hidden min-h-[480px] flex flex-col cursor-pointer"
     style={{
       boxShadow: "0 0 0 1.5px rgba(255,255,255,0.25), 0 8px 32px rgba(0,0,0,0.12)",
       border: "1.5px solid rgba(255,255,255,0.18)",
       backdropFilter: "blur(2px)",
+    }}
+    whileHover={{
+      y: -8,
+      transition: { type: "spring", stiffness: 300, damping: 18 },
     }}
   >
     <div className="absolute inset-0 z-30 pointer-events-none rounded-2xl" style={{
@@ -100,8 +104,8 @@ const PromoCard = ({ card, i }: { card: typeof cards[number]; i: number }) => (
     <div className="relative z-10 p-8 md:p-10 flex flex-col justify-between flex-1">
       <div>
         <h3
-          className="font-bold leading-snug mb-3 text-white"
-          style={{ fontSize: "clamp(22px, 2.5vw, 28px)", letterSpacing: "-0.02em", textShadow: "0 2px 16px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4)" }}
+          className="font-extrabold leading-snug mb-3 text-white"
+          style={{ fontSize: "clamp(22px, 2.5vw, 28px)", letterSpacing: "-0.025em", textShadow: "0 2px 16px rgba(0,0,0,0.5), 0 1px 3px rgba(0,0,0,0.4)" }}
         >
           {card.title}
         </h3>
@@ -133,8 +137,9 @@ const PromoCard = ({ card, i }: { card: typeof cards[number]; i: number }) => (
         {card.bubble}
       </motion.div>
       <div>
-        <Link to="/digitalhub/onboarding1">
-          <ButtonColorful label="Hemen Başla" />
+        <Link to="/digitalhub/onboarding1" className="inline-flex items-center gap-2 text-sm font-semibold text-white/90 hover:text-white transition-colors group/btn">
+          İncele
+          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
         </Link>
       </div>
     </div>
