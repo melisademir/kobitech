@@ -197,7 +197,7 @@ const PromotionsSection = () => {
               key={i}
               className="w-2 h-2 rounded-full transition-all duration-300"
               style={{
-                background: i === selectedIndex ? "#7C3AED" : "rgba(124,58,237,0.2)",
+                background: i === selectedIndex ? "#4A1DB5" : "rgba(74,29,181,0.2)",
                 transform: i === selectedIndex ? "scale(1.3)" : "scale(1)",
               }}
               onClick={() => emblaApi?.scrollTo(i)}

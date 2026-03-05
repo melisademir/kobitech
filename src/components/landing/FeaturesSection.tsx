@@ -75,7 +75,7 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
         {/* Title */}
         <h3
           className="font-bold leading-snug text-base md:text-[22px] mb-2 md:mb-3"
-          style={{ letterSpacing: "-0.02em", maxWidth: "75%", color: "#0A0F1E" }}
+          style={{ letterSpacing: "-0.02em", maxWidth: "75%", color: "#1A0A4A" }}
         >
           {f.title}
         </h3>
@@ -156,7 +156,7 @@ const MobileFeatureCarousel = () => {
             onClick={() => setCurrentIndex(i)}
             className="w-2 h-2 rounded-full transition-all duration-300"
             style={{
-              background: i === currentIndex ? "#7C3AED" : "rgba(124,58,237,0.2)",
+              background: i === currentIndex ? "#4A1DB5" : "rgba(74,29,181,0.2)",
               transform: i === currentIndex ? "scale(1.3)" : "scale(1)",
             }}
           />
@@ -182,11 +182,11 @@ const FeaturesSection = () => (
       >
         <h2
           className="text-5xl md:text-7xl font-extrabold"
-          style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#0A0F1E" }}
+          style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#1A0A4A" }}
         >
           Tüm Çözümlere
           <br />
-          <span style={{ color: "#7C3AED" }}>Tek Platformdan Ulaşın</span>
+          <span className="text-gradient-primary">Tek Platformdan Ulaşın</span>
         </h2>
 
         <p className="text-base md:text-lg whitespace-nowrap" style={{ lineHeight: 1.7, margin: "0 auto", color: "#64748B" }}>

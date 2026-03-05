@@ -86,7 +86,7 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
     {/* Quote mark */}
     <div
       className="absolute top-4 right-5 text-4xl md:text-5xl font-serif leading-none select-none pointer-events-none"
-      style={{ color: "rgba(124,58,237,0.08)" }}
+      style={{ color: "rgba(74,29,181,0.08)" }}
     >
       "
     </div>
@@ -108,7 +108,7 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
 
     {/* Headline */}
     {t.headline && (
-      <h3 className="font-bold text-sm md:text-base leading-snug mb-2" style={{ color: "#0A0F1E" }}>
+      <h3 className="font-bold text-sm md:text-base leading-snug mb-2" style={{ color: "#1A0A4A" }}>
         "{t.headline}"
       </h3>
     )}
@@ -123,13 +123,13 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
       <Avatar className="h-9 w-9">
         <AvatarFallback
           className="text-xs font-bold text-white"
-          style={{ background: "#7C3AED" }}
+          style={{ background: "#4A1DB5" }}
         >
           {t.name[0]}
         </AvatarFallback>
       </Avatar>
       <div>
-        <p className="font-semibold text-sm leading-tight" style={{ color: "#0A0F1E" }}>{t.name}</p>
+        <p className="font-semibold text-sm leading-tight" style={{ color: "#1A0A4A" }}>{t.name}</p>
         <p className="text-xs mt-0.5" style={{ color: "#64748B" }}>
           {t.role}{t.company && ` @ ${t.company}`}
         </p>
@@ -174,9 +174,9 @@ const TestimonialsSection = () => {
           <span
             className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-4 md:mb-6 tracking-widest uppercase cursor-default"
             style={{
-              background: "rgba(124,58,237,0.06)",
-              color: "#7C3AED",
-              border: "1.5px solid rgba(124,58,237,0.15)",
+              background: "rgba(74,29,181,0.06)",
+              color: "#4A1DB5",
+              border: "1.5px solid rgba(74,29,181,0.15)",
             }}
           >
             <Star className="w-3 h-3 fill-current" />
@@ -184,9 +184,9 @@ const TestimonialsSection = () => {
           </span>
           <h2
             className="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4"
-            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#0A0F1E" }}
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#1A0A4A" }}
           >
-            İşletmelerden <span style={{ color: "#7C3AED" }}>Geri Bildirimler</span>
+            İşletmelerden <span className="text-gradient-primary">Geri Bildirimler</span>
           </h2>
           <p className="max-w-md mx-auto text-base md:text-lg" style={{ lineHeight: "1.7", color: "#64748B" }}>
             DigitalHub ile dönüşen işletme sahiplerinin deneyimleri
@@ -209,9 +209,9 @@ const TestimonialsSection = () => {
               <button
                 key={i}
                 className="w-2 h-2 rounded-full transition-all duration-300"
-                style={{
-                  background: i === selectedIndex ? "#7C3AED" : "rgba(124,58,237,0.2)",
-                  transform: i === selectedIndex ? "scale(1.3)" : "scale(1)",
+              style={{
+                background: i === selectedIndex ? "#4A1DB5" : "rgba(74,29,181,0.2)",
+                transform: i === selectedIndex ? "scale(1.3)" : "scale(1)",
                 }}
                 onClick={() => emblaApi?.scrollTo(i)}
               />

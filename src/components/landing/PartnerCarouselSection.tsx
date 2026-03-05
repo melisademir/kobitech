@@ -92,21 +92,21 @@ const PartnerCarouselSection = () => {
           <span
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-7 tracking-widest uppercase"
             style={{
-              background: "rgba(124,58,237,0.08)",
-              border: "1.5px solid rgba(124,58,237,0.18)",
-              color: "#7C3AED",
+              background: "rgba(74,29,181,0.08)",
+              border: "1.5px solid rgba(74,29,181,0.18)",
+              color: "#4A1DB5",
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#7C3AED" }} />
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#4A1DB5" }} />
             50+ Dijital Çözüm, 30+ Çözüm Ortağı
           </span>
           <h2
             className="text-5xl md:text-7xl font-extrabold"
-            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#0A0F1E" }}
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#1A0A4A" }}
           >
             Güçlü Partner
             <br />
-            <span style={{ color: "#7C3AED" }}>Ekosistemi</span>
+            <span className="text-gradient-primary">Ekosistemi</span>
           </h2>
           <p
             className="mt-3 mx-auto text-base md:text-lg whitespace-nowrap"
@@ -163,7 +163,7 @@ const PartnerCarouselSection = () => {
                       >
                         {isActive ? (
                           <>
-                            <h3 className="text-2xl font-extrabold mb-1" style={{ letterSpacing: "-0.02em", color: "#0A0F1E" }}>
+                            <h3 className="text-2xl font-extrabold mb-1" style={{ letterSpacing: "-0.02em", color: "#1A0A4A" }}>
                               {p.name}
                             </h3>
                             <p className="text-sm italic mb-4" style={{ color: "#64748B" }}>{p.category}</p>
@@ -181,7 +181,7 @@ const PartnerCarouselSection = () => {
                             </div>
                             <a
                               href="/digitalhub/products"
-                              className="inline-flex items-center gap-1.5 text-sm font-semibold hover:underline transition-colors" style={{ color: "#7C3AED" }}
+                              className="inline-flex items-center gap-1.5 text-sm font-semibold hover:underline transition-colors" style={{ color: "#4A1DB5" }}
                             >
                               Ürünleri Keşfet
                               <span aria-hidden="true">→</span>
@@ -239,12 +239,12 @@ const PartnerCarouselSection = () => {
                     >
                       {isActive ? (
                         <>
-                          <h3 className="text-lg font-extrabold mb-1" style={{ color: "#0A0F1E" }}>{p.name}</h3>
+                          <h3 className="text-lg font-extrabold mb-1" style={{ color: "#1A0A4A" }}>{p.name}</h3>
                           <p className="text-xs italic mb-3" style={{ color: "#64748B" }}>{p.category}</p>
                           <p className="text-sm leading-relaxed mb-4" style={{ color: "#64748B" }}>{p.description}</p>
                           <a
                             href="/digitalhub/products"
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold hover:underline" style={{ color: "#7C3AED" }}
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold hover:underline" style={{ color: "#4A1DB5" }}
                           >
                             Ürünleri Keşfet <span aria-hidden="true">→</span>
                           </a>

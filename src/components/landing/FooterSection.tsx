@@ -23,7 +23,7 @@ const FooterSection = () => (
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Ürünlerimiz */}
         <motion.div variants={colVariants}>
-          <h3 className="font-bold text-base mb-5" style={{ color: "#06B6D4" }}>Ürünlerimiz</h3>
+          <h3 className="font-bold text-base mb-5" style={{ color: "#00D4AA" }}>Ürünlerimiz</h3>
 
           <h4 className="font-bold text-sm mb-2" style={{ color: "#FFFFFF" }}>Fintek Ürünleri</h4>
           <div className="space-y-1.5 text-sm mb-5" style={{ color: "#94A3B8" }}>
@@ -54,7 +54,7 @@ const FooterSection = () => (
 
         {/* Hizmetlerimiz */}
         <motion.div variants={colVariants}>
-          <h3 className="font-bold text-base mb-5" style={{ color: "#06B6D4" }}>Hizmetlerimiz</h3>
+          <h3 className="font-bold text-base mb-5" style={{ color: "#00D4AA" }}>Hizmetlerimiz</h3>
 
           <h4 className="font-bold text-sm mb-2" style={{ color: "#FFFFFF" }}>Kurumsal Servisler</h4>
           <div className="space-y-1.5 text-sm mb-5" style={{ color: "#94A3B8" }}>
@@ -76,7 +76,7 @@ const FooterSection = () => (
 
         {/* Yasal Bilgiler & İletişim */}
         <motion.div variants={colVariants}>
-          <h3 className="font-bold text-base mb-5" style={{ color: "#06B6D4" }}>Yasal Bilgiler</h3>
+          <h3 className="font-bold text-base mb-5" style={{ color: "#00D4AA" }}>Yasal Bilgiler</h3>
           <div className="space-y-1.5 text-sm mb-8" style={{ color: "#94A3B8" }}>
             <p>Çerez Politikası</p>
             <p>KVKK Politikası</p>
@@ -84,14 +84,14 @@ const FooterSection = () => (
             <p>Aydınlatma Metni</p>
           </div>
 
-          <h3 className="font-bold text-base mb-5" style={{ color: "#06B6D4" }}>Bize Ulaşın</h3>
+          <h3 className="font-bold text-base mb-5" style={{ color: "#00D4AA" }}>Bize Ulaşın</h3>
           <div className="space-y-3 text-sm" style={{ color: "#94A3B8" }}>
-            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" style={{ color: "#06B6D4" }} /> Davutpaşa Ofis</div>
-            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" style={{ color: "#06B6D4" }} /> Ünalan Ofis</div>
-            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" style={{ color: "#06B6D4" }} /> Hacettepe Ofis</div>
-            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" style={{ color: "#06B6D4" }} /> İzmir Ofis</div>
-            <div className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0" style={{ color: "#06B6D4" }} /> +90 850 242 65 71</div>
-            <div className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0" style={{ color: "#06B6D4" }} /> sales@paramtech.com.tr</div>
+            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" style={{ color: "#00D4AA" }} /> Davutpaşa Ofis</div>
+            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" style={{ color: "#00D4AA" }} /> Ünalan Ofis</div>
+            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" style={{ color: "#00D4AA" }} /> Hacettepe Ofis</div>
+            <div className="flex items-center gap-2"><MapPin className="h-4 w-4 shrink-0" style={{ color: "#00D4AA" }} /> İzmir Ofis</div>
+            <div className="flex items-center gap-2"><Phone className="h-4 w-4 shrink-0" style={{ color: "#00D4AA" }} /> +90 850 242 65 71</div>
+            <div className="flex items-center gap-2"><Mail className="h-4 w-4 shrink-0" style={{ color: "#00D4AA" }} /> sales@paramtech.com.tr</div>
           </div>
         </motion.div>
       </div>

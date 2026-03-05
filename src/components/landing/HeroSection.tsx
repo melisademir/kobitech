@@ -64,12 +64,12 @@ const HeroSection = () => {
             <span
               className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-7 tracking-widest uppercase"
               style={{
-                background: "rgba(6,182,212,0.12)",
-                border: "1.5px solid rgba(6,182,212,0.30)",
-                color: "#06B6D4",
+                background: "rgba(0,212,170,0.12)",
+                border: "1.5px solid rgba(0,212,170,0.30)",
+                color: "#00D4AA",
               }}
             >
-              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#06B6D4" }} />
+              <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#00D4AA" }} />
               Türkiye'nin Dijitalleşme Platformu
             </span>
           </motion.div>
@@ -82,7 +82,7 @@ const HeroSection = () => {
           >
             İşletmenizin tüm dijital
             <br />
-            <span style={{ color: "#06B6D4" }}>
+            <span className="text-gradient-primary">
               ihtiyaçları tek platformda!
             </span>
           </motion.h1>
@@ -149,7 +149,7 @@ const HeroSection = () => {
                 id="kvkk-hero"
                 checked={kvkkAccepted}
                 onCheckedChange={(checked) => setKvkkAccepted(checked === true)}
-                className="border-slate-500/40 data-[state=checked]:bg-violet-600 data-[state=checked]:border-violet-600 h-4 w-4 rounded-[3px]"
+                className="border-slate-500/40 data-[state=checked]:bg-[#4A1DB5] data-[state=checked]:border-[#4A1DB5] h-4 w-4 rounded-[3px]"
               />
               <label htmlFor="kvkk-hero" className="text-xs cursor-pointer">
                 <a href="#" className="underline hover:opacity-70 transition-opacity">KVKK Aydınlatma Metni</a>'ni kabul ediyorum.
