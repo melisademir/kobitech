@@ -27,7 +27,7 @@ const cards = [
   },
   {
     title: "ParamTECH Cloud ile İşletmenizi Dijitale Taşıyın!",
-    bubble: "2 Ay Ücretsiz Deneme!",
+    bubble: "2 Ay Ücretsiz!",
     description: "Bulut altyapısı, veri yönetimi ve siber güvenlik araçları ile işletmenizi kesintisiz büyütün.",
     icon: Cloud,
     image: promoCloudTech,
