@@ -95,7 +95,7 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
             <img
               src={f.image}
               alt={f.title}
-              className="w-full h-full object-contain"
+              className="w-full h-full object-contain bg-white rounded-2xl"
             />
           </div>
         </div>
