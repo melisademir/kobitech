@@ -52,7 +52,7 @@ const PartnerEcosystemSection = () => {
             className="text-muted-foreground mt-3 mx-auto text-base md:text-lg whitespace-nowrap"
             style={{ lineHeight: 1.7 }}
           >
-            Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
+            50+ dijital çözüm, 30+ çözüm ortağı. Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
         </motion.div>
 
