@@ -73,14 +73,20 @@ const cardVariants = {
 const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
   <div
     className={cn(
-      "relative flex flex-col rounded-2xl border border-border/50 bg-card p-5 md:p-7 h-full",
+      "relative flex flex-col p-5 md:p-7 h-full",
       "transition-shadow duration-300 hover:shadow-lg"
     )}
+    style={{
+      background: "#FFFFFF",
+      border: "1px solid #E2E8F0",
+      borderRadius: "12px",
+      boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+    }}
   >
     {/* Quote mark */}
     <div
       className="absolute top-4 right-5 text-4xl md:text-5xl font-serif leading-none select-none pointer-events-none"
-      style={{ color: "hsl(var(--primary) / 0.08)" }}
+      style={{ color: "rgba(124,58,237,0.08)" }}
     >
       "
     </div>
@@ -102,29 +108,29 @@ const TestimonialCard = ({ t }: { t: typeof testimonials[0] }) => (
 
     {/* Headline */}
     {t.headline && (
-      <h3 className="text-foreground font-bold text-sm md:text-base leading-snug mb-2">
+      <h3 className="font-bold text-sm md:text-base leading-snug mb-2" style={{ color: "#0A0F1E" }}>
         "{t.headline}"
       </h3>
     )}
 
     {/* Testimonial text */}
-    <p className="text-muted-foreground flex-1 text-sm md:text-[15px] leading-relaxed mb-5">
+    <p className="flex-1 text-sm md:text-[15px] leading-relaxed mb-5" style={{ color: "#64748B" }}>
       {t.quote}
     </p>
 
     {/* Author */}
-    <div className="flex items-center gap-3 pt-4 border-t border-border/50">
+    <div className="flex items-center gap-3 pt-4" style={{ borderTop: "1px solid #E2E8F0" }}>
       <Avatar className="h-9 w-9">
         <AvatarFallback
-          className="text-xs font-bold text-primary-foreground"
-          style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(268 72% 55%))" }}
+          className="text-xs font-bold text-white"
+          style={{ background: "#7C3AED" }}
         >
           {t.name[0]}
         </AvatarFallback>
       </Avatar>
       <div>
-        <p className="font-semibold text-foreground text-sm leading-tight">{t.name}</p>
-        <p className="text-muted-foreground text-xs mt-0.5">
+        <p className="font-semibold text-sm leading-tight" style={{ color: "#0A0F1E" }}>{t.name}</p>
+        <p className="text-xs mt-0.5" style={{ color: "#64748B" }}>
           {t.role}{t.company && ` @ ${t.company}`}
         </p>
       </div>
@@ -155,8 +161,8 @@ const TestimonialsSection = () => {
   }, [emblaApi, onSelect]);
 
   return (
-    <section className="py-28 md:py-[160px]">
-      <div className="max-w-7xl mx-auto px-4 md:px-6">
+    <section className="py-16 md:py-24">
+      <div className="max-w-[1200px] mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -168,21 +174,21 @@ const TestimonialsSection = () => {
           <span
             className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-[10px] md:text-xs font-bold mb-4 md:mb-6 tracking-widest uppercase cursor-default"
             style={{
-              background: "hsl(var(--primary) / 0.06)",
-              color: "hsl(var(--primary))",
-              border: "1.5px solid hsl(var(--primary) / 0.15)",
+              background: "rgba(124,58,237,0.06)",
+              color: "#7C3AED",
+              border: "1.5px solid rgba(124,58,237,0.15)",
             }}
           >
             <Star className="w-3 h-3 fill-current" />
             Başarı Hikayeleri
           </span>
           <h2
-            className="text-3xl md:text-5xl font-extrabold text-foreground mb-3 md:mb-4"
-            style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
+            className="text-3xl md:text-5xl font-extrabold mb-3 md:mb-4"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#0A0F1E" }}
           >
-            İşletmelerden <span className="text-gradient-primary">Geri Bildirimler</span>
+            İşletmelerden <span style={{ color: "#7C3AED" }}>Geri Bildirimler</span>
           </h2>
-          <p className="text-muted-foreground max-w-md mx-auto text-base md:text-lg" style={{ lineHeight: "1.7" }}>
+          <p className="max-w-md mx-auto text-base md:text-lg" style={{ lineHeight: "1.7", color: "#64748B" }}>
             DigitalHub ile dönüşen işletme sahiplerinin deneyimleri
           </p>
         </motion.div>
@@ -204,7 +210,7 @@ const TestimonialsSection = () => {
                 key={i}
                 className="w-2 h-2 rounded-full transition-all duration-300"
                 style={{
-                  background: i === selectedIndex ? "hsl(var(--primary))" : "hsl(var(--primary) / 0.2)",
+                  background: i === selectedIndex ? "#7C3AED" : "rgba(124,58,237,0.2)",
                   transform: i === selectedIndex ? "scale(1.3)" : "scale(1)",
                 }}
                 onClick={() => emblaApi?.scrollTo(i)}

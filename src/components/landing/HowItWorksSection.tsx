@@ -47,8 +47,8 @@ const stepVariants = {
 };
 
 const HowItWorksSection = () => (
-  <section id="how" className="py-28 md:py-[160px]">
-    <div className="max-w-6xl mx-auto px-6">
+  <section id="how" className="py-16 md:py-24">
+    <div className="max-w-[1200px] mx-auto px-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -77,7 +77,7 @@ const HowItWorksSection = () => (
         </h2>
         <p
           className="mt-5 mx-auto text-base md:text-lg md:whitespace-nowrap"
-          style={{ color: "rgba(156,163,175,0.9)", lineHeight: "1.7" }}
+          style={{ color: "#94A3B8", lineHeight: "1.7" }}
         >
           Hedeflerinizi belirleyin, çözümleri keşfedin ve dijital büyümenizi başlatın.
         </p>
@@ -89,7 +89,7 @@ const HowItWorksSection = () => (
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6"
       >
         {steps.map((s) => (
           <motion.div
@@ -97,10 +97,11 @@ const HowItWorksSection = () => (
             variants={stepVariants}
           >
             <motion.div
-              className="flex flex-col rounded-[20px] overflow-hidden cursor-default h-full"
+              className="flex flex-col overflow-hidden cursor-default h-full"
               style={{
-                background: "rgba(255,255,255,0.04)",
+                background: "rgba(255,255,255,0.05)",
                 border: "1px solid rgba(255,255,255,0.08)",
+                borderRadius: "12px",
               }}
               variants={cardVariants}
               initial="initial"

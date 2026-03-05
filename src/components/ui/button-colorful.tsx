@@ -14,19 +14,20 @@ export function ButtonColorful({
   return (
     <Button
       className={cn(
-        "group relative h-12 px-8 overflow-hidden rounded-xl font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:shadow-primary/25 hover:scale-[1.02] active:scale-[0.98]",
+        "group relative h-12 px-8 overflow-hidden rounded-lg font-semibold text-sm transition-all duration-300 hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]",
         className
       )}
       style={{
-        background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)))",
+        background: "#7C3AED",
+        boxShadow: "0 4px 16px -4px rgba(124,58,237,0.35)",
       }}
       {...props}
     >
       {/* Glow effect on hover */}
       <span
-        className="absolute inset-0 rounded-xl opacity-0 transition-opacity duration-300 group-hover:opacity-100 blur-sm"
+        className="absolute inset-0 rounded-lg opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
-          background: "linear-gradient(135deg, hsl(var(--primary) / 0.8), hsl(var(--accent) / 0.8))",
+          background: "#6D28D9",
         }}
       />
 
