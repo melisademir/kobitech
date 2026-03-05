@@ -77,8 +77,8 @@ const HeroSection = () => {
           {/* H1 */}
           <motion.h1
             variants={itemVariants}
-            className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-5"
-            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#FFFFFF", textShadow: "0 2px 24px rgba(0,0,0,0.5)" }}
+            className="text-5xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] mb-6"
+            style={{ letterSpacing: "-0.05em", lineHeight: 0.98, color: "#FFFFFF", textShadow: "0 4px 32px rgba(0,0,0,0.55)", fontWeight: 900 }}
           >
             İşletmenizin tüm dijital
             <br />
