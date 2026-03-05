@@ -41,15 +41,15 @@ const PartnerEcosystemSection = () => {
           className="text-center mb-6 md:mb-10"
         >
            <h2
-            className="text-3xl md:text-5xl font-extrabold text-foreground mx-auto"
-            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, maxWidth: "640px" }}
+            className="text-5xl md:text-7xl font-extrabold text-foreground"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
             Güçlü Partner
             <br />
             <span className="text-gradient-primary">Ekosistemi</span>
           </h2>
           <p
-            className="text-muted-foreground mt-2 md:mt-3 mx-auto text-sm md:text-base whitespace-nowrap"
+            className="text-muted-foreground mt-3 mx-auto text-base md:text-lg whitespace-nowrap"
             style={{ lineHeight: 1.7 }}
           >
             Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.

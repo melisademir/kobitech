@@ -90,13 +90,15 @@ const PartnerCarouselSection = () => {
           className="text-center mb-6"
         >
           <h2
-            className="text-3xl md:text-5xl font-extrabold text-foreground md:whitespace-nowrap"
+            className="text-5xl md:text-7xl font-extrabold text-foreground"
             style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
           >
-            Güçlü Partner <span className="text-gradient-primary">Ekosistemi</span>
+            Güçlü Partner
+            <br />
+            <span className="text-gradient-primary">Ekosistemi</span>
           </h2>
           <p
-            className="text-muted-foreground mt-3 mx-auto text-base md:text-lg md:whitespace-nowrap"
+            className="text-muted-foreground mt-3 mx-auto text-base md:text-lg whitespace-nowrap"
             style={{ lineHeight: 1.7 }}
           >
             Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
