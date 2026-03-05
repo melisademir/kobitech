@@ -70,7 +70,7 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
         transition: { type: "spring", stiffness: 300, damping: 15 },
       }}
     >
-      <div className="p-5 md:p-8 flex flex-col flex-1 relative">
+      <div className="p-6 md:p-10 flex flex-col flex-1 relative">
         {/* Title */}
         <h3
           className="text-foreground font-bold leading-snug text-base md:text-[22px] mb-2 md:mb-3"
@@ -168,7 +168,7 @@ const MobileFeatureCarousel = () => {
 const FeaturesSection = () => (
   <section
     id="features"
-    className="relative overflow-hidden py-20 md:py-[120px]"
+    className="relative overflow-hidden py-28 md:py-[160px]"
   >
     <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
       {/* Header */}
@@ -177,7 +177,7 @@ const FeaturesSection = () => (
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="text-center mb-8 md:mb-20"
+        className="text-center mb-12 md:mb-24"
       >
         <h2
           className="text-5xl md:text-7xl font-extrabold text-foreground"
@@ -194,7 +194,7 @@ const FeaturesSection = () => (
       </motion.div>
 
       {/* Card Grid — swipeable on mobile, 3 cols desktop */}
-      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-6 lg:gap-8">
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 lg:gap-10">
         {features.map((f, i) => (
           <FeatureCard key={f.title} f={f} index={i} />
         ))}

@@ -30,9 +30,9 @@ import SolutionsGallerySection from "@/components/landing/SolutionsGallerySectio
   7. Footer             → DARK  (bg-secondary)
 */
 
-const LIGHT_A = "linear-gradient(180deg, hsl(38,55%,98%) 0%, hsl(260,30%,96%) 100%)";
-const LIGHT_B = "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)";
-const DARK = "hsl(260, 45%, 10%)";
+const LIGHT_A = "linear-gradient(180deg, hsl(220,20%,97%) 0%, hsl(220,14%,95%) 100%)";
+const LIGHT_B = "linear-gradient(180deg, hsl(220,14%,95%) 0%, hsl(220,20%,97%) 100%)";
+const DARK = "hsl(222, 47%, 11%)";
 
 const Landing = () => (
   <div className="min-h-screen bg-background">

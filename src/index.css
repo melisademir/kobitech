@@ -6,34 +6,35 @@
 
 @layer base {
   :root {
-    /* Warm ivory background — "bright but organic" */
-    --background: 38 60% 98%;
-    --foreground: 260 30% 14%;
+    /* ── NEUTRAL (very light cool gray) ── */
+    --background: 220 20% 97%;
+    --foreground: 222 47% 11%;
 
-    /* Cards: off-white with slight warmth */
-    --card: 38 40% 99%;
-    --card-foreground: 260 30% 14%;
+    /* Cards: pure white */
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
 
-    --popover: 38 40% 99%;
-    --popover-foreground: 260 30% 14%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
 
-    /* Brand purple — ParamTECH palette */
+    /* ── ACCENT (purple — brand) ── */
     --primary: 271 76% 32%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 271 72% 48%;
 
-    --secondary: 271 30% 15%;
-    --secondary-foreground: 0 0% 100%;
+    /* ── DOMINANT (dark navy) ── */
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 220 20% 97%;
 
-    /* Muted: faint lavender-cream */
-    --muted: 38 30% 94%;
-    --muted-foreground: 260 12% 48%;
+    /* Muted: cool light gray */
+    --muted: 220 14% 93%;
+    --muted-foreground: 220 9% 46%;
 
     /* Gold accent token */
     --gold: 43 65% 52%;
-    --gold-foreground: 260 30% 14%;
+    --gold-foreground: 222 47% 11%;
 
-    --accent: 168 76% 42%;
+    --accent: 271 76% 32%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -48,51 +49,51 @@
     --info: 217 91% 60%;
     --info-foreground: 0 0% 100%;
 
-    /* Borders: warm gold-tinted instead of cold grey */
-    --border: 38 30% 88%;
-    --input: 38 30% 88%;
+    /* Borders: cool gray */
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
     --ring: 271 76% 32%;
 
     --radius: 1rem;
 
-    --sidebar-background: 38 40% 99%;
-    --sidebar-foreground: 260 30% 14%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 222 47% 11%;
     --sidebar-primary: 271 76% 32%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 271 70% 97%;
     --sidebar-accent-foreground: 271 76% 32%;
-    --sidebar-border: 38 30% 88%;
+    --sidebar-border: 220 13% 91%;
     --sidebar-ring: 271 76% 32%;
   }
 
   .dark {
-    --background: 260 25% 6%;
-    --foreground: 250 20% 96%;
-    --card: 260 22% 9%;
-    --card-foreground: 250 20% 96%;
-    --popover: 260 22% 9%;
-    --popover-foreground: 250 20% 96%;
+    --background: 222 47% 6%;
+    --foreground: 220 20% 96%;
+    --card: 222 40% 10%;
+    --card-foreground: 220 20% 96%;
+    --popover: 222 40% 10%;
+    --popover-foreground: 220 20% 96%;
     --primary: 271 76% 42%;
     --primary-foreground: 0 0% 100%;
     --primary-glow: 271 72% 55%;
-    --secondary: 260 18% 18%;
-    --secondary-foreground: 250 20% 96%;
-    --muted: 260 18% 14%;
-    --muted-foreground: 250 10% 62%;
-    --accent: 168 76% 42%;
+    --secondary: 222 30% 18%;
+    --secondary-foreground: 220 20% 96%;
+    --muted: 222 20% 14%;
+    --muted-foreground: 220 10% 62%;
+    --accent: 271 76% 42%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 62% 30%;
-    --destructive-foreground: 250 20% 96%;
-    --border: 260 18% 18%;
-    --input: 260 18% 18%;
+    --destructive-foreground: 220 20% 96%;
+    --border: 222 20% 18%;
+    --input: 222 20% 18%;
     --ring: 271 76% 42%;
-    --sidebar-background: 271 22% 9%;
-    --sidebar-foreground: 250 20% 96%;
+    --sidebar-background: 222 40% 10%;
+    --sidebar-foreground: 220 20% 96%;
     --sidebar-primary: 271 76% 42%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 271 18% 14%;
-    --sidebar-accent-foreground: 250 20% 96%;
-    --sidebar-border: 271 18% 18%;
+    --sidebar-accent: 222 20% 14%;
+    --sidebar-accent-foreground: 220 20% 96%;
+    --sidebar-border: 222 20% 18%;
     --sidebar-ring: 271 76% 42%;
   }
 }
@@ -120,84 +121,82 @@
 
 @layer utilities {
   .gradient-primary {
-    background: linear-gradient(135deg, hsl(271, 76%, 32%), hsl(168, 76%, 42%));
+    background: linear-gradient(135deg, hsl(271, 76%, 32%), hsl(271, 72%, 48%));
   }
 
   .gradient-primary-dark {
-    background: linear-gradient(135deg, hsl(271, 76%, 22%), hsl(271, 76%, 32%));
+    background: linear-gradient(135deg, hsl(222, 47%, 11%), hsl(222, 40%, 18%));
   }
 
-  /* Lavender to cream subtle section gradient */
+  /* Subtle section gradient — cool neutrals */
   .gradient-section-light {
-    background: linear-gradient(180deg, hsl(260, 30%, 96%) 0%, hsl(38, 55%, 97%) 100%);
+    background: linear-gradient(180deg, hsl(220, 20%, 97%) 0%, hsl(220, 14%, 95%) 100%);
   }
 
   .gradient-primary-soft {
-    background: linear-gradient(135deg, hsl(271, 76%, 32% / 0.07), hsl(43, 65%, 52% / 0.05));
+    background: linear-gradient(135deg, hsl(271, 76%, 32% / 0.05), hsl(220, 20%, 97%));
   }
 
-  /* Purple shadow with weight */
+  /* Shadow system — consistent navy-tinted */
   .shadow-premium {
     box-shadow:
-      0 4px 24px -4px hsl(271, 76%, 32% / 0.22),
-      0 1px 4px hsl(271, 30%, 20% / 0.08);
+      0 4px 24px -4px hsl(222, 47%, 11% / 0.15),
+      0 1px 4px hsl(222, 47%, 11% / 0.06);
   }
 
   .shadow-premium-hover {
     box-shadow:
-      0 14px 48px -8px hsl(271, 76%, 32% / 0.30),
-      0 4px 16px hsl(271, 30%, 20% / 0.10);
+      0 14px 48px -8px hsl(222, 47%, 11% / 0.20),
+      0 4px 16px hsl(222, 47%, 11% / 0.08);
   }
 
-  /* Cards: off-white + purple-tinted shadow, 16px radius */
   .shadow-card {
     box-shadow:
-      0 1px 3px hsl(271, 30%, 20% / 0.04),
-      0 4px 24px -4px hsl(271, 76%, 32% / 0.07);
+      0 1px 3px hsl(222, 47%, 11% / 0.04),
+      0 4px 24px -4px hsl(222, 47%, 11% / 0.06);
   }
 
   .shadow-card-hover {
     box-shadow:
-      0 2px 8px hsl(271, 30%, 20% / 0.05),
-      0 18px 48px -8px hsl(271, 76%, 32% / 0.16);
+      0 2px 8px hsl(222, 47%, 11% / 0.06),
+      0 18px 48px -8px hsl(222, 47%, 11% / 0.12);
   }
 
-  /* Primary-tinted border glow — use sparingly on featured elements */
   .shadow-elegant {
     box-shadow:
-      0 0 0 1px hsl(271, 76%, 32% / 0.15),
-      0 8px 32px -10px hsl(271, 76%, 32% / 0.14);
+      0 0 0 1px hsl(220, 13%, 91%),
+      0 8px 32px -10px hsl(222, 47%, 11% / 0.10);
   }
 
   .text-gradient-primary {
-    background: linear-gradient(135deg, hsl(271, 76%, 32%), hsl(168, 76%, 42%));
+    background: linear-gradient(135deg, hsl(271, 76%, 32%), hsl(271, 72%, 52%));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* Warm glassmorphism — primary-tinted */
+  /* Glassmorphism */
   .glass-card {
-    background: rgba(253, 251, 247, 0.75);
+    background: rgba(255, 255, 255, 0.80);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid hsl(271, 76%, 32% / 0.12);
+    border: 1px solid hsl(220, 13%, 91%);
   }
 
   .glass-card-dark {
-    background: rgba(255, 255, 255, 0.08);
+    background: rgba(255, 255, 255, 0.06);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.10);
   }
 
   .ring-glow {
-    box-shadow: 0 0 0 3px hsl(271, 76%, 32% / 0.12);
+    box-shadow: 0 0 0 3px hsl(271, 76%, 32% / 0.10);
   }
 
   .section-gap {
-    padding-top: clamp(80px, 10vh, 120px);
-    padding-bottom: clamp(80px, 10vh, 120px);
+    padding-top: clamp(112px, 14vh, 160px);
+    padding-bottom: clamp(112px, 14vh, 160px);
   }
 
   .fade-in-up {
@@ -221,8 +220,8 @@
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 12px 2px hsl(271, 76%, 32% / 0.3); }
-  50% { box-shadow: 0 0 24px 6px hsl(271, 76%, 32% / 0.5); }
+  0%, 100% { box-shadow: 0 0 12px 2px hsl(271, 76%, 32% / 0.25); }
+  50% { box-shadow: 0 0 24px 6px hsl(271, 76%, 32% / 0.40); }
 }
 
 @keyframes float {

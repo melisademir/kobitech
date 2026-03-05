@@ -47,7 +47,7 @@ const stepVariants = {
 };
 
 const HowItWorksSection = () => (
-  <section id="how" className="py-20 md:py-[120px]">
+  <section id="how" className="py-28 md:py-[160px]">
     <div className="max-w-6xl mx-auto px-6">
       {/* Header */}
       <motion.div
@@ -89,7 +89,7 @@ const HowItWorksSection = () => (
         whileInView="visible"
         viewport={{ once: true, amount: 0.1 }}
         variants={containerVariants}
-        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 md:gap-10"
+        className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12"
       >
         {steps.map((s) => (
           <motion.div
@@ -118,7 +118,7 @@ const HowItWorksSection = () => (
               </div>
 
               {/* Content */}
-              <div className="p-5 flex-1 flex flex-col">
+              <div className="p-6 md:p-7 flex-1 flex flex-col">
                 {/* Number + Badge */}
                 <div className="flex items-center gap-2 mb-3">
                   <span
