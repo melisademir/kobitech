@@ -79,8 +79,8 @@ const PartnerCarouselSection = () => {
   const stackIndices = getStackIndices(currentIndex, partners.length);
 
   return (
-    <section className="pt-16 md:pt-24 pb-28 md:pb-[160px]" onMouseEnter={pauseAutoSlide} onMouseLeave={resumeAutoSlide}>
-      <div className="max-w-6xl mx-auto px-6">
+    <section className="py-16 md:py-24" onMouseEnter={pauseAutoSlide} onMouseLeave={resumeAutoSlide}>
+      <div className="max-w-[1200px] mx-auto px-6">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -92,25 +92,25 @@ const PartnerCarouselSection = () => {
           <span
             className="inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs font-bold mb-7 tracking-widest uppercase"
             style={{
-              background: "rgba(107,33,168,0.10)",
-              border: "1.5px solid rgba(107,33,168,0.25)",
-              color: "hsl(var(--foreground))",
+              background: "rgba(124,58,237,0.08)",
+              border: "1.5px solid rgba(124,58,237,0.18)",
+              color: "#7C3AED",
             }}
           >
-            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#6B21A8" }} />
+            <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: "#7C3AED" }} />
             50+ Dijital Çözüm, 30+ Çözüm Ortağı
           </span>
           <h2
-            className="text-5xl md:text-7xl font-extrabold text-foreground"
-            style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
+            className="text-5xl md:text-7xl font-extrabold"
+            style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#0A0F1E" }}
           >
             Güçlü Partner
             <br />
-            <span className="text-gradient-primary">Ekosistemi</span>
+            <span style={{ color: "#7C3AED" }}>Ekosistemi</span>
           </h2>
           <p
-            className="text-muted-foreground mt-3 mx-auto text-base md:text-lg whitespace-nowrap"
-            style={{ lineHeight: 1.7 }}
+            className="mt-3 mx-auto text-base md:text-lg whitespace-nowrap"
+            style={{ lineHeight: 1.7, color: "#64748B" }}
           >
             Sektör lideri sağlayıcılar tek platformda; inceleme ve teklif süreci tek merkezden.
           </p>
@@ -137,9 +137,9 @@ const PartnerCarouselSection = () => {
                       className="relative rounded-2xl overflow-hidden"
                       style={{
                         background: isActive
-                          ? `linear-gradient(145deg, ${p.color}30, hsl(var(--card)))`
-                          : `linear-gradient(145deg, ${p.color}25, ${p.color}10)`,
-                        border: "1px solid hsl(var(--border))",
+                          ? `linear-gradient(145deg, ${p.color}15, #FFFFFF)`
+                          : `linear-gradient(145deg, ${p.color}10, ${p.color}05)`,
+                        border: "1px solid #E2E8F0",
                         ...(isActive ? { opacity: 1 } : {}),
                       }}
                     >
@@ -153,26 +153,27 @@ const PartnerCarouselSection = () => {
                     {/* Content card */}
                     <div className="flex items-center" style={{ marginLeft: "-32px", zIndex: 10 }}>
                       <div
-                        className="rounded-2xl p-8 lg:p-10 w-full"
+                        className="rounded-xl p-8 lg:p-10 w-full"
                         style={{
-                          background: "hsl(var(--card))",
-                          border: "1px solid hsl(var(--border))",
-                          boxShadow: isActive ? "0 8px 40px rgba(0,0,0,0.10)" : "0 2px 12px rgba(0,0,0,0.04)",
+                          background: "#FFFFFF",
+                          border: "1px solid #E2E8F0",
+                          borderRadius: "12px",
+                          boxShadow: isActive ? "0 2px 12px rgba(0,0,0,0.06)" : "0 1px 4px rgba(0,0,0,0.03)",
                         }}
                       >
                         {isActive ? (
                           <>
-                            <h3 className="text-2xl font-extrabold text-foreground mb-1" style={{ letterSpacing: "-0.02em" }}>
+                            <h3 className="text-2xl font-extrabold mb-1" style={{ letterSpacing: "-0.02em", color: "#0A0F1E" }}>
                               {p.name}
                             </h3>
-                            <p className="text-sm text-muted-foreground italic mb-4">{p.category}</p>
-                            <p className="text-foreground/80 text-base leading-relaxed mb-5">{p.description}</p>
+                            <p className="text-sm italic mb-4" style={{ color: "#64748B" }}>{p.category}</p>
+                            <p className="text-base leading-relaxed mb-5" style={{ color: "#64748B" }}>{p.description}</p>
                             <div className="flex flex-wrap gap-2 mb-5">
                               {p.features.slice(0, 4).map((f) => (
                                 <span
                                   key={f}
                                   className="text-xs px-3 py-1.5 rounded-full font-medium"
-                                  style={{ background: "hsl(var(--muted))", color: "hsl(var(--muted-foreground))" }}
+                                  style={{ background: "#EFEFEF", color: "#64748B" }}
                                 >
                                   {f}
                                 </span>
@@ -180,7 +181,7 @@ const PartnerCarouselSection = () => {
                             </div>
                             <a
                               href="/digitalhub/products"
-                              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline transition-colors"
+                              className="inline-flex items-center gap-1.5 text-sm font-semibold hover:underline transition-colors" style={{ color: "#7C3AED" }}
                             >
                               Ürünleri Keşfet
                               <span aria-hidden="true">→</span>
@@ -217,9 +218,9 @@ const PartnerCarouselSection = () => {
                       style={{
                         height: "200px",
                         background: isActive
-                          ? `linear-gradient(145deg, ${p.color}18, ${p.color}08)`
-                          : `linear-gradient(145deg, ${p.color}25, ${p.color}10)`,
-                        border: "1px solid hsl(var(--border))",
+                          ? `linear-gradient(145deg, ${p.color}10, #FFFFFF)`
+                          : `linear-gradient(145deg, ${p.color}10, ${p.color}05)`,
+                        border: "1px solid #E2E8F0",
                         borderBottom: "none",
                       }}
                     >
@@ -228,22 +229,22 @@ const PartnerCarouselSection = () => {
                       )}
                     </div>
                     <div
-                      className="rounded-2xl rounded-t-none p-6 w-full"
+                      className="rounded-xl rounded-t-none p-6 w-full"
                       style={{
-                        background: "hsl(var(--card))",
-                        border: "1px solid hsl(var(--border))",
+                        background: "#FFFFFF",
+                        border: "1px solid #E2E8F0",
                         borderTop: "none",
-                        boxShadow: "0 4px 24px rgba(0,0,0,0.06)",
+                        boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                       }}
                     >
                       {isActive ? (
                         <>
-                          <h3 className="text-lg font-extrabold text-foreground mb-1">{p.name}</h3>
-                          <p className="text-xs text-muted-foreground italic mb-3">{p.category}</p>
-                          <p className="text-foreground/80 text-sm leading-relaxed mb-4">{p.description}</p>
+                          <h3 className="text-lg font-extrabold mb-1" style={{ color: "#0A0F1E" }}>{p.name}</h3>
+                          <p className="text-xs italic mb-3" style={{ color: "#64748B" }}>{p.category}</p>
+                          <p className="text-sm leading-relaxed mb-4" style={{ color: "#64748B" }}>{p.description}</p>
                           <a
                             href="/digitalhub/products"
-                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold hover:underline" style={{ color: "#7C3AED" }}
                           >
                             Ürünleri Keşfet <span aria-hidden="true">→</span>
                           </a>
@@ -263,7 +264,7 @@ const PartnerCarouselSection = () => {
             <button
               onClick={handlePrevious}
               className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              style={{ background: "hsl(var(--muted))", color: "hsl(var(--foreground))" }}
+              style={{ background: "#EFEFEF", color: "#0A0F1E" }}
               aria-label="Önceki partner"
             >
               <ChevronLeft className="w-5 h-5" />
@@ -308,7 +309,7 @@ const PartnerCarouselSection = () => {
             <button
               onClick={handleNext}
               className="w-10 h-10 rounded-full flex items-center justify-center transition-colors"
-              style={{ background: "hsl(var(--muted))", color: "hsl(var(--foreground))" }}
+              style={{ background: "#EFEFEF", color: "#0A0F1E" }}
               aria-label="Sonraki partner"
             >
               <ChevronRight className="w-5 h-5" />

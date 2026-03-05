@@ -59,9 +59,10 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
       transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1], delay: index * 0.1 }}
       className="group relative flex flex-col overflow-hidden"
       style={{
-        background: "hsl(var(--card))",
-        borderRadius: "20px",
-        border: "1.5px solid hsl(var(--border) / 0.5)",
+        background: "#FFFFFF",
+        borderRadius: "12px",
+        border: "1px solid #E2E8F0",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
         minHeight: "320px",
       }}
       whileHover={{
@@ -73,16 +74,16 @@ const FeatureCard = ({ f, index }: { f: typeof features[0]; index: number }) => 
       <div className="p-6 md:p-10 flex flex-col flex-1 relative">
         {/* Title */}
         <h3
-          className="text-foreground font-bold leading-snug text-base md:text-[22px] mb-2 md:mb-3"
-          style={{ letterSpacing: "-0.02em", maxWidth: "75%" }}
+          className="font-bold leading-snug text-base md:text-[22px] mb-2 md:mb-3"
+          style={{ letterSpacing: "-0.02em", maxWidth: "75%", color: "#0A0F1E" }}
         >
           {f.title}
         </h3>
 
         {/* Description */}
         <p
-          className="text-muted-foreground text-xs md:text-[15px] leading-relaxed"
-          style={{ maxWidth: "70%" }}
+          className="text-xs md:text-[15px] leading-relaxed"
+          style={{ maxWidth: "70%", color: "#64748B" }}
         >
           {f.desc}
         </p>
@@ -155,7 +156,7 @@ const MobileFeatureCarousel = () => {
             onClick={() => setCurrentIndex(i)}
             className="w-2 h-2 rounded-full transition-all duration-300"
             style={{
-              background: i === currentIndex ? "hsl(268,72%,38%)" : "hsl(268,72%,38%,0.2)",
+              background: i === currentIndex ? "#7C3AED" : "rgba(124,58,237,0.2)",
               transform: i === currentIndex ? "scale(1.3)" : "scale(1)",
             }}
           />
@@ -168,9 +169,9 @@ const MobileFeatureCarousel = () => {
 const FeaturesSection = () => (
   <section
     id="features"
-    className="relative overflow-hidden py-28 md:py-[160px]"
+    className="relative overflow-hidden py-16 md:py-24"
   >
-    <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6">
+    <div className="relative z-10 max-w-[1200px] mx-auto px-4 md:px-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 24 }}
@@ -180,21 +181,21 @@ const FeaturesSection = () => (
         className="text-center mb-12 md:mb-24"
       >
         <h2
-          className="text-5xl md:text-7xl font-extrabold text-foreground"
-          style={{ letterSpacing: "-0.04em", lineHeight: 1.05 }}
+          className="text-5xl md:text-7xl font-extrabold"
+          style={{ letterSpacing: "-0.04em", lineHeight: 1.05, color: "#0A0F1E" }}
         >
           Tüm Çözümlere
           <br />
-          <span className="text-gradient-primary">Tek Platformdan Ulaşın</span>
+          <span style={{ color: "#7C3AED" }}>Tek Platformdan Ulaşın</span>
         </h2>
 
-        <p className="text-muted-foreground text-base md:text-lg whitespace-nowrap" style={{ lineHeight: 1.7, margin: "0 auto" }}>
+        <p className="text-base md:text-lg whitespace-nowrap" style={{ lineHeight: 1.7, margin: "0 auto", color: "#64748B" }}>
           KOBİ'lerin dijital dönüşümünü kolaylaştıran, tek çatı altında eksiksiz bir ekosistem.
         </p>
       </motion.div>
 
       {/* Card Grid — swipeable on mobile, 3 cols desktop */}
-      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-8 lg:gap-10">
+      <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {features.map((f, i) => (
           <FeatureCard key={f.title} f={f} index={i} />
         ))}

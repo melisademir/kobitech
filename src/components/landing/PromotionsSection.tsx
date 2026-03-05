@@ -75,19 +75,20 @@ const PromoCard = ({ card, i }: { card: typeof cards[number]; i: number }) => (
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, margin: "-60px" }}
     transition={{ duration: 0.5, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
-    className="group relative rounded-2xl overflow-hidden min-h-[480px] flex flex-col cursor-pointer"
+    className="group relative overflow-hidden min-h-[480px] flex flex-col cursor-pointer"
     style={{
-      boxShadow: "0 0 0 1.5px rgba(255,255,255,0.25), 0 8px 32px rgba(0,0,0,0.12)",
-      border: "1.5px solid rgba(255,255,255,0.18)",
-      backdropFilter: "blur(2px)",
+      borderRadius: "12px",
+      boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
+      border: "1px solid #E2E8F0",
     }}
     whileHover={{
       y: -8,
       transition: { type: "spring", stiffness: 300, damping: 18 },
     }}
   >
-    <div className="absolute inset-0 z-30 pointer-events-none rounded-2xl" style={{
-      boxShadow: "inset 0 0 0 2px rgba(255,255,255,0.15), inset 0 1px 0 rgba(255,255,255,0.25)",
+    <div className="absolute inset-0 z-30 pointer-events-none" style={{
+      borderRadius: "12px",
+      boxShadow: "inset 0 0 0 1px rgba(0,0,0,0.04)",
     }} />
     <img
       src={card.image}
@@ -165,9 +166,9 @@ const PromotionsSection = () => {
 
   if (!isMobile) {
     return (
-      <section className="py-28 md:py-[160px]">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-8">
+      <section className="py-16 md:py-24">
+        <div className="max-w-[1200px] mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-6">
             {cards.map((card, i) => (
               <PromoCard key={i} card={card} i={i} />
             ))}
@@ -178,7 +179,7 @@ const PromotionsSection = () => {
   }
 
   return (
-    <section className="py-28 md:py-[160px]">
+    <section className="py-16 md:py-24">
       <div className="px-4">
         <div className="overflow-hidden" ref={emblaRef}>
           <div className="flex gap-4">
@@ -196,7 +197,7 @@ const PromotionsSection = () => {
               key={i}
               className="w-2 h-2 rounded-full transition-all duration-300"
               style={{
-                background: i === selectedIndex ? "hsl(265,80%,55%)" : "hsl(265,20%,80%)",
+                background: i === selectedIndex ? "#7C3AED" : "rgba(124,58,237,0.2)",
                 transform: i === selectedIndex ? "scale(1.3)" : "scale(1)",
               }}
               onClick={() => emblaApi?.scrollTo(i)}
