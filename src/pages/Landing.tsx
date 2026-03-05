@@ -17,80 +17,64 @@ import PartnerEcosystemSection from "@/components/landing/PartnerEcosystemSectio
 
 import SolutionsGallerySection from "@/components/landing/SolutionsGallerySection";
 
-/* Shared section divider — horizontal gradient line */
-const SectionDivider = () => (
-  <div className="flex justify-center">
-    <div
-      style={{
-        width: "80%",
-        height: "2px",
-        background: "linear-gradient(90deg, transparent 0%, rgba(109,40,217,0.18) 30%, rgba(109,40,217,0.18) 70%, transparent 100%)",
-      }}
-    />
-  </div>
-);
+/*
+  Background rhythm rule:
+  DARK → LIGHT → DARK → LIGHT → DARK → LIGHT → DARK
+  ───────────────────────────────────────────────────
+  1. Hero              → DARK  (image-based, dark overlay)
+  2. Solutions + Partners → LIGHT (krem→lavanta)
+  3. HowItWorks        → DARK  (koyu mor)
+  4. Promotions + Features → LIGHT (lavanta→krem→lavanta)
+  5. CTA               → DARK  (koyu mor)
+  6. Testimonials       → LIGHT (lavanta→krem)
+  7. Footer             → DARK  (bg-secondary)
+*/
+
+const LIGHT_A = "linear-gradient(180deg, hsl(38,55%,98%) 0%, hsl(260,30%,96%) 100%)";
+const LIGHT_B = "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)";
+const DARK = "hsl(260, 45%, 10%)";
 
 const Landing = () => (
   <div className="min-h-screen bg-background">
-    {/* 1 — HERO */}
-    <div
-      className="relative"
-      style={{
-        background: "linear-gradient(180deg, hsl(38,55%,98%) 0%, hsl(260,30%,96%) 55%, hsl(38,55%,97%) 100%)",
-      }}
-    >
+
+    {/* ██ DARK — Hero ██ */}
+    <div className="relative" style={{ background: DARK }}>
       <div className="relative z-10">
         <LandingNav />
         <HeroSection />
       </div>
     </div>
 
-    {/* SOLUTIONS GALLERY */}
-    <SolutionsGallerySection />
-
-
-    {/* PARTNER CAROUSEL */}
-    <div style={{ background: "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
+    {/* ██ LIGHT — Solutions + Partners ██ */}
+    <div style={{ background: LIGHT_A }}>
+      <SolutionsGallerySection />
       <PartnerCarouselSection />
     </div>
 
-
-    <SectionDivider />
-
-    {/* 4 — HOW IT WORKS */}
-    <div style={{ background: "hsl(260, 45%, 10%)" }}>
+    {/* ██ DARK — How It Works ██ */}
+    <div style={{ background: DARK }}>
       <HowItWorksSection />
     </div>
 
-
-    {/* 5b — PROMOTIONS */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,55%,98%) 0%, hsl(260,30%,96%) 100%)" }}>
+    {/* ██ LIGHT — Promotions + Features ██ */}
+    <div style={{ background: LIGHT_B }}>
       <PromotionsSection />
     </div>
-
-    {/* 5 — FEATURES */}
-    <div style={{ background: "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
+    <div style={{ background: LIGHT_A }}>
       <FeaturesSection />
     </div>
-    {/* 6 — CTA */}
-    <div style={{ background: "linear-gradient(180deg, hsl(38,55%,97%) 0%, hsl(260,30%,96%) 100%)" }}>
+
+    {/* ██ DARK — CTA ██ */}
+    <div style={{ background: DARK }}>
       <CtaSection />
     </div>
 
-    {/* 7 — TESTIMONIALS */}
-    <div style={{ background: "linear-gradient(180deg, hsl(260,30%,96%) 0%, hsl(38,55%,97%) 100%)" }}>
+    {/* ██ LIGHT — Testimonials ██ */}
+    <div style={{ background: LIGHT_B }}>
       <TestimonialsSection />
     </div>
 
-
-    {/* PARTNER ECOSYSTEM — temporarily hidden
-    <div className="py-16 md:py-24" style={{ background: "linear-gradient(180deg, hsl(38,30%,97%) 0%, hsl(252,30%,97%) 100%)" }}>
-      <PartnerEcosystemSection />
-    </div>
-    */}
-
-
-
+    {/* ██ DARK — Footer ██ */}
     <FooterSection />
   </div>
 );
