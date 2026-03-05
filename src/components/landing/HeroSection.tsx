@@ -41,9 +41,10 @@ const HeroSection = () => {
         className="absolute inset-0 z-[1] pointer-events-none"
         style={{
           background: [
-            "radial-gradient(ellipse 75% 85% at 55% 48%, rgba(10,4,24,0.62) 0%, rgba(10,4,24,0.48) 30%, rgba(10,4,24,0.22) 58%, rgba(10,4,24,0.05) 78%, transparent 92%)",
-            "radial-gradient(ellipse 100% 45% at 50% 100%, rgba(6,2,16,0.45) 0%, transparent 70%)",
-            "radial-gradient(ellipse 35% 100% at 0% 50%, rgba(6,2,16,0.30) 0%, transparent 70%)",
+            "radial-gradient(ellipse 80% 90% at 50% 45%, rgba(10,4,24,0.68) 0%, rgba(10,4,24,0.52) 30%, rgba(10,4,24,0.28) 55%, rgba(10,4,24,0.10) 75%, transparent 90%)",
+            "radial-gradient(ellipse 100% 50% at 50% 100%, rgba(6,2,16,0.55) 0%, transparent 70%)",
+            "radial-gradient(ellipse 40% 100% at 0% 50%, rgba(6,2,16,0.38) 0%, transparent 70%)",
+            "radial-gradient(ellipse 40% 100% at 100% 50%, rgba(6,2,16,0.25) 0%, transparent 70%)",
           ].join(", "),
         }}
       />
@@ -95,8 +96,8 @@ const HeroSection = () => {
           {/* Subtitle */}
           <motion.p
             variants={itemVariants}
-            className="max-w-lg mx-auto font-medium text-base md:text-lg mb-8"
-            style={{ lineHeight: "1.75", color: "rgba(243,232,255,0.92)", textShadow: "0 1px 12px rgba(0,0,0,0.4)" }}
+            className="max-w-lg mx-auto font-medium mb-8"
+            style={{ fontSize: "clamp(16px, 1.2vw, 20px)", lineHeight: "1.85", color: "rgba(243,232,255,0.92)", textShadow: "0 2px 16px rgba(0,0,0,0.5)" }}
           >
             Dijitalleşin, verimli çalışın, dünyaya açılın.
             <br />
@@ -145,7 +146,7 @@ const HeroSection = () => {
                   }}
                 />
               </div>
-              <Link to="/digitalhub/onboarding1">
+              <Link to="/digitalhub/onboarding1" className="flex-shrink-0">
                 <ButtonColorful label="Hemen Başla" className="w-full sm:w-auto min-w-[170px]" />
               </Link>
             </div>
