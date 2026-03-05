@@ -154,7 +154,7 @@ const PartnerCarouselSection = () => {
                             </h3>
                             <p className="text-sm text-muted-foreground italic mb-4">{p.category}</p>
                             <p className="text-foreground/80 text-base leading-relaxed mb-5">{p.description}</p>
-                            <div className="flex flex-wrap gap-2">
+                            <div className="flex flex-wrap gap-2 mb-5">
                               {p.features.slice(0, 4).map((f) => (
                                 <span
                                   key={f}
@@ -165,6 +165,13 @@ const PartnerCarouselSection = () => {
                                 </span>
                               ))}
                             </div>
+                            <a
+                              href="/digitalhub/products"
+                              className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline transition-colors"
+                            >
+                              Entegrasyonu İncele
+                              <span aria-hidden="true">→</span>
+                            </a>
                           </>
                         ) : (
                           <div style={{ minHeight: "200px" }} />
@@ -220,7 +227,13 @@ const PartnerCarouselSection = () => {
                         <>
                           <h3 className="text-lg font-extrabold text-foreground mb-1">{p.name}</h3>
                           <p className="text-xs text-muted-foreground italic mb-3">{p.category}</p>
-                          <p className="text-foreground/80 text-sm leading-relaxed">{p.description}</p>
+                          <p className="text-foreground/80 text-sm leading-relaxed mb-4">{p.description}</p>
+                          <a
+                            href="/digitalhub/products"
+                            className="inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                          >
+                            Entegrasyonu İncele <span aria-hidden="true">→</span>
+                          </a>
                         </>
                       ) : (
                         <div style={{ minHeight: "120px" }} />
@@ -243,24 +256,37 @@ const PartnerCarouselSection = () => {
               <ChevronLeft className="w-5 h-5" />
             </button>
 
-            <div className="flex items-center gap-4 md:gap-5 overflow-x-auto max-w-[70vw] md:max-w-none py-1 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
+          <div className="flex items-center gap-3 md:gap-4 overflow-x-auto max-w-[75vw] md:max-w-none py-2 scrollbar-hide" style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}>
               {partners.map((p, i) => (
                 <button
                   key={p.id}
                   onClick={() => setCurrentIndex(i)}
-                  className={cn(
-                    "flex-shrink-0 w-[80px] h-[80px] rounded-full flex items-center justify-center transition-all duration-200 border-2",
-                    i === currentIndex
-                      ? "border-primary scale-110 shadow-md"
-                      : "border-transparent opacity-50 hover:opacity-80"
-                  )}
-                  style={{ background: "hsl(var(--card))" }}
+                  className="flex-shrink-0 flex flex-col items-center gap-1.5 transition-all duration-200"
                   aria-label={p.name}
                 >
-                  <img
-                    src={p.logo}
-                    alt={p.name}
-                    className="w-14 h-14 object-contain mix-blend-multiply"
+                  <div
+                    className={cn(
+                      "w-[72px] h-[72px] md:w-[88px] md:h-[88px] rounded-2xl flex items-center justify-center transition-all duration-200 border-2",
+                      i === currentIndex
+                        ? "border-primary scale-105 shadow-lg bg-card"
+                        : "border-border/40 hover:border-border bg-card/80 hover:bg-card"
+                    )}
+                  >
+                    <img
+                      src={p.logo}
+                      alt={p.name}
+                      className={cn(
+                        "w-12 h-12 md:w-14 md:h-14 object-contain mix-blend-multiply transition-opacity duration-200",
+                        i === currentIndex ? "opacity-100" : "opacity-60 hover:opacity-80"
+                      )}
+                    />
+                  </div>
+                  {/* Active indicator dot */}
+                  <div
+                    className={cn(
+                      "h-[3px] rounded-full transition-all duration-300",
+                      i === currentIndex ? "w-6 bg-primary" : "w-0"
+                    )}
                   />
                 </button>
               ))}
