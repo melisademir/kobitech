@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import logoFinrota from "@/assets/logo-finrota-new.svg";
-import logoKariyer from "@/assets/logo-kariyer.png";
 import logoNebim from "@/assets/logo-nebim.svg";
 import logoParam from "@/assets/logo-param.jpg";
 import logoUnivaera from "@/assets/logo-univera.svg";
@@ -12,7 +11,6 @@ const partners = [
   { name: "Nebim", logo: logoNebim },
   { name: "Univera", logo: logoUnivaera },
   { name: "Kredim", logo: logoKredim },
-  { name: "Kariyer.net", logo: logoKariyer },
 ];
 
 const TrustBand = () => (
