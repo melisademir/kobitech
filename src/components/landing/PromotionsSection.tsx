@@ -55,7 +55,7 @@ const cards = [
   },
   {
     title: "Param ile Ödeme Almayı Kolaylaştırın!",
-    bubble: "Size Özel %2,29\nKomisyon Oranı!",
+    bubble: "Size Özel %1,49\nKomisyon Oranı!",
     description: "Fiziki, sanal ve cep POS çözümleri ile tüm ödemelerinizi avantajlı komisyon oranlarıyla alın.",
     icon: CreditCard,
     image: promoPayment,
