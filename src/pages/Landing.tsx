@@ -67,7 +67,6 @@ const Landing = () => (
     <div
       style={{
         background: "linear-gradient(135deg, #2D1070 0%, #4A1DB5 100%)",
-        clipPath: "polygon(0 4%, 100% 0, 100% 100%, 0 100%)",
       }}
     >
       <CtaSection />
