@@ -1,30 +1,18 @@
 import { motion } from "framer-motion";
-import logoAras from "@/assets/logo-aras.png";
 import logoFinrota from "@/assets/logo-finrota-new.svg";
-import logoIkas from "@/assets/logo-ikas.png";
 import logoKariyer from "@/assets/logo-kariyer.png";
-import logoMukellef from "@/assets/logo-mukellef.png";
 import logoNebim from "@/assets/logo-nebim.svg";
 import logoParam from "@/assets/logo-param.jpg";
-import logoTicimax from "@/assets/logo-ticimax.png";
-import logoTsoft from "@/assets/logo-tsoft.png";
 import logoUnivaera from "@/assets/logo-univera.svg";
 import logoKredim from "@/assets/logo-kredim.svg";
-import logoGoogle from "@/assets/logo-google.png";
 
 const partners = [
   { name: "Param", logo: logoParam },
-  { name: "T-SOFT", logo: logoTsoft },
   { name: "Finrota", logo: logoFinrota },
-  { name: "ikas", logo: logoIkas },
   { name: "Nebim", logo: logoNebim },
-  { name: "Aras Kargo", logo: logoAras },
   { name: "Univera", logo: logoUnivaera },
   { name: "Kredim", logo: logoKredim },
-  { name: "Ticimax", logo: logoTicimax },
-  { name: "Mükelllef", logo: logoMukellef },
   { name: "Kariyer.net", logo: logoKariyer },
-  { name: "Google", logo: logoGoogle },
 ];
 
 const TrustBand = () => (
