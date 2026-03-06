@@ -89,12 +89,7 @@ const CtaSection = () => (
         </p>
       </div>
 
-      {/* Cards grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-8">
-        {cardData.map((card) => (
-          <LinkCard key={card.title} {...card} />
-        ))}
-      </div>
+      {/* Cards removed */}
 
       {/* CTA Button */}
       <div className="text-center">
