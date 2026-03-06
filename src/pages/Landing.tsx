@@ -32,7 +32,7 @@ const Landing = () => (
 
     {/* 1. DARK — Hero */}
     <div className="relative" style={{ background: DARK }}>
-      <div className="relative z-10">
+      <div className="relative">
         <LandingNav />
         <HeroSection />
       </div>
