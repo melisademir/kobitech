@@ -89,7 +89,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                 key={item.common}
                 role="group"
                 aria-label={item.common}
-                className="absolute w-[200px] sm:w-[230px] md:w-[260px] h-[240px] sm:h-[260px] md:h-[280px]"
+                className="absolute w-[200px] sm:w-[230px] md:w-[260px] h-[300px] sm:h-[340px] md:h-[380px]"
                 style={{
                   transform: `rotateY(${itemAngle}deg) translateZ(${radius}px)`,
                   left: '50%',
@@ -127,7 +127,7 @@ const CircularGallery = React.forwardRef<HTMLDivElement, CircularGalleryProps>(
                     <h2 className="text-lg md:text-xl font-extrabold leading-tight drop-shadow-lg">{item.common}</h2>
                     <em className="text-xs italic opacity-80 drop-shadow">{item.binomial}</em>
                     {item.description && (
-                      <p className="text-[11px] leading-relaxed opacity-90 mt-1 line-clamp-3 drop-shadow">
+                      <p className="text-[11px] leading-relaxed opacity-90 mt-1 drop-shadow">
                         {item.description}
                       </p>
                     )}
